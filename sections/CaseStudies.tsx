@@ -1,68 +1,95 @@
 import React from 'react';
-import { Button } from '../components/ui/Button';
+import { Link } from 'react-router-dom';
 import { Reveal } from '../components/animations/Reveal';
+import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import { caseStudies } from '../data/caseStudiesData';
 
-interface CaseProps {
-  title: string;
-  location: string;
-  stats: string;
-  desc: string;
-}
-
-const CaseCard: React.FC<CaseProps> = ({ title, location, stats, desc }) => (
-  <div className="group cursor-pointer">
-    <div className="bg-gray-100 aspect-[4/3] mb-6 overflow-hidden relative">
-       {/* Abstract representation of a building plan or refined standard photo */}
-       <div className="absolute inset-0 bg-thistle-black/5 group-hover:bg-thistle-black/0 transition-colors duration-500" />
-       <div className="absolute inset-0 flex items-center justify-center text-thistle-black/10 text-6xl font-bold tracking-tighter">
-         {stats}
-       </div>
-    </div>
-    <div className="flex justify-between items-start border-b border-thistle-black/10 pb-6 group-hover:border-thistle-black/40 transition-colors">
-      <div className="max-w-md">
-        <h4 className="text-lg font-medium mb-1">{title}</h4>
-        <p className="text-sm text-thistle-black/50 mb-3">{location}</p>
-        <p className="text-sm text-thistle-black/70 leading-relaxed">{desc}</p>
-      </div>
-      <div className="opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0 duration-300">
-         <div className="w-10 h-10 rounded-full border border-thistle-black/20 flex items-center justify-center">
-            <ArrowUpRight size={18} />
-         </div>
-      </div>
-    </div>
-  </div>
-);
+const displayCases = caseStudies.slice(0, 2);
 
 export const CaseStudies: React.FC = () => {
   return (
-    <section className="py-24 lg:py-32 px-6 lg:px-12 max-w-[1600px] mx-auto border-t border-thistle-black/5">
-      <Reveal>
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16">
-          <h2 className="text-4xl lg:text-5xl font-medium tracking-tight max-w-xl">
-            Proof, <span className="text-thistle-black/30">not inspiration.</span>
-          </h2>
-          <Button variant="outline" className="mt-6 md:mt-0">View All Cases</Button>
+    <section className="py-fl-section px-fl-margin bg-thistle-white">
+      <div className="max-w-[1600px] mx-auto">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-fl-8 gap-fl-5">
+          <div>
+            <Reveal>
+              <p className="text-xs uppercase tracking-[0.2em] text-thistle-gray font-semibold mb-fl-5">Case Studies</p>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <h2 className="text-fluid-h2 font-medium tracking-tight">
+                Proof, <span className="text-thistle-black/25">not inspiration.</span>
+              </h2>
+            </Reveal>
+          </div>
+          <Reveal delay={0.2}>
+            <Link to="/case-studies" className="text-sm text-thistle-black/40 hover:text-thistle-black transition-colors font-medium tracking-tight flex items-center gap-1 group">
+              View all cases
+              <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </Link>
+          </Reveal>
         </div>
-      </Reveal>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-        <Reveal delay={0.1}>
-          <CaseCard 
-            title="Office to Resi (Class MA)"
-            location="Croydon, South London"
-            stats="+14 Units"
-            desc="The client assumed 9 units. Our structural analysis and layout optimization unlocked 5 additional apartments within the same envelope."
-          />
-        </Reveal>
-        <Reveal delay={0.2}>
-          <CaseCard 
-            title="High Street Upper Parts"
-            location="Reading, Berkshire"
-            stats="28% Yield"
-            desc="A complex access issue was blocking development. We redesigned the core circulation to meet fire regs without sacrificing retail space."
-          />
-        </Reveal>
+        {/* Case Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-fl-5">
+          {displayCases.map((item, i) => (
+            <Reveal key={item.slug} delay={i * 0.15}>
+              <Link to={`/case-studies/${item.slug}`} className="block">
+                <motion.div
+                  whileHover={{ y: -6 }}
+                  transition={{ duration: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
+                  className="group cursor-pointer rounded-2xl overflow-hidden bg-white border border-thistle-black/[0.06] hover:border-thistle-black/[0.12] hover:shadow-xl hover:shadow-thistle-black/[0.04] transition-all duration-500"
+                >
+                  {/* Image */}
+                  <div className="aspect-[16/10] overflow-hidden relative">
+                    <motion.img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                      whileHover={{ scale: 1.04 }}
+                      transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+
+                    {/* Tag badge */}
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1.5 rounded-full bg-black/30 backdrop-blur-xl border border-white/10 text-[10px] uppercase tracking-widest text-white/80 font-medium">
+                        {item.tag}
+                      </span>
+                    </div>
+
+                    {/* Stats row on image */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <div className="flex gap-fl-5">
+                        {item.stats.map((stat, j) => (
+                          <div key={j} className="flex flex-col">
+                            <span className="text-fluid-h4 font-medium text-white tracking-tight">{stat.value}</span>
+                            <span className="text-[10px] uppercase tracking-widest text-white/50 mt-0.5">{stat.label}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-fl-5">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h3 className="text-fluid-h5 font-medium tracking-tight mb-fl-1 group-hover:text-thistle-black transition-colors">{item.title}</h3>
+                        <p className="text-xs text-thistle-black/40 uppercase tracking-wider mb-fl-4">{item.location}</p>
+                        <p className="text-fluid-sm text-thistle-black/50 leading-relaxed max-w-md">{item.desc}</p>
+                      </div>
+                      <div className="w-10 h-10 rounded-full border border-thistle-black/10 flex items-center justify-center flex-shrink-0 ml-4 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                        <ArrowUpRight size={16} className="text-thistle-black/60" />
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

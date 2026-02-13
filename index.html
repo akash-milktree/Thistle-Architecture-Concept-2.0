@@ -5,18 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Thistle Architecture | Feasibility Solved</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.css">
     <style>
+      /* ─── Brand Tokens ─── */
       :root {
         --color-black: #09090B;
         --color-white: #FAFAFA;
         --color-pink: #DAAEBB;
         --color-green: #8F9952;
+
+        /* ─── Fluid Typography (Timothy Ricks / Fluid Builder) ───
+           Viewport range: 320px (20rem) → 1440px (90rem)
+           Formula: clamp(min, intercept + slope·100vw, max)              */
+        --font-display: clamp(4rem, 3.083rem + 4.586vw, 7.21rem);
+        --font-h1: clamp(3.18rem, 2.606rem + 2.871vw, 5.19rem);
+        --font-h2: clamp(2.52rem, 2.174rem + 1.729vw, 3.73rem);
+        --font-h3: clamp(2rem, 1.803rem + 0.986vw, 2.69rem);
+        --font-h4: clamp(1.59rem, 1.493rem + 0.486vw, 1.93rem);
+        --font-h5: clamp(1.26rem, 1.223rem + 0.186vw, 1.39rem);
+        --font-h6: 1rem;
+        --font-text-lg: clamp(1.14rem, 1.106rem + 0.171vw, 1.26rem);
+        --font-text-base: clamp(1rem, 0.986rem + 0.071vw, 1.05rem);
+        --font-text-sm: 0.875rem;
+
+        /* ─── Fluid Spacing ─── */
+        --space-section-lg: clamp(7.23rem, 5.444rem + 8.929vw, 13.48rem);
+        --space-section: clamp(5.17rem, 4.061rem + 5.543vw, 9.05rem);
+        --space-section-sm: clamp(3.69rem, 3.01rem + 3.4vw, 6.07rem);
+        --space-8: clamp(2.64rem, 2.229rem + 2.057vw, 4.08rem);
+        --space-7: clamp(1.88rem, 1.634rem + 1.229vw, 2.74rem);
+        --space-6: clamp(1.34rem, 1.197rem + 0.714vw, 1.84rem);
+        --space-5: clamp(0.96rem, 0.883rem + 0.386vw, 1.23rem);
+        --space-4: clamp(0.69rem, 0.65rem + 0.2vw, 0.83rem);
+        --space-3: clamp(0.49rem, 0.47rem + 0.1vw, 0.56rem);
+        --space-2: clamp(0.35rem, 0.344rem + 0.029vw, 0.37rem);
+        --space-1: 0.25rem;
+
+        /* ─── Fluid Site Margin ─── */
+        --site-margin: clamp(1rem, 0.429rem + 2.857vw, 3rem);
       }
+
       body {
-        font-family: 'Inter', sans-serif;
+        font-family: 'Geist', sans-serif;
         background-color: var(--color-white);
         color: var(--color-black);
         -webkit-font-smoothing: antialiased;
@@ -41,11 +71,37 @@
               }
             },
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
+              sans: ['Geist', 'sans-serif'],
             },
             letterSpacing: {
               tighter: '-0.04em',
               tight: '-0.02em',
+            },
+            fontSize: {
+              'fluid-display': 'var(--font-display)',
+              'fluid-h1': 'var(--font-h1)',
+              'fluid-h2': 'var(--font-h2)',
+              'fluid-h3': 'var(--font-h3)',
+              'fluid-h4': 'var(--font-h4)',
+              'fluid-h5': 'var(--font-h5)',
+              'fluid-h6': 'var(--font-h6)',
+              'fluid-lg': 'var(--font-text-lg)',
+              'fluid-base': 'var(--font-text-base)',
+              'fluid-sm': 'var(--font-text-sm)',
+            },
+            spacing: {
+              'fl-section-lg': 'var(--space-section-lg)',
+              'fl-section': 'var(--space-section)',
+              'fl-section-sm': 'var(--space-section-sm)',
+              'fl-8': 'var(--space-8)',
+              'fl-7': 'var(--space-7)',
+              'fl-6': 'var(--space-6)',
+              'fl-5': 'var(--space-5)',
+              'fl-4': 'var(--space-4)',
+              'fl-3': 'var(--space-3)',
+              'fl-2': 'var(--space-2)',
+              'fl-1': 'var(--space-1)',
+              'fl-margin': 'var(--site-margin)',
             }
           }
         }

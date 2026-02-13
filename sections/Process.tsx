@@ -1,69 +1,81 @@
 import React from 'react';
-import { StickyLabel } from '../components/ui/StickyLabel';
 import { Reveal } from '../components/animations/Reveal';
-import { UploadCloud, FileSearch, PenTool, CheckCircle2 } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Button } from '../components/ui/Button';
+import { ArrowUpRight } from 'lucide-react';
+import { useFeasibility } from '../components/feasibility/FeasibilityContext';
 
 const steps = [
   {
-    icon: <UploadCloud size={24} />,
-    title: "1. Submit Property Details",
-    desc: "Upload floor plans, address, and your target unit mix. Our portal captures everything we need to start immediately."
+    num: "01",
+    title: "Submit Property Details",
+    desc: "Upload floor plans, address, and your target unit mix. Our portal captures everything we need to start immediately.",
+    detail: "10 min setup"
   },
   {
-    icon: <FileSearch size={24} />,
-    title: "2. Automated Desk Study",
-    desc: "We run constraints checks against planning policy, flood risk, daylight exposure, and local Article 4 directives."
+    num: "02",
+    title: "Automated Desk Study",
+    desc: "We run constraints checks against planning policy, flood risk, daylight exposure, and local Article 4 directives.",
+    detail: "Day 1–2"
   },
   {
-    icon: <PenTool size={24} />,
-    title: "3. Architect Review",
-    desc: "A senior architect reviews the data, sketches the optimal layout, and solves complex spatial problems automation can't handle."
+    num: "03",
+    title: "Architect Review",
+    desc: "A senior architect reviews the data, sketches the optimal layout, and solves complex spatial problems automation can't handle.",
+    detail: "Day 3–4"
   },
   {
-    icon: <CheckCircle2 size={24} />,
-    title: "4. Feasibility Delivered",
-    desc: "Within 5 working days, you receive a comprehensive PDF report including GA plans, schedule of accommodation, and risk register."
+    num: "04",
+    title: "Feasibility Delivered",
+    desc: "A comprehensive report including GA plans, schedule of accommodation, risk register, and Go/No-Go recommendation.",
+    detail: "Day 5"
   }
 ];
 
 export const Process: React.FC = () => {
+  const { openModal } = useFeasibility();
+
   return (
-    <section className="bg-thistle-black text-thistle-white py-24 lg:py-32 px-6 lg:px-12">
-      <div className="max-w-[1600px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-24 relative">
-        <div className="hidden lg:block w-1/4 sticky top-32 self-start">
-          <Reveal>
-            <div className="flex flex-col gap-2">
-              <span className="text-xs uppercase tracking-widest text-thistle-white/50 font-semibold">
-                The Workflow
-              </span>
-              <p className="text-2xl font-medium tracking-tight mt-2 text-white max-w-[200px]">
-                5 Days to Clarity.
-              </p>
-            </div>
+    <section className="bg-thistle-black text-white py-fl-section px-fl-margin overflow-hidden">
+      <div className="max-w-[1600px] mx-auto">
+        {/* Header */}
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-fl-section-sm gap-fl-6">
+          <div>
+            <Reveal>
+              <p className="text-xs uppercase tracking-[0.2em] text-white/30 font-semibold mb-fl-5">How It Works</p>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight">
+                5 days to clarity.
+              </h2>
+            </Reveal>
+          </div>
+          <Reveal delay={0.2}>
+            <Button variant="glass" icon={<ArrowUpRight size={16} />} onClick={openModal}>Start Feasibility</Button>
           </Reveal>
         </div>
 
-        <div className="lg:w-3/4">
-          <div className="grid grid-cols-1 gap-0 border-l border-white/10">
-            {steps.map((step, index) => (
-              <Reveal key={index} delay={index * 0.1}>
-                <div className="group relative pl-8 pb-16 last:pb-0">
-                   {/* Timeline dot */}
-                  <span className="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full bg-thistle-black border border-white/30 group-hover:bg-thistle-pink group-hover:border-thistle-pink transition-colors duration-300"></span>
-                  
-                  <div className="flex flex-col md:flex-row md:items-start gap-6">
-                    <div className="p-4 rounded-lg bg-white/5 border border-white/10 text-thistle-pink group-hover:bg-white/10 transition-colors">
-                      {step.icon}
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-medium mb-3">{step.title}</h3>
-                      <p className="text-white/60 leading-relaxed max-w-lg">{step.desc}</p>
-                    </div>
+        {/* Steps Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-fl-4">
+          {steps.map((step, i) => (
+            <Reveal key={i} delay={i * 0.1}>
+              <motion.div
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.3 }}
+                className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-fl-6 h-full flex flex-col justify-between min-h-[320px] group hover:border-thistle-pink/30 hover:bg-white/[0.05] transition-colors duration-500"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-fl-6">
+                    <span className="text-xs font-bold tracking-widest text-thistle-pink">{step.num}</span>
+                    <span className="text-[10px] uppercase tracking-widest text-white/20 font-medium">{step.detail}</span>
                   </div>
+                  <h3 className="text-fluid-h5 font-medium mb-fl-4 tracking-tight group-hover:text-white transition-colors">{step.title}</h3>
+                  <p className="text-fluid-sm text-white/40 leading-relaxed group-hover:text-white/60 transition-colors">{step.desc}</p>
                 </div>
-              </Reveal>
-            ))}
-          </div>
+                <div className="w-8 h-[2px] bg-white/10 mt-8 group-hover:bg-thistle-pink/40 group-hover:w-12 transition-all duration-500" />
+              </motion.div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

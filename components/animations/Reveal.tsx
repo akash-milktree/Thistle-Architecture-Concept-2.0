@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView, useAnimation } from 'framer-motion';
 
 interface RevealProps {
@@ -12,15 +12,18 @@ export const Reveal: React.FC<RevealProps> = ({ children, width = "100%", delay 
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-75px" });
   const mainControls = useAnimation();
+  const [revealed, setRevealed] = useState(false);
 
   useEffect(() => {
     if (isInView) {
       mainControls.start("visible");
+      const timer = setTimeout(() => setRevealed(true), (delay + 0.6) * 1000);
+      return () => clearTimeout(timer);
     }
-  }, [isInView, mainControls]);
+  }, [isInView, mainControls, delay]);
 
   return (
-    <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }} className={className}>
+    <div ref={ref} style={{ position: "relative", width, overflow: revealed ? "visible" : "hidden" }} className={className}>
       <motion.div
         variants={{
           hidden: { opacity: 0, y: 30 },
