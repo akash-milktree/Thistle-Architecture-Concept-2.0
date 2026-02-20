@@ -5,6 +5,10 @@ import { PageLayout } from './layouts/PageLayout';
 
 import { HomePage } from './pages/HomePage';
 import { HowItWorksPage } from './pages/HowItWorksPage';
+import { CommercialConversionsPage } from './pages/CommercialConversionsPage';
+import { HMOsPage } from './pages/HMOsPage';
+import { HighEndResidentialPage } from './pages/HighEndResidentialPage';
+import { FeasibilityPackagePage } from './pages/FeasibilityPackagePage';
 import { CaseStudiesPage } from './pages/CaseStudiesPage';
 import { CaseStudyDetailPage } from './pages/CaseStudyDetailPage';
 import { AboutPage } from './pages/AboutPage';
@@ -22,6 +26,10 @@ function App() {
           <Route element={<PageLayout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/how-it-works" element={<HowItWorksPage />} />
+            <Route path="/commercial-conversions" element={<CommercialConversionsPage />} />
+            <Route path="/hmos" element={<HMOsPage />} />
+            <Route path="/high-end-residential" element={<HighEndResidentialPage />} />
+            <Route path="/feasibility-package" element={<FeasibilityPackagePage />} />
             <Route path="/case-studies" element={<CaseStudiesPage />} />
             <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
             <Route path="/about" element={<AboutPage />} />

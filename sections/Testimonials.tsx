@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Reveal } from '../components/animations/Reveal';
 import { motion } from 'framer-motion';
 
@@ -115,8 +115,6 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, name, role, co
 );
 
 export const Testimonials: React.FC = () => {
-  const [hoveredRow, setHoveredRow] = useState<number | null>(null);
-
   const topCards = [...topRow, ...topRow];
   const bottomCards = [...bottomRow, ...bottomRow];
 
@@ -126,7 +124,7 @@ export const Testimonials: React.FC = () => {
         {/* Centered Header */}
         <div className="text-center">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-5">Testimonials</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-thistle-black/50 font-semibold mb-fl-5">Testimonials</p>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-5">
@@ -134,7 +132,7 @@ export const Testimonials: React.FC = () => {
             </h2>
           </Reveal>
           <Reveal delay={0.15}>
-            <p className="text-fluid-sm text-thistle-black/50 leading-relaxed max-w-xl mx-auto">
+            <p className="text-fluid-sm text-thistle-black/60 leading-relaxed max-w-xl mx-auto">
               Trusted by developers, investors, and property professionals across the UK.
             </p>
           </Reveal>
@@ -142,18 +140,14 @@ export const Testimonials: React.FC = () => {
       </div>
 
       {/* Top Row — scrolls right to left */}
-      <div
-        className="mb-fl-4"
-        onMouseEnter={() => setHoveredRow(0)}
-        onMouseLeave={() => setHoveredRow(null)}
-      >
+      <div className="mb-fl-4">
         <motion.div
           className="flex gap-fl-4 w-max"
           animate={{ x: ["0%", "-50%"] }}
           transition={{
             repeat: Infinity,
             ease: "linear",
-            duration: hoveredRow === 0 ? 80 : 40,
+            duration: 45,
           }}
         >
           {topCards.map((t, i) => (
@@ -163,17 +157,14 @@ export const Testimonials: React.FC = () => {
       </div>
 
       {/* Bottom Row — scrolls left to right */}
-      <div
-        onMouseEnter={() => setHoveredRow(1)}
-        onMouseLeave={() => setHoveredRow(null)}
-      >
+      <div>
         <motion.div
           className="flex gap-fl-4 w-max"
           animate={{ x: ["-50%", "0%"] }}
           transition={{
             repeat: Infinity,
             ease: "linear",
-            duration: hoveredRow === 1 ? 80 : 40,
+            duration: 50,
           }}
         >
           {bottomCards.map((t, i) => (

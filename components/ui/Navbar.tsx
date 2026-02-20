@@ -1,10 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from './Button';
 import { ThistleLogo } from './ThistleLogo';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 import { useFeasibility } from '../feasibility/FeasibilityContext';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
+
+const serviceLinks = [
+  { label: "Feasibility Package", path: "/feasibility-package", desc: "Our core product — 6 deliverables in 5 days" },
+  { label: "Commercial Conversions", path: "/commercial-conversions", desc: "Offices, retail, and mixed-use buildings" },
+  { label: "HMOs", path: "/hmos", desc: "Licensing, density, and planning analysis" },
+  { label: "High-End Residential", path: "/high-end-residential", desc: "Design-sensitive and heritage sites" },
+];
 
 const navLinks = [
   { label: "How It Works", path: "/how-it-works" },
@@ -17,10 +24,12 @@ export const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const servicesRef = useRef<HTMLDivElement>(null);
   const { pathname } = useLocation();
   const { openModal } = useFeasibility();
 
-  const isDarkHero = pathname === '/' || pathname === '/how-it-works';
+  const isDarkHero = pathname === '/' || pathname === '/how-it-works' || pathname === '/commercial-conversions' || pathname === '/hmos' || pathname === '/high-end-residential' || pathname === '/feasibility-package';
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() || 0;
@@ -38,6 +47,17 @@ export const Navbar: React.FC = () => {
 
   const showDarkMode = isDarkHero && !scrolled && !isMobileMenuOpen;
 
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (servicesRef.current && !servicesRef.current.contains(e.target as Node)) {
+        setServicesOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, []);
+
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -49,6 +69,8 @@ export const Navbar: React.FC = () => {
       document.body.style.overflow = 'unset';
     };
   }, [isMobileMenuOpen]);
+
+  const isServiceActive = serviceLinks.some(l => pathname.startsWith(l.path));
 
   return (
     <>
@@ -65,23 +87,62 @@ export const Navbar: React.FC = () => {
           }`}
       >
         <div className="w-full flex items-center justify-between relative z-50">
-          <div className="flex items-center gap-10 pl-0 lg:pl-12">
+          <div className="flex items-center gap-8 pl-0 lg:pl-12">
             <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
               <ThistleLogo
                 variant="full"
                 color={showDarkMode ? 'light' : 'dark'}
-                className="h-8 w-auto transition-all duration-300"
+                className="h-11 w-auto transition-all duration-300"
               />
             </Link>
 
-            <div className={`hidden md:flex gap-fl-6 text-fluid-sm font-medium transition-colors duration-300 ${showDarkMode ? 'text-white/80' : 'text-thistle-black/70'
-              }`}>
+            <div className={`hidden md:flex items-center gap-fl-6 text-fluid-sm font-medium transition-colors duration-300 ${showDarkMode ? 'text-white/80' : 'text-thistle-black/70'}`}>
+
+              {/* Services Dropdown */}
+              <div ref={servicesRef} className="relative">
+                <button
+                  onClick={() => setServicesOpen(!servicesOpen)}
+                  className={`flex items-center gap-1.5 transition-colors hover:text-thistle-pink ${isServiceActive ? 'text-thistle-pink' : ''}`}
+                >
+                  Services
+                  <motion.div animate={{ rotate: servicesOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                    <ChevronDown size={14} />
+                  </motion.div>
+                </button>
+
+                <AnimatePresence>
+                  {servicesOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.18 }}
+                      className="absolute top-full left-0 mt-3 w-72 bg-thistle-white border border-thistle-black/[0.08] rounded-xl shadow-xl shadow-thistle-black/[0.08] overflow-hidden"
+                    >
+                      {serviceLinks.map((link) => (
+                        <Link
+                          key={link.path}
+                          to={link.path}
+                          onClick={() => setServicesOpen(false)}
+                          className={`flex flex-col px-4 py-3.5 hover:bg-thistle-black/[0.03] transition-colors border-b border-thistle-black/[0.04] last:border-b-0 ${pathname.startsWith(link.path) ? 'bg-thistle-black/[0.03]' : ''}`}
+                        >
+                          <span className={`text-sm font-medium tracking-tight ${pathname.startsWith(link.path) ? 'text-thistle-pink' : 'text-thistle-black'}`}>
+                            {link.label}
+                          </span>
+                          <span className="text-xs text-thistle-black/40 mt-0.5">{link.desc}</span>
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Regular nav links */}
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`transition-colors hover:text-thistle-pink ${pathname.startsWith(link.path) ? 'text-thistle-pink' : ''
-                    }`}
+                  className={`transition-colors hover:text-thistle-pink ${pathname.startsWith(link.path) ? 'text-thistle-pink' : ''}`}
                 >
                   {link.label}
                 </Link>
@@ -94,7 +155,7 @@ export const Navbar: React.FC = () => {
               <Button
                 size="sm"
                 variant={showDarkMode ? 'glass' : 'primary'}
-                className={showDarkMode ? '!bg-thistle-pink !border-thistle-pink !text-thistle-black hover:!bg-thistle-pink/80 hover:!border-thistle-pink/80' : ''}
+                className={showDarkMode ? '!bg-thistle-green !border-thistle-green !text-thistle-black hover:!bg-thistle-green/80 hover:!border-thistle-green/80' : ''}
                 onClick={openModal}
               >
                 Start Feasibility
@@ -104,15 +165,10 @@ export const Navbar: React.FC = () => {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`md:hidden p-2 -mr-2 transition-colors ${showDarkMode ? 'text-white' : 'text-thistle-black'
-                }`}
+              className={`md:hidden p-2 -mr-2 transition-colors ${showDarkMode ? 'text-white' : 'text-thistle-black'}`}
               aria-label="Toggle menu"
             >
-              {isMobileMenuOpen ? (
-                <X size={24} />
-              ) : (
-                <Menu size={24} />
-              )}
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
@@ -128,21 +184,43 @@ export const Navbar: React.FC = () => {
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-40 bg-thistle-white pt-24 pb-8 px-6 md:hidden flex flex-col overflow-y-auto"
           >
-            <div className="flex flex-col gap-6 text-2xl font-medium text-thistle-black flex-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`py-2 border-b border-thistle-black/5 ${pathname.startsWith(link.path) ? 'text-thistle-pink' : ''
-                    }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
+            <div className="flex flex-col flex-1">
+              {/* Services section */}
+              <div className="mb-2">
+                <p className="text-[10px] uppercase tracking-widest text-thistle-black/30 font-semibold mb-3">Services</p>
+                <div className="flex flex-col gap-1">
+                  {serviceLinks.map((link) => (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={`py-3 px-3 rounded-lg text-lg font-medium border-b border-thistle-black/5 last:border-b-0 ${pathname.startsWith(link.path) ? 'text-thistle-pink' : 'text-thistle-black'}`}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Divider */}
+              <div className="border-t border-thistle-black/[0.06] my-4" />
+
+              {/* Main nav links */}
+              <div className="flex flex-col gap-1">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`py-3 px-3 rounded-lg text-lg font-medium border-b border-thistle-black/5 last:border-b-0 ${pathname.startsWith(link.path) ? 'text-thistle-pink' : 'text-thistle-black'}`}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
             </div>
 
-            <div className="mt-auto">
+            <div className="mt-auto pt-6">
               <Button
                 size="lg"
                 variant="primary"

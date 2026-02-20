@@ -14,10 +14,10 @@ const navLinks = [
 ];
 
 const serviceLinks = [
-  "Feasibility Studies",
-  "Desk Studies",
-  "GA Floor Plans",
-  "Constraints Analysis",
+  { label: "Feasibility Package", to: "/feasibility-package" },
+  { label: "Commercial Conversions", to: "/commercial-conversions" },
+  { label: "HMOs", to: "/hmos" },
+  { label: "High-End Residential", to: "/high-end-residential" },
 ];
 
 const legalLinks = [
@@ -71,7 +71,7 @@ export const Footer: React.FC = () => {
                 <ThistleLogo variant="full" color="light" className="h-5" />
               </Link>
               <p className="text-fluid-sm text-white/30 leading-relaxed mb-fl-5">
-                Data-driven feasibility for commercial-to-residential conversions across the UK.
+                Data-driven feasibility for commercial conversions, HMOs, and high-end residential across the UK.
               </p>
               <a href="mailto:hello@thistlearchitecture.co.uk" className="text-fluid-sm text-white/50 hover:text-thistle-pink transition-colors">
                 hello@thistlearchitecture.co.uk
@@ -94,10 +94,10 @@ export const Footer: React.FC = () => {
             <div>
               <p className="text-[10px] uppercase tracking-widest text-white/20 font-semibold mb-fl-5">Services</p>
               <div className="flex flex-col gap-fl-3">
-                {serviceLinks.map((service) => (
-                  <span key={service} className="text-fluid-sm text-white/40">
-                    {service}
-                  </span>
+                {serviceLinks.map((link) => (
+                  <Link key={link.to} to={link.to} className="text-fluid-sm text-white/40 hover:text-white transition-colors">
+                    {link.label}
+                  </Link>
                 ))}
               </div>
             </div>

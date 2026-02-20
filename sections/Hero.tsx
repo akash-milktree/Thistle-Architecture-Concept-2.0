@@ -26,19 +26,19 @@ export const Hero: React.FC = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-thistle-green opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-thistle-green"></span>
               </span>
-              <span className="text-xs font-medium text-thistle-green tracking-wide">Feasibility for Developers</span>
+              <span className="text-xs font-medium text-thistle-green tracking-wide">Feasibility-first. Data-driven.</span>
             </div>
           </Reveal>
 
           <Reveal delay={0.1}>
             <h1 className="text-fluid-h1 font-medium tracking-tighter leading-[1.05] mb-fl-5">
-              Your trusted partner for <span className="text-thistle-pink">commercial conversion.</span>
+              Know if a building works<span className="text-thistle-pink"> before you buy it.</span>
             </h1>
           </Reveal>
 
           <Reveal delay={0.2}>
             <p className="text-fluid-lg text-white/50 leading-relaxed font-light mb-fl-7 max-w-md">
-              Data-driven desk studies and architect reviews for commercial-to-residential projects. Fast, structured, and risk-averse.
+              Thistle delivers fast, structured feasibility for commercial conversions, HMOs, and high-end residential. A clear Go/No-Go in 5 days — backed by data, reviewed by architects.
             </p>
           </Reveal>
 
@@ -57,9 +57,9 @@ export const Hero: React.FC = () => {
           <Reveal delay={0.5}>
             <div className="flex gap-fl-6 mt-fl-8 pt-fl-6 border-t border-white/[0.06]">
               {[
-                { value: "5", unit: "days", label: "turnaround" },
-                { value: "200+", unit: "", label: "buildings assessed" },
-                { value: "98%", unit: "", label: "client retention" },
+                { value: "5", unit: " days", label: "to your report" },
+                { value: "200+", unit: "", label: "feasibility reports" },
+                { value: "7+", unit: " yrs", label: "specialist experience" },
               ].map((stat, i) => (
                 <div key={i} className="flex flex-col">
                   <span className="text-2xl font-medium tracking-tight text-white">
