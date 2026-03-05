@@ -5,13 +5,13 @@ import { Button } from '../components/ui/Button';
 import { useFeasibility } from '../components/feasibility/FeasibilityContext';
 import { ArrowUpRight } from 'lucide-react';
 import { Team } from '../sections/Team';
-import { Testimonials } from '../sections/Testimonials';
+
 import { ImageMarquee } from '../components/ui/ImageMarquee';
 
 const stats = [
   { value: "7+", label: "Years experience" },
   { value: "200+", label: "Buildings assessed" },
-  { value: "5", label: "Day turnaround" },
+  { value: "Fast", label: "Turnaround" },
   { value: "98%", label: "Client retention" },
 ];
 
@@ -86,7 +86,7 @@ export const AboutPage: React.FC = () => {
       </section>
 
       <Team />
-      <Testimonials />
+      {/* Testimonials removed — waiting for real reviews */}
 
       {/* CTA Band */}
       <section className="py-fl-section-sm px-fl-margin bg-thistle-black text-white">
@@ -98,12 +98,12 @@ export const AboutPage: React.FC = () => {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="text-sm text-white/50 leading-relaxed max-w-md mx-auto mb-fl-6">
-              Submit your building and we'll tell you what's possible — in 5 days, for a fixed fee.
+              Submit your building and we'll tell you what's possible — for a fixed fee.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
             <Button variant="glass" size="lg" icon={<ArrowUpRight size={18} />} onClick={openModal} className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80">
-              Start Feasibility
+              Book Free Expert Session
             </Button>
           </Reveal>
         </div>

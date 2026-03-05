@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { Navbar } from '../components/ui/Navbar';
 import { Footer } from '../sections/Footer';
 import { FeasibilityModal } from '../components/feasibility/FeasibilityModal';
+import { ExitIntentPopup } from '../components/ExitIntentPopup';
 
 export const PageLayout: React.FC = () => {
   const { pathname } = useLocation();
@@ -17,6 +18,7 @@ export const PageLayout: React.FC = () => {
       <Outlet />
       <Footer />
       <FeasibilityModal />
+      <ExitIntentPopup />
     </main>
   );
 };

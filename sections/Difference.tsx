@@ -70,7 +70,7 @@ export const Difference: React.FC = () => {
             </p>
             <Button variant="glass" icon={<ArrowUpRight size={16} />} onClick={openModal}
               className="!bg-thistle-pink !border-thistle-pink !text-thistle-black hover:!bg-thistle-pink/80 hover:!border-thistle-pink/80 flex-shrink-0">
-              Start Feasibility
+              Book Free Expert Session
             </Button>
           </div>
         </Reveal>

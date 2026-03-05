@@ -10,25 +10,21 @@ const steps = [
     num: "01",
     title: "Submit Property Details",
     desc: "Upload floor plans, address, and your target unit mix. Our portal captures everything we need to start immediately.",
-    detail: "10 min setup"
   },
   {
     num: "02",
     title: "Automated Desk Study",
     desc: "We run constraints checks against planning policy, flood risk, daylight exposure, and local Article 4 directives.",
-    detail: "Day 1–2"
   },
   {
     num: "03",
     title: "Architect Review",
     desc: "A senior architect reviews the data, sketches the optimal layout, and solves complex spatial problems automation can't handle.",
-    detail: "Day 3–4"
   },
   {
     num: "04",
     title: "Feasibility Delivered",
     desc: "A comprehensive report including GA plans, schedule of accommodation, risk register, and Go/No-Go recommendation.",
-    detail: "Day 5"
   }
 ];
 
@@ -46,12 +42,12 @@ export const Process: React.FC = () => {
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight">
-                5 days to clarity.
+                From submission to clarity.
               </h2>
             </Reveal>
           </div>
           <Reveal delay={0.2}>
-            <Button variant="glass" icon={<ArrowUpRight size={16} />} onClick={openModal}>Start Feasibility</Button>
+            <Button variant="glass" icon={<ArrowUpRight size={16} />} onClick={openModal}>Book Free Expert Session</Button>
           </Reveal>
         </div>
 
@@ -67,7 +63,6 @@ export const Process: React.FC = () => {
                 <div>
                   <div className="flex items-center justify-between mb-fl-6">
                     <span className="text-xs font-bold tracking-widest text-thistle-pink">{step.num}</span>
-                    <span className="text-[10px] uppercase tracking-widest text-white/35 font-medium">{step.detail}</span>
                   </div>
                   <h3 className="text-fluid-h5 font-medium mb-fl-4 tracking-tight group-hover:text-white transition-colors">{step.title}</h3>
                   <p className="text-fluid-sm text-white/55 leading-relaxed group-hover:text-white/75 transition-colors">{step.desc}</p>
@@ -85,15 +80,15 @@ export const Process: React.FC = () => {
               <div>
                 <p className="text-xs uppercase tracking-[0.2em] text-thistle-pink font-semibold mb-fl-4">What's included</p>
                 <h3 className="text-fluid-h3 font-medium tracking-tight leading-tight mb-fl-4">
-                  Your feasibility package.
+                  Your visibility package.
                 </h3>
                 <p className="text-fluid-sm text-white/55 leading-relaxed max-w-sm">
-                  Everything you need to make a confident acquisition decision — delivered in 5 working days.
+                  Everything you need to make a confident acquisition decision — structured, thorough, and architect-reviewed.
                 </p>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-fl-3">
                 {[
-                  "15-minute expert session",
+                  "Free 15-minute expert session",
                   "Full feasibility report",
                   "2–3 architectural sketch schemes",
                   "1-hour architect meeting",

@@ -24,9 +24,9 @@ export const Confirmation: React.FC = () => {
         </motion.svg>
       </motion.div>
 
-      <h3 className="text-fluid-h5 font-medium tracking-tight text-thistle-black mb-2">You're all set.</h3>
+      <h3 className="text-fluid-h5 font-medium tracking-tight text-thistle-black mb-2">Your free session is booked.</h3>
       <p className="text-fluid-sm text-thistle-black/40 leading-relaxed mb-fl-6">
-        We'll review your submission and get back to you within 24 hours with a scope and fixed fee.
+        We'll reach out within 24 hours to schedule your free 15-minute expert session with a senior architect.
       </p>
 
       {/* Summary Card */}

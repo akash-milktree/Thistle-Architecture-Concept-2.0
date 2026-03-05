@@ -26,29 +26,29 @@ export const Hero: React.FC = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-thistle-green opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-thistle-green"></span>
               </span>
-              <span className="text-xs font-medium text-thistle-green tracking-wide">Feasibility-first. Data-driven.</span>
+              <span className="text-xs font-medium text-thistle-green tracking-wide">Free 15-min expert session available</span>
             </div>
           </Reveal>
 
           <Reveal delay={0.1}>
             <h1 className="text-fluid-h1 font-medium tracking-tighter leading-[1.05] mb-fl-5">
-              Know if a building works<span className="text-thistle-pink"> before you buy it.</span>
+              Gain complete clarity<span className="text-thistle-pink"> before you commit.</span>
             </h1>
           </Reveal>
 
           <Reveal delay={0.2}>
             <p className="text-fluid-lg text-white/50 leading-relaxed font-light mb-fl-7 max-w-md">
-              Thistle delivers fast, structured feasibility for commercial conversions, HMOs, and high-end residential. A clear Go/No-Go in 5 days — backed by data, reviewed by architects.
+              Structured feasibility for commercial conversions, HMOs, and high-end residential — backed by data, reviewed by architects, delivered with a clear Go/No-Go recommendation.
             </p>
           </Reveal>
 
           <Reveal delay={0.3}>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-fl-4">
               <Button size="lg" variant="glass" icon={<ArrowUpRight size={18} />} onClick={openModal} className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80 hover:!text-thistle-black">
-                Start Feasibility
+                Book Free Expert Session
               </Button>
               <Link to="/how-it-works" className="text-sm text-white/40 hover:text-white/70 transition-colors font-medium tracking-tight">
-                How it works &rarr;
+                See how it works &rarr;
               </Link>
             </div>
           </Reveal>
@@ -57,9 +57,9 @@ export const Hero: React.FC = () => {
           <Reveal delay={0.5}>
             <div className="flex gap-fl-6 mt-fl-8 pt-fl-6 border-t border-white/[0.06]">
               {[
-                { value: "5", unit: " days", label: "to your report" },
                 { value: "200+", unit: "", label: "feasibility reports" },
                 { value: "7+", unit: " yrs", label: "specialist experience" },
+                { value: "98%", unit: "", label: "client retention" },
               ].map((stat, i) => (
                 <div key={i} className="flex flex-col">
                   <span className="text-2xl font-medium tracking-tight text-white">
@@ -90,31 +90,6 @@ export const Hero: React.FC = () => {
           {/* Gradient overlays for depth */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-thistle-black/30 via-transparent to-transparent" />
-
-          {/* Floating testimonial card with metric */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
-            className="absolute bottom-6 right-6 md:bottom-8 md:right-8 max-w-[90%] md:max-w-xs"
-          >
-            <div className="bg-black/30 backdrop-blur-2xl border border-white/10 p-5 rounded-xl">
-              <div className="flex items-center gap-fl-3 mb-fl-4 pb-fl-4 border-b border-white/[0.08]">
-                <span className="text-2xl font-medium text-white tracking-tight">+4.2</span>
-                <span className="text-xs text-white/50 leading-tight">avg. units unlocked<br /><span className="text-thistle-green">per project</span></span>
-              </div>
-              <p className="text-white/90 text-sm leading-relaxed mb-fl-4">
-                "Their ability to blend planning constraints with commercial viability is unparalleled."
-              </p>
-              <div className="flex items-center gap-fl-3">
-                <div className="w-7 h-7 rounded-full bg-thistle-green/20 flex items-center justify-center text-[10px] font-bold text-thistle-green">MC</div>
-                <div className="text-xs text-white/50">
-                  <span className="block text-white/80 font-medium">Marcus Cole</span>
-                  Sterling Property Group
-                </div>
-              </div>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
 

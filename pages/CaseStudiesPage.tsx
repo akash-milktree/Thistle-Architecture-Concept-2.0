@@ -86,12 +86,12 @@ export const CaseStudiesPage: React.FC = () => {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="text-fluid-sm text-white/50 leading-relaxed max-w-md mx-auto mb-fl-6">
-              Submit your property details and find out if it's viable — in 5 days.
+              Submit your property details and find out if it's viable.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
             <Button variant="glass" size="lg" icon={<ArrowUpRight size={18} />} onClick={openModal} className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80">
-              Start Feasibility
+              Book Free Expert Session
             </Button>
           </Reveal>
         </div>

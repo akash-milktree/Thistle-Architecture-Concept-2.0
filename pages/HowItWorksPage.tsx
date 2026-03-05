@@ -12,7 +12,7 @@ const steps = [
     num: "01",
     icon: <Upload size={24} />,
     title: "Submit Property Details",
-    detail: "10 min setup",
+    detail: "Quick setup",
     desc: "Upload floor plans, address, and your target unit mix. Our portal captures everything we need to start immediately.",
     expanded: "You don't need detailed drawings — basic floor plans, an address, and your initial assumptions on unit count are enough. If you don't have floor plans, we can often source them from Land Registry or request them from the selling agent.",
     image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800",
@@ -21,7 +21,7 @@ const steps = [
     num: "02",
     icon: <Search size={24} />,
     title: "Automated Desk Study",
-    detail: "Day 1–2",
+    detail: "Automated",
     desc: "We run constraints checks against planning policy, flood risk, daylight exposure, and local Article 4 directives.",
     expanded: "Our automated systems cross-reference over 15 data sources including the local plan, planning portal history, Environment Agency flood maps, noise mapping, conservation area boundaries, and listed building registers. This surfaces constraints that manual research often misses.",
     image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=800",
@@ -30,7 +30,7 @@ const steps = [
     num: "03",
     icon: <PenTool size={24} />,
     title: "Architect Review",
-    detail: "Day 3–4",
+    detail: "Expert-led",
     desc: "A senior architect reviews the data, sketches the optimal layout, and solves complex spatial problems automation can't handle.",
     expanded: "The architect pressure-tests the desk study findings against the physical building. They produce GA floor plans showing the proposed unit layout, calculate the efficiency ratio, and identify any structural or services challenges that could affect buildability or cost.",
     image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800",
@@ -39,7 +39,7 @@ const steps = [
     num: "04",
     icon: <FileCheck size={24} />,
     title: "Feasibility Delivered",
-    detail: "Day 5",
+    detail: "Final output",
     desc: "A comprehensive report including GA plans, schedule of accommodation, risk register, and Go/No-Go recommendation.",
     expanded: "Your report is a single, investor-ready document containing everything you need: GA floor plans, a detailed schedule of accommodation against NDSS standards, constraints analysis, risk register with cost implications, and an unambiguous Go or No-Go recommendation.",
     image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800",
@@ -62,12 +62,12 @@ export const HowItWorksPage: React.FC = () => {
     <>
       <PageHero
         label="How It Works"
-        heading="From enquiry to clarity in 5 days."
+        heading="From enquiry to complete clarity."
         description="A structured, data-driven process that gives developers the confidence to bid, exchange, or walk away — fast."
         variant="dark"
       >
         <Button variant="glass" icon={<ArrowUpRight size={16} />} onClick={openModal} className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80">
-          Start Feasibility
+          Book Free Expert Session
         </Button>
       </PageHero>
 
@@ -195,7 +195,7 @@ export const HowItWorksPage: React.FC = () => {
           </Reveal>
           <Reveal delay={0.2}>
             <Button variant="primary" size="lg" icon={<ArrowUpRight size={18} />} onClick={openModal}>
-              Start Feasibility
+              Book Free Expert Session
             </Button>
           </Reveal>
         </div>

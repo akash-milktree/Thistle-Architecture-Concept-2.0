@@ -12,7 +12,7 @@ const faqs = [
   },
   {
     question: "How long does a feasibility study take?",
-    answer: "Our standard turnaround is 5 working days. Day 1–2 covers the automated desk study, Day 3–4 is the architect review, and Day 5 delivers your completed feasibility report with a clear Go/No-Go recommendation.",
+    answer: "Our standard turnaround is fast and efficient. The automated desk study, architect review, and final report delivery happen in a structured sequence — so you get a clear Go/No-Go recommendation without unnecessary delays.",
   },
   {
     question: "What's included in the feasibility report?",

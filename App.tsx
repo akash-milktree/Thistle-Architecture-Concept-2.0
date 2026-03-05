@@ -1,13 +1,10 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { FeasibilityProvider } from './components/feasibility/FeasibilityContext';
 import { PageLayout } from './layouts/PageLayout';
 
 import { HomePage } from './pages/HomePage';
 import { HowItWorksPage } from './pages/HowItWorksPage';
-import { CommercialConversionsPage } from './pages/CommercialConversionsPage';
-import { HMOsPage } from './pages/HMOsPage';
-import { HighEndResidentialPage } from './pages/HighEndResidentialPage';
 import { FeasibilityPackagePage } from './pages/FeasibilityPackagePage';
 import { CaseStudiesPage } from './pages/CaseStudiesPage';
 import { CaseStudyDetailPage } from './pages/CaseStudyDetailPage';
@@ -26,9 +23,6 @@ function App() {
           <Route element={<PageLayout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/how-it-works" element={<HowItWorksPage />} />
-            <Route path="/commercial-conversions" element={<CommercialConversionsPage />} />
-            <Route path="/hmos" element={<HMOsPage />} />
-            <Route path="/high-end-residential" element={<HighEndResidentialPage />} />
             <Route path="/feasibility-package" element={<FeasibilityPackagePage />} />
             <Route path="/case-studies" element={<CaseStudiesPage />} />
             <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
@@ -38,6 +32,10 @@ function App() {
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/cookies" element={<CookiesPage />} />
+            {/* Redirect old service pages to visibility package */}
+            <Route path="/commercial-conversions" element={<Navigate to="/feasibility-package" replace />} />
+            <Route path="/hmos" element={<Navigate to="/feasibility-package" replace />} />
+            <Route path="/high-end-residential" element={<Navigate to="/feasibility-package" replace />} />
           </Route>
         </Routes>
       </FeasibilityProvider>

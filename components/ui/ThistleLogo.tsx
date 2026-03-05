@@ -16,7 +16,7 @@ const LogoMark: React.FC<{ className?: string }> = ({ className }) => (
 
 /** Full lockup — mark + "THISTLE ARCHITECTURE" text */
 const LogoFull: React.FC<{ color: 'dark' | 'light'; className?: string }> = ({ color, className }) => {
-  const textFill = color === 'dark' ? '#09090B' : '#FFFFFF';
+  const textFill = color === 'dark' ? '#2F3B36' : '#FFFFFF';
 
   return (
     <svg viewBox="0 0 1061 287" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>

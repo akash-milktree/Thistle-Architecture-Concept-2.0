@@ -1,49 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PageHero } from '../components/ui/PageHero';
 import { Reveal } from '../components/animations/Reveal';
 import { Button } from '../components/ui/Button';
 import { useFeasibility } from '../components/feasibility/FeasibilityContext';
 import { ArrowUpRight } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { Testimonials } from '../sections/Testimonials';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FAQ } from '../sections/FAQ';
 
 const deliverables = [
   {
     num: "01",
-    title: "15-Minute Expert Session",
+    title: "Free 15-Minute Expert Session",
     desc: "A focused conversation with a senior architect before we begin — to understand your objectives, confirm assumptions, and scope the study correctly.",
-    detail: "Day 1",
   },
   {
     num: "02",
     title: "Full Feasibility Report",
     desc: "A comprehensive document covering planning constraints, structural considerations, unit mix options, financial viability, and risk — everything you need to make a confident acquisition decision.",
-    detail: "Day 5",
   },
   {
     num: "03",
     title: "Architectural Sketch Schemes",
     desc: "2 to 3 layout options drawn by a qualified architect, showing how the building can be configured. Each scheme is tested against space standards, planning constraints, and commercial viability.",
-    detail: "Day 3–4",
   },
   {
     num: "04",
     title: "1-Hour Architect Meeting",
     desc: "A structured walkthrough of the report with the architect who produced it — so you can ask questions, probe assumptions, and leave with complete clarity on the recommendation.",
-    detail: "Day 5",
   },
   {
     num: "05",
     title: "Financial Analysis",
     desc: "GDV projections, build cost benchmarks, margin analysis, and return on cost modelling — calibrated against comparable sales and local market data.",
-    detail: "Included",
   },
   {
     num: "06",
     title: "Fee Proposal & Project Roadmap",
     desc: "If the site is viable, you receive a fixed-fee proposal for the full architectural scope — with a clear programme showing exactly what happens next and when.",
-    detail: "Included",
   },
 ];
 
@@ -67,36 +60,93 @@ const process = [
     num: "01",
     title: "Submit property details",
     desc: "Upload floor plans, address, and your target unit mix. Takes around 10 minutes.",
-    detail: "Day 1 · 10 min",
   },
   {
     num: "02",
     title: "Automated desk study",
     desc: "We cross-reference 15+ data sources — planning policy, flood risk, Article 4, daylight, and more.",
-    detail: "Day 1–2",
   },
   {
     num: "03",
     title: "Architect review",
     desc: "A senior architect reviews the data, produces sketch layouts, and validates commercial assumptions.",
-    detail: "Day 3–4",
   },
   {
     num: "04",
     title: "Feasibility delivered",
-    desc: "Your full report, sketch schemes, financial analysis, and architect meeting — ready in 5 days.",
-    detail: "Day 5",
+    desc: "Your full report, sketch schemes, financial analysis, and architect meeting — all delivered together.",
   },
 ];
 
+const conversionTypes = {
+  commercial: {
+    label: "Commercial Conversions",
+    intro: "Turn commercial buildings into viable residential schemes.",
+    considerations: [
+      { title: "Class MA", desc: "Converting commercial to residential under permitted development — assessing prior approval requirements and conditions." },
+      { title: "Class O", desc: "Office-to-residential conversions with specific criteria around natural light, amenity space, and transport links." },
+      { title: "Full Planning", desc: "Where permitted development doesn't apply — building a case from first principles through the planning system." },
+      { title: "Change of Use", desc: "Navigating use class changes, mixed-use schemes, and the interaction between commercial and residential policy." },
+    ],
+    analysis: [
+      "Class MA & Article 4 exposure",
+      "Planning history & precedent",
+      "Structural suitability",
+      "Unit mix optimisation",
+      "Financial viability",
+      "Infrastructure & services",
+    ],
+  },
+  hmo: {
+    label: "HMOs",
+    intro: "HMO feasibility that handles the complexity.",
+    considerations: [
+      { title: "HMO Licensing", desc: "Mandatory and additional licensing thresholds, room size requirements, and local authority conditions." },
+      { title: "Article 4 & Density", desc: "Identifying Article 4 directions and saturation levels that could block or complicate HMO consent." },
+      { title: "Room Standards", desc: "NDSS compliance, minimum room sizes, amenity ratios, and accessibility requirements for each unit type." },
+      { title: "Planning Consent", desc: "Determining whether prior approval, full planning, or lawful development certificates are the best route." },
+    ],
+    analysis: [
+      "Licensing assessment",
+      "Density & saturation mapping",
+      "Room schedule",
+      "Planning route analysis",
+      "Financial modelling",
+      "Risk register",
+    ],
+  },
+  residential: {
+    label: "High-End Residential",
+    intro: "Feasibility built for premium residential projects.",
+    considerations: [
+      { title: "Spatial Quality", desc: "Premium developments require exceptional space planning — optimising layouts for light, aspect, and liveability." },
+      { title: "Planning Strategy", desc: "Heritage constraints, conservation areas, and design-sensitive sites need a carefully constructed planning narrative." },
+      { title: "Market Calibration", desc: "Unit mix decisions driven by local demand data, comparable sales analysis, and target buyer profiles." },
+      { title: "Daylight & Sunlight", desc: "BRE methodology assessments ensuring compliance and protecting the quality of the living environment." },
+    ],
+    analysis: [
+      "Conservation & heritage",
+      "Planning policy context",
+      "Daylight & sunlight (BRE)",
+      "Unit mix & market positioning",
+      "GDV & financial analysis",
+      "Architectural sketch schemes",
+    ],
+  },
+};
+
+type ConversionType = keyof typeof conversionTypes;
+
 export const FeasibilityPackagePage: React.FC = () => {
   const { openModal } = useFeasibility();
+  const [activeType, setActiveType] = useState<ConversionType>('commercial');
+  const activeData = conversionTypes[activeType];
 
   return (
     <>
       <PageHero
-        label="Feasibility Package"
-        heading="Everything you need to decide in 5 days."
+        label="Visibility Package"
+        heading="Complete clarity before you commit."
         description="A structured feasibility study combining automated data analysis with architect-led design review — delivered with a clear Go/No-Go recommendation."
         variant="dark"
       >
@@ -106,7 +156,7 @@ export const FeasibilityPackagePage: React.FC = () => {
           onClick={openModal}
           className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80"
         >
-          Start Feasibility
+          Book Free Expert Session
         </Button>
       </PageHero>
 
@@ -134,7 +184,6 @@ export const FeasibilityPackagePage: React.FC = () => {
                 >
                   <div className="flex items-center justify-between mb-fl-5">
                     <span className="text-xs font-bold tracking-widest text-thistle-green">{item.num}</span>
-                    <span className="text-[10px] uppercase tracking-widest text-thistle-black/30 font-medium">{item.detail}</span>
                   </div>
                   <h3 className="text-fluid-h6 font-medium tracking-tight text-thistle-black mb-fl-3">{item.title}</h3>
                   <p className="text-sm text-thistle-black/55 leading-relaxed flex-1">{item.desc}</p>
@@ -146,16 +195,89 @@ export const FeasibilityPackagePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Process */}
+      {/* What We Cover — Tabbed sections for Commercial / HMO / Residential */}
       <section className="py-fl-section px-fl-margin bg-thistle-black text-white">
         <div className="max-w-[1360px] mx-auto">
           <div className="mb-fl-8">
             <Reveal>
-              <p className="text-xs uppercase tracking-[0.2em] text-white/30 font-semibold mb-fl-5">The Process</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-white/30 font-semibold mb-fl-5">What We Cover</p>
             </Reveal>
             <Reveal delay={0.1}>
-              <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight">
-                Four steps. Five days.
+              <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight mb-fl-6">
+                Feasibility across every sector.
+              </h2>
+            </Reveal>
+
+            {/* Tab Switcher */}
+            <Reveal delay={0.2}>
+              <div className="flex flex-wrap gap-2">
+                {(Object.keys(conversionTypes) as ConversionType[]).map((type) => (
+                  <button
+                    key={type}
+                    onClick={() => setActiveType(type)}
+                    className={`px-5 py-2.5 rounded-full text-sm font-medium tracking-tight transition-all duration-300 ${
+                      activeType === type
+                        ? 'bg-thistle-green text-thistle-black'
+                        : 'bg-white/[0.06] text-white/50 hover:bg-white/[0.10] hover:text-white/80 border border-white/[0.08]'
+                    }`}
+                  >
+                    {conversionTypes[type].label}
+                  </button>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeType}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3 }}
+            >
+              {/* Intro */}
+              <p className="text-fluid-lg text-white/60 leading-relaxed mb-fl-7 max-w-2xl">
+                {activeData.intro}
+              </p>
+
+              {/* Considerations Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-fl-4 mb-fl-8">
+                {activeData.considerations.map((item, i) => (
+                  <div
+                    key={i}
+                    className="bg-white/[0.05] border border-white/[0.10] rounded-xl p-fl-6 hover:border-thistle-green/30 transition-colors duration-500"
+                  >
+                    <h3 className="text-fluid-h6 font-medium tracking-tight mb-fl-3">{item.title}</h3>
+                    <p className="text-sm text-white/55 leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Analysis Items */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-fl-3">
+                {activeData.analysis.map((item, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-thistle-green flex-shrink-0" />
+                    <span className="text-sm text-white/70">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </section>
+
+      {/* Process */}
+      <section className="py-fl-section px-fl-margin bg-thistle-white">
+        <div className="max-w-[1360px] mx-auto">
+          <div className="mb-fl-8">
+            <Reveal>
+              <p className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-5">The Process</p>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black">
+                Four steps. Complete clarity.
               </h2>
             </Reveal>
           </div>
@@ -166,15 +288,14 @@ export const FeasibilityPackagePage: React.FC = () => {
                 <motion.div
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.3 }}
-                  className="bg-white/[0.05] border border-white/[0.10] rounded-xl p-fl-6 h-full flex flex-col group hover:border-thistle-green/30 hover:bg-white/[0.08] transition-colors duration-500"
+                  className="bg-white border border-thistle-black/[0.08] rounded-xl p-fl-6 h-full flex flex-col group hover:border-thistle-black/[0.15] hover:shadow-lg hover:shadow-thistle-black/[0.04] transition-all duration-500"
                 >
                   <div className="flex items-center justify-between mb-fl-5">
                     <span className="text-xs font-bold tracking-widest text-thistle-pink">{step.num}</span>
-                    <span className="text-[10px] uppercase tracking-widest text-white/35 font-medium">{step.detail}</span>
                   </div>
-                  <h3 className="text-fluid-h6 font-medium tracking-tight mb-fl-3">{step.title}</h3>
-                  <p className="text-sm text-white/55 leading-relaxed flex-1">{step.desc}</p>
-                  <div className="w-8 h-[2px] bg-white/10 mt-fl-5 group-hover:bg-thistle-pink/40 group-hover:w-12 transition-all duration-500" />
+                  <h3 className="text-fluid-h6 font-medium tracking-tight text-thistle-black mb-fl-3">{step.title}</h3>
+                  <p className="text-sm text-thistle-black/55 leading-relaxed flex-1">{step.desc}</p>
+                  <div className="w-8 h-[2px] bg-thistle-black/10 mt-fl-5 group-hover:bg-thistle-pink/40 group-hover:w-12 transition-all duration-500" />
                 </motion.div>
               </Reveal>
             ))}
@@ -220,19 +341,17 @@ export const FeasibilityPackagePage: React.FC = () => {
         </div>
       </section>
 
-      <Testimonials />
-
       {/* CTA */}
       <section className="py-fl-section-sm px-fl-margin bg-thistle-black text-white">
         <div className="max-w-[1360px] mx-auto text-center">
           <Reveal>
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight mb-fl-5">
-              Get your feasibility in 5 days.
+              Get your feasibility report.
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="text-sm text-white/50 leading-relaxed max-w-md mx-auto mb-fl-6">
-              Submit your property details and we'll get back to you within 24 hours with a fixed fee and scope.
+              Start with a free 15-minute expert session. Submit your property details and we'll get back to you within 24 hours.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
@@ -243,7 +362,7 @@ export const FeasibilityPackagePage: React.FC = () => {
               onClick={openModal}
               className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80"
             >
-              Start Feasibility
+              Book Free Expert Session
             </Button>
           </Reveal>
         </div>

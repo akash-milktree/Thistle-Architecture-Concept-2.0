@@ -7,17 +7,11 @@ import { useFeasibility } from '../components/feasibility/FeasibilityContext';
 import { ArrowUpRight } from 'lucide-react';
 
 const navLinks = [
+  { label: "Visibility Package", to: "/feasibility-package" },
   { label: "How It Works", to: "/how-it-works" },
-  { label: "Case Studies", to: "/case-studies" },
+  { label: "Our Work", to: "/case-studies" },
   { label: "About", to: "/about" },
   { label: "Blog", to: "/blog" },
-];
-
-const serviceLinks = [
-  { label: "Feasibility Package", to: "/feasibility-package" },
-  { label: "Commercial Conversions", to: "/commercial-conversions" },
-  { label: "HMOs", to: "/hmos" },
-  { label: "High-End Residential", to: "/high-end-residential" },
 ];
 
 const legalLinks = [
@@ -44,7 +38,7 @@ export const Footer: React.FC = () => {
           </Reveal>
           <Reveal delay={0.2}>
             <p className="text-fluid-sm text-white/40 leading-relaxed max-w-md mx-auto mb-fl-7">
-              Submit your property details and get a structured feasibility report with a clear Go/No-Go recommendation — in 5 days.
+              Start with a free 15-minute expert session. Submit your property details and get a structured feasibility report with a clear Go/No-Go recommendation.
             </p>
           </Reveal>
           <Reveal delay={0.3}>
@@ -55,7 +49,7 @@ export const Footer: React.FC = () => {
               onClick={openModal}
               className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80"
             >
-              Start Feasibility
+              Book Free Expert Session
             </Button>
           </Reveal>
         </div>
@@ -64,7 +58,7 @@ export const Footer: React.FC = () => {
       {/* Footer Grid */}
       <div className="py-fl-8 px-fl-margin">
         <div className="max-w-[1360px] mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-fl-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-fl-8">
             {/* Brand Column */}
             <div className="col-span-2 md:col-span-1">
               <Link to="/" className="inline-block mb-fl-5">
@@ -83,18 +77,6 @@ export const Footer: React.FC = () => {
               <p className="text-[10px] uppercase tracking-widest text-white/20 font-semibold mb-fl-5">Navigate</p>
               <div className="flex flex-col gap-fl-3">
                 {navLinks.map((link) => (
-                  <Link key={link.to} to={link.to} className="text-fluid-sm text-white/40 hover:text-white transition-colors">
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Services */}
-            <div>
-              <p className="text-[10px] uppercase tracking-widest text-white/20 font-semibold mb-fl-5">Services</p>
-              <div className="flex flex-col gap-fl-3">
-                {serviceLinks.map((link) => (
                   <Link key={link.to} to={link.to} className="text-fluid-sm text-white/40 hover:text-white transition-colors">
                     {link.label}
                   </Link>

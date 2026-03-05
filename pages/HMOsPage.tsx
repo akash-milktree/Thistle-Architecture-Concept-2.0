@@ -169,7 +169,7 @@ export const HMOsPage: React.FC = () => {
             {whatWeDeliver.map((item, i) => (
               <Reveal key={i} delay={i * 0.07}>
                 <motion.div
-                  whileHover={{ backgroundColor: 'rgba(9,9,11,0.03)' }}
+                  whileHover={{ backgroundColor: 'rgba(47,59,54,0.03)' }}
                   transition={{ duration: 0.2 }}
                   className="bg-thistle-white p-fl-6 flex flex-col gap-fl-3 group"
                 >
