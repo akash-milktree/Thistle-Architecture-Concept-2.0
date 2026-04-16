@@ -1,5 +1,7 @@
+"use client";
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { PageHero } from '../components/ui/PageHero';
 import { Reveal } from '../components/animations/Reveal';
 import { motion } from 'framer-motion';
@@ -21,7 +23,7 @@ export const BlogPage: React.FC = () => {
       <section className="py-fl-8 px-fl-margin bg-thistle-white">
         <div className="max-w-[1360px] mx-auto">
           <Reveal>
-            <Link to={`/blog/${featured.slug}`}>
+            <Link href={`/blog/${featured.slug}`}>
               <motion.div
                 whileHover={{ y: -6 }}
                 transition={{ duration: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
@@ -61,7 +63,7 @@ export const BlogPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-fl-5">
             {rest.map((post, i) => (
               <Reveal key={post.slug} delay={i * 0.1}>
-                <Link to={`/blog/${post.slug}`}>
+                <Link href={`/blog/${post.slug}`}>
                   <motion.div
                     whileHover={{ y: -4 }}
                     transition={{ duration: 0.3 }}

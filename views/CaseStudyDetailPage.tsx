@@ -1,5 +1,8 @@
+"use client";
+
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
 import { Reveal } from '../components/animations/Reveal';
 import { Button } from '../components/ui/Button';
 import { useFeasibility } from '../components/feasibility/FeasibilityContext';
@@ -17,7 +20,7 @@ export const CaseStudyDetailPage: React.FC = () => {
       <section className="min-h-[60vh] flex items-center justify-center px-6">
         <div className="text-center">
           <h1 className="text-fluid-h2 font-medium tracking-tight mb-fl-4">Case study not found.</h1>
-          <Link to="/case-studies" className="text-fluid-sm text-thistle-pink hover:underline">Back to all case studies</Link>
+          <Link href="/case-studies" className="text-fluid-sm text-thistle-pink hover:underline">Back to all case studies</Link>
         </div>
       </section>
     );
@@ -42,7 +45,7 @@ export const CaseStudyDetailPage: React.FC = () => {
 
         <div className="relative z-10 w-full px-fl-margin pb-fl-7">
           <div className="max-w-[1360px] mx-auto">
-            <Link to="/case-studies" className="inline-flex items-center gap-2 text-fluid-sm text-white/50 hover:text-white/80 transition-colors mb-fl-5">
+            <Link href="/case-studies" className="inline-flex items-center gap-2 text-fluid-sm text-white/50 hover:text-white/80 transition-colors mb-fl-5">
               <ArrowLeft size={14} /> All Case Studies
             </Link>
             <span className="block px-3 py-1 rounded-full bg-white/10 backdrop-blur-xl border border-white/10 text-[10px] uppercase tracking-widest text-white/80 font-medium w-fit mb-fl-4">
@@ -138,7 +141,7 @@ export const CaseStudyDetailPage: React.FC = () => {
         <div className="max-w-[1360px] mx-auto">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-5">Next Project</p>
-            <Link to={`/case-studies/${nextCase.slug}`} className="group flex items-center justify-between">
+            <Link href={`/case-studies/${nextCase.slug}`} className="group flex items-center justify-between">
               <h3 className="text-fluid-h3 font-medium tracking-tight group-hover:text-thistle-pink transition-colors">{nextCase.title}</h3>
               <ArrowUpRight size={24} className="text-thistle-black/30 group-hover:text-thistle-pink transition-colors" />
             </Link>

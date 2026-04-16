@@ -1,5 +1,7 @@
+"use client";
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Reveal } from '../components/animations/Reveal';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
@@ -24,7 +26,7 @@ export const CaseStudies: React.FC = () => {
             </Reveal>
           </div>
           <Reveal delay={0.2}>
-            <Link to="/case-studies" className="text-sm text-thistle-black/40 hover:text-thistle-black transition-colors font-medium tracking-tight flex items-center gap-1 group">
+            <Link href="/case-studies" className="text-sm text-thistle-black/40 hover:text-thistle-black transition-colors font-medium tracking-tight flex items-center gap-1 group">
               View all cases
               <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </Link>
@@ -35,7 +37,7 @@ export const CaseStudies: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-fl-5">
           {displayCases.map((item, i) => (
             <Reveal key={item.slug} delay={i * 0.15}>
-              <Link to={`/case-studies/${item.slug}`} className="block">
+              <Link href={`/case-studies/${item.slug}`} className="block">
                 <motion.div
                   whileHover={{ y: -6 }}
                   transition={{ duration: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}

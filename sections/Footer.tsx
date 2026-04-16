@@ -1,5 +1,7 @@
+"use client";
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Button } from '../components/ui/Button';
 import { ThistleLogo } from '../components/ui/ThistleLogo';
 import { Reveal } from '../components/animations/Reveal';
@@ -61,7 +63,7 @@ export const Footer: React.FC = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-fl-8">
             {/* Brand Column */}
             <div className="col-span-2 md:col-span-1">
-              <Link to="/" className="inline-block mb-fl-5">
+              <Link href="/" className="inline-block mb-fl-5">
                 <ThistleLogo variant="full" color="light" className="h-5" />
               </Link>
               <p className="text-fluid-sm text-white/30 leading-relaxed mb-fl-5">
@@ -77,7 +79,7 @@ export const Footer: React.FC = () => {
               <p className="text-[10px] uppercase tracking-widest text-white/20 font-semibold mb-fl-5">Navigate</p>
               <div className="flex flex-col gap-fl-3">
                 {navLinks.map((link) => (
-                  <Link key={link.to} to={link.to} className="text-fluid-sm text-white/40 hover:text-white transition-colors">
+                  <Link key={link.to} href={link.to} className="text-fluid-sm text-white/40 hover:text-white transition-colors">
                     {link.label}
                   </Link>
                 ))}
@@ -89,7 +91,7 @@ export const Footer: React.FC = () => {
               <p className="text-[10px] uppercase tracking-widest text-white/20 font-semibold mb-fl-5">Legal</p>
               <div className="flex flex-col gap-fl-3">
                 {legalLinks.map((link) => (
-                  <Link key={link.to} to={link.to} className="text-fluid-sm text-white/40 hover:text-white transition-colors">
+                  <Link key={link.to} href={link.to} className="text-fluid-sm text-white/40 hover:text-white transition-colors">
                     {link.label}
                   </Link>
                 ))}

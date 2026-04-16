@@ -1,5 +1,7 @@
+"use client";
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Button } from '../components/ui/Button';
 import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -47,7 +49,7 @@ export const Hero: React.FC = () => {
               <Button size="lg" variant="glass" icon={<ArrowUpRight size={18} />} onClick={openModal} className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80 hover:!text-thistle-black">
                 Book Free Expert Session
               </Button>
-              <Link to="/how-it-works" className="text-sm text-white/40 hover:text-white/70 transition-colors font-medium tracking-tight">
+              <Link href="/how-it-works" className="text-sm text-white/40 hover:text-white/70 transition-colors font-medium tracking-tight">
                 See how it works &rarr;
               </Link>
             </div>

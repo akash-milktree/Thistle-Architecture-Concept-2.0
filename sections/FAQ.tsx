@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { Reveal } from '../components/animations/Reveal';
 import { Button } from '../components/ui/Button';

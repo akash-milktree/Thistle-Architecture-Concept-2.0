@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-black: #2F3B36;
+  --color-white: #EDEDE9;
+  --color-pink: #DAAEBB;
+  --color-green: #8F9952;
+
+  /* Fluid Typography (320px → 1440px) */
+  --font-display: clamp(4rem, 3.083rem + 4.586vw, 7.21rem);
+  --font-h1: clamp(3.18rem, 2.606rem + 2.871vw, 5.19rem);
+  --font-h2: clamp(2.52rem, 2.174rem + 1.729vw, 3.73rem);
+  --font-h3: clamp(2rem, 1.803rem + 0.986vw, 2.69rem);
+  --font-h4: clamp(1.59rem, 1.493rem + 0.486vw, 1.93rem);
+  --font-h5: clamp(1.26rem, 1.223rem + 0.186vw, 1.39rem);
+  --font-h6: 1rem;
+  --font-text-lg: clamp(1.14rem, 1.106rem + 0.171vw, 1.26rem);
+  --font-text-base: clamp(1rem, 0.986rem + 0.071vw, 1.05rem);
+  --font-text-sm: 0.875rem;
+
+  /* Fluid Spacing */
+  --space-section-lg: clamp(7.23rem, 5.444rem + 8.929vw, 13.48rem);
+  --space-section: clamp(5.17rem, 4.061rem + 5.543vw, 9.05rem);
+  --space-section-sm: clamp(3.69rem, 3.01rem + 3.4vw, 6.07rem);
+  --space-8: clamp(2.64rem, 2.229rem + 2.057vw, 4.08rem);
+  --space-7: clamp(1.88rem, 1.634rem + 1.229vw, 2.74rem);
+  --space-6: clamp(1.34rem, 1.197rem + 0.714vw, 1.84rem);
+  --space-5: clamp(0.96rem, 0.883rem + 0.386vw, 1.23rem);
+  --space-4: clamp(0.69rem, 0.65rem + 0.2vw, 0.83rem);
+  --space-3: clamp(0.49rem, 0.47rem + 0.1vw, 0.56rem);
+  --space-2: clamp(0.35rem, 0.344rem + 0.029vw, 0.37rem);
+  --space-1: 0.25rem;
+
+  /* Fluid Site Margin */
+  --site-margin: clamp(1rem, 0.429rem + 2.857vw, 3rem);
+}
+
+body {
+  background-color: #EDEDE9;
+  color: var(--color-black);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-pink);
+  color: var(--color-black);
+}

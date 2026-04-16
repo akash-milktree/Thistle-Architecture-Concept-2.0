@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { PageHero } from '../components/ui/PageHero';
 import { Reveal } from '../components/animations/Reveal';

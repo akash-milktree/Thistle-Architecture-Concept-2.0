@@ -1,5 +1,8 @@
+"use client";
+
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Button } from './Button';
 import { ThistleLogo } from './ThistleLogo';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
@@ -18,7 +21,7 @@ export const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { pathname } = useLocation();
+  const pathname = usePathname();
   const { openModal } = useFeasibility();
 
   const isDarkHero = pathname === '/' || pathname === '/how-it-works' || pathname === '/feasibility-package';
@@ -67,7 +70,7 @@ export const Navbar: React.FC = () => {
       >
         <div className="w-full flex items-center justify-between relative z-50">
           <div className="flex items-center gap-8 pl-0 lg:pl-12">
-            <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
+            <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
               <ThistleLogo
                 variant="full"
                 color={showDarkMode ? 'light' : 'dark'}
@@ -79,7 +82,7 @@ export const Navbar: React.FC = () => {
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
-                  to={link.path}
+                  href={link.path}
                   className={`transition-colors hover:text-thistle-pink ${pathname.startsWith(link.path) ? 'text-thistle-pink' : ''}`}
                 >
                   {link.label}
@@ -127,7 +130,7 @@ export const Navbar: React.FC = () => {
                 {navLinks.map((link) => (
                   <Link
                     key={link.path}
-                    to={link.path}
+                    href={link.path}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`py-3 px-3 rounded-lg text-lg font-medium border-b border-thistle-black/5 last:border-b-0 ${pathname.startsWith(link.path) ? 'text-thistle-pink' : 'text-thistle-black'}`}
                   >

@@ -1,5 +1,7 @@
+"use client";
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { PageHero } from '../components/ui/PageHero';
 import { Reveal } from '../components/animations/Reveal';
 import { Button } from '../components/ui/Button';
@@ -25,7 +27,7 @@ export const CaseStudiesPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-fl-5">
             {caseStudies.map((item, i) => (
               <Reveal key={item.slug} delay={i * 0.1}>
-                <Link to={`/case-studies/${item.slug}`}>
+                <Link href={`/case-studies/${item.slug}`}>
                   <motion.div
                     whileHover={{ y: -6 }}
                     transition={{ duration: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}

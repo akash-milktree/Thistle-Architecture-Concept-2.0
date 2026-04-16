@@ -1,5 +1,8 @@
+"use client";
+
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
 import { Reveal } from '../components/animations/Reveal';
 import { Button } from '../components/ui/Button';
 import { useFeasibility } from '../components/feasibility/FeasibilityContext';
@@ -17,7 +20,7 @@ export const BlogPostPage: React.FC = () => {
       <section className="min-h-[60vh] flex items-center justify-center px-6">
         <div className="text-center">
           <h1 className="text-fluid-h2 font-medium tracking-tight mb-fl-4">Article not found.</h1>
-          <Link to="/blog" className="text-sm text-thistle-pink hover:underline">Back to all articles</Link>
+          <Link href="/blog" className="text-sm text-thistle-pink hover:underline">Back to all articles</Link>
         </div>
       </section>
     );
@@ -30,7 +33,7 @@ export const BlogPostPage: React.FC = () => {
       {/* Article Header */}
       <section className="pt-fl-section-sm pb-fl-6 px-fl-margin bg-thistle-white">
         <div className="max-w-[720px] mx-auto">
-          <Link to="/blog" className="inline-flex items-center gap-2 text-sm text-thistle-black/40 hover:text-thistle-black transition-colors mb-fl-6">
+          <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-thistle-black/40 hover:text-thistle-black transition-colors mb-fl-6">
             <ArrowLeft size={14} /> All Articles
           </Link>
 
@@ -107,7 +110,7 @@ export const BlogPostPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-fl-5">
             {relatedPosts.map((rp, i) => (
               <Reveal key={rp.slug} delay={i * 0.1}>
-                <Link to={`/blog/${rp.slug}`}>
+                <Link href={`/blog/${rp.slug}`}>
                   <motion.div
                     whileHover={{ y: -4 }}
                     transition={{ duration: 0.3 }}

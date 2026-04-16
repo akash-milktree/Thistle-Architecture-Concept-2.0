@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -7,13 +9,16 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: React.ReactNode;
 }
 
-export const Button: React.FC<ButtonProps> = ({ 
-  children, 
-  variant = 'primary', 
+export const Button: React.FC<ButtonProps> = ({
+  children,
+  variant = 'primary',
   size = 'md',
   icon,
   className = '',
-  ...props 
+  onClick,
+  disabled,
+  type,
+  ...rest
 }) => {
   const baseClasses = "inline-flex items-center justify-center font-medium transition-all duration-300 rounded-full tracking-tight";
   
@@ -35,7 +40,9 @@ export const Button: React.FC<ButtonProps> = ({
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`}
-      {...props}
+      onClick={onClick}
+      disabled={disabled}
+      type={type}
     >
       {children}
       {icon && <span className="ml-2">{icon}</span>}

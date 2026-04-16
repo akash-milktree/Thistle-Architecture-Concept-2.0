@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Reveal } from '../components/animations/Reveal';
 import { motion, AnimatePresence } from 'framer-motion';
