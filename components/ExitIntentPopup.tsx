@@ -84,7 +84,7 @@ export const ExitIntentPopup: React.FC = () => {
                 className="w-full justify-center"
                 onClick={handleCTA}
               >
-                Book Free Expert Session
+                Start Feasibility
               </Button>
 
               <button

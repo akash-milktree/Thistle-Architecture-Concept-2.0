@@ -24,9 +24,9 @@ export const Button: React.FC<ButtonProps> = ({
   
   const variants = {
     primary: "bg-thistle-black text-white hover:bg-thistle-green hover:text-thistle-black border border-transparent",
-    secondary: "bg-thistle-pink text-thistle-black hover:bg-thistle-green hover:text-white border border-transparent",
-    outline: "bg-transparent text-thistle-black border border-thistle-black/20 hover:border-thistle-black hover:bg-thistle-pink/10",
-    glass: "bg-white/10 text-white backdrop-blur-sm border border-white/10 hover:bg-white/20 hover:border-thistle-pink/50 hover:text-thistle-pink"
+    secondary: "bg-thistle-green text-thistle-black hover:bg-thistle-black hover:text-white border border-transparent",
+    outline: "bg-transparent text-thistle-black border border-thistle-black/20 hover:border-thistle-black hover:bg-thistle-green/10",
+    glass: "bg-white/10 text-white backdrop-blur-sm border border-white/10 hover:bg-white/20 hover:border-white/40 hover:text-white"
   };
 
   const sizes = {

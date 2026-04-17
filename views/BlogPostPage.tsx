@@ -141,7 +141,7 @@ export const BlogPostPage: React.FC = () => {
           </Reveal>
           <Reveal delay={0.1}>
             <Button variant="glass" size="lg" icon={<ArrowUpRight size={18} />} onClick={openModal} className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80">
-              Book Free Expert Session
+              Start Feasibility
             </Button>
           </Reveal>
         </div>

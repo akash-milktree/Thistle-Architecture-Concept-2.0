@@ -69,7 +69,7 @@ export const HowItWorksPage: React.FC = () => {
         variant="dark"
       >
         <Button variant="glass" icon={<ArrowUpRight size={16} />} onClick={openModal} className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80">
-          Book Free Expert Session
+          Start Feasibility
         </Button>
       </PageHero>
 
@@ -197,7 +197,7 @@ export const HowItWorksPage: React.FC = () => {
           </Reveal>
           <Reveal delay={0.2}>
             <Button variant="primary" size="lg" icon={<ArrowUpRight size={18} />} onClick={openModal}>
-              Book Free Expert Session
+              Start Feasibility
             </Button>
           </Reveal>
         </div>

@@ -2,64 +2,51 @@
 
 import React from 'react';
 import { Reveal } from '../components/animations/Reveal';
-import { ImageMarquee } from '../components/ui/ImageMarquee';
+import { TrendingUp, Clock, Target } from 'lucide-react';
+import { InlineCTA } from '../components/ui/InlineCTA';
 
-const stats = [
-  { value: "200+", label: "Feasibility reports completed" },
-  { value: "5", label: "Working days to delivery" },
-  { value: "7+", label: "Years specialist experience" },
-  { value: "£120M+", label: "GDV assessed" },
+const metrics = [
+  { value: "98.5%", label: "Planning success rate", icon: Target, detail: "Across all submitted schemes" },
+  { value: "20–35%", label: "Improvement in scheme efficiency", icon: TrendingUp, detail: "ROI potential vs unoptimised layouts" },
+  { value: "86%", label: "Faster than traditional routes", icon: Clock, detail: "5 days vs 2–6 week industry average" },
 ];
 
 export const Intro: React.FC = () => {
   return (
-    <section className="bg-thistle-white pt-fl-section pb-0">
-      {/* Top: Label + Heading / Description */}
-      <div className="px-fl-margin max-w-[1360px] mx-auto mb-fl-8">
+    <section className="bg-white py-fl-section-sm">
+      <div className="px-fl-margin max-w-[1360px] mx-auto">
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.2em] text-thistle-black/50 font-semibold mb-fl-5">About us</p>
+          <p className="text-center text-fluid-sm text-thistle-black/50 font-medium mb-fl-7">
+            83% faster on average than traditional feasibility processes
+          </p>
         </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-fl-6 items-start">
-          {/* Left: Large heading */}
-          <Reveal delay={0.1}>
-            <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black">
-              Specialists in conversions, HMOs, and high-end residential.
-            </h2>
-          </Reveal>
-
-          {/* Right: Description */}
-          <Reveal delay={0.2}>
-            <p className="text-fluid-sm text-thistle-black/70 leading-relaxed lg:pt-2 max-w-lg">
-              We work exclusively on existing buildings — commercial conversions, HMO projects, and high-end residential schemes. Our data-driven approach combines automated desk studies with architect-led reviews, so developers get clear, actionable answers within days, not weeks.
-            </p>
-          </Reveal>
-        </div>
-      </div>
-
-      {/* Image Marquee */}
-      <div className="mb-fl-8">
-        <Reveal width="100%">
-          <ImageMarquee />
-        </Reveal>
-      </div>
-
-      {/* Stats Row */}
-      <div className="px-fl-margin max-w-[1360px] mx-auto pb-fl-section">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-fl-6 border-t border-thistle-black/10 pt-10">
-          {stats.map((stat, i) => (
-            <Reveal key={i} delay={i * 0.08}>
-              <div className="flex flex-col">
-                <span className="text-fluid-h2 font-medium tracking-tight text-thistle-black leading-none mb-2">
-                  {stat.value}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-fl-5">
+          {metrics.map((metric, i) => (
+            <Reveal key={i} delay={i * 0.1}>
+              <div className="relative bg-thistle-white rounded-xl border border-thistle-black/[0.06] p-fl-6 text-center hover:border-thistle-green/30 transition-colors">
+                <div className="w-10 h-10 rounded-lg bg-thistle-green/10 flex items-center justify-center mx-auto mb-fl-4">
+                  <metric.icon size={20} className="text-thistle-green" />
+                </div>
+                <span className="text-fluid-h3 font-semibold tracking-tight text-thistle-black block mb-1">
+                  {metric.value}
                 </span>
-                <span className="text-fluid-sm text-thistle-black/60 font-normal">
-                  {stat.label}
+                <span className="text-fluid-sm font-medium text-thistle-black/70 block mb-2">
+                  {metric.label}
+                </span>
+                <span className="text-xs text-thistle-black/40">
+                  {metric.detail}
                 </span>
               </div>
             </Reveal>
           ))}
         </div>
+
+        <Reveal delay={0.4}>
+          <div className="mt-fl-7">
+            <InlineCTA label="Start your feasibility" />
+          </div>
+        </Reveal>
       </div>
     </section>
   );

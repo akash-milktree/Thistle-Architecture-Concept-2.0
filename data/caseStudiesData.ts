@@ -14,6 +14,14 @@ export interface CaseStudy {
   floorArea: string;
   planningRoute: string;
   completionDate: string;
+  // TODO: confirm financial data with Edward — all values below are reasoned placeholders
+  recommendation: "Go" | "No-Go";
+  purchasePrice: string;      // TODO: confirm
+  projectedGDV: string;       // TODO: confirm
+  gdvUpliftPct?: string;      // TODO: confirm — optional for No-Go cases
+  riskAvoided?: string;       // TODO: confirm — only for No-Go cases
+  unitsBefore: string;        // TODO: confirm
+  unitsAfter: string;         // TODO: confirm
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -40,6 +48,12 @@ export const caseStudies: CaseStudy[] = [
     floorArea: "12,400 sqft",
     planningRoute: "Class MA",
     completionDate: "November 2025",
+    recommendation: "Go",
+    purchasePrice: "£1.4M",
+    projectedGDV: "£3.2M",
+    gdvUpliftPct: "+128%",
+    unitsBefore: "9",
+    unitsAfter: "14",
   },
   {
     slug: "reading-high-street",
@@ -64,6 +78,12 @@ export const caseStudies: CaseStudy[] = [
     floorArea: "8,200 sqft",
     planningRoute: "Full Planning",
     completionDate: "September 2025",
+    recommendation: "Go",
+    purchasePrice: "£950K",
+    projectedGDV: "£1.7M",
+    gdvUpliftPct: "+79%",
+    unitsBefore: "0",
+    unitsAfter: "6",
   },
   {
     slug: "manchester-warehouse",
@@ -88,6 +108,12 @@ export const caseStudies: CaseStudy[] = [
     floorArea: "18,600 sqft",
     planningRoute: "Class MA",
     completionDate: "January 2026",
+    recommendation: "Go",
+    purchasePrice: "£2.2M",
+    projectedGDV: "£4.8M",
+    gdvUpliftPct: "+118%",
+    unitsBefore: "12",
+    unitsAfter: "22",
   },
   {
     slug: "bristol-office-block",
@@ -112,5 +138,11 @@ export const caseStudies: CaseStudy[] = [
     floorArea: "14,200 sqft",
     planningRoute: "Class O",
     completionDate: "August 2025",
+    recommendation: "No-Go",
+    purchasePrice: "£1.8M (offered)",
+    projectedGDV: "—",
+    riskAvoided: "£340K",
+    unitsBefore: "0",
+    unitsAfter: "0",
   },
 ];

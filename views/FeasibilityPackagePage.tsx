@@ -158,7 +158,7 @@ export const FeasibilityPackagePage: React.FC = () => {
           onClick={openModal}
           className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80"
         >
-          Book Free Expert Session
+          Start Feasibility
         </Button>
       </PageHero>
 
@@ -364,7 +364,7 @@ export const FeasibilityPackagePage: React.FC = () => {
               onClick={openModal}
               className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80"
             >
-              Book Free Expert Session
+              Start Feasibility
             </Button>
           </Reveal>
         </div>

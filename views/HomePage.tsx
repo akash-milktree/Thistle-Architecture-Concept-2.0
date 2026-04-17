@@ -2,23 +2,31 @@
 
 import React from 'react';
 import { Hero } from '../sections/Hero';
+import { Problem } from '../sections/Problem';
 import { Intro } from '../sections/Intro';
-import { Difference } from '../sections/Difference';
 import { Process } from '../sections/Process';
+import { FeasibilityEngine } from '../sections/FeasibilityEngine';
 import { Benefits } from '../sections/Benefits';
+import { Difference } from '../sections/Difference';
 import { CaseStudies } from '../sections/CaseStudies';
-import { Team } from '../sections/Team';
+import { DataSources } from '../sections/DataSources';
+import { Testimonials } from '../sections/Testimonials';
+import { CTABlock } from '../sections/CTABlock';
 import { FAQ } from '../sections/FAQ';
 
 export const HomePage: React.FC = () => (
   <>
     <Hero />
+    <Problem />
     <Intro />
-    <Difference />
     <Process />
+    <FeasibilityEngine />
     <Benefits />
+    <Difference />
     <CaseStudies />
-    <Team />
+    <DataSources />
+    <Testimonials />
+    <CTABlock />
     <FAQ />
   </>
 );

@@ -51,7 +51,7 @@ export const Footer: React.FC = () => {
               onClick={openModal}
               className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80"
             >
-              Book Free Expert Session
+              Start Feasibility
             </Button>
           </Reveal>
         </div>
@@ -69,7 +69,7 @@ export const Footer: React.FC = () => {
               <p className="text-fluid-sm text-white/30 leading-relaxed mb-fl-5">
                 Data-driven feasibility for commercial conversions, HMOs, and high-end residential across the UK.
               </p>
-              <a href="mailto:hello@thistlearchitecture.co.uk" className="text-fluid-sm text-white/50 hover:text-thistle-pink transition-colors">
+              <a href="mailto:hello@thistlearchitecture.co.uk" className="text-fluid-sm text-white/50 hover:text-thistle-green transition-colors">
                 hello@thistlearchitecture.co.uk
               </a>
             </div>

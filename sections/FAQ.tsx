@@ -9,32 +9,32 @@ import { useFeasibility } from '../components/feasibility/FeasibilityContext';
 
 const faqs = [
   {
-    question: "What types of buildings do you work with?",
-    answer: "We specialise exclusively in existing commercial buildings — offices, retail units, light industrial, and mixed-use stock. Our expertise covers Class MA, Class O, and full planning applications for commercial-to-residential conversions.",
+    question: "How much does a feasibility cost?",
+    answer: "Fixed-fee pricing based on building size and complexity — no hourly rates, no scope creep. You know exactly what you're paying before we start. Most feasibilities range from a few hundred to a few thousand pounds, depending on scheme complexity.",
   },
   {
-    question: "How long does a feasibility study take?",
-    answer: "Our standard turnaround is fast and efficient. The automated desk study, architect review, and final report delivery happen in a structured sequence — so you get a clear Go/No-Go recommendation without unnecessary delays.",
+    question: "How fast do I get results?",
+    answer: "Initial insight within 24 hours of submission. Full feasibility report — including layouts, risk register, and Go/No-Go recommendation — delivered within 5 working days. That's 83% faster than the traditional 2–6 week process.",
   },
   {
-    question: "What's included in the feasibility report?",
-    answer: "You receive GA floor plans, a schedule of accommodation, constraints analysis, risk register, and a Go/No-Go recommendation. Everything is structured so banks, investors, and JV partners can review it immediately.",
+    question: "How accurate is the data analysis?",
+    answer: "Our system cross-references 15+ authoritative data sources including planning portals, Land Registry, Environment Agency, and local authority records. Every automated analysis is then validated by a qualified architect. Our planning success rate is 98.5%.",
   },
   {
-    question: "How much does a feasibility study cost?",
-    answer: "We operate on a fixed-fee model — no hourly rates, no scope creep. You know exactly what you're paying before we start. Pricing depends on building size and complexity. Get in touch for a quote.",
+    question: "What if planning is refused?",
+    answer: "Our feasibility identifies planning risk before you apply. We analyse prior approval history, policy alignment, and local constraints to flag issues early. If a scheme isn't viable, you'll know before you commit — that's the point of the Go/No-Go recommendation.",
   },
   {
-    question: "Do I need planning permission before ordering?",
-    answer: "No. The feasibility study is designed to be done before you apply for planning — or even before you purchase the building. It tells you whether the project is viable before you commit capital.",
+    question: "What happens after I receive the feasibility?",
+    answer: "You get a clear Go or No-Go. If it's a Go, the report includes everything you need to progress — GA plans, accommodation schedules, and a fee proposal for the full project. If it's a No-Go, you've saved weeks and potentially thousands on a non-viable scheme.",
   },
   {
     question: "Can I use the report to raise finance?",
-    answer: "Yes. Our reports are structured with commercial metrics — GDV projections, unit mixes, efficiency ratios — that banks and investors expect to see. They're designed to support funding applications and JV proposals.",
+    answer: "Yes. Reports include GDV projections, unit mixes, efficiency ratios, and risk assessments — exactly what banks, investors, and JV partners need to see. They're structured to support funding applications from day one.",
   },
   {
-    question: "How do I get started?",
-    answer: "Submit your property details through our portal — address, any floor plans you have, and your target unit mix. We'll confirm the scope and fee, and start work immediately once instructed.",
+    question: "Do I need plans before ordering?",
+    answer: "No. Just the address, basic building details, and your target unit mix. If you have floor plans, great — they speed things up. If not, we can work with what's available and source what we need.",
   },
 ];
 
@@ -63,7 +63,7 @@ export const FAQ: React.FC = () => {
             </Reveal>
             <Reveal delay={0.2}>
               <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={openModal}>
-                Get in touch
+                Start Feasibility
               </Button>
             </Reveal>
           </div>
