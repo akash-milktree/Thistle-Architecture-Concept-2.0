@@ -7,7 +7,7 @@ import { Button } from './Button';
 import { ThistleLogo } from './ThistleLogo';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 import { useFeasibility } from '../feasibility/FeasibilityContext';
-import { Menu, X } from 'lucide-react';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
 
 const navLinks = [
   { label: "Visibility Package", path: "/feasibility-package" },
@@ -57,8 +57,9 @@ export const Navbar: React.FC = () => {
         transition={{ duration: 0.35, ease: "easeInOut" }}
         className={`fixed top-0 left-0 right-0 z-50 flex items-center px-fl-margin bg-thistle-black transition-all duration-300 ${scrolled ? 'py-3 shadow-md shadow-thistle-black/20' : 'py-5'}`}
       >
-        <div className="max-w-[1360px] w-full mx-auto flex items-center justify-between relative z-50">
-          <div className="flex items-center gap-8">
+        <div className="max-w-[1360px] w-full mx-auto grid grid-cols-3 items-center relative z-50">
+          {/* Left: Logo */}
+          <div className="flex items-center">
             <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
               <ThistleLogo
                 variant="full"
@@ -66,26 +67,29 @@ export const Navbar: React.FC = () => {
                 className="h-11 w-auto transition-all duration-300"
               />
             </Link>
-
-            <div className="hidden md:flex items-center gap-fl-6 text-fluid-sm font-medium text-white/80">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  href={link.path}
-                  className={`transition-colors hover:text-white ${pathname.startsWith(link.path) ? 'text-white' : ''}`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
           </div>
 
-          <div className="flex items-center gap-4">
+          {/* Centre: Nav Links */}
+          <div className="hidden md:flex items-center justify-center gap-fl-6 text-fluid-sm font-medium text-white/80">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                href={link.path}
+                className={`transition-colors hover:text-white ${pathname.startsWith(link.path) ? 'text-white' : ''}`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          {/* Right: CTA + Mobile Toggle */}
+          <div className="flex items-center justify-end gap-4">
             <div className="hidden md:block">
               <Button
                 size="sm"
                 variant="primary"
-                className="!bg-white !text-thistle-black !border-white hover:!bg-thistle-black hover:!text-white hover:!border-thistle-black"
+                icon={<ArrowUpRight size={16} />}
+                className="!bg-white !text-thistle-black !border-white hover:!bg-thistle-pink hover:!text-thistle-black hover:!border-thistle-pink"
                 onClick={openModal}
               >
                 Start Feasibility

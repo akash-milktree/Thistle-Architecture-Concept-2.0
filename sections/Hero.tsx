@@ -8,11 +8,17 @@ import { motion } from 'framer-motion';
 import { Reveal } from '../components/animations/Reveal';
 import { useFeasibility } from '../components/feasibility/FeasibilityContext';
 
+const metrics = [
+  { value: "98.5%", label: "Planning success rate", detail: "Across all submitted schemes" },
+  { value: "20–35%", label: "Improvement in scheme efficiency", detail: "ROI potential vs unoptimised layouts" },
+  { value: "86%", label: "Faster than traditional routes", detail: "5 days vs 2–6 week industry average" },
+];
+
 export const Hero: React.FC = () => {
   const { openModal } = useFeasibility();
   return (
-    <section className="relative min-h-screen bg-thistle-white text-thistle-black overflow-hidden">
-      <div className="max-w-[1360px] mx-auto px-fl-margin min-h-screen flex flex-col lg:flex-row">
+    <section className="relative min-h-screen bg-thistle-white text-thistle-black overflow-hidden flex flex-col lg:pt-20">
+      <div className="max-w-[1360px] mx-auto px-fl-margin flex flex-col lg:flex-row flex-1 w-full">
 
       {/* Left Column: Content */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center pt-fl-section pb-fl-7 lg:pt-0 relative z-10">
@@ -59,7 +65,7 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* Right Column: System Visual */}
-      <div className="w-full lg:w-1/2 relative h-[50vh] lg:h-screen flex items-center justify-center py-fl-7 lg:py-0">
+      <div className="w-full lg:w-1/2 relative h-[50vh] lg:h-auto flex items-center justify-center py-fl-7 lg:py-0">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -135,6 +141,31 @@ export const Hero: React.FC = () => {
         </motion.div>
       </div>
 
+      </div>
+
+      {/* Metrics Strip — dark contrast (Approach A: inline) */}
+      <div className="bg-thistle-black text-white">
+        <div className="max-w-[1360px] mx-auto px-fl-margin py-fl-6">
+          <div className="grid grid-cols-1 md:grid-cols-3">
+            {metrics.map((metric, i) => (
+              <Reveal key={i} delay={i * 0.08}>
+                <div className={`flex flex-col items-center text-center px-fl-5 py-fl-3 ${
+                  i > 0 ? 'md:border-l md:border-white/[0.1]' : ''
+                }`}>
+                  <span className="text-fluid-h3 font-semibold tracking-tight text-white block mb-1">
+                    {metric.value}
+                  </span>
+                  <span className="text-sm font-medium text-white/70 block mb-0.5">
+                    {metric.label}
+                  </span>
+                  <span className="text-xs text-white/40">
+                    {metric.detail}
+                  </span>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

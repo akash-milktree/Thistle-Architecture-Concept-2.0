@@ -2,8 +2,6 @@
 
 import React from 'react';
 import { Hero } from '../sections/Hero';
-import { Problem } from '../sections/Problem';
-import { Intro } from '../sections/Intro';
 import { Process } from '../sections/Process';
 import { FeasibilityEngine } from '../sections/FeasibilityEngine';
 import { Benefits } from '../sections/Benefits';
@@ -17,8 +15,6 @@ import { FAQ } from '../sections/FAQ';
 export const HomePage: React.FC = () => (
   <>
     <Hero />
-    <Problem />
-    <Intro />
     <Process />
     <FeasibilityEngine />
     <Benefits />
