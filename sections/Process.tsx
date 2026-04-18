@@ -10,25 +10,25 @@ const steps = [
   {
     num: "01",
     title: "Submit Property",
-    desc: "Address + basic inputs",
+    desc: "Share your property's address with a few basic details: size, floor count, and current use. Takes under two minutes.",
     icon: Upload,
   },
   {
     num: "02",
     title: "Automated Analysis",
-    desc: "Planning, constraints, density, comparables",
+    desc: "Our system checks planning history, site constraints, density data, and comparable schemes in your local authority.",
     icon: Cpu,
   },
   {
     num: "03",
     title: "Architect Review",
-    desc: "Validation and optimisation",
+    desc: "A senior architect reviews the data, adds commercial insight, and refines the layout to maximise units and returns.",
     icon: UserCheck,
   },
   {
     num: "04",
     title: "Feasibility Delivered",
-    desc: "Report + layouts + Go/No-Go",
+    desc: "You receive a full report with optimised layouts, financial viability, and a clear Go/No-Go recommendation, all within five days.",
     icon: FileCheck,
   }
 ];
@@ -44,13 +44,13 @@ export const Process: React.FC = () => {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black">
-              From submission to clarity.
+              From Submission To Clarity.
             </h2>
           </Reveal>
         </div>
 
         {/* Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-fl-4 mb-fl-7">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-fl-4 mb-fl-7">
           {steps.map((step, i) => (
             <Reveal key={i} delay={i * 0.1}>
               <motion.div
@@ -58,11 +58,6 @@ export const Process: React.FC = () => {
                 transition={{ duration: 0.3 }}
                 className="relative bg-white border border-thistle-black/[0.06] rounded-xl p-fl-6 h-full flex flex-col group hover:border-thistle-green/30 hover:shadow-lg hover:shadow-thistle-green/5 transition-all duration-300"
               >
-                {/* Step connector line (not on last) */}
-                {i < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-[calc(var(--space-4)/2+1px)] w-[var(--space-4)] h-px bg-thistle-black/[0.08]" />
-                )}
-
                 <div className="flex items-center gap-3 mb-fl-5">
                   <div className="w-10 h-10 rounded-lg bg-thistle-green/10 flex items-center justify-center group-hover:bg-thistle-green/20 transition-colors">
                     <step.icon size={20} className="text-thistle-green" />
@@ -71,7 +66,7 @@ export const Process: React.FC = () => {
                 </div>
 
                 <h3 className="text-fluid-h5 font-medium mb-fl-3 tracking-tight text-thistle-black">{step.title}</h3>
-                <p className="text-fluid-sm text-thistle-black/50 leading-relaxed">{step.desc}</p>
+                <p className="text-fluid-base text-thistle-black/80 leading-relaxed">{step.desc}</p>
               </motion.div>
             </Reveal>
           ))}

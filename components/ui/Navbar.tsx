@@ -70,7 +70,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Centre: Nav Links */}
-          <div className="hidden md:flex items-center justify-center gap-fl-6 text-fluid-sm font-medium text-white/80">
+          <div className="hidden lg:flex items-center justify-center gap-fl-6 text-fluid-sm font-medium text-white/80">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -84,7 +84,7 @@ export const Navbar: React.FC = () => {
 
           {/* Right: CTA + Mobile Toggle */}
           <div className="flex items-center justify-end gap-4">
-            <div className="hidden md:block">
+            <div className="hidden lg:block">
               <Button
                 size="sm"
                 variant="primary"
@@ -99,7 +99,7 @@ export const Navbar: React.FC = () => {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 -mr-2 text-white transition-colors"
+              className="lg:hidden p-2 -mr-2 text-white transition-colors"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -116,7 +116,7 @@ export const Navbar: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-thistle-white pt-24 pb-8 px-6 md:hidden flex flex-col overflow-y-auto"
+            className="fixed inset-0 z-40 bg-thistle-white pt-24 pb-8 px-6 lg:hidden flex flex-col overflow-y-auto"
           >
             <div className="flex flex-col flex-1">
               <div className="flex flex-col gap-1">

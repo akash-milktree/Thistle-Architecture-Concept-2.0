@@ -1,7 +1,8 @@
 "use client";
 
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import { Button } from './Button';
 import { useFeasibility } from '../feasibility/FeasibilityContext';
 
 interface InlineCTAProps {
@@ -11,8 +12,9 @@ interface InlineCTAProps {
 }
 
 /**
- * Subtle inline text-link CTA used between sections to keep
- * conversion scent without cluttering layouts with full buttons.
+ * Inline CTA used between sections to keep conversion scent.
+ * Dark button with white text that turns green on hover, matching
+ * the Button component's default primary variant.
  */
 export const InlineCTA: React.FC<InlineCTAProps> = ({
   label = "Start your feasibility",
@@ -24,13 +26,14 @@ export const InlineCTA: React.FC<InlineCTAProps> = ({
 
   return (
     <div className={`flex ${alignCls} ${className}`}>
-      <button
+      <Button
+        size="md"
+        variant="primary"
+        icon={<ArrowUpRight size={16} />}
         onClick={openModal}
-        className="group inline-flex items-center gap-2 text-fluid-sm font-medium text-thistle-green hover:text-thistle-black transition-colors"
       >
-        <span>{label}</span>
-        <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" strokeWidth={2} />
-      </button>
+        {label}
+      </Button>
     </div>
   );
 };

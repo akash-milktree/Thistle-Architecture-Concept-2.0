@@ -24,7 +24,7 @@ export const AboutPage: React.FC = () => {
     <>
       <PageHero
         label="About"
-        heading="Commercial conversion specialists."
+        heading="Commercial Conversion Specialists."
         description="We focus exclusively on existing commercial buildings — turning planning constraints into viable residential schemes through data-driven feasibility studies."
       />
 
@@ -38,17 +38,17 @@ export const AboutPage: React.FC = () => {
               </Reveal>
               <Reveal delay={0.1}>
                 <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-5">
-                  Architecture meets commercial logic.
+                  Architecture Meets Commercial Logic.
                 </h2>
               </Reveal>
               <Reveal delay={0.15}>
-                <p className="text-sm text-thistle-black/50 leading-relaxed mb-fl-5">
-                  Traditional architecture practices treat feasibility as an afterthought — a quick sketch done before the 'real' design work begins. We treat it as the product. Because for developers, the feasibility stage is where the most important decisions are made.
+                <p className="text-fluid-base text-thistle-black/80 leading-relaxed mb-fl-5">
+                  Traditional architecture practices treat feasibility as an afterthought, a quick sketch done before the 'real' design work begins. We treat it as the product. Because for developers, the feasibility stage is where the most important decisions are made.
                 </p>
               </Reveal>
               <Reveal delay={0.2}>
-                <p className="text-sm text-thistle-black/50 leading-relaxed">
-                  Our approach combines automated data gathering with architect-led spatial analysis. The automation handles the research — planning policy, flood risk, daylight, services — while our architects solve the problems that software can't: complex layouts, structural constraints, and the nuances of building regulation compliance.
+                <p className="text-fluid-base text-thistle-black/80 leading-relaxed">
+                  Our approach combines automated data gathering with architect-led spatial analysis. The automation handles the research (planning policy, flood risk, daylight, services), while our architects solve the problems that software can't: complex layouts, structural constraints, and the nuances of building regulation compliance.
                 </p>
               </Reveal>
             </div>
@@ -95,16 +95,16 @@ export const AboutPage: React.FC = () => {
         <div className="max-w-[1360px] mx-auto text-center">
           <Reveal>
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight mb-fl-5">
-              Work with us.
+              Work With Us.
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="text-sm text-white/50 leading-relaxed max-w-md mx-auto mb-fl-6">
-              Submit your building and we'll tell you what's possible — for a fixed fee.
+            <p className="text-fluid-base text-white/80 leading-relaxed max-w-md mx-auto mb-fl-6">
+              Submit your building and we'll tell you what's possible, for a fixed fee.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
-            <Button variant="glass" size="lg" icon={<ArrowUpRight size={18} />} onClick={openModal} className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80">
+            <Button variant="glass" size="lg" icon={<ArrowUpRight size={18} />} onClick={openModal} className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80">
               Start Feasibility
             </Button>
           </Reveal>

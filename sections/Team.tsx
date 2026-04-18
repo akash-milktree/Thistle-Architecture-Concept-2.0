@@ -47,7 +47,7 @@ export const Team: React.FC = () => {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-fluid-h2 font-medium tracking-tight max-w-xl">
-              Real architects. Real experience.
+              Real Architects. Real Experience.
             </h2>
           </Reveal>
         </div>

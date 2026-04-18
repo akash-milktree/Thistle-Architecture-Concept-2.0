@@ -148,7 +148,7 @@ export const FeasibilityPackagePage: React.FC = () => {
     <>
       <PageHero
         label="Visibility Package"
-        heading="Complete clarity before you commit."
+        heading="Complete Clarity Before You Commit."
         description="A structured feasibility study combining automated data analysis with architect-led design review — delivered with a clear Go/No-Go recommendation."
         variant="dark"
       >
@@ -156,7 +156,7 @@ export const FeasibilityPackagePage: React.FC = () => {
           variant="glass"
           icon={<ArrowUpRight size={16} />}
           onClick={openModal}
-          className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80"
+          className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80"
         >
           Start Feasibility
         </Button>
@@ -171,7 +171,7 @@ export const FeasibilityPackagePage: React.FC = () => {
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black">
-                Six deliverables. One fixed fee.
+                Six Deliverables. One Fixed Fee.
               </h2>
             </Reveal>
           </div>
@@ -206,7 +206,7 @@ export const FeasibilityPackagePage: React.FC = () => {
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight mb-fl-6">
-                Feasibility across every sector.
+                Feasibility Across Every Sector.
               </h2>
             </Reveal>
 
@@ -239,7 +239,7 @@ export const FeasibilityPackagePage: React.FC = () => {
               transition={{ duration: 0.3 }}
             >
               {/* Intro */}
-              <p className="text-fluid-lg text-white/60 leading-relaxed mb-fl-7 max-w-2xl">
+              <p className="text-fluid-lg text-white/80 leading-relaxed mb-fl-7 max-w-2xl">
                 {activeData.intro}
               </p>
 
@@ -261,7 +261,7 @@ export const FeasibilityPackagePage: React.FC = () => {
                 {activeData.analysis.map((item, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-thistle-green flex-shrink-0" />
-                    <span className="text-sm text-white/70">{item}</span>
+                    <span className="text-sm text-white/80">{item}</span>
                   </div>
                 ))}
               </div>
@@ -279,7 +279,7 @@ export const FeasibilityPackagePage: React.FC = () => {
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black">
-                Four steps. Complete clarity.
+                Four Steps. Complete Clarity.
               </h2>
             </Reveal>
           </div>
@@ -315,11 +315,11 @@ export const FeasibilityPackagePage: React.FC = () => {
               </Reveal>
               <Reveal delay={0.1}>
                 <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-5">
-                  15+ data sources. Every time.
+                  15+ Data Sources. Every Time.
                 </h2>
               </Reveal>
               <Reveal delay={0.15}>
-                <p className="text-sm text-thistle-black/60 leading-relaxed">
+                <p className="text-fluid-base text-thistle-black/80 leading-relaxed">
                   Every feasibility is built on a structured desk study that cross-references planning policy, environmental data, and market intelligence. This is the foundation that makes our Go/No-Go recommendations reliable.
                 </p>
               </Reveal>
@@ -334,7 +334,7 @@ export const FeasibilityPackagePage: React.FC = () => {
                         <path d="M1 4L3.5 6.5L9 1" stroke="#8F9952" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </div>
-                    <span className="text-sm text-thistle-black/70">{check}</span>
+                    <span className="text-sm text-thistle-black/80">{check}</span>
                   </div>
                 ))}
               </div>
@@ -348,11 +348,11 @@ export const FeasibilityPackagePage: React.FC = () => {
         <div className="max-w-[1360px] mx-auto text-center">
           <Reveal>
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight mb-fl-5">
-              Get your feasibility report.
+              Get Your Feasibility Report.
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="text-sm text-white/50 leading-relaxed max-w-md mx-auto mb-fl-6">
+            <p className="text-fluid-base text-white/80 leading-relaxed max-w-md mx-auto mb-fl-6">
               Start with a free 15-minute expert session. Submit your property details and we'll get back to you within 24 hours.
             </p>
           </Reveal>
@@ -362,7 +362,7 @@ export const FeasibilityPackagePage: React.FC = () => {
               size="lg"
               icon={<ArrowUpRight size={18} />}
               onClick={openModal}
-              className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80"
+              className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80"
             >
               Start Feasibility
             </Button>

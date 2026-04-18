@@ -183,7 +183,7 @@ export const DataSources: React.FC = () => {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-4">
-              Powered by 15+ authoritative data sources.
+              Powered By 15+ Authoritative Data Sources.
             </h2>
           </Reveal>
           <Reveal delay={0.15}>

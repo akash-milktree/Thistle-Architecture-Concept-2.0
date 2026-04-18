@@ -64,11 +64,11 @@ export const HowItWorksPage: React.FC = () => {
     <>
       <PageHero
         label="How It Works"
-        heading="From enquiry to complete clarity."
+        heading="From Enquiry To Complete Clarity."
         description="A structured, data-driven process that gives developers the confidence to bid, exchange, or walk away — fast."
         variant="dark"
       >
-        <Button variant="glass" icon={<ArrowUpRight size={16} />} onClick={openModal} className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80">
+        <Button variant="glass" icon={<ArrowUpRight size={16} />} onClick={openModal} className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80">
           Start Feasibility
         </Button>
       </PageHero>
@@ -82,7 +82,7 @@ export const HowItWorksPage: React.FC = () => {
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black">
-                Four steps. Five days.
+                Four Steps. Five Days.
               </h2>
             </Reveal>
           </div>
@@ -113,7 +113,7 @@ export const HowItWorksPage: React.FC = () => {
                         <span className="text-xs text-thistle-black/30 uppercase tracking-widest">{step.detail}</span>
                       </div>
                     </div>
-                    <p className="text-sm text-thistle-black/50 leading-relaxed mb-fl-3">{step.desc}</p>
+                    <p className="text-fluid-base text-thistle-black/80 leading-relaxed mb-fl-3">{step.desc}</p>
                     <p className="text-sm text-thistle-black/35 leading-relaxed">{step.expanded}</p>
                   </div>
                 </div>
@@ -160,7 +160,7 @@ export const HowItWorksPage: React.FC = () => {
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight">
-                Everything in one report.
+                Everything In One Report.
               </h2>
             </Reveal>
           </div>
@@ -174,7 +174,7 @@ export const HowItWorksPage: React.FC = () => {
                   className="p-fl-5 rounded-xl border border-white/[0.06] bg-white/[0.03] hover:border-white/[0.12] hover:bg-white/[0.05] transition-all duration-500"
                 >
                   <h3 className="text-fluid-h6 font-medium tracking-tight mb-fl-2">{item.title}</h3>
-                  <p className="text-sm text-white/40 leading-relaxed">{item.desc}</p>
+                  <p className="text-fluid-base text-white/80 leading-relaxed">{item.desc}</p>
                 </motion.div>
               </Reveal>
             ))}
@@ -187,11 +187,11 @@ export const HowItWorksPage: React.FC = () => {
         <div className="max-w-[1360px] mx-auto text-center">
           <Reveal>
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-5">
-              Ready to start?
+              Ready To Start?
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="text-sm text-thistle-black/50 leading-relaxed max-w-md mx-auto mb-fl-6">
+            <p className="text-fluid-base text-thistle-black/80 leading-relaxed max-w-md mx-auto mb-fl-6">
               Submit your property details and we'll get back to you within 24 hours with a scope and fixed fee.
             </p>
           </Reveal>

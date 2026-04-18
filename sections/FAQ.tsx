@@ -53,11 +53,11 @@ export const FAQ: React.FC = () => {
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-5">
-                Answering your questions.
+                Answering Your Questions.
               </h2>
             </Reveal>
             <Reveal delay={0.15}>
-              <p className="text-fluid-sm text-thistle-black/50 leading-relaxed mb-fl-6 max-w-sm">
+              <p className="text-fluid-base text-thistle-black/80 leading-relaxed mb-fl-6 max-w-sm">
                 Got more questions? Send us your enquiry and we'll get back to you within 24 hours.
               </p>
             </Reveal>
@@ -112,7 +112,7 @@ export const FAQ: React.FC = () => {
                         transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
                         className="overflow-hidden"
                       >
-                        <p className="text-fluid-sm text-thistle-black/50 leading-relaxed px-fl-5 pb-fl-4">
+                        <p className="text-fluid-base text-thistle-black/80 leading-relaxed px-fl-5 pb-fl-4">
                           {faq.answer}
                         </p>
                       </motion.div>

@@ -35,11 +35,11 @@ export const Footer: React.FC = () => {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-fluid-display font-medium tracking-tighter leading-[0.95] mb-fl-6">
-              Make faster<br />decisions.
+              Make Faster<br />Decisions.
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
-            <p className="text-fluid-sm text-white/40 leading-relaxed max-w-md mx-auto mb-fl-7">
+            <p className="text-fluid-sm text-white/80 leading-relaxed max-w-md mx-auto mb-fl-7">
               Start with a free 15-minute expert session. Submit your property details and get a structured feasibility report with a clear Go/No-Go recommendation.
             </p>
           </Reveal>
@@ -49,7 +49,7 @@ export const Footer: React.FC = () => {
               size="lg"
               icon={<ArrowUpRight size={18} />}
               onClick={openModal}
-              className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80"
+              className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80"
             >
               Start Feasibility
             </Button>
@@ -60,38 +60,55 @@ export const Footer: React.FC = () => {
       {/* Footer Grid */}
       <div className="py-fl-8 px-fl-margin">
         <div className="max-w-[1360px] mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-fl-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-fl-8">
             {/* Brand Column */}
-            <div className="col-span-2 md:col-span-1">
+            <div>
               <Link href="/" className="inline-block mb-fl-5">
-                <ThistleLogo variant="full" color="light" className="h-5" />
+                <ThistleLogo variant="full" color="light" className="h-11" />
               </Link>
-              <p className="text-fluid-sm text-white/30 leading-relaxed mb-fl-5">
+              <p className="text-fluid-base text-white/80 leading-relaxed">
                 Data-driven feasibility for commercial conversions, HMOs, and high-end residential across the UK.
               </p>
-              <a href="mailto:hello@thistlearchitecture.co.uk" className="text-fluid-sm text-white/50 hover:text-thistle-green transition-colors">
-                hello@thistlearchitecture.co.uk
-              </a>
             </div>
 
             {/* Navigation */}
             <div>
-              <p className="text-[10px] uppercase tracking-widest text-white/20 font-semibold mb-fl-5">Navigate</p>
+              <p className="text-[10px] uppercase tracking-widest text-white/60 font-semibold mb-fl-5">Navigate</p>
               <div className="flex flex-col gap-fl-3">
                 {navLinks.map((link) => (
-                  <Link key={link.to} href={link.to} className="text-fluid-sm text-white/40 hover:text-white transition-colors">
+                  <Link key={link.to} href={link.to} className="text-fluid-base text-white/80 hover:text-white transition-colors">
                     {link.label}
                   </Link>
                 ))}
               </div>
             </div>
 
+            {/* Contact */}
+            <div>
+              <p className="text-[10px] uppercase tracking-widest text-white/60 font-semibold mb-fl-5">Contact</p>
+              <div className="flex flex-col gap-fl-3 text-fluid-base text-white/80">
+                <a href="mailto:hello@thistlearchitecture.co.uk" className="hover:text-thistle-green transition-colors">
+                  hello@thistlearchitecture.co.uk
+                </a>
+                {/* TODO: replace placeholder phone + address with real values */}
+                <a href="tel:+442012345678" className="hover:text-thistle-green transition-colors">
+                  +44 (0)20 1234 5678
+                </a>
+                <span>
+                  London, United Kingdom
+                </span>
+                <span className="text-white/60">
+                  Mon–Fri, 9am–6pm GMT
+                </span>
+              </div>
+            </div>
+
             {/* Legal */}
             <div>
-              <p className="text-[10px] uppercase tracking-widest text-white/20 font-semibold mb-fl-5">Legal</p>
+              <p className="text-[10px] uppercase tracking-widest text-white/60 font-semibold mb-fl-5">Legal</p>
               <div className="flex flex-col gap-fl-3">
                 {legalLinks.map((link) => (
-                  <Link key={link.to} href={link.to} className="text-fluid-sm text-white/40 hover:text-white transition-colors">
+                  <Link key={link.to} href={link.to} className="text-fluid-base text-white/80 hover:text-white transition-colors">
                     {link.label}
                   </Link>
                 ))}
@@ -104,13 +121,25 @@ export const Footer: React.FC = () => {
       {/* Bottom Bar */}
       <div className="px-fl-margin py-fl-5 border-t border-white/[0.06]">
         <div className="max-w-[1360px] mx-auto flex flex-col md:flex-row justify-between items-center gap-fl-4">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <ThistleLogo variant="mark" className="w-3.5 h-3.5" />
-            <span className="text-xs text-white/25">&copy; 2026 Thistle Architecture Ltd. Registered in England and Wales.</span>
+            <span className="text-xs text-white/60">&copy; 2026 Thistle Architecture Ltd. Registered in England and Wales.</span>
+            <span className="text-xs text-white/40">·</span>
+            <span className="text-xs text-white/60">
+              Made by{' '}
+              <a
+                href="https://riftly.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/80 hover:text-thistle-green transition-colors"
+              >
+                Riftly.ai
+              </a>
+            </span>
           </div>
           <div className="flex items-center gap-fl-5">
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-xs text-white/25 hover:text-white/50 transition-colors">LinkedIn</a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-xs text-white/25 hover:text-white/50 transition-colors">Instagram</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-xs text-white/70 hover:text-white transition-colors">LinkedIn</a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-xs text-white/70 hover:text-white transition-colors">Instagram</a>
           </div>
         </div>
       </div>

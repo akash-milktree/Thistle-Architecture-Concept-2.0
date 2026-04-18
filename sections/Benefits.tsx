@@ -56,12 +56,12 @@ export const Benefits: React.FC = () => {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-4">
-              Every deliverable links to a decision.
+              Every Deliverable Links To A Decision.
             </h2>
           </Reveal>
           <Reveal delay={0.15}>
-            <p className="text-fluid-sm text-thistle-black/60 leading-relaxed">
-              Everything a developer needs to assess an existing building — structured, fast, and commercially focused.
+            <p className="text-fluid-base text-thistle-black/80 leading-relaxed">
+              Everything a developer needs to assess an existing building, structured, fast, and commercially focused.
             </p>
           </Reveal>
         </div>
@@ -82,7 +82,7 @@ export const Benefits: React.FC = () => {
                   <span className="text-xs font-semibold tracking-wide text-thistle-green uppercase">{item.outcome}</span>
                 </div>
                 <h3 className="text-fluid-h5 font-medium tracking-tight text-thistle-black mb-fl-3">{item.title}</h3>
-                <p className="text-fluid-sm text-thistle-black/50 leading-relaxed">{item.desc}</p>
+                <p className="text-fluid-base text-thistle-black/80 leading-relaxed">{item.desc}</p>
               </motion.div>
             </Reveal>
           ))}

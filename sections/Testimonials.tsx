@@ -101,7 +101,7 @@ interface TestimonialCardProps {
 const TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, name, role, company, initials }) => (
   <div className="w-[340px] flex-shrink-0 bg-white border border-thistle-black/[0.06] rounded-xl p-fl-5">
     <Stars />
-    <p className="text-fluid-sm text-thistle-black/70 leading-relaxed mb-fl-5">
+    <p className="text-fluid-base text-thistle-black/80 leading-relaxed mb-fl-5">
       "{quote}"
     </p>
     <div className="flex items-center gap-fl-3 pt-4 border-t border-thistle-black/[0.06]">
@@ -130,11 +130,11 @@ export const Testimonials: React.FC = () => {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-5">
-              Hear from our clients.
+              Hear From Our Clients.
             </h2>
           </Reveal>
           <Reveal delay={0.15}>
-            <p className="text-fluid-sm text-thistle-black/60 leading-relaxed max-w-xl mx-auto">
+            <p className="text-fluid-sm text-thistle-black/80 leading-relaxed max-w-xl mx-auto">
               Trusted by developers, investors, and property professionals across the UK.
             </p>
           </Reveal>

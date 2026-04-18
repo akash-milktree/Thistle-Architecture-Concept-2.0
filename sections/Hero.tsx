@@ -35,25 +35,25 @@ export const Hero: React.FC = () => {
 
           <Reveal delay={0.1}>
             <h1 className="text-fluid-h1 font-medium tracking-tighter leading-[1.05] mb-fl-5">
-              From building to viable conversion<span className="text-thistle-green"> in 5 days.</span>
+              From Building To Viable Conversion<span className="text-thistle-green"> In 5 Days.</span>
             </h1>
           </Reveal>
 
           <Reveal delay={0.2}>
-            <p className="text-fluid-base text-thistle-black/60 leading-relaxed font-light mb-fl-4 max-w-md">
+            <p className="text-fluid-base text-thistle-black leading-relaxed font-light mb-fl-4 max-w-md">
               Thistle combines proprietary data analysis with developer-led architecture to test schemes quickly and accurately.
             </p>
           </Reveal>
 
           <Reveal delay={0.25}>
-            <p className="text-fluid-base text-thistle-black/60 leading-relaxed font-light mb-fl-7 max-w-md">
+            <p className="text-fluid-base text-thistle-black leading-relaxed font-light mb-fl-7 max-w-md">
               Our feasibility system analyses planning, density, constraints, and layout potential, giving a clear Go/No-Go in days, not weeks.
             </p>
           </Reveal>
 
           <Reveal delay={0.3}>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-fl-4">
-              <Button size="lg" variant="primary" icon={<ArrowUpRight size={18} />} onClick={openModal} className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/80">
+              <Button size="lg" variant="primary" icon={<ArrowUpRight size={18} />} onClick={openModal} className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80">
                 Start Feasibility
               </Button>
               <Link href="/how-it-works" className="text-sm text-thistle-black/40 hover:text-thistle-black/70 transition-colors font-medium tracking-tight">
@@ -155,7 +155,7 @@ export const Hero: React.FC = () => {
                   <span className="text-fluid-h3 font-semibold tracking-tight text-white block mb-1">
                     {metric.value}
                   </span>
-                  <span className="text-sm font-medium text-white/70 block mb-0.5">
+                  <span className="text-sm font-medium text-white block mb-0.5">
                     {metric.label}
                   </span>
                   <span className="text-xs text-white/40">

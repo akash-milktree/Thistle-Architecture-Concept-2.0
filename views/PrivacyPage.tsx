@@ -44,7 +44,7 @@ export const PrivacyPage: React.FC = () => (
           <Reveal key={i} delay={i * 0.05}>
             <div className="mb-fl-7">
               <h3 className="text-fluid-h6 font-medium tracking-tight text-thistle-black mb-fl-3">{s.heading}</h3>
-              <p className="text-fluid-sm text-thistle-black/50 leading-relaxed">{s.body}</p>
+              <p className="text-fluid-base text-thistle-black/80 leading-relaxed">{s.body}</p>
             </div>
           </Reveal>
         ))}

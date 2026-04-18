@@ -45,7 +45,7 @@ export const CaseStudyDetailPage: React.FC = () => {
 
         <div className="relative z-10 w-full px-fl-margin pb-fl-7">
           <div className="max-w-[1360px] mx-auto">
-            <Link href="/case-studies" className="inline-flex items-center gap-2 text-fluid-sm text-white/50 hover:text-white/80 transition-colors mb-fl-5">
+            <Link href="/case-studies" className="inline-flex items-center gap-2 text-fluid-base text-white/80 hover:text-white transition-colors mb-fl-5">
               <ArrowLeft size={14} /> All Case Studies
             </Link>
             <span className="block px-3 py-1 rounded-full bg-white/10 backdrop-blur-xl border border-white/10 text-[10px] uppercase tracking-widest text-white/80 font-medium w-fit mb-fl-4">
@@ -54,7 +54,7 @@ export const CaseStudyDetailPage: React.FC = () => {
             <h1 className="text-fluid-h1 font-medium tracking-tight text-white leading-tight mb-fl-2">
               {caseStudy.title}
             </h1>
-            <p className="text-fluid-sm text-white/50">{caseStudy.location}</p>
+            <p className="text-fluid-base text-white/80">{caseStudy.location}</p>
           </div>
         </div>
       </section>
@@ -154,11 +154,11 @@ export const CaseStudyDetailPage: React.FC = () => {
         <div className="max-w-[1360px] mx-auto text-center">
           <Reveal>
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight mb-fl-5">
-              Start your own feasibility.
+              Start Your Own Feasibility.
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <Button variant="glass" size="lg" icon={<ArrowUpRight size={18} />} onClick={openModal} className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80">
+            <Button variant="glass" size="lg" icon={<ArrowUpRight size={18} />} onClick={openModal} className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80">
               Start Feasibility
             </Button>
           </Reveal>

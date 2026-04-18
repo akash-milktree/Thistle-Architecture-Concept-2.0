@@ -17,7 +17,7 @@ export const CaseStudiesPage: React.FC = () => {
     <>
       <PageHero
         label="Case Studies"
-        heading="Proof, not inspiration."
+        heading="Proof, Not Inspiration."
         description="Real buildings, real constraints, real results. Every case study follows the same structure: the problem, our approach, and the commercial impact."
       />
 
@@ -83,16 +83,16 @@ export const CaseStudiesPage: React.FC = () => {
         <div className="max-w-[1360px] mx-auto text-center">
           <Reveal>
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight mb-fl-5">
-              Have a building in mind?
+              Have A Building In Mind?
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="text-fluid-sm text-white/50 leading-relaxed max-w-md mx-auto mb-fl-6">
+            <p className="text-fluid-base text-white/80 leading-relaxed max-w-md mx-auto mb-fl-6">
               Submit your property details and find out if it's viable.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
-            <Button variant="glass" size="lg" icon={<ArrowUpRight size={18} />} onClick={openModal} className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80">
+            <Button variant="glass" size="lg" icon={<ArrowUpRight size={18} />} onClick={openModal} className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80">
               Start Feasibility
             </Button>
           </Reveal>

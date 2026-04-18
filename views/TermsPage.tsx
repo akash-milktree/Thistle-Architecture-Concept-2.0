@@ -37,14 +37,14 @@ const sections = [
 
 export const TermsPage: React.FC = () => (
   <>
-    <PageHero label="Legal" heading="Terms of Service." description="Last updated: February 2026" />
+    <PageHero label="Legal" heading="Terms Of Service." description="Last updated: February 2026" />
     <section className="py-fl-section px-fl-margin bg-thistle-white">
       <div className="max-w-[800px] mx-auto">
         {sections.map((s, i) => (
           <Reveal key={i} delay={i * 0.05}>
             <div className="mb-fl-7">
               <h3 className="text-fluid-h6 font-medium tracking-tight text-thistle-black mb-fl-3">{s.heading}</h3>
-              <p className="text-fluid-sm text-thistle-black/50 leading-relaxed">{s.body}</p>
+              <p className="text-fluid-base text-thistle-black/80 leading-relaxed">{s.body}</p>
             </div>
           </Reveal>
         ))}

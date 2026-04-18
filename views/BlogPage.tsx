@@ -15,7 +15,7 @@ export const BlogPage: React.FC = () => {
     <>
       <PageHero
         label="Blog"
-        heading="Insights for developers."
+        heading="Insights For Developers."
         description="Practical articles on planning, feasibility, and the commercial conversion market — written by architects, for developers."
       />
 
@@ -42,7 +42,7 @@ export const BlogPage: React.FC = () => {
                     <span className="text-xs text-thistle-black/30">{featured.readTime}</span>
                   </div>
                   <h2 className="text-fluid-h3 font-medium tracking-tight leading-tight mb-fl-4 group-hover:text-thistle-pink transition-colors">{featured.title}</h2>
-                  <p className="text-fluid-sm text-thistle-black/50 leading-relaxed mb-fl-5">{featured.excerpt}</p>
+                  <p className="text-fluid-base text-thistle-black/80 leading-relaxed mb-fl-5">{featured.excerpt}</p>
                   <div className="flex items-center gap-fl-3">
                     <div className="w-8 h-8 rounded-full bg-thistle-black/[0.06] flex items-center justify-center text-[10px] font-bold text-thistle-black/50">{featured.author.initials}</div>
                     <div>
@@ -82,7 +82,7 @@ export const BlogPage: React.FC = () => {
                         <span className="text-xs text-thistle-black/30">{post.readTime}</span>
                       </div>
                       <h3 className="text-fluid-h6 font-medium tracking-tight mb-fl-2 group-hover:text-thistle-pink transition-colors">{post.title}</h3>
-                      <p className="text-fluid-sm text-thistle-black/50 leading-relaxed mb-fl-4">{post.excerpt}</p>
+                      <p className="text-fluid-base text-thistle-black/80 leading-relaxed mb-fl-4">{post.excerpt}</p>
                       <div className="flex items-center gap-fl-3">
                         <div className="w-7 h-7 rounded-full bg-thistle-black/[0.06] flex items-center justify-center text-[9px] font-bold text-thistle-black/50">{post.author.initials}</div>
                         <span className="text-xs text-thistle-black/40">{post.author.name} · {post.date}</span>

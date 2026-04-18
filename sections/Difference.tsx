@@ -23,7 +23,7 @@ export const Difference: React.FC = () => {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black">
-              Not another architecture practice.
+              Not Another Architecture Practice.
             </h2>
           </Reveal>
         </div>
@@ -48,13 +48,13 @@ export const Difference: React.FC = () => {
                   <div className="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
                     <X size={12} className="text-red-400" />
                   </div>
-                  <span className="text-fluid-sm text-thistle-black/50">{row.traditional}</span>
+                  <span className="text-fluid-base text-thistle-black/80">{row.traditional}</span>
                 </div>
                 <div className="px-fl-6 py-fl-5 flex items-center gap-3 bg-thistle-green/[0.03]">
                   <div className="w-6 h-6 rounded-full bg-thistle-green/15 flex items-center justify-center flex-shrink-0">
                     <Check size={12} className="text-thistle-green" />
                   </div>
-                  <span className="text-fluid-sm font-medium text-thistle-black">{row.thistle}</span>
+                  <span className="text-fluid-base font-medium text-thistle-black">{row.thistle}</span>
                 </div>
               </div>
             ))}

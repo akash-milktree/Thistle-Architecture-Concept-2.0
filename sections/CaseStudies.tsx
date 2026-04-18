@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Reveal } from '../components/animations/Reveal';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, ArrowRight } from 'lucide-react';
+import { Button } from '../components/ui/Button';
 import { caseStudies, type CaseStudy } from '../data/caseStudiesData';
 
 const displayCases = caseStudies.slice(0, 3);
@@ -97,7 +98,7 @@ const CaseCard: React.FC<{ item: CaseStudy }> = ({ item }) => {
             </div>
           )}
 
-          <p className="text-fluid-sm text-thistle-black/50 leading-relaxed mt-auto">
+          <p className="text-fluid-base text-thistle-black/80 leading-relaxed mt-auto">
             {item.desc}
           </p>
 
@@ -117,23 +118,15 @@ export const CaseStudies: React.FC = () => {
   return (
     <section className="py-fl-section px-fl-margin bg-thistle-white">
       <div className="max-w-[1360px] mx-auto">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-fl-8 gap-fl-5">
-          <div>
-            <Reveal>
-              <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">Case Studies</p>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <h2 className="text-fluid-h2 font-medium tracking-tight text-thistle-black">
-                Proof, <span className="text-thistle-black/30">not inspiration.</span>
-              </h2>
-            </Reveal>
-          </div>
-          <Reveal delay={0.2}>
-            <Link href="/case-studies" className="text-sm text-thistle-black/50 hover:text-thistle-black transition-colors font-medium tracking-tight flex items-center gap-1 group">
-              View all cases
-              <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </Link>
+        {/* Header — centered like other sections */}
+        <div className="text-center mb-fl-8 max-w-2xl mx-auto">
+          <Reveal>
+            <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">Case Studies</p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <h2 className="text-fluid-h2 font-medium tracking-tight text-thistle-black">
+              Proof, <span className="text-thistle-green">Not Inspiration.</span>
+            </h2>
           </Reveal>
         </div>
 
@@ -145,6 +138,21 @@ export const CaseStudies: React.FC = () => {
             </Reveal>
           ))}
         </div>
+
+        {/* View All CTA */}
+        <Reveal delay={0.4}>
+          <div className="flex justify-center mt-fl-7">
+            <Link href="/case-studies">
+              <Button
+                size="md"
+                variant="primary"
+                icon={<ArrowUpRight size={16} />}
+              >
+                View All Case Studies
+              </Button>
+            </Link>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

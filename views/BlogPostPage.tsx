@@ -136,11 +136,11 @@ export const BlogPostPage: React.FC = () => {
         <div className="max-w-[1360px] mx-auto text-center">
           <Reveal>
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight mb-fl-5">
-              Ready to assess a building?
+              Ready To Assess A Building?
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <Button variant="glass" size="lg" icon={<ArrowUpRight size={18} />} onClick={openModal} className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80">
+            <Button variant="glass" size="lg" icon={<ArrowUpRight size={18} />} onClick={openModal} className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80">
               Start Feasibility
             </Button>
           </Reveal>
