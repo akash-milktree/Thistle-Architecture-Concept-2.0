@@ -262,7 +262,7 @@ export const FeasibilityEngine: React.FC = () => {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-4">
-              Six Data Layers. <span className="text-thistle-green">One Clear Answer.</span>
+              Six Data Layers.<br /><span className="text-thistle-green">One Clear Answer.</span>
             </h2>
           </Reveal>
           <Reveal delay={0.15}>
