@@ -1,17 +1,27 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '../components/ui/Button';
-import { ArrowUpRight, MapPin, Building2, BarChart3, FileCheck } from 'lucide-react';
+import { ArrowUpRight, Building2, FileText, LayoutGrid, PenTool, Send, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Reveal } from '../components/animations/Reveal';
 import { useFeasibility } from '../components/feasibility/FeasibilityContext';
 
 const metrics = [
   { value: "98.5%", label: "Planning success rate", detail: "Across all submitted schemes" },
-  { value: "20–35%", label: "Improvement in scheme efficiency", detail: "ROI potential vs unoptimised layouts" },
+  { value: "5 days", label: "Guaranteed turn around", detail: "From submission to clear recommendation" },
   { value: "86%", label: "Faster than traditional routes", detail: "5 days vs 2–6 week industry average" },
+];
+
+// 5-day timeline shown in the right-side card
+const timeline = [
+  { day: "Day 1", label: "Submit Details", icon: Send },
+  { day: "Day 2", label: "Feasibility Assessment Report", icon: FileText },
+  { day: "Day 3", label: "Layouts and Massing", icon: LayoutGrid },
+  { day: "Day 4", label: "Sketch Scheme", icon: PenTool },
+  { day: "Day 5", label: "Feasibility Assessment Meeting", icon: CheckCircle2, isFinal: true },
 ];
 
 export const Hero: React.FC = () => {
@@ -24,24 +34,27 @@ export const Hero: React.FC = () => {
       <div className="w-full lg:w-1/2 flex flex-col justify-center pt-fl-section pb-fl-7 lg:pt-0 relative z-10">
         <div className="max-w-xl">
           <Reveal>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-thistle-green/10 border border-thistle-green/20 w-fit mb-fl-6">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-thistle-green opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-thistle-green"></span>
-              </span>
-              <span className="text-xs font-medium text-thistle-green tracking-wide">5-day turnaround</span>
+            <div className="inline-flex flex-col gap-1 px-fl-4 py-fl-3 rounded-2xl bg-thistle-green/10 border border-thistle-green/30 w-fit mb-fl-6">
+              <div className="flex items-center gap-2">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-thistle-green opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-thistle-green"></span>
+                </span>
+                <span className="text-sm font-semibold text-thistle-green tracking-tight">5-day turnaround</span>
+              </div>
+              <span className="text-[11px] text-thistle-green/80 leading-tight pl-[18px]">86% quicker than industry standard</span>
             </div>
           </Reveal>
 
           <Reveal delay={0.1}>
             <h1 className="text-fluid-h1 font-medium tracking-tighter leading-[1.05] mb-fl-5">
-              From Building To Viable Conversion<span className="text-thistle-green"> In 5 Days.</span>
+              From Building To Viable Conversion<br /><span className="text-thistle-green">In 5 Days.</span>
             </h1>
           </Reveal>
 
           <Reveal delay={0.2}>
             <p className="text-fluid-base text-thistle-black leading-relaxed font-light mb-fl-4 max-w-md">
-              Thistle combines proprietary data analysis with developer-led architecture to test schemes quickly and accurately.
+              Thistle combines data analysis with developer-led architecture to test schemes quickly and accurately.
             </p>
           </Reveal>
 
@@ -53,10 +66,10 @@ export const Hero: React.FC = () => {
 
           <Reveal delay={0.3}>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-fl-4">
-              <Button size="lg" variant="primary" icon={<ArrowUpRight size={18} />} onClick={openModal} className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80">
+              <Button size="lg" variant="primary" icon={<ArrowUpRight size={18} />} onClick={openModal} className="!bg-thistle-pink !text-thistle-black !border-thistle-pink hover:!bg-thistle-pink/80 hover:!border-thistle-pink/80">
                 Start Feasibility
               </Button>
-              <Link href="/how-it-works" className="text-sm text-thistle-black/40 hover:text-thistle-black/70 transition-colors font-medium tracking-tight">
+              <Link href="/how-it-works" className="text-sm text-thistle-black/70 hover:text-thistle-black transition-colors font-medium tracking-tight">
                 How it works &rarr;
               </Link>
             </div>
@@ -84,57 +97,61 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Property info row */}
-            <div className="px-6 py-4 border-b border-thistle-black/[0.04]">
-              <div className="flex items-center gap-2 mb-2">
-                <MapPin size={14} className="text-thistle-green" />
-                <span className="text-sm font-medium">42 High Street, Croydon</span>
+            <div className="px-6 py-4 border-b border-thistle-black/[0.04] flex items-center gap-fl-4">
+              {/* Block of flats icon */}
+              <div className="w-11 h-11 flex-shrink-0 rounded-xl bg-thistle-green/10 flex items-center justify-center">
+                <Building2 size={20} className="text-thistle-green" />
               </div>
-              <div className="flex gap-4">
-                <span className="text-xs text-thistle-black/40">Class MA</span>
-                <span className="text-xs text-thistle-black/40">Office to Resi</span>
-                <span className="text-xs text-thistle-black/40">12 units</span>
+              <div className="flex-1 min-w-0">
+                <span className="block text-sm font-medium text-thistle-black truncate">42 High Street, Croydon</span>
+                <div className="flex gap-3 mt-1">
+                  <span className="text-[10px] uppercase tracking-wider text-thistle-black/40 font-semibold">Class MA</span>
+                  <span className="text-[10px] uppercase tracking-wider text-thistle-black/40 font-semibold">12 units</span>
+                </div>
+              </div>
+              {/* Kaan — design lead avatar */}
+              <div className="flex flex-col items-center flex-shrink-0">
+                <Image
+                  src="/kaan.png"
+                  alt="Kaan, Design Lead"
+                  width={88}
+                  height={88}
+                  unoptimized
+                  priority
+                  className="w-11 h-11 rounded-full object-cover ring-2 ring-thistle-green/20"
+                />
+                <span className="text-[9px] text-thistle-black/50 mt-1 leading-none">Kaan</span>
               </div>
             </div>
 
-            {/* Analysis modules */}
+            {/* 5-day timeline */}
             <div className="px-6 py-4 space-y-3">
-              {[
-                { icon: Building2, label: "Planning analysis", status: "Complete", color: "bg-thistle-green" },
-                { icon: BarChart3, label: "Financial viability", status: "Complete", color: "bg-thistle-green" },
-                { icon: FileCheck, label: "Layout optimisation", status: "Complete", color: "bg-thistle-green" },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.6 + i * 0.15, duration: 0.4 }}
-                  className="flex items-center justify-between py-2"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-thistle-black/[0.03] flex items-center justify-center">
-                      <item.icon size={16} className="text-thistle-black/50" />
+              {timeline.map((item, i) => {
+                const Icon = item.icon;
+                const isFinal = !!item.isFinal;
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5 + i * 0.12, duration: 0.4 }}
+                    className={`flex items-center gap-3 py-2 ${isFinal ? '-mx-2 px-2 rounded-lg bg-thistle-green/10' : ''}`}
+                  >
+                    <div className={`w-8 h-8 flex-shrink-0 rounded-lg flex items-center justify-center ${
+                      isFinal ? 'bg-thistle-green text-white' : 'bg-thistle-black/[0.03] text-thistle-black/50'
+                    }`}>
+                      <Icon size={16} />
                     </div>
-                    <span className="text-sm text-thistle-black/70">{item.label}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className={`w-1.5 h-1.5 rounded-full ${item.color}`} />
-                    <span className="text-xs text-thistle-black/40">{item.status}</span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Result banner */}
-            <div className="px-6 py-4 bg-thistle-green/10 border-t border-thistle-green/20">
-              <div className="flex items-center justify-between">
-                <div>
-                  <span className="text-xs font-semibold tracking-wide text-thistle-green uppercase">Recommendation</span>
-                  <p className="text-lg font-medium text-thistle-black mt-0.5">Go — Viable scheme</p>
-                </div>
-                <div className="w-10 h-10 rounded-full bg-thistle-green/20 flex items-center justify-center">
-                  <FileCheck size={18} className="text-thistle-green" />
-                </div>
-              </div>
+                    <div className="flex-1 min-w-0">
+                      <span className="block text-[10px] uppercase tracking-wider font-semibold text-thistle-green leading-none mb-0.5">{item.day}</span>
+                      <span className={`block text-sm leading-tight ${isFinal ? 'text-thistle-black font-medium' : 'text-thistle-black/70'}`}>{item.label}</span>
+                    </div>
+                    {isFinal && (
+                      <CheckCircle2 size={18} className="text-thistle-green flex-shrink-0" />
+                    )}
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
 
@@ -158,7 +175,7 @@ export const Hero: React.FC = () => {
                   <span className="text-sm font-medium text-white block mb-0.5">
                     {metric.label}
                   </span>
-                  <span className="text-xs text-white/40">
+                  <span className="text-xs text-white/70">
                     {metric.detail}
                   </span>
                 </div>
