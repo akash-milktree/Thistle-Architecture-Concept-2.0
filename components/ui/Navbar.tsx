@@ -15,6 +15,8 @@ interface NavItem {
   children?: { label: string; path: string }[];
 }
 
+// All pages surfaced in the nav so the client can review the full site.
+// The final IA will trim this back to 4 to 5 items before going live.
 const navLinks: NavItem[] = [
   { label: "Feasibility Package", path: "/feasibility-package" },
   { label: "How It Works", path: "/how-it-works" },
@@ -28,6 +30,17 @@ const navLinks: NavItem[] = [
       { label: "HMO", path: "/conversions/hmo" },
     ],
   },
+  {
+    label: "Tools",
+    path: "/tools",
+    children: [
+      { label: "Tools Index", path: "/tools" },
+      { label: "Class MA Checker", path: "/tools/class-ma-checker" },
+      { label: "GDV Calculator", path: "/tools/gdv-calculator" },
+    ],
+  },
+  { label: "About", path: "/about" },
+  { label: "Blog", path: "/blog" },
 ];
 
 export const Navbar: React.FC = () => {
@@ -71,7 +84,7 @@ export const Navbar: React.FC = () => {
         transition={{ duration: 0.35, ease: "easeInOut" }}
         className={`fixed top-0 left-0 right-0 z-50 flex items-center px-fl-margin bg-thistle-black transition-all duration-300 ${scrolled ? 'py-3 shadow-md shadow-thistle-black/20' : 'py-5'}`}
       >
-        <div className="max-w-[1360px] w-full mx-auto grid grid-cols-[auto_1fr_auto] lg:gap-fl-6 items-center relative z-50">
+        <div className="max-w-[1360px] w-full mx-auto grid grid-cols-[auto_1fr_auto] lg:gap-4 xl:gap-fl-6 items-center relative z-50">
           {/* Left: Logo */}
           <div className="flex items-center">
             <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
@@ -84,7 +97,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Centre: Nav Links */}
-          <div className="hidden lg:flex items-center justify-center gap-fl-6 text-fluid-sm font-medium text-white/80">
+          <div className="hidden lg:flex items-center justify-center gap-4 xl:gap-fl-6 text-xs xl:text-fluid-sm font-medium text-white/80">
             {navLinks.map((link) => {
               if (link.children) {
                 const active = link.children.some((ch) => pathname.startsWith(ch.path));
