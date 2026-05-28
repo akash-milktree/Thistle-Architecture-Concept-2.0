@@ -71,7 +71,7 @@ export const Navbar: React.FC = () => {
         transition={{ duration: 0.35, ease: "easeInOut" }}
         className={`fixed top-0 left-0 right-0 z-50 flex items-center px-fl-margin bg-thistle-black transition-all duration-300 ${scrolled ? 'py-3 shadow-md shadow-thistle-black/20' : 'py-5'}`}
       >
-        <div className="max-w-[1360px] w-full mx-auto grid grid-cols-3 items-center relative z-50">
+        <div className="max-w-[1360px] w-full mx-auto grid grid-cols-[auto_1fr_auto] lg:gap-fl-6 items-center relative z-50">
           {/* Left: Logo */}
           <div className="flex items-center">
             <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
@@ -92,7 +92,7 @@ export const Navbar: React.FC = () => {
                   <div key={link.path} className="relative group">
                     <Link
                       href={link.path}
-                      className={`inline-flex items-center gap-1 transition-colors hover:text-white ${active ? 'text-white' : ''}`}
+                      className={`inline-flex items-center gap-1 whitespace-nowrap transition-colors hover:text-white ${active ? 'text-white' : ''}`}
                     >
                       {link.label}
                       <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180" />
@@ -117,7 +117,7 @@ export const Navbar: React.FC = () => {
                 <Link
                   key={link.path}
                   href={link.path}
-                  className={`transition-colors hover:text-white ${pathname.startsWith(link.path) ? 'text-white' : ''}`}
+                  className={`whitespace-nowrap transition-colors hover:text-white ${pathname.startsWith(link.path) ? 'text-white' : ''}`}
                 >
                   {link.label}
                 </Link>

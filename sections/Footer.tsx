@@ -8,10 +8,20 @@ import { Reveal } from '../components/animations/Reveal';
 import { useFeasibility } from '../components/feasibility/FeasibilityContext';
 import { ArrowUpRight } from 'lucide-react';
 
-const navLinks = [
-  { label: "Feasibility Package", to: "/feasibility-package" },
+const productLinks = [
   { label: "How It Works", to: "/how-it-works" },
+  { label: "Feasibility Package", to: "/feasibility-package" },
   { label: "Case Studies", to: "/case-studies" },
+  { label: "Free Tools", to: "/tools" },
+];
+
+const conversionsLinks = [
+  { label: "Commercial to Residential", to: "/conversions/commercial-to-residential" },
+  { label: "Office to Resi (Class MA)", to: "/conversions/office-to-resi-class-ma" },
+  { label: "HMO", to: "/conversions/hmo" },
+];
+
+const companyLinks = [
   { label: "About", to: "/about" },
   { label: "Blog", to: "/blog" },
 ];
@@ -40,7 +50,7 @@ export const Footer: React.FC = () => {
           </Reveal>
           <Reveal delay={0.2}>
             <p className="text-fluid-sm text-white/80 leading-relaxed max-w-md mx-auto mb-fl-7">
-              Start with a free 15-minute expert session. Submit your property details and get a structured feasibility report with a clear Go/No-Go recommendation.
+              Submit your property details and get a structured feasibility report with a clear Go or No-Go recommendation in five days.
             </p>
           </Reveal>
           <Reveal delay={0.3}>
@@ -60,55 +70,58 @@ export const Footer: React.FC = () => {
       {/* Footer Grid */}
       <div className="py-fl-8 px-fl-margin">
         <div className="max-w-[1360px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-fl-8">
-            {/* Brand Column */}
-            <div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-fl-7">
+            {/* Brand + Contact Column (spans 2 on lg) */}
+            <div className="lg:col-span-2">
               <Link href="/" className="inline-block mb-fl-5">
                 <ThistleLogo variant="full" color="light" className="h-11" />
               </Link>
-              <p className="text-fluid-base text-white/80 leading-relaxed">
+              <p className="text-fluid-base text-white/80 leading-relaxed mb-fl-5 max-w-md">
                 Data-driven feasibility for commercial conversions, HMOs, and high-end residential across the UK.
               </p>
+              <div className="flex flex-col gap-fl-2 text-fluid-sm text-white/70">
+                <a href="mailto:hello@thistlearchitecture.co.uk" className="hover:text-thistle-green transition-colors w-fit">
+                  hello@thistlearchitecture.co.uk
+                </a>
+                {/* TODO: replace placeholder phone with the real number */}
+                <a href="tel:+442012345678" className="hover:text-thistle-green transition-colors w-fit">
+                  +44 (0)20 1234 5678
+                </a>
+                <span>London, United Kingdom</span>
+                <span className="text-white/50">Mon to Fri, 9am to 6pm GMT</span>
+              </div>
             </div>
 
-            {/* Navigation */}
+            {/* Product */}
             <div>
-              <p className="text-[10px] uppercase tracking-widest text-white/60 font-semibold mb-fl-5">Navigate</p>
+              <p className="text-[10px] uppercase tracking-widest text-white/60 font-semibold mb-fl-5">Product</p>
               <div className="flex flex-col gap-fl-3">
-                {navLinks.map((link) => (
-                  <Link key={link.to} href={link.to} className="text-fluid-base text-white/80 hover:text-white transition-colors">
+                {productLinks.map((link) => (
+                  <Link key={link.to} href={link.to} className="text-fluid-sm text-white/80 hover:text-white transition-colors">
                     {link.label}
                   </Link>
                 ))}
               </div>
             </div>
 
-            {/* Contact */}
+            {/* Conversions */}
             <div>
-              <p className="text-[10px] uppercase tracking-widest text-white/60 font-semibold mb-fl-5">Contact</p>
-              <div className="flex flex-col gap-fl-3 text-fluid-base text-white/80">
-                <a href="mailto:hello@thistlearchitecture.co.uk" className="hover:text-thistle-green transition-colors">
-                  hello@thistlearchitecture.co.uk
-                </a>
-                {/* TODO: replace placeholder phone + address with real values */}
-                <a href="tel:+442012345678" className="hover:text-thistle-green transition-colors">
-                  +44 (0)20 1234 5678
-                </a>
-                <span>
-                  London, United Kingdom
-                </span>
-                <span className="text-white/60">
-                  Mon–Fri, 9am–6pm GMT
-                </span>
+              <p className="text-[10px] uppercase tracking-widest text-white/60 font-semibold mb-fl-5">Conversions</p>
+              <div className="flex flex-col gap-fl-3">
+                {conversionsLinks.map((link) => (
+                  <Link key={link.to} href={link.to} className="text-fluid-sm text-white/80 hover:text-white transition-colors">
+                    {link.label}
+                  </Link>
+                ))}
               </div>
             </div>
 
-            {/* Legal */}
+            {/* Company */}
             <div>
-              <p className="text-[10px] uppercase tracking-widest text-white/60 font-semibold mb-fl-5">Legal</p>
+              <p className="text-[10px] uppercase tracking-widest text-white/60 font-semibold mb-fl-5">Company</p>
               <div className="flex flex-col gap-fl-3">
-                {legalLinks.map((link) => (
-                  <Link key={link.to} href={link.to} className="text-fluid-base text-white/80 hover:text-white transition-colors">
+                {companyLinks.map((link) => (
+                  <Link key={link.to} href={link.to} className="text-fluid-sm text-white/80 hover:text-white transition-colors">
                     {link.label}
                   </Link>
                 ))}
@@ -120,8 +133,8 @@ export const Footer: React.FC = () => {
 
       {/* Bottom Bar */}
       <div className="px-fl-margin py-fl-5 border-t border-white/[0.06]">
-        <div className="max-w-[1360px] mx-auto flex flex-col md:flex-row justify-between items-center gap-fl-4">
-          <div className="flex items-center gap-2 flex-wrap">
+        <div className="max-w-[1360px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-fl-4">
+          <div className="flex items-center gap-fl-3 flex-wrap">
             <ThistleLogo variant="mark" className="w-3.5 h-3.5" />
             <span className="text-xs text-white/60">&copy; 2026 Thistle Architecture Ltd. Registered in England and Wales.</span>
             <span className="text-xs text-white/40">·</span>
@@ -137,7 +150,13 @@ export const Footer: React.FC = () => {
               </a>
             </span>
           </div>
-          <div className="flex items-center gap-fl-5">
+          <div className="flex items-center gap-fl-4 flex-wrap">
+            {legalLinks.map((link) => (
+              <Link key={link.to} href={link.to} className="text-xs text-white/60 hover:text-white transition-colors">
+                {link.label}
+              </Link>
+            ))}
+            <span className="text-xs text-white/40">·</span>
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-xs text-white/70 hover:text-white transition-colors">LinkedIn</a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-xs text-white/70 hover:text-white transition-colors">Instagram</a>
           </div>

@@ -12,7 +12,7 @@ import { useFeasibility } from '../components/feasibility/FeasibilityContext';
 const metrics = [
   { value: "98.5%", label: "Planning success rate", detail: "Across all submitted schemes" },
   { value: "5 days", label: "Guaranteed turn around", detail: "From submission to clear recommendation" },
-  { value: "86%", label: "Faster than traditional routes", detail: "5 days vs 2–6 week industry average" },
+  { value: "86%", label: "Faster than traditional routes", detail: "5 days vs 2 to 6 week industry average" },
 ];
 
 // 5-day timeline shown in the right-side card
@@ -26,7 +26,7 @@ const timeline = [
 export const Hero: React.FC = () => {
   const { openModal } = useFeasibility();
   return (
-    <section className="relative min-h-screen bg-thistle-white text-thistle-black overflow-hidden flex flex-col lg:pt-20">
+    <section className="relative min-h-screen bg-thistle-white text-thistle-black overflow-hidden flex flex-col pt-24 lg:pt-28">
       <div className="max-w-[1360px] mx-auto px-fl-margin flex flex-col lg:flex-row flex-1 w-full">
 
       {/* Left Column: Content */}
@@ -167,7 +167,7 @@ export const Hero: React.FC = () => {
 
       </div>
 
-      {/* Metrics Strip — dark contrast (Approach A: inline) */}
+      {/* Metrics Strip, dark contrast (Approach A: inline) */}
       <div className="bg-thistle-black text-white">
         <div className="max-w-[1360px] mx-auto px-fl-margin py-fl-6">
           <div className="grid grid-cols-1 md:grid-cols-3">
