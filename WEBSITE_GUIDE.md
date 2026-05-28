@@ -14,16 +14,21 @@ A conversion-feasibility product website: every page is built around the idea th
 
 ## 2. The pages, what each one does, and where to find them
 
-Everything reachable from the navbar:
+For this client-review round every page is surfaced in the top navigation so you can reach everything in one click. Before launch this trims back to a tighter four to five item nav; the rest moves to the footer. The temporary state is documented in the code so it doesn't get forgotten.
 
-| Top nav item | What it is |
+### Top navigation (seven items, two with dropdowns)
+
+| Nav item | What it is |
 |---|---|
 | **Feasibility Package** | The "spec sheet" page. Deliverables, what is included, what is not, the price anchor. Designed to close someone who already knows they want a feasibility. |
 | **How It Works** | The five-step narrative. Walks through Upload, Automated Analysis (with the six Feasibility Engine data layers nested inside), Project Data Gathering Session with Jodi, Sketch Scheme Stage, Final Meeting. The brief marked this page "critical". |
 | **Case Studies** | A worked step-by-step example of how a Thistle case study unfolds (using the Croydon office conversion as the lead example), then a smaller grid of the other published cases. |
-| **Conversions** (dropdown) | Three audience-targeted SEO pages: Commercial to Residential, Office to Resi (Class MA), and HMO. Each frames the opportunity, the specific risks of that conversion type, how Thistle solves them, and links to a related case study. |
+| **Conversions** ▾ | Three audience-targeted SEO pages: Commercial to Residential, Office to Resi (Class MA), and HMO. Each frames the opportunity, the specific risks of that conversion type, how Thistle solves them, and links to a related case study. |
+| **Tools** ▾ | Free conversion-feasibility tools. The dropdown reveals the index, the Class MA Eligibility Checker (six quick questions, ends in a verdict and a Start Feasibility CTA), and the GDV & Viability Calculator (five inputs, live outputs, verdict pill). |
+| **About** | The "Meet the architects" page. Rebuilt simpler and people-led, with the team grid as the hero of the page. |
+| **Blog** | The blog and an article template. Currently using placeholder posts so the structure and styling can be reviewed. |
 
-Surfaced in the footer (intentionally not in the top nav, to keep the nav to four items):
+### Footer (full coverage in case the nav changes)
 
 | Footer column | What is in it |
 |---|---|
@@ -33,13 +38,8 @@ Surfaced in the footer (intentionally not in the top nav, to keep the nav to fou
 | **Company** | About · Blog |
 | **Bottom row** | Privacy Policy, Terms of Service, Cookie Policy, LinkedIn, Instagram, copyright |
 
-Pages you can reach only via the footer (or by typing the URL):
+### Pages you can only reach via the footer or by typing the URL
 
-- `/about` — The "Meet the architects" page. Rebuilt simpler and people-led, with the team grid as the hero of the page.
-- `/blog` and `/blog/[slug]` — The blog and an article template. Currently using placeholder posts.
-- `/tools` — The Free Tools index, with two tools beneath it.
-- `/tools/class-ma-checker` — The Class MA Eligibility Checker (six quick questions, ends in a verdict + Start Feasibility).
-- `/tools/gdv-calculator` — The GDV & Viability Calculator (five inputs, live outputs, verdict pill).
 - `/privacy`, `/terms`, `/cookies` — Legal pages, generic placeholder copy.
 
 ---
@@ -48,9 +48,9 @@ Pages you can reach only via the footer (or by typing the URL):
 
 These are the structural decisions worth understanding before you give feedback.
 
-### Why four items in the nav, not seven
+### Why the nav is currently seven items (and will not stay that way)
 
-Five or more items in the nav makes the bar feel cluttered and forces line-wrapping at smaller screens. Four is the disciplined limit. About, Tools, and Blog are deliberately reached from the footer or contextually within pages, not the nav.
+Five or more items in the nav makes the bar feel cluttered and risks line-wrapping at smaller screens; the architecture spec locked the production nav at four. For this client-review round we have temporarily expanded it to seven so you can reach every page from one place. Before launch we'll decide which items stay, with About, Tools, and Blog likely moving to the footer. The full footer coverage is already in place so that move is a one-line change to the nav array.
 
 ### Why a "Conversions" dropdown at all
 
@@ -111,13 +111,14 @@ Marked in the code as `TODO` where they appear. Listed here so you can see the f
 
 ## 5. How to review
 
-Best order:
+Best order, all from the top nav:
 
 1. Open the **homepage** and scroll the whole thing.
-2. Open the **Conversions dropdown** and visit all three conversion pages (top nav → Conversions).
-3. Open the **footer** and follow it column by column. Every page is reachable from there.
-4. Click **Free Tools** in the footer and try both tools (run the Class MA checker through to a verdict; type a number into the GDV calculator and watch the outputs change).
-5. Open the **mobile menu** on phone, walk the nav, and confirm the Conversions group is reachable as a sub-list.
+2. **Feasibility Package**, **How It Works**, **Case Studies** — the three core pages, in that order.
+3. Hover **Conversions** and visit all three (Commercial to Residential, Class MA, HMO).
+4. Hover **Tools** and try both: run the Class MA checker through to a verdict, then type a number into the GDV calculator and watch the outputs update live.
+5. **About**, then **Blog**.
+6. Open the **mobile menu** on a phone and walk the same path. The Conversions and Tools groups are expanded as indented sub-lists.
 
 Each page is verified responsive at five viewports (mobile 375, tablet 768, laptop 1280, desktop 1440, desktop 1920) using the Playwright tooling in `scripts/responsive-sweep.mjs`. The repo's screenshots folder holds the renders.
 
