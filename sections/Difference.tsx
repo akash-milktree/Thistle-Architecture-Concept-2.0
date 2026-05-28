@@ -5,7 +5,7 @@ import { Reveal } from '../components/animations/Reveal';
 import { X, Check } from 'lucide-react';
 
 const comparisons = [
-  { traditional: "2–6 week feasibility", thistle: "5 days" },
+  { traditional: "2 to 6 week feasibility", thistle: "5 days" },
   { traditional: "Opinion-led", thistle: "Data-backed" },
   { traditional: "High upfront cost", thistle: "Low entry cost" },
   { traditional: "Unclear outcomes", thistle: "Go/No-Go clarity" },

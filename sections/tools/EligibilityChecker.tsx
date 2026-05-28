@@ -110,7 +110,7 @@ const VERDICT_COPY: Record<EligibilityVerdict, VerdictCopy> = {
     text: 'text-thistle-green',
   },
   borderline: {
-    headline: 'Borderline — a feasibility removes the doubt.',
+    headline: 'Borderline. A feasibility removes the doubt.',
     body: "You have at least one unknown or borderline answer. Class MA might still work, but the prior-approval tests need real data, not assumptions. A feasibility runs them for you.",
     Icon: AlertTriangle,
     bg: 'bg-amber-50',

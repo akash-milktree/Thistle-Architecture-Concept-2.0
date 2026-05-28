@@ -71,10 +71,10 @@ export const ExitIntentPopup: React.FC = () => {
               </div>
 
               <h3 className="text-fluid-h5 font-medium tracking-tight text-thistle-black mb-fl-3">
-                Before you go —
+                Before you go.
               </h3>
               <p className="text-fluid-sm text-thistle-black/50 leading-relaxed mb-fl-6 max-w-sm mx-auto">
-                Book a free 15-minute expert session with a senior architect. No commitment, no payment — just clarity on your project.
+                Book a free 15-minute expert session with a senior architect. No commitment, no payment, just clarity on your project.
               </p>
 
               <Button

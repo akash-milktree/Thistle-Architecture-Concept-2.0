@@ -58,7 +58,7 @@ const bottomRow = [
     initials: "TB",
   },
   {
-    quote: "Fast, thorough, and commercially literate. Thistle understands what developers actually need — not what architects think we need.",
+    quote: "Fast, thorough, and commercially literate. Thistle understands what developers actually need, not what architects think we need.",
     name: "Laura Chen",
     role: "Head of Acquisitions",
     company: "Zenith Capital",
@@ -141,7 +141,7 @@ export const Testimonials: React.FC = () => {
         </div>
       </div>
 
-      {/* Top Row — scrolls right to left */}
+      {/* Top Row, scrolls right to left */}
       <div className="mb-fl-4">
         <motion.div
           className="flex gap-fl-4 w-max"
@@ -158,7 +158,7 @@ export const Testimonials: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Bottom Row — scrolls left to right */}
+      {/* Bottom Row, scrolls left to right */}
       <div>
         <motion.div
           className="flex gap-fl-4 w-max"

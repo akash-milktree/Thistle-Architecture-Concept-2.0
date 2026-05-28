@@ -10,11 +10,11 @@ import { useFeasibility } from '../components/feasibility/FeasibilityContext';
 const faqs = [
   {
     question: "How much does a feasibility cost?",
-    answer: "Fixed-fee pricing based on building size and complexity — no hourly rates, no scope creep. You know exactly what you're paying before we start. Most feasibilities range from a few hundred to a few thousand pounds, depending on scheme complexity.",
+    answer: "Fixed-fee pricing based on building size and complexity, no hourly rates, no scope creep. You know exactly what you're paying before we start. Most feasibilities range from a few hundred to a few thousand pounds, depending on scheme complexity.",
   },
   {
     question: "How fast do I get results?",
-    answer: "Initial insight within 24 hours of submission. Full feasibility report — including layouts, risk register, and Go/No-Go recommendation — delivered within 5 working days. That's 83% faster than the traditional 2–6 week process.",
+    answer: "Initial insight within 24 hours of submission. Full feasibility report, including layouts, risk register, and Go/No-Go recommendation, delivered within 5 working days. That's 83% faster than the traditional 2 to 6 week process.",
   },
   {
     question: "How accurate is the data analysis?",
@@ -22,19 +22,19 @@ const faqs = [
   },
   {
     question: "What if planning is refused?",
-    answer: "Our feasibility identifies planning risk before you apply. We analyse prior approval history, policy alignment, and local constraints to flag issues early. If a scheme isn't viable, you'll know before you commit — that's the point of the Go/No-Go recommendation.",
+    answer: "Our feasibility identifies planning risk before you apply. We analyse prior approval history, policy alignment, and local constraints to flag issues early. If a scheme isn't viable, you'll know before you commit. That's the point of the Go/No-Go recommendation.",
   },
   {
     question: "What happens after I receive the feasibility?",
-    answer: "You get a clear Go or No-Go. If it's a Go, the report includes everything you need to progress — GA plans, accommodation schedules, and a fee proposal for the full project. If it's a No-Go, you've saved weeks and potentially thousands on a non-viable scheme.",
+    answer: "You get a clear Go or No-Go. If it's a Go, the report includes everything you need to progress: GA plans, accommodation schedules, and a fee proposal for the full project. If it's a No-Go, you've saved weeks and potentially thousands on a non-viable scheme.",
   },
   {
     question: "Can I use the report to raise finance?",
-    answer: "Yes. Reports include GDV projections, unit mixes, efficiency ratios, and risk assessments — exactly what banks, investors, and JV partners need to see. They're structured to support funding applications from day one.",
+    answer: "Yes. Reports include GDV projections, unit mixes, efficiency ratios, and risk assessments, exactly what banks, investors, and JV partners need to see. They're structured to support funding applications from day one.",
   },
   {
     question: "Do I need plans before ordering?",
-    answer: "No. Just the address, basic building details, and your target unit mix. If you have floor plans, great — they speed things up. If not, we can work with what's available and source what we need.",
+    answer: "No. Just the address, basic building details, and your target unit mix. If you have floor plans, great. They speed things up. If not, we can work with what's available and source what we need.",
   },
 ];
 

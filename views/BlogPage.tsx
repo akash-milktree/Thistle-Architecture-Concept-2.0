@@ -16,7 +16,7 @@ export const BlogPage: React.FC = () => {
       <PageHero
         label="Blog"
         heading="Insights For Developers."
-        description="Practical articles on planning, feasibility, and the commercial conversion market — written by architects, for developers."
+        description="Practical articles on planning, feasibility, and the commercial conversion market, written by architects, for developers."
       />
 
       {/* Featured Post */}

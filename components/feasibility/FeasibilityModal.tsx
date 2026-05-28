@@ -93,7 +93,7 @@ export const FeasibilityModal: React.FC = () => {
                 ))}
               </div>
               <p className="text-[10px] uppercase tracking-[0.2em] text-thistle-black/30 font-semibold mt-3">
-                Step {currentStep + 1} of {steps.length} — {steps[currentStep].label}
+                Step {currentStep + 1} of {steps.length}: {steps[currentStep].label}
               </p>
             </div>
 
