@@ -1,164 +1,132 @@
 # Thistle Architecture Website — Review Guide
 
-This is a tour of the website built for Thistle Architecture. It explains what every page does, the reasoning behind the structural decisions, and what we still need from you before the site goes fully live.
+A short read before you open the site. What each page does, why we made the decisions we made, and how to walk through it so the structure makes sense.
 
-Read this in any order. Most of it is "what you are looking at and why."
+Live site: https://thistle-architecture-concept-2-0.vercel.app
+Branded version of this guide: https://thistle-architecture-concept-2-0.vercel.app/website-guide.html
 
 ---
 
 ## 1. What the website is, in one line
 
-A conversion-feasibility product website: every page is built around the idea that Thistle is a **product you start, not a practice you enquire about**. The primary action everywhere is **"Start Feasibility"**.
+A conversion-feasibility product website. Every page is built around one idea: Thistle is a **product you start, not a practice you enquire about**. The primary action everywhere is **"Start Feasibility"**.
 
 ---
 
-## 2. The pages, what each one does, and where to find them
+## 2. A tour of every page
 
-For this client-review round every page is surfaced in the top navigation so you can reach everything in one click. Before launch this trims back to a tighter four to five item nav; the rest moves to the footer. The temporary state is documented in the code so it doesn't get forgotten.
+For this review round every page is on the top navigation so you can reach them in one click. We will trim the nav back to four or five items before launch and the rest will live in the footer; the footer is already comprehensive so you can review from either place.
 
-### Top navigation (seven items, two with dropdowns)
+The main pages, in the order they are in the nav:
 
-| Nav item | What it is |
+| Page | What it is |
 |---|---|
-| **Feasibility Package** | The "spec sheet" page. Deliverables, what is included, what is not, the price anchor. Designed to close someone who already knows they want a feasibility. |
-| **How It Works** | The five-step narrative. Walks through Upload, Automated Analysis (with the six Feasibility Engine data layers nested inside), Project Data Gathering Session with Jodi, Sketch Scheme Stage, Final Meeting. The brief marked this page "critical". |
-| **Case Studies** | A worked step-by-step example of how a Thistle case study unfolds (using the Croydon office conversion as the lead example), then a smaller grid of the other published cases. |
-| **Conversions** ▾ | Three audience-targeted SEO pages: Commercial to Residential, Office to Resi (Class MA), and HMO. Each frames the opportunity, the specific risks of that conversion type, how Thistle solves them, and links to a related case study. |
-| **Tools** ▾ | Free conversion-feasibility tools. The dropdown reveals the index, the Class MA Eligibility Checker (six quick questions, ends in a verdict and a Start Feasibility CTA), and the GDV & Viability Calculator (five inputs, live outputs, verdict pill). |
-| **About** | The "Meet the architects" page. Rebuilt simpler and people-led, with the team grid as the hero of the page. |
-| **Blog** | The blog and an article template. Currently using placeholder posts so the structure and styling can be reviewed. |
+| **Home** | The full pitch. Hero, the five-day promise, who uses Thistle, how the process works, what is inside the analysis, the deliverables, proof, FAQ. Long on purpose for someone who lands cold. |
+| **Feasibility Package** | The spec sheet. What you get, what is included, what is not, the price anchor. Designed to close someone who already knows they want a feasibility. |
+| **How It Works** | The five-step process walked through in detail: Upload, Automated Analysis (with the six data layers shown inside it), Project Data Gathering Session with Jodi, Sketch Scheme Stage, Final Meeting. |
+| **Case Studies** | A worked example of how a Thistle case study unfolds, step by step, using the Croydon office conversion as the lead. The other published cases sit in a smaller grid below. |
+| **Conversions ▾** | Three pages aimed at the kind of buyer who searches by conversion type: Commercial to Residential, Office to Resi (Class MA), and HMO. Each names the opportunity, the specific risks, and how Thistle solves them. |
+| **Tools ▾** | Two free interactive tools. The Class MA Eligibility Checker (six quick questions, ends in a verdict and a Start Feasibility CTA) and the GDV & Viability Calculator (five inputs, live outputs, verdict pill). |
+| **About** | The "meet the architects" page. People-led, with the team grid as the hero of the page. |
+| **Blog** | Article index plus a single-post template. Placeholder posts so the structure and styling can be reviewed. |
 
-### Footer (full coverage in case the nav changes)
-
-| Footer column | What is in it |
-|---|---|
-| **Brand + contact** | The lockup, the strapline, email, phone, address, opening hours. |
-| **Product** | How It Works · Feasibility Package · Case Studies · Free Tools |
-| **Conversions** | The three conversion-type pages |
-| **Company** | About · Blog |
-| **Bottom row** | Privacy Policy, Terms of Service, Cookie Policy, LinkedIn, Instagram, copyright |
-
-### Pages you can only reach via the footer or by typing the URL
-
-- `/privacy`, `/terms`, `/cookies` — Legal pages, generic placeholder copy.
+The footer also lists Privacy, Terms, and Cookies. These are placeholder copies of standard legal pages.
 
 ---
 
 ## 3. Why we built it this way
 
-These are the structural decisions worth understanding before you give feedback.
+The small set of decisions worth understanding before you give feedback.
 
-### Why the nav is currently seven items (and will not stay that way)
+### The site treats Thistle as a product, not a practice
 
-Five or more items in the nav makes the bar feel cluttered and risks line-wrapping at smaller screens; the architecture spec locked the production nav at four. For this client-review round we have temporarily expanded it to seven so you can reach every page from one place. Before launch we'll decide which items stay, with About, Tools, and Blog likely moving to the footer. The full footer coverage is already in place so that move is a one-line change to the nav array.
+Everywhere a normal architecture site would say "Get in touch" or "Request a proposal", this one says "Start Feasibility". The brief was explicit that Thistle is something a developer *starts*, not something they enquire about. Every page is shaped to drive that one action.
 
-### Why a "Conversions" dropdown at all
+### The Conversions section exists because that is how developers search
 
-The single biggest SEO opportunity for a feasibility business is being found by people searching for the specific kind of conversion they are doing ("office to resi feasibility", "HMO feasibility", and so on). Each conversion page is one focused landing page targeting one buyer type. Adding a fourth type later means adding one data record to `data/conversionsData.ts` — the route and page generate automatically.
+People searching for a feasibility do not type "feasibility services". They type the specific conversion they are doing: "office to resi feasibility", "HMO feasibility". A page per conversion type, written for that buyer, lets the site show up in those searches and lets a visitor land somewhere that talks directly to their situation. Adding a fourth conversion type later is a small change, not a rebuild.
 
-### Why a "Free Tools" section
+### Free Tools are there to qualify intent
 
-Every comparable site in this space (Resi, Searchland, Urbanist, your own sister product hmochecker) leads with free tools as the main lead-generation mechanism. A developer who finishes a Class MA check or types numbers into a GDV calculator is a much warmer lead than someone landing cold on the homepage. Both tools end on **"Start Feasibility"**.
+Every comparable site in this space (Resi, Searchland, Urbanist, your own sister site hmochecker) leads with free tools. A developer who finishes a Class MA check or types real numbers into a GDV calculator is a much warmer lead than someone landing cold. Both tools end on "Start Feasibility".
 
-### Why the tools "give a hint, not an answer"
+### The tools deliberately do not give a final answer
 
-Both tools deliberately stop short of giving a final answer. The Class MA checker has three verdicts (Likely eligible, Borderline, Likely not eligible) and each one drives to "get a proper feasibility". The GDV calculator shows a marginal/viable/strong band and points at "a real feasibility models comparables and risk". This is the design intent — the tools qualify intent, the feasibility closes.
+The Class MA checker returns three possible verdicts (Likely eligible, Borderline, Likely not eligible) and each one routes the user to a proper feasibility. The GDV calculator shows marginal/viable/strong and points at "a real feasibility models comparables and risk". The tools qualify the lead; the feasibility closes it. That is the design intent.
 
-### Why one shared template runs the three Conversions pages
+### The homepage is long because it answers objections in order
 
-Same structure, different content. Adding a fourth conversion type is a one-record change. The pages are statically generated at build time so each one has its own SEO metadata.
+Each homepage section answers one buyer question in sequence: what is it → does anyone use it → how does it work → is the data credible → what is inside the analysis → who actually does the work → why pick this over the alternatives → proof → more proof → FAQ. That ordering is the conversion path.
 
-### Why the homepage has so many sections
+### The Case Studies page is a worked example, not a portfolio grid
 
-Each section answers one buyer objection in sequence: hero (what is it?), developer logos (does anyone use this?), Process (how does it work?), Data Sources (is the data credible?), Feasibility Engine (what is inside the analysis?), Architect-Led Review (who actually does the work?), Three Pillars (why pick this over the alternatives?), Difference (vs traditional architect), Case Studies (proof), Testimonials (more proof), FAQ.
+The brief asked for "an example of a case study step by step" so the Case Studies page is itself the worked example, using the Croydon office conversion. The other cases live as smaller cards underneath. A traditional portfolio grid would have been the simpler choice but the brief explicitly pointed away from that.
 
-That is the conversion path. The page is intentionally long for someone who lands cold.
+### The nav currently has seven items, and will not stay that way
 
-### Why the homepage's case-study cards link to a step-by-step page, not a list
-
-The Case Studies page is itself a worked example of how a Thistle case study unfolds, with the other cases as a smaller grid below. The brief asked for "an example of a case study step by step" rather than a portfolio grid.
+The plan was always four items in the nav, with About, Tools, and Blog reached from the footer. For this client-review round we have temporarily expanded to seven so you can reach every page in one click. We will trim it before launch.
 
 ---
 
-## 4. What is still needed from you before the site goes fully live
+## 4. How to review, in order
 
-Marked in the code as `TODO` where they appear. Listed here so you can see the full picture at once.
+The simplest path that lets the structure make sense:
+
+1. Open the homepage and scroll the whole thing.
+2. Then walk the nav left to right: Feasibility Package, How It Works, Case Studies.
+3. Hover Conversions and visit all three (Commercial to Residential, Class MA, HMO).
+4. Hover Tools and try both. Run the Class MA checker through to a verdict. Type a number into the GDV calculator and watch the outputs update.
+5. About, then Blog.
+6. Open the same site on your phone and walk the menu. Conversions and Tools open as expandable sub-lists in the mobile drawer.
+
+Every page has been visually checked at five screen widths from a small phone up to a large desktop, so you do not need to think about responsiveness as you go. Look for content, tone, and structure.
+
+---
+
+## 5. What we still need from you
+
+The site is fully built and reviewable. These are the items currently on placeholders that need real values before launch.
 
 ### Content
 
-- **Phone number** in the footer (currently placeholder `+44 (0)20 1234 5678`).
-- **Real email** in the footer (currently `hello@thistlearchitecture.co.uk` — replace if different).
-- **Case study financials** — the four case studies have placeholder purchase prices, GDV, and uplift figures. They are reasoned guesses based on the building type and location. Real numbers replace them whenever you can share them.
-- **Real team headshots and bios** for the About page (currently Unsplash stock placeholders for Sarah Jenkins, David Ross, Elena Kova, James Thorne; real images and bios replace these).
-- **Real Kaan photo** in the homepage hero card (`public/kaan.png` is the current image — confirm if it is the right one).
-- **Real developer-client logos** for the "Trusted by" strip on the homepage. We are using the same logos shown on hmochecker.co.uk as a starting set. Some have dark backgrounds baked in (Property & Poppadoms, Brentor Group, Frame 4). If you can get **transparent versions** from the original brands, the strip will look cleaner.
-- **Confirmation of the duration labels on How It Works** — the per-step durations ("Under 2 minutes", "Automated, within 48 hours", "Days 3 to 4", "Day 5") are a proposal, flagged in the data file for confirmation.
+- **Phone number** in the footer (placeholder right now).
+- **Real email** in the footer (currently `hello@thistlearchitecture.co.uk`; replace if different).
+- **Real numbers for the four case studies**: purchase prices, GDV, uplift figures. They are reasoned guesses based on the building type and location and read as plausible, but real numbers replace them whenever you can share them.
+- **Real team headshots and short bios** for the About page. Stock photographs sit there as placeholders.
+- **Confirmation of the Kaan photo** in the homepage hero card.
+- **Transparent versions of the dark-background developer logos** (Property & Poppadoms, Brentor Group, Frame 4). The logos themselves are correct; some carry their own dark background, which makes the strip look a bit boxy. Cleaner-looking transparent versions would tidy it up.
+- **Confirm the duration labels on the How It Works page** ("Under 2 minutes", "Within 48 hours", "Days 3 to 4", "Day 5"). These are a proposal.
 
-### Conversion
+### Conversion mechanics
 
-- **Feasibility-modal form ID** — the existing "Start Feasibility" modal does not yet POST to a backend. It is currently a local form. Wire it to Formspree or an equivalent service when ready.
-- **Contact page** — not built in this phase. The site-architecture plan calls for a dedicated `/contact` page with an inline form (the one place that is not the modal). Add this when the Formspree form ID is ready.
+- **Where leads go.** The "Start Feasibility" modal collects the property details and is ready to send them to wherever you want; right now it does not send anywhere. As soon as you tell us where (an email inbox, a CRM, a form-handling service), we wire it in.
+- **The Contact page** is being built next.
 
 ### Imagery
 
-- **AI image slots on How It Works** — Step 3 (the call with Jodi) and Step 5 (the final feasibility meeting) and the hero/CTA backgrounds are designed to take generated imagery. They currently use a brand-tinted placeholder treatment. We will need an OpenAI image API key and a locked image style preamble before generating real images.
+- **Generated images on the How It Works page** for two of the steps (the call with Jodi, the final meeting) and a couple of backgrounds. They show a brand-tinted placeholder treatment today. Real generated imagery slots in once a style direction is agreed.
 
 ### Pricing
 
-- **The "from £X" anchor on the Feasibility Package page** — the pricing component is designed to graduate to a full tier table when you confirm numbers.
+- **The "from £X" anchor** on the Feasibility Package page. The component is ready to graduate to a full tier table when you confirm the numbers.
 
 ---
 
-## 5. How to review
+## 6. What is locked vs what you can edit freely
 
-Best order, all from the top nav:
+A small number of lines were chosen deliberately and form the brand's positioning. Everything else is open for you to rewrite line by line.
 
-1. Open the **homepage** and scroll the whole thing.
-2. **Feasibility Package**, **How It Works**, **Case Studies** — the three core pages, in that order.
-3. Hover **Conversions** and visit all three (Commercial to Residential, Class MA, HMO).
-4. Hover **Tools** and try both: run the Class MA checker through to a verdict, then type a number into the GDV calculator and watch the outputs update live.
-5. **About**, then **Blog**.
-6. Open the **mobile menu** on a phone and walk the same path. The Conversions and Tools groups are expanded as indented sub-lists.
-
-Each page is verified responsive at five viewports (mobile 375, tablet 768, laptop 1280, desktop 1440, desktop 1920) using the Playwright tooling in `scripts/responsive-sweep.mjs`. The repo's screenshots folder holds the renders.
-
----
-
-## 6. Where the project documentation lives
-
-For deeper context (not required reading):
-
-- `brief.md` at the root — the structured brief.
-- `design.md` at the root — the design system (colour tokens, type scale, spacing, copy rules).
-- `docs/superpowers/specs/` — every design spec, one per page or template.
-- `docs/superpowers/plans/` — the implementation plans, task by task.
-- `PROJECT_SOP.md` — the playbook the build followed.
-
-If anything in the site puzzles you, the spec for that page in `docs/superpowers/specs/` explains why it is built that way.
-
----
-
-## 7. The headline copy decisions (what is fixed vs flexible)
-
-Some lines were chosen deliberately to set a tone. Worth knowing which ones are locked vs which you can edit freely.
-
-**Locked (these are positioning, not copy):**
+### Locked: these are positioning, not copy
 
 - "From Building To Viable Conversion. In 5 Days." — the homepage headline.
 - "Thistle specialises in unlocking value from existing buildings" — the positioning sentence.
-- "Start Feasibility" — the canonical CTA. Used everywhere.
+- "Start Feasibility" — the canonical CTA. Used on every page.
 
-**Flexible (rewrite whenever you want):**
+### Editable: every other line on the site
 
-- Every per-page headline (e.g. "Class MA: Does Your Building Qualify?", "Test A Building Before You Bid.", "From Building To Go/No-Go, Step By Step.")
-- All body copy on every page
-- The verdict-card copy on the Class MA checker (Likely eligible / Borderline / Likely not eligible)
-- The case-study challenge / approach / outcome paragraphs
+- Every per-page headline.
+- All body copy on every page.
+- The verdict-card copy on the Class MA checker.
+- The case-study challenge / approach / outcome paragraphs.
 
-If you want a single line changed, point to it; if you want a tone shift, say so and we can do a pass across the whole site.
-
----
-
-## 8. One known follow-up
-
-The `/case-studies/[slug]` dynamic route still uses the older synchronous Next.js params signature. The build works and the page renders fine. The dev console produces an async-params warning. It is a one-line follow-up fix whenever convenient. It does not affect the live site.
+If you want a single line changed, point to it. If you want a tone shift across the whole site, say so and we will do a copy pass.
