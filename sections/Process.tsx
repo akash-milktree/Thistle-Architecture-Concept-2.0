@@ -22,7 +22,7 @@ const steps = [
   {
     num: "03",
     title: "Project Data Gathering Session",
-    desc: "An instant call with Jodi, our property expert, to gather the details we need and walk through your goals for the site.",
+    desc: "An instant call with Jodi, our property expert, to gather the details we need and walk through your goals for the site. A short, focused conversation that keeps the five-day clock moving.",
     icon: Phone,
   },
   {

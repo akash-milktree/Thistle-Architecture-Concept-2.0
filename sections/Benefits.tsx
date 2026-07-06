@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import { Reveal } from '../components/animations/Reveal';
 import { Clock, PoundSterling, Compass, type LucideIcon } from 'lucide-react';
 import { InlineCTA } from '../components/ui/InlineCTA';
@@ -29,22 +30,9 @@ const pillars: Pillar[] = [
   },
 ];
 
-const PillarCard: React.FC<{ pillar: Pillar }> = ({ pillar }) => {
-  const Icon = pillar.icon;
-  return (
-    <div className="h-full rounded-2xl bg-white border border-thistle-black/[0.06] p-fl-6 flex flex-col">
-      <div className="w-14 h-14 rounded-2xl bg-thistle-green/10 flex items-center justify-center mb-fl-5">
-        <Icon size={26} className="text-thistle-green" />
-      </div>
-      <h3 className="text-fluid-h5 font-medium tracking-tight text-thistle-black mb-fl-3">{pillar.title}</h3>
-      <p className="text-fluid-base text-thistle-black/80 leading-relaxed">{pillar.body}</p>
-    </div>
-  );
-};
-
 export const Benefits: React.FC = () => {
   return (
-    <section className="bg-thistle-white py-fl-section px-fl-margin">
+    <section className="bg-white py-fl-section px-fl-margin">
       <div className="max-w-[1360px] mx-auto">
         {/* Header */}
         <div className="text-center mb-fl-8 max-w-2xl mx-auto">
@@ -58,13 +46,43 @@ export const Benefits: React.FC = () => {
           </Reveal>
         </div>
 
-        {/* Pillars grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-fl-4 mb-fl-7">
-          {pillars.map((p, i) => (
-            <Reveal key={i} delay={i * 0.1}>
-              <PillarCard pillar={p} />
-            </Reveal>
-          ))}
+        {/* Photo + three equal rows */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-fl-5 mb-fl-7 lg:items-stretch">
+          <Reveal fullHeight className="h-full lg:col-span-2">
+            <div className="relative h-72 lg:h-full min-h-[288px] rounded-2xl overflow-hidden border border-thistle-black/[0.06]">
+              <Image
+                src="/images/generated/site-visit.jpg"
+                alt="Two people reviewing a feasibility document outside a vacant office building"
+                fill
+                sizes="(max-width: 1024px) 90vw, 640px"
+                className="object-cover"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-thistle-black/70 to-transparent p-fl-5 pt-fl-8">
+                <p className="text-sm text-white/95 max-w-sm leading-snug">
+                  Built for the decisions developers actually face: bid, negotiate, or walk away.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="flex flex-col gap-fl-4 h-full lg:col-span-3">
+            {pillars.map((p, i) => {
+              const Icon = p.icon;
+              return (
+                <Reveal key={p.title} delay={0.1 + i * 0.08} fullHeight className="flex-1">
+                  <div className="h-full rounded-2xl bg-thistle-white/70 border border-thistle-black/[0.06] p-fl-5 flex items-start gap-fl-4">
+                    <div className="w-11 h-11 rounded-xl bg-thistle-green/10 flex items-center justify-center flex-shrink-0">
+                      <Icon size={22} className="text-thistle-green" />
+                    </div>
+                    <div>
+                      <h3 className="text-fluid-h6 font-medium tracking-tight text-thistle-black mb-1.5">{p.title}</h3>
+                      <p className="text-fluid-sm text-thistle-black/70 leading-relaxed">{p.body}</p>
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
         </div>
 
         <Reveal delay={0.4}>
