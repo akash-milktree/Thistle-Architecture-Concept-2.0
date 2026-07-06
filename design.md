@@ -82,16 +82,58 @@ The canonical set. New pages compose from these; do not invent parallel patterns
 
 | Component | Path | Purpose |
 |---|---|---|
-| `Navbar` | `components/ui/Navbar.tsx` | Fixed dark top nav, 4 items, mobile drawer |
-| `Footer` | `sections/Footer.tsx` | Dark footer, link columns, contact details |
+| `Navbar` | `components/ui/Navbar.tsx` | Fixed dark top nav, 6 items with dropdowns, mobile drawer |
+| `Footer` | `sections/Footer.tsx` | Photo-backed CTA band ("Make Faster Decisions."), link columns, contact details |
 | `PageHero` | `components/ui/PageHero.tsx` | Shared inner-page hero (label, heading, description) |
 | `Button` | `components/ui/Button.tsx` | Primary / variant button, renders as motion.button |
-| `InlineCTA` | `components/ui/InlineCTA.tsx` | Mid-page CTA band wrapping the standard Button |
+| `InlineCTA` | `components/ui/InlineCTA.tsx` | Mid-page CTA; tier 1 by default, `href=""` opens the form |
 | `Reveal` | `components/animations/Reveal.tsx` | Scroll-reveal animation wrapper |
-| `FeasibilityModal` + `useFeasibility` | `components/feasibility/` | The conversion modal and its context (`FeasibilityModal.tsx`, `FeasibilityContext.tsx`) |
+| `FeasibilityModal` + `useFeasibility` | `components/feasibility/` | Full-page multi-step form (4 steps, progress bar, submits to `/api/leads`) |
+| `StickyCTA` | `sections/feasibility-package/StickyCTA.tsx` | Mobile-only sticky bar, feasibility page only |
+| `SampleReportGate` | `sections/feasibility-package/SampleReportGate.tsx` | Email-gated sample report download |
+| `ToolGate` | `components/ui/ToolGate.tsx` | Email soft-gate for tool detail; unlock persists in localStorage |
+| `HowItWorks` | `sections/feasibility-package/HowItWorks.tsx` | Five-step timeline, `id="how-it-works"` (redirect target) |
+| `ExitIntentPopup` | `components/ExitIntentPopup.tsx` | Rendered on `/feasibility-package` only (gated in PageShell) |
 
-Templates to be built in later plans (per the architecture spec): `ConversionPage`,
-`ToolPage`, `SubPageCTA`.
+## CTA canon (two-tier funnel)
+
+- **Tier 1, site-wide**: label "Book Your Feasibility", navigates to
+  `/feasibility-package`. Every CTA outside the package page is tier 1.
+- **Tier 2, package page only**: label "Start Feasibility", opens the
+  full-page form via `useFeasibility().openModal`.
+- Reassurance microcopy under primary CTAs: "No obligation. Response within
+  one working day."
+- Leads POST to `/api/leads` with a `source` field (`feasibility-form`,
+  `sample-report`, `class-ma-checker`, `gdv-calculator`) and forward to the
+  CRM via the `LEAD_WEBHOOK_URL` env var (server logs when unset).
+
+## Imagery system
+
+Priority order when choosing imagery for any section:
+
+1. **Real drawings**, `public/images/projects/` (converted from client sketch
+   PDFs at 150dpi). Render `object-contain` inside a fixed-aspect frame:
+   `rounded-2xl border border-thistle-black/[0.06] bg-white` (or
+   `bg-thistle-white/60`), padding 2 to 3.
+2. **Real people**, `public/images/team/` (ed, kaan, jan, nick, onaiza).
+   Team cards crop `aspect-[4/5] object-cover`.
+3. **Generated photography** (Higgsfield), `public/images/generated/`. Muted
+   sage/off-white palette, overcast UK light, no readable text. Render
+   `object-cover`.
+4. **Licence-free stock**, `public/images/site/` (hero drone shot, CTA band).
+   Every stock or generated file is recorded in `public/images/LICENCES.md`.
+
+Full-bleed image sections put the image in a `relative` wrapper with
+`fill + object-cover` and a `bg-thistle-black/55` to `/75` overlay; text on
+top is white. No Unsplash hotlinks anywhere.
+
+## Blog
+
+Categories (fixed union in `data/blogData.ts`): Planning, Permitted
+Development, Feasibility, HMO, Investment, News. One post per file in
+`data/blog/`. Content blocks: `## ` h2, `### ` h3, `- ` bullets, plain
+paragraphs, inline `[text](/path)` links. Every post ends with an FAQ
+section. Post pages emit Article JSON-LD.
 
 ## Copy rules
 
@@ -101,8 +143,11 @@ Templates to be built in later plans (per the architecture spec): `ConversionPag
   (5 to 7 years, not 5 to 7 with a dash).
 - Reading level: Grade 7 UK English. Short paragraphs, plain words.
 - No SaaS hype verbs ("supercharge", "unlock", "unleash").
-- Canonical CTA label: "Start Feasibility" (the Contact page form is the one
-  exception to the modal pattern).
+- CTA labels follow the CTA canon above. The Contact page form is the one
+  exception to the funnel pattern.
+- No invented facts: every metric, testimonial, case-study figure, and team
+  credential must trace to a client document or be listed in
+  `docs/case-study-confirmations.md`.
 
 ## Quality bar
 
