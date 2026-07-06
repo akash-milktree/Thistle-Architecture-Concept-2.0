@@ -105,7 +105,7 @@ const CaseCard: React.FC<{ item: CaseStudy }> = ({ item }) => {
 
 export const CaseStudies: React.FC = () => {
   return (
-    <section className="py-fl-section px-fl-margin bg-thistle-white">
+    <section className="py-fl-section px-fl-margin bg-white">
       <div className="max-w-[1360px] mx-auto">
         {/* Header — centered like other sections */}
         <div className="text-center mb-fl-8 max-w-2xl mx-auto">

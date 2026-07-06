@@ -38,12 +38,12 @@ const faqs = [
   },
 ];
 
-export const FAQ: React.FC = () => {
+export const FAQ: React.FC<{ tinted?: boolean }> = ({ tinted = false }) => {
   const router = useRouter();
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section className="py-fl-section px-fl-margin bg-thistle-white">
+    <section className={`py-fl-section px-fl-margin ${tinted ? 'bg-thistle-white' : 'bg-white'}`}>
       <div className="max-w-[1360px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-fl-8">
           {/* Left: Header */}

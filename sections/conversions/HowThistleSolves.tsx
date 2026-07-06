@@ -7,6 +7,7 @@ import { deliverables } from '../../data/howItWorksData';
 import type { DeliverableHighlight } from '../../data/conversionsData';
 
 interface HowThistleSolvesProps {
+  tinted?: boolean;
   typeLabel: string;
   highlights: DeliverableHighlight[];
 }
@@ -14,8 +15,8 @@ interface HowThistleSolvesProps {
 // Type-specific deliverable highlights. For each highlight, render a card with
 // the deliverable's canonical title and description (from howItWorksData) plus
 // the per-type "for this type" framing line (from the conversion record).
-export const HowThistleSolves: React.FC<HowThistleSolvesProps> = ({ typeLabel, highlights }) => (
-  <section className="bg-white py-fl-section px-fl-margin">
+export const HowThistleSolves: React.FC<HowThistleSolvesProps> = ({ typeLabel, highlights, tinted = false }) => (
+  <section className={`${tinted ? 'bg-thistle-white' : 'bg-white'} py-fl-section px-fl-margin`}>
     <div className="max-w-[1360px] mx-auto">
       <div className="text-center mb-fl-8 max-w-2xl mx-auto">
         <Reveal>

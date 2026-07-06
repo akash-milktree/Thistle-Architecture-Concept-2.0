@@ -102,7 +102,7 @@ export const FeasibilityPackagePage: React.FC = () => {
       <FeasibilityEngine />
 
       {/* The six deliverables, with real imagery */}
-      <section className="bg-white py-fl-section px-fl-margin">
+      <section className="bg-thistle-white py-fl-section px-fl-margin">
         <div className="max-w-[1360px] mx-auto">
           <div className="text-center mb-fl-section-sm max-w-2xl mx-auto">
             <Reveal>
@@ -224,7 +224,7 @@ export const FeasibilityPackagePage: React.FC = () => {
       <PackageFAQ />
 
       {/* Closing CTA */}
-      <section className="py-fl-section px-fl-margin bg-white">
+      <section className="py-fl-section px-fl-margin bg-thistle-white">
         <div className="max-w-[1360px] mx-auto text-center">
           <Reveal>
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-5">

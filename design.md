@@ -122,6 +122,11 @@ Priority order when choosing imagery for any section:
    `object-cover`.
 4. **Licence-free stock**, `public/images/site/` (hero drone shot, CTA band).
    Every stock or generated file is recorded in `public/images/LICENCES.md`.
+5. **Video**, `public/videos/`. The homepage hero plays a muted looping
+   image-to-video generated from the hero still (poster = the still), so the
+   fallback is seamless. Video renders only at `sm:` and up and only when
+   `motion-safe`; keep hero video files under ~2 MB (1600px, CRF 28,
+   faststart, no audio).
 
 Full-bleed image sections put the image in a `relative` wrapper with
 `fill + object-cover` and a `bg-thistle-black/55` to `/75` overlay; text on

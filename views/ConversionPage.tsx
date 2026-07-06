@@ -21,6 +21,7 @@ interface ConversionPageProps {
 
 export const ConversionPage: React.FC<ConversionPageProps> = ({ conversion }) => {
   const router = useRouter();
+  const hasExtra = !!conversion.extraSection;
 
   return (
     <>
@@ -81,12 +82,12 @@ export const ConversionPage: React.FC<ConversionPageProps> = ({ conversion }) =>
         </section>
       )}
 
-      <HowThistleSolves typeLabel={conversion.label} highlights={conversion.deliverableHighlights} />
+      <HowThistleSolves typeLabel={conversion.label} highlights={conversion.deliverableHighlights} tinted={hasExtra} />
 
-      <RelatedCaseStudy slug={conversion.relatedCaseStudySlug} />
+      <RelatedCaseStudy slug={conversion.relatedCaseStudySlug} tinted={!hasExtra} />
 
       {/* Closing CTA */}
-      <section className="py-fl-section px-fl-margin bg-white">
+      <section className={`py-fl-section px-fl-margin ${hasExtra ? 'bg-thistle-white' : 'bg-white'}`}>
         <div className="max-w-[1360px] mx-auto text-center">
           <Reveal>
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-5">
@@ -106,7 +107,7 @@ export const ConversionPage: React.FC<ConversionPageProps> = ({ conversion }) =>
         </div>
       </section>
 
-      <FAQ />
+      <FAQ tinted={!hasExtra} />
     </>
   );
 };

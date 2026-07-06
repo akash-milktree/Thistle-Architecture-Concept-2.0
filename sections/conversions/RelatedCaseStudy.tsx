@@ -8,18 +8,19 @@ import { Reveal } from '../../components/animations/Reveal';
 import { caseStudies } from '../../data/caseStudiesData';
 
 interface RelatedCaseStudyProps {
+  tinted?: boolean;
   slug?: string;
 }
 
 // A single case-study feature card looked up by slug. Returns null when the
 // slug is missing or does not match any case so the page degrades cleanly.
-export const RelatedCaseStudy: React.FC<RelatedCaseStudyProps> = ({ slug }) => {
+export const RelatedCaseStudy: React.FC<RelatedCaseStudyProps> = ({ slug, tinted = true }) => {
   if (!slug) return null;
   const item = caseStudies.find((c) => c.slug === slug);
   if (!item) return null;
 
   return (
-    <section className="bg-thistle-white py-fl-section px-fl-margin">
+    <section className={`${tinted ? 'bg-thistle-white' : 'bg-white'} py-fl-section px-fl-margin`}>
       <div className="max-w-[1360px] mx-auto">
         <div className="text-center mb-fl-8 max-w-2xl mx-auto">
           <Reveal>

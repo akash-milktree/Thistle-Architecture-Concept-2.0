@@ -26,7 +26,7 @@ const sources = [
 
 export const DataSources: React.FC = () => {
   return (
-    <section className="bg-thistle-white py-fl-section px-fl-margin">
+    <section className="bg-white py-fl-section px-fl-margin">
       <div className="max-w-[1360px] mx-auto">
         <div className="text-center mb-fl-8 max-w-2xl mx-auto">
           <Reveal>

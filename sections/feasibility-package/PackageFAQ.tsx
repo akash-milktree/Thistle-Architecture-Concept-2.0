@@ -15,7 +15,7 @@ export const PackageFAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section className="py-fl-section px-fl-margin bg-thistle-white">
+    <section className="py-fl-section px-fl-margin bg-white">
       <div className="max-w-[1360px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-fl-8">
           <div className="lg:sticky lg:top-32 lg:self-start">

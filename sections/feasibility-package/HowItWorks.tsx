@@ -7,7 +7,7 @@ import { howItWorksSteps } from '../../data/howItWorksData';
 // The five-step process, absorbed from the old How It Works page.
 // Vertical timeline: number and duration on the left, narrative on the right.
 export const HowItWorks: React.FC = () => (
-  <section id="how-it-works" className="bg-white py-fl-section px-fl-margin scroll-mt-24">
+  <section id="how-it-works" className="bg-thistle-white py-fl-section px-fl-margin scroll-mt-24">
     <div className="max-w-[1360px] mx-auto">
       <div className="text-center mb-fl-8 max-w-2xl mx-auto">
         <Reveal>
