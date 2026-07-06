@@ -22,7 +22,7 @@ export const PageShell: React.FC<{ children: React.ReactNode }> = ({ children })
         {children}
         <Footer />
         <FeasibilityModal />
-        <ExitIntentPopup />
+        {pathname === '/feasibility-package' && <ExitIntentPopup />}
       </main>
     </FeasibilityProvider>
   );
