@@ -66,7 +66,7 @@ export const DataSources: React.FC = () => {
 
         <Reveal delay={0.4}>
           <div className="mt-fl-7">
-            <InlineCTA label="Start your feasibility" />
+            <InlineCTA />
           </div>
         </Reveal>
       </div>

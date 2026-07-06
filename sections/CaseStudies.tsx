@@ -29,6 +29,7 @@ const UnitComparison: React.FC<{ before: string; after: string; noGo?: boolean }
 
 const CaseCard: React.FC<{ item: CaseStudy }> = ({ item }) => {
   const isNoGo = item.recommendation === "No-Go";
+  const isGo = item.recommendation === "Go";
   return (
     <Link href={`/case-studies/${item.slug}`} className="block h-full">
       <motion.div
@@ -55,7 +56,9 @@ const CaseCard: React.FC<{ item: CaseStudy }> = ({ item }) => {
             <span className={`px-3 py-1.5 rounded-full backdrop-blur-xl border text-[10px] uppercase tracking-widest font-semibold ${
               isNoGo
                 ? 'bg-red-500/20 border-red-300/30 text-red-100'
-                : 'bg-thistle-green/30 border-thistle-green/40 text-white'
+                : isGo
+                  ? 'bg-thistle-green/30 border-thistle-green/40 text-white'
+                  : 'bg-black/35 border-white/20 text-white/90'
             }`}>
               {item.recommendation}
             </span>
@@ -67,34 +70,20 @@ const CaseCard: React.FC<{ item: CaseStudy }> = ({ item }) => {
           <h3 className="text-fluid-h5 font-medium tracking-tight mb-fl-1 text-thistle-black">{item.title}</h3>
           <p className="text-[11px] text-thistle-black/40 uppercase tracking-wider mb-fl-4">{item.location}</p>
 
-          {/* Financial table */}
+          {/* Key facts */}
           <div className="grid grid-cols-3 gap-3 py-fl-4 border-y border-thistle-black/[0.06] mb-fl-4">
-            <div>
-              <div className="text-[9px] uppercase tracking-wider text-thistle-black/40 font-semibold mb-1">Purchase</div>
-              <div className="text-fluid-sm font-semibold text-thistle-black">{item.purchasePrice}</div>
-            </div>
-            <div>
-              <div className="text-[9px] uppercase tracking-wider text-thistle-black/40 font-semibold mb-1">
-                {isNoGo ? 'Risk avoided' : 'Projected GDV'}
+            {item.stats.slice(0, 3).map((stat, i) => (
+              <div key={i}>
+                <div className="text-[9px] uppercase tracking-wider text-thistle-black/40 font-semibold mb-1">{stat.label}</div>
+                <div className="text-fluid-sm font-semibold text-thistle-black">{stat.value}</div>
               </div>
-              <div className={`text-fluid-sm font-semibold ${isNoGo ? 'text-thistle-black' : 'text-thistle-black'}`}>
-                {isNoGo ? item.riskAvoided : item.projectedGDV}
-              </div>
-            </div>
-            <div>
-              <div className="text-[9px] uppercase tracking-wider text-thistle-green font-semibold mb-1">
-                {isNoGo ? 'Outcome' : 'GDV uplift'}
-              </div>
-              <div className="text-fluid-sm font-semibold text-thistle-green">
-                {isNoGo ? 'De-risked' : item.gdvUpliftPct}
-              </div>
-            </div>
+            ))}
           </div>
 
-          {/* Units before/after (only if Go) */}
-          {!isNoGo && (
+          {/* Units before/after, only where documented */}
+          {item.unitsBefore && item.unitsAfter && (
             <div className="mb-fl-4">
-              <UnitComparison before={item.unitsBefore} after={item.unitsAfter} />
+              <UnitComparison before={item.unitsBefore} after={item.unitsAfter} noGo={isNoGo} />
             </div>
           )}
 

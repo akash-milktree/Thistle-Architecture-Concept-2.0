@@ -5,7 +5,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { PageHero } from './PageHero';
 import { Reveal } from '../animations/Reveal';
 import { Button } from './Button';
-import { useFeasibility } from '../feasibility/FeasibilityContext';
+import { useRouter } from 'next/navigation';
 import type { Tool } from '../../data/toolsData';
 
 interface ToolShellProps {
@@ -20,7 +20,7 @@ interface ToolShellProps {
 // disclaimer line, and a closing "Start Feasibility" CTA so every tool page
 // has the same conversion frame.
 export const ToolShell: React.FC<ToolShellProps> = ({ tool, heroHeading, heroDescription, disclaimer, children }) => {
-  const { openModal } = useFeasibility();
+  const router = useRouter();
   return (
     <>
       <PageHero
@@ -52,8 +52,8 @@ export const ToolShell: React.FC<ToolShellProps> = ({ tool, heroHeading, heroDes
             </p>
           </Reveal>
           <Reveal delay={0.2}>
-            <Button variant="primary" size="lg" icon={<ArrowUpRight size={18} />} onClick={openModal}>
-              Start Feasibility
+            <Button variant="primary" size="lg" icon={<ArrowUpRight size={18} />} onClick={() => router.push('/feasibility-package')}>
+              Book Your Feasibility
             </Button>
           </Reveal>
         </div>

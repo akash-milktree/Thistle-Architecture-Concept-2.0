@@ -5,7 +5,7 @@ import { Reveal } from '../components/animations/Reveal';
 import { Button } from '../components/ui/Button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import { useFeasibility } from '../components/feasibility/FeasibilityContext';
+import { useRouter } from 'next/navigation';
 
 const faqs = [
   {
@@ -39,7 +39,7 @@ const faqs = [
 ];
 
 export const FAQ: React.FC = () => {
-  const { openModal } = useFeasibility();
+  const router = useRouter();
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
@@ -62,8 +62,8 @@ export const FAQ: React.FC = () => {
               </p>
             </Reveal>
             <Reveal delay={0.2}>
-              <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={openModal}>
-                Start Feasibility
+              <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/feasibility-package')}>
+                Book Your Feasibility
               </Button>
             </Reveal>
           </div>

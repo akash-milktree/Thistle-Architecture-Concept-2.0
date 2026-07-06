@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import { Reveal } from '../components/animations/Reveal';
 import { Building, PoundSterling } from 'lucide-react';
 import { InlineCTA } from '../components/ui/InlineCTA';
@@ -56,8 +57,25 @@ export const ArchitectReview: React.FC = () => {
           ))}
         </div>
 
+        {/* The person behind the review */}
+        <Reveal delay={0.2}>
+          <div className="flex items-center justify-center gap-fl-4 mb-fl-7">
+            <Image
+              src="/images/team/kaan.jpg"
+              alt="Kaan, Design Lead at Thistle Architecture"
+              width={112}
+              height={112}
+              className="w-14 h-14 rounded-full object-cover ring-2 ring-thistle-green/20 flex-shrink-0"
+            />
+            <div className="text-left">
+              <span className="block text-sm font-semibold text-thistle-black leading-tight">Kaan, Design Lead</span>
+              <span className="block text-xs text-thistle-black/60 leading-snug mt-0.5">BArch. Leads every feasibility from sketch scheme to sign-off.</span>
+            </div>
+          </div>
+        </Reveal>
+
         <Reveal delay={0.3}>
-          <InlineCTA label="Book your feasibility today" />
+          <InlineCTA />
         </Reveal>
       </div>
     </section>

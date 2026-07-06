@@ -2,22 +2,22 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '../components/ui/Button';
 import { ThistleLogo } from '../components/ui/ThistleLogo';
 import { Reveal } from '../components/animations/Reveal';
-import { useFeasibility } from '../components/feasibility/FeasibilityContext';
+import { useRouter } from 'next/navigation';
 import { ArrowUpRight } from 'lucide-react';
 
 const productLinks = [
-  { label: "How It Works", to: "/how-it-works" },
   { label: "Feasibility Package", to: "/feasibility-package" },
   { label: "Case Studies", to: "/case-studies" },
-  { label: "Free Tools", to: "/tools" },
+  { label: "Class MA Checker", to: "/tools/class-ma-checker" },
+  { label: "GDV Calculator", to: "/tools/gdv-calculator" },
 ];
 
 const conversionsLinks = [
   { label: "Commercial to Residential", to: "/conversions/commercial-to-residential" },
-  { label: "Office to Resi (Class MA)", to: "/conversions/office-to-resi-class-ma" },
   { label: "HMO", to: "/conversions/hmo" },
 ];
 
@@ -33,15 +33,22 @@ const legalLinks = [
 ];
 
 export const Footer: React.FC = () => {
-  const { openModal } = useFeasibility();
+  const router = useRouter();
 
   return (
     <footer className="bg-thistle-black text-white overflow-hidden">
       {/* CTA Section */}
-      <div className="pt-fl-section-sm pb-fl-section-sm px-fl-margin border-b border-white/[0.06]">
-        <div className="max-w-[1360px] mx-auto text-center">
+      <div className="relative pt-fl-section-sm pb-fl-section-sm px-fl-margin border-b border-white/[0.06] overflow-hidden">
+        <Image
+          src="/images/site/cta-band.jpg"
+          alt="Rooftops and mixed commercial and residential buildings in a UK city"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-thistle-black/75" />
+        <div className="relative z-10 max-w-[1360px] mx-auto text-center">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.2em] text-white/30 font-semibold mb-fl-5">Get Started</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-white/40 font-semibold mb-fl-5">Get Started</p>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-fluid-display font-medium tracking-tighter leading-[0.95] mb-fl-6">
@@ -49,7 +56,7 @@ export const Footer: React.FC = () => {
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
-            <p className="text-fluid-sm text-white/80 leading-relaxed max-w-md mx-auto mb-fl-7">
+            <p className="text-fluid-sm text-white/85 leading-relaxed max-w-md mx-auto mb-fl-7">
               Submit your property details and get a structured feasibility report with a clear Go or No-Go recommendation in five days.
             </p>
           </Reveal>
@@ -58,11 +65,12 @@ export const Footer: React.FC = () => {
               variant="glass"
               size="lg"
               icon={<ArrowUpRight size={18} />}
-              onClick={openModal}
+              onClick={() => router.push('/feasibility-package')}
               className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80"
             >
-              Start Feasibility
+              Book Your Feasibility
             </Button>
+            <p className="text-xs text-white/60 mt-fl-4">No obligation. Response within one working day.</p>
           </Reveal>
         </div>
       </div>

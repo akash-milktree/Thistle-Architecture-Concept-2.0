@@ -2,11 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Button } from './Button';
 import { ThistleLogo } from './ThistleLogo';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
-import { useFeasibility } from '../feasibility/FeasibilityContext';
 import { ArrowUpRight, Menu, X, ChevronDown } from 'lucide-react';
 
 interface NavItem {
@@ -15,26 +14,21 @@ interface NavItem {
   children?: { label: string; path: string }[];
 }
 
-// All pages surfaced in the nav so the client can review the full site.
-// The final IA will trim this back to 4 to 5 items before going live.
 const navLinks: NavItem[] = [
   { label: "Feasibility Package", path: "/feasibility-package" },
-  { label: "How It Works", path: "/how-it-works" },
   { label: "Case Studies", path: "/case-studies" },
   {
     label: "Conversions",
     path: "/conversions/commercial-to-residential",
     children: [
       { label: "Commercial to Residential", path: "/conversions/commercial-to-residential" },
-      { label: "Office to Resi (Class MA)", path: "/conversions/office-to-resi-class-ma" },
       { label: "HMO", path: "/conversions/hmo" },
     ],
   },
   {
     label: "Tools",
-    path: "/tools",
+    path: "/tools/class-ma-checker",
     children: [
-      { label: "Tools Index", path: "/tools" },
       { label: "Class MA Checker", path: "/tools/class-ma-checker" },
       { label: "GDV Calculator", path: "/tools/gdv-calculator" },
     ],
@@ -49,7 +43,7 @@ export const Navbar: React.FC = () => {
   const [hidden, setHidden] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const { openModal } = useFeasibility();
+  const router = useRouter();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() || 0;
@@ -146,9 +140,9 @@ export const Navbar: React.FC = () => {
                 variant="primary"
                 icon={<ArrowUpRight size={16} />}
                 className="!bg-white !text-thistle-black !border-white hover:!bg-thistle-pink hover:!text-thistle-black hover:!border-thistle-pink"
-                onClick={openModal}
+                onClick={() => router.push('/feasibility-package')}
               >
-                Start Feasibility
+                Book Your Feasibility
               </Button>
             </div>
 
@@ -211,10 +205,10 @@ export const Navbar: React.FC = () => {
                 className="w-full justify-center"
                 onClick={() => {
                   setIsMobileMenuOpen(false);
-                  openModal();
+                  router.push('/feasibility-package');
                 }}
               >
-                Start Feasibility
+                Book Your Feasibility
               </Button>
             </div>
           </motion.div>

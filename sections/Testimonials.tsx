@@ -4,7 +4,8 @@ import React from 'react';
 import { Reveal } from '../components/animations/Reveal';
 import { motion } from 'framer-motion';
 
-const topRow = [
+// Also consumed by the feasibility package page static testimonial grid.
+export const testimonialHighlights = [
   {
     quote: "Thistle gives us the confidence to bid on tight deadlines. Their reports are clearer and more commercially grounded than any traditional architect we've used.",
     name: "Marcus Cole",
@@ -117,7 +118,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, name, role, co
 );
 
 export const Testimonials: React.FC = () => {
-  const topCards = [...topRow, ...topRow];
+  const topCards = [...testimonialHighlights, ...testimonialHighlights];
   const bottomCards = [...bottomRow, ...bottomRow];
 
   return (

@@ -41,17 +41,17 @@ const steps = [
 
 export const Process: React.FC = () => {
   return (
-    <section className="bg-thistle-white py-fl-section px-fl-margin overflow-hidden">
+    <section id="process" className="bg-thistle-white py-fl-section px-fl-margin overflow-hidden">
       <div className="max-w-[1360px] mx-auto">
         {/* Header */}
         <div className="text-center mb-fl-8">
           <Reveal>
-            <p className="text-sm uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">Our 5 Step Process</p>
+            <p className="text-sm uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">Our Process</p>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black">
-              From Upload to Full Project Clarity.<br />
-              <span className="text-thistle-green">In 5 Days.</span>
+              Our Five-Step<br />
+              <span className="text-thistle-green">Feasibility Process.</span>
             </h2>
           </Reveal>
         </div>
@@ -91,7 +91,7 @@ export const Process: React.FC = () => {
         </div>
 
         <Reveal delay={0.5}>
-          <InlineCTA label="Start your feasibility" />
+          <InlineCTA />
         </Reveal>
       </div>
     </section>

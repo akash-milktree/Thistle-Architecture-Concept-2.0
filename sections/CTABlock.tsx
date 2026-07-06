@@ -4,10 +4,10 @@ import React from 'react';
 import { Reveal } from '../components/animations/Reveal';
 import { Button } from '../components/ui/Button';
 import { ArrowUpRight } from 'lucide-react';
-import { useFeasibility } from '../components/feasibility/FeasibilityContext';
+import { useRouter } from 'next/navigation';
 
 export const CTABlock: React.FC = () => {
-  const { openModal } = useFeasibility();
+  const router = useRouter();
 
   return (
     <section className="bg-thistle-black py-fl-section px-fl-margin">
@@ -27,10 +27,10 @@ export const CTABlock: React.FC = () => {
             size="lg"
             variant="primary"
             icon={<ArrowUpRight size={18} />}
-            onClick={openModal}
+            onClick={() => router.push('/feasibility-package')}
             className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80"
           >
-            Start Feasibility
+            Book Your Feasibility
           </Button>
         </Reveal>
       </div>

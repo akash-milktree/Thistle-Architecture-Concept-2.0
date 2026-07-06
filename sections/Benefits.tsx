@@ -32,22 +32,12 @@ const pillars: Pillar[] = [
 const PillarCard: React.FC<{ pillar: Pillar }> = ({ pillar }) => {
   const Icon = pillar.icon;
   return (
-    <div className="group h-72 [perspective:1200px]">
-      <div className="relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-        {/* Front */}
-        <div className="absolute inset-0 [backface-visibility:hidden] rounded-2xl bg-white border border-thistle-black/[0.06] p-fl-6 flex flex-col items-center justify-center text-center">
-          <div className="w-16 h-16 rounded-2xl bg-thistle-green/10 flex items-center justify-center mb-fl-5">
-            <Icon size={28} className="text-thistle-green" />
-          </div>
-          <h3 className="text-fluid-h3 font-medium tracking-tight text-thistle-black mb-fl-3">{pillar.title}</h3>
-          <span className="text-[10px] uppercase tracking-[0.2em] text-thistle-black/40 font-semibold">Hover to learn more</span>
-        </div>
-        {/* Back */}
-        <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-2xl bg-thistle-green text-white p-fl-6 flex flex-col justify-center">
-          <h3 className="text-fluid-h5 font-medium tracking-tight mb-fl-4">{pillar.title}</h3>
-          <p className="text-fluid-base leading-relaxed text-white/90">{pillar.body}</p>
-        </div>
+    <div className="h-full rounded-2xl bg-white border border-thistle-black/[0.06] p-fl-6 flex flex-col">
+      <div className="w-14 h-14 rounded-2xl bg-thistle-green/10 flex items-center justify-center mb-fl-5">
+        <Icon size={26} className="text-thistle-green" />
       </div>
+      <h3 className="text-fluid-h5 font-medium tracking-tight text-thistle-black mb-fl-3">{pillar.title}</h3>
+      <p className="text-fluid-base text-thistle-black/80 leading-relaxed">{pillar.body}</p>
     </div>
   );
 };
@@ -59,11 +49,11 @@ export const Benefits: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-fl-8 max-w-2xl mx-auto">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">The Three Pillars</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">The Benefits</p>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-4">
-              The Three Pillars Of<br /><span className="text-thistle-green">Developer Success.</span>
+              Why Developers<br /><span className="text-thistle-green">Use Thistle.</span>
             </h2>
           </Reveal>
         </div>
@@ -78,7 +68,7 @@ export const Benefits: React.FC = () => {
         </div>
 
         <Reveal delay={0.4}>
-          <InlineCTA label="Book your feasibility today" />
+          <InlineCTA />
         </Reveal>
       </div>
     </section>
