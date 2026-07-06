@@ -1,81 +1,157 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import { PageHero } from '../components/ui/PageHero';
 import { Reveal } from '../components/animations/Reveal';
-import { Button } from '../components/ui/Button';
-import { useFeasibility } from '../components/feasibility/FeasibilityContext';
-import { ArrowUpRight, Linkedin } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const team = [
   {
-    name: "Sarah Jenkins",
-    role: "Head of Architecture",
-    credential: "BArch · Ex-Foster + Partners",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=800&h=1000",
+    name: "Edward Kercher",
+    role: "Founder & Director",
+    image: "/images/team/ed.jpg",
+    credentials: [
+      "BA (Hons) Architectural Technology, CIAT Affiliate",
+      "Founder across the Thistle Group: Thistle Architecture, HMO Designers, HMO Checker",
+      "Experience from £50,000 refurbs to £20m construction management",
+    ],
   },
   {
-    name: "David Ross",
-    role: "Planning Director",
-    credential: "15 Years Commercial",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800&h=1000",
+    name: "Kaan",
+    role: "Design Lead",
+    image: "/images/team/kaan.jpg",
+    credentials: [
+      "BArch in Architecture",
+      "Leads every feasibility from sketch scheme to sign-off",
+      "5+ years across residential and HMO, from deal sourcing to planning",
+    ],
   },
   {
-    name: "Elena Kova",
-    role: "Feasibility Lead",
-    credential: "Specialist in Class MA",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800&h=1000",
+    name: "Jan",
+    role: "Interior Designer",
+    image: "/images/team/jan.jpg",
+    credentials: [
+      "HND Design, Associate CIPD",
+      "25 years across interior design, graphic design, and brand management",
+      "Ensures every scheme is finished to a demanding standard",
+    ],
   },
   {
-    name: "James Thorne",
-    role: "Technical Lead",
-    credential: "Building Regs Expert",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=800&h=1000",
+    name: "Onaiza",
+    role: "Client Support",
+    image: "/images/team/onaiza.jpg",
+    credentials: [
+      "Your first point of contact through every feasibility",
+      "Keeps submissions, sessions, and reports moving on schedule",
+    ],
   },
 ];
 
-export const AboutPage: React.FC = () => {
-  const { openModal } = useFeasibility();
+const stats = [
+  { value: "98.5%", label: "Planning success rate" },
+  { value: "5 days", label: "Guaranteed turnaround" },
+  { value: "86%", label: "Faster than traditional routes" },
+];
 
+export const AboutPage: React.FC = () => {
   return (
     <>
       <PageHero
         label="About"
-        heading="Meet The Architects Behind Your Scheme."
-        description="A small team of architects who work for developers. We do the feasibility, sketch schemes, and policy work that turn an existing building into a viable conversion."
+        heading="Developers First. Architects Second."
+        description="Thistle is a feasibility practice built by people who develop and invest in buildings themselves. We test schemes the way a developer would, then back the answer with architecture."
       />
 
-      {/* Team — the hero of the page */}
+      {/* Who we are */}
+      <section className="py-fl-section px-fl-margin bg-white">
+        <div className="max-w-[1360px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-fl-8 items-center">
+          <Reveal>
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-thistle-black/[0.06]">
+              <Image
+                src="/images/generated/site-visit.jpg"
+                alt="Two people reviewing a feasibility document outside a vacant office building"
+                fill
+                sizes="(max-width: 1024px) 90vw, 620px"
+                className="object-cover"
+              />
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">Who We Are</p>
+              <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-5">
+                We Buy, Convert, And<br /><span className="text-thistle-green">Invest In Buildings Too.</span>
+              </h2>
+              <p className="text-fluid-base text-thistle-black/80 leading-relaxed mb-fl-4">
+                Thistle Architecture is part of the Thistle Group, alongside HMO Designers and HMO Checker. Between them, the team has designed hundreds of conversions and invests in the same kinds of buildings our clients buy.
+              </p>
+              <p className="text-fluid-base text-thistle-black/80 leading-relaxed">
+                That changes how we work. Every scheme starts with the numbers, the planning policy, and the building, so you know whether a deal stacks up before you commit. The same person who runs your feasibility is the architect you keep working with through to planning.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Stats row */}
+      <section className="py-fl-section-sm px-fl-margin bg-thistle-black text-white">
+        <div className="max-w-[1360px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3">
+            {stats.map((stat, i) => (
+              <Reveal key={i} delay={i * 0.08}>
+                <div className={`flex flex-col items-center text-center px-fl-5 py-fl-3 ${i > 0 ? 'md:border-l md:border-white/[0.1]' : ''}`}>
+                  <span className="text-fluid-h3 font-semibold tracking-tight text-white block mb-1">{stat.value}</span>
+                  <span className="text-sm text-white/70">{stat.label}</span>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team */}
       <section className="py-fl-section px-fl-margin bg-thistle-white">
         <div className="max-w-[1360px] mx-auto">
+          <div className="text-center mb-fl-8 max-w-2xl mx-auto">
+            <Reveal>
+              <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">The Team</p>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black">
+                The People Behind<br /><span className="text-thistle-green">Every Feasibility.</span>
+              </h2>
+            </Reveal>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-fl-5">
             {team.map((member, i) => (
-              <Reveal key={i} delay={i * 0.1}>
+              <Reveal key={member.name} delay={i * 0.08}>
                 <motion.div
                   whileHover={{ y: -6 }}
                   transition={{ duration: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
-                  className="group rounded-2xl overflow-hidden bg-white border border-thistle-black/[0.06] hover:border-thistle-black/[0.12] hover:shadow-xl hover:shadow-thistle-black/[0.04] transition-all duration-500"
+                  className="h-full rounded-2xl overflow-hidden bg-white border border-thistle-black/[0.06] hover:border-thistle-black/[0.12] hover:shadow-xl hover:shadow-thistle-black/[0.04] transition-all duration-500"
                 >
-                  <div className="aspect-[3/4] overflow-hidden relative">
-                    <motion.img
+                  <div className="relative aspect-[4/5] overflow-hidden bg-thistle-white/60">
+                    <Image
                       src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover"
-                      whileHover={{ scale: 1.04 }}
-                      transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
+                      alt={`${member.name}, ${member.role} at Thistle Architecture`}
+                      fill
+                      sizes="(max-width: 640px) 90vw, 320px"
+                      className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent" />
-                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="w-9 h-9 rounded-full bg-white/15 backdrop-blur-xl border border-white/20 flex items-center justify-center">
-                        <Linkedin size={15} className="text-white" />
-                      </div>
-                    </div>
                   </div>
                   <div className="p-fl-5">
                     <h3 className="text-fluid-h5 font-medium tracking-tight text-thistle-black">{member.name}</h3>
-                    <p className="text-fluid-sm text-thistle-black/55 mt-fl-1">{member.role}</p>
-                    <p className="text-[11px] uppercase tracking-wider text-thistle-green font-semibold mt-fl-3">{member.credential}</p>
+                    <p className="text-[11px] uppercase tracking-wider text-thistle-green font-semibold mt-fl-1 mb-fl-3">{member.role}</p>
+                    <ul className="space-y-1.5">
+                      {member.credentials.map((c, j) => (
+                        <li key={j} className="text-fluid-sm text-thistle-black/60 leading-snug flex gap-2">
+                          <span className="text-thistle-green mt-[3px] flex-shrink-0">·</span>
+                          {c}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </motion.div>
               </Reveal>
@@ -84,7 +160,7 @@ export const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Short approach statement */}
+      {/* Approach statement */}
       <section className="py-fl-section px-fl-margin bg-white">
         <div className="max-w-[800px] mx-auto text-center">
           <Reveal>
@@ -97,29 +173,8 @@ export const AboutPage: React.FC = () => {
           </Reveal>
           <Reveal delay={0.15}>
             <p className="text-fluid-base text-thistle-black/80 leading-relaxed">
-              Most architects design first and worry about commercial viability later. We do it the other way round. Every scheme starts with the numbers, the planning policy, and the building, so the developers we work with know whether a deal stacks up before they commit. The same person who runs your feasibility is the architect you keep working with through to planning.
+              Most architects design first and worry about commercial viability later. We do it the other way round. The team that runs your feasibility stays with you through sketch scheme, planning, and delivery, so nothing is lost in handover.
             </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* CTA Band */}
-      <section className="py-fl-section-sm px-fl-margin bg-thistle-black text-white">
-        <div className="max-w-[1360px] mx-auto text-center">
-          <Reveal>
-            <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight mb-fl-5">
-              Work With Us.
-            </h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="text-fluid-base text-white/80 leading-relaxed max-w-md mx-auto mb-fl-6">
-              Submit your building and we&apos;ll tell you what&apos;s possible, for a fixed fee.
-            </p>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <Button variant="glass" size="lg" icon={<ArrowUpRight size={18} />} onClick={openModal} className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80">
-              Start Feasibility
-            </Button>
           </Reveal>
         </div>
       </section>

@@ -11,138 +11,159 @@ export interface CaseStudy {
   outcome: string;
   galleryImages: string[];
   buildingType: string;
-  floorArea: string;
+  floorArea?: string;
   planningRoute: string;
-  completionDate: string;
-  // TODO: confirm financial data with Edward, all values below are reasoned placeholders
-  recommendation: "Go" | "No-Go";
-  purchasePrice: string;      // TODO: confirm
-  projectedGDV: string;       // TODO: confirm
-  gdvUpliftPct?: string;      // TODO: confirm, optional for No-Go cases
-  riskAvoided?: string;       // TODO: confirm, only for No-Go cases
-  unitsBefore: string;        // TODO: confirm
-  unitsAfter: string;         // TODO: confirm
+  completionDate?: string;
+  recommendation: "Go" | "No-Go" | "Options Tested";
+  // Financial figures appear only where a project document supports them.
+  purchasePrice?: string;
+  projectedGDV?: string;
+  gdvUpliftPct?: string;
+  riskAvoided?: string;
+  unitsBefore?: string;
+  unitsAfter?: string;
 }
 
+// All entries below are real Thistle Group projects, written from the
+// documents and drawings in the client's project folder. Facts that still
+// need Ed's confirmation are listed in docs/case-study-confirmations.md.
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "croydon-office-conversion",
-    title: "Office to Resi (Class MA)",
-    location: "Croydon, South London",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80",
-    tag: "Class MA",
+    slug: "st-johns-aylesbury",
+    title: "Nine-Bed HMO Conversion",
+    location: "Aylesbury, Buckinghamshire",
+    image: "/images/projects/st-johns-sk001-1.png",
+    tag: "HMO",
     stats: [
-      { label: "Units Unlocked", value: "+14" },
-      { label: "Above Target", value: "+5" },
-      { label: "Feasibility", value: "5 days" },
+      { label: "Bedrooms, all en-suite", value: "9" },
+      { label: "Room sizes", value: "12 to 16 sqm" },
+      { label: "Communal amenity", value: "25 sqm" },
     ],
-    desc: "The client assumed 9 units. Our structural analysis and layout optimization unlocked 5 additional apartments within the same envelope.",
-    challenge: "The client had secured exclusivity on a 3-storey office block in Croydon but was working from a basic agent's floor plan that suggested 9 units. With a tight exchange deadline and concerns about the building's unusual L-shaped footprint, they needed clarity on the maximum viable unit count before committing.",
-    approach: "Our automated desk study flagged favourable planning precedent in the area, three similar Class MA conversions approved within 500m. The architect review revealed that the client's assumed corridor layout was wasting significant floor area. By repositioning the core circulation and introducing dual-aspect units along the building's longer wing, we unlocked additional frontage that the original plan had overlooked.",
-    outcome: "The final feasibility report demonstrated 14 viable units, 5 more than the client's initial estimate. The accommodation schedule showed all units meeting NDSS minimum space standards, with an average efficiency ratio of 82%. The client exchanged within a week of receiving the report and submitted their Class MA application the following month.",
+    desc: "A town-centre house tested for a large HMO. The scheme reached nine generously sized en-suite rooms while staying ahead of the refusal patterns seen locally.",
+    challenge: "The client wanted to know whether a substantial HMO was achievable at 4 St John's Street. Local precedent supported larger HMOs, but recent refusals in the area had been driven by undersized kitchens and insufficient communal space. The scheme had to maximise bedrooms without triggering the overdevelopment concerns that had sunk nearby applications.",
+    approach: "The desk study confirmed a sustainable town-centre location with strong precedent for 7 to 8 bedroom HMOs and no Article 4 direction, which preserved a six-bed fallback under permitted development. The sketch scheme tested a nine-bedroom Sui Generis layout with every room between 12 and 16 sqm, and deliberately split 25 sqm of communal amenity across two floors, an approach the council has been more receptive to in schemes above seven occupants.",
+    outcome: "The feasibility confirmed nine bedrooms are achievable, with a planning-safe eight-bed fallback if design quality concerns arise at application stage. Loft head heights and parking were flagged as the key items to confirm through measured survey. Local room rates of £800 to £850 pcm support the income case. The client left with a clear Go, a fallback position, and a defined list of next steps.",
     galleryImages: [
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80",
-      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80",
+      "/images/projects/st-johns-existing-1.png",
+      "/images/projects/st-johns-proposed-1.png",
     ],
-    buildingType: "Office (B1a)",
-    floorArea: "12,400 sqft",
-    planningRoute: "Class MA",
-    completionDate: "November 2025",
+    buildingType: "Existing dwelling (C3)",
+    planningRoute: "Full planning (Sui Generis)",
+    completionDate: "March 2026",
     recommendation: "Go",
-    purchasePrice: "£1.4M",
-    projectedGDV: "£3.2M",
-    gdvUpliftPct: "+128%",
-    unitsBefore: "9",
-    unitsAfter: "14",
   },
   {
-    slug: "reading-high-street",
-    title: "High Street Upper Parts",
-    location: "Reading, Berkshire",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80",
+    slug: "harpenden-police-station",
+    title: "Police Station To Flats",
+    location: "Harpenden, Hertfordshire",
+    image: "/images/projects/harpenden-sketch-1.png",
+    tag: "Commercial to Residential",
+    stats: [
+      { label: "Existing use", value: "Sui Generis" },
+      { label: "Setting", value: "Conservation Area" },
+      { label: "Sketch scheme", value: "Flats" },
+    ],
+    desc: "A 1990s police station in a conservation area, wrapped in policy protections and a restrictive covenant. We mapped the planning route before sketching the flats.",
+    challenge: "The former Harpenden Police Station sits in the town's conservation area, next to locally listed buildings, with a restrictive covenant limiting the site to community uses. As a police station it is a Sui Generis use, so any change of use needs full planning permission, and the emerging Local Plan protects community infrastructure through Policy SP7. The question was whether residential conversion was realistic at all.",
+    approach: "We produced a planning appraisal covering the adopted and emerging Local Plans and the Neighbourhood Plan, the conservation area appraisal, and the site's planning history. The key test is Policy SP7: a change of use must show the police function has been re-provided or is no longer required, which the evidence supports. With the building only around 30 years old, reuse scored better than redevelopment, so we sketched flat layouts within the existing envelope, colour-coded by use, respecting daylight to the neighbouring office building.",
+    outcome: "The appraisal concluded that a case could be made for residential and other town-centre uses, subject to the SP7 test and the covenant, and flagged the lack of outside amenity space as the main design constraint for housing. The sketch scheme shows how flats fit the existing building. The client went into negotiations knowing exactly which hurdles matter and in what order.",
+    galleryImages: [
+      "/images/projects/harpenden-sketch-1.png",
+    ],
+    buildingType: "Police station (Sui Generis)",
+    planningRoute: "Full planning",
+    completionDate: "November 2025",
+    recommendation: "Options Tested",
+  },
+  {
+    slug: "greyfriars-kings-lynn",
+    title: "Office To Residential Or HMO",
+    location: "King's Lynn, Norfolk",
+    image: "/images/projects/greyfriars-option4-1.png",
     tag: "Mixed Use",
     stats: [
-      { label: "Projected Yield", value: "28%" },
-      { label: "Retail Preserved", value: "100%" },
-      { label: "Feasibility", value: "4 days" },
+      { label: "Routes compared", value: "2" },
+      { label: "HMO option", value: "9 en-suite" },
+      { label: "Both options", value: "With extension" },
     ],
-    desc: "A complex access issue was blocking development. We redesigned the core circulation to meet fire regs without sacrificing retail space.",
-    challenge: "The developer had identified three adjoining high street retail units with unused upper floors, a common opportunity in town centres. However, the only access to the upper storeys was through the active retail units, and previous architects had deemed the building unconvertible without losing ground floor commercial space.",
-    approach: "Our desk study identified a narrow service alley to the rear of the building that had been overlooked. The architect review designed a compliant staircore and escape route through the alley, creating independent residential access without touching the retail frontages. Fire engineering analysis confirmed the route met Building Regulations Approved Document B requirements.",
-    outcome: "The feasibility report unlocked 6 one-bed apartments across the upper two floors while preserving 100% of the ground-floor retail. The projected yield of 28% made the scheme highly attractive to the developer's JV partner. The report was used directly in the funding application, which was approved within three weeks.",
+    desc: "One building, two viable futures. We drew both the conventional residential option and the nine-bed co-living option so the client could compare returns directly.",
+    challenge: "The Greyfriars building could plausibly become conventional flats or a large co-living HMO, and each route carries different planning risk, build cost, and income. Committing to the wrong use class early would have meant abortive design fees and a weaker planning story. The client needed both options tested to the same standard before choosing.",
+    approach: "We sketched the building both ways. Option 2 tests a residential conversion with an extension. Option 4 tests a nine-bedroom en-suite HMO with distributed shared spaces, also with the extension. Both layouts are colour-coded by room function, with bedroom sizes and shared amenity areas stated on the drawings, so the two schemes can be compared like for like.",
+    outcome: "The client received two fully drawn options for the same envelope, each with its own unit and room schedule. That turned an abstract use-class decision into a straightforward comparison of income, build scope, and planning position.",
     galleryImages: [
-      "https://images.unsplash.com/photo-1555636222-cae831e670b3?auto=format&fit=crop&q=80",
-      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80",
+      "/images/projects/greyfriars-option2-1.png",
+      "/images/projects/greyfriars-option4-1.png",
     ],
-    buildingType: "Retail (A1) with upper floors",
-    floorArea: "8,200 sqft",
-    planningRoute: "Full Planning",
-    completionDate: "September 2025",
-    recommendation: "Go",
-    purchasePrice: "£950K",
-    projectedGDV: "£1.7M",
-    gdvUpliftPct: "+79%",
-    unitsBefore: "0",
-    unitsAfter: "6",
+    buildingType: "Office and mixed use",
+    planningRoute: "Full planning",
+    recommendation: "Options Tested",
   },
   {
-    slug: "manchester-warehouse",
-    title: "Warehouse Conversion",
+    slug: "axis-house",
+    title: "Office To High-End Houses",
+    location: "Compton, Newbury",
+    image: "/images/projects/axis-house-elevation-1.png",
+    tag: "Commercial to Residential",
+    stats: [
+      { label: "Sketch proposals tested", value: "3" },
+      { label: "Unit mix identified", value: "5 houses" },
+      { label: "Three-bed units", value: "83 sqm" },
+    ],
+    desc: "A rural office building tested against three different sketch schemes, landing on a terrace of four three-bed houses and one two-bed unit.",
+    challenge: "Axis House is an office building in a village setting, and the client wanted to understand its highest-value residential future. Flats, a small number of large houses, and a terrace of family homes were all plausible, with very different values and build scopes.",
+    approach: "We tested three sketch proposals over the existing plans, working with the building's structural grid. The preferred scheme divides the building into four three-bed houses of around 83 sqm each plus one larger two-bed unit, using ground floor timber-frame extensions, new rear openings, dormers, and rooflights to make each house work over three floors.",
+    outcome: "The client received drawn options with elevations for the preferred scheme, a clear unit mix, and the alterations list that planning and costing conversations need. Three rounds of sketch testing settled the direction before any detailed design fees were spent.",
+    galleryImages: [
+      "/images/projects/axis-house-plans-1.png",
+      "/images/projects/axis-house-elevation-1.png",
+    ],
+    buildingType: "Office",
+    planningRoute: "Full planning",
+    completionDate: "October 2025",
+    recommendation: "Options Tested",
+  },
+  {
+    slug: "southgate-winchester",
+    title: "Listed Building To Co-Living",
+    location: "Winchester, Hampshire",
+    image: "/images/projects/southgate-sketch-1.png",
+    tag: "HMO",
+    stats: [
+      { label: "Co-living design", value: "10 beds" },
+      { label: "Ground floor", value: "Shop retained" },
+      { label: "Constraint", value: "Listed building" },
+    ],
+    desc: "A listed building on Southgate Street tested for a ten-bed co-living scheme above a retained shop, with private and shared gardens worked into the plan.",
+    challenge: "Listed buildings are the hardest conversion category: every internal alteration needs justifying, and co-living intensity multiplies the scrutiny. The client wanted to know whether a ten-bed co-living scheme could work at 23 Southgate while keeping the existing shop trading on the ground floor.",
+    approach: "The sketch study worked floor by floor through the building, testing en-suite provision against the existing wall layout, retaining the shop frontage, and allocating the rear garden between shared amenity and private space for the ground-floor rooms. Proposed ensuites and new partitions are drawn against the existing fabric so the listed building impact is visible from the start.",
+    outcome: "The study shows a ten-bed co-living layout with the shop partially retained, sunken garden amenity for the basement room, and a shared garden strategy. The client can now brief heritage consultants and approach pre-application discussions with a concrete scheme rather than a hope.",
+    galleryImages: [
+      "/images/projects/southgate-sketch-1.png",
+    ],
+    buildingType: "Listed mixed use, shop and residential",
+    planningRoute: "Full planning and listed building consent",
+    recommendation: "Options Tested",
+  },
+  {
+    slug: "beechmount-manchester",
+    title: "Existing HMO Reconfiguration",
     location: "Manchester, Greater Manchester",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&q=80",
-    tag: "Class MA",
+    image: "/images/projects/beechmount-sk001-1.png",
+    tag: "HMO",
     stats: [
-      { label: "Units Unlocked", value: "22" },
-      { label: "GDV Uplift", value: "£1.8m" },
-      { label: "Feasibility", value: "5 days" },
+      { label: "Building type", value: "Existing HMO" },
+      { label: "Study output", value: "Sketch layout" },
+      { label: "Focus", value: "Room quality" },
     ],
-    desc: "A disused warehouse with complex structural constraints. We identified a mezzanine strategy that maximised unit count without triggering full planning.",
-    challenge: "A large single-storey warehouse with 6m floor-to-ceiling heights presented an unusual challenge: the open-plan space was ideal for conversion, but the client wanted to know if mezzanine levels could be inserted under Class MA without triggering a material change that would require full planning permission.",
-    approach: "Our desk study researched recent Class MA precedent for mezzanine insertions and identified that internal alterations, including mezzanines, are generally permitted under Class MA provided the external appearance remains unchanged. The architect review designed a steel mezzanine structure that created 22 duplex-style apartments, each with generous double-height living spaces.",
-    outcome: "The feasibility confirmed 22 units were achievable under Class MA, with an estimated GDV uplift of £1.8m over the client's original flat conversion estimate. The structural analysis confirmed the existing foundations could support the mezzanine loads. The client proceeded to full design and received Prior Approval within 56 days.",
+    desc: "An existing Manchester HMO tested for reconfiguration, checking whether the current layout was leaving room count or room quality on the table.",
+    challenge: "Beech Mount already operated as an HMO, but the client suspected the layout was underperforming: awkward room shapes, weak communal provision, and circulation that ate lettable space. The question was whether a reconfiguration could improve the room schedule without triggering disproportionate building work.",
+    approach: "We redrew the building from the existing plans and tested a revised layout, room by room, against current HMO space and amenity standards. The sketch balances additional en-suite provision against the cost of moving services and structure.",
+    outcome: "The client received a drawn reconfiguration option with a room schedule to compare against the building's current performance, giving a clear basis for the refurbishment decision.",
     galleryImages: [
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80",
+      "/images/projects/beechmount-sk001-1.png",
     ],
-    buildingType: "Warehouse (B8)",
-    floorArea: "18,600 sqft",
-    planningRoute: "Class MA",
-    completionDate: "January 2026",
-    recommendation: "Go",
-    purchasePrice: "£2.2M",
-    projectedGDV: "£4.8M",
-    gdvUpliftPct: "+118%",
-    unitsBefore: "12",
-    unitsAfter: "22",
-  },
-  {
-    slug: "bristol-office-block",
-    title: "City Centre Office Block",
-    location: "Bristol, South West",
-    image: "https://images.unsplash.com/photo-1554469384-e58fac16e23a?auto=format&fit=crop&q=80",
-    tag: "Class O",
-    stats: [
-      { label: "Units Unlocked", value: "18" },
-      { label: "Risk Avoided", value: "£340k" },
-      { label: "Feasibility", value: "5 days" },
-    ],
-    desc: "Our feasibility identified a critical flood risk issue that would have blocked the conversion. The client pivoted to an alternative building before committing.",
-    challenge: "The client was in advanced negotiations on a 1980s office block in Bristol city centre. The building appeared ideal for Class O conversion, good floor plates, regular grid, central location. But the client needed confirmation before exchanging contracts on a tight deadline.",
-    approach: "Our automated desk study flagged the building as sitting within Flood Zone 3a, a critical constraint that the selling agent's particulars had not disclosed. Under Class O, residential conversions in Flood Zone 3 require a Sequential Test and Exception Test, which would significantly delay the project and introduce uncertainty. The architect review confirmed the floor plates were otherwise excellent for conversion but noted that the flood risk made the project high-risk.",
-    outcome: "The feasibility report delivered a clear No-Go recommendation. The client withdrew from negotiations, saving an estimated £340k in abortive costs (survey fees, legal fees, and potential construction delays). Within two weeks, they instructed us on an alternative building 800m away that received a Go recommendation and is now in construction.",
-    galleryImages: [
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80",
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80",
-    ],
-    buildingType: "Office (B1a)",
-    floorArea: "14,200 sqft",
-    planningRoute: "Class O",
-    completionDate: "August 2025",
-    recommendation: "No-Go",
-    purchasePrice: "£1.8M (offered)",
-    projectedGDV: ", ",
-    riskAvoided: "£340K",
-    unitsBefore: "0",
-    unitsAfter: "0",
+    buildingType: "Existing HMO",
+    planningRoute: "Licensing and building regulations led",
+    recommendation: "Options Tested",
   },
 ];

@@ -5,13 +5,13 @@ import Link from 'next/link';
 import { PageHero } from '../components/ui/PageHero';
 import { Reveal } from '../components/animations/Reveal';
 import { Button } from '../components/ui/Button';
-import { useFeasibility } from '../components/feasibility/FeasibilityContext';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, ArrowRight, FileText, Database, PenTool, CheckCircle2, Building } from 'lucide-react';
 import { caseStudies } from '../data/caseStudiesData';
 
 export const CaseStudiesPage: React.FC = () => {
-  const { openModal } = useFeasibility();
+  const router = useRouter();
   const featured = caseStudies[0];
   const others = caseStudies.slice(1);
 
@@ -26,7 +26,7 @@ export const CaseStudiesPage: React.FC = () => {
       num: "02",
       icon: Database,
       label: "Automated Data Analysis",
-      body: "Five years of local planning history, Article 4 directions, density saturation, and comparable schemes were pulled in automatically. The desk study flagged favourable Class MA precedent within 500m.",
+      body: "Five years of local planning history, Article 4 status, density, and comparable schemes were pulled in automatically. For St John's Street, the desk study confirmed strong precedent for 7 to 8 bedroom HMOs and no Article 4 direction, preserving a six-bed fallback under permitted development.",
     },
     {
       num: "03",
@@ -38,7 +38,7 @@ export const CaseStudiesPage: React.FC = () => {
       num: "04",
       icon: CheckCircle2,
       label: "Feasibility Decision",
-      body: `Recommendation: ${featured.recommendation}. With a viable layout, supportive precedent, and ${featured.gdvUpliftPct ?? "strong"} GDV uplift over purchase, the scheme met every threshold for the client's acquisition committee.`,
+      body: `Recommendation: ${featured.recommendation}. Nine bedrooms are achievable with a planning-safe eight-bed fallback, so the client could commit knowing both the upside and the floor of the scheme.`,
     },
     {
       num: "05",
@@ -202,8 +202,8 @@ export const CaseStudiesPage: React.FC = () => {
             </p>
           </Reveal>
           <Reveal delay={0.2}>
-            <Button variant="glass" size="lg" icon={<ArrowUpRight size={18} />} onClick={openModal} className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80">
-              Start Feasibility
+            <Button variant="glass" size="lg" icon={<ArrowUpRight size={18} />} onClick={() => router.push('/feasibility-package')} className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80">
+              Book Your Feasibility
             </Button>
           </Reveal>
         </div>

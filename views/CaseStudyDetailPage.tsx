@@ -5,14 +5,14 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { Reveal } from '../components/animations/Reveal';
 import { Button } from '../components/ui/Button';
-import { useFeasibility } from '../components/feasibility/FeasibilityContext';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, ArrowLeft } from 'lucide-react';
 import { caseStudies } from '../data/caseStudiesData';
 
 export const CaseStudyDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
-  const { openModal } = useFeasibility();
+  const router = useRouter();
   const caseStudy = caseStudies.find(c => c.slug === slug);
 
   if (!caseStudy) {
@@ -86,8 +86,8 @@ export const CaseStudyDetailPage: React.FC = () => {
                   { label: "Building Type", value: caseStudy.buildingType },
                   { label: "Floor Area", value: caseStudy.floorArea },
                   { label: "Planning Route", value: caseStudy.planningRoute },
-                  { label: "Completed", value: caseStudy.completionDate },
-                ].map((meta, i) => (
+                  { label: "Feasibility Date", value: caseStudy.completionDate },
+                ].filter((meta) => meta.value).map((meta, i) => (
                   <div key={i}>
                     <span className="text-[10px] uppercase tracking-widest text-thistle-black/30 font-semibold block mb-fl-1">{meta.label}</span>
                     <span className="text-fluid-sm text-thistle-black/70 font-medium">{meta.value}</span>
@@ -124,8 +124,8 @@ export const CaseStudyDetailPage: React.FC = () => {
                 <Reveal delay={0.3}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-fl-4 mt-fl-8">
                     {caseStudy.galleryImages.map((img, i) => (
-                      <div key={i} className="aspect-[4/3] rounded-2xl overflow-hidden">
-                        <img src={img} alt={`${caseStudy.title} gallery ${i + 1}`} className="w-full h-full object-cover" />
+                      <div key={i} className="aspect-[4/3] rounded-2xl overflow-hidden bg-white border border-thistle-black/[0.06] p-2">
+                        <img src={img} alt={`${caseStudy.title} drawing ${i + 1}`} className="w-full h-full object-contain" />
                       </div>
                     ))}
                   </div>
@@ -158,8 +158,8 @@ export const CaseStudyDetailPage: React.FC = () => {
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <Button variant="glass" size="lg" icon={<ArrowUpRight size={18} />} onClick={openModal} className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80">
-              Start Feasibility
+            <Button variant="glass" size="lg" icon={<ArrowUpRight size={18} />} onClick={() => router.push('/feasibility-package')} className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80">
+              Book Your Feasibility
             </Button>
           </Reveal>
         </div>
