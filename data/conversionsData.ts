@@ -13,14 +13,23 @@ export interface DeliverableHighlight {
   forThisType: string;
 }
 
+export interface ConversionExtraSection {
+  id: string;
+  eyebrow: string;
+  title: string;
+  body: string[];
+}
+
 export interface Conversion {
   slug: string;
   label: string;
   heroHeading: string;
   heroDescription: string;
+  heroImage?: string;
   opportunityCopy: string;
   opportunityStats: ConversionStat[];
   challenges: ConversionChallenge[];
+  extraSection?: ConversionExtraSection;
   deliverableHighlights: DeliverableHighlight[];
   relatedCaseStudySlug?: string;
   metaTitle: string;
@@ -37,48 +46,32 @@ export const conversions: Conversion[] = [
     opportunityStats: [
       { label: "Typical unit yield", value: "6 to 14" },
       { label: "Planning route", value: "Class MA or full" },
-      { label: "Typical GDV uplift", value: "+80% to +150%" },
+      { label: "Prior approval decision", value: "56 days" },
     ],
     challenges: [
       { title: "Building Regs and fire compliance", detail: "Office and retail buildings often need significant work to meet residential Building Regulations, especially around fire compartmentation and means of escape." },
       { title: "Daylight to lower floors", detail: "Deep commercial floor plates can leave ground-floor or rear-facing units short of daylight, which tanks the scheme on planning and on resale." },
       { title: "Hidden structural costs", detail: "Removing walls, adding bathrooms, and routing services through a commercial structure can add cost that the headline GDV does not reveal." },
     ],
+    extraSection: {
+      id: "office-to-resi-class-ma",
+      eyebrow: "Office To Residential",
+      title: "Office Conversions Under Class MA.",
+      body: [
+        "Office-to-residential is the most-used permitted development route in the country. Class MA lets you change a qualifying commercial building (Class E) to residential (Class C3) through prior approval rather than full planning, with the council required to decide within 56 days.",
+        "Since March 2024 the rules have loosened: the old 1,500 sqm floorspace cap and the vacancy requirement have both been removed. The building still needs two years in Class E use, and the prior approval tests on daylight, noise, flooding, contamination, transport, and fire safety all still apply.",
+        "The route fails quietly when a building sits inside an Article 4 direction, or when deep floor plates cannot deliver acceptable natural light. That is exactly what our desk study screens before you commit to a purchase. You can run a first check yourself with our free Class MA Checker.",
+      ],
+    },
     deliverableHighlights: [
       { deliverableIndex: 0, forThisType: "Tested against the building's real structural grid and core positions, not an assumed plan." },
       { deliverableIndex: 2, forThisType: "Class MA eligibility, Article 4 directions, conservation, and noise mapping covered before you bid." },
       { deliverableIndex: 3, forThisType: "Every conversion risk named and costed, so the deal model reflects reality." },
       { deliverableIndex: 5, forThisType: "Net-to-gross checked carefully, since commercial-to-resi often loses more area than developers expect." },
     ],
-    relatedCaseStudySlug: "reading-high-street",
+    relatedCaseStudySlug: "axis-house",
     metaTitle: "Commercial to Residential Feasibility | Thistle Architecture",
-    metaDescription: "Data-driven feasibility for converting commercial buildings into residential schemes. Five-day turnaround, fixed fee, clear Go or No-Go.",
-  },
-  {
-    slug: "office-to-resi-class-ma",
-    label: "Office to Resi (Class MA)",
-    heroHeading: "Class MA Feasibility, In Five Days.",
-    heroDescription: "Office-to-residential conversion is the most-used permitted development route in the country. A clear-eyed feasibility on whether your building qualifies, and what it can become.",
-    opportunityCopy: "Class MA gives you a permitted-development route from office to residential without going through full planning. It is fast and predictable, but only when the building genuinely qualifies, and many do not pass the prior-approval tests.",
-    opportunityStats: [
-      { label: "Decision window", value: "8 weeks" },
-      { label: "Planning route", value: "Class MA prior approval" },
-      { label: "Floor-space cap", value: "1,500 sqm" },
-    ],
-    challenges: [
-      { title: "Prior-approval traps", detail: "Daylight, noise, flooding, and intended use can all torpedo a Class MA application. We screen against every test before you commit." },
-      { title: "Floor-space limits", detail: "Class MA caps at 1,500 sqm of new residential floorspace. Larger buildings need a different route, or partial conversion, or full planning." },
-      { title: "Article 4 directions", detail: "Many local authorities have removed Class MA permitted-development rights in specific areas. A property in the wrong borough loses the route entirely." },
-    ],
-    deliverableHighlights: [
-      { deliverableIndex: 2, forThisType: "Article 4 status, conservation, listed-building, and prior-approval test screening surfaced at the desk study." },
-      { deliverableIndex: 0, forThisType: "Layouts that meet NDSS without relying on daylight from windows you cannot install." },
-      { deliverableIndex: 4, forThisType: "A clear answer on whether Class MA is the right route, or whether full planning beats it." },
-      { deliverableIndex: 3, forThisType: "Every prior-approval risk costed, so you know the headroom before you exchange." },
-    ],
-    relatedCaseStudySlug: "croydon-office-conversion",
-    metaTitle: "Office to Resi Class MA Feasibility | Thistle Architecture",
-    metaDescription: "Class MA office-to-residential feasibility. Prior-approval screening, layout testing, and a clear Go or No-Go in five days, for a fixed fee.",
+    metaDescription: "Data-driven feasibility for converting commercial buildings into residential schemes, including office conversions under Class MA. Five-day turnaround, fixed fee.",
   },
   {
     slug: "hmo",
@@ -102,6 +95,7 @@ export const conversions: Conversion[] = [
       { deliverableIndex: 3, forThisType: "Licensing costs, planning risks, and standards-compliance gaps each costed and ranked." },
       { deliverableIndex: 5, forThisType: "Net-to-gross and per-room yield projections benchmarked against local market data." },
     ],
+    relatedCaseStudySlug: "st-johns-aylesbury",
     metaTitle: "HMO Feasibility | Thistle Architecture",
     metaDescription: "HMO conversion feasibility. Density, Article 4, licensing, and layout pressure-tested in five days. Fixed fee, clear Go or No-Go.",
   },

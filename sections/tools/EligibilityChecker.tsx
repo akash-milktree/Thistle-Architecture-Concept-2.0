@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import { ArrowUpRight, RotateCcw, CheckCircle2, AlertTriangle, XCircle, type LucideIcon } from 'lucide-react';
 import { Reveal } from '../../components/animations/Reveal';
 import { Button } from '../../components/ui/Button';
-import { useFeasibility } from '../../components/feasibility/FeasibilityContext';
+import { useRouter } from 'next/navigation';
+import { ToolGate } from '../../components/ui/ToolGate';
 
 interface Question {
   key: string;
@@ -25,29 +26,11 @@ const QUESTIONS: Question[] = [
   },
   {
     key: 'commercialUse2y',
-    prompt: "Has the building been in commercial use for the last 2 years?",
+    prompt: "Has the building been in Class E use for the last 2 years?",
     options: [
       { value: 'yes', label: 'Yes' },
       { value: 'no', label: 'No' },
       { value: 'unknown', label: 'Unknown' },
-    ],
-  },
-  {
-    key: 'vacant3m',
-    prompt: "Has the building been vacant for at least 3 months?",
-    options: [
-      { value: 'yes', label: 'Yes' },
-      { value: 'no', label: 'No' },
-      { value: 'unknown', label: 'Unknown' },
-    ],
-  },
-  {
-    key: 'floorSpace',
-    prompt: "What is the approximate floor space being converted?",
-    options: [
-      { value: 'under-1500', label: 'Under 1,500 sqm' },
-      { value: '1500-3000', label: '1,500 to 3,000 sqm' },
-      { value: 'over-3000', label: 'Over 3,000 sqm' },
     ],
   },
   {
@@ -72,20 +55,19 @@ const QUESTIONS: Question[] = [
 
 export type EligibilityVerdict = 'eligible' | 'borderline' | 'not-eligible';
 
-// Pure verdict helper. Hard fails on Q1/Q4/Q5 close the route; any unknown
-// or in-between answer surfaces a borderline; only an all-clear is eligible.
+// Pure verdict helper, aligned with Class MA rules as amended in March 2024
+// (no floorspace cap, no vacancy test). Hard fails: wrong use class, Article 4,
+// listed building. Unknowns and conservation areas surface a borderline.
 export function computeVerdict(answers: Record<string, string>): EligibilityVerdict {
   if (answers.useClass === 'residential' || answers.useClass === 'other') return 'not-eligible';
-  if (answers.floorSpace === 'over-3000') return 'not-eligible';
   if (answers.article4 === 'yes') return 'not-eligible';
+  if (answers.listedStatus === 'listed') return 'not-eligible';
 
   if (
     answers.useClass === 'other-commercial' ||
     answers.commercialUse2y === 'unknown' || answers.commercialUse2y === 'no' ||
-    answers.vacant3m === 'unknown' || answers.vacant3m === 'no' ||
-    answers.floorSpace === '1500-3000' ||
     answers.article4 === 'unknown' ||
-    answers.listedStatus !== 'neither'
+    answers.listedStatus === 'conservation'
   ) return 'borderline';
 
   return 'eligible';
@@ -128,7 +110,7 @@ const VERDICT_COPY: Record<EligibilityVerdict, VerdictCopy> = {
 };
 
 export const EligibilityChecker: React.FC = () => {
-  const { openModal } = useFeasibility();
+  const router = useRouter();
   const [answers, setAnswers] = useState<Record<string, string>>({});
 
   const currentStep = QUESTIONS.findIndex((q) => !answers[q.key]);
@@ -191,12 +173,14 @@ export const EligibilityChecker: React.FC = () => {
                 <h3 className="text-fluid-h3 font-medium tracking-tight leading-tight text-thistle-black mb-fl-4">
                   {copy.headline}
                 </h3>
-                <p className="text-fluid-base text-thistle-black/80 leading-relaxed mb-fl-6 max-w-2xl">
-                  {copy.body}
-                </p>
+                <ToolGate source="class-ma-checker" extra={{ answers, verdict }}>
+                  <p className="text-fluid-base text-thistle-black/80 leading-relaxed mb-fl-6 max-w-2xl">
+                    {copy.body}
+                  </p>
+                </ToolGate>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-fl-4">
-                  <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={openModal}>
-                    Start Feasibility
+                  <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/feasibility-package')}>
+                    Book Your Feasibility
                   </Button>
                   <button
                     onClick={restart}

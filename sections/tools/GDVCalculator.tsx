@@ -4,7 +4,8 @@ import React, { useState, useMemo } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from '../../components/animations/Reveal';
 import { Button } from '../../components/ui/Button';
-import { useFeasibility } from '../../components/feasibility/FeasibilityContext';
+import { useRouter } from 'next/navigation';
+import { ToolGate } from '../../components/ui/ToolGate';
 
 export type ViabilityBand = 'marginal' | 'viable' | 'strong';
 
@@ -110,7 +111,7 @@ const OutputRow: React.FC<{ label: string; value: string; accent?: boolean }> = 
 );
 
 export const GDVCalculator: React.FC = () => {
-  const { openModal } = useFeasibility();
+  const router = useRouter();
   const [inputs, setInputs] = useState<ViabilityInputs>(DEFAULTS);
   const result = useMemo(() => computeViability(inputs), [inputs]);
   const bandCopy = BAND_COPY[result.band];
@@ -142,9 +143,13 @@ export const GDVCalculator: React.FC = () => {
                 <h3 className="text-fluid-h5 font-medium tracking-tight text-thistle-black mb-fl-5">Projected outcome</h3>
                 <div className="space-y-fl-4">
                   <OutputRow label="Projected GDV" value={formatGBP(result.gdv)} />
-                  <OutputRow label="Total cost (purchase + build)" value={formatGBP(result.totalCost)} />
-                  <OutputRow label="Margin" value={formatGBP(result.marginPounds)} />
-                  <OutputRow label="Margin %" value={`${result.marginPct.toFixed(1)}%`} accent />
+                  <ToolGate source="gdv-calculator" extra={{ inputs }}>
+                    <div className="space-y-fl-4">
+                      <OutputRow label="Total cost (purchase + build)" value={formatGBP(result.totalCost)} />
+                      <OutputRow label="Margin" value={formatGBP(result.marginPounds)} />
+                      <OutputRow label="Margin %" value={`${result.marginPct.toFixed(1)}%`} accent />
+                    </div>
+                  </ToolGate>
                 </div>
               </div>
 
@@ -153,8 +158,8 @@ export const GDVCalculator: React.FC = () => {
                 <p className="text-fluid-sm text-thistle-black/80 leading-relaxed mb-fl-5">
                   {bandCopy.body}
                 </p>
-                <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={openModal}>
-                  Start Feasibility
+                <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/feasibility-package')}>
+                  Book Your Feasibility
                 </Button>
               </div>
             </div>

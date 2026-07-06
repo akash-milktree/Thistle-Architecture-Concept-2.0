@@ -2,11 +2,12 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import { PageHero } from '../components/ui/PageHero';
 import { Reveal } from '../components/animations/Reveal';
 import { Button } from '../components/ui/Button';
-import { useFeasibility } from '../components/feasibility/FeasibilityContext';
+import { useRouter } from 'next/navigation';
 import { FAQ } from '../sections/FAQ';
 import { Opportunity } from '../sections/conversions/Opportunity';
 import { Challenges } from '../sections/conversions/Challenges';
@@ -19,7 +20,7 @@ interface ConversionPageProps {
 }
 
 export const ConversionPage: React.FC<ConversionPageProps> = ({ conversion }) => {
-  const { openModal } = useFeasibility();
+  const router = useRouter();
 
   return (
     <>
@@ -29,10 +30,10 @@ export const ConversionPage: React.FC<ConversionPageProps> = ({ conversion }) =>
         description={conversion.heroDescription}
       >
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-fl-4">
-          <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={openModal}>
-            Start Feasibility
+          <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/feasibility-package')}>
+            Book Your Feasibility
           </Button>
-          <Link href="/how-it-works" className="text-sm text-thistle-black/70 hover:text-thistle-black transition-colors font-medium tracking-tight">
+          <Link href="/feasibility-package#how-it-works" className="text-sm text-thistle-black/70 hover:text-thistle-black transition-colors font-medium tracking-tight">
             How it works &rarr;
           </Link>
         </div>
@@ -41,6 +42,44 @@ export const ConversionPage: React.FC<ConversionPageProps> = ({ conversion }) =>
       <Opportunity copy={conversion.opportunityCopy} stats={conversion.opportunityStats} />
 
       <Challenges typeLabel={conversion.label} challenges={conversion.challenges} />
+
+      {conversion.extraSection && (
+        <section id={conversion.extraSection.id} className="bg-white py-fl-section px-fl-margin scroll-mt-24">
+          <div className="max-w-[1360px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-fl-8 items-center">
+            <Reveal>
+              <div className="relative aspect-[4/3] rounded-2xl border border-thistle-black/[0.06] overflow-hidden">
+                <Image
+                  src="/images/generated/office-exterior.jpg"
+                  alt="Vacant UK office building suitable for residential conversion"
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 620px"
+                  className="object-cover"
+                />
+              </div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <div>
+                <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">{conversion.extraSection.eyebrow}</p>
+                <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-5">
+                  {conversion.extraSection.title}
+                </h2>
+                {conversion.extraSection.body.map((para, i) => (
+                  <p key={i} className="text-fluid-base text-thistle-black/80 leading-relaxed mb-fl-4">
+                    {para}
+                  </p>
+                ))}
+                <Link
+                  href="/tools/class-ma-checker"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-thistle-green hover:text-thistle-black transition-colors"
+                >
+                  Try the free Class MA Checker
+                  <ArrowUpRight size={15} />
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       <HowThistleSolves typeLabel={conversion.label} highlights={conversion.deliverableHighlights} />
 
@@ -60,8 +99,8 @@ export const ConversionPage: React.FC<ConversionPageProps> = ({ conversion }) =>
             </p>
           </Reveal>
           <Reveal delay={0.2}>
-            <Button variant="primary" size="lg" icon={<ArrowUpRight size={18} />} onClick={openModal}>
-              Start Feasibility
+            <Button variant="primary" size="lg" icon={<ArrowUpRight size={18} />} onClick={() => router.push('/feasibility-package')}>
+              Book Your Feasibility
             </Button>
           </Reveal>
         </div>

@@ -12,11 +12,11 @@ export const tools: Tool[] = [
   {
     slug: "class-ma-checker",
     label: "Class MA Eligibility Checker",
-    summary: "Six quick questions to see if your building qualifies for permitted-development conversion under Class MA.",
+    summary: "Four quick questions to see if your building qualifies for permitted-development conversion under Class MA.",
     iconName: "ListChecks",
     path: "/tools/class-ma-checker",
     metaTitle: "Class MA Eligibility Checker | Thistle Architecture",
-    metaDescription: "Free Class MA eligibility checker. Six quick questions on use class, vacancy, floor space, Article 4, and listing status. See whether your office-to-resi conversion qualifies for permitted development.",
+    metaDescription: "Free Class MA eligibility checker. Four quick questions on use class, Article 4, and listing status. See whether your office-to-resi conversion qualifies for permitted development.",
   },
   {
     slug: "gdv-calculator",
