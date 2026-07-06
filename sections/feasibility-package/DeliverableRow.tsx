@@ -15,7 +15,7 @@ interface DeliverableRowProps {
 }
 
 // One alternating expanded deliverable row. Mirrors the homepage Feasibility
-// Engine and How It Works StepRow patterns: content on one side, sample
+// Engine pattern: content on one side, sample
 // visual on the other, sides swapping at the lg breakpoint when reversed.
 export const DeliverableRow: React.FC<DeliverableRowProps> = ({ num, deliverable, detail, reversed, graphicSlot, delay = 0 }) => (
   <Reveal delay={delay}>

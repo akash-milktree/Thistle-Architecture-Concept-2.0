@@ -326,7 +326,7 @@ export const FeasibilityEngine: React.FC = () => {
 
         <Reveal delay={0.2}>
           <div className="mt-fl-section-sm">
-            <InlineCTA label="Start your feasibility" />
+            <InlineCTA href="" label="Start Feasibility" />
           </div>
         </Reveal>
       </div>

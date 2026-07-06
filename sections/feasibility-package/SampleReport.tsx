@@ -1,11 +1,17 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import { Reveal } from '../../components/animations/Reveal';
-import { sampleReportPages } from '../../data/feasibilityPackageData';
+import { SampleReportGate } from './SampleReportGate';
 
-// A horizontal three-page gallery suggesting the real report artefact.
-// Each "page" is a styled card with a faint content-line mock inside.
+// Real pages from a live Thistle feasibility document (St Johns, Aylesbury).
+const pages = [
+  { src: "/images/projects/sample-report-1.png", label: "Page 01", title: "Summary and HMO strategy" },
+  { src: "/images/projects/sample-report-2.png", label: "Page 02", title: "Design approach and amenity" },
+  { src: "/images/projects/sample-report-3.png", label: "Page 03", title: "Constraints and key risks" },
+];
+
 export const SampleReport: React.FC = () => (
   <section className="bg-thistle-white py-fl-section px-fl-margin">
     <div className="max-w-[1360px] mx-auto">
@@ -18,35 +24,36 @@ export const SampleReport: React.FC = () => (
             A Real Document.<br /><span className="text-thistle-green">Not A Brochure.</span>
           </h2>
         </Reveal>
+        <Reveal delay={0.15}>
+          <p className="text-fluid-base text-thistle-black/70 leading-relaxed mt-fl-4">
+            These pages are from a real feasibility we delivered for a nine-bedroom HMO conversion in Aylesbury.
+          </p>
+        </Reveal>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-fl-5">
-        {sampleReportPages.map((page, i) => (
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-fl-5 max-w-4xl mx-auto">
+        {pages.map((page, i) => (
           <Reveal key={i} delay={i * 0.08}>
-            <div className="aspect-[3/4] bg-white rounded-2xl border border-thistle-black/[0.06] p-fl-5 flex flex-col">
-              <span className="text-[10px] uppercase tracking-wider text-thistle-green font-semibold">{page.label}</span>
-              <h3 className="text-fluid-h6 font-medium tracking-tight text-thistle-black mt-fl-2 mb-fl-5">{page.title}</h3>
-              <div className="flex-1 bg-thistle-white/50 rounded-lg p-fl-4 flex flex-col">
-                <div className="h-2 w-1/3 bg-thistle-black/20 rounded mb-fl-3" />
-                <div className="space-y-2 mb-fl-4">
-                  <div className="h-1.5 bg-thistle-black/[0.12] rounded" />
-                  <div className="h-1.5 bg-thistle-black/[0.12] rounded w-5/6" />
-                  <div className="h-1.5 bg-thistle-black/[0.12] rounded w-4/6" />
-                </div>
-                <div className="h-2 w-1/4 bg-thistle-black/20 rounded mb-fl-3" />
-                <div className="space-y-2">
-                  <div className="h-1.5 bg-thistle-black/[0.12] rounded w-5/6" />
-                  <div className="h-1.5 bg-thistle-black/[0.12] rounded w-3/6" />
-                </div>
-                <div className="mt-auto flex items-center justify-between pt-fl-3 border-t border-thistle-black/[0.08]">
-                  <span className="text-[9px] uppercase tracking-wider text-thistle-black/30 font-semibold">Thistle Architecture</span>
-                  <span className="text-[9px] text-thistle-black/30">{page.label.replace('Page ', 'p.')}</span>
-                </div>
+            <div className="bg-white rounded-2xl border border-thistle-black/[0.06] p-fl-3 shadow-sm">
+              <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-white">
+                <Image
+                  src={page.src}
+                  alt={`Sample feasibility report, ${page.title}`}
+                  fill
+                  sizes="(max-width: 768px) 90vw, 300px"
+                  className="object-cover object-top"
+                />
+              </div>
+              <div className="flex items-center justify-between pt-fl-3 px-1">
+                <span className="text-[10px] uppercase tracking-wider text-thistle-green font-semibold">{page.label}</span>
+                <span className="text-[11px] text-thistle-black/50">{page.title}</span>
               </div>
             </div>
           </Reveal>
         ))}
       </div>
+
+      <SampleReportGate />
     </div>
   </section>
 );
