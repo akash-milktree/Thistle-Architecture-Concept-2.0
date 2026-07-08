@@ -100,7 +100,7 @@ interface TestimonialCardProps {
 }
 
 const TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, name, role, company, initials }) => (
-  <div className="w-[340px] flex-shrink-0 bg-white border border-thistle-black/[0.06] rounded-xl p-fl-5">
+  <div className="w-[340px] flex-shrink-0 bg-thistle-white/70 border border-thistle-black/[0.06] rounded-xl p-fl-5">
     <Stars />
     <p className="text-fluid-base text-thistle-black/80 leading-relaxed mb-fl-5">
       "{quote}"
@@ -122,7 +122,7 @@ export const Testimonials: React.FC = () => {
   const bottomCards = [...bottomRow, ...bottomRow];
 
   return (
-    <section className="py-fl-section bg-thistle-white overflow-hidden">
+    <section className="py-fl-section bg-white overflow-hidden">
       <div className="max-w-[1360px] mx-auto px-fl-margin mb-fl-8">
         {/* Centered Header */}
         <div className="text-center">

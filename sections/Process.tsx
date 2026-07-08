@@ -41,7 +41,7 @@ const steps = [
 
 export const Process: React.FC = () => {
   return (
-    <section id="process" className="bg-thistle-white py-fl-section px-fl-margin overflow-hidden">
+    <section id="process" className="bg-white py-fl-section px-fl-margin overflow-hidden">
       <div className="max-w-[1360px] mx-auto">
         {/* Header */}
         <div className="text-center mb-fl-8">
@@ -68,7 +68,7 @@ export const Process: React.FC = () => {
                   className={`relative rounded-xl p-fl-6 h-full flex flex-col group transition-all duration-300 ${
                     isFinal
                       ? 'bg-thistle-green/10 border border-thistle-green/30 hover:border-thistle-green/50 hover:shadow-lg hover:shadow-thistle-green/10'
-                      : 'bg-white border border-thistle-black/[0.06] hover:border-thistle-green/30 hover:shadow-lg hover:shadow-thistle-green/5'
+                      : 'bg-thistle-white/70 border border-thistle-black/[0.06] hover:border-thistle-green/30 hover:shadow-lg hover:shadow-thistle-green/5'
                   }`}
                 >
                   <div className="flex items-center gap-3 mb-fl-5">

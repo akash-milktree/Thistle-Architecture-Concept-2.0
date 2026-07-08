@@ -49,19 +49,19 @@ export const Hero: React.FC = () => {
             <Reveal>
               <div className="inline-flex items-center gap-2 px-fl-4 py-2 rounded-full bg-white/10 border border-white/25 backdrop-blur-sm mb-fl-6">
                 <span className="inline-flex rounded-full h-2 w-2 bg-thistle-green" />
-                <span className="text-sm font-medium text-white tracking-tight">Feasibility in 5 days, nationwide</span>
+                <span className="text-sm font-medium text-white tracking-tight">Feasibility-first architecture</span>
               </div>
             </Reveal>
 
             <Reveal delay={0.1}>
               <h1 className="text-[clamp(2.6rem,5.2vw,4.6rem)] font-medium tracking-tighter leading-[1.05] text-white mb-fl-5">
-                Nationwide Feasibility<br />For Building Conversions.
+                Nationwide Developer-Led<br />Retrofit Architecture.
               </h1>
             </Reveal>
 
             <Reveal delay={0.2}>
               <p className="text-fluid-base text-white/90 leading-relaxed font-light mb-fl-7 max-w-xl">
-                Thistle helps developers test what an existing building can become. Data analysis and developer-led architecture, with a clear Go or No-Go recommendation in five days.
+                Thistle is a feasibility-first architecture practice for existing buildings. We test what a building can become, give you a clear Go or No-Go in five days, then design and deliver the conversion.
               </p>
             </Reveal>
 

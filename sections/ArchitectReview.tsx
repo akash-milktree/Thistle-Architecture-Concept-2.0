@@ -25,7 +25,7 @@ const blocks = [
 
 export const ArchitectReview: React.FC = () => {
   return (
-    <section className="bg-thistle-white py-fl-section px-fl-margin">
+    <section className="bg-white py-fl-section px-fl-margin">
       <div className="max-w-[1360px] mx-auto">
         {/* Header */}
         <div className="text-center mb-fl-section-sm max-w-2xl mx-auto">
@@ -48,7 +48,7 @@ export const ArchitectReview: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-fl-5 mb-fl-7">
           {blocks.map((b, i) => (
             <Reveal key={i} delay={i * 0.1}>
-              <div className="bg-white rounded-2xl border border-thistle-black/[0.06] overflow-hidden h-full flex flex-col">
+              <div className="bg-thistle-white/70 rounded-2xl border border-thistle-black/[0.06] overflow-hidden h-full flex flex-col">
                 <div className="relative aspect-[16/9] overflow-hidden">
                   <Image
                     src={b.image}

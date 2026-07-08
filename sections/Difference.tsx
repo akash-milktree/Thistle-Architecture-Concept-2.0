@@ -22,7 +22,7 @@ const thistle = [
 
 export const Difference: React.FC = () => {
   return (
-    <section className="bg-thistle-white py-fl-section px-fl-margin">
+    <section className="bg-white py-fl-section px-fl-margin">
       <div className="max-w-[1000px] mx-auto">
         {/* Header */}
         <div className="text-center mb-fl-8">
@@ -39,7 +39,7 @@ export const Difference: React.FC = () => {
         {/* Two panels: the choice, not a spreadsheet */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-fl-5 items-stretch">
           <Reveal>
-            <div className="h-full rounded-2xl bg-white border border-thistle-black/[0.08] p-fl-6">
+            <div className="h-full rounded-2xl bg-thistle-white/70 border border-thistle-black/[0.08] p-fl-6">
               <div className="flex items-center gap-3 mb-fl-5 pb-fl-4 border-b border-thistle-black/[0.06]">
                 <div className="w-9 h-9 rounded-lg bg-thistle-black/[0.04] flex items-center justify-center">
                   <Clock size={18} className="text-thistle-black/40" />

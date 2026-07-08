@@ -3,6 +3,9 @@
 import React from 'react';
 import { Hero } from '../sections/Hero';
 import { DeveloperLogos } from '../sections/DeveloperLogos';
+import { IntroBlock } from '../sections/IntroBlock';
+import { FinishedProjects } from '../sections/FinishedProjects';
+import { TeamStrip } from '../sections/TeamStrip';
 import { Process } from '../sections/Process';
 import { ArchitectReview } from '../sections/ArchitectReview';
 import { Benefits } from '../sections/Benefits';
@@ -16,6 +19,9 @@ export const HomePage: React.FC = () => (
   <>
     <Hero />
     <DeveloperLogos />
+    <IntroBlock />
+    <FinishedProjects />
+    <TeamStrip />
     <Process />
     <DataSources />
     <ArchitectReview />
@@ -23,6 +29,6 @@ export const HomePage: React.FC = () => (
     <Difference />
     <CaseStudies />
     <Testimonials />
-    <FAQ />
+    <FAQ tinted />
   </>
 );
