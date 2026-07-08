@@ -44,6 +44,24 @@ Bristol) have been deleted. The six live case studies and their sources:
   re-upload; real photography will replace drawings as case-study heroes where
   available.
 
+## Completed Projects (PLACEHOLDERS live on the site)
+
+The Our Work hub now has a "Completed Projects" category. Six projects are
+listed using names from the shared folder, but ALL imagery is stock/generated
+and the copy is a one-line stand-in ("full write-up coming soon"):
+
+- [ ] Beauchamp House (office to flats): supply photos, location, and write-up.
+- [ ] Monument House (office to flats): same.
+- [ ] Wigan Church: same, plus confirm what the completed use actually is
+  (the folder name says "Office to Church" which reads backwards).
+- [ ] 162 Millbrook (HMO): same.
+- [ ] Bishopstoke (HMO): same.
+- [ ] Forest Home (high-end residential): same.
+- [ ] Confirm locations: several are guessed from context (Hampshire area) and
+  must be corrected before anyone quotes them.
+- [ ] Projects NOT yet listed for lack of any material: 81 Crescent,
+  Bereweeke, School House, Millbrook offices. Say which to add.
+
 ## Sample report download
 
 - [ ] The feasibility package page now shows real pages from the St Johns
