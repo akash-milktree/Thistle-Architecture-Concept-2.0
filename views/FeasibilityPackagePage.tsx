@@ -7,35 +7,18 @@ import { ArrowUpRight, CheckCircle2, Clock, ShieldCheck } from 'lucide-react';
 import { Reveal } from '../components/animations/Reveal';
 import { Button } from '../components/ui/Button';
 import { useFeasibility } from '../components/feasibility/FeasibilityContext';
-import { deliverables } from '../data/howItWorksData';
-import {
-  pricingFrom,
-  pricingCaption,
-  deliverableDetail,
-} from '../data/feasibilityPackageData';
+import { pricingFrom } from '../data/feasibilityPackageData';
 import { caseStudies } from '../data/caseStudiesData';
-import { testimonialHighlights } from '../sections/Testimonials';
+import { Testimonials } from '../sections/Testimonials';
 import { DeveloperLogos } from '../sections/DeveloperLogos';
 import { FeasibilityEngine } from '../sections/FeasibilityEngine';
-import { PricingAnchor } from '../sections/feasibility-package/PricingAnchor';
-import { DeliverableRow } from '../sections/feasibility-package/DeliverableRow';
 import { SampleReport } from '../sections/feasibility-package/SampleReport';
-import { TimelineBand } from '../sections/feasibility-package/TimelineBand';
-import { ScopeClarity } from '../sections/feasibility-package/ScopeClarity';
 import { PackageFAQ } from '../sections/feasibility-package/PackageFAQ';
+import { PackagePricing } from '../sections/feasibility-package/PackagePricing';
+import { DeliverableShowcase } from '../sections/feasibility-package/DeliverableShowcase';
+import { PackageTeam } from '../sections/feasibility-package/PackageTeam';
 import { HowItWorks } from '../sections/feasibility-package/HowItWorks';
 import { StickyCTA } from '../sections/feasibility-package/StickyCTA';
-
-// Real imagery per deliverable: Thistle drawings where the deliverable is a
-// drawing, photography where it is a document or a judgement.
-const deliverableImages: { src: string; alt: string; fit: 'contain' | 'cover' }[] = [
-  { src: "/images/projects/st-johns-sk001-1.png", alt: "Proposed GA floor plans for a nine-bedroom HMO conversion", fit: "contain" },
-  { src: "/images/generated/desk-plans.jpg", alt: "Printed floor plans and schedules on an architect's desk", fit: "cover" },
-  { src: "/images/projects/greyfriars-option4-1.png", alt: "Colour-coded feasibility sketch showing constraints and shared spaces", fit: "contain" },
-  { src: "/images/generated/report-hands.jpg", alt: "A bound feasibility report held in two hands", fit: "cover" },
-  { src: "/images/projects/sample-report-1.png", alt: "The first page of a real Thistle feasibility document", fit: "contain" },
-  { src: "/images/projects/axis-house-plans-1.png", alt: "Sketch scheme options testing unit mix and layout efficiency", fit: "contain" },
-];
 
 const trustMarkers = [
   { icon: CheckCircle2, label: "98.5% planning success rate" },
@@ -98,79 +81,37 @@ export const FeasibilityPackagePage: React.FC = () => {
       {/* How it works, absorbed from the old page */}
       <HowItWorks />
 
-      {/* What's included in data analysis, moved from the homepage */}
+      {/* The six deliverables, compact selector */}
+      <DeliverableShowcase />
+
+      {/* What's included in data analysis */}
       <FeasibilityEngine />
 
-      {/* The six deliverables, with real imagery */}
-      <section className="bg-thistle-white py-fl-section px-fl-margin">
-        <div className="max-w-[1360px] mx-auto">
-          <div className="text-center mb-fl-section-sm max-w-2xl mx-auto">
-            <Reveal>
-              <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">What You Get</p>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black">
-                Six Deliverables.<br /><span className="text-thistle-green">One Decision.</span>
-              </h2>
-            </Reveal>
-          </div>
-
-          <div className="space-y-fl-section-sm">
-            {deliverables.map((deliverable, i) => {
-              const detail = deliverableDetail[i];
-              const img = deliverableImages[i];
-              const num = String(i + 1).padStart(2, '0');
-              return (
-                <DeliverableRow
-                  key={num}
-                  num={num}
-                  deliverable={deliverable}
-                  detail={detail}
-                  reversed={i % 2 !== 0}
-                  graphicSlot={
-                    <div className="relative aspect-[4/3] rounded-2xl border border-thistle-black/[0.06] bg-thistle-white/60 overflow-hidden">
-                      <Image
-                        src={img.src}
-                        alt={img.alt}
-                        fill
-                        sizes="(max-width: 1024px) 90vw, 620px"
-                        className={img.fit === 'contain' ? 'object-contain p-3' : 'object-cover'}
-                      />
-                    </div>
-                  }
-                />
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      {/* Who you're working with */}
+      <PackageTeam />
 
       <SampleReport />
 
-      <PricingAnchor priceFrom={pricingFrom} caption={pricingCaption} />
-
-      <ScopeClarity />
-
-      <TimelineBand />
+      <PackagePricing />
 
       {/* Case study highlight */}
-      <section className="bg-white py-fl-section px-fl-margin">
+      <section className="bg-thistle-white py-fl-section px-fl-margin">
         <div className="max-w-[1360px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-fl-8 items-center">
             <Reveal>
-              <div className="relative aspect-[4/3] rounded-2xl border border-thistle-black/[0.06] bg-thistle-white/60 overflow-hidden">
+              <div className={`relative aspect-[4/3] rounded-2xl border border-thistle-black/[0.06] overflow-hidden ${highlight.image.startsWith('/images/projects/') ? 'bg-white' : 'bg-thistle-white/60'}`}>
                 <Image
                   src={highlight.image}
                   alt={highlight.title}
                   fill
                   sizes="(max-width: 1024px) 90vw, 620px"
-                  className="object-cover"
+                  className={highlight.image.startsWith('/images/projects/') ? 'object-contain p-3' : 'object-cover'}
                 />
               </div>
             </Reveal>
             <Reveal delay={0.1}>
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">Recent Feasibility</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">The Proof</p>
                 <h2 className="text-fluid-h3 font-medium tracking-tight leading-tight text-thistle-black mb-fl-4">
                   {highlight.title}
                 </h2>
@@ -190,60 +131,9 @@ export const FeasibilityPackagePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Testimonials, static 3-up */}
-      <section className="bg-thistle-white py-fl-section px-fl-margin">
-        <div className="max-w-[1360px] mx-auto">
-          <div className="text-center mb-fl-8">
-            <Reveal>
-              <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black">
-                Hear From Our Clients.
-              </h2>
-            </Reveal>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-fl-4">
-            {testimonialHighlights.slice(0, 3).map((t, i) => (
-              <Reveal key={i} delay={i * 0.08}>
-                <div className="bg-white rounded-2xl border border-thistle-black/[0.06] p-fl-6 h-full flex flex-col">
-                  <p className="text-fluid-base text-thistle-black/80 leading-relaxed flex-1">&ldquo;{t.quote}&rdquo;</p>
-                  <div className="flex items-center gap-3 mt-fl-5">
-                    <div className="w-9 h-9 rounded-full bg-thistle-green/10 flex items-center justify-center text-xs font-semibold text-thistle-green">
-                      {t.initials}
-                    </div>
-                    <div>
-                      <span className="block text-sm font-medium text-thistle-black leading-tight">{t.name}</span>
-                      <span className="block text-xs text-thistle-black/50">{t.role}, {t.company}</span>
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Testimonials eyebrow="The Clients" />
 
       <PackageFAQ />
-
-      {/* Closing CTA */}
-      <section className="py-fl-section px-fl-margin bg-thistle-white">
-        <div className="max-w-[1360px] mx-auto text-center">
-          <Reveal>
-            <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-5">
-              Ready When You Are.
-            </h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="text-fluid-base text-thistle-black/80 leading-relaxed max-w-md mx-auto mb-fl-6">
-              Submit your building, get a clear answer in five days, for a fixed fee.
-            </p>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <Button variant="primary" size="lg" icon={<ArrowUpRight size={18} />} onClick={openModal}>
-              Start Feasibility
-            </Button>
-            <p className="text-xs text-thistle-black/50 mt-fl-4">No obligation. Response within one working day.</p>
-          </Reveal>
-        </div>
-      </section>
 
       <StickyCTA />
     </>

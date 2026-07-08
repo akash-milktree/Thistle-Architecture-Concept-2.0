@@ -15,12 +15,12 @@ export const PackageFAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section className="py-fl-section px-fl-margin bg-white">
+    <section className="py-fl-section px-fl-margin bg-thistle-white">
       <div className="max-w-[1360px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-fl-8">
           <div className="lg:sticky lg:top-32 lg:self-start">
             <Reveal>
-              <p className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-5">Package FAQs</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-5">The Questions</p>
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-5">

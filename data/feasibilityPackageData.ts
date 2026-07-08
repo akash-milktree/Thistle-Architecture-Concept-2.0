@@ -16,12 +16,6 @@ export interface SampleReportPage {
   title: string;
 }
 
-export interface TimelineDay {
-  day: string;
-  label: string;
-  detail: string;
-}
-
 export interface PackageFaq {
   question: string;
   answer: string;
@@ -63,14 +57,6 @@ export const sampleReportPages: SampleReportPage[] = [
   { label: "Page 01", title: "Executive summary and recommendation" },
   { label: "Page 02", title: "Layout options and accommodation schedule" },
   { label: "Page 03", title: "Financial appraisal and risk register" },
-];
-
-export const timelineDays: TimelineDay[] = [
-  { day: "Day 1", label: "Submit your details", detail: "Upload the address and basic building information. The desk study starts running the moment you submit." },
-  { day: "Day 2", label: "Automated desk study", detail: "Our data engine cross-references planning history, constraints, density data, and comparable schemes." },
-  { day: "Day 3", label: "Call with Jodi", detail: "A focused call with our property expert. We confirm what the data engine found and capture anything specific to your plans." },
-  { day: "Day 4", label: "Architect-led sketch scheme", detail: "An architect tests the building physically, sketches the optimal unit layout, and pressure-tests the numbers." },
-  { day: "Day 5", label: "Feasibility review", detail: "We meet on video, walk through the full report, and you leave with a clear Go or No-Go." },
 ];
 
 export const notIncluded: string[] = [

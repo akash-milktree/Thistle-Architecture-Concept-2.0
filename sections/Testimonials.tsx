@@ -117,7 +117,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, name, role, co
   </div>
 );
 
-export const Testimonials: React.FC = () => {
+export const Testimonials: React.FC<{ eyebrow?: string }> = ({ eyebrow = "Testimonials" }) => {
   const topCards = [...testimonialHighlights, ...testimonialHighlights];
   const bottomCards = [...bottomRow, ...bottomRow];
 
@@ -127,7 +127,7 @@ export const Testimonials: React.FC = () => {
         {/* Centered Header */}
         <div className="text-center">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.2em] text-thistle-black/50 font-semibold mb-fl-5">Testimonials</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-5">{eyebrow}</p>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-5">

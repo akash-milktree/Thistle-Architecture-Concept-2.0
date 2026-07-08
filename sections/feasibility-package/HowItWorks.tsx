@@ -11,7 +11,7 @@ export const HowItWorks: React.FC = () => (
     <div className="max-w-[1360px] mx-auto">
       <div className="text-center mb-fl-8 max-w-2xl mx-auto">
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">How It Works</p>
+          <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">The Process</p>
         </Reveal>
         <Reveal delay={0.1}>
           <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black">
