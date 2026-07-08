@@ -3,16 +3,34 @@
 import React from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Reveal } from '../components/animations/Reveal';
-import { Button } from '../components/ui/Button';
-import { useRouter } from 'next/navigation';
-import { motion } from 'framer-motion';
-import { ArrowUpRight, ArrowLeft } from 'lucide-react';
+import { ArrowUpRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { caseStudies } from '../data/caseStudiesData';
+
+// Drawings (converted sketch PDFs) live in /images/projects/ and must never
+// be crop-covered; photography can fill its frame.
+const isDrawing = (src: string) => src.startsWith('/images/projects/');
+
+const Frame: React.FC<{ src: string; alt: string; aspect?: string; sizes?: string }> = ({
+  src,
+  alt,
+  aspect = 'aspect-[4/3]',
+  sizes = '(max-width: 1024px) 92vw, 640px',
+}) => (
+  <div className={`relative ${aspect} rounded-2xl border border-thistle-black/[0.06] overflow-hidden ${isDrawing(src) ? 'bg-white' : 'bg-thistle-white/60'}`}>
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      sizes={sizes}
+      className={isDrawing(src) ? 'object-contain p-3' : 'object-cover'}
+    />
+  </div>
+);
 
 export const CaseStudyDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
-  const router = useRouter();
   const caseStudy = caseStudies.find(c => c.slug === slug);
 
   if (!caseStudy) {
@@ -20,160 +38,193 @@ export const CaseStudyDetailPage: React.FC = () => {
       <section className="min-h-[60vh] flex items-center justify-center px-6">
         <div className="text-center">
           <h1 className="text-fluid-h2 font-medium tracking-tight mb-fl-4">Case study not found.</h1>
-          <Link href="/case-studies" className="text-fluid-sm text-thistle-pink hover:underline">Back to all case studies</Link>
+          <Link href="/case-studies" className="text-fluid-sm text-thistle-green hover:underline">Back to all work</Link>
         </div>
       </section>
     );
   }
 
-  const currentIndex = caseStudies.findIndex(c => c.slug === slug);
-  const nextCase = caseStudies[(currentIndex + 1) % caseStudies.length];
+  const isProject = caseStudy.kind === 'project';
+  const backHref = isProject ? '/case-studies?view=projects' : '/case-studies';
+  const backLabel = isProject ? 'All Completed Projects' : 'All Feasibility Studies';
+
+  // Next link cycles within the same category, so a project never hands
+  // over to a feasibility study mid-browse.
+  const siblings = caseStudies.filter(c => c.kind === caseStudy.kind);
+  const idx = siblings.findIndex(c => c.slug === slug);
+  const nextCase = siblings[(idx + 1) % siblings.length];
+
+  const narrative = [
+    { num: '01', title: 'The Challenge', body: caseStudy.challenge },
+    { num: '02', title: 'Our Approach', body: caseStudy.approach },
+    { num: '03', title: 'The Outcome', body: caseStudy.outcome },
+  ].filter((s): s is { num: string; title: string; body: string } => !!s.body);
+
+  // One modest fact band replaces both the old display-size stats row and
+  // the near-empty sidebar.
+  const facts = [
+    ...caseStudy.stats,
+    { label: 'Building type', value: caseStudy.buildingType },
+    ...(caseStudy.planningRoute ? [{ label: 'Planning route', value: caseStudy.planningRoute }] : []),
+    ...(caseStudy.completionDate ? [{ label: isProject ? 'Completed' : 'Feasibility date', value: caseStudy.completionDate }] : []),
+  ].slice(0, 6);
 
   return (
     <>
-      {/* Hero Image */}
-      <section className="relative min-h-[60vh] flex items-end pt-fl-section-sm overflow-hidden">
-        <motion.img
-          initial={{ scale: 1.05 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.4, ease: [0.21, 0.47, 0.32, 0.98] }}
-          src={caseStudy.image}
-          alt={caseStudy.title}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
+      {/* Split header: copy left, framed image right. Drawings never sit
+          behind text. */}
+      <section className="bg-thistle-white pt-32 pb-fl-8 px-fl-margin">
+        <div className="max-w-[1360px] mx-auto">
+          <Link href={backHref} className="inline-flex items-center gap-2 text-sm text-thistle-black/50 hover:text-thistle-black transition-colors mb-fl-6">
+            <ArrowLeft size={14} /> {backLabel}
+          </Link>
 
-        <div className="relative z-10 w-full px-fl-margin pb-fl-7">
-          <div className="max-w-[1360px] mx-auto">
-            <Link href="/case-studies" className="inline-flex items-center gap-2 text-fluid-base text-white/80 hover:text-white transition-colors mb-fl-5">
-              <ArrowLeft size={14} /> All Case Studies
-            </Link>
-            <span className="block px-3 py-1 rounded-full bg-white/10 backdrop-blur-xl border border-white/10 text-[10px] uppercase tracking-widest text-white/80 font-medium w-fit mb-fl-4">
-              {caseStudy.tag}
-            </span>
-            <h1 className="text-fluid-h1 font-medium tracking-tight text-white leading-tight mb-fl-2">
-              {caseStudy.title}
-            </h1>
-            <p className="text-fluid-base text-white/80">{caseStudy.location}</p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-fl-7 items-center">
+            <div>
+              <Reveal>
+                <div className="flex flex-wrap items-center gap-fl-2 mb-fl-4">
+                  <span className="px-3 py-1.5 rounded-full bg-thistle-green/10 text-[10px] uppercase tracking-widest text-thistle-green font-semibold">
+                    {caseStudy.tag}
+                  </span>
+                  {caseStudy.recommendation && (
+                    <span className={`px-3 py-1.5 rounded-full text-[10px] uppercase tracking-widest font-semibold ${
+                      caseStudy.recommendation === 'No-Go'
+                        ? 'bg-red-50 text-red-600'
+                        : 'bg-thistle-black/[0.05] text-thistle-black/60'
+                    }`}>
+                      {caseStudy.recommendation}
+                    </span>
+                  )}
+                  {isProject && (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-thistle-black/[0.05] text-[10px] uppercase tracking-widest text-thistle-black/60 font-semibold">
+                      <CheckCircle2 size={11} className="text-thistle-green" /> Complete
+                    </span>
+                  )}
+                </div>
+              </Reveal>
+              <Reveal delay={0.05}>
+                <h1 className="text-fluid-h1 font-medium tracking-tight leading-[1.05] text-thistle-black mb-fl-3">
+                  {caseStudy.title}
+                </h1>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <p className="text-sm uppercase tracking-wider text-thistle-black/45 font-medium mb-fl-5">{caseStudy.location}</p>
+              </Reveal>
+              <Reveal delay={0.15}>
+                <p className="text-fluid-lg text-thistle-black/75 leading-relaxed max-w-xl">
+                  {caseStudy.desc}
+                </p>
+              </Reveal>
+            </div>
+
+            <Reveal delay={0.1}>
+              <Frame src={caseStudy.image} alt={caseStudy.title} />
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* Stats Row */}
-      <section className="py-fl-7 px-fl-margin bg-thistle-white border-b border-thistle-black/[0.06]">
-        <div className="max-w-[1360px] mx-auto">
-          <div className="flex flex-wrap gap-fl-8">
-            {caseStudy.stats.map((stat, i) => (
-              <Reveal key={i} delay={i * 0.1}>
-                <div className="flex flex-col">
-                  <span className="text-fluid-h2 font-medium tracking-tight text-thistle-black leading-none mb-fl-1">{stat.value}</span>
-                  <span className="text-xs uppercase tracking-widest text-thistle-black/40 font-medium">{stat.label}</span>
+      {/* Fact band */}
+      <section className="bg-white border-y border-thistle-black/[0.06] px-fl-margin">
+        <div className="max-w-[1360px] mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+          {facts.map((fact, i) => (
+            <div
+              key={i}
+              className={`py-fl-5 px-fl-4 ${i > 0 ? 'sm:border-l sm:border-thistle-black/[0.05]' : ''}`}
+            >
+              <span className="block text-[10px] uppercase tracking-widest text-thistle-black/40 font-semibold mb-1.5">{fact.label}</span>
+              <span className="block text-fluid-h6 font-medium tracking-tight text-thistle-black leading-snug">{fact.value}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {narrative.length > 0 ? (
+        /* Numbered narrative at reading size */
+        <section className="bg-thistle-white py-fl-section px-fl-margin">
+          <div className="max-w-[820px] mx-auto space-y-fl-8">
+            {narrative.map((section, i) => (
+              <Reveal key={section.num} delay={i * 0.05}>
+                <div>
+                  <div className="flex items-baseline gap-fl-3 mb-fl-4">
+                    <span className="text-sm font-semibold text-thistle-green tabular-nums">{section.num}</span>
+                    <h2 className="text-fluid-h4 font-medium tracking-tight text-thistle-black">{section.title}</h2>
+                  </div>
+                  <p className="text-fluid-base text-thistle-black/75 leading-relaxed">{section.body}</p>
                 </div>
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Content Body */}
-      <section className="py-fl-section px-fl-margin bg-thistle-white">
-        <div className="max-w-[1360px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-fl-8">
-            {/* Sidebar */}
-            <div className="lg:col-span-3 lg:sticky lg:top-32 lg:self-start">
-              <div className="flex flex-col gap-5">
-                {[
-                  { label: "Building Type", value: caseStudy.buildingType },
-                  { label: "Floor Area", value: caseStudy.floorArea },
-                  { label: "Planning Route", value: caseStudy.planningRoute },
-                  { label: "Feasibility Date", value: caseStudy.completionDate },
-                ].filter((meta) => meta.value).map((meta, i) => (
-                  <div key={i}>
-                    <span className="text-[10px] uppercase tracking-widest text-thistle-black/30 font-semibold block mb-fl-1">{meta.label}</span>
-                    <span className="text-fluid-sm text-thistle-black/70 font-medium">{meta.value}</span>
-                  </div>
-                ))}
+        </section>
+      ) : (
+        /* Placeholder projects get a designed in-preparation panel, not an
+           orphan sentence in an empty grid. */
+        <section className="bg-thistle-white py-fl-section px-fl-margin">
+          <div className="max-w-[820px] mx-auto">
+            <Reveal>
+              <div className="rounded-2xl bg-white border border-thistle-black/[0.06] p-fl-7 text-center">
+                <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">Write-Up In Preparation</p>
+                <h2 className="text-fluid-h4 font-medium tracking-tight text-thistle-black mb-fl-4">
+                  The full story of this project is on its way.
+                </h2>
+                <p className="text-fluid-base text-thistle-black/70 leading-relaxed max-w-md mx-auto mb-fl-6">
+                  Photography and a detailed write-up are being prepared. In the meantime, our feasibility studies show exactly how we approach buildings like this one.
+                </p>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-fl-4">
+                  <Link
+                    href="/case-studies"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-thistle-green hover:text-thistle-black transition-colors"
+                  >
+                    Browse feasibility studies
+                    <ArrowUpRight size={15} />
+                  </Link>
+                </div>
               </div>
-            </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
 
-            {/* Main Content */}
-            <div className="lg:col-span-9">
-              {caseStudy.challenge && (
-                <Reveal>
-                  <div className="mb-fl-7">
-                    <h2 className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-4">The Challenge</h2>
-                    <p className="text-fluid-sm text-thistle-black/60 leading-relaxed">{caseStudy.challenge}</p>
-                  </div>
+      {/* Drawings, full width and never cropped */}
+      {caseStudy.galleryImages.length > 0 && (
+        <section className="bg-white py-fl-section px-fl-margin">
+          <div className="max-w-[1000px] mx-auto">
+            <Reveal>
+              <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-6">
+                {isProject ? 'Gallery' : 'The Drawings'}
+              </p>
+            </Reveal>
+            <div className="space-y-fl-6">
+              {caseStudy.galleryImages.map((img, i) => (
+                <Reveal key={i} delay={Math.min(i * 0.08, 0.2)}>
+                  <Frame
+                    src={img}
+                    alt={`${caseStudy.title}, drawing ${i + 1}`}
+                    aspect="aspect-[16/10]"
+                    sizes="(max-width: 1024px) 92vw, 1000px"
+                  />
                 </Reveal>
-              )}
-
-              {caseStudy.approach && (
-                <Reveal delay={0.1}>
-                  <div className="mb-fl-7">
-                    <h2 className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-4">Our Approach</h2>
-                    <p className="text-fluid-sm text-thistle-black/60 leading-relaxed">{caseStudy.approach}</p>
-                  </div>
-                </Reveal>
-              )}
-
-              {caseStudy.outcome && (
-                <Reveal delay={0.2}>
-                  <div className="mb-fl-7">
-                    <h2 className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-4">The Outcome</h2>
-                    <p className="text-fluid-sm text-thistle-black/60 leading-relaxed">{caseStudy.outcome}</p>
-                  </div>
-                </Reveal>
-              )}
-
-              {!caseStudy.challenge && (
-                <Reveal>
-                  <p className="text-fluid-base text-thistle-black/70 leading-relaxed mb-fl-7">{caseStudy.desc}</p>
-                </Reveal>
-              )}
-
-              {/* Gallery */}
-              {caseStudy.galleryImages.length > 0 && (
-                <Reveal delay={0.3}>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-fl-4 mt-fl-8">
-                    {caseStudy.galleryImages.map((img, i) => (
-                      <div key={i} className="aspect-[4/3] rounded-2xl overflow-hidden bg-white border border-thistle-black/[0.06] p-2">
-                        <img src={img} alt={`${caseStudy.title} drawing ${i + 1}`} className="w-full h-full object-contain" />
-                      </div>
-                    ))}
-                  </div>
-                </Reveal>
-              )}
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* Next Case Study */}
-      <section className="py-fl-8 px-fl-margin bg-thistle-white border-t border-thistle-black/[0.06]">
-        <div className="max-w-[1360px] mx-auto">
-          <Reveal>
-            <p className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-5">Next Project</p>
-            <Link href={`/case-studies/${nextCase.slug}`} className="group flex items-center justify-between">
-              <h3 className="text-fluid-h3 font-medium tracking-tight group-hover:text-thistle-pink transition-colors">{nextCase.title}</h3>
-              <ArrowUpRight size={24} className="text-thistle-black/30 group-hover:text-thistle-pink transition-colors" />
+      {/* Next, within the same category */}
+      <section className="bg-thistle-white py-fl-8 px-fl-margin border-t border-thistle-black/[0.06]">
+        <div className="max-w-[1360px] mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-fl-4">
+          <div>
+            <p className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-3">
+              {isProject ? 'Next Project' : 'Next Study'}
+            </p>
+            <Link href={`/case-studies/${nextCase.slug}`} className="group inline-flex items-center gap-fl-3">
+              <h3 className="text-fluid-h3 font-medium tracking-tight text-thistle-black group-hover:text-thistle-green transition-colors">{nextCase.title}</h3>
+              <ArrowUpRight size={22} className="text-thistle-black/30 group-hover:text-thistle-green transition-colors" />
             </Link>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* CTA Band */}
-      <section className="py-fl-section-sm px-fl-margin bg-thistle-black text-white">
-        <div className="max-w-[1360px] mx-auto text-center">
-          <Reveal>
-            <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight mb-fl-5">
-              Start Your Own Feasibility.
-            </h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <Button variant="glass" size="lg" icon={<ArrowUpRight size={18} />} onClick={() => router.push('/feasibility-package')} className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80">
-              Book Your Feasibility
-            </Button>
-          </Reveal>
+          </div>
+          <Link href={backHref} className="text-sm font-medium text-thistle-black/50 hover:text-thistle-black transition-colors">
+            {backLabel} &rarr;
+          </Link>
         </div>
       </section>
     </>
