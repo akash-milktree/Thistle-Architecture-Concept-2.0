@@ -1,20 +1,24 @@
+export type CaseStudyKind = 'feasibility' | 'project';
+
 export interface CaseStudy {
   slug: string;
+  /** 'feasibility' = a feasibility study; 'project' = a completed build. */
+  kind: CaseStudyKind;
   title: string;
   location: string;
   image: string;
   tag: string;
   stats: { label: string; value: string }[];
   desc: string;
-  challenge: string;
-  approach: string;
-  outcome: string;
+  challenge?: string;
+  approach?: string;
+  outcome?: string;
   galleryImages: string[];
   buildingType: string;
   floorArea?: string;
-  planningRoute: string;
+  planningRoute?: string;
   completionDate?: string;
-  recommendation: "Go" | "No-Go" | "Options Tested";
+  recommendation?: "Go" | "No-Go" | "Options Tested";
   // Financial figures appear only where a project document supports them.
   purchasePrice?: string;
   projectedGDV?: string;
@@ -30,6 +34,7 @@ export interface CaseStudy {
 export const caseStudies: CaseStudy[] = [
   {
     slug: "st-johns-aylesbury",
+    kind: "feasibility",
     title: "Nine-Bed HMO Conversion",
     location: "Aylesbury, Buckinghamshire",
     image: "/images/projects/st-johns-sk001-1.png",
@@ -54,6 +59,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "harpenden-police-station",
+    kind: "feasibility",
     title: "Police Station To Flats",
     location: "Harpenden, Hertfordshire",
     image: "/images/projects/harpenden-sketch-1.png",
@@ -77,6 +83,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "greyfriars-kings-lynn",
+    kind: "feasibility",
     title: "Office To Residential Or HMO",
     location: "King's Lynn, Norfolk",
     image: "/images/projects/greyfriars-option4-1.png",
@@ -100,6 +107,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "axis-house",
+    kind: "feasibility",
     title: "Office To High-End Houses",
     location: "Compton, Newbury",
     image: "/images/projects/axis-house-elevation-1.png",
@@ -124,6 +132,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "southgate-winchester",
+    kind: "feasibility",
     title: "Listed Building To Co-Living",
     location: "Winchester, Hampshire",
     image: "/images/projects/southgate-sketch-1.png",
@@ -146,6 +155,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "beechmount-manchester",
+    kind: "feasibility",
     title: "Existing HMO Reconfiguration",
     location: "Manchester, Greater Manchester",
     image: "/images/projects/beechmount-sk001-1.png",
@@ -166,4 +176,109 @@ export const caseStudies: CaseStudy[] = [
     planningRoute: "Licensing and building regulations led",
     recommendation: "Options Tested",
   },
+
+  // ---------------------------------------------------------------------
+  // Completed projects. PLACEHOLDERS: names come from the client's project
+  // folders, but imagery and copy are stand-ins until Ed supplies real
+  // photography and write-ups. Tracked in docs/case-study-confirmations.md.
+  // ---------------------------------------------------------------------
+  {
+    slug: "beauchamp-house",
+    kind: "project",
+    title: "Beauchamp House",
+    location: "South of England",
+    image: "/images/generated/office-exterior.jpg",
+    tag: "Office to Flats",
+    stats: [
+      { label: "Project type", value: "Office to flats" },
+      { label: "Status", value: "Complete" },
+      { label: "Write-up", value: "Coming soon" },
+    ],
+    desc: "A completed office-to-residential conversion. Full project details and photography are being prepared.",
+    galleryImages: [],
+    buildingType: "Office",
+  },
+  {
+    slug: "monument-house",
+    kind: "project",
+    title: "Monument House",
+    location: "South of England",
+    image: "/images/generated/package-hero.jpg",
+    tag: "Office to Flats",
+    stats: [
+      { label: "Project type", value: "Office to flats" },
+      { label: "Status", value: "Complete" },
+      { label: "Write-up", value: "Coming soon" },
+    ],
+    desc: "A completed office-to-residential conversion. Full project details and photography are being prepared.",
+    galleryImages: [],
+    buildingType: "Office",
+  },
+  {
+    slug: "wigan-church",
+    kind: "project",
+    title: "Wigan Church",
+    location: "Wigan, Greater Manchester",
+    image: "/images/site/cta-band.jpg",
+    tag: "Commercial Conversion",
+    stats: [
+      { label: "Project type", value: "Church conversion" },
+      { label: "Status", value: "Complete" },
+      { label: "Write-up", value: "Coming soon" },
+    ],
+    desc: "A completed conversion of a church building. Full project details and photography are being prepared.",
+    galleryImages: [],
+    buildingType: "Church",
+  },
+  {
+    slug: "162-millbrook",
+    kind: "project",
+    title: "162 Millbrook",
+    location: "Southampton, Hampshire",
+    image: "/images/generated/terrace-scaffold.jpg",
+    tag: "HMO",
+    stats: [
+      { label: "Project type", value: "HMO conversion" },
+      { label: "Status", value: "Complete" },
+      { label: "Write-up", value: "Coming soon" },
+    ],
+    desc: "A completed HMO conversion. Full project details and photography are being prepared.",
+    galleryImages: [],
+    buildingType: "Residential",
+  },
+  {
+    slug: "bishopstoke",
+    kind: "project",
+    title: "Bishopstoke",
+    location: "Eastleigh, Hampshire",
+    image: "/images/site/hero-drone.jpg",
+    tag: "HMO",
+    stats: [
+      { label: "Project type", value: "HMO conversion" },
+      { label: "Status", value: "Complete" },
+      { label: "Write-up", value: "Coming soon" },
+    ],
+    desc: "A completed HMO conversion. Full project details and photography are being prepared.",
+    galleryImages: [],
+    buildingType: "Residential",
+  },
+  {
+    slug: "forest-home",
+    kind: "project",
+    title: "Forest Home",
+    location: "Hampshire",
+    image: "/images/generated/site-visit.jpg",
+    tag: "High-End Residential",
+    stats: [
+      { label: "Project type", value: "High-end residential" },
+      { label: "Status", value: "Complete" },
+      { label: "Write-up", value: "Coming soon" },
+    ],
+    desc: "A completed high-end residential project. Full project details and photography are being prepared.",
+    galleryImages: [],
+    buildingType: "Residential",
+  },
 ];
+
+export const feasibilityStudies = caseStudies.filter((c) => c.kind === 'feasibility');
+export const completedProjects = caseStudies.filter((c) => c.kind === 'project');

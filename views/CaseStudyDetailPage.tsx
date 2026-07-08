@@ -98,26 +98,38 @@ export const CaseStudyDetailPage: React.FC = () => {
 
             {/* Main Content */}
             <div className="lg:col-span-9">
-              <Reveal>
-                <div className="mb-fl-7">
-                  <h2 className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-4">The Challenge</h2>
-                  <p className="text-fluid-sm text-thistle-black/60 leading-relaxed">{caseStudy.challenge}</p>
-                </div>
-              </Reveal>
+              {caseStudy.challenge && (
+                <Reveal>
+                  <div className="mb-fl-7">
+                    <h2 className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-4">The Challenge</h2>
+                    <p className="text-fluid-sm text-thistle-black/60 leading-relaxed">{caseStudy.challenge}</p>
+                  </div>
+                </Reveal>
+              )}
 
-              <Reveal delay={0.1}>
-                <div className="mb-fl-7">
-                  <h2 className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-4">Our Approach</h2>
-                  <p className="text-fluid-sm text-thistle-black/60 leading-relaxed">{caseStudy.approach}</p>
-                </div>
-              </Reveal>
+              {caseStudy.approach && (
+                <Reveal delay={0.1}>
+                  <div className="mb-fl-7">
+                    <h2 className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-4">Our Approach</h2>
+                    <p className="text-fluid-sm text-thistle-black/60 leading-relaxed">{caseStudy.approach}</p>
+                  </div>
+                </Reveal>
+              )}
 
-              <Reveal delay={0.2}>
-                <div className="mb-fl-7">
-                  <h2 className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-4">The Outcome</h2>
-                  <p className="text-fluid-sm text-thistle-black/60 leading-relaxed">{caseStudy.outcome}</p>
-                </div>
-              </Reveal>
+              {caseStudy.outcome && (
+                <Reveal delay={0.2}>
+                  <div className="mb-fl-7">
+                    <h2 className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-4">The Outcome</h2>
+                    <p className="text-fluid-sm text-thistle-black/60 leading-relaxed">{caseStudy.outcome}</p>
+                  </div>
+                </Reveal>
+              )}
+
+              {!caseStudy.challenge && (
+                <Reveal>
+                  <p className="text-fluid-base text-thistle-black/70 leading-relaxed mb-fl-7">{caseStudy.desc}</p>
+                </Reveal>
+              )}
 
               {/* Gallery */}
               {caseStudy.galleryImages.length > 0 && (

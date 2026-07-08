@@ -16,7 +16,14 @@ interface NavItem {
 
 const navLinks: NavItem[] = [
   { label: "Feasibility Package", path: "/feasibility-package" },
-  { label: "Case Studies", path: "/case-studies" },
+  {
+    label: "Our Work",
+    path: "/case-studies",
+    children: [
+      { label: "Feasibility Studies", path: "/case-studies" },
+      { label: "Completed Projects", path: "/case-studies?view=projects" },
+    ],
+  },
   {
     label: "Conversions",
     path: "/conversions/commercial-to-residential",

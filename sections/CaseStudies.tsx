@@ -6,9 +6,9 @@ import { Reveal } from '../components/animations/Reveal';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import { Button } from '../components/ui/Button';
-import { caseStudies, type CaseStudy } from '../data/caseStudiesData';
+import { feasibilityStudies, type CaseStudy } from '../data/caseStudiesData';
 
-const displayCases = caseStudies.slice(0, 3);
+const displayCases = feasibilityStudies.slice(0, 3);
 
 // Mini before/after unit visualisation
 const UnitComparison: React.FC<{ before: string; after: string; noGo?: boolean }> = ({ before, after, noGo }) => (
@@ -27,7 +27,7 @@ const UnitComparison: React.FC<{ before: string; after: string; noGo?: boolean }
   </div>
 );
 
-const CaseCard: React.FC<{ item: CaseStudy }> = ({ item }) => {
+export const CaseCard: React.FC<{ item: CaseStudy }> = ({ item }) => {
   const isNoGo = item.recommendation === "No-Go";
   const isGo = item.recommendation === "Go";
   return (
@@ -53,15 +53,17 @@ const CaseCard: React.FC<{ item: CaseStudy }> = ({ item }) => {
             <span className="px-3 py-1.5 rounded-full bg-black/35 backdrop-blur-xl border border-white/10 text-[10px] uppercase tracking-widest text-white/85 font-medium">
               {item.tag}
             </span>
-            <span className={`px-3 py-1.5 rounded-full backdrop-blur-xl border text-[10px] uppercase tracking-widest font-semibold ${
-              isNoGo
-                ? 'bg-red-500/20 border-red-300/30 text-red-100'
-                : isGo
-                  ? 'bg-thistle-green/30 border-thistle-green/40 text-white'
-                  : 'bg-black/35 border-white/20 text-white/90'
-            }`}>
-              {item.recommendation}
-            </span>
+            {item.recommendation && (
+              <span className={`px-3 py-1.5 rounded-full backdrop-blur-xl border text-[10px] uppercase tracking-widest font-semibold ${
+                isNoGo
+                  ? 'bg-red-500/20 border-red-300/30 text-red-100'
+                  : isGo
+                    ? 'bg-thistle-green/30 border-thistle-green/40 text-white'
+                    : 'bg-black/35 border-white/20 text-white/90'
+              }`}>
+                {item.recommendation}
+              </span>
+            )}
           </div>
         </div>
 
@@ -105,7 +107,7 @@ const CaseCard: React.FC<{ item: CaseStudy }> = ({ item }) => {
 
 export const CaseStudies: React.FC = () => {
   return (
-    <section className="py-fl-section px-fl-margin bg-white">
+    <section className="py-fl-section px-fl-margin bg-thistle-white">
       <div className="max-w-[1360px] mx-auto">
         {/* Header — centered like other sections */}
         <div className="text-center mb-fl-8 max-w-2xl mx-auto">
