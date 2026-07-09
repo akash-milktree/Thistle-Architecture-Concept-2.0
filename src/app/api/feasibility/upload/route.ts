@@ -13,6 +13,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Uploads aren't configured in this environment." }, { status: 503 });
   }
 
+  // Tabs opened before the client-upload change still send multipart bodies.
+  // Their bundle shows this error text verbatim, so make it the instruction.
+  if ((request.headers.get('content-type') ?? '').includes('multipart/form-data')) {
+    return NextResponse.json({ error: 'Please refresh this page and try again.' }, { status: 400 });
+  }
+
   let body: HandleUploadBody;
   try {
     body = (await request.json()) as HandleUploadBody;
