@@ -1,17 +1,34 @@
 "use client";
 
 import React, { useState } from 'react';
+import { upload } from '@vercel/blob/client';
 import { useFeasibility } from '../FeasibilityContext';
-import { ACCEPTED_UPLOAD_ATTR, type UploadedFile } from '../feasibility';
+import {
+  ACCEPTED_UPLOAD_ATTR,
+  ACCEPTED_UPLOAD_EXT,
+  MAX_UPLOAD_BYTES,
+  uploadExt,
+  uploadMime,
+  type UploadedFile,
+} from '../feasibility';
 import { Field, Adorned, DropZone, inputClass } from '../FormBits';
 
+// Client upload: browser -> Vercel Blob directly. /api/feasibility/upload only
+// issues the scoped token, so the ~4.5 MB function body limit never applies.
 async function uploadOne(file: File): Promise<UploadedFile> {
-  const fd = new FormData();
-  fd.append('file', file);
-  const res = await fetch('/api/feasibility/upload', { method: 'POST', body: fd });
-  const j = await res.json().catch(() => ({}));
-  if (!res.ok || !j.url) throw new Error(j.error || 'Upload failed.');
-  return { url: j.url, name: j.name };
+  if (!ACCEPTED_UPLOAD_EXT.includes(uploadExt(file.name))) throw new Error('Unsupported file type.');
+  if (file.size > MAX_UPLOAD_BYTES) throw new Error('File is too large (max 15 MB).');
+  const safeName = file.name.replace(/[^\w.\-]+/g, '_').slice(-80);
+  try {
+    const blob = await upload(`feasibility/${safeName}`, file, {
+      access: 'public',
+      handleUploadUrl: '/api/feasibility/upload',
+      contentType: uploadMime(file.name, file.type),
+    });
+    return { url: blob.url, name: file.name };
+  } catch {
+    throw new Error('Upload failed. Please try again.');
+  }
 }
 
 export const SizePlans: React.FC<{ onUploadingChange: (uploading: boolean) => void }> = ({ onUploadingChange }) => {

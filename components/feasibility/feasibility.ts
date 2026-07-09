@@ -47,9 +47,32 @@ export const EMPTY_ANSWERS: FeasibilityAnswers = {
 export const EMPTY_FILES: FeasibilityFiles = { otherDocs: [] };
 
 // --- Uploads -----------------------------------------------------------------
+// Files upload from the browser straight to Vercel Blob (client uploads), so
+// they never pass through a route handler. Routing them through a function
+// would cap uploads at ~4.5 MB (FUNCTION_PAYLOAD_TOO_LARGE) well under our
+// 15 MB promise.
 export const MAX_UPLOAD_BYTES = 15 * 1024 * 1024; // 15 MB
-export const ACCEPTED_UPLOAD_EXT = ['.pdf', '.png', '.jpg', '.jpeg', '.webp', '.heic', '.doc', '.docx'];
+export const ACCEPTED_UPLOAD_MIME: Record<string, string> = {
+  '.pdf': 'application/pdf',
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.webp': 'image/webp',
+  '.heic': 'image/heic',
+  '.doc': 'application/msword',
+  '.docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+};
+export const ACCEPTED_UPLOAD_EXT = Object.keys(ACCEPTED_UPLOAD_MIME);
 export const ACCEPTED_UPLOAD_ATTR = ACCEPTED_UPLOAD_EXT.join(',');
+
+export function uploadExt(name: string): string {
+  return '.' + (name.split('.').pop() ?? '').toLowerCase();
+}
+
+/** Browsers leave File.type empty for some types (e.g. HEIC on Windows), so derive it from the extension. */
+export function uploadMime(name: string, browserType: string): string {
+  return browserType || ACCEPTED_UPLOAD_MIME[uploadExt(name)] || 'application/octet-stream';
+}
 
 // Minimal client-side validation per step (server still re-validates).
 export function validatePropertyBasics(a: FeasibilityAnswers): Partial<Record<keyof FeasibilityAnswers, string>> {
