@@ -12,6 +12,7 @@
     "probe": "node scripts/probe-panel.mjs"
   },
   "dependencies": {
+    "@vercel/blob": "^2.6.1",
     "framer-motion": "^11.18.2",
     "geist": "^1.7.0",
     "lucide-react": "0.292.0",

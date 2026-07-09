@@ -88,7 +88,7 @@ The canonical set. New pages compose from these; do not invent parallel patterns
 | `Button` | `components/ui/Button.tsx` | Primary / variant button, renders as motion.button |
 | `InlineCTA` | `components/ui/InlineCTA.tsx` | Mid-page CTA; tier 1 by default, `href=""` opens the form |
 | `Reveal` | `components/animations/Reveal.tsx` | Scroll-reveal animation wrapper |
-| `FeasibilityModal` + `useFeasibility` | `components/feasibility/` | Full-page multi-step form (4 steps, progress bar, submits to `/api/leads`) |
+| `FeasibilityModal` + `useFeasibility` | `components/feasibility/` | Full-page multi-step form (3 steps, mirrors the HMO Designers flow: property basics, size and floor plan upload, contact; submits to `/api/feasibility/submit`) |
 | `StickyCTA` | `sections/feasibility-package/StickyCTA.tsx` | Mobile-only sticky bar, feasibility page only |
 | `SampleReportGate` | `sections/feasibility-package/SampleReportGate.tsx` | Email-gated sample report download |
 | `ToolGate` | `components/ui/ToolGate.tsx` | Email soft-gate for tool detail; unlock persists in localStorage |
@@ -103,9 +103,14 @@ The canonical set. New pages compose from these; do not invent parallel patterns
   full-page form via `useFeasibility().openModal`.
 - Reassurance microcopy under primary CTAs: "No obligation. Response within
   one working day."
-- Leads POST to `/api/leads` with a `source` field (`feasibility-form`,
-  `sample-report`, `class-ma-checker`, `gdv-calculator`) and forward to the
-  CRM via the `LEAD_WEBHOOK_URL` env var (server logs when unset).
+- The feasibility form POSTs to `/api/feasibility/submit`, which emails the
+  enquiry via Formspree (recipient managed in `formspree.json`, deployed with
+  the Formspree CLI) and forwards to the CRM via `LEAD_WEBHOOK_URL` when set.
+  Floor plans upload to Vercel Blob via `/api/feasibility/upload`
+  (`BLOB_READ_WRITE_TOKEN`).
+- Other lead sources (`sample-report`, `class-ma-checker`, `gdv-calculator`)
+  POST to `/api/leads` with a `source` field and forward to the CRM via the
+  `LEAD_WEBHOOK_URL` env var (server logs when unset).
 
 ## Imagery system
 

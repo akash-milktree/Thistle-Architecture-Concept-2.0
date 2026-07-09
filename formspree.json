@@ -1,0 +1,10 @@
+{
+  "forms": {
+    "feasibility": {
+      "name": "Thistle Feasibility Study",
+      "actions": [
+        { "type": "email", "to": "edward@thistlearchitecture.co.uk" }
+      ]
+    }
+  }
+}

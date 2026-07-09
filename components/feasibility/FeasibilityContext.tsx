@@ -1,52 +1,46 @@
 "use client";
 
 import React, { createContext, useContext, useState, useCallback } from 'react';
+import { EMPTY_ANSWERS, EMPTY_FILES, type FeasibilityAnswers, type FeasibilityFiles } from './feasibility';
 
-interface FeasibilityFormData {
-  // Step 1: Property Details
-  address: string;
-  buildingType: string;
-  approximateFloorArea: string;
-  numberOfFloors: string;
-  hasFloorPlans: boolean;
-  // Step 2: Project Info
-  targetUnitMix: string;
-  planningRoute: string;
-  timeline: string;
-  additionalNotes: string;
-  // Step 3: Contact Details
-  fullName: string;
-  email: string;
-  phone: string;
-  company: string;
-}
+// Step keys mirror the HMO Designers flow. A "payment" step slots in after
+// "details" when the Stripe flow is added (client decision: email only for now).
+export type FeasibilityStep = 'property' | 'size' | 'details';
+
+export const FEASIBILITY_STEPS: { key: FeasibilityStep; label: string; title: string; lede: string }[] = [
+  {
+    key: 'property',
+    label: 'Property',
+    title: 'Tell us about the property',
+    lede: 'A few basics so we can assess its potential.',
+  },
+  {
+    key: 'size',
+    label: 'Size and plans',
+    title: 'Size and floor plans',
+    lede: 'The floor plan is what our architects work from.',
+  },
+  {
+    key: 'details',
+    label: 'Contact',
+    title: 'Where do we send your feasibility?',
+    lede: 'We will use these to prepare your feasibility study and come back to you.',
+  },
+];
 
 interface FeasibilityContextType {
   isOpen: boolean;
   openModal: () => void;
   closeModal: () => void;
-  currentStep: number;
-  setCurrentStep: (step: number) => void;
-  formData: FeasibilityFormData;
-  updateFormData: (data: Partial<FeasibilityFormData>) => void;
-  resetForm: () => void;
+  step: FeasibilityStep;
+  setStep: (step: FeasibilityStep) => void;
+  answers: FeasibilityAnswers;
+  setAnswer: (key: keyof FeasibilityAnswers, value: string) => void;
+  files: FeasibilityFiles;
+  setFiles: React.Dispatch<React.SetStateAction<FeasibilityFiles>>;
+  errors: Record<string, string>;
+  setErrors: React.Dispatch<React.SetStateAction<Record<string, string>>>;
 }
-
-const defaultFormData: FeasibilityFormData = {
-  address: '',
-  buildingType: '',
-  approximateFloorArea: '',
-  numberOfFloors: '',
-  hasFloorPlans: false,
-  targetUnitMix: '',
-  planningRoute: '',
-  timeline: '',
-  additionalNotes: '',
-  fullName: '',
-  email: '',
-  phone: '',
-  company: '',
-};
 
 const FeasibilityContext = createContext<FeasibilityContextType | null>(null);
 
@@ -58,33 +52,37 @@ export const useFeasibility = () => {
 
 export const FeasibilityProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentStep, setCurrentStep] = useState(0);
-  const [formData, setFormData] = useState<FeasibilityFormData>(defaultFormData);
+  const [step, setStep] = useState<FeasibilityStep>('property');
+  const [answers, setAnswers] = useState<FeasibilityAnswers>(EMPTY_ANSWERS);
+  const [files, setFiles] = useState<FeasibilityFiles>(EMPTY_FILES);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const openModal = useCallback(() => {
     setIsOpen(true);
-    setCurrentStep(0);
+    setStep('property');
   }, []);
 
   const closeModal = useCallback(() => {
     setIsOpen(false);
+    // Reset after the exit animation so the form does not visibly blank out.
     setTimeout(() => {
-      setCurrentStep(0);
-      setFormData(defaultFormData);
+      setStep('property');
+      setAnswers(EMPTY_ANSWERS);
+      setFiles(EMPTY_FILES);
+      setErrors({});
     }, 300);
   }, []);
 
-  const updateFormData = useCallback((data: Partial<FeasibilityFormData>) => {
-    setFormData(prev => ({ ...prev, ...data }));
-  }, []);
-
-  const resetForm = useCallback(() => {
-    setFormData(defaultFormData);
-    setCurrentStep(0);
+  // Setting a field clears its error, so mistakes recover as the user types.
+  const setAnswer = useCallback((key: keyof FeasibilityAnswers, value: string) => {
+    setAnswers((prev) => ({ ...prev, [key]: value }));
+    setErrors((prev) => (prev[key] ? { ...prev, [key]: '' } : prev));
   }, []);
 
   return (
-    <FeasibilityContext.Provider value={{ isOpen, openModal, closeModal, currentStep, setCurrentStep, formData, updateFormData, resetForm }}>
+    <FeasibilityContext.Provider
+      value={{ isOpen, openModal, closeModal, step, setStep, answers, setAnswer, files, setFiles, errors, setErrors }}
+    >
       {children}
     </FeasibilityContext.Provider>
   );
