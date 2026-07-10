@@ -28,7 +28,6 @@ export type FeasibilityAnswers = {
   rightmoveLink: string;
   propertyType: PropertyType | '';
   gia: string; // total existing GIA across all floors (approx, m²)
-  floorNote: string; // which floor the relevant property is on (optional)
 };
 
 export type UploadedFile = { url: string; name: string };
@@ -41,7 +40,7 @@ export type FeasibilityFiles = {
 export const EMPTY_ANSWERS: FeasibilityAnswers = {
   firstName: '', lastName: '', email: '', phone: '',
   address1: '', city: '', county: '', postcode: '',
-  estimatedValue: '', rightmoveLink: '', propertyType: '', gia: '', floorNote: '',
+  estimatedValue: '', rightmoveLink: '', propertyType: '', gia: '',
 };
 
 export const EMPTY_FILES: FeasibilityFiles = { otherDocs: [] };

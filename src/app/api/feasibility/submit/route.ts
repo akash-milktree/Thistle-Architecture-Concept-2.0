@@ -36,7 +36,6 @@ export async function POST(req: NextRequest) {
     'Estimated value': a.estimatedValue ? `£${s(a.estimatedValue)}` : '',
     'Rightmove link': s(a.rightmoveLink),
     'GIA (approx)': a.gia ? `${s(a.gia)} m²` : '',
-    'Floor note': s(a.floorNote),
     'Floor plan': s(files.floorPlan?.url),
     'Other documents': (files.otherDocs ?? []).map((d) => d.url).join(', '),
     'Name': `${s(a.firstName)} ${s(a.lastName)}`.trim(),

@@ -84,10 +84,6 @@ export const SizePlans: React.FC<{ onUploadingChange: (uploading: boolean) => vo
         </Adorned>
       </Field>
 
-      <Field label="Which floor is the relevant property on? (optional)">
-        <input className={inputClass} value={answers.floorNote} onChange={(e) => setAnswer('floorNote', e.target.value)} />
-      </Field>
-
       <Field plain label="Property floor plan" error={errors.floorPlan}>
         <DropZone
           accept={ACCEPTED_UPLOAD_ATTR}
