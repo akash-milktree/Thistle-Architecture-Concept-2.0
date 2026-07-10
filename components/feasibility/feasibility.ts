@@ -1,6 +1,7 @@
 // Shared, client-safe config + types for the feasibility form.
-// Question set mirrors the HMO Designers feasibility flow 1:1 (client request,
-// 2026-07-08 voice note): property basics, size and floor plans, contact details.
+// Question set follows the HMO Designers feasibility flow (client request,
+// 2026-07-08 voice note): property basics, size and floor plans, contact
+// details. Deviation: the optional which-floor question was dropped 2026-07-10.
 // Server-only secrets (BLOB_READ_WRITE_TOKEN, LEAD_WEBHOOK_URL) are read ONLY
 // inside the route handlers, never here.
 
