@@ -6,7 +6,22 @@ import { PageHero } from '../components/ui/PageHero';
 import { Reveal } from '../components/animations/Reveal';
 import { motion } from 'framer-motion';
 
-const team = [
+// Roster matched to the photos in the client's "03 New Website/Team Photos"
+// folder (Akash, 2026-07-16). Onaiza was removed: no photo in the new folder and
+// not on the client's live site. Seyma's folder is empty, so she cannot be added
+// until a photo arrives.
+//
+// role and credentials are optional ON PURPOSE. No document anywhere gives job
+// titles for Adouj or Beverley, and design.md forbids inventing team
+// credentials, so their cards show name and photo until Ed confirms the titles.
+interface TeamMember {
+  name: string;
+  role?: string;
+  image: string;
+  credentials?: string[];
+}
+
+const team: TeamMember[] = [
   {
     name: "Edward Kercher",
     role: "Founder & Director",
@@ -38,13 +53,12 @@ const team = [
     ],
   },
   {
-    name: "Onaiza",
-    role: "Client Support",
-    image: "/images/team/onaiza.jpg",
-    credentials: [
-      "Your first point of contact through every feasibility",
-      "Keeps submissions, sessions, and reports moving on schedule",
-    ],
+    name: "Adouj Abu Saadeh",
+    image: "/images/team/adouj.jpg",
+  },
+  {
+    name: "Beverley Gibbs",
+    image: "/images/team/beverley.jpg",
   },
 ];
 
@@ -124,9 +138,11 @@ export const AboutPage: React.FC = () => {
             </Reveal>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-fl-5">
+          {/* 3 columns, not 4: the roster is 5 and a 4-col grid strands the last
+              card alone on its own row. 3 gives 3+2, and 3+3 if Seyma joins. */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-fl-5 items-stretch">
             {team.map((member, i) => (
-              <Reveal key={member.name} delay={i * 0.08}>
+              <Reveal key={member.name} delay={i * 0.08} fullHeight>
                 <motion.div
                   whileHover={{ y: -6 }}
                   transition={{ duration: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
@@ -135,7 +151,7 @@ export const AboutPage: React.FC = () => {
                   <div className="relative aspect-[4/5] overflow-hidden bg-thistle-white/60">
                     <Image
                       src={member.image}
-                      alt={`${member.name}, ${member.role} at Thistle Architecture`}
+                      alt={member.role ? `${member.name}, ${member.role} at Thistle Architecture` : `${member.name} at Thistle Architecture`}
                       fill
                       sizes="(max-width: 640px) 90vw, 320px"
                       className="object-cover"
@@ -143,9 +159,11 @@ export const AboutPage: React.FC = () => {
                   </div>
                   <div className="p-fl-5">
                     <h3 className="text-fluid-h5 font-medium tracking-tight text-thistle-black">{member.name}</h3>
-                    <p className="text-[11px] uppercase tracking-wider text-thistle-green font-semibold mt-fl-1 mb-fl-3">{member.role}</p>
+                    {member.role && (
+                      <p className="text-[11px] uppercase tracking-wider text-thistle-green font-semibold mt-fl-1 mb-fl-3">{member.role}</p>
+                    )}
                     <ul className="space-y-1.5">
-                      {member.credentials.map((c, j) => (
+                      {(member.credentials ?? []).map((c, j) => (
                         <li key={j} className="text-fluid-sm text-thistle-black/60 leading-snug flex gap-2">
                           <span className="text-thistle-green mt-[3px] flex-shrink-0">·</span>
                           {c}
