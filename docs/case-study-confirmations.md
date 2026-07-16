@@ -50,17 +50,33 @@ The Our Work hub now has a "Completed Projects" category. Six projects are
 listed using names from the shared folder, but ALL imagery is stock/generated
 and the copy is a one-line stand-in ("full write-up coming soon"):
 
-- [ ] Beauchamp House (office to flats): supply photos, location, and write-up.
-- [ ] Monument House (office to flats): same.
+- [x] Beauchamp House (office to flats): DONE from the OneDrive archive.
+  Corrected: it is in Royal Leamington Spa, not "South of England", and it is
+  ON SITE, not complete.
+- [x] Monument House (office to flats): DONE. It is 5 Upper High Street,
+  Winchester: four apartments, 46.6 to 90.4 sqm.
 - [ ] Wigan Church: same, plus confirm what the completed use actually is
   (the folder name says "Office to Church" which reads backwards).
-- [ ] 162 Millbrook (HMO): same.
-- [ ] Bishopstoke (HMO): same.
-- [ ] Forest Home (high-end residential): same.
+  ANSWERED from the drawings: it is the Methodist Church, Wigan Road, Leigh,
+  and the proposed plans show ten offices and two conference rooms, so it is a
+  church converted TO offices. The folder name is backwards. DONE.
+- [x] 162 Millbrook (HMO): DONE. 162 Millbrook Road, Southampton, an eight-bed
+  large sui generis HMO. The folder calls it "Office to Flats"; the drawings
+  say otherwise.
+- [?] **Bishopstoke (HMO): REMOVED from the site 2026-07-17.** Its folder is
+  empty in the shared drive and in the 6.25GB archive, so the entry was a stock
+  image, a guessed location and "coming soon". Send photos and a write-up and
+  it goes straight back.
+- [?] **Forest Home (high-end residential): REMOVED 2026-07-17**, same reason.
 - [ ] Confirm locations: several are guessed from context (Hampshire area) and
   must be corrected before anyone quotes them.
-- [ ] Projects NOT yet listed for lack of any material: 81 Crescent,
-  Bereweeke, School House, Millbrook offices. Say which to add.
+- [x] Bereweeke Avenue is now ADDED as a High-End Residential case study
+  (20 Bereweeke Avenue, Winchester), from the client's CGIs and Design and
+  Access Statement. That statement is authored by incollective.works, the
+  group's parent company, so it is group work.
+- [ ] Still NOT listed for lack of any material: 81 Crescent, School House,
+  Millbrook offices, Bishopstoke, Forest Home. Say which to add and send
+  something to build them from.
 
 ## Sample report download
 

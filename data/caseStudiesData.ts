@@ -342,11 +342,9 @@ export const caseStudies: CaseStudy[] = [
     status: "On site",
   },
   {
-    // Attribution note: the Design and Access Statement for this scheme is
-    // authored by incollective.works, a practice at the same Portsmouth address
-    // as HMO Designers, rather than by Thistle. Ed treats it as portfolio work
-    // (the finished video already runs on the current Thistle site), but the
-    // credit is worth confirming before this goes anywhere public.
+    // The Design and Access Statement for this scheme is authored by
+    // incollective.works, the group's parent company (confirmed by Akash
+    // 2026-07-17), so it is group work and fine to publish here.
     slug: "bereweeke-avenue",
     kind: "project",
     title: "1930s House, Extended And Remade",
@@ -445,38 +443,12 @@ export const caseStudies: CaseStudy[] = [
     planningRoute: "Large sui generis HMO, external works under PDR",
     status: "Complete",
   },
-  {
-    slug: "bishopstoke",
-    kind: "project",
-    title: "Bishopstoke",
-    location: "Eastleigh, Hampshire",
-    image: "/images/generated/terrace-scaffold.jpg",
-    tag: "HMO",
-    stats: [
-      { label: "Project type", value: "HMO conversion" },
-      { label: "Status", value: "Complete" },
-      { label: "Write-up", value: "Coming soon" },
-    ],
-    desc: "A completed HMO conversion. Full project details and photography are being prepared.",
-    galleryImages: [],
-    buildingType: "Residential",
-  },
-  {
-    slug: "forest-home",
-    kind: "project",
-    title: "Forest Home",
-    location: "Hampshire",
-    image: "/images/generated/site-visit.jpg",
-    tag: "High-End Residential",
-    stats: [
-      { label: "Project type", value: "High-end residential" },
-      { label: "Status", value: "Complete" },
-      { label: "Write-up", value: "Coming soon" },
-    ],
-    desc: "A completed high-end residential project. Full project details and photography are being prepared.",
-    galleryImages: [],
-    buildingType: "Residential",
-  },
+  // Bishopstoke and Forest Home were removed 2026-07-17. Both folders are empty
+  // in the shared drive AND in the 6.25GB archive, so both entries were a stock
+  // image, a guessed location and "coming soon". That is the same reason
+  // 81 Crescent and School House were never listed (see
+  // docs/case-study-confirmations.md). Restore from history the moment Ed sends
+  // photos and a write-up.
 ];
 
 export const feasibilityStudies = caseStudies.filter((c) => c.kind === 'feasibility');
