@@ -1,3 +1,5 @@
+import { deliverables } from './howItWorksData';
+
 export interface ConversionStat {
   label: string;
   value: string;
@@ -9,7 +11,7 @@ export interface ConversionChallenge {
 }
 
 export interface DeliverableHighlight {
-  deliverableIndex: number; // 0..5, index into deliverables in data/howItWorksData.ts
+  deliverableIndex: number; // 0..4, index into deliverables in data/howItWorksData.ts
   forThisType: string;
 }
 
@@ -67,7 +69,7 @@ export const conversions: Conversion[] = [
       { deliverableIndex: 0, forThisType: "Tested against the building's real structural grid and core positions, not an assumed plan." },
       { deliverableIndex: 2, forThisType: "Class MA eligibility, Article 4 directions, conservation, and noise mapping covered before you bid." },
       { deliverableIndex: 3, forThisType: "Every conversion risk named and costed, so the deal model reflects reality." },
-      { deliverableIndex: 5, forThisType: "Net-to-gross checked carefully, since commercial-to-resi often loses more area than developers expect." },
+      { deliverableIndex: 4, forThisType: "Net-to-gross and commercial position set out in full, since commercial-to-resi often loses more area than developers expect." },
     ],
     relatedCaseStudySlug: "axis-house",
     metaTitle: "Commercial to Residential Feasibility | Thistle Architecture",
@@ -93,7 +95,7 @@ export const conversions: Conversion[] = [
       { deliverableIndex: 2, forThisType: "HMO density saturation, Article 4 exposure, and licensing scheme overlap mapped at desk-study stage." },
       { deliverableIndex: 0, forThisType: "Room layouts checked against HMO minimum sizes and amenity standards, not just optimistic plans." },
       { deliverableIndex: 3, forThisType: "Licensing costs, planning risks, and standards-compliance gaps each costed and ranked." },
-      { deliverableIndex: 5, forThisType: "Net-to-gross and per-room yield projections benchmarked against local market data." },
+      { deliverableIndex: 4, forThisType: "Net-to-gross and per-room yield projections benchmarked against local market data." },
     ],
     relatedCaseStudySlug: "st-johns-aylesbury",
     metaTitle: "HMO Feasibility | Thistle Architecture",
@@ -103,3 +105,17 @@ export const conversions: Conversion[] = [
 
 export const getConversion = (slug: string): Conversion | undefined =>
   conversions.find((c) => c.slug === slug);
+
+// deliverableIndex points into the deliverables array by position, so removing
+// a deliverable silently drops any highlight pointing past the end (the
+// renderer guards with `if (!deliverable) return null`). That happened when
+// "Efficiency Metrics" was removed on Ed's instruction. Fail loudly instead.
+for (const c of conversions) {
+  for (const h of c.deliverableHighlights) {
+    if (!deliverables[h.deliverableIndex]) {
+      throw new Error(
+        `conversionsData: "${c.slug}" references deliverableIndex ${h.deliverableIndex}, but only ${deliverables.length} deliverables exist.`,
+      );
+    }
+  }
+}
