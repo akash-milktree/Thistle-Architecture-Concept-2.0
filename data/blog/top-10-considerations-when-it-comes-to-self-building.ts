@@ -92,7 +92,7 @@ export const post: BlogPost = {
     "The scheme essentially exists to encourage private individuals to create new properties. Because home buyers don't pay VAT when they buy a house on the market, this also levels the cost with self builders.",
     "To apply you need to fill in form 431NB on the government website once the project is completed.",
   ],
-  image: "/images/site/hero-drone.jpg",
+  image: "/images/site/hero-winchester.jpg",
   date: "May 8, 2024",
   readTime: "11 min read",
   category: "Self Build",
