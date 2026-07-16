@@ -1,6 +1,6 @@
 # Ed's video feedback, 8 July 2026
 
-**Status 2026-07-16:** most items are built and live. What remains is listed
+**Status 2026-07-17:** most items are built and live. What remains is listed
 under "Blockers" and the unticked boxes below; nearly all of it needs something
 from Ed (the videography, the TrustPilot text, team roles, two feasibility
 documents) rather than more build time.
@@ -20,13 +20,23 @@ Status key: `[ ]` to do, `[?]` blocked on a decision or missing asset.
   Lives in one place: `data/feasibilityPackageData.ts` (`pricingFrom`), which
   feeds the package page, sticky CTA and hero line. Also hardcoded in
   `data/blog/what-is-a-feasibility-study.ts`.
-- [?] **Videography is missing.** Ed talks at length about drone footage for the
+- [x] **Videography: RESOLVED 2026-07-17.** Akash supplied the 6.25GB OneDrive
+  archive; the homepage footage is cut and live. Remaining unused: Bereweeke
+  drone reels and a 2.8GB Monument House clip (the "pull back over Winchester"
+  shot Ed described, if he prefers it to the one used).
+  Original note: Ed talks at length about drone footage for the
   homepage: a Monument House folder called "existing videos used for homepage"
   (Winchester drone footage), finished footage of Bereweeke Avenue, CGIs, and
   the video on the current live site. The shared folder contains **no video
   files at all** apart from this recording. Ed says it is in the Google Drive
   folder. Needs downloading before any homepage video work.
-- [?] **Team roster changed.** Shared folder has Adouj Abu Saadeh, Beverley
+- [~] **Team: PART DONE.** Roster now matches the photo folder (Adouj and
+  Beverley added, Onaiza removed, Seyma has no photo). STILL NEEDED: job titles
+  for Adouj and Beverley, and a decision on Kaan (our site says "Design Lead",
+  the live site says "Architect", which is a protected title under the
+  Architects Act, so it needs ARB confirmation). Scarlett is on the live site
+  as Design Developer but not in the folder: does she go on?
+  Original note: Shared folder has Adouj Abu Saadeh, Beverley
   Gibbs, Ed, Jan, Kaan, Seyma (Seyma's folder is empty). The site currently
   shows Ed, Kaan, Jan, Onaiza. So Onaiza and Nick are absent from the new
   material and three people are new. Confirm who is on the team, their roles,
@@ -50,7 +60,9 @@ Status key: `[ ]` to do, `[?]` blocked on a decision or missing asset.
   "call this nationwide feasibility first architecture, because then that fits
   high end residential as well as developer led architecture as well." Current
   copy is "Nationwide Developer-Led Retrofit Architecture."
-- [ ] Replace the hero image with real project imagery. Ed wants "nice big
+- [x] Hero replaced with the client's own Winchester drone footage (Monument
+  House, "Existing videos - use for homepage"), cut to 12s at 1.44 MB. DONE.
+  Original note: Ed wants "nice big
   images across the website", ideally a cut-together background video from the
   drone footage.
 - [x] Use the TrustPilot practice description in the hero subtext area:
@@ -100,7 +112,7 @@ Status key: `[ ]` to do, `[?]` blocked on a decision or missing asset.
 - [x] **Remove "Efficiency Metrics"** entirely.
 - [x] Spatial layout optimisation reframed as **spatial analysis**: local space
   standards, building regs, licensing requirements, national space standards.
-- [ ] Show the **complete document set** they receive, not just the report:
+- [x] DONE. The Report section is now "What You Receive", showing all four:
   Feasibility Overview, Planning Research, Space Standards, and the sketches.
   Real examples now sit in `03 New Website/Example Feasibility, to be emailed
   as example/`. Ed described what each contains:
@@ -128,7 +140,9 @@ Status key: `[ ]` to do, `[?]` blocked on a decision or missing asset.
   England"), and it is **on site, not complete** (the site photos show
   strip-out), so a `status` field now carries that rather than a hardcoded
   "Complete" badge.
-- [?] Monument House, Wigan Church, 162 Millbrook, Bishopstoke and Forest Home
+- [x] Monument House, Wigan Church and 162 Millbrook are DONE from the archive.
+  Bishopstoke and Forest Home were REMOVED (nothing exists for them anywhere).
+  Original note: Monument House, Wigan Church, 162 Millbrook, Bishopstoke and Forest Home
   are **still stock placeholders**. Their folders in the shared drive are empty.
   Needs photos and write-ups from Ed.
 
@@ -146,7 +160,7 @@ Ed likes the Class MA checker as is ("Yeah, I like this. It's cool").
 
 - [x] Rename the GDV calculator to **Apartment GDV Calculator**, and add an
   **HMO calculator** underneath it (one exists on the HMO Checker website).
-- [ ] Add HMO Checker into the tools area.
+- [x] DONE. HMO Checker is in the Tools nav, opening in a new tab.
 - [x] On the HMO conversion page: link to HMO Checker, offer a free report or
   mention the £15.99 one-off purchase, and possibly show the HMO Checker map.
 - [ ] **New tool: build cost analyser.** User picks the project type, then:
