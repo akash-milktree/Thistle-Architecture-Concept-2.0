@@ -88,12 +88,27 @@ The canonical set. New pages compose from these; do not invent parallel patterns
 | `Button` | `components/ui/Button.tsx` | Primary / variant button, renders as motion.button |
 | `InlineCTA` | `components/ui/InlineCTA.tsx` | Mid-page CTA; tier 1 by default, `href=""` opens the form |
 | `Reveal` | `components/animations/Reveal.tsx` | Scroll-reveal animation wrapper |
+| `ExampleProjects` | `sections/ExampleProjects.tsx` | Homepage showcase, hand-picked real work only (no stock placeholders) |
+| `HMOCalculator` | `sections/tools/HMOCalculator.tsx` | Income-based HMO valuation; shares `calcUi` with the apartment GDV tool |
 | `FeasibilityModal` + `useFeasibility` | `components/feasibility/` | Full-page multi-step form (3 steps, mirrors the HMO Designers flow: property basics, size and floor plan upload, contact; submits to `/api/feasibility/submit`) |
 | `StickyCTA` | `sections/feasibility-package/StickyCTA.tsx` | Mobile-only sticky bar, feasibility page only |
 | `SampleReportGate` | `sections/feasibility-package/SampleReportGate.tsx` | Email-gated sample report download |
 | `ToolGate` | `components/ui/ToolGate.tsx` | Email soft-gate for tool detail; unlock persists in localStorage |
 | `HowItWorks` | `sections/feasibility-package/HowItWorks.tsx` | Five-step timeline, `id="how-it-works"` (redirect target) |
 | `ExitIntentPopup` | `components/ExitIntentPopup.tsx` | Rendered on `/feasibility-package` only (gated in PageShell) |
+
+## Homepage structure
+
+Ed's video feedback (2026-07-08) cut the homepage from thirteen sections to
+four: `Hero`, `DeveloperLogos`, `ExampleProjects`, `Process`. The page ends
+there and pushes to the other pages; `Process` closes with an `InlineCTA` and
+the footer carries the final CTA band. Do not re-add sections here without the
+client asking.
+
+Removed in that cut (see commit history to restore): `IntroBlock`, `TeamStrip`,
+`DataSources`, `ArchitectReview`, `Benefits`, `Difference`, `FinishedProjects`.
+`CaseStudies`, `Testimonials` and `FAQ` left the homepage but still render on
+`/case-studies`, `/feasibility-package` and `/conversions/[type]`.
 
 ## CTA canon (two-tier funnel)
 
