@@ -26,7 +26,7 @@ const isDrawing = (src: string) => src.startsWith('/images/projects/');
 export const ExampleProjects: React.FC = () => (
   <section className="bg-white py-fl-section px-fl-margin">
     <div className="max-w-[1360px] mx-auto">
-      <div className="text-center mb-fl-8 max-w-2xl mx-auto">
+      <div className="text-center mb-fl-8 max-w-4xl mx-auto">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">Example Projects</p>
         </Reveal>

@@ -42,7 +42,7 @@ export const FeasibilityPackagePage: React.FC = () => {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-thistle-black/65" />
-        <div className="relative z-10 max-w-4xl mx-auto px-fl-margin text-center pt-28 pb-fl-section">
+        <div className="relative z-10 max-w-5xl mx-auto px-fl-margin text-center pt-28 pb-fl-section">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-5">The Feasibility Package</p>
           </Reveal>

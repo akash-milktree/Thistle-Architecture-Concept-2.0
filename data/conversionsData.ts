@@ -101,7 +101,7 @@ export const conversions: Conversion[] = [
     extraSection: {
       id: "hmo-checker",
       eyebrow: "Sister Product",
-      title: "Check The Address Before You Pay For Anything.",
+      title: "Check The Address First.",
       body: [
         "HMO Checker is part of the Thistle Group, and it answers the first question about any HMO: does this address work at all? It pulls planning and licensing data for a property and reports the Article 4 position, the licensing schemes that apply, and what has been approved nearby.",
         "A single report is a £15.99 one-off, and there are free tools alongside it including an Article 4 checker and a conversion calculator. It is the cheapest way to rule an address out before you spend money on it.",

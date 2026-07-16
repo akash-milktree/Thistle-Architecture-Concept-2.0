@@ -41,7 +41,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
         </Reveal>
 
         <Reveal delay={0.1}>
-          <h1 className="text-fluid-h1 font-medium tracking-tight leading-tight max-w-3xl mb-fl-5">
+          <h1 className="text-fluid-h1 font-medium tracking-tight leading-tight max-w-5xl text-balance mb-fl-5">
             {heading}
           </h1>
         </Reveal>
