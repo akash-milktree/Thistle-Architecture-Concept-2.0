@@ -30,7 +30,7 @@ export const HowItWorks: React.FC = () => (
                 {!isFinal && (
                   <div className="absolute left-[22px] top-12 bottom-0 w-px bg-thistle-black/[0.08]" />
                 )}
-                <div className={`relative z-10 w-11 h-11 flex-shrink-0 rounded-full flex items-center justify-center text-sm font-semibold ${
+                <div className={`relative z-10 w-12 h-12 flex-shrink-0 rounded-full flex items-center justify-center text-lg font-semibold tabular-nums ${
                   isFinal ? 'bg-thistle-green text-white' : 'bg-thistle-green/10 text-thistle-green'
                 }`}>
                   {step.num}

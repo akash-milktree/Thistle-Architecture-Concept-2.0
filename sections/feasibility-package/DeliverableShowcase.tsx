@@ -10,12 +10,11 @@ import { deliverableDetail } from '../../data/feasibilityPackageData';
 // Real imagery per deliverable: Thistle drawings where the deliverable is a
 // drawing, photography where it is a document or a judgement.
 const images: { src: string; alt: string; fit: 'contain' | 'cover' }[] = [
-  { src: "/images/projects/st-johns-sk001-1.png", alt: "Proposed GA floor plans for a nine-bedroom HMO conversion", fit: "contain" },
+  { src: "/images/projects/st-johns-sk001-1.png", alt: "A sketch scheme showing proposed layouts for a nine-bedroom HMO conversion", fit: "contain" },
   { src: "/images/generated/desk-plans.jpg", alt: "Printed floor plans and schedules on an architect's desk", fit: "cover" },
   { src: "/images/projects/greyfriars-option4-1.png", alt: "Colour-coded feasibility sketch showing constraints and shared spaces", fit: "contain" },
   { src: "/images/generated/report-hands.jpg", alt: "A bound feasibility report held in two hands", fit: "cover" },
   { src: "/images/projects/sample-report-1.png", alt: "The first page of a real Thistle feasibility document", fit: "contain" },
-  { src: "/images/projects/axis-house-plans-1.png", alt: "Sketch scheme options testing unit mix and layout efficiency", fit: "contain" },
 ];
 
 const Panel: React.FC<{ index: number; className?: string }> = ({ index, className = '' }) => {
@@ -44,7 +43,7 @@ const Panel: React.FC<{ index: number; className?: string }> = ({ index, classNa
   );
 };
 
-// Compact selector: six deliverables in one viewport instead of six
+// Compact selector: every deliverable in one viewport instead of a stack of
 // full-height alternating rows. Desktop shows the active image beside the
 // list; mobile expands the image inside the open item.
 export const DeliverableShowcase: React.FC = () => {
@@ -59,7 +58,7 @@ export const DeliverableShowcase: React.FC = () => {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black">
-              Six Deliverables.<br /><span className="text-thistle-green">One Decision.</span>
+              Five Deliverables.<br /><span className="text-thistle-green">One Decision.</span>
             </h2>
           </Reveal>
         </div>

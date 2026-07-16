@@ -26,19 +26,19 @@ export const howItWorksSteps: HowItWorksStep[] = [
   },
   {
     num: "02",
-    durationLabel: "Automated, within 48 hours",
-    title: "Automated Analysis",
-    lead: "Our data engine checks planning history, site constraints, density data, and comparable schemes across your local area.",
-    detail: "Hundreds of data points are cross-referenced across trusted sources before a human looks at the site. This is the desk study, done in hours, not weeks.",
-    graphic: "step2",
-  },
-  {
-    num: "03",
     durationLabel: "Instant call",
     title: "Project Data Gathering Session",
     lead: "An instant call with Jodi, our property expert, to gather the details we need and walk through your goals for the site.",
-    detail: "A short, focused conversation. Jodi confirms what the data engine found and captures anything specific to your plans for the building.",
+    detail: "A short, focused conversation. Jodi captures anything specific to your plans for the building, so the analysis is pointed at the scheme you actually want.",
     graphic: "jodi-call",
+  },
+  {
+    num: "03",
+    durationLabel: "Automated, within 48 hours",
+    title: "Automated Analysis",
+    lead: "Our data engine checks planning history, site constraints, density data, and comparable schemes across your local area.",
+    detail: "Hundreds of data points are cross-referenced across trusted sources before a human looks at the site. This is the desk study, done in hours, not weeks. Automating the laborious part is what frees our architects to spend their time on the sketch scheme, which is where the real value sits.",
+    graphic: "step2",
   },
   {
     num: "04",
@@ -53,27 +53,28 @@ export const howItWorksSteps: HowItWorksStep[] = [
     durationLabel: "Day 5",
     title: "Final Meeting",
     lead: "We review the completed feasibility together on a video call, five days after you uploaded your details.",
-    detail: "You leave the call with a clear Go or No-Go, the full report, and the layouts. Enough to bid, exchange, or walk away with confidence.",
+    detail: "You leave the call with complete clarity: the full feasibility document, the sketch schemes, and a clear Go or No-Go. Enough to bid, to walk away, or to move into conveyancing with confidence.",
     graphic: "final-meeting",
   },
 ];
 
-// One-line descriptions for the six compact layer cards nested under Step 2.
-// Indexed to match feasibilityLayers in data/feasibilityLayers.ts.
+// One-line descriptions for the six compact layer cards nested under the
+// analysis step. Indexed to match feasibilityLayers in data/feasibilityLayers.ts.
 export const layerBlurbs: string[] = [
   "Five years of approvals and refusals around the site.",
-  "Local and national policy, Building Regs, and licensing.",
-  "Density, change-of-use, and local planning thresholds.",
+  "Local and national policy, Article 4, and change-of-use thresholds.",
   "Nearby conversions, unit counts, and achieved sale values.",
   "Build cost, margin, and ROI before you commit capital.",
-  "Architect-led layout options that maximise unit yield.",
+  "Local and national space standards, Building Regs, and licensing.",
+  "Architect-led layouts, reviewed with you on a video call.",
 ];
 
+// Ed's video feedback 2026-07-08: sketch schemes lead, "Efficiency Metrics" is
+// gone, and the old Go/No-Go line is reframed around the full document.
 export const deliverables: Deliverable[] = [
-  { title: "GA Floor Plans", desc: "Proposed layouts showing unit positions, circulation, and core areas." },
-  { title: "Schedule of Accommodation", desc: "Unit-by-unit breakdown with GIA, room counts, and NDSS compliance." },
-  { title: "Constraints Analysis", desc: "Planning policy, flood risk, Article 4, conservation, and heritage assessment." },
+  { title: "Sketch Schemes", desc: "One to two layout options, drawn over your estate agent or measured plans." },
+  { title: "Schedule of Accommodation & Space Standards", desc: "Unit-by-unit breakdown of GIA, room counts, and space standards compliance." },
+  { title: "Planning Policy Analysis", desc: "Planning policy, flood risk, Article 4, conservation, and heritage assessment." },
   { title: "Risk Register", desc: "Structural, environmental, and commercial risks, quantified with cost implications." },
-  { title: "Go/No-Go Recommendation", desc: "A clear, unambiguous recommendation backed by evidence." },
-  { title: "Efficiency Metrics", desc: "Net-to-gross ratios, GDV estimates, and commercial viability indicators." },
+  { title: "Full Feasibility Document", desc: "Planning context and risk, development potential, Building Regs, and commercial position, with a clear Go or No-Go." },
 ];

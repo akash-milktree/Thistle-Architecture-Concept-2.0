@@ -15,15 +15,15 @@ const steps = [
   },
   {
     num: "02",
-    title: "Automated Analysis",
-    desc: "Our system checks planning history, site constraints, density data, and comparable schemes in your local area.",
-    icon: Cpu,
-  },
-  {
-    num: "03",
     title: "Project Data Gathering Session",
     desc: "An instant call with Jodi, our property expert, to gather the details we need and walk through your goals for the site. A short, focused conversation that keeps the five-day clock moving.",
     icon: Phone,
+  },
+  {
+    num: "03",
+    title: "Automated Analysis",
+    desc: "Our system checks planning history, site constraints, density data, and comparable schemes in your local area. Automating the laborious part is what frees our architects to spend their time on the sketch scheme.",
+    icon: Cpu,
   },
   {
     num: "04",
@@ -34,7 +34,7 @@ const steps = [
   {
     num: "05",
     title: "Final Meeting",
-    desc: "You'll be sent a video call link after uploading your information. We'll review the completed feasibility together after 5 days.",
+    desc: "You'll be sent a video call link after uploading your information. We'll review the completed feasibility together after 5 days, so you can bid, walk away, or move into conveyancing with confidence.",
     icon: Video,
   }
 ];
@@ -79,7 +79,8 @@ export const Process: React.FC = () => {
                     }`}>
                       <step.icon size={20} />
                     </div>
-                    <span className={`text-xs font-bold tracking-widest ${isFinal ? 'text-thistle-green' : 'text-thistle-black/30'}`}>{step.num}</span>
+                    {/* Ed's video feedback 2026-07-08: step numbers must read clearly at a glance. */}
+                    <span className={`text-3xl font-semibold tracking-tight tabular-nums leading-none ${isFinal ? 'text-thistle-green' : 'text-thistle-black/35'}`}>{step.num}</span>
                   </div>
 
                   <h3 className="text-fluid-h5 font-medium mb-fl-3 tracking-tight text-thistle-black">{step.title}</h3>

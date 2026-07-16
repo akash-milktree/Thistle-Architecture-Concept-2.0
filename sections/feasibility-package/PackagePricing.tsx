@@ -41,7 +41,7 @@ export const PackagePricing: React.FC = () => {
               </p>
 
               <div className="border-t border-thistle-black/[0.06] pt-fl-5 mb-fl-6">
-                <span className="block text-[10px] uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-4">All six deliverables included</span>
+                <span className="block text-[10px] uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-4">All five deliverables included</span>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-fl-5 gap-y-fl-3">
                   {deliverables.map((d) => (
                     <li key={d.title} className="flex items-center gap-2.5">

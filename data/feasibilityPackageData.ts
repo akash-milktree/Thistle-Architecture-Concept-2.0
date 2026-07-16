@@ -1,10 +1,9 @@
 export type DeliverableGraphicKey =
-  | 'ga-plans'
+  | 'sketch-scheme'
   | 'schedule'
   | 'constraints'
   | 'risk-register'
-  | 'go-nogo'
-  | 'efficiency';
+  | 'feasibility-document';
 
 export interface DeliverableDetail {
   why: string;
@@ -21,15 +20,16 @@ export interface PackageFaq {
   answer: string;
 }
 
-// "From £X" anchor. Flagged for confirmation with the client.
-export const pricingFrom = "£1,800";
+// "From £X" anchor. Set from Ed's video feedback 2026-07-08 ("it starts at 298
+// from the lowest package"); £1,800 before that.
+export const pricingFrom = "£298";
 export const pricingCaption = "Fixed fee, scoped before you start. No hourly rates, no scope creep.";
 
 // Indexed to match the deliverables array in data/howItWorksData.ts.
 export const deliverableDetail: DeliverableDetail[] = [
   {
-    why: "So you can show a buyer, a lender, or a JV partner what the building actually becomes. Real layouts, not napkin sketches.",
-    graphic: "ga-plans",
+    why: "The part our architects spend their time on, because automation cannot do it. Real layouts you can show a buyer, a lender, or a JV partner.",
+    graphic: "sketch-scheme",
   },
   {
     why: "The single document a QS, a valuer, or a planning officer asks for first. You will not be chasing it from a separate consultant.",
@@ -44,12 +44,8 @@ export const deliverableDetail: DeliverableDetail[] = [
     graphic: "risk-register",
   },
   {
-    why: "A clear answer. We will tell you to walk away if the numbers do not stack up, even if you wanted a Go.",
-    graphic: "go-nogo",
-  },
-  {
-    why: "How tight the layout is, how the GDV compares to local sales, and whether the margin is real or marginal.",
-    graphic: "efficiency",
+    why: "The whole picture in one place, ending in a clear answer. We will tell you to walk away if the numbers do not stack up, even if you wanted a Go.",
+    graphic: "feasibility-document",
   },
 ];
 

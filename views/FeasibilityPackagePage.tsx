@@ -53,7 +53,7 @@ export const FeasibilityPackagePage: React.FC = () => {
           </Reveal>
           <Reveal delay={0.2}>
             <p className="text-fluid-base text-white/85 leading-relaxed font-light mb-fl-6 max-w-xl mx-auto">
-              One package, one fixed fee from {pricingFrom}. Six deliverables and a clear Go or No-Go on whether your building is worth taking forward.
+              One package, one fixed fee from {pricingFrom}. Five deliverables and a clear Go or No-Go on whether your building is worth taking forward.
             </p>
           </Reveal>
           <Reveal delay={0.3}>
@@ -81,7 +81,7 @@ export const FeasibilityPackagePage: React.FC = () => {
       {/* How it works, absorbed from the old page */}
       <HowItWorks />
 
-      {/* The six deliverables, compact selector */}
+      {/* The deliverables, compact selector */}
       <DeliverableShowcase />
 
       {/* What's included in data analysis */}

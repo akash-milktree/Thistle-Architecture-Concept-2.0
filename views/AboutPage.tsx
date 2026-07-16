@@ -59,8 +59,8 @@ export const AboutPage: React.FC = () => {
     <>
       <PageHero
         label="About"
-        heading="Developers First. Architects Second."
-        description="Thistle is a feasibility practice built by people who develop and invest in buildings themselves. We test schemes the way a developer would, then back the answer with architecture."
+        heading="A Feasibility-First Architectural Practice."
+        description="We analyse the data, so the answer is accurate and the wait is short. We work with developers and high-end residential clients on retrofit, conversion, and the reuse of existing buildings."
       />
 
       {/* Who we are */}
@@ -168,12 +168,12 @@ export const AboutPage: React.FC = () => {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-5">
-              Architects, Working For Developers.
+              Data First, Then Drawings.
             </h2>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="text-fluid-base text-thistle-black/80 leading-relaxed">
-              Most architects design first and worry about commercial viability later. We do it the other way round. The team that runs your feasibility stays with you through sketch scheme, planning, and delivery, so nothing is lost in handover.
+              Most architects design first and worry about viability later. We do it the other way round. We analyse the data first, which makes the answer more accurate and cuts the time it takes to get it. The team that runs your feasibility stays with you through sketch scheme, planning, and delivery, so nothing is lost in handover.
             </p>
           </Reveal>
         </div>

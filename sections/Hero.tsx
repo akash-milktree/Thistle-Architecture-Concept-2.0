@@ -54,14 +54,16 @@ export const Hero: React.FC = () => {
             </Reveal>
 
             <Reveal delay={0.1}>
+              {/* Ed's video feedback 2026-07-08: "feasibility first" over
+                  "developer led", because it covers high-end residential too. */}
               <h1 className="text-[clamp(2.6rem,5.2vw,4.6rem)] font-medium tracking-tighter leading-[1.05] text-white mb-fl-5">
-                Nationwide Developer-Led<br />Retrofit Architecture.
+                Nationwide Feasibility<br />First Architecture.
               </h1>
             </Reveal>
 
             <Reveal delay={0.2}>
               <p className="text-fluid-base text-white/90 leading-relaxed font-light mb-fl-7 max-w-xl">
-                Thistle is a feasibility-first architecture practice for existing buildings. We test what a building can become, give you a clear Go or No-Go in five days, then design and deliver the conversion.
+                Thistle is a developer-led architecture practice specialising in feasibility studies and the retrofit and reuse of existing buildings. We test what a building can become, give you a clear Go or No-Go in five days, then design and deliver the conversion.
               </p>
             </Reveal>
 
