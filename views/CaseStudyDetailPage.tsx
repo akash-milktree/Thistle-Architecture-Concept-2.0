@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Reveal } from '../components/animations/Reveal';
-import { ArrowUpRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { ArrowUpRight, ArrowLeft, CheckCircle2, HardHat } from 'lucide-react';
 import { caseStudies } from '../data/caseStudiesData';
 
 // Drawings (converted sketch PDFs) live in /images/projects/ and must never
@@ -97,7 +97,12 @@ export const CaseStudyDetailPage: React.FC = () => {
                   )}
                   {isProject && (
                     <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-thistle-black/[0.05] text-[10px] uppercase tracking-widest text-thistle-black/60 font-semibold">
-                      <CheckCircle2 size={11} className="text-thistle-green" /> Complete
+                      {caseStudy.status === 'On site' ? (
+                        <HardHat size={11} className="text-thistle-green" />
+                      ) : (
+                        <CheckCircle2 size={11} className="text-thistle-green" />
+                      )}
+                      {caseStudy.status ?? 'Complete'}
                     </span>
                   )}
                 </div>

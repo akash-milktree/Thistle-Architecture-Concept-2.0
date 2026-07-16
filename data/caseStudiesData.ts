@@ -19,6 +19,8 @@ export interface CaseStudy {
   planningRoute?: string;
   completionDate?: string;
   recommendation?: "Go" | "No-Go" | "Options Tested";
+  /** Completed-project entries only. Defaults to Complete when unset. */
+  status?: "Complete" | "On site";
   // Financial figures appear only where a project document supports them.
   purchasePrice?: string;
   projectedGDV?: string;
@@ -317,17 +319,27 @@ export const caseStudies: CaseStudy[] = [
     slug: "beauchamp-house",
     kind: "project",
     title: "Beauchamp House",
-    location: "South of England",
-    image: "/images/generated/office-exterior.jpg",
+    location: "Royal Leamington Spa, Warwickshire",
+    image: "/images/projects/beauchamp-elevation-1.png",
     tag: "Office to Flats",
     stats: [
-      { label: "Project type", value: "Office to flats" },
-      { label: "Status", value: "Complete" },
-      { label: "Write-up", value: "Coming soon" },
+      { label: "Flats", value: "4" },
+      { label: "Flat sizes", value: "73.4 to 80.3 sqm" },
+      { label: "Status", value: "On site" },
     ],
-    desc: "A completed office-to-residential conversion. Full project details and photography are being prepared.",
-    galleryImages: [],
-    buildingType: "Office",
+    desc: "A Regency building on Kenilworth Road being converted from offices into four flats, from the basement up into the roof.",
+    challenge: "Beauchamp House is a period property on Kenilworth Road, and everything that gives it character also constrains it: sash and bay windows to keep, chimneys to retain, and a roof that had to take new accommodation without changing how the building reads from the street.",
+    approach: "The conversion works the full height of the building. Flat 1 takes the basement at 74.9 sqm, Flat 2 the ground floor at 80.3 sqm, and Flat 4 the loft at 73.4 sqm, each with en suites and its own kitchen and dining space. The existing windows are retained and upgraded with secondary glazing matched to the profile of the originals, the chimneys stay, and new rooflights are conservation pattern so the roofline is not disturbed. A vaulted ceiling was added to the second floor during the design. External walls are thermally lined rather than replaced, which is what keeps a building like this workable.",
+    outcome: "The scheme is on site. Drawings are at Building Regulations stage and have been through five revisions, several of them amendments following site meetings, which is the normal rhythm of a retrofit where the building tells you things the survey did not.",
+    galleryImages: [
+      "/images/projects/beauchamp-plans-1.png",
+      "/images/projects/beauchamp-site-1.jpg",
+      "/images/projects/beauchamp-site-2.jpg",
+    ],
+    buildingType: "Period office building",
+    planningRoute: "Office to residential conversion",
+    unitsAfter: "4 flats",
+    status: "On site",
   },
   {
     slug: "monument-house",
