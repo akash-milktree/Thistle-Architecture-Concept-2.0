@@ -6,6 +6,7 @@ import { Reveal } from '../../components/animations/Reveal';
 import { Button } from '../../components/ui/Button';
 import { useRouter } from 'next/navigation';
 import { ToolGate } from '../../components/ui/ToolGate';
+import { NumberInput, OutputRow, formatGBP } from './calcUi';
 
 export type ViabilityBand = 'marginal' | 'viable' | 'strong';
 
@@ -64,51 +65,6 @@ const BAND_COPY: Record<ViabilityBand, { label: string; body: string; bg: string
     text: 'text-thistle-green',
   },
 };
-
-const formatGBP = (n: number) => {
-  if (Math.abs(n) >= 1_000_000) return `£${(n / 1_000_000).toFixed(2)}M`;
-  if (Math.abs(n) >= 1_000) return `£${(n / 1_000).toFixed(0)}k`;
-  return `£${Math.round(n).toLocaleString('en-GB')}`;
-};
-
-interface NumberInputProps {
-  label: string;
-  value: number;
-  prefix?: string;
-  suffix?: string;
-  step: number;
-  onChange: (n: number) => void;
-}
-
-const NumberInput: React.FC<NumberInputProps> = ({ label, value, prefix, suffix, step, onChange }) => (
-  <label className="block">
-    <span className="block text-[10px] uppercase tracking-widest text-thistle-black/40 font-semibold mb-fl-2">{label}</span>
-    <div className="flex items-center rounded-xl border border-thistle-black/[0.08] bg-white overflow-hidden focus-within:border-thistle-green/50 transition-colors">
-      {prefix && <span className="pl-fl-4 text-thistle-black/40 text-sm">{prefix}</span>}
-      <input
-        type="number"
-        value={value}
-        step={step}
-        min={0}
-        onChange={(e) => {
-          const n = parseFloat(e.target.value);
-          onChange(Number.isFinite(n) ? n : 0);
-        }}
-        className="flex-1 py-fl-4 px-fl-4 bg-transparent text-fluid-base text-thistle-black focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-      />
-      {suffix && <span className="pr-fl-4 text-thistle-black/40 text-sm">{suffix}</span>}
-    </div>
-  </label>
-);
-
-const OutputRow: React.FC<{ label: string; value: string; accent?: boolean }> = ({ label, value, accent }) => (
-  <div className="flex items-baseline justify-between gap-fl-4 pb-fl-3 border-b border-thistle-black/[0.05] last:border-b-0 last:pb-0">
-    <span className="text-fluid-sm text-thistle-black/60">{label}</span>
-    <span className={`text-fluid-h5 font-medium tracking-tight tabular-nums ${accent ? 'text-thistle-green' : 'text-thistle-black'}`}>
-      {value}
-    </span>
-  </div>
-);
 
 export const GDVCalculator: React.FC = () => {
   const router = useRouter();

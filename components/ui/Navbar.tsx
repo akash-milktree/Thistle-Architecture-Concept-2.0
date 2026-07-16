@@ -37,7 +37,8 @@ const navLinks: NavItem[] = [
     path: "/tools/class-ma-checker",
     children: [
       { label: "Class MA Checker", path: "/tools/class-ma-checker" },
-      { label: "GDV Calculator", path: "/tools/gdv-calculator" },
+      { label: "Apartment GDV Calculator", path: "/tools/gdv-calculator" },
+      { label: "HMO Valuation Calculator", path: "/tools/hmo-calculator" },
     ],
   },
   { label: "About", path: "/about" },
