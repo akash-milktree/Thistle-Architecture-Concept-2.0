@@ -17,10 +17,14 @@ export const Hero: React.FC = () => {
   const router = useRouter();
   return (
     <section className="relative min-h-[100svh] flex flex-col overflow-hidden">
-      {/* Media: image always, video takes over on larger screens when motion is allowed */}
+      {/* Media: image always, video takes over on larger screens when motion is
+          allowed. Real client drone footage over Winchester (Monument House,
+          "Existing videos - use for homepage"), replacing the generated stock
+          clip on Ed's instruction 2026-07-08. Poster is frame one of the video
+          so the fallback and the first frame match. */}
       <Image
-        src="/images/site/hero-drone.jpg"
-        alt="Aerial view of terraced homes across a UK town"
+        src="/images/site/hero-winchester.jpg"
+        alt="Aerial view over Winchester, with a Thistle conversion project in the foreground"
         fill
         priority
         className="object-cover"
@@ -32,10 +36,10 @@ export const Hero: React.FC = () => {
         loop
         playsInline
         preload="metadata"
-        poster="/images/site/hero-drone.jpg"
+        poster="/images/site/hero-winchester.jpg"
         aria-hidden="true"
       >
-        <source src="/videos/hero-drone.mp4" type="video/mp4" />
+        <source src="/videos/hero-winchester.mp4" type="video/mp4" />
       </video>
 
       {/* Readability overlays: heavier on the left where the copy sits, plus a bottom wash for the stat band */}
