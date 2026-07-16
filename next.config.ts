@@ -22,6 +22,15 @@ const nextConfig: NextConfig = {
         destination: '/blog',
         permanent: true,
       },
+      // Wix serves every post at BOTH /slug and /post/slug, and all 13 return
+      // 200 on the live site today. The root-level ones are redirected below;
+      // this catches the /post/ form, which was missed and would have 404'd
+      // every inbound link and search result using that pattern.
+      {
+        source: '/post/:slug',
+        destination: '/blog/:slug',
+        permanent: true,
+      },
       {
         source: '/class-ma-prior-approval-what-you-need-to-know',
         destination: '/blog/class-ma-prior-approval-what-you-need-to-know',
