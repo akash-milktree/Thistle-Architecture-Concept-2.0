@@ -1,5 +1,10 @@
 # Ed's video feedback, 8 July 2026
 
+**Status 2026-07-16:** most items are built and live. What remains is listed
+under "Blockers" and the unticked boxes below; nearly all of it needs something
+from Ed (the videography, the TrustPilot text, team roles, two feasibility
+documents) rather than more build time.
+
 Source: `03 New Website/Thistle mark up-20260708_105905-Meeting Recording.mp4`
 (27 minutes, Ed walking the site). Transcribed locally with whisper.cpp; wording
 below is a faithful reading of that transcript, not a paraphrase of intent.
@@ -8,7 +13,8 @@ Status key: `[ ]` to do, `[?]` blocked on a decision or missing asset.
 
 ## Blockers to resolve before building
 
-- [?] **Price: £1,800 or £298?** Ed: "That's wrong, isn't it? Because 1800 is
+- [x] **Price: £1,800 to £298. DONE.** Akash confirmed 2026-07-16, shipped.
+  Original note: Ed: "That's wrong, isn't it? Because 1800 is
   way too high. It starts at 298, I think from the lowest package." He hedged
   ("I think"), and this is a live 6x price change, so confirm before shipping.
   Lives in one place: `data/feasibilityPackageData.ts` (`pricingFrom`), which
@@ -39,7 +45,7 @@ Status key: `[ ]` to do, `[?]` blocked on a decision or missing asset.
 
 ## Homepage
 
-- [ ] Hero headline to **"Nationwide Feasibility First Architecture"**. Ed lands
+- [x] Hero headline to **"Nationwide Feasibility First Architecture"**. Ed lands
   here explicitly, having first said "nationwide developer led architecture":
   "call this nationwide feasibility first architecture, because then that fits
   high end residential as well as developer led architecture as well." Current
@@ -47,14 +53,14 @@ Status key: `[ ]` to do, `[?]` blocked on a decision or missing asset.
 - [ ] Replace the hero image with real project imagery. Ed wants "nice big
   images across the website", ideally a cut-together background video from the
   drone footage.
-- [ ] Use the TrustPilot practice description in the hero subtext area:
+- [x] Use the TrustPilot practice description in the hero subtext area:
   "developer led architecture practice specialising in feasibility studies,
   retrofit conversions, reuse of existing buildings".
-- [ ] Make the five-step process numbers noticeably bigger ("one, two, three,
+- [x] Make the five-step process numbers noticeably bigger ("one, two, three,
   four, five" clearly readable).
-- [ ] Add an **Example Projects** section directly under "Trusted by developers
+- [x] Add an **Example Projects** section directly under "Trusted by developers
   across the UK", before the feasibility process.
-- [ ] **Simplify the homepage; it is too long.** Ed's target shape: hero →
+- [x] **Simplify the homepage; it is too long.** Ed's target shape: hero →
   trusted by developers → example projects → five-step feasibility process →
   stop. The page should then push people to the other pages.
 - [ ] More developer logos coming from Ed for the "trusted by" strip.
@@ -63,33 +69,36 @@ Status key: `[ ]` to do, `[?]` blocked on a decision or missing asset.
 
 ## Feasibility package page
 
-- [ ] Price corrected (see blocker above), in both the hero line ("one package,
+- [x] Price corrected (see blocker above), in both the hero line ("one package,
   one fixed fee from X") and the package card.
 - [ ] Change the hero image.
-- [ ] Restore the previous tagline. Ed: "What was the tag before? It was like
+- [?] Restore the previous tagline. Ed: "What was the tag before? It was like
   clarity, five days or something. Can you put it back to what it was before."
-  Needs digging out of git history.
-- [ ] Explain that the automated analysis removes the laborious work so the
+  **Searched all git history: no clarity-based tagline ever existed.** The h1
+  has been "Your Building, Answered In Five Days." since it was created
+  (b33702b). Ed is misremembering, or thinking of the old WordPress site. Ask
+  him for the wording he wants.
+- [x] Explain that the automated analysis removes the laborious work so the
   architect concentrates on the most valuable part, the sketch scheme.
-- [ ] **Fix the process order.** Correct sequence: upload property details →
+- [x] **Fix the process order.** Correct sequence: upload property details →
   instant call (step 2) → automated analysis → sketch scheme → final meeting.
-- [ ] Add a closing idea about "complete clarity, move into conveyancing with
+- [x] Add a closing idea about "complete clarity, move into conveyancing with
   confidence".
-- [ ] Merge "local policy analysis" and "targeted policy analysis"; they say the
+- [x] Merge "local policy analysis" and "targeted policy analysis"; they say the
   same thing.
 
 ### Deliverables rework
 
-- [ ] Sketch schemes become deliverable **number one**: one to two options of GA
+- [x] Sketch schemes become deliverable **number one**: one to two options of GA
   floor plan sketch schemes, drawn over estate agent or detailed plans. Rename
   from "GA Floor Plans" to sketch scheme.
-- [ ] "Schedule of Accommodation" becomes schedule of accommodation **and space
+- [x] "Schedule of Accommodation" becomes schedule of accommodation **and space
   standards analysis** (unit by unit breakdown of GIA).
-- [ ] "Constraints Analysis" becomes **planning policy analysis**.
+- [x] "Constraints Analysis" becomes **planning policy analysis**.
 - [ ] Risk register stays.
-- [ ] "Go/No-Go Recommendation" reframed as the **full feasibility document**.
-- [ ] **Remove "Efficiency Metrics"** entirely.
-- [ ] Spatial layout optimisation reframed as **spatial analysis**: local space
+- [x] "Go/No-Go Recommendation" reframed as the **full feasibility document**.
+- [x] **Remove "Efficiency Metrics"** entirely.
+- [x] Spatial layout optimisation reframed as **spatial analysis**: local space
   standards, building regs, licensing requirements, national space standards.
 - [ ] Show the **complete document set** they receive, not just the report:
   Feasibility Overview, Planning Research, Space Standards, and the sketches.
@@ -105,19 +114,27 @@ Status key: `[ ]` to do, `[?]` blocked on a decision or missing asset.
 
 ## Case studies / Our Work
 
-- [ ] **Add seven new feasibility studies** now in the shared folder: 13 Beech
-  House Road (C3 to 13 bed HMO), 16 Claremont Road Luton (C3 to 7 bed HMO),
-  2 Gyfford Walk (C3 to C4 HMO), 70 Hathaway Road Croydon (C3 to C3(b)),
-  Former Lloyds Bank Cheddar (C3 to 11 bed HMO and shop), Highbury Buildings
-  Portsmouth (co-living, mixed commercial/HMO/shop), Stanmore Winchester
-  (house extension, resi).
-- [ ] Build out the finished projects properly. Beauchamp House now has four
-  real site photos and full plans; Axis House has five plan PDFs. These
-  replace the placeholder stock imagery and "coming soon" copy.
+- [x] **Five of the seven new feasibility studies are live**, written from their
+  Feasibility Overview documents: 13 Beech House Road (C3 to 13 bed HMO),
+  16 Claremont Road Luton (C3 to 7 bed HMO), 2 Gyfford Walk (C3 to C4 HMO),
+  70 Hathaway Road Croydon (C3 to C3(b)), Former Lloyds Bank Cheddar (C3 to
+  11 bed HMO and shop).
+- [?] **Highbury Buildings Portsmouth and Stanmore Winchester are NOT done.**
+  Their folders contain drawings only, with no feasibility document, so there
+  is nothing to write the facts from. Needs the documents from Ed.
+- [x] Beauchamp House rebuilt from its real material: Building Regulations
+  drawings, four site photos, 4 flats at 73.4 to 80.3 sqm. Two corrections the
+  documents forced: it is in Royal Leamington Spa (the entry said "South of
+  England"), and it is **on site, not complete** (the site photos show
+  strip-out), so a `status` field now carries that rather than a hardcoded
+  "Complete" badge.
+- [?] Monument House, Wigan Church, 162 Millbrook, Bishopstoke and Forest Home
+  are **still stock placeholders**. Their folders in the shared drive are empty.
+  Needs photos and write-ups from Ed.
 
 ## Conversions
 
-- [ ] Categories Ed wants: high-end residential, commercial to residential,
+- [x] Categories Ed wants: high-end residential, commercial to residential,
   HMO, mixed-use commercial. (Site currently has commercial-to-residential and
   HMO only.)
 - [ ] Use real project images. Ed approves what is there so far.
@@ -127,10 +144,10 @@ Status key: `[ ]` to do, `[?]` blocked on a decision or missing asset.
 
 Ed likes the Class MA checker as is ("Yeah, I like this. It's cool").
 
-- [ ] Rename the GDV calculator to **Apartment GDV Calculator**, and add an
+- [x] Rename the GDV calculator to **Apartment GDV Calculator**, and add an
   **HMO calculator** underneath it (one exists on the HMO Checker website).
 - [ ] Add HMO Checker into the tools area.
-- [ ] On the HMO conversion page: link to HMO Checker, offer a free report or
+- [x] On the HMO conversion page: link to HMO Checker, offer a free report or
   mention the £15.99 one-off purchase, and possibly show the HMO Checker map.
 - [ ] **New tool: build cost analyser.** User picks the project type, then:
   - HMO: process already exists on the HMO Checker website.
@@ -142,9 +159,9 @@ Ed likes the Class MA checker as is ("Yeah, I like this. It's cool").
 
 ## About
 
-- [ ] **Remove "Developers first, architects second"** framing. Ed: "don't like
+- [x] **Remove "Developers first, architects second"** framing. Ed: "don't like
   this... don't like that either."
-- [ ] Rewrite from the TrustPilot description: a feasibility-first architectural
+- [x] Rewrite from the TrustPilot description: a feasibility-first architectural
   practice; how we analyse data, create accuracy, reduce time; we work with
   both developers and high-end residential clients; all about retrofit and
   existing buildings.
