@@ -50,8 +50,8 @@ export const ConversionPage: React.FC<ConversionPageProps> = ({ conversion }) =>
             <Reveal>
               <div className="relative aspect-[4/3] rounded-2xl border border-thistle-black/[0.06] overflow-hidden">
                 <Image
-                  src="/images/generated/office-exterior.jpg"
-                  alt="Vacant UK office building suitable for residential conversion"
+                  src={conversion.extraSection.image ?? '/images/generated/office-exterior.jpg'}
+                  alt={conversion.extraSection.imageAlt ?? 'Vacant UK office building suitable for residential conversion'}
                   fill
                   sizes="(max-width: 1024px) 90vw, 620px"
                   className="object-cover"
@@ -69,13 +69,18 @@ export const ConversionPage: React.FC<ConversionPageProps> = ({ conversion }) =>
                     {para}
                   </p>
                 ))}
-                <Link
-                  href="/tools/class-ma-checker"
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-thistle-green hover:text-thistle-black transition-colors"
-                >
-                  Try the free Class MA Checker
-                  <ArrowUpRight size={15} />
-                </Link>
+                {conversion.extraSection.cta && (
+                  <Link
+                    href={conversion.extraSection.cta.href}
+                    {...(conversion.extraSection.cta.external
+                      ? { target: '_blank', rel: 'noopener noreferrer' }
+                      : {})}
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-thistle-green hover:text-thistle-black transition-colors"
+                  >
+                    {conversion.extraSection.cta.label}
+                    <ArrowUpRight size={15} />
+                  </Link>
+                )}
               </div>
             </Reveal>
           </div>

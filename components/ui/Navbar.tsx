@@ -30,6 +30,8 @@ const navLinks: NavItem[] = [
     children: [
       { label: "Commercial to Residential", path: "/conversions/commercial-to-residential" },
       { label: "HMO", path: "/conversions/hmo" },
+      { label: "Mixed-Use Commercial", path: "/conversions/mixed-use-commercial" },
+      { label: "High-End Residential", path: "/conversions/high-end-residential" },
     ],
   },
   {

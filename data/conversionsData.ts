@@ -20,6 +20,11 @@ export interface ConversionExtraSection {
   eyebrow: string;
   title: string;
   body: string[];
+  /** Defaults to the office exterior shot when unset. */
+  image?: string;
+  imageAlt?: string;
+  /** Optional CTA. Set external for links off this site. */
+  cta?: { label: string; href: string; external?: boolean };
 }
 
 export interface Conversion {
@@ -64,6 +69,7 @@ export const conversions: Conversion[] = [
         "Since March 2024 the rules have loosened: the old 1,500 sqm floorspace cap and the vacancy requirement have both been removed. The building still needs two years in Class E use, and the prior approval tests on daylight, noise, flooding, contamination, transport, and fire safety all still apply.",
         "The route fails quietly when a building sits inside an Article 4 direction, or when deep floor plates cannot deliver acceptable natural light. That is exactly what our desk study screens before you commit to a purchase. You can run a first check yourself with our free Class MA Checker.",
       ],
+      cta: { label: "Try the free Class MA Checker", href: "/tools/class-ma-checker" },
     },
     deliverableHighlights: [
       { deliverableIndex: 0, forThisType: "Tested against the building's real structural grid and core positions, not an assumed plan." },
@@ -91,6 +97,21 @@ export const conversions: Conversion[] = [
       { title: "Licensing thresholds", detail: "Mandatory, additional, and selective licensing schemes overlap unpredictably. Each adds cost, time, and standards the conversion must meet." },
       { title: "Space-standard compliance", detail: "HMO room sizes are tightly regulated. A scheme that looks viable on a brochure plan often fails the minimum-area tests for habitable rooms." },
     ],
+    // Ed's video feedback 2026-07-08: link this page to HMO Checker, the sister
+    // product in the Thistle Group. £15.99 verified on hmochecker.co.uk.
+    extraSection: {
+      id: "hmo-checker",
+      eyebrow: "Sister Product",
+      title: "Check The Address Before You Pay For Anything.",
+      body: [
+        "HMO Checker is part of the Thistle Group, and it answers the first question about any HMO: does this address work at all? It pulls planning and licensing data for a property and reports the Article 4 position, the licensing schemes that apply, and what has been approved nearby.",
+        "A single report is a £15.99 one-off, and there are free tools alongside it including an Article 4 checker and a conversion calculator. It is the cheapest way to rule an address out before you spend money on it.",
+        "Where HMO Checker tells you whether the address is worth pursuing, a feasibility tells you what the building will actually give you: how many rooms, at what sizes, and whether the deal stacks up.",
+      ],
+      image: "/images/generated/layer-density.jpg",
+      imageAlt: "Top-down aerial of dense terraced housing streets",
+      cta: { label: "Check an address on HMO Checker", href: "https://hmochecker.co.uk", external: true },
+    },
     deliverableHighlights: [
       { deliverableIndex: 2, forThisType: "HMO density saturation, Article 4 exposure, and licensing scheme overlap mapped at desk-study stage." },
       { deliverableIndex: 0, forThisType: "Room layouts checked against HMO minimum sizes and amenity standards, not just optimistic plans." },
@@ -100,6 +121,62 @@ export const conversions: Conversion[] = [
     relatedCaseStudySlug: "st-johns-aylesbury",
     metaTitle: "HMO Feasibility | Thistle Architecture",
     metaDescription: "HMO conversion feasibility. Density, Article 4, licensing, and layout pressure-tested in five days. Fixed fee, clear Go or No-Go.",
+  },
+  // Added on Ed's video feedback 2026-07-08: he wants four conversion types,
+  // "high-end residential, commercial to residential, HMO, a mixed-use
+  // commercial". He also wants Scarlett's input on these and on the SEO
+  // structure, so treat the copy below as a first pass.
+  {
+    slug: "mixed-use-commercial",
+    label: "Mixed-Use Commercial",
+    heroHeading: "Keep The Shop. Build Homes Above It.",
+    heroDescription: "High-street buildings where the ground floor has to stay commercial and the value sits in the floors above.",
+    opportunityCopy: "Plenty of high-street buildings are worth more as a mixed-use scheme than as either pure commercial or pure residential. Retaining an active ground-floor unit is often what makes the residential above acceptable in policy terms, and it keeps an income stream while the rest is converted.",
+    opportunityStats: [
+      { label: "Typical arrangement", value: "Retail below, homes above" },
+      { label: "Planning route", value: "Full or prior approval" },
+      { label: "Common blocker", value: "Ground-floor policy" },
+    ],
+    challenges: [
+      { title: "Policy protects the ground floor", detail: "Many local and neighbourhood plans resist losing commercial frontage in a centre. Overturning that needs evidence: a documented marketing exercise, sustained vacancy, and ideally a viability appraisal." },
+      { title: "Separating the uses", detail: "Independent access, fire separation, acoustics between commercial and residential, and separate services all have to be designed in from the start, not retrofitted onto a layout that ignored them." },
+      { title: "Servicing and refuse", detail: "Two uses in one envelope means two sets of bins, deliveries, and cycle storage, all of which officers scrutinise closely on constrained high-street sites." },
+    ],
+    deliverableHighlights: [
+      { deliverableIndex: 0, forThisType: "Layouts that keep the commercial unit working while the floors above become homes, with genuinely independent access." },
+      { deliverableIndex: 2, forThisType: "The ground-floor retention policy read properly, including whether a change is arguable and what evidence it would take." },
+      { deliverableIndex: 3, forThisType: "The risks of running two uses in one building named and costed, from acoustics to refuse strategy." },
+      { deliverableIndex: 4, forThisType: "The commercial case for the mixed scheme against the pure-residential fallback, so you can see which is actually worth more." },
+    ],
+    relatedCaseStudySlug: "bath-street-cheddar",
+    metaTitle: "Mixed-Use Commercial Feasibility | Thistle Architecture",
+    metaDescription: "Feasibility for mixed-use conversions: retained commercial at ground floor with residential above. Ground-floor policy, access separation, and viability tested in five days.",
+  },
+  {
+    slug: "high-end-residential",
+    label: "High-End Residential",
+    heroHeading: "Extend, Remodel, Or Convert To Something Better.",
+    heroDescription: "Feasibility for high-end residential projects, where the question is what the house could become rather than how many units fit in it.",
+    opportunityCopy: "High-end residential works differently to a yield play. The value is in the quality of the finished house and how well the design uses what is already there, but the constraints are the same ones that catch developers: planning policy, heritage, and what the existing fabric will actually allow.",
+    opportunityStats: [
+      { label: "Typical scope", value: "Extension or remodel" },
+      { label: "Planning route", value: "Full or permitted development" },
+      { label: "Common blocker", value: "Heritage and conservation" },
+    ],
+    challenges: [
+      { title: "Heritage and conservation", detail: "Listing, conservation areas, and the setting of nearby listed buildings all shape what is possible externally, and they are the constraints most often discovered too late." },
+      { title: "What permitted development still allows", detail: "A surprising amount can be done without a full application, but volume allowances are cumulative and easy to exceed by accident, which turns a simple project into an application." },
+      { title: "The existing fabric", detail: "Older houses rarely match their drawings. Head heights, structure, and floor levels decide what a remodel can actually deliver, and only a survey settles it." },
+    ],
+    deliverableHighlights: [
+      { deliverableIndex: 0, forThisType: "Options drawn over your existing plans, so you can see what the house becomes before committing to a route." },
+      { deliverableIndex: 2, forThisType: "Conservation, listing, and permitted development allowances checked before you spend on design." },
+      { deliverableIndex: 3, forThisType: "The risks that move a high-end budget, from structure to heritage objection, named early." },
+      { deliverableIndex: 4, forThisType: "A clear view of whether the project is worth doing, and which option is worth doing." },
+    ],
+    relatedCaseStudySlug: "axis-house",
+    metaTitle: "High-End Residential Feasibility | Thistle Architecture",
+    metaDescription: "Feasibility for high-end residential projects: extensions, remodels, and conversions. Heritage, permitted development, and existing fabric tested before you commit to design.",
   },
 ];
 
