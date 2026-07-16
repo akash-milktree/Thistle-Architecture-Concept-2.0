@@ -3,6 +3,19 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   async redirects() {
     return [
+      // Removed 2026-07-17: both were stock placeholders with no material
+      // behind them. They were live, so send anyone holding the URL to the
+      // projects hub rather than a 404.
+      {
+        source: '/case-studies/bishopstoke',
+        destination: '/case-studies?view=projects',
+        permanent: true,
+      },
+      {
+        source: '/case-studies/forest-home',
+        destination: '/case-studies?view=projects',
+        permanent: true,
+      },
       // Old live-site journal URLs (root-level on Wix) map to /blog.
       {
         source: '/journal',
