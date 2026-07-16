@@ -8,10 +8,17 @@ import { ThistleLogo } from './ThistleLogo';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, Menu, X, ChevronDown } from 'lucide-react';
 
+interface NavChild {
+  label: string;
+  path: string;
+  /** Opens in a new tab. Used for sister products outside this site. */
+  external?: boolean;
+}
+
 interface NavItem {
   label: string;
   path: string;
-  children?: { label: string; path: string }[];
+  children?: NavChild[];
 }
 
 const navLinks: NavItem[] = [
@@ -41,6 +48,8 @@ const navLinks: NavItem[] = [
       { label: "Class MA Checker", path: "/tools/class-ma-checker" },
       { label: "Apartment GDV Calculator", path: "/tools/gdv-calculator" },
       { label: "HMO Valuation Calculator", path: "/tools/hmo-calculator" },
+      // Ed's video feedback 2026-07-08: "in tools also get HMO Checker in there".
+      { label: "HMO Checker ↗", path: "https://hmochecker.co.uk", external: true },
     ],
   },
   { label: "About", path: "/about" },
@@ -120,6 +129,7 @@ export const Navbar: React.FC = () => {
                           <Link
                             key={child.path}
                             href={child.path}
+                            {...(child.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                             className={`block px-fl-4 py-fl-3 text-sm transition-colors hover:bg-white/[0.05] hover:text-white ${pathname === child.path ? 'text-white' : 'text-white/70'}`}
                           >
                             {child.label}
@@ -195,6 +205,7 @@ export const Navbar: React.FC = () => {
                           <Link
                             key={child.path}
                             href={child.path}
+                            {...(child.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                             onClick={() => setIsMobileMenuOpen(false)}
                             className={`py-2 text-sm ${pathname === child.path ? 'text-thistle-green' : 'text-thistle-black/70'}`}
                           >

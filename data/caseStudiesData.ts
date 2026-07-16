@@ -342,6 +342,36 @@ export const caseStudies: CaseStudy[] = [
     status: "On site",
   },
   {
+    // Attribution note: the Design and Access Statement for this scheme is
+    // authored by incollective.works, a practice at the same Portsmouth address
+    // as HMO Designers, rather than by Thistle. Ed treats it as portfolio work
+    // (the finished video already runs on the current Thistle site), but the
+    // credit is worth confirming before this goes anywhere public.
+    slug: "bereweeke-avenue",
+    kind: "project",
+    title: "1930s House, Extended And Remade",
+    location: "Winchester, Hampshire",
+    image: "/images/projects/bereweeke-1.jpg",
+    tag: "High-End Residential",
+    stats: [
+      { label: "Existing", value: "1930s detached" },
+      { label: "Extensions", value: "Single and two storey" },
+      { label: "Change of use", value: "None" },
+    ],
+    desc: "A tired 1930s detached house in Winchester, reworked with new extensions and a full fenestration change.",
+    challenge: "The house was a two-storey 1930s detached property with a masonry facade and a red clay tile roof, and it had accumulated the usual additions. The windows and doors were dilapidated steel and the rainwater goods were black uPVC. Nothing about it was protected, which is a freedom and a trap: no listing and no conservation area means the constraint is simply whether the design is good enough to be worth doing.",
+    approach: "The existing extensions come down and are replaced with a single-storey rear and side extension and two-storey side extensions, keeping the use as a C3 dwellinghouse throughout. The fenestration changes across the whole house, which is what does the real work: steel-framed glazing to the garden, and openings sized to the way the rooms are actually used rather than the way they were in 1935. Access off Bereweeke Avenue is unchanged, the driveway keeps its off-street parking, and no trees or hedges are removed.",
+    outcome: "Taken through RIBA Stage 2 and pre-application advice with Winchester City Council, then built. The finished house has a kitchen and dining space opening to the garden under a rooflight, herringbone floors, and a rear elevation that reads as one house rather than a house plus additions.",
+    galleryImages: [
+      "/images/projects/bereweeke-2.jpg",
+      "/images/projects/bereweeke-3.jpg",
+      "/images/projects/bereweeke-4.jpg",
+    ],
+    buildingType: "1930s detached house (C3)",
+    planningRoute: "Full planning, extensions and alterations",
+    status: "Complete",
+  },
+  {
     slug: "monument-house",
     kind: "project",
     title: "Monument House",

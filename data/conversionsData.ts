@@ -32,7 +32,6 @@ export interface Conversion {
   label: string;
   heroHeading: string;
   heroDescription: string;
-  heroImage?: string;
   opportunityCopy: string;
   opportunityStats: ConversionStat[];
   challenges: ConversionChallenge[];
@@ -174,7 +173,7 @@ export const conversions: Conversion[] = [
       { deliverableIndex: 3, forThisType: "The risks that move a high-end budget, from structure to heritage objection, named early." },
       { deliverableIndex: 4, forThisType: "A clear view of whether the project is worth doing, and which option is worth doing." },
     ],
-    relatedCaseStudySlug: "axis-house",
+    relatedCaseStudySlug: "bereweeke-avenue",
     metaTitle: "High-End Residential Feasibility | Thistle Architecture",
     metaDescription: "Feasibility for high-end residential projects: extensions, remodels, and conversions. Heritage, permitted development, and existing fabric tested before you commit to design.",
   },
