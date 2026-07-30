@@ -45,9 +45,12 @@ Status key: `[ ]` to do, `[?]` blocked on a decision or missing asset.
   Who is Scarlett, and is this a gate or a parallel track?
 - [?] **TrustPilot description.** Ed wants it used as source copy in two places
   (homepage and About). Supply the exact text.
-- [?] **Client reviews.** Ed: "There's some really good client reviews on iLit
-  now" (transcription uncertain: Elite? Trustpilot?). Need the source and the
-  review text.
+- [~] **Client reviews: SOURCE DECIDED 2026-07-29.** Akash: use the Google
+  reviews for both Thistle Architecture and HMO Designers. Still needed: the two
+  Google Business Profile links, since the reviews are not retrievable by web
+  search. These replace the ten placeholder testimonials currently live.
+  Original note: Ed said "there's some really good client reviews on iLit now"
+  (transcription uncertain: Elite? Trustpilot?).
 - [?] **Case studies "doesn't appear to be working".** Could not reproduce.
   All 12 detail pages return 200, both tabs switch correctly, no console
   errors. Possibly transient on 8 July, or a stale cache. Ask Ed what he
@@ -131,9 +134,10 @@ Status key: `[ ]` to do, `[?]` blocked on a decision or missing asset.
   16 Claremont Road Luton (C3 to 7 bed HMO), 2 Gyfford Walk (C3 to C4 HMO),
   70 Hathaway Road Croydon (C3 to C3(b)), Former Lloyds Bank Cheddar (C3 to
   11 bed HMO and shop).
-- [?] **Highbury Buildings Portsmouth and Stanmore Winchester are NOT done.**
+- [~] **Highbury Buildings Portsmouth and Stanmore Winchester are NOT done.**
   Their folders contain drawings only, with no feasibility document, so there
-  is nothing to write the facts from. Needs the documents from Ed.
+  is nothing to write the facts from. Akash is checking 2026-07-29 whether the
+  documents are already in hand before this goes to Ed as a question.
 - [x] Beauchamp House rebuilt from its real material: Building Regulations
   drawings, four site photos, 4 flats at 73.4 to 80.3 sqm. Two corrections the
   documents forced: it is in Royal Leamington Spa (the entry said "South of

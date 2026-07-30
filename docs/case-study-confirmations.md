@@ -74,9 +74,84 @@ and the copy is a one-line stand-in ("full write-up coming soon"):
   (20 Bereweeke Avenue, Winchester), from the client's CGIs and Design and
   Access Statement. That statement is authored by incollective.works, the
   group's parent company, so it is group work.
-- [ ] Still NOT listed for lack of any material: 81 Crescent, School House,
-  Millbrook offices, Bishopstoke, Forest Home. Say which to add and send
-  something to build them from.
+- [~] Was: "still NOT listed for lack of any material: 81 Crescent, School
+  House, Millbrook offices, Bishopstoke, Forest Home." **81 Crescent and
+  Bishopstoke were both built on 2026-07-29** from Ed's Drive folder. Still
+  nothing anywhere for School House, Millbrook offices or Forest Home. Say which
+  to add and send something to build them from.
+
+## From Ed's Drive folder (added 2026-07-29)
+
+Three completed projects came out of the Drive folder Ed shared
+("Eds Home Reno" > HMO Marketing). Two of them we had previously written off:
+Bishopstoke was deleted from the site on 17 July for having no material, and
+81 The Crescent was never listed for the same reason. Each now has a real
+marketing photo set (Canon 5D, Lightroom edited).
+
+There are **no documents anywhere in that folder**, only photos and video. So
+these three entries state no room counts, no floor areas and no planning routes.
+Completion years are EXIF capture dates, which only prove the building was
+finished by then.
+
+- [ ] **81 The Crescent: what town is it in?** This is the most important one.
+      "The Crescent" is a street name and nothing in the Drive folder, the
+      Finished Projects folder or the photographs names a town. It is published
+      with the location as "England" rather than a guess. The sibling projects
+      are all Hampshire but we are not going to assume it.
+- [ ] **Bishopstoke Road: confirm Eastleigh, Hampshire.** Bishopstoke Road is
+      in Eastleigh so this looks safe, but please confirm.
+- [ ] **Room counts for all three.** We can see finished bedrooms in the photos
+      but counting them from photography would be a guess. How many rooms is
+      each, and are they all en suite?
+- [ ] **Completion dates.** We have used 2025 (Bishopstoke, 81 The Crescent) and
+      2024 (Eastleigh) from the photo capture dates. Actual dates please.
+- [ ] **Eastleigh HMO is a different property from George Street.** Both are
+      Eastleigh HMOs but the interior schemes are completely different, so they
+      are two entries. Confirm that is right, and give this one a street name so
+      the two are easier to tell apart.
+- [ ] **Do you want the property films on the site?** Ed's folder has 1080p
+      edited films of roughly 50 seconds each. The case study template has no
+      video slot at present, so adding them is a small build, not a content
+      change. Say the word and we will do it.
+- [ ] FYI, not a question: the film "7FESTINGRD_16x9_V3.mp4" identified the
+      Southsea Co-Living project as **Festing Road**. The opening street shot
+      and the interiors match the gallery exactly. That entry now carries the
+      street name, which HMO Designers' own record did not have.
+- [ ] FYI: the Drive folder also holds roughly 3.35GB of raw drone footage from
+      July 2024 and a lot of personal-brand video (behind the scenes, adverts,
+      an HMO event, a day-in-the-life shoot). None of that fits the current
+      website templates, so it has been left alone. Tell us if any of it is
+      meant for the site.
+
+## HMO Designers projects (added 2026-07-29)
+
+Seven of HMO Designers' completed projects are now live under Completed
+Projects. The source records were thin (a title, a one-line subtitle, a short
+body, and photography) with no feasibility documents behind them, so the write
+ups state only what the source asserts plus what the photographs show. No floor
+areas, planning routes or technical strategies are claimed for any of them.
+
+- [ ] **Locations.** Two are published as "South Coast, England" because that is
+      all the source says (Derby Road, Queens Road). Please give the actual
+      towns. Southend-on-Sea, Eastleigh, Portsmouth, Southampton and Southsea
+      came straight from the source and look sound, but please confirm.
+- [ ] **Three projects are held back**, because the slug and the title disagree
+      about where they are and we will not publish a wrong address:
+      Bedhampton / "London Surrey", Crawley / "Gillingham", and Chalkridge /
+      "London" (whose photos show a suburban semi with a garden, not London).
+      Confirm the real location of each and they go straight in.
+- [ ] **Third-party credits.** The Bedhampton project names L&K Estates and the
+      interior designers roost. Should Thistle credit them too? That entry stays
+      held until this is answered as well as the location.
+- [ ] **Building types are inferred.** Each is listed as "Existing dwelling"
+      except Queens Road (the source says a 3 bed family house) and Southsea (the
+      photo shows a Victorian terrace). Correct any that are wrong.
+- [ ] **Provenance wording.** Each entry reads "By HMO Designers, part of Thistle
+      Group" on the card and the detail page. Confirm that is how Ed wants group
+      work credited, or supply preferred wording.
+- [ ] **Derby Road credit.** The source says HMO Designers were "part of the
+      team" rather than sole designer, so the page says the credit is shared.
+      Confirm who else should be named, if anyone.
 
 ## Sample report download
 
@@ -93,16 +168,18 @@ and the copy is a one-line stand-in ("full write-up coming soon"):
 - [ ] 5-day guarantee wording ("Guaranteed turn around").
 - [ ] "No obligation. Response within one working day." now appears under
   primary CTAs. Confirm the one-working-day promise is operationally safe.
-- [ ] Fixed fee "from £1,800 + VAT" on the feasibility package page (was
-  flagged for confirmation when the page was first built).
+- [x] Fixed fee: was "from £1,800 + VAT", changed sitewide to **£298** on
+  2026-07-16 per Ed's 8 July video, confirmed by Akash. No longer open.
 
 ## Testimonials
 
-- [ ] All ten testimonials on the site (Marcus Cole / Sterling Property Group,
-  Rachel Simmons / Oakbridge Capital, etc.) appear to be placeholder content
-  from the original build. Please supply real client quotes (name, role,
-  company, permission), or confirm which of these are real. They remain live
-  in the meantime.
+- [~] RESOLVED IN PRINCIPLE 2026-07-29: the ten placeholder testimonials
+  (Marcus Cole / Sterling Property Group, Rachel Simmons / Oakbridge Capital,
+  etc.) are to be replaced with real **Google reviews from both Thistle
+  Architecture and HMO Designers**. Waiting on the two Google Business Profile
+  links so the review text and reviewer names can be pulled. Where a review
+  comes from HMO Designers, label the provenance rather than implying Thistle
+  did the work. Placeholders remain live until the swap.
 
 ## Class MA Checker logic update
 

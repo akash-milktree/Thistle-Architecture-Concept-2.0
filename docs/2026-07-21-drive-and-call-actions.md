@@ -29,15 +29,41 @@ Only three items in the whole call touch Thistle:
 3. (20:09) Ed to record an additional video about Thistle covering completed
    projects and case studies. **Ed's action, not ours. Blocked on him.**
 
-## Blocker: the Drive folder is not reachable
+## Drive folder: OPENED AND MINED 2026-07-29
 
-Searched the connected Google Drive account: shared-with-me folders, owner
-`edward@thistlearchitecture.co.uk` and variants, and titles containing Thistle /
-HMO / Fiscel / Completed Projects. **No such folder.** No link was pasted either.
+Link: https://drive.google.com/drive/folders/1WmU1rviEFwLcjnl-nhC6VYTdfTHKgoxa
 
-It is either shared with a different address than the one connected here, or the
-link never reached us. Needed to proceed: the folder URL, or the folder shared
-with the connected account.
+It is link-shared, not shared to the connected account, so the Drive connector
+cannot see it. It has to be browsed anonymously. Files download via
+`https://drive.usercontent.google.com/download?id=<ID>&export=download&confirm=t`.
+
+**The folder is misnamed.** It is called "Eds Home Reno" but it is a video and
+photo library, not a home renovation. Ten top-level folders in two groups:
+
+**Group A, used:** `HMO Marketing` holds three completed projects, each with a
+50-shot Canon 5D marketing set: **81 The Crescent**, **Bishopstoke Road HMO
+Conversion** and **Eastleigh HMO**. All three are now live (see
+docs/case-study-confirmations.md for the open questions).
+
+**Group B, not used:** `Intro footage` (5 edited property films, 100 to 200MB
+each), `Ed Filming Day` (14 clips plus a Drone subfolder holding 3.35GB of raw
+DJI footage from July 2024), `1. homes under the hammer BTS shoot`,
+`2. Ed's Advert`, `3. Ed's HMO Event`, `14-03-2025 (day in the life shoot)`,
+two dated folders, and `Assets > Eds homes photos` (20 photos and 16 videos,
+all WhatsApp-compressed at 200 to 800KB, so not publication quality).
+
+**There is not a single document in the whole folder.** No feasibility studies,
+no drawings, no schedules. It is imagery only, so it fills galleries and heroes
+but cannot produce a written case study on its own.
+
+One useful cross-reference: the film `7FESTINGRD_16x9_V3.mp4` identified the
+Southsea Co-Living project as Festing Road, Southsea. The opening street shot
+and the interiors match that gallery frame for frame.
+
+It does NOT duplicate the 6.25GB OneDrive archive; that one was project
+photography and drone footage for Monument House, Wigan Church, Millbrook,
+Bereweeke and Beauchamp. This one is Ed's personal-brand video plus the three
+HMO marketing sets.
 
 Note we may already hold much of it. The 6.25GB `OneDrive_2026-07-16.zip`
 (external drive) was Ed's video and photo content and has already been mined:
@@ -88,30 +114,57 @@ Suggested approach: add them as `kind: 'project'` entries in
 into `public/images/projects/hmo-*/`, and rewrite each body. That takes Completed
 Projects from 5 entries to 15, all with real photography.
 
-## "Fiscel"
+## "Fiscel": RESOLVED, it is Thistle
 
-The transcript says case studies should also come from the "Fiscel" website.
-No such name appears in any codebase or in the group brands we know
-(Thistle Architecture, HMO Designers, HMO Checker, incollective). Likely a
-mis-transcription. **Ask Ed what Fiscel is and where the site is.**
+Akash confirmed 2026-07-29 that "Fiscel" is a whisper transcription error for
+Thistle. There is no third site. The instruction is therefore just: pull case
+studies from the HMO Designers and Thistle material. Nothing further to ask Ed.
 
 ## Task list
 
+Blocked on Akash:
+- [x] Drive folder link supplied and mined 2026-07-29.
+- [ ] Check the Highbury and Stanmore feasibility documents before the question
+      list goes to Ed; they may already be in hand.
+- [ ] Supply the Google Business Profile links for Thistle Architecture and HMO
+      Designers so the real reviews can be pulled (decision 2026-07-29: use
+      Google reviews from BOTH brands as the testimonial source).
+
 Blocked on Ed:
-- [ ] Drive folder link, or share it with the connected account.
-- [ ] Confirm whether the Drive folder duplicates the 6.25GB OneDrive zip.
 - [ ] Confirm the true location of each HMO Designers project (see conflicts).
 - [ ] Confirm whether to credit third parties (L&K Estates, roost).
-- [ ] What is "Fiscel" and where is its site?
 - [ ] Record the Thistle video (his action, 20:09).
-- [ ] Still outstanding from 8 July: TrustPilot text, client reviews, job titles
-      for Adouj and Beverley, Kaan's title, Highbury and Stanmore feasibility
-      documents, more developer logos.
+- [ ] Still outstanding from 8 July: TrustPilot text, job titles for Adouj and
+      Beverley, Kaan's title, more developer logos.
 
-Can start now:
-- [ ] Port the 10 HMO Designers projects into Thistle's Completed Projects,
-      with corrected slugs, rewritten copy, and images optimised for web.
-- [ ] Hold publishing any project whose location Ed has not confirmed.
+Resolved 2026-07-29:
+- [x] "Fiscel" is a transcription error for Thistle. Not a separate site.
+- [x] Client reviews source settled: Google reviews, Thistle and HMO Designers.
+
+Done 2026-07-29:
+- [x] Ported **7 of the 10** HMO Designers projects into Completed Projects,
+      with corrected slugs, rewritten copy and 78 images copied in. Completed
+      Projects goes from 5 entries to 12. Every ported entry carries a new
+      `provenance` field ("By HMO Designers, part of Thistle Group") which
+      renders on both the card and the detail page, so nothing implies Thistle
+      Architecture did the job itself.
+- [x] Held the 3 projects whose location the sources disagree on. See the
+      block comment in `data/caseStudiesData.ts` for exactly why each one is
+      out. Their images are NOT in the repo; re-run the copy step when Ed
+      confirms.
+
+| Source slug | New slug | Location published |
+|---|---|---|
+| derby-road | derby-road | South Coast, England |
+| geroge-street | george-street-eastleigh | Eastleigh, Hampshire |
+| high-end-hmo-design-project | queens-road | South Coast, England |
+| hmo-construction-project-shadwell | shadwell-road | Portsmouth, Hampshire |
+| hmo-project-southampton | burlington-road | Southampton, Hampshire |
+| hmo-property-surrey | project-prince | Southend-on-Sea, Essex |
+| large-hmo-south-sea | southsea-co-living | Southsea, Portsmouth |
+| hmo-project-bedhampton | HELD | slug says Bedhampton, title says "London Surrey" |
+| hmo-project-crawley | HELD | slug says Crawley, title says Gillingham |
+| hmo-project-chalkridge | HELD | title says London, photos show a suburban semi |
 
 Explicitly NOT ours (HMO Checker, different product):
 - Pricing tiers, Source While You Sleep, pay-as-you-go, trial banners,
