@@ -6,9 +6,12 @@ const nextConfig: NextConfig = {
       // Removed 2026-07-17: both were stock placeholders with no material
       // behind them. They were live, so send anyone holding the URL to the
       // projects hub rather than a 404.
+      // Bishopstoke came back 2026-07-29 once Ed's Drive folder produced the
+      // photography, so the old slug now points at the real page rather than
+      // the hub.
       {
         source: '/case-studies/bishopstoke',
-        destination: '/case-studies?view=projects',
+        destination: '/case-studies/bishopstoke-road',
         permanent: true,
       },
       {

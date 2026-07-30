@@ -76,7 +76,7 @@ export const CaseStudiesPage: React.FC = () => {
           </div>
           {view === 'projects' && (
             <p className="text-xs text-thistle-black/40 mt-fl-6 max-w-md">
-              Full write-ups and photography for completed projects are being prepared and will land here shortly.
+              Some of these were delivered by HMO Designers, our sister practice within the Thistle Group. Each one says so on its own page.
             </p>
           )}
         </div>

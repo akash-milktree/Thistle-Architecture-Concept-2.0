@@ -70,7 +70,10 @@ export const CaseCard: React.FC<{ item: CaseStudy }> = ({ item }) => {
         {/* Content */}
         <div className="p-fl-5 flex flex-col flex-1">
           <h3 className="text-fluid-h5 font-medium tracking-tight mb-fl-1 text-thistle-black">{item.title}</h3>
-          <p className="text-[11px] text-thistle-black/40 uppercase tracking-wider mb-fl-4">{item.location}</p>
+          <p className="text-[11px] text-thistle-black/40 uppercase tracking-wider mb-fl-4">
+            {item.location}
+            {item.provenance && <span className="normal-case tracking-normal"> · {item.provenance}</span>}
+          </p>
 
           {/* Key facts */}
           <div className="grid grid-cols-3 gap-3 py-fl-4 border-y border-thistle-black/[0.06] mb-fl-4">

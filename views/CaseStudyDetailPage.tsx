@@ -60,6 +60,10 @@ export const CaseStudyDetailPage: React.FC = () => {
     { num: '03', title: 'The Outcome', body: caseStudy.outcome },
   ].filter((s): s is { num: string; title: string; body: string } => !!s.body);
 
+  // Completed projects carry real photography, often a dozen shots or more.
+  // Feasibility studies carry drawings, usually one or two.
+  const photoGrid = isProject && caseStudy.galleryImages.length > 3;
+
   // One modest fact band replaces both the old display-size stats row and
   // the near-empty sidebar.
   const facts = [
@@ -113,7 +117,12 @@ export const CaseStudyDetailPage: React.FC = () => {
                 </h1>
               </Reveal>
               <Reveal delay={0.1}>
-                <p className="text-sm uppercase tracking-wider text-thistle-black/45 font-medium mb-fl-5">{caseStudy.location}</p>
+                <p className={`text-sm uppercase tracking-wider text-thistle-black/45 font-medium ${caseStudy.provenance ? 'mb-fl-2' : 'mb-fl-5'}`}>
+                  {caseStudy.location}
+                </p>
+                {caseStudy.provenance && (
+                  <p className="text-sm text-thistle-black/50 mb-fl-5">{caseStudy.provenance}</p>
+                )}
               </Reveal>
               <Reveal delay={0.15}>
                 <p className="text-fluid-lg text-thistle-black/75 leading-relaxed max-w-xl">
@@ -193,20 +202,23 @@ export const CaseStudyDetailPage: React.FC = () => {
       {/* Drawings, full width and never cropped */}
       {caseStudy.galleryImages.length > 0 && (
         <section className="bg-white py-fl-section px-fl-margin">
-          <div className="max-w-[1000px] mx-auto">
+          {/* Drawings need full width to stay readable, so they stay stacked in
+              a narrow column. Photography does not, and a long set of photos
+              stacked one per row is an unreasonable scroll, so it goes two up. */}
+          <div className={`mx-auto ${photoGrid ? 'max-w-[1360px]' : 'max-w-[1000px]'}`}>
             <Reveal>
               <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-6">
                 {isProject ? 'Gallery' : 'The Drawings'}
               </p>
             </Reveal>
-            <div className="space-y-fl-6">
+            <div className={photoGrid ? 'grid grid-cols-1 sm:grid-cols-2 gap-fl-5' : 'space-y-fl-6'}>
               {caseStudy.galleryImages.map((img, i) => (
                 <Reveal key={i} delay={Math.min(i * 0.08, 0.2)}>
                   <Frame
                     src={img}
-                    alt={`${caseStudy.title}, drawing ${i + 1}`}
+                    alt={`${caseStudy.title}, ${isProject ? 'photograph' : 'drawing'} ${i + 1}`}
                     aspect="aspect-[16/10]"
-                    sizes="(max-width: 1024px) 92vw, 1000px"
+                    sizes={photoGrid ? '(max-width: 640px) 92vw, (max-width: 1360px) 46vw, 660px' : '(max-width: 1024px) 92vw, 1000px'}
                   />
                 </Reveal>
               ))}

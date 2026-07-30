@@ -21,6 +21,12 @@ export interface CaseStudy {
   recommendation?: "Go" | "No-Go" | "Options Tested";
   /** Completed-project entries only. Defaults to Complete when unset. */
   status?: "Complete" | "On site";
+  /**
+   * Set only where the work was delivered by another Thistle Group practice
+   * rather than by Thistle Architecture. Publishing group work is fine, but the
+   * page must not imply Thistle did the job itself.
+   */
+  provenance?: string;
   // Financial figures appear only where a project document supports them.
   purchasePrice?: string;
   projectedGDV?: string;
@@ -441,6 +447,380 @@ export const caseStudies: CaseStudy[] = [
     ],
     buildingType: "Existing dwelling",
     planningRoute: "Large sui generis HMO, external works under PDR",
+    status: "Complete",
+  },
+  // ---------------------------------------------------------------------
+  // Added 2026-07-29 from Ed's Google Drive folder ("Eds Home Reno" >
+  // HMO Marketing). These three are THISTLE'S OWN work, not HMO Designers':
+  // the client's own `03 New Website/Finished Projects/HMO/` folder lists
+  // exactly 162 Millbrook, 81 Crecent [sic] and Bishopstoke. Those folders were
+  // empty, which is why Bishopstoke was deleted from the site on 2026-07-17 and
+  // 81 The Crescent was never listed at all. The Drive folder has the
+  // photography the local folders were missing.
+  //
+  // Every shot is a Canon 5D Mark IV frame edited in Lightroom, so these are
+  // proper marketing sets, not phone snaps. Imported at 1600px.
+  //
+  // WHAT WE DO NOT HAVE: any document. No feasibility study, no drawings, no
+  // schedule of accommodation. So these entries claim NO room counts, NO floor
+  // areas and NO planning routes. Everything below is either a folder-name fact
+  // or something visible in the photographs. Completion years are the EXIF
+  // capture dates, which prove the building was finished by then and nothing
+  // more. All open questions are in docs/case-study-confirmations.md.
+  // ---------------------------------------------------------------------
+  {
+    slug: "bishopstoke-road",
+    kind: "project",
+    title: "Bishopstoke Road",
+    location: "Eastleigh, Hampshire",
+    image: "/images/projects/bishopstoke-road/bishopstoke-1.jpg",
+    tag: "HMO",
+    stats: [
+      { label: "Communal", value: "Kitchen and dining" },
+      { label: "Outside", value: "Walled courtyard" },
+      { label: "En suites", value: "Marble tiled" },
+    ],
+    desc: "A house converted to an HMO in Eastleigh, built around a full-length navy kitchen that runs the depth of the plan into a rooflit dining room.",
+    approach: "The whole ground floor is given over to one move: a navy shaker kitchen running the full depth of the house, brass handles, stone worktops, integrated ovens and laundry built in, opening at the far end into a dining room lit from above by a flat rooflight. Panelling to dado height carries through the dining room and up the staircase, all in the same navy, so the circulation reads as part of the design rather than as leftover space. The en suites are tiled floor to ceiling in white marble with backlit round mirrors.",
+    outcome: "Complete and photographed in March 2025. The rear opens onto a walled courtyard with paved terrace and planting beds, which on a mid-terrace plot is what stops a house at this occupancy feeling closed in.",
+    galleryImages: [
+      "/images/projects/bishopstoke-road/bishopstoke-2.jpg",
+      "/images/projects/bishopstoke-road/bishopstoke-3.jpg",
+      "/images/projects/bishopstoke-road/bishopstoke-4.jpg",
+      "/images/projects/bishopstoke-road/bishopstoke-5.jpg",
+      "/images/projects/bishopstoke-road/bishopstoke-6.jpg",
+      "/images/projects/bishopstoke-road/bishopstoke-7.jpg",
+      "/images/projects/bishopstoke-road/bishopstoke-8.jpg",
+      "/images/projects/bishopstoke-road/bishopstoke-9.jpg",
+      "/images/projects/bishopstoke-road/bishopstoke-10.jpg",
+      "/images/projects/bishopstoke-road/bishopstoke-11.jpg",
+      "/images/projects/bishopstoke-road/bishopstoke-12.jpg",
+      "/images/projects/bishopstoke-road/bishopstoke-13.jpg",
+      "/images/projects/bishopstoke-road/bishopstoke-14.jpg",
+    ],
+    buildingType: "Existing dwelling",
+    completionDate: "2025",
+    status: "Complete",
+  },
+  {
+    slug: "eastleigh-hmo",
+    kind: "project",
+    title: "Eastleigh HMO",
+    location: "Eastleigh, Hampshire",
+    image: "/images/projects/eastleigh-hmo/eastleigh-1.jpg",
+    tag: "HMO",
+    stats: [
+      { label: "Roof", value: "Converted, rooflit" },
+      { label: "En suites", value: "Throughout" },
+      { label: "Communal", value: "Galley kitchen" },
+    ],
+    desc: "An HMO conversion in Eastleigh finished in a warmer register than most: brass bedsteads, patterned rugs and sage green en suites, with the roof taken as living space.",
+    approach: "The roof does the heavy lifting. The top floor is a full room under a pitched ceiling with two rooflights and fitted panelled wardrobes built into the low wall, which turns the least useful part of the house into the best room in it. Downstairs the kitchen is a galley running to the rear with the dining space at the end. The stairwell is panelled and painted olive, and the en suites pick the same green up in glass splashbacks behind the basins.",
+    outcome: "Complete and photographed in October 2024. The specification deliberately avoids the flat-pack look that HMO fit-outs default to: brass bed frames, patterned rugs, wall lights either side of the bed, and a desk in each room facing the window.",
+    galleryImages: [
+      "/images/projects/eastleigh-hmo/eastleigh-2.jpg",
+      "/images/projects/eastleigh-hmo/eastleigh-3.jpg",
+      "/images/projects/eastleigh-hmo/eastleigh-4.jpg",
+      "/images/projects/eastleigh-hmo/eastleigh-5.jpg",
+      "/images/projects/eastleigh-hmo/eastleigh-6.jpg",
+      "/images/projects/eastleigh-hmo/eastleigh-7.jpg",
+      "/images/projects/eastleigh-hmo/eastleigh-8.jpg",
+      "/images/projects/eastleigh-hmo/eastleigh-9.jpg",
+      "/images/projects/eastleigh-hmo/eastleigh-10.jpg",
+      "/images/projects/eastleigh-hmo/eastleigh-11.jpg",
+      "/images/projects/eastleigh-hmo/eastleigh-12.jpg",
+      "/images/projects/eastleigh-hmo/eastleigh-13.jpg",
+      "/images/projects/eastleigh-hmo/eastleigh-14.jpg",
+    ],
+    buildingType: "Existing dwelling",
+    completionDate: "2024",
+    status: "Complete",
+  },
+  {
+    // LOCATION UNKNOWN. "The Crescent" is a street name and nothing in the
+    // Drive folder, the client's folder tree or the photographs gives a town.
+    // The sibling projects are all Hampshire, but that is an inference, not a
+    // fact, so this publishes without a town rather than with a wrong one.
+    // Top item on the confirmations list.
+    slug: "81-the-crescent",
+    kind: "project",
+    title: "81 The Crescent",
+    location: "England",
+    image: "/images/projects/crescent-81/crescent-1.jpg",
+    tag: "HMO",
+    stats: [
+      { label: "En suites", value: "Every room" },
+      { label: "In room", value: "Desk and tea station" },
+      { label: "Joinery", value: "Oak and cane" },
+    ],
+    desc: "An en suite HMO finished to a high specification, with a desk and a tea station in every room and oak joinery running throughout.",
+    approach: "Each room is a self-contained unit rather than a bedroom with a shared bathroom down the hall: its own en suite behind an oak door, a slatted timber headboard panel wired with sockets and switches at the bed, a desk under the window, and a wardrobe and chest in cane-fronted oak. The en suites are tiled in large-format stone with quadrant showers and backlit round mirrors. Separate tea stations sit outside the rooms, which is the arrangement that keeps a scheme like this the right side of the licensing standards on kitchen provision.",
+    outcome: "Complete and photographed in September 2025. The palette is warm throughout, oak, cream, terracotta and mustard, which is a deliberate step away from the grey-and-white that most rooms at this rent level default to.",
+    galleryImages: [
+      "/images/projects/crescent-81/crescent-2.jpg",
+      "/images/projects/crescent-81/crescent-3.jpg",
+      "/images/projects/crescent-81/crescent-4.jpg",
+      "/images/projects/crescent-81/crescent-5.jpg",
+      "/images/projects/crescent-81/crescent-6.jpg",
+      "/images/projects/crescent-81/crescent-7.jpg",
+      "/images/projects/crescent-81/crescent-8.jpg",
+      "/images/projects/crescent-81/crescent-9.jpg",
+      "/images/projects/crescent-81/crescent-10.jpg",
+      "/images/projects/crescent-81/crescent-11.jpg",
+      "/images/projects/crescent-81/crescent-12.jpg",
+      "/images/projects/crescent-81/crescent-13.jpg",
+      "/images/projects/crescent-81/crescent-14.jpg",
+    ],
+    buildingType: "Existing dwelling",
+    completionDate: "2025",
+    status: "Complete",
+  },
+  // ---------------------------------------------------------------------
+  // HMO Designers projects, ported 2026-07-29 from
+  // ~/Downloads/Projects/hmo_designer/site/content/projects/*.json.
+  // HMO Designers is a sister practice under the same group, so this is group
+  // work and fine to publish, but every entry carries `provenance` so no page
+  // implies Thistle Architecture did the job itself.
+  //
+  // The source records are thin: a title, a one-line subtitle and a short body,
+  // with no feasibility documents behind them. So these entries state only what
+  // the source asserts (room counts, specification, scope of involvement, year
+  // where given) plus what the photography itself shows. No sqm figures, no
+  // planning routes and no fire strategies are claimed, unlike the entries above
+  // which were written from real documents.
+  //
+  // THREE SOURCE PROJECTS ARE DELIBERATELY NOT HERE, because slug, title and
+  // body disagree about where they are and we will not publish a wrong location:
+  //   - hmo-project-bedhampton  slug says Bedhampton (Hampshire), title says
+  //                             "London Surrey", which is not a place. Also the
+  //                             only one crediting third parties (L&K Estates
+  //                             and roost), which needs its own decision.
+  //   - hmo-project-crawley     slug says Crawley, title says Gillingham, and
+  //                             its subtitle "Project Burlington" collides with
+  //                             the unrelated Burlington Road in Southampton.
+  //   - hmo-project-chalkridge  title says London, but Chalk Ridge is a
+  //                             Basingstoke street and the photography shows a
+  //                             suburban semi with a garden, not London.
+  // All three are ready to add the moment Ed confirms locations. See
+  // docs/case-study-confirmations.md.
+  // ---------------------------------------------------------------------
+  {
+    slug: "derby-road",
+    kind: "project",
+    title: "Derby Road",
+    location: "South Coast, England",
+    image: "/images/projects/hmo-derby-road/derby-road-1.jpg",
+    tag: "HMO",
+    provenance: "By HMO Designers, part of Thistle Group",
+    stats: [
+      { label: "Bedrooms", value: "8" },
+      { label: "Specification", value: "Ultra luxury" },
+      { label: "Communal space", value: "Living and dining" },
+    ],
+    desc: "An eight-bedroom ultra luxury HMO on the south coast, built around a rooflit living and dining space at the back of the house.",
+    approach: "The communal heart of the house is a rear living and dining room lit by a large flush rooflight, with French doors to the outside. The finish is pitched well above the standard letting specification: wall lights either side of a sculptural panel, cane and black timber dining chairs, and a soft palette that reads as a home rather than a room let by the week.",
+    outcome: "Complete and let. HMO Designers worked as part of the wider project team on this scheme rather than as sole designer, so the credit is shared with the others involved.",
+    galleryImages: [
+      "/images/projects/hmo-derby-road/derby-road-2.jpg",
+      "/images/projects/hmo-derby-road/derby-road-3.jpg",
+      "/images/projects/hmo-derby-road/derby-road-4.jpg",
+      "/images/projects/hmo-derby-road/derby-road-5.jpg",
+      "/images/projects/hmo-derby-road/derby-road-6.jpg",
+      "/images/projects/hmo-derby-road/derby-road-7.jpg",
+      "/images/projects/hmo-derby-road/derby-road-8.jpg",
+      "/images/projects/hmo-derby-road/derby-road-9.jpg",
+      "/images/projects/hmo-derby-road/derby-road-10.jpg",
+    ],
+    buildingType: "Existing dwelling",
+    status: "Complete",
+  },
+  {
+    slug: "george-street-eastleigh",
+    kind: "project",
+    title: "George Street",
+    location: "Eastleigh, Hampshire",
+    image: "/images/projects/hmo-george-street-eastleigh/george-street-eastleigh-1.jpg",
+    tag: "HMO",
+    provenance: "By HMO Designers, part of Thistle Group",
+    stats: [
+      { label: "Bedrooms", value: "7" },
+      { label: "Scope", value: "Design to construction" },
+      { label: "Market", value: "Professional lets" },
+    ],
+    desc: "A seven-bedroom luxury HMO for professionals in the centre of Eastleigh, taken from first design through to finished build.",
+    approach: "The client was carried through every stage: design, planning, interior design and construction. The ground floor is the part that does the work. A full-length shaker kitchen in deep grey, with brass handles and integrated ovens down one side, opens straight into a rooflit dining room at the rear, so the shared space reads as one long room rather than a corridor with a table at the end of it.",
+    outcome: "Complete. It is the clearest example in this group of what the extra effort buys at the top of the professional letting market.",
+    galleryImages: [
+      "/images/projects/hmo-george-street-eastleigh/george-street-eastleigh-2.jpg",
+      "/images/projects/hmo-george-street-eastleigh/george-street-eastleigh-3.jpg",
+      "/images/projects/hmo-george-street-eastleigh/george-street-eastleigh-4.jpg",
+      "/images/projects/hmo-george-street-eastleigh/george-street-eastleigh-5.jpg",
+      "/images/projects/hmo-george-street-eastleigh/george-street-eastleigh-6.jpg",
+      "/images/projects/hmo-george-street-eastleigh/george-street-eastleigh-7.jpg",
+      "/images/projects/hmo-george-street-eastleigh/george-street-eastleigh-8.jpg",
+      "/images/projects/hmo-george-street-eastleigh/george-street-eastleigh-9.jpg",
+      "/images/projects/hmo-george-street-eastleigh/george-street-eastleigh-10.jpg",
+      "/images/projects/hmo-george-street-eastleigh/george-street-eastleigh-11.jpg",
+      "/images/projects/hmo-george-street-eastleigh/george-street-eastleigh-12.jpg",
+      "/images/projects/hmo-george-street-eastleigh/george-street-eastleigh-13.jpg",
+      "/images/projects/hmo-george-street-eastleigh/george-street-eastleigh-14.jpg",
+      "/images/projects/hmo-george-street-eastleigh/george-street-eastleigh-15.jpg",
+    ],
+    buildingType: "Existing dwelling",
+    status: "Complete",
+  },
+  {
+    slug: "queens-road",
+    kind: "project",
+    title: "Queens Road",
+    location: "South Coast, England",
+    image: "/images/projects/hmo-queens-road/queens-road-1.jpg",
+    tag: "HMO",
+    provenance: "By HMO Designers, part of Thistle Group",
+    stats: [
+      { label: "Bedrooms", value: "7" },
+      { label: "Before", value: "3 bed family house" },
+      { label: "En suite", value: "Every room" },
+    ],
+    desc: "A three-bedroom city centre family house turned into a seven-bedroom high-end HMO, every room en suite.",
+    challenge: "The starting point was an ordinary three-bedroom family house in a city centre. Getting seven en suite rooms out of that means finding the rooms and the drainage for seven bathrooms at the same time, without leaving the shared space so thin that the house stops working for the people actually living in it.",
+    approach: "Managed end to end: existing surveys, proposals, planning and building regulations approval, then construction. The rear of the house opens into a communal living space under a glazed lantern, with bifold doors onto a small walled courtyard. On a tight urban plot that courtyard is how the shared amenity space gets won, and it is why the lounge does not feel like a leftover.",
+    outcome: "Complete, and in use as seven high-end en suite rooms.",
+    galleryImages: [
+      "/images/projects/hmo-queens-road/queens-road-2.jpg",
+      "/images/projects/hmo-queens-road/queens-road-3.jpg",
+      "/images/projects/hmo-queens-road/queens-road-4.jpg",
+      "/images/projects/hmo-queens-road/queens-road-5.jpg",
+      "/images/projects/hmo-queens-road/queens-road-6.jpg",
+    ],
+    buildingType: "Three-bed family house (C3)",
+    status: "Complete",
+  },
+  {
+    slug: "shadwell-road",
+    kind: "project",
+    title: "Shadwell Road",
+    location: "Portsmouth, Hampshire",
+    image: "/images/projects/hmo-shadwell-road/shadwell-road-1.jpg",
+    tag: "HMO",
+    provenance: "By HMO Designers, part of Thistle Group",
+    stats: [
+      { label: "Bedrooms", value: "7" },
+      { label: "Completed", value: "2023" },
+      { label: "Scope", value: "Feasibility to approvals" },
+    ],
+    desc: "A seven-bedroom HMO in Portsmouth, taken from a feasibility study of the existing property through to planning and building regulations approval.",
+    approach: "The instruction started with a feasibility study of the building as it stood, then the relevant surveys, then planning and building regulations approval. The communal room sits at the rear under a glazed lantern with French doors to the yard, finished in sage green with pale timber, so the shared space is the brightest room in the house rather than the one nobody uses.",
+    outcome: "Completed in 2023.",
+    galleryImages: [
+      "/images/projects/hmo-shadwell-road/shadwell-road-2.jpg",
+      "/images/projects/hmo-shadwell-road/shadwell-road-3.jpg",
+      "/images/projects/hmo-shadwell-road/shadwell-road-4.jpg",
+      "/images/projects/hmo-shadwell-road/shadwell-road-5.jpg",
+      "/images/projects/hmo-shadwell-road/shadwell-road-6.jpg",
+      "/images/projects/hmo-shadwell-road/shadwell-road-7.jpg",
+    ],
+    buildingType: "Existing dwelling",
+    completionDate: "2023",
+    status: "Complete",
+  },
+  {
+    slug: "burlington-road",
+    kind: "project",
+    title: "Burlington Road",
+    location: "Southampton, Hampshire",
+    image: "/images/projects/hmo-burlington-road/burlington-road-1.jpg",
+    tag: "HMO",
+    provenance: "By HMO Designers, part of Thistle Group",
+    stats: [
+      { label: "Bedrooms", value: "7" },
+      { label: "Completed", value: "2023" },
+      { label: "Specification", value: "Essential" },
+    ],
+    desc: "A seven-bedroom HMO in Southampton delivered to an essential specification, with en suite rooms worked into the roof under new rooflights.",
+    approach: "A feasibility study of the existing property came first, then the surveys, then planning and building regulations approval. The loft rooms take their light from new rooflights set into the slope, and each has its own shower room off the bedroom. That is what keeps a seven-bed count workable in a house of this size without any room feeling like the short straw.",
+    outcome: "Completed in 2023.",
+    galleryImages: [
+      "/images/projects/hmo-burlington-road/burlington-road-2.jpg",
+      "/images/projects/hmo-burlington-road/burlington-road-3.jpg",
+      "/images/projects/hmo-burlington-road/burlington-road-4.jpg",
+      "/images/projects/hmo-burlington-road/burlington-road-5.jpg",
+      "/images/projects/hmo-burlington-road/burlington-road-6.jpg",
+      "/images/projects/hmo-burlington-road/burlington-road-7.jpg",
+      "/images/projects/hmo-burlington-road/burlington-road-8.jpg",
+      "/images/projects/hmo-burlington-road/burlington-road-9.jpg",
+    ],
+    buildingType: "Existing dwelling",
+    completionDate: "2023",
+    status: "Complete",
+  },
+  {
+    slug: "project-prince",
+    kind: "project",
+    title: "Project Prince",
+    location: "Southend-on-Sea, Essex",
+    image: "/images/projects/hmo-project-prince/project-prince-1.jpg",
+    tag: "HMO",
+    provenance: "By HMO Designers, part of Thistle Group",
+    stats: [
+      { label: "Bedrooms", value: "7" },
+      { label: "Let", value: "Individually" },
+      { label: "Amenities", value: "En suite plus shared" },
+    ],
+    desc: "A high-end seven-bedroom HMO in Southend-on-Sea, with seven individually let en suite rooms and shared amenities.",
+    approach: "Seven rooms, each individually let and each with its own en suite, alongside the shared amenity space. The bedrooms carry the high-end brief properly rather than decoratively: deep colour taken across the walls and the ceiling, slatted timber panelling behind the bed, and a pendant hung either side instead of one light in the middle of the room.",
+    outcome: "Complete, and let to professionals in the area. It is a fair demonstration of what a high-end brief buys when the team specialises in HMOs.",
+    galleryImages: [
+      "/images/projects/hmo-project-prince/project-prince-2.jpg",
+      "/images/projects/hmo-project-prince/project-prince-3.jpg",
+      "/images/projects/hmo-project-prince/project-prince-4.jpg",
+      "/images/projects/hmo-project-prince/project-prince-5.jpg",
+      "/images/projects/hmo-project-prince/project-prince-6.jpg",
+      "/images/projects/hmo-project-prince/project-prince-7.jpg",
+      "/images/projects/hmo-project-prince/project-prince-8.jpg",
+      "/images/projects/hmo-project-prince/project-prince-9.jpg",
+      "/images/projects/hmo-project-prince/project-prince-10.jpg",
+    ],
+    buildingType: "Existing dwelling",
+    status: "Complete",
+  },
+  {
+    // Address identified 2026-07-29 from Ed's Drive: the film
+    // "7FESTINGRD_16x9_V3.mp4" opens on this exact terrace (pale blue house,
+    // Pizza Hut next door) and its interior shots match this gallery frame for
+    // frame. HMO Designers' own record had no street, only "South Sea".
+    slug: "southsea-co-living",
+    kind: "project",
+    title: "Southsea Co-Living",
+    location: "Festing Road, Southsea, Portsmouth",
+    image: "/images/projects/hmo-southsea-co-living/southsea-co-living-3.jpg",
+    tag: "HMO",
+    provenance: "By HMO Designers, part of Thistle Group",
+    stats: [
+      { label: "Bedrooms", value: "8" },
+      { label: "Format", value: "Luxury co-living" },
+      { label: "Building", value: "Victorian terrace" },
+    ],
+    desc: "An eight-bedroom luxury co-living conversion inside a bay-fronted Victorian terrace in Southsea.",
+    approach: "The building is a bay-fronted Victorian terrace on Festing Road, dormers already in the roof, shops either side. Inside, the communal floor runs open plan: kitchen, dining and living in one length on a herringbone floor, with the kitchen tucked along the far wall rather than closed off. That single decision is what makes co-living work here. Eight people sharing a corridor is a house share; eight people sharing a room this size is somewhere you would choose to live.",
+    outcome: "Complete, and the most recent of the practice's Portsmouth HMO projects.",
+    galleryImages: [
+      "/images/projects/hmo-southsea-co-living/southsea-co-living-1.jpg",
+      "/images/projects/hmo-southsea-co-living/southsea-co-living-2.jpg",
+      "/images/projects/hmo-southsea-co-living/southsea-co-living-4.jpg",
+      "/images/projects/hmo-southsea-co-living/southsea-co-living-5.jpg",
+      "/images/projects/hmo-southsea-co-living/southsea-co-living-6.jpg",
+      "/images/projects/hmo-southsea-co-living/southsea-co-living-7.jpg",
+      "/images/projects/hmo-southsea-co-living/southsea-co-living-8.jpg",
+      "/images/projects/hmo-southsea-co-living/southsea-co-living-9.jpg",
+      "/images/projects/hmo-southsea-co-living/southsea-co-living-10.jpg",
+      "/images/projects/hmo-southsea-co-living/southsea-co-living-11.jpg",
+      "/images/projects/hmo-southsea-co-living/southsea-co-living-12.jpg",
+      "/images/projects/hmo-southsea-co-living/southsea-co-living-13.jpg",
+      "/images/projects/hmo-southsea-co-living/southsea-co-living-14.jpg",
+      "/images/projects/hmo-southsea-co-living/southsea-co-living-15.jpg",
+    ],
+    buildingType: "Victorian terraced house",
     status: "Complete",
   },
   // Bishopstoke and Forest Home were removed 2026-07-17. Both folders are empty
