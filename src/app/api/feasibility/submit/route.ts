@@ -10,6 +10,88 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/p/3042010600814149049/f/feasibi
 
 type Body = { answers?: Partial<FeasibilityAnswers>; files?: Partial<FeasibilityFiles> };
 
+/**
+ * Hand the enquiry to Thistle's feasibility automation API (Kaan's server), which
+ * starts generating the report on its own.
+ *
+ * Dormant until BOTH env vars are set, so this ships safely before the endpoint
+ * exists. Never throws: the Formspree email has already gone by the time this
+ * runs and is the fallback, so an outage here must not surface to the user.
+ *
+ * Their contract: 200 queued, 400 bad fields, 401 bad secret, 413 over 2 MB,
+ * 429 duplicate-within-10-minutes or rate limited. 429 is deliberate, so it is
+ * treated as final rather than retried.
+ */
+async function forwardToAutomation(
+  a: Partial<FeasibilityAnswers>,
+  files: Partial<FeasibilityFiles>,
+): Promise<void> {
+  const url = process.env.FEASIBILITY_API_URL;
+  const secret = process.env.FEASIBILITY_API_SECRET;
+  if (!url || !secret) return;
+
+  // The secret travels in a header, so a plaintext hop would leak it outright.
+  if (!url.startsWith('https://')) {
+    console.error('[feasibility/submit] automation URL is not https, refusing to send');
+    return;
+  }
+
+  const fileUrls = [files.floorPlan?.url, ...(files.otherDocs ?? []).map((d) => d.url)]
+    .filter((u): u is string => Boolean(u));
+
+  const payload = {
+    name: `${a.firstName ?? ''} ${a.lastName ?? ''}`.trim(),
+    email: a.email ?? '',
+    contact: a.phone ?? '',
+    address: [a.address1, a.city, a.county, a.postcode].filter(Boolean).join(', '),
+    // Sent raw. Our vocabulary includes "Existing HMO" and "Other", which are not
+    // in their documented set (Residential / Commercial / Mixed Use). Their API
+    // maps common variants, and the dry run reports how it mapped this, so the
+    // mapping is confirmed there rather than guessed here.
+    ptype: a.propertyType ?? '',
+    value: String(a.estimatedValue ?? '').replace(/[^0-9]/g, ''),
+    gia: a.gia ?? '',
+    rightmove: a.rightmoveLink ?? '',
+    // Blob URLs are public and unguessable, so their server can fetch them
+    // without auth, which is what their contract requires.
+    files: fileUrls,
+  };
+
+  const send = () =>
+    fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Webhook-Secret': secret },
+      body: JSON.stringify(payload),
+      signal: AbortSignal.timeout(10_000),
+    });
+
+  try {
+    let res = await send();
+
+    // One retry, and only for the transient ones. A 4xx will fail identically
+    // on a second attempt, and 429 rejects duplicates by design.
+    if (res.status >= 500) {
+      res = await send();
+    }
+
+    if (!res.ok) {
+      // Body may explain which field was rejected. Never log the secret.
+      const detail = await res.text().catch(() => '');
+      console.error('[feasibility/submit] automation rejected', res.status, detail.slice(0, 500));
+    }
+  } catch (err) {
+    // Network-level failure. Retry once, then give up and rely on the email.
+    try {
+      const res = await send();
+      if (!res.ok) {
+        console.error('[feasibility/submit] automation rejected on retry', res.status);
+      }
+    } catch {
+      console.error('[feasibility/submit] automation unreachable (non-blocking)', err);
+    }
+  }
+}
+
 export async function POST(req: NextRequest) {
   let body: Body;
   try {
@@ -61,7 +143,12 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false }, { status: 502 });
   }
 
-  // 2) Forward to the CRM webhook when configured. Non-blocking: the email has
+  // 2) Forward to Thistle's feasibility automation API when configured. Same
+  //    rule as the CRM forward below: the email has already gone, so nothing
+  //    here may fail the user's submission.
+  await forwardToAutomation(a, files);
+
+  // 3) Forward to the CRM webhook when configured. Non-blocking: the email has
   //    already gone, so a CRM outage must not fail the submission.
   const webhook = process.env.LEAD_WEBHOOK_URL;
   if (webhook) {
