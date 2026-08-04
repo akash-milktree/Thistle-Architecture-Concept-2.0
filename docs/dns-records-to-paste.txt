@@ -1,0 +1,209 @@
+GODADDY DNS RECORDS FOR thistlearchitecture.co.uk
+Captured from the live zone 2026-07-30. Values are complete, not truncated.
+
+HOW TO USE THIS FILE
+  Add every record in SECTION 1 and SECTION 2 to GoDaddy BEFORE you change
+  nameservers at the registrar. Do not change nameservers first.
+
+GODADDY GOTCHAS, read these once
+  - Use @ in the Name field for the root domain.
+  - CNAME names are the subdomain ONLY. Enter "autodiscover", never
+    "autodiscover.thistlearchitecture.co.uk". GoDaddy adds the domain itself.
+  - Do NOT type a trailing dot on any value. Strip it if you copy from dig.
+  - Do NOT wrap TXT values in quotes. GoDaddy adds them.
+  - Leave TTL at 1 hour unless told otherwise.
+
+
+================================================================================
+SECTION 1 - MICROSOFT 365. IF ANY OF THESE IS WRONG, EMAIL BREAKS.
+================================================================================
+
+--- MX ---------------------------------------------------------------------
+Type:      MX
+Name:      @
+Value:     thistlearchitecture-co-uk.mail.protection.outlook.com
+Priority:  10
+
+
+--- TXT 1 of 3, SPF --------------------------------------------------------
+Type:      TXT
+Name:      @
+Value:     v=spf1 include:spf.protection.outlook.com -all
+
+
+--- TXT 2 of 3, Microsoft verification -------------------------------------
+Type:      TXT
+Name:      @
+Value:     MS=ms37714909
+
+
+--- TXT 3 of 3, Microsoft verification -------------------------------------
+Type:      TXT
+Name:      @
+Value:     MS=ms70169916
+
+
+--- CNAME, DKIM key 1 ------------------------------------------------------
+Type:      CNAME
+Name:      selector1._domainkey
+Value:     selector1-thistlearchitecture-co-uk._domainkey.incollectiveltd.e-v1.dkim.mail.microsoft
+
+
+--- CNAME, DKIM key 2 ------------------------------------------------------
+Type:      CNAME
+Name:      selector2._domainkey
+Value:     selector2-thistlearchitecture-co-uk._domainkey.incollectiveltd.e-v1.dkim.mail.microsoft
+
+
+--- CNAME, Outlook autodiscover --------------------------------------------
+Type:      CNAME
+Name:      autodiscover
+Value:     autodiscover.outlook.com
+
+
+--- CNAME, Intune enrolment ------------------------------------------------
+Type:      CNAME
+Name:      enterpriseenrollment
+Value:     enterpriseenrollment.manage.microsoft.com
+
+
+--- CNAME, Entra device registration ---------------------------------------
+Type:      CNAME
+Name:      enterpriseregistration
+Value:     enterpriseregistration.windows.net
+
+
+--- CNAME, Teams / Skype discovery -----------------------------------------
+Type:      CNAME
+Name:      lyncdiscover
+Value:     webdir.online.lync.com
+
+
+--- CNAME, Teams / Skype SIP -----------------------------------------------
+Type:      CNAME
+Name:      sip
+Value:     sipdir.online.lync.com
+
+
+--- SRV 1 of 2, Teams federation -------------------------------------------
+Type:      SRV
+Name:      @
+Service:   _sipfederationtls
+Protocol:  _tcp
+Priority:  100
+Weight:    1
+Port:      5061
+Target:    sipfed.online.lync.com
+
+
+--- SRV 2 of 2, Teams SIP --------------------------------------------------
+Type:      SRV
+Name:      @
+Service:   _sip
+Protocol:  _tls
+Priority:  100
+Weight:    1
+Port:      443
+Target:    sipdir.online.lync.com
+
+
+================================================================================
+SECTION 2 - THE WEBSITE, POINTING AT VERCEL
+================================================================================
+
+These REPLACE the old Wix records. Do not carry the Wix values across.
+  Old A records to drop:  185.230.63.107 / 185.230.63.186 / 185.230.63.171
+  Old www CNAME to drop:  cdn1.wixdns.net
+
+--- CNAME, www -------------------------------------------------------------
+ALREADY DONE. GoDaddy has this correct as of 2026-07-30:
+
+Type:      CNAME
+Name:      www
+Value:     81eeabcdb970f880.vercel-dns-017.com
+
+LEAVE IT ALONE. That hash is issued per domain by Vercel and is more correct
+than the generic cname.vercel-dns-0.com value published in Vercel's docs. Do
+not "correct" it to the generic one.
+
+
+--- A, root domain ---------------------------------------------------------
+ALREADY CORRECT. DO NOT CHANGE.
+
+Type:      A
+Name:      @
+Value:     216.150.1.1
+
+CORRECTION, 2026-08-04: an earlier version of this file called 216.150.1.1 a
+GoDaddy parking IP and said to delete it. That was WRONG. Whois confirms it:
+
+    NetName:       VERCEL-09
+    Organization:  Vercel, Inc
+
+216.150.x.x is Vercel's current anycast range, not the older 76.76.21.21 that
+Vercel's public docs still show. GoDaddy configured this correctly on its own,
+most likely through Domain Connect when the domain was linked to Vercel.
+
+Leave it alone. The apex 301-redirects to www, which is Vercel's own behaviour.
+
+
+--- TXT, _dmarc, ALREADY PRESENT, CHANGE IT BEFORE SWITCHING ----------------
+GoDaddy auto-created this. The old Wix zone had NO DMARC record at all, so this
+is new behaviour rather than something being restored.
+
+p=quarantine junks any mail failing SPF or DKIM alignment. Mail sent directly
+from Microsoft 365 passes. Anything ELSE sending as @thistlearchitecture.co.uk
+(CRM, newsletter tool, invoicing, Formspree) starts going to junk silently the
+moment nameservers switch.
+
+Set it to p=none for the migration:
+
+Type:      TXT
+Name:      _dmarc
+Value:     v=DMARC1; p=none; adkim=r; aspf=r; rua=mailto:dmarc_rua@onsecureserver.net;
+
+Raise it back to p=quarantine only after mail flow is confirmed on the new
+nameservers and you have checked the aggregate reports for a week or two.
+
+
+================================================================================
+SECTION 3 - LEFTOVERS. CHECK, THEN PROBABLY SKIP.
+================================================================================
+
+None of these do anything useful. Carrying them across is harmless if unsure.
+
+--- CNAME, GoDaddy email marketing product ---------------------------------
+Type:      CNAME
+Name:      email
+Value:     email.secureserver.net
+Skip unless someone actively uses GoDaddy email marketing.
+
+--- TXT, SPF on a subdomain that sends no mail -----------------------------
+Type:      TXT
+Name:      godaddy
+Value:     v=spf1 include:secureserver.net -all
+Inert. Leftover from a GoDaddy-managed Microsoft 365 setup.
+
+--- TXT, duplicate verification on a subdomain -----------------------------
+Type:      TXT
+Name:      godaddy
+Value:     MS=ms70169916
+Duplicate of the root record above. Leftover.
+
+
+================================================================================
+SECTION 4 - AFTER THE NAMESERVER SWITCH, VERIFY
+================================================================================
+
+Run these. MX must still return the outlook.com host.
+
+  dig +short thistlearchitecture.co.uk NS
+  dig +short thistlearchitecture.co.uk MX
+  dig +short thistlearchitecture.co.uk TXT
+  dig +short selector1._domainkey.thistlearchitecture.co.uk CNAME
+  dig +short selector2._domainkey.thistlearchitecture.co.uk CNAME
+  dig +short www.thistlearchitecture.co.uk
+  dig +short thistlearchitecture.co.uk A
+
+Then send a real email both into and out of a mailbox on the domain before
+calling it done. DNS resolving is not the same as mail flowing.
