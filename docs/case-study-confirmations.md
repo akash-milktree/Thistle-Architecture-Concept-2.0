@@ -80,6 +80,40 @@ and the copy is a one-line stand-in ("full write-up coming soon"):
   nothing anywhere for School House, Millbrook offices or Forest Home. Say which
   to add and send something to build them from.
 
+## Team photos: three options are built and waiting for a decision
+
+**This was built on 2026-07-17 (commit 0862d84) and then forgotten, because it
+was never written into this file. It has never been shown to Ed.** Anything not
+recorded here does not reach him, so record it here first next time.
+
+Internal review page, live but unlinked and noindexed:
+https://thistle-architecture-concept-2-0.vercel.app/team-review
+
+Three options per person, five people (Ed, Kaan, Jan, Adouj, Beverley):
+
+- **A. Current.** The original supplied photos. Inconsistent with each other in
+  crop, background and lighting. This is what the About page still shows.
+- **B. Cleaned real photo.** Each person cut out and composited onto one matched
+  studio grey, face size and eye-line normalised, soft contact shadow. Their
+  real face, just made consistent.
+- **C. AI-generated.** A synthetic studio headshot generated from their photo.
+  Polished, but a regenerated likeness rather than the person.
+
+- [ ] **Which option?** Our recommendation is B. It fixes the inconsistency
+      using real faces, so there is no consent question and nobody is
+      misrepresented.
+- [ ] **If Ed wants C**, we need written consent from each of the five people
+      before it goes live. We will not publish a synthetic likeness of a real
+      person without it.
+- [ ] Note the sets differ in size: the review images are 800x1000, the current
+      live photos range from 750x1200 to 1600x1200. Either B or C also makes
+      them uniform.
+- [ ] **Separately, Ed's actual AI request has not been done.** His 8 July note
+      was to run the PROJECT images through AI so they look consistent. What
+      exists is the TEAM photo work above. Confirm whether he still wants the
+      project imagery treated, now that most of it is real photography from one
+      photographer and already fairly consistent.
+
 ## From Ed's Drive folder (added 2026-07-29)
 
 Three completed projects came out of the Drive folder Ed shared
