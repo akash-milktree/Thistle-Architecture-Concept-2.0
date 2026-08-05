@@ -91,11 +91,12 @@ export const Footer: React.FC = () => {
                 <a href="mailto:hello@thistlearchitecture.co.uk" className="hover:text-thistle-green transition-colors w-fit">
                   hello@thistlearchitecture.co.uk
                 </a>
-                {/* TODO: replace placeholder phone with the real number */}
-                <a href="tel:+442012345678" className="hover:text-thistle-green transition-colors w-fit">
-                  +44 (0)20 1234 5678
+                {/* Real number and registered address, taken from the practice's
+                    own site before the domain moved off Wix. */}
+                <a href="tel:+448081755405" className="hover:text-thistle-green transition-colors w-fit">
+                  0808 175 5405
                 </a>
-                <span>London, United Kingdom</span>
+                <span>Itchen Court, Eastgate Street, Winchester, SO23 8RE</span>
                 <span className="text-white/50">Mon to Fri, 9am to 6pm GMT</span>
               </div>
             </div>

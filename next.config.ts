@@ -25,6 +25,34 @@ const nextConfig: NextConfig = {
         destination: '/blog',
         permanent: true,
       },
+      // The rest of the Wix top-level nav. Added 2026-08-05, after the domain
+      // moved off Wix and these four started returning 404 on the real domain:
+      // any inbound link, bookmark or search result pointing at them was dead.
+      {
+        source: '/works',
+        destination: '/case-studies?view=projects',
+        permanent: true,
+      },
+      {
+        source: '/studio',
+        destination: '/about',
+        permanent: true,
+      },
+      {
+        // Wix's only project page. It is Bereweeke Avenue, which we already
+        // publish, so send it to the real case study rather than a hub.
+        source: '/winchesterproject',
+        destination: '/case-studies/bereweeke-avenue',
+        permanent: true,
+      },
+      {
+        // There is no standalone contact page on this site; the feasibility
+        // booking is the equivalent entry point, and the footer carries the
+        // phone, email and address on every page.
+        source: '/contact',
+        destination: '/feasibility-package',
+        permanent: true,
+      },
       // Wix serves every post at BOTH /slug and /post/slug, and all 13 return
       // 200 on the live site today. The root-level ones are redirected below;
       // this catches the /post/ form, which was missed and would have 404'd
