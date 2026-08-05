@@ -52,21 +52,39 @@ Run with `node scripts/feasibility-webhook-test.mjs`.
 - A Vercel Blob URL is accepted into `file_urls_found`.
 - Omitting `address` is correctly rejected with `"address missing or too short"`.
 
-**Not yet proven:** the dry run records file URLs but does not download them.
-Whether their server can actually fetch `*.public.blob.vercel-storage.com` is
-only settled by the real end-to-end run.
+## Live runs, 2026-08-05
+
+Both fired against 12 Test Street with a real 1.8 KB PDF in Vercel Blob.
+
+| Run | Mode | id | Result |
+|---|---|---|---|
+| Smoke | `stages: ["jodiforum"]` | `20260805-164408` | Kaan confirmed: submission clean, **Blob file downloaded intact**, `beds` and `notes` mapped, run completed |
+| Full | no `stages` | `20260805-170145` | queued, ~30 min, watched by Kaan |
+
+**The integration is proven.** The one thing the dry run could not test, whether
+their server can fetch `*.public.blob.vercel-storage.com`, is confirmed working.
+
+Note on their response body: it always says "typical completion 25 to 40
+minutes" even for a single-stage run, so that note is boilerplate and not a
+signal that `stages` was ignored. The smoke run really did honour it.
+
+To repeat either:
+
+```
+node scripts/feasibility-webhook-test.mjs --smoke --file "<blob url>"   # ~3 min
+node scripts/feasibility-webhook-test.mjs --real  --file "<blob url>"   # ~30 min
+```
+
+Identical resubmissions inside 10 minutes come back 429 by design; change the
+address to force a new one.
 
 ## Still to do
 
-- [ ] Real end-to-end test, coordinated with Kaan. Takes ~30 minutes and produces
-      real documents his side. Use an obviously fake address, e.g. 12 Test
-      Street. Run with `node scripts/feasibility-webhook-test.mjs --real`, or by
-      submitting the live form once.
-- [ ] Confirm the blob URLs actually download during that run.
 - [ ] **Rotate the secret.** It was sent over WhatsApp in plain text, so treat it
       as public. Once Kaan issues a new one, update it in Vercel and tick
       "Sensitive" so it cannot be read back out.
-- [ ] Decide on `beds` and `notes`.
+- [x] `beds` and `notes` added 2026-08-05 at Kaan's request, and confirmed
+      mapping correctly on his side during the smoke run.
 
 ## Gotcha for future debugging
 

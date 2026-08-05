@@ -80,6 +80,60 @@ and the copy is a one-line stand-in ("full write-up coming soon"):
   nothing anywhere for School House, Millbrook offices or Forest Home. Say which
   to add and send something to build them from.
 
+## Google reviews and the business profile (checked 2026-08-05)
+
+Profile: search "Thistle Architecture" on Google, or
+https://www.google.com/maps/place/Thistle+Architecture
+
+**The plan to use these as testimonials has a problem.** There are only five
+reviews, all rated 5.0, and all of them are about **inCollective**, not Thistle
+Architecture. Three are readable without signing in:
+
+- Joseph Williams, 3 years ago: "I've been working with *Incollective* on my
+  current HMO project in Portsmouth... **Ed & Tim** have an extensive knowledge
+  of the HMO planning process"
+- Rebecca Wheelhouse, Local Guide, 3 years ago: "I worked with **Ed and Tim** on
+  two HMO projects in Portsmouth. Their knowledge of all the regulations... All
+  Sui Generis applications have to go to Planning Committee"
+- Oliver Cotterell, 3 years ago: "*Incollective* are absolutely fantastic! **Ed
+  and Tim** are not only brilliant when it comes to designs, but they are very
+  clued up from a planning perspective"
+
+Three problems with publishing these as Thistle testimonials:
+
+1. They name inCollective, the parent company, not Thistle.
+2. They name **Tim**, who is not on the Thistle team at all.
+3. They are three years old, and there are only five.
+
+The profile itself is really inCollective's: its website field points to
+**incollective.works**, its appointments link goes there, and its own
+description opens "At inCollective, we offer the best architectural design
+services".
+
+- [ ] **Decide how to handle this.** Options: publish with honest attribution
+      ("Ed and the team, then trading as inCollective"), ask HMO Designers'
+      profile for better and more recent reviews, or ask recent feasibility
+      clients for fresh ones. What we should NOT do is present a review naming a
+      different company and a person who does not work here as a Thistle
+      testimonial.
+- [ ] **Is the Google profile meant to be Thistle or inCollective?** It is
+      currently both, which helps neither brand and confuses local SEO.
+
+### Address conflict, affects the footer
+
+| Source | Address |
+|---|---|
+| Google Business Profile | Gatcombe House, Copnor Rd, Hilsea, **Portsmouth** PO3 5EJ |
+| Their own Wix site, before the move | Itchen Court, Eastgate Street, **Winchester** SO23 8RE |
+
+Phone matches on both (+44 808 175 5405) and is now in the footer, confirmed
+correct.
+
+The footer currently shows **Winchester**, on the basis that their own website
+is the more current statement and the Portsmouth reviews are three years old, so
+this reads like a practice that moved. **Needs confirming**, and whichever is
+right, the Google profile and the site should match, or local SEO suffers.
+
 ## Team photos: three options are built and waiting for a decision
 
 **This was built on 2026-07-17 (commit 0862d84) and then forgotten, because it
