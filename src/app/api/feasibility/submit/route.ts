@@ -51,6 +51,8 @@ async function forwardToAutomation(
     ptype: a.propertyType ?? '',
     value: String(a.estimatedValue ?? '').replace(/[^0-9]/g, ''),
     gia: a.gia ?? '',
+    beds: String(a.beds ?? '').replace(/[^0-9]/g, ''),
+    notes: a.notes ?? '',
     rightmove: a.rightmoveLink ?? '',
     // Blob URLs are public and unguessable, so their server can fetch them
     // without auth, which is what their contract requires.
@@ -118,6 +120,9 @@ export async function POST(req: NextRequest) {
     'Estimated value': a.estimatedValue ? `£${s(a.estimatedValue)}` : '',
     'Rightmove link': s(a.rightmoveLink),
     'GIA (approx)': a.gia ? `${s(a.gia)} m²` : '',
+    'Existing bedrooms': s(a.beds),
+    // Longer than the other fields, so it gets its own generous cap.
+    'Their plans': String(a.notes ?? '').slice(0, 5000),
     'Floor plan': s(files.floorPlan?.url),
     'Other documents': (files.otherDocs ?? []).map((d) => d.url).join(', '),
     'Name': `${s(a.firstName)} ${s(a.lastName)}`.trim(),

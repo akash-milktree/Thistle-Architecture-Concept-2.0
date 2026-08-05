@@ -29,6 +29,11 @@ export type FeasibilityAnswers = {
   rightmoveLink: string;
   propertyType: PropertyType | '';
   gia: string; // total existing GIA across all floors (approx, m²)
+  beds: string; // existing bedroom count, optional
+  // Free text brief. Kaan asked for this specifically on 2026-08-05: the
+  // client's own description of their plans improves the generated report more
+  // than any other field on the form. Optional, but prompted for properly.
+  notes: string;
 };
 
 export type UploadedFile = { url: string; name: string };
@@ -42,6 +47,7 @@ export const EMPTY_ANSWERS: FeasibilityAnswers = {
   firstName: '', lastName: '', email: '', phone: '',
   address1: '', city: '', county: '', postcode: '',
   estimatedValue: '', rightmoveLink: '', propertyType: '', gia: '',
+  beds: '', notes: '',
 };
 
 export const EMPTY_FILES: FeasibilityFiles = { otherDocs: [] };

@@ -9,7 +9,13 @@
  *
  *   node scripts/feasibility-webhook-test.mjs
  *   node scripts/feasibility-webhook-test.mjs --ptype "Existing HMO"
- *   node scripts/feasibility-webhook-test.mjs --real     # NO dry_run, starts a real ~30min run
+ *   node scripts/feasibility-webhook-test.mjs --smoke    # REAL, one stage, ~3 min, pennies
+ *   node scripts/feasibility-webhook-test.mjs --real     # REAL, full run, ~30 min
+ *
+ * --smoke is Kaan's suggestion (2026-08-05): a real run limited to the
+ * "jodiforum" stage with a file attached. It exercises the upload download and
+ * the whole chain in about three minutes for pennies, so it is the right first
+ * live test. Do the full --real run only once a smoke run comes back clean.
  *
  * Reads FEASIBILITY_API_URL and FEASIBILITY_API_SECRET from .env.local.
  */
@@ -38,33 +44,55 @@ if (!url || !secret) {
 }
 
 const args = process.argv.slice(2);
-const real = args.includes('--real');
+const smoke = args.includes('--smoke');
+const real = args.includes('--real') || smoke;
 const ptypeIdx = args.indexOf('--ptype');
 const ptype = ptypeIdx > -1 ? args[ptypeIdx + 1] : 'Residential';
+
+// A real, publicly fetchable file. The point of the smoke run is to prove their
+// server can download from Vercel Blob, so a live run MUST carry a file.
+const fileIdx = args.indexOf('--file');
+const testFile = fileIdx > -1 ? args[fileIdx + 1] : process.env.FEASIBILITY_TEST_FILE_URL;
+
+if (real && !testFile) {
+  console.error('A live run needs a file to prove the download path.');
+  console.error('Pass one:  --file "https://<id>.public.blob.vercel-storage.com/feasibility/...pdf"');
+  console.error('or set FEASIBILITY_TEST_FILE_URL. Upload one through the form to get a URL.');
+  process.exit(1);
+}
 
 // Shaped exactly like the route handler's payload, so a pass here means a pass
 // in production. Address and name are required by their API.
 const payload = {
   name: 'Test Submission',
+  // Kaan asked for an obviously fake address on live runs so nobody mistakes it
+  // for a real enquiry.
+  address: '12 Test Street, Winchester, Hampshire, SO23 8RE',
   email: 'test@milktreeagency.com',
   contact: '07000 000000',
-  address: '1 Test Street, Winchester, Hampshire, SO23 8RE',
   ptype,
   value: '650000',
   gia: '232',
+  beds: '3',
+  notes: 'Integration test from the Thistle website. Please ignore.',
   rightmove: '',
-  files: [],
+  files: testFile ? [testFile] : [],
+  ...(smoke ? { stages: ['jodiforum'] } : {}),
   ...(real ? {} : { dry_run: true }),
 };
 
 if (real) {
-  console.log('\n*** --real: this starts a REAL run, roughly 30 minutes on Kaan\'s side.');
-  console.log('*** Make sure he is expecting it. Ctrl-C now if not.\n');
+  const what = smoke
+    ? 'a REAL but single-stage run, roughly 3 minutes and a few pence'
+    : 'a REAL FULL run, roughly 30 minutes, and it produces documents';
+  console.log(`\n*** This starts ${what} on Kaan's side.`);
+  console.log('*** He asked to be told before it fires. Ctrl-C now if he is not watching.\n');
   await new Promise((r) => setTimeout(r, 5000));
 }
 
 console.log(`POST ${url}`);
-console.log(`ptype: ${JSON.stringify(ptype)}   dry_run: ${!real}\n`);
+console.log(`ptype: ${JSON.stringify(ptype)}   mode: ${smoke ? 'smoke (stages=jodiforum)' : real ? 'FULL REAL' : 'dry_run'}`);
+console.log(`files: ${payload.files.length ? payload.files[0] : '(none)'}\n`);
 
 try {
   const res = await fetch(url, {
