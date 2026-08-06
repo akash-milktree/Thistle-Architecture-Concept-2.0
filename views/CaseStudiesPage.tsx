@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { PageHero } from '../components/ui/PageHero';
 import { Reveal } from '../components/animations/Reveal';
 import { feasibilityStudies, completedProjects } from '../data/caseStudiesData';
@@ -23,13 +24,26 @@ const TABS: { key: View; label: string; blurb: string }[] = [
 
 // Blog-like hub: one page, two categories, switchable like the blog filters.
 export const CaseStudiesPage: React.FC = () => {
-  const [view, setView] = useState<View>('feasibility');
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
-  // Deep links: /case-studies?view=projects (from the nav dropdown).
-  useEffect(() => {
-    const param = new URLSearchParams(window.location.search).get('view');
-    if (param === 'projects') setView('projects');
-  }, []);
+  // The URL is the single source of truth for which tab is open.
+  //
+  // This used to be local state seeded once from window.location in a mount
+  // effect. That broke the nav dropdown: going from /case-studies?view=projects
+  // to /case-studies is a client-side navigation on the same route, so the
+  // component never remounted, the effect never re-ran, and the tab stayed put.
+  // Ed reported it twice before it was reproduced. Deriving straight from the
+  // search params means the tab always matches the URL, and back/forward work.
+  const view: View = searchParams.get('view') === 'projects' ? 'projects' : 'feasibility';
+
+  const setView = (next: View) => {
+    // scroll: false keeps the page still; the tabs sit above the grid, so
+    // jumping to the top on every switch would be disorienting.
+    router.push(next === 'projects' ? '/case-studies?view=projects' : '/case-studies?view=feasibility', {
+      scroll: false,
+    });
+  };
 
   const items = view === 'feasibility' ? feasibilityStudies : completedProjects;
   const active = TABS.find((t) => t.key === view)!;

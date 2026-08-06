@@ -35,3 +35,7 @@ tsconfig.tsbuildinfo
 .superpowers/
 public/PROJECT_SOP.md
 .env*.local
+
+# Client asset drops: large source media, kept out of the repo. Optimised
+# derivatives live in public/ instead.
+/last feedback/

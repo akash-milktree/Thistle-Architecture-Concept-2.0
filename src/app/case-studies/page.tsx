@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { CaseStudiesPage } from '@/views/CaseStudiesPage';
 
 export const metadata: Metadata = {
@@ -7,5 +8,12 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <CaseStudiesPage />;
+  // The view reads the ?view= param, which needs a Suspense boundary so the
+  // rest of the page still prerenders statically instead of bailing to client
+  // rendering. Fallback is null: the hero and grid paint in the same frame.
+  return (
+    <Suspense fallback={null}>
+      <CaseStudiesPage />
+    </Suspense>
+  );
 }

@@ -27,7 +27,9 @@ const navLinks: NavItem[] = [
     label: "Our Work",
     path: "/case-studies",
     children: [
-      { label: "Feasibility Studies", path: "/case-studies" },
+      // Explicit ?view=feasibility, not a bare /case-studies. Without the param
+      // this link is a no-op when you are already on the projects tab.
+      { label: "Feasibility Studies", path: "/case-studies?view=feasibility" },
       { label: "Completed Projects", path: "/case-studies?view=projects" },
     ],
   },
