@@ -18,13 +18,16 @@ export const Hero: React.FC = () => {
   return (
     <section className="relative min-h-[100svh] flex flex-col overflow-hidden">
       {/* Media: image always, video takes over on larger screens when motion is
-          allowed. Real client drone footage over Winchester (Monument House,
-          "Existing videos - use for homepage"), replacing the generated stock
-          clip on Ed's instruction 2026-07-08. Poster is frame one of the video
-          so the fallback and the first frame match. */}
+          allowed. Now the showreel Ed commissioned (supplied 2026-08-05), an
+          edit cycling through real projects. It replaces the single Winchester
+          drone panorama, which he said "isn't really that relevant" because it
+          showed one view rather than the work.
+          Re-encoded from his 1080p cut to 1152x648 at 25fps: his web cut was
+          9.5MB, which is too much to autoplay on a landing page. Poster is his
+          own frame so the fallback and first frame match. */}
       <Image
-        src="/images/site/hero-winchester.jpg"
-        alt="Aerial view over Winchester, with a Thistle conversion project in the foreground"
+        src="/images/site/hero-showreel-poster.jpg"
+        alt="Thistle conversion and retrofit projects across the UK"
         fill
         priority
         className="object-cover"
@@ -36,10 +39,10 @@ export const Hero: React.FC = () => {
         loop
         playsInline
         preload="metadata"
-        poster="/images/site/hero-winchester.jpg"
+        poster="/images/site/hero-showreel-poster.jpg"
         aria-hidden="true"
       >
-        <source src="/videos/hero-winchester.mp4" type="video/mp4" />
+        <source src="/videos/hero-showreel.mp4" type="video/mp4" />
       </video>
 
       {/* Readability overlays: heavier on the left where the copy sits, plus a bottom wash for the stat band */}
