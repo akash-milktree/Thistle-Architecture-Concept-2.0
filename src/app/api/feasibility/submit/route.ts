@@ -3,9 +3,14 @@ import type { FeasibilityAnswers, FeasibilityFiles } from '@/components/feasibil
 
 export const runtime = 'nodejs';
 
-// Feasibility enquiries are emailed to the team via Formspree (managed as code
-// in formspree.json at the repo root; recipient set there). The endpoint is
+// Feasibility enquiries are emailed to the team via Formspree. The endpoint is
 // public by design, same as the Formspree forms on our other sites.
+//
+// RECIPIENTS ARE SET IN THE FORMSPREE DASHBOARD, not in this repo. formspree.json
+// is kept in sync as documentation, but it is not deployed, so editing it changes
+// nothing on its own. To change who gets the enquiries, edit the form in the
+// dashboard. Recipients must also be verified addresses in Formspree; unverified
+// ones are silently dropped and the submission only lands in the Formspree inbox.
 const FORMSPREE_ENDPOINT = 'https://formspree.io/p/3042010600814149049/f/feasibility';
 
 type Body = { answers?: Partial<FeasibilityAnswers>; files?: Partial<FeasibilityFiles> };
