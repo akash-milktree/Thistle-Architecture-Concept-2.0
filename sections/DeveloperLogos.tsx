@@ -5,62 +5,104 @@ import Image from 'next/image';
 import { Reveal } from '../components/animations/Reveal';
 
 // Developer / client logos. The first five came from hmochecker.co.uk, the
-// shared partner set. The rest were supplied by Ed on 2026-08-10.
-// Each has been trimmed to its own edges so they sit on a common baseline
-// rather than floating inside whatever padding the source file had.
-const developers = [
-  { name: "Property & Poppadoms", src: "/logos/developers/poppadoms.jpeg" },
-  { name: "HMO Academy", src: "/logos/developers/academy.png" },
-  { name: "Brentor Group", src: "/logos/developers/brentor-group.jpeg" },
-  { name: "Frame 4", src: "/logos/developers/frame-4.png" },
-  { name: "DNB Homes", src: "/logos/developers/dnb-homes.webp" },
+// shared partner set; the rest were supplied by Ed on 2026-08-10.
+//
+// Every logo arrived with its own background baked in: dark navy, mid grey,
+// black, beige, white. Left alone on one strip they read as a row of mismatched
+// rectangles rather than a set. So each has been cut out to transparency and is
+// placed on one of two tiles, and `tone` picks which. Marks drawn in white or
+// gold only work on the dark tile; everything else goes on the light one.
+type Tone = 'light' | 'dark';
+const developers: { name: string; src: string; tone: Tone }[] = [
+  { name: "Property & Poppadoms", src: "/logos/developers/poppadoms.png", tone: 'dark' },
+  { name: "HMO Academy", src: "/logos/developers/academy.png", tone: 'light' },
+  { name: "Brentor Group", src: "/logos/developers/brentor-group.png", tone: 'dark' },
+  { name: "Frame 4", src: "/logos/developers/frame-4.png", tone: 'dark' },
+  { name: "DNB Homes", src: "/logos/developers/dnb-homes.png", tone: 'dark' },
   // Ed's list called this one Goldengate; its own logo reads Goldgate, so the
   // logo wins until he says otherwise.
-  { name: "Goldgate Properties", src: "/logos/developers/goldgate.png" },
-  { name: "Freedom Homes", src: "/logos/developers/freedom-homes.png" },
-  { name: "Ajito Property Group", src: "/logos/developers/ajito.png" },
-  { name: "Zero In Developments", src: "/logos/developers/zero-in.png" },
-  { name: "Highfield Professional Solutions", src: "/logos/developers/highfield.png" },
-  { name: "Black Flamingo Homes", src: "/logos/developers/black-flamingo.png" },
+  { name: "Goldgate Properties", src: "/logos/developers/goldgate.png", tone: 'light' },
+  { name: "Freedom Homes", src: "/logos/developers/freedom-homes.png", tone: 'dark' },
+  { name: "Ajito Property Group", src: "/logos/developers/ajito.png", tone: 'light' },
+  { name: "Zero In Developments", src: "/logos/developers/zero-in.png", tone: 'light' },
+  { name: "Highfield Professional Solutions", src: "/logos/developers/highfield.png", tone: 'light' },
+  { name: "Black Flamingo Homes", src: "/logos/developers/black-flamingo.png", tone: 'light' },
 ];
 
-// Quiet trust strip directly under the hero. No card tiles, no divider;
-// it reads as a footnote to the hero rather than a section of its own.
+// Spacing is a right margin on the tile rather than a gap on the track. Every
+// child is then exactly the same width, so sliding the track half its length
+// lands precisely on the start of the duplicate and the loop has no jump. A gap
+// would leave one extra gap unaccounted for and the seam would drift.
+const Tile: React.FC<{ d: (typeof developers)[number]; ariaHidden?: boolean }> = ({ d, ariaHidden }) => (
+  <div
+    aria-hidden={ariaHidden}
+    // Smaller tiles on phones. At the desktop size only one and a half fit a
+    // 390px screen, which stops reading as a run of logos and starts reading as
+    // a slideshow of one.
+    className={`shrink-0 h-[84px] w-[164px] sm:h-[104px] sm:w-[220px] mr-fl-4 rounded-xl flex items-center justify-center px-fl-4 sm:px-fl-5 ${
+      d.tone === 'dark' ? 'bg-thistle-black' : 'bg-thistle-black/[0.045]'
+    }`}
+  >
+    <Image
+      src={d.src}
+      alt={d.name}
+      width={220}
+      height={104}
+      unoptimized
+      // Eager on purpose. Lazy loading keys off the viewport, and a marquee
+      // moves tiles through it under transform, so the ones that start off
+      // screen were still undecoded once the track reached them. Eleven files
+      // at half a megabyte total is cheap enough to just load.
+      loading="eager"
+      // Full colour and full strength. Ed asked for no dimming, so there is no
+      // opacity or hover state here on purpose.
+      className="max-h-11 sm:max-h-14 w-auto max-w-[120px] sm:max-w-[160px] object-contain"
+    />
+  </div>
+);
+
+// Trust strip under the hero. It runs as a marquee because eleven logos at a
+// readable size do not fit a row, and wrapping them left a short second line of
+// stragglers. Scrolling keeps it to one band whatever the screen width, and
+// gives every logo the same amount of room.
 export const DeveloperLogos: React.FC = () => {
   return (
-    <section className="bg-white py-fl-6 px-fl-margin">
-      <div className="max-w-[1360px] mx-auto">
+    <section className="bg-white py-fl-7 overflow-hidden">
+      <div className="max-w-[1360px] mx-auto px-fl-margin">
         <Reveal>
-          {/* Label above rather than alongside. It used to sit to the left,
-              which worked with five logos. Eleven need the full width, and
-              side by side they wrapped to a second row of two stragglers. */}
-          <div className="flex flex-col items-center gap-fl-5">
-            <p className="text-[11px] uppercase tracking-[0.25em] text-thistle-black/45 font-semibold whitespace-nowrap">
-              Trusted by developers across the UK
-            </p>
-            {/* Centred rather than justify-between: with eleven logos the row
-                wraps, and spreading a short second row edge to edge leaves
-                gaps wide enough to read as a mistake. */}
-            <div className="flex flex-wrap items-center justify-center gap-x-fl-6 gap-y-fl-5 flex-1">
-              {developers.map((d, i) => (
-                <Image
-                  key={i}
-                  src={d.src}
-                  alt={d.name}
-                  width={140}
-                  height={48}
-                  unoptimized
-                  // Capped on width as well as height. These come in at wildly
-                  // different aspect ratios, and the widest wordmark is seven
-                  // times the width of the squarest badge at a common height,
-                  // which makes it read as the headline act rather than one of
-                  // eleven equals.
-                  className="h-10 w-auto max-w-[130px] object-contain opacity-70 hover:opacity-100 transition-opacity"
-                />
-              ))}
-            </div>
-          </div>
+          <p className="text-[11px] uppercase tracking-[0.25em] text-thistle-black/45 font-semibold text-center">
+            Trusted by developers across the UK
+          </p>
         </Reveal>
+      </div>
+
+      {/* Full bleed, so the track runs off both edges instead of stopping at the
+          content gutter and looking like it has hit a wall. The mask fades the
+          logos out at each end rather than cutting them mid-tile. */}
+      {/* Spacing lives here rather than as a margin under the label. The label
+          sits alone in a container with no vertical padding, so a margin on it
+          collapses straight out and leaves the two touching, which the reveal
+          animation then makes obvious by starting the label 30px lower. */}
+      <div
+        className="relative mt-fl-6"
+        style={{
+          maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
+        }}
+      >
+        {/* The list is rendered twice and the track slides exactly half its
+            width before repeating, which is what makes the loop seamless.
+            The second pass is hidden from screen readers so each name is
+            announced once. Without motion the animation never starts and the
+            strip is a static row that can still be scrolled by hand. */}
+        <div className="flex w-max overflow-x-auto motion-safe:overflow-x-visible motion-safe:animate-[logo-marquee_46s_linear_infinite] motion-safe:hover:[animation-play-state:paused]">
+          {developers.map((d) => (
+            <Tile key={d.name} d={d} />
+          ))}
+          {developers.map((d) => (
+            <Tile key={`${d.name}-copy`} d={d} ariaHidden />
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -48,3 +48,12 @@ body {
   background-color: var(--color-pink);
   color: var(--color-black);
 }
+
+/* Developer logo marquee (sections/DeveloperLogos.tsx). The track holds the
+   logo list twice, so shifting it left by half its own width lands exactly on
+   the start of the duplicate and the loop is seamless. Only ever applied under
+   motion-safe, so it does not run for anyone who has asked for reduced motion. */
+@keyframes logo-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
