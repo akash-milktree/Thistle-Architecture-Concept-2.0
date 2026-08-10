@@ -18,15 +18,19 @@ export const Hero: React.FC = () => {
   return (
     <section className="relative min-h-[100svh] flex flex-col overflow-hidden">
       {/* Media: image always, video takes over on larger screens when motion is
-          allowed. Now the showreel Ed commissioned (supplied 2026-08-05), an
-          edit cycling through real projects. It replaces the single Winchester
-          drone panorama, which he said "isn't really that relevant" because it
-          showed one view rather than the work.
-          Re-encoded from his 1080p cut to 1152x648 at 25fps: his web cut was
-          9.5MB, which is too much to autoplay on a landing page. Poster is his
-          own frame so the fallback and first frame match. */}
+          allowed. The v5 background cut (supplied 2026-08-10), which supersedes
+          the first showreel. It is built for this job: 31s rather than 51s, and
+          the closing frames crossfade back into the opening shot, so the loop
+          has no visible seam. It also drops the hmoChecker-branded presentation
+          footage that ended the earlier cut, which was another brand's logo
+          sitting on Thistle's homepage.
+          Encoded from his master rather than his web cut, to avoid compressing
+          twice: 1152x648 at 25fps, ~3.3MB. Checked at 1:1 against a much higher
+          quality encode on the busiest aerial frame and the difference does not
+          survive the dark overlay this sits behind. Poster is his own frame, so
+          the fallback and the first frame match. */}
       <Image
-        src="/images/site/hero-showreel-poster.jpg"
+        src="/images/site/hero-showreel-v5-poster.jpg"
         alt="Thistle conversion and retrofit projects across the UK"
         fill
         priority
@@ -39,10 +43,10 @@ export const Hero: React.FC = () => {
         loop
         playsInline
         preload="metadata"
-        poster="/images/site/hero-showreel-poster.jpg"
+        poster="/images/site/hero-showreel-v5-poster.jpg"
         aria-hidden="true"
       >
-        <source src="/videos/hero-showreel.mp4" type="video/mp4" />
+        <source src="/videos/hero-showreel-v5.mp4" type="video/mp4" />
       </video>
 
       {/* Readability overlays: heavier on the left where the copy sits, plus a bottom wash for the stat band */}
