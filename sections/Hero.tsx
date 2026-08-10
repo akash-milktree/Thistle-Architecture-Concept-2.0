@@ -17,18 +17,17 @@ export const Hero: React.FC = () => {
   const router = useRouter();
   return (
     <section className="relative min-h-[100svh] flex flex-col overflow-hidden">
-      {/* Media: image always, video takes over on larger screens when motion is
-          allowed. The v5 background cut (supplied 2026-08-10), which supersedes
-          the first showreel. It is built for this job: 31s rather than 51s, and
-          the closing frames crossfade back into the opening shot, so the loop
-          has no visible seam. It also drops the hmoChecker-branded presentation
-          footage that ended the earlier cut, which was another brand's logo
-          sitting on Thistle's homepage.
-          Encoded from his master rather than his web cut, to avoid compressing
-          twice: 1152x648 at 25fps, ~3.3MB. Checked at 1:1 against a much higher
-          quality encode on the busiest aerial frame and the difference does not
-          survive the dark overlay this sits behind. Poster is his own frame, so
-          the fallback and the first frame match. */}
+      {/* Media: the poster paints immediately and stays as the backdrop, with
+          the v5 background film from Vimeo layered over it on larger screens
+          when motion is allowed. Vimeo hosts and encodes it, so there is no
+          video file in the repo and no encoding to redo when the cut changes:
+          swap the id below.
+          background=1 is Vimeo's background mode, which autoplays muted on loop
+          with no controls or chrome. dnt=1 turns off their tracking, so the
+          embed sets no cookies and stays clear of the cookie policy.
+          The iframe is fixed to 16:9, so it is sized to the larger of the two
+          axes and centred, which is how you get object-cover behaviour out of
+          an element that has no object-fit. */}
       <Image
         src="/images/site/hero-showreel-v5-poster.jpg"
         alt="Thistle conversion and retrofit projects across the UK"
@@ -36,18 +35,18 @@ export const Hero: React.FC = () => {
         priority
         className="object-cover"
       />
-      <video
-        className="absolute inset-0 w-full h-full object-cover hidden sm:motion-safe:block"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster="/images/site/hero-showreel-v5-poster.jpg"
+      <div
+        className="absolute inset-0 overflow-hidden hidden sm:motion-safe:block pointer-events-none"
         aria-hidden="true"
       >
-        <source src="/videos/hero-showreel-v5.mp4" type="video/mp4" />
-      </video>
+        <iframe
+          src="https://player.vimeo.com/video/1217009975?background=1&autoplay=1&loop=1&muted=1&autopause=0&dnt=1"
+          title=""
+          tabIndex={-1}
+          allow="autoplay; fullscreen"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full border-0"
+        />
+      </div>
 
       {/* Readability overlays: heavier on the left where the copy sits, plus a bottom wash for the stat band */}
       <div className="absolute inset-0 bg-gradient-to-r from-thistle-black/85 via-thistle-black/55 to-thistle-black/25" />
