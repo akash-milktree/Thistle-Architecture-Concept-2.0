@@ -39,3 +39,6 @@ public/PROJECT_SOP.md
 # Client asset drops: large source media, kept out of the repo. Optimised
 # derivatives live in public/ instead.
 /last feedback/
+
+# Formspree deploy key, read by the deploy step. Never commit this.
+.formspree-key
