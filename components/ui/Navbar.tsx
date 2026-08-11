@@ -56,6 +56,7 @@ const navLinks: NavItem[] = [
   },
   { label: "About", path: "/about" },
   { label: "Blog", path: "/blog" },
+  { label: "Contact", path: "/contact" },
 ];
 
 export const Navbar: React.FC = () => {

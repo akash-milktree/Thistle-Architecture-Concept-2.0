@@ -30,6 +30,9 @@ const SOURCE_LABELS: Record<string, string> = {
   'gdv-calculator': 'GDV calculator',
   'class-ma-checker': 'Class MA eligibility checker',
   'sample-report': 'Sample feasibility report',
+  // The contact page rides this route too, so a general enquiry lands in the
+  // same inbox without needing a third form on the Formspree project.
+  'contact-form': 'Contact form',
 };
 
 export async function POST(request: Request) {

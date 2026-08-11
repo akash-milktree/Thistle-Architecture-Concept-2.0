@@ -24,6 +24,7 @@ const conversionsLinks = [
 const companyLinks = [
   { label: "About", to: "/about" },
   { label: "Blog", to: "/blog" },
+  { label: "Contact", to: "/contact" },
 ];
 
 const legalLinks = [

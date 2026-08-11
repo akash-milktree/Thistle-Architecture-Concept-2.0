@@ -45,14 +45,11 @@ const nextConfig: NextConfig = {
         destination: '/case-studies/bereweeke-avenue',
         permanent: true,
       },
-      {
-        // There is no standalone contact page on this site; the feasibility
-        // booking is the equivalent entry point, and the footer carries the
-        // phone, email and address on every page.
-        source: '/contact',
-        destination: '/feasibility-package',
-        permanent: true,
-      },
+      // /contact used to redirect to /feasibility-package, on the reasoning that
+      // the booking was the equivalent entry point. That call was reversed on
+      // 2026-08-11: a contact page is standard practice, and not everyone
+      // arriving is ready to book a feasibility study. The page now exists at
+      // /contact, so the redirect is gone.
       // Wix serves every post at BOTH /slug and /post/slug, and all 13 return
       // 200 on the live site today. The root-level ones are redirected below;
       // this catches the /post/ form, which was missed and would have 404'd
