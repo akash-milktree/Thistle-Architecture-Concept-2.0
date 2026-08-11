@@ -216,7 +216,7 @@ export const FeasibilityModal: React.FC = () => {
 
                     {status === 'error' && (
                       <p aria-live="polite" className="mt-4 text-center text-xs text-red-700">
-                        Something went wrong. Please try again, or email hello@thistlearchitecture.co.uk.
+                        Something went wrong. Please try again, or email hello@incollective.works.
                       </p>
                     )}
                   </div>

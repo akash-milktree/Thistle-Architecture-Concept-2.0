@@ -3,13 +3,15 @@
     "feasibility": {
       "name": "Thistle Feasibility Study",
       "actions": [
-        { "type": "email", "to": "hello@incollective.works" }
+        { "type": "email", "to": "hello@incollective.works" },
+        { "type": "email", "to": "jodi@thistlearchitecture.co.uk" }
       ]
     },
     "leads": {
       "name": "Thistle Tool Leads",
       "actions": [
-        { "type": "email", "to": "hello@incollective.works" }
+        { "type": "email", "to": "hello@incollective.works" },
+        { "type": "email", "to": "jodi@thistlearchitecture.co.uk" }
       ]
     }
   }

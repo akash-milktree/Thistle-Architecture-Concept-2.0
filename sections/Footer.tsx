@@ -88,8 +88,11 @@ export const Footer: React.FC = () => {
                 Data-driven feasibility for commercial conversions, HMOs, and high-end residential across the UK.
               </p>
               <div className="flex flex-col gap-fl-2 text-fluid-sm text-white/70">
-                <a href="mailto:hello@thistlearchitecture.co.uk" className="hover:text-thistle-green transition-colors w-fit">
-                  hello@thistlearchitecture.co.uk
+                {/* Swapped off hello@thistlearchitecture.co.uk on 2026-08-11.
+                    That inbox was not confirmed to be monitored, and this is
+                    the only address the team have confirmed they read. */}
+                <a href="mailto:hello@incollective.works" className="hover:text-thistle-green transition-colors w-fit">
+                  hello@incollective.works
                 </a>
                 {/* Real number and registered address, taken from the practice's
                     own site before the domain moved off Wix. */}
