@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Reveal } from '../components/animations/Reveal';
 import { feasibilityLayers } from '../data/feasibilityLayers';
 import { InlineCTA } from '../components/ui/InlineCTA';
@@ -15,10 +14,9 @@ import { InlineCTA } from '../components/ui/InlineCTA';
 // the brand palette and each one shows the actual output of its layer, so they
 // coordinate by construction in a way six photographs never did.
 //
-// The alternating two-column layout comes back with them, and it has to. These
-// carry legends, axis labels and floor plan annotations at 9 and 10px, sized for
-// a square container roughly 600px across. Dropped into the 430px cards the
-// photographs used, the labelling is unreadable.
+// Layout is unchanged: the same card grid the photographs sat in. The diagrams
+// were drawn for a square container about 600px across and carry labelling at 9
+// and 10px, so read them at this size before trusting them here.
 
 // ─── Layer 01: Planning history ──────────
 const GraphicPlanning: React.FC = () => {
@@ -274,36 +272,22 @@ export const FeasibilityEngine: React.FC = () => {
           </Reveal>
         </div>
 
-        {/* Alternating rows: text one side, square graphic the other */}
-        <div className="space-y-fl-section-sm">
-          {rows.map((row, i) => {
-            const isEven = i % 2 === 0;
-            return (
-              <Reveal key={row.eyebrow} delay={0.05}>
-                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-fl-8 items-center ${isEven ? '' : 'lg:[&>*:first-child]:order-2'}`}>
-                  <div className={isEven ? '' : 'lg:pl-fl-5'}>
-                    <span className="text-[11px] uppercase tracking-[0.2em] text-thistle-green font-semibold">{row.eyebrow}</span>
-                    <h3 className="text-fluid-h3 font-medium tracking-tight leading-tight text-thistle-black mt-fl-3 mb-fl-4">
-                      {row.title}
-                    </h3>
-                    <p className="text-fluid-base text-thistle-black/80 leading-relaxed max-w-md">
-                      {row.body}
-                    </p>
-                  </div>
-                  {/* Square, so all six read at the same scale */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-80px" }}
-                    transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
-                    className={`aspect-square w-full ${isEven ? 'lg:order-2' : ''}`}
-                  >
-                    <row.Graphic />
-                  </motion.div>
+        {/* Card grid, as before the diagrams came back. */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-fl-5 mb-fl-8">
+          {rows.map((row, i) => (
+            <Reveal key={row.eyebrow} delay={Math.min(i * 0.06, 0.3)}>
+              <div className="h-full rounded-2xl overflow-hidden bg-white border border-thistle-black/[0.06]">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <row.Graphic />
                 </div>
-              </Reveal>
-            );
-          })}
+                <div className="p-fl-5">
+                  <span className="block text-[10px] uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-2">{row.eyebrow}</span>
+                  <h3 className="text-fluid-h6 font-medium tracking-tight text-thistle-black mb-fl-2">{row.title}</h3>
+                  <p className="text-fluid-sm text-thistle-black/65 leading-relaxed">{row.body}</p>
+                </div>
+              </div>
+            </Reveal>
+          ))}
         </div>
 
         <Reveal delay={0.2}>
