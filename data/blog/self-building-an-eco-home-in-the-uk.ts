@@ -44,7 +44,7 @@ export const post: BlogPost = {
     "- Smart Export Guarantee: The SEG makes energy companies pay households for any excess renewable energy they produce and then sell back to the grid, to be used by others. This means if your eco home generates electricity through solar, wind, hydro or biogas, then you can be paid for energy you don't use.",
     "- Local Authority Grants: Some local authorities in the UK offer grants or incentives for eco-friendly home improvements and energy-efficient upgrades. These programs vary by location, so we recommend checking in with your local council.",
   ],
-  image: "/images/generated/terrace-scaffold.jpg",
+  image: "/images/blog/self-building-an-eco-home-in-the-uk.jpg",
   date: "July 31, 2024",
   updated: "September 24, 2024",
   readTime: "6 min read",

@@ -43,7 +43,7 @@ export const post: BlogPost = {
     "Understanding your self build funding options is an important step in working out which finance option is right for you.",
     "We encourage you to conduct thorough research and gain a thorough understanding of what is required from a self build project in order to accurately calculate your potential self build costs, or speak to a financial advisor.",
   ],
-  image: "/images/site/cta-band.jpg",
+  image: "/images/blog/how-to-fund-a-self-build-home.jpg",
   date: "May 25, 2024",
   readTime: "5 min read",
   category: "Investment",

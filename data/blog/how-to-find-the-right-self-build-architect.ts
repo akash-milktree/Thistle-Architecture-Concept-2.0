@@ -47,7 +47,7 @@ export const post: BlogPost = {
     "We are happy to be as involved in the process as you like and we understand all projects are different. The advice and involvement we can offer will always considerate of your needs.",
     "Hopefully, the advice in this article has offered some understanding of how to go about choosing your self build architect. If you find Thistle Architecture to be a suitable match for your project through your research, please reach out to us through our contact page or by giving us a call!",
   ],
-  image: "/images/generated/package-hero.jpg",
+  image: "/images/blog/how-to-find-the-right-self-build-architect.jpg",
   date: "October 13, 2023",
   readTime: "7 min read",
   category: "Self Build",

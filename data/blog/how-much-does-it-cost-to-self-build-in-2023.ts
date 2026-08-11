@@ -68,7 +68,7 @@ export const post: BlogPost = {
     "Here at Thistle Architecture, we specialise in self building and architecture, and are able to help and advise on various elements of self building.",
     "We would recommend spending time doing your own research to get a better understanding of self build costs. However, if you are looking for some tailored advice, please don't hesitate to get in touch and we'll be happy to help.",
   ],
-  image: "/images/generated/desk-plans.jpg",
+  image: "/images/blog/how-much-does-it-cost-to-self-build-in-2023.jpg",
   date: "June 7, 2024",
   readTime: "7 min read",
   category: "Self Build",

@@ -49,7 +49,7 @@ export const post: BlogPost = {
     "We recommend carrying out your own research on all construction methods.",
     "If you are interested in a masonry self build, reach out to us on 0808 175 5405 or head over to our contact page.",
   ],
-  image: "/images/generated/terrace-scaffold.jpg",
+  image: "/images/blog/10-pros-and-cons-of-masonry-for-self-build-houses.jpg",
   date: "July 16, 2024",
   updated: "September 24, 2024",
   readTime: "4 min read",

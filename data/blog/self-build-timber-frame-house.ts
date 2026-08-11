@@ -70,7 +70,7 @@ export const post: BlogPost = {
     "- ICF in self building",
     "Originally written by Scarlett Pirie",
   ],
-  image: "/images/generated/desk-plans.jpg",
+  image: "/images/blog/self-build-timber-frame-house.jpg",
   date: "June 27, 2024",
   updated: "October 4, 2024",
   readTime: "7 min read",

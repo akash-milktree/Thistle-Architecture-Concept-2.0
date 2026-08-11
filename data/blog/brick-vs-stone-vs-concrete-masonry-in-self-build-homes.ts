@@ -78,7 +78,7 @@ export const post: BlogPost = {
     "If you are looking for tailored advice on your self build home and which construction material is most suited to your project, the team at Thistle Architecture can help. We have a wealth of knowledge and experience in self build architecture and can help you make an informed decision on your self build construction method, whether you are opting for stone, brick or concrete.",
     "If you are interested in a masonry self build, reach out to us on 0808 175 5405 or head over to our contact page.",
   ],
-  image: "/images/generated/site-visit.jpg",
+  image: "/images/blog/brick-vs-stone-vs-concrete-masonry-in-self-build-homes.jpg",
   date: "July 26, 2024",
   updated: "September 24, 2024",
   readTime: "7 min read",

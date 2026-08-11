@@ -47,7 +47,7 @@ export const post: BlogPost = {
     "Whether you are a seasoned property developer or are just starting research for your first project, Class MA offers a fantastic opportunity to capitalise on changing market demands.",
     "Do you have a commercial unit that falls within Class E of the GPDO and want to explore whether it can be converted into residential units? Why not reach out to our team.",
   ],
-  image: "/images/generated/office-exterior.jpg",
+  image: "/images/blog/class-ma-prior-approval-what-you-need-to-know.jpg",
   date: "January 17, 2025",
   readTime: "5 min read",
   category: "Permitted Development",

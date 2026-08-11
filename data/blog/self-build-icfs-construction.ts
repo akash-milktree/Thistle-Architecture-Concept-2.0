@@ -70,7 +70,7 @@ export const post: BlogPost = {
     "If you are looking for some more tailored advice around your self build project, or are generally feeling a bit swamped in information, please reach out to the Thistle Architecture team. We have years of experience in self build architecture and design, and have worked on many different projects.",
     "Head over to our online contact page, or give us a call on 0808 175 5405.",
   ],
-  image: "/images/generated/site-visit.jpg",
+  image: "/images/blog/self-build-icfs-construction.jpg",
   date: "July 5, 2024",
   updated: "September 24, 2024",
   readTime: "7 min read",

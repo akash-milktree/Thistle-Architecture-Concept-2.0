@@ -57,7 +57,7 @@ export const post: BlogPost = {
     "### Ecologic SIPs",
     "We are partnered with Ecologic SIPs who manufacture sustainable SIP panels for all sorts of construction projects, including self build homes. Along with incollective, they will work closely with you to find the most eco-friendly, resourceful, and energy-efficient solution for your self build home, while looking to minimise their impact on the planet. If you are interested in a SIP self build, reach out to us on 0808 175 5405 or head over to our contact page.",
   ],
-  image: "/images/generated/report-hands.jpg",
+  image: "/images/blog/self-build-sips-construction.jpg",
   date: "June 14, 2024",
   readTime: "8 min read",
   category: "Self Build",
