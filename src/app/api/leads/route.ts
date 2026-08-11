@@ -21,10 +21,13 @@ const LEAD_ENDPOINT =
 
 // Where each gate's `source` came from, for a subject line the team can triage
 // from the notification list without opening anything.
+// Keys must match the `source` each gate passes. Checked against the call sites
+// in sections/tools/*.tsx and SampleReportGate; an unknown source still sends,
+// it just arrives labelled with the raw slug.
 const SOURCE_LABELS: Record<string, string> = {
   'hmo-calculator': 'HMO profit calculator',
   'gdv-calculator': 'GDV calculator',
-  'eligibility-checker': 'Permitted development checker',
+  'class-ma-checker': 'Class MA eligibility checker',
   'sample-report': 'Sample feasibility report',
 };
 
