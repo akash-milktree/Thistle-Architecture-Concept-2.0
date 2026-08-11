@@ -28,9 +28,11 @@ that relevant".
 
 ## Homepage
 
-- [ ] **Swap the hero video for the new showreel.** Current hero is 12s at
-  1.44MB. The 720p cut is 9.5MB and 51s, which is heavy for a hero, so it needs
-  re-encoding down before it ships. Keep the poster frame.
+- [x] **Swap the hero video for the new showreel.** Done, then superseded. Ed
+  supplied a v5 background cut on 10 August (`V2/`) which loops seamlessly, and
+  that is now the hero. It is served from Vimeo (video 1217009975) in background
+  mode rather than self-hosted, so there is no file in the repo and no re-encode
+  when the cut changes: swap the id.
 - [ ] Ed will send more homepage images, and wants them to **cycle through**
   rather than sit static. A carousel, "flick through them to show loads".
 
@@ -110,16 +112,23 @@ experience. Looks after the finance and admin for the team.
   going through Akash "a bottleneck". Wants it for completed projects and
   feasibility examples. This is the largest item here and needs its own
   decision on approach.
-- [?] **Chatbot for quick enquiries**, plus a simple contact form. Akash replied
-  that both are possible and it would reuse the same CRM chatbot.
+- [~] **Chatbot for quick enquiries**, plus a simple contact form. The contact
+  form is done: /contact went live 11 August with a short form posting to
+  /api/leads, and the old /contact -> /feasibility-package redirect is gone.
+  The chatbot is still open.
 
 ## Email and SEO
 
-- [ ] **Formspree is not confirmed working.** `formspree.json` lists one
-  recipient, edward@thistlearchitecture.co.uk. Ed must click the Formspree
-  verification email before any notification sends; submissions sit in the
-  Formspree inbox regardless. Jodi, Akash and Levi still need adding in the
-  dashboard, which cannot be done from the config file.
+- [x] **Formspree.** Fixed 11 August. The recipient was an address that was
+  never verified, and unverified recipients are dropped silently, which is why
+  nothing arrived. Now delivering to hello@incollective.works.
+  A second failure was found and fixed at the same time: the three calculators
+  and the sample report posted to /api/leads, which forwarded to a
+  LEAD_WEBHOOK_URL that has never been set on the Vercel project, so every one
+  of those leads was written to the log and lost. They now go to a new
+  `leads` form, created by deploying formspree.json.
+  All six capture points are wired and confirmed: feasibility, the three tool
+  gates, the sample report, and the new contact form.
 - [ ] Connect Thistle's SEO account. **Scarlett** does the SEO for Thistle;
   Akash to coordinate with her.
 
@@ -127,3 +136,12 @@ experience. Looks after the finance and admin for the team.
 
 - Home link in the nav. Ed asked, Akash explained the convention of omitting it
   when the nav is long, Ed accepted.
+
+## Added since this brief
+
+- [x] **Site is behind a password gate** (11 August, Ed's request). The public
+  must not see it until the outstanding work is done. See `site-password-gate.md`.
+- [x] **Six developer logos added** from `V2/more icons to add.docx`, and the
+  trust strip rebuilt as a marquee with the logos cut out onto uniform tiles.
+- [?] **Ed's list says "Goldengate Properties"; that logo reads "Goldgate".**
+  Using the logo's spelling until he confirms which is right.
