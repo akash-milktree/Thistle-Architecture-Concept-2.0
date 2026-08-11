@@ -6,11 +6,12 @@ export const runtime = 'nodejs';
 // Feasibility enquiries are emailed to the team via Formspree. The endpoint is
 // public by design, same as the Formspree forms on our other sites.
 //
-// RECIPIENTS ARE SET IN THE FORMSPREE DASHBOARD, not in this repo. formspree.json
-// is kept in sync as documentation, but it is not deployed, so editing it changes
-// nothing on its own. To change who gets the enquiries, edit the form in the
-// dashboard. Recipients must also be verified addresses in Formspree; unverified
-// ones are silently dropped and the submission only lands in the Formspree inbox.
+// Recipients live in formspree.json at the repo root, but that file only takes
+// effect when it is deployed with the Formspree CLI. Editing it alone changes
+// nothing. Recipients must be verified addresses in Formspree; unverified ones
+// are dropped silently and the submission only lands in the Formspree inbox,
+// which is how enquiries went missing before. hello@incollective.works is the
+// one address confirmed to work.
 const FORMSPREE_ENDPOINT = 'https://formspree.io/p/3042010600814149049/f/feasibility';
 
 type Body = { answers?: Partial<FeasibilityAnswers>; files?: Partial<FeasibilityFiles> };

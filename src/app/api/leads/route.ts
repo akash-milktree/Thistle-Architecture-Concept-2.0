@@ -12,9 +12,10 @@ export const runtime = 'nodejs';
 // They now go to Formspree, the same way feasibility enquiries do, so they land
 // in a mailbox someone reads.
 //
-// RECIPIENTS ARE SET IN THE FORMSPREE DASHBOARD, not in this repo. The form must
-// exist there under the key below or posts 404. LEAD_FORMSPREE_ENDPOINT
-// overrides the URL if the form is ever moved.
+// The form must exist on the Formspree project under the key below or posts
+// 404. Recipients live in formspree.json at the repo root, which only takes
+// effect once deployed with the Formspree CLI. LEAD_FORMSPREE_ENDPOINT
+// overrides the URL if the form ever moves.
 const LEAD_ENDPOINT =
   process.env.LEAD_FORMSPREE_ENDPOINT ??
   'https://formspree.io/p/3042010600814149049/f/leads';
