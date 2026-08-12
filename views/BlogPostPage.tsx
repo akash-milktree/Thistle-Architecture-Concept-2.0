@@ -8,7 +8,7 @@ import { Reveal } from '../components/animations/Reveal';
 import { Button } from '../components/ui/Button';
 import { ArrowUpRight, ArrowLeft } from 'lucide-react';
 import { blogPosts } from '../data/blogData';
-import { seedFor } from '../data/blogViews';
+import { seedFor, useViewCounts } from '../data/blogViews';
 import { motion } from 'framer-motion';
 
 const slugify = (s: string) =>
@@ -109,6 +109,10 @@ export const BlogPostPage: React.FC = () => {
       .catch(() => {});
     return () => { alive = false; };
   }, [slug, post]);
+
+  // Counts for the related cards below. Also above the not-found return, for the
+  // same reason: every render must call the same hooks in the same order.
+  const relatedViews = useViewCounts();
 
   if (!post) {
     return (
@@ -262,8 +266,9 @@ export const BlogPostPage: React.FC = () => {
                       <Image src={rp.image} alt={rp.title} fill sizes="(max-width: 768px) 90vw, 420px" className="object-cover transition-transform duration-700 group-hover:scale-105" />
                     </div>
                     <div className="p-fl-5">
-                      <span className="text-xs text-thistle-black/30 block mb-fl-2">{rp.category} · {rp.readTime}</span>
+                      <span className="text-xs text-thistle-black/30 block mb-fl-2">{rp.category} · {rp.readTime} · {(relatedViews[rp.slug] ?? 0).toLocaleString('en-GB')} views</span>
                       <h3 className="text-fluid-h6 font-medium tracking-tight group-hover:text-thistle-green transition-colors">{rp.title}</h3>
+                      <span className="block text-xs text-thistle-black/40 mt-fl-3">{rp.author.name} · {rp.date}</span>
                     </div>
                   </motion.div>
                 </Link>

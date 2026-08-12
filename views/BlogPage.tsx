@@ -7,6 +7,7 @@ import { PageHero } from '../components/ui/PageHero';
 import { Reveal } from '../components/animations/Reveal';
 import { motion } from 'framer-motion';
 import { blogPosts, blogCategories, type BlogCategory } from '../data/blogData';
+import { useViewCounts } from '../data/blogViews';
 
 type Filter = 'All' | BlogCategory;
 
@@ -14,6 +15,7 @@ export const BlogPage: React.FC = () => {
   const [filter, setFilter] = useState<Filter>('All');
 
   const posts = filter === 'All' ? blogPosts : blogPosts.filter((p) => p.category === filter);
+  const views = useViewCounts();
   const [featured, ...rest] = posts;
 
   return (
@@ -69,6 +71,7 @@ export const BlogPage: React.FC = () => {
                     <div className="flex items-center gap-fl-3 mb-fl-4">
                       <span className="px-3 py-1 rounded-full bg-thistle-green/10 text-[10px] uppercase tracking-widest text-thistle-green font-semibold">{featured.category}</span>
                       <span className="text-xs text-thistle-black/30">{featured.readTime}</span>
+                      <span className="text-xs text-thistle-black/30">{(views[featured.slug] ?? 0).toLocaleString('en-GB')} views</span>
                     </div>
                     <h2 className="text-fluid-h3 font-medium tracking-tight leading-tight mb-fl-4 group-hover:text-thistle-green transition-colors">{featured.title}</h2>
                     <p className="text-fluid-base text-thistle-black/80 leading-relaxed mb-fl-5">{featured.excerpt}</p>
@@ -106,8 +109,10 @@ export const BlogPage: React.FC = () => {
                       <div className="flex items-center gap-fl-3 mb-fl-3">
                         <span className="px-3 py-1 rounded-full bg-thistle-green/10 text-[10px] uppercase tracking-widest text-thistle-green font-semibold">{post.category}</span>
                         <span className="text-xs text-thistle-black/30">{post.readTime}</span>
+                        <span className="text-xs text-thistle-black/30">{(views[post.slug] ?? 0).toLocaleString('en-GB')} views</span>
                       </div>
                       <h3 className="text-fluid-h6 font-medium tracking-tight group-hover:text-thistle-green transition-colors">{post.title}</h3>
+                      <span className="block text-xs text-thistle-black/40 mt-fl-3">{post.author.name} · {post.date}</span>
                     </div>
                   </motion.div>
                 </Link>

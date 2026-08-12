@@ -1,3 +1,7 @@
+"use client";
+
+import React from 'react';
+
 // Views each article had on the old Wix site, read from archived snapshots of
 // that site. They are the starting point, not the whole number: the counter adds
 // live views on top, so a post that had been read 254 times carries on from 254
@@ -23,3 +27,24 @@ export const seedViews: Record<string, number> = {
 };
 
 export const seedFor = (slug: string): number => seedViews[slug] ?? 0;
+
+/**
+ * Live view counts for a list of posts, keyed by slug.
+ *
+ * Starts from the seeds so cards render a real number on first paint rather
+ * than flashing zero, then swaps in the live totals once /api/views answers.
+ * If that call fails the seeds simply stay, which is the right failure: an
+ * article that was read 907 times should never advertise itself as unread.
+ */
+export const useViewCounts = (): Record<string, number> => {
+  const [counts, setCounts] = React.useState<Record<string, number>>(seedViews);
+  React.useEffect(() => {
+    let alive = true;
+    fetch('/api/views')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => { if (alive && d && typeof d === 'object') setCounts({ ...seedViews, ...d }); })
+      .catch(() => {});
+    return () => { alive = false; };
+  }, []);
+  return counts;
+};
