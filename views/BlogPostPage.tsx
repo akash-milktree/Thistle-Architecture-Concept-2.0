@@ -13,7 +13,16 @@ import { motion } from 'framer-motion';
 const slugify = (s: string) =>
   s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
-// Renders inline [text](/path) links inside a content string.
+const linkClass = "text-thistle-green underline underline-offset-2 hover:text-thistle-black transition-colors";
+
+// Renders inline [text](/path) links inside a content string. Internal paths go
+// through Link; anything absolute is an outbound citation from the original
+// article and opens in a new tab.
+//
+// Outbound links are nofollow on purpose. The articles cite suppliers and
+// builders alongside genuine sources like NACSBA, and a fair number of those
+// suppliers compete with Thistle. Keeping the citations preserves the piece as
+// it was written; nofollow stops it handing them ranking value.
 const renderInline = (text: string): React.ReactNode[] => {
   const parts: React.ReactNode[] = [];
   const re = /\[([^\]]+)\]\(([^)]+)\)/g;
@@ -21,10 +30,17 @@ const renderInline = (text: string): React.ReactNode[] => {
   let m: RegExpExecArray | null;
   while ((m = re.exec(text)) !== null) {
     if (m.index > last) parts.push(text.slice(last, m.index));
+    const [, label, href] = m;
     parts.push(
-      <Link key={m.index} href={m[2]} className="text-thistle-green underline underline-offset-2 hover:text-thistle-black transition-colors">
-        {m[1]}
-      </Link>
+      href.startsWith('http') ? (
+        <a key={m.index} href={href} target="_blank" rel="noopener noreferrer nofollow" className={linkClass}>
+          {label}
+        </a>
+      ) : (
+        <Link key={m.index} href={href} className={linkClass}>
+          {label}
+        </Link>
+      )
     );
     last = m.index + m[0].length;
   }
@@ -36,12 +52,16 @@ type Block =
   | { kind: 'h2'; text: string }
   | { kind: 'h3'; text: string }
   | { kind: 'ul'; items: string[] }
+  | { kind: 'img'; src: string; alt: string }
   | { kind: 'p'; text: string };
 
 const toBlocks = (content: string[]): Block[] => {
   const blocks: Block[] = [];
   for (const raw of content) {
-    if (raw.startsWith('## ')) blocks.push({ kind: 'h2', text: raw.slice(3) });
+    // ![alt](/path) is a body image, restored from the original article.
+    const img = /^!\[([^\]]*)\]\(([^)]+)\)$/.exec(raw);
+    if (img) blocks.push({ kind: 'img', src: img[2], alt: img[1] });
+    else if (raw.startsWith('## ')) blocks.push({ kind: 'h2', text: raw.slice(3) });
     else if (raw.startsWith('### ')) blocks.push({ kind: 'h3', text: raw.slice(4) });
     else if (raw.startsWith('- ')) {
       const prev = blocks[blocks.length - 1];
@@ -167,6 +187,18 @@ export const BlogPostPage: React.FC = () => {
                     <li key={j} className="text-fluid-sm text-thistle-black/60 leading-[1.8]">{renderInline(item)}</li>
                   ))}
                 </ul>
+              ) : block.kind === 'img' ? (
+                // Body image from the original article, at its original position.
+                <figure className="my-fl-6 -mx-fl-2 sm:mx-0">
+                  <Image
+                    src={block.src}
+                    alt={block.alt}
+                    width={1200}
+                    height={800}
+                    sizes="(max-width: 768px) 100vw, 720px"
+                    className="w-full h-auto rounded-xl"
+                  />
+                </figure>
               ) : (
                 <p className="text-fluid-sm text-thistle-black/60 leading-[1.8] mb-fl-4">{renderInline(block.text)}</p>
               )}
