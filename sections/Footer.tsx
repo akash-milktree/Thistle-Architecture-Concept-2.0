@@ -57,8 +57,10 @@ export const Footer: React.FC = () => {
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
+            {/* Ed's CTA copy, from the Feasibility Example Page template. It is
+                written for this band, which every page ends with. */}
             <p className="text-fluid-sm text-white/85 leading-relaxed max-w-md mx-auto mb-fl-7">
-              Submit your property details and get a structured feasibility report with a clear Go or No-Go recommendation in five days.
+              Understand your property's design potential, planning position and principal risks before committing further time or money.
             </p>
           </Reveal>
           <Reveal delay={0.3}>
