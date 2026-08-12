@@ -26,14 +26,6 @@ export interface BlogPost {
   };
 }
 
-import { post as officeToResidentialGuide } from './blog/office-to-residential-conversion-guide';
-import { post as classMaExplained } from './blog/class-ma-explained';
-import { post as commercialConversionCosts } from './blog/commercial-conversion-costs';
-import { post as whatIsAFeasibilityStudy } from './blog/what-is-a-feasibility-study';
-import { post as hmoFeasibility } from './blog/hmo-feasibility';
-import { post as howToCalculateGdv } from './blog/how-to-calculate-gdv';
-import { post as articleFourDirections } from './blog/article-4-directions';
-import { post as whyConversionSchemesGetRefused } from './blog/why-conversion-schemes-get-refused';
 // Migrated from the live thistlearchitecture.co.uk journal, original slugs kept.
 import { post as classMaPriorApproval } from './blog/class-ma-prior-approval-what-you-need-to-know';
 import { post as buyingVsBuilding } from './blog/buying-vs-building-a-home-in-the-uk';
@@ -141,14 +133,6 @@ const originalPosts: BlogPost[] = [
 ];
 
 const allPosts: BlogPost[] = [
-  officeToResidentialGuide,
-  classMaExplained,
-  commercialConversionCosts,
-  whatIsAFeasibilityStudy,
-  hmoFeasibility,
-  howToCalculateGdv,
-  articleFourDirections,
-  whyConversionSchemesGetRefused,
   classMaPriorApproval,
   buyingVsBuilding,
   ecoHome,
