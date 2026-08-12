@@ -69,7 +69,8 @@ that relevant".
   - Space Standards document (council space standards)
   - Risk register (exists inside the shared feasibility examples)
 - [ ] Use **155 Windmill Lane** as the example project for those images.
-- [ ] **Bring back the diagrams.** Ed prefers the earlier generated HTML/SVG
+- [x] **Bring back the diagrams.** Done 11 Aug. Restored from the commit that
+  removed them, in the existing card grid. Ed prefers the earlier HTML/SVG
   diagrams to the current photographic layer images, which he called "ugly
   because they're not very coordinated". This reverses the round 4 decision that
   replaced diagrams with photography.
@@ -99,12 +100,23 @@ experience. Looks after the finance and admin for the team.
 
 ## Blog
 
-- [ ] **Blog images are wrong.** Ed has never seen them; they were generated
+- [x] **Blog images are wrong.** Done 12 Aug. The Wix site is archived and its
+  images are still on Wix's CDN, so the originals were recovered: 13 hero
+  images plus 46 body images, with 100 internal links, 85 outbound citations
+  and the original meta descriptions. Was: generated
   rather than taken from the original site. He wants the original images for SEO
   consistency. **Problem: the Wix site is gone**, so these need recovering from
   the Wix archive Ed asked to keep, or from the Wayback Machine.
-- [ ] Make blog posts **interactive like the current site**, and **show view
-  counts**.
+- [~] Make blog posts **interactive like the current site**, and **show view
+  counts**. View counts done 12 Aug: each article resumes from its Wix number
+  (SIPs 907, masonry 254) and counts up from there, shown on the article and on
+  every card. top-10-considerations starts at 0, no snapshot ever rendered its
+  counter. "Interactive" is still open and needs Ed to say what he means.
+
+  Blog also cut to the 13 posts that were actually on Wix, and two SEO faults
+  fixed while there: every article was serving the title "Blog Post" because
+  params was read synchronously in Next 16, and unknown slugs answered 200 with
+  a not-found body instead of a real 404.
 
 ## New functionality
 
