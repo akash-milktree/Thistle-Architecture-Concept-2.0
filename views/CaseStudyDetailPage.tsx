@@ -5,6 +5,8 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Reveal } from '../components/animations/Reveal';
+import { DocumentCards } from '../components/case-study/DocumentCards';
+import { SketchViewer } from '../components/case-study/SketchViewer';
 import { ArrowUpRight, ArrowLeft, CheckCircle2, HardHat } from 'lucide-react';
 import { caseStudies } from '../data/caseStudiesData';
 
@@ -153,7 +155,115 @@ export const CaseStudyDetailPage: React.FC = () => {
         </div>
       </section>
 
-      {narrative.length > 0 ? (
+      {/* Ed's feasibility template. Only studies carrying `feasibility` data use
+          it, so the rest keep the older layout until they are written up. */}
+      {caseStudy.feasibility && (
+        <>
+          {/* 2. Key project information */}
+          <section className="bg-thistle-white pt-fl-section-sm px-fl-margin">
+            <div className="max-w-[1000px] mx-auto">
+              <Reveal>
+                <div className="rounded-2xl border border-thistle-black/[0.08] bg-white overflow-hidden">
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 divide-x divide-y lg:divide-y-0 divide-thistle-black/[0.06]">
+                    {caseStudy.feasibility.keyInfo.map((f) => (
+                      <div key={f.label} className="p-fl-4">
+                        <span className="block text-[10px] uppercase tracking-widest text-thistle-black/35 font-semibold mb-fl-2">{f.label}</span>
+                        <span className="block text-fluid-sm font-medium text-thistle-black leading-snug">{f.value}</span>
+                      </div>
+                    ))}
+                  </div>
+                  {caseStudy.feasibility.indicativeValue && (
+                    <div className="border-t border-thistle-black/[0.06] px-fl-4 py-fl-3 bg-thistle-white/40">
+                      <span className="text-fluid-sm text-thistle-black/60">
+                        Indicative end value: <span className="text-thistle-black font-medium">{caseStudy.feasibility.indicativeValue}</span>
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </Reveal>
+            </div>
+          </section>
+
+          {/* 3. Feasibility in brief */}
+          <section className="bg-thistle-white py-fl-section px-fl-margin">
+            <div className="max-w-[1000px] mx-auto">
+              <Reveal>
+                <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-6">Feasibility In Brief</p>
+              </Reveal>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-fl-6">
+                {[
+                  { h: 'The Brief', b: caseStudy.feasibility.brief },
+                  { h: 'What We Found', b: caseStudy.feasibility.found },
+                  { h: 'Our Recommendation', b: caseStudy.feasibility.recommendation },
+                ].map((c, i) => (
+                  <Reveal key={c.h} delay={i * 0.06}>
+                    <h2 className="text-fluid-h6 font-medium tracking-tight text-thistle-black mb-fl-3">{c.h}</h2>
+                    <p className="text-fluid-sm text-thistle-black/70 leading-relaxed">{c.b}</p>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* 4. The sketch */}
+          {caseStudy.galleryImages.length > 0 && (
+            <section className="bg-white py-fl-section px-fl-margin">
+              <div className="max-w-[1000px] mx-auto">
+                <Reveal>
+                  <h2 className="text-fluid-h4 font-medium tracking-tight text-thistle-black mb-fl-6">The Proposed Layout</h2>
+                </Reveal>
+                <Reveal>
+                  <SketchViewer
+                    images={caseStudy.galleryImages}
+                    alt={`Feasibility sketch for ${caseStudy.title}`}
+                    caption={caseStudy.feasibility.sketchCaption}
+                  />
+                </Reveal>
+              </div>
+            </section>
+          )}
+
+          {/* 5. What the client received */}
+          <section className="bg-thistle-white py-fl-section px-fl-margin">
+            <div className="max-w-[1000px] mx-auto">
+              <Reveal>
+                <h2 className="text-fluid-h4 font-medium tracking-tight text-thistle-black mb-fl-6">What The Client Received</h2>
+              </Reveal>
+              <Reveal>
+                <DocumentCards documents={caseStudy.feasibility.documents} guidance={caseStudy.feasibility.guidance} />
+              </Reveal>
+            </div>
+          </section>
+
+          {/* 6. The decision */}
+          <section className="bg-white py-fl-section px-fl-margin">
+            <div className="max-w-[1000px] mx-auto">
+              <Reveal>
+                <h2 className="text-fluid-h4 font-medium tracking-tight text-thistle-black mb-fl-4">The Decision</h2>
+              </Reveal>
+              <Reveal>
+                <p className="text-fluid-base text-thistle-black/75 leading-relaxed max-w-2xl mb-fl-7">{caseStudy.feasibility.decision}</p>
+              </Reveal>
+              <Reveal>
+                <div className="flex flex-wrap items-center gap-fl-2">
+                  {caseStudy.feasibility.roadmap.map((step, i) => (
+                    <React.Fragment key={step}>
+                      <span className="inline-flex items-center rounded-full border border-thistle-black/[0.08] bg-thistle-white px-4 py-2 text-fluid-sm text-thistle-black/75">
+                        {step}
+                      </span>
+                      {i < caseStudy.feasibility!.roadmap.length - 1 && (
+                        <span className="text-thistle-black/25" aria-hidden="true">&rarr;</span>
+                      )}
+                    </React.Fragment>
+                  ))}
+                </div>
+              </Reveal>
+            </div>
+          </section>
+        </>
+      )}
+
+      {!caseStudy.feasibility && narrative.length > 0 ? (
         /* Numbered narrative at reading size */
         <section className="bg-thistle-white py-fl-section px-fl-margin">
           <div className="max-w-[820px] mx-auto space-y-fl-8">
@@ -200,7 +310,7 @@ export const CaseStudyDetailPage: React.FC = () => {
       )}
 
       {/* Drawings, full width and never cropped */}
-      {caseStudy.galleryImages.length > 0 && (
+      {!caseStudy.feasibility && caseStudy.galleryImages.length > 0 && (
         <section className="bg-white py-fl-section px-fl-margin">
           {/* Drawings need full width to stay readable, so they stay stacked in
               a narrow column. Photography does not, and a long set of photos

@@ -29,6 +29,30 @@ export interface CaseStudy {
   /** Completed-project entries only. Defaults to Complete when unset. */
   status?: "Complete" | "On site";
   /**
+   * Feasibility studies only. When present the detail page renders Ed's
+   * template (docs/2026-08-12-drive-tasks.md item 2) instead of the older
+   * challenge/approach/outcome layout, so studies can move over one at a time.
+   */
+  feasibility?: {
+    /** The six-field table under the hero. */
+    keyInfo: { label: string; value: string }[];
+    /** Optional seventh, kept separate because it is not always given. */
+    indicativeValue?: string;
+    brief: string;
+    found: string;
+    recommendation: string;
+    /** Caption under the sketch. */
+    sketchCaption: string;
+    /** What the client received. `file` stays undefined until Ed clears a
+     *  document for publication: these are real reports naming real clients. */
+    documents: { title: string; pages: number; summary: string; file?: string }[];
+    /** Named guidance the study worked against, shown as a small link. */
+    guidance?: { label: string; href?: string };
+    decision: string;
+    roadmap: string[];
+  };
+
+  /**
    * Which conversion-type tabs a completed project appears under. An array
    * because Ed asked for projects to show under more than one where they fit.
    * Left unset where the project genuinely is not one of the four; those still
@@ -253,6 +277,52 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "gyfford-walk-cheshunt",
+    feasibility: {
+      // Figures taken from the project's own Feasibility Overview, July 2026.
+      // Ed's template document uses a worked example that does not match this
+      // site: it describes a detached three-bed with a garage and Flood Zone 3,
+      // where 2 Gyfford Walk is a two-bed semi in Flood Zone 1 with the loft as
+      // the variable. The template's structure is followed; its figures are not.
+      keyInfo: [
+        { label: "Bedrooms", value: "6, all en suite" },
+        { label: "Room sizes", value: "9.7 to 14 sqm" },
+        { label: "Communal space", value: "17 sqm" },
+        { label: "Planning route", value: "Permitted development, C4" },
+        { label: "Key risk", value: "Loft headroom" },
+        { label: "Date", value: "July 2026" },
+      ],
+      brief: "The client already ran an HMO nearby and wanted the same product here. Could a two-bed semi take six en-suite bedrooms while staying inside Use Class C4, where the change of use is permitted development and needs no planning permission at all?",
+      found: "Six en-suite bedrooms work using the existing footprint and the rear extension already built under permitted development, with the boiler and services moved to the ground floor utility room to free the loft. The loft is the variable: only floor area with headroom above 1.5 metres counts, and it had not been measured, so a five-bed fallback was drawn alongside the six-bed scheme.",
+      recommendation: "Proceed as a six-bedroom C4 HMO under permitted development. Measure the loft before fixing the design, and treat the roof works as a separate householder application if the hip-to-gable and rear dormer together exceed the 50 cubic metre allowance.",
+      sketchCaption: "Option A takes six en-suite bedrooms across three floors with loft rooms of 12.3 and 9.7 sqm. Option B takes five, with a single 22 sqm loft bedroom, if the headroom falls short.",
+      documents: [
+        {
+          title: "Feasibility Overview",
+          pages: 5,
+          summary: "The proposed design, planning route, key constraints, commercial position and recommended next steps.",
+        },
+        {
+          title: "Space Standards",
+          pages: 3,
+          summary: "Bedroom, amenity, ceiling height and facility requirements checked against the design.",
+        },
+        {
+          title: "HMO Standards Review",
+          pages: 37,
+          summary: "The borough's HMO amenity guidance, reviewed against every room in the scheme.",
+        },
+      ],
+      guidance: { label: "Official guidance reviewed: Broxbourne HMO Amenity Guidance" },
+      decision: "The feasibility confirmed a compliant six-bedroom layout on a route that needs no planning permission, and identified the unmeasured loft as the one thing that decides between six bedrooms and five.",
+      roadmap: [
+        "Measured survey",
+        "Confirm loft headroom",
+        "Roof works, if needed",
+        "Technical design",
+        "Construction",
+        "C4 lawful development certificate",
+      ],
+    },
     kind: "feasibility",
     title: "Two-Bed Semi To Six-Bed HMO",
     location: "Cheshunt, Hertfordshire",
