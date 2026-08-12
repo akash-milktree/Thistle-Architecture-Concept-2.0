@@ -45,7 +45,7 @@ export const CaseStudyDetailPage: React.FC = () => {
   }
 
   const isProject = caseStudy.kind === 'project';
-  const backHref = isProject ? '/case-studies?view=projects' : '/case-studies';
+  const backHref = isProject ? '/case-studies/completed-projects' : '/case-studies/feasibility-studies';
   const backLabel = isProject ? 'All Completed Projects' : 'All Feasibility Studies';
 
   // Next link cycles within the same category, so a project never hands

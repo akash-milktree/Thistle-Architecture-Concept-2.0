@@ -1,5 +1,12 @@
 export type CaseStudyKind = 'feasibility' | 'project';
 
+/** The four conversion types the site sells, matching data/conversionsData.ts. */
+export type ConversionType =
+  | 'commercial-to-residential'
+  | 'hmo'
+  | 'mixed-use-commercial'
+  | 'high-end-residential';
+
 export interface CaseStudy {
   slug: string;
   /** 'feasibility' = a feasibility study; 'project' = a completed build. */
@@ -21,6 +28,13 @@ export interface CaseStudy {
   recommendation?: "Go" | "No-Go" | "Options Tested";
   /** Completed-project entries only. Defaults to Complete when unset. */
   status?: "Complete" | "On site";
+  /**
+   * Which conversion-type tabs a completed project appears under. An array
+   * because Ed asked for projects to show under more than one where they fit.
+   * Left unset where the project genuinely is not one of the four; those still
+   * appear under All, rather than being filed somewhere wrong.
+   */
+  conversionTypes?: ConversionType[];
   /**
    * Set only where the work was delivered by another Thistle Group practice
    * rather than by Thistle Architecture. Publishing group work is fine, but the
@@ -323,6 +337,7 @@ export const caseStudies: CaseStudy[] = [
   // ---------------------------------------------------------------------
   {
     slug: "beauchamp-house",
+    conversionTypes: ['commercial-to-residential'],
     kind: "project",
     title: "Beauchamp House",
     location: "Royal Leamington Spa, Warwickshire",
@@ -352,6 +367,7 @@ export const caseStudies: CaseStudy[] = [
     // incollective.works, the group's parent company (confirmed by Akash
     // 2026-07-17), so it is group work and fine to publish here.
     slug: "bereweeke-avenue",
+    conversionTypes: ['high-end-residential'],
     kind: "project",
     title: "1930s House, Extended And Remade",
     location: "Winchester, Hampshire",
@@ -377,6 +393,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "monument-house",
+    conversionTypes: ['commercial-to-residential'],
     kind: "project",
     title: "Monument House",
     location: "Winchester, Hampshire",
@@ -427,6 +444,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "162-millbrook",
+    conversionTypes: ['hmo'],
     kind: "project",
     title: "162 Millbrook Road",
     location: "Southampton, Hampshire",
@@ -470,6 +488,7 @@ export const caseStudies: CaseStudy[] = [
   // ---------------------------------------------------------------------
   {
     slug: "bishopstoke-road",
+    conversionTypes: ['hmo'],
     kind: "project",
     title: "Bishopstoke Road",
     location: "Eastleigh, Hampshire",
@@ -504,6 +523,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "eastleigh-hmo",
+    conversionTypes: ['hmo'],
     kind: "project",
     title: "Eastleigh HMO",
     location: "Eastleigh, Hampshire",
@@ -543,6 +563,7 @@ export const caseStudies: CaseStudy[] = [
     // fact, so this publishes without a town rather than with a wrong one.
     // Top item on the confirmations list.
     slug: "81-the-crescent",
+    conversionTypes: ['hmo'],
     kind: "project",
     title: "81 The Crescent",
     location: "England",
@@ -606,6 +627,7 @@ export const caseStudies: CaseStudy[] = [
   // ---------------------------------------------------------------------
   {
     slug: "derby-road",
+    conversionTypes: ['hmo'],
     kind: "project",
     title: "Derby Road",
     location: "South Coast, England",
@@ -636,6 +658,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "george-street-eastleigh",
+    conversionTypes: ['hmo'],
     kind: "project",
     title: "George Street",
     location: "Eastleigh, Hampshire",
@@ -671,6 +694,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "queens-road",
+    conversionTypes: ['hmo'],
     kind: "project",
     title: "Queens Road",
     location: "South Coast, England",
@@ -698,6 +722,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "shadwell-road",
+    conversionTypes: ['hmo'],
     kind: "project",
     title: "Shadwell Road",
     location: "Portsmouth, Hampshire",
@@ -726,6 +751,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "burlington-road",
+    conversionTypes: ['hmo'],
     kind: "project",
     title: "Burlington Road",
     location: "Southampton, Hampshire",
@@ -756,6 +782,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "project-prince",
+    conversionTypes: ['hmo'],
     kind: "project",
     title: "Project Prince",
     location: "Southend-on-Sea, Essex",
@@ -790,6 +817,7 @@ export const caseStudies: CaseStudy[] = [
     // Pizza Hut next door) and its interior shots match this gallery frame for
     // frame. HMO Designers' own record had no street, only "South Sea".
     slug: "southsea-co-living",
+    conversionTypes: ['hmo'],
     kind: "project",
     title: "Southsea Co-Living",
     location: "Festing Road, Southsea, Portsmouth",

@@ -11,7 +11,7 @@ import { ArrowUpRight } from 'lucide-react';
 
 const productLinks = [
   { label: "Feasibility Package", to: "/feasibility-package" },
-  { label: "Case Studies", to: "/case-studies" },
+  { label: "Case Studies", to: "/case-studies/feasibility-studies" },
   { label: "Class MA Checker", to: "/tools/class-ma-checker" },
   { label: "GDV Calculator", to: "/tools/gdv-calculator" },
 ];

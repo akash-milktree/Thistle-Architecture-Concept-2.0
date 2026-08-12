@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/case-studies/forest-home',
-        destination: '/case-studies?view=projects',
+        destination: '/case-studies/completed-projects',
         permanent: true,
       },
       // Old live-site journal URLs (root-level on Wix) map to /blog.
@@ -30,7 +30,7 @@ const nextConfig: NextConfig = {
       // any inbound link, bookmark or search result pointing at them was dead.
       {
         source: '/works',
-        destination: '/case-studies?view=projects',
+        destination: '/case-studies/completed-projects',
         permanent: true,
       },
       {
