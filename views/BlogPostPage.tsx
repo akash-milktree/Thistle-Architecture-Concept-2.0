@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -8,6 +8,7 @@ import { Reveal } from '../components/animations/Reveal';
 import { Button } from '../components/ui/Button';
 import { ArrowUpRight, ArrowLeft } from 'lucide-react';
 import { blogPosts } from '../data/blogData';
+import { seedFor } from '../data/blogViews';
 import { motion } from 'framer-motion';
 
 const slugify = (s: string) =>
@@ -89,6 +90,26 @@ export const BlogPostPage: React.FC = () => {
   const router = useRouter();
   const post = blogPosts.find(p => p.slug === slug);
 
+  // Views carry on from what the article had on the old site. The seed renders
+  // immediately so the number is never blank or wrong on first paint; the live
+  // total replaces it once the counter responds.
+  // Both hooks sit above the not-found return: React requires the same hooks to
+  // run on every render, and a missing post must not change how many are called.
+  const [views, setViews] = useState(() => seedFor(slug));
+  useEffect(() => {
+    if (!slug || !post) return;
+    let alive = true;
+    fetch('/api/views', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug }),
+    })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => { if (alive && typeof d?.views === 'number') setViews(d.views); })
+      .catch(() => {});
+    return () => { alive = false; };
+  }, [slug, post]);
+
   if (!post) {
     return (
       <section className="min-h-[60vh] flex items-center justify-center px-6">
@@ -123,6 +144,7 @@ export const BlogPostPage: React.FC = () => {
             <div className="flex items-center gap-fl-3 mb-fl-4">
               <span className="px-3 py-1 rounded-full bg-thistle-green/10 text-[10px] uppercase tracking-widest text-thistle-green font-semibold">{post.category}</span>
               <span className="text-xs text-thistle-black/30">{post.readTime}</span>
+              <span className="text-xs text-thistle-black/30">{views.toLocaleString('en-GB')} views</span>
             </div>
           </Reveal>
 
