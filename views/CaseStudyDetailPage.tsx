@@ -163,46 +163,51 @@ export const CaseStudyDetailPage: React.FC = () => {
           it, so the rest keep the older layout until they are written up. */}
       {caseStudy.feasibility && (
         <>
-          {/* 2. Key project information */}
-          <section className="bg-thistle-white pt-fl-section-sm px-fl-margin">
-            <div className="max-w-[1000px] mx-auto">
-              <Reveal>
-                <div className="rounded-2xl border border-thistle-black/[0.08] bg-white overflow-hidden">
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 divide-x divide-y lg:divide-y-0 divide-thistle-black/[0.06]">
-                    {caseStudy.feasibility.keyInfo.map((f) => (
-                      <div key={f.label} className="p-fl-4">
-                        <span className="block text-[10px] uppercase tracking-widest text-thistle-black/35 font-semibold mb-fl-2">{f.label}</span>
-                        <span className="block text-fluid-sm font-medium text-thistle-black leading-snug">{f.value}</span>
-                      </div>
-                    ))}
-                  </div>
-                  {caseStudy.feasibility.indicativeValue && (
-                    <div className="border-t border-thistle-black/[0.06] px-fl-4 py-fl-3 bg-thistle-white/40">
-                      <span className="text-fluid-sm text-thistle-black/60">
-                        Indicative end value: <span className="text-thistle-black font-medium">{caseStudy.feasibility.indicativeValue}</span>
-                      </span>
-                    </div>
-                  )}
+          {/* 2. Key project information. Full-bleed band with dividers, the
+              same treatment the fact band uses, rather than a contained card:
+              it reads as the page's headline numbers that way. */}
+          <section className="bg-white border-y border-thistle-black/[0.06] px-fl-margin">
+            <div className="max-w-[1360px] mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+              {caseStudy.feasibility.keyInfo.map((f, i) => (
+                <div key={f.label} className={`py-fl-5 px-fl-4 ${i > 0 ? 'sm:border-l sm:border-thistle-black/[0.05]' : ''}`}>
+                  <span className="block text-[10px] uppercase tracking-widest text-thistle-black/40 font-semibold mb-1.5">{f.label}</span>
+                  <span className="block text-fluid-h6 font-medium tracking-tight text-thistle-black leading-snug">{f.value}</span>
                 </div>
-              </Reveal>
+              ))}
             </div>
           </section>
+          {caseStudy.feasibility.indicativeValue && (
+            <section className="bg-white px-fl-margin pb-fl-5 border-b border-thistle-black/[0.06]">
+              <div className="max-w-[1360px] mx-auto px-fl-4">
+                <span className="text-fluid-sm text-thistle-black/55">
+                  Indicative end value: <span className="text-thistle-black font-medium">{caseStudy.feasibility.indicativeValue}</span>
+                </span>
+              </div>
+            </section>
+          )}
 
-          {/* 3. Feasibility in brief */}
+          {/* 3. Feasibility in brief. Numbered rows in the reading column,
+              not three columns: these run to a paragraph each, and at a third
+              of the width they set as narrow ragged blocks. */}
           <section className="bg-thistle-white py-fl-section px-fl-margin">
-            <div className="max-w-[1000px] mx-auto">
+            <div className="max-w-[820px] mx-auto">
               <Reveal>
-                <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-6">Feasibility In Brief</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-7">Feasibility In Brief</p>
               </Reveal>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-fl-6">
+              <div className="space-y-fl-8">
                 {[
-                  { h: 'The Brief', b: caseStudy.feasibility.brief },
-                  { h: 'What We Found', b: caseStudy.feasibility.found },
-                  { h: 'Our Recommendation', b: caseStudy.feasibility.recommendation },
+                  { num: '01', h: 'The Brief', b: caseStudy.feasibility.brief },
+                  { num: '02', h: 'What We Found', b: caseStudy.feasibility.found },
+                  { num: '03', h: 'Our Recommendation', b: caseStudy.feasibility.recommendation },
                 ].map((c, i) => (
-                  <Reveal key={c.h} delay={i * 0.06}>
-                    <h2 className="text-fluid-h6 font-medium tracking-tight text-thistle-black mb-fl-3">{c.h}</h2>
-                    <p className="text-fluid-sm text-thistle-black/70 leading-relaxed">{c.b}</p>
+                  <Reveal key={c.h} delay={i * 0.05}>
+                    <div>
+                      <div className="flex items-baseline gap-fl-3 mb-fl-4">
+                        <span className="text-sm font-semibold text-thistle-green tabular-nums">{c.num}</span>
+                        <h2 className="text-fluid-h4 font-medium tracking-tight text-thistle-black">{c.h}</h2>
+                      </div>
+                      <p className="text-fluid-base text-thistle-black/75 leading-relaxed">{c.b}</p>
+                    </div>
                   </Reveal>
                 ))}
               </div>
@@ -239,35 +244,44 @@ export const CaseStudyDetailPage: React.FC = () => {
             </div>
           </section>
 
-          {/* 6. The decision */}
+          {/* 6. The decision. Standfirst and roadmap label are Ed's words from
+              the template; both were dropped on the first pass.
+              The roadmap is a numbered timeline rather than the pills it was:
+              pills wrapped mid-sequence and read as equal-weight tags, which
+              loses the one thing a roadmap has to show, the order. */}
           <section className="bg-white py-fl-section px-fl-margin">
             <div className="max-w-[1000px] mx-auto">
               <Reveal>
-                <h2 className="text-fluid-h4 font-medium tracking-tight text-thistle-black mb-fl-4">The Decision</h2>
+                <h2 className="text-fluid-h4 font-medium tracking-tight text-thistle-black mb-fl-2">The Decision</h2>
+                <p className="text-fluid-base text-thistle-green mb-fl-5">A clear route forward before purchase.</p>
               </Reveal>
               <Reveal>
-                <p className="text-fluid-base text-thistle-black/75 leading-relaxed max-w-2xl mb-fl-7">{caseStudy.feasibility.decision}</p>
+                <p className="text-fluid-base text-thistle-black/75 leading-relaxed max-w-2xl mb-fl-8">{caseStudy.feasibility.decision}</p>
               </Reveal>
               <Reveal>
-                <div className="flex flex-wrap items-center gap-fl-2">
+                <p className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-5">Recommended roadmap</p>
+              </Reveal>
+              <Reveal>
+                <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-fl-5 gap-y-fl-5">
                   {caseStudy.feasibility.roadmap.map((step, i) => (
-                    <React.Fragment key={step}>
-                      <span className="inline-flex items-center rounded-full border border-thistle-black/[0.08] bg-thistle-white px-4 py-2 text-fluid-sm text-thistle-black/75">
-                        {step}
+                    <li key={step} className="relative flex items-start gap-fl-3 pt-fl-4 border-t border-thistle-black/[0.08]">
+                      <span className="text-sm font-semibold text-thistle-green tabular-nums shrink-0">
+                        {String(i + 1).padStart(2, '0')}
                       </span>
-                      {i < caseStudy.feasibility!.roadmap.length - 1 && (
-                        <span className="text-thistle-black/25" aria-hidden="true">&rarr;</span>
-                      )}
-                    </React.Fragment>
+                      <span className="text-fluid-sm text-thistle-black/75 leading-snug">{step}</span>
+                    </li>
                   ))}
-                </div>
+                </ol>
               </Reveal>
             </div>
           </section>
         </>
       )}
 
-      {!caseStudy.feasibility && narrative.length > 0 ? (
+      {/* Narrative, or the in-preparation panel when there is none. Template
+          studies render neither: they carry Feasibility in Brief instead, and
+          the ternary was falling through to the placeholder for them. */}
+      {!caseStudy.feasibility && (narrative.length > 0 ? (
         /* Numbered narrative at reading size */
         <section className="bg-thistle-white py-fl-section px-fl-margin">
           <div className="max-w-[820px] mx-auto space-y-fl-8">
@@ -300,10 +314,10 @@ export const CaseStudyDetailPage: React.FC = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-fl-4">
                   <Link
-                    href="/case-studies"
+                    href={backHref}
                     className="inline-flex items-center gap-1.5 text-sm font-medium text-thistle-green hover:text-thistle-black transition-colors"
                   >
-                    Browse feasibility studies
+                    {isProject ? 'Browse completed projects' : 'Browse feasibility studies'}
                     <ArrowUpRight size={15} />
                   </Link>
                 </div>
@@ -311,7 +325,7 @@ export const CaseStudyDetailPage: React.FC = () => {
             </Reveal>
           </div>
         </section>
-      )}
+      ))}
 
       {/* Drawings, full width and never cropped */}
       {!caseStudy.feasibility && caseStudy.galleryImages.length > 0 && (
