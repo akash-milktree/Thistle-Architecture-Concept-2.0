@@ -276,6 +276,78 @@ export const caseStudies: CaseStudy[] = [
     unitsAfter: "7-bed HMO",
   },
   {
+    // 155 Windmill Lane, Cheshunt. This is the study Ed wrote his
+    // "Feasibility Example Page" template around: every figure in his key
+    // information table matches this project's Feasibility Overview (July 2026),
+    // and his three document cards match its actual page counts.
+    // The client name, full address and project reference are deliberately not
+    // published; the location is given as Ed gives it in the template.
+    slug: "windmill-lane-cheshunt",
+    kind: "feasibility",
+    title: "Three-Bed House To Six-Bed HMO",
+    location: "Cheshunt, Hertfordshire",
+    image: "/images/projects/windmill-lane-hero.jpg",
+    tag: "HMO",
+    stats: [
+      { label: "Bedrooms, all en suite", value: "6" },
+      { label: "Communal space", value: "26 sqm" },
+      { label: "Planning permission", value: "Householder only" },
+    ],
+    desc: "Pre-purchase feasibility testing the conversion of a detached family home into a six-bedroom, all en-suite HMO, with the garage brought into the house.",
+    galleryImages: [
+      "/images/projects/windmill-lane-sketch-1.png",
+    ],
+    buildingType: "Detached three-bed house (C3)",
+    floorArea: "89.5 sqm existing",
+    planningRoute: "Householder application, then C4 lawful development certificate",
+    completionDate: "July 2026",
+    recommendation: "Go",
+    unitsBefore: "3-bed house",
+    unitsAfter: "6-bed HMO",
+    feasibility: {
+      keyInfo: [
+        { label: "Bedrooms", value: "6, all en suite" },
+        { label: "Room sizes", value: "9.5 to 12.5 sqm" },
+        { label: "Communal space", value: "26 sqm" },
+        { label: "Planning route", value: "Householder application, then C4 LDC" },
+        { label: "Key risk", value: "Flood Zone 3" },
+        { label: "Date", value: "July 2026" },
+      ],
+      indicativeValue: "£600,000 to £680,000",
+      brief: "Could a detached three-bedroom house be converted into a compliant and commercially viable six-bedroom HMO before the client committed to buying it?",
+      found: "Six en-suite bedrooms are achievable without the loft, which at roughly 1.8 metres to the ridge cannot meet the 2.13 metre standard and is given over to plant and storage instead. The garage is brought into the house through a new full-width rear extension, creating a 26 sqm kitchen and dining space and an 11.7 sqm ground floor bedroom. Every room clears the borough's 9 sqm minimum.",
+      recommendation: "Proceed at six bedrooms in Use Class C4. A householder application covers the extension and the garage connection, and a lawful development certificate confirms the change of use once the works are done. Appoint a flood risk assessor before the application. A seventh bedroom would make the use sui generis and require full planning permission, so the value here lies in holding it at six.",
+      sketchCaption: "Six all-en-suite bedrooms across two floors, with the existing garage brought in as Bed 3 and a new 26 sqm kitchen and dining space opening onto the garden.",
+      documents: [
+        {
+          title: "Feasibility Overview",
+          pages: 5,
+          summary: "The proposed design, planning route, key constraints, commercial position and recommended next steps.",
+        },
+        {
+          title: "Planning Research & Risk Analysis",
+          pages: 10,
+          summary: "Site-specific policy research, planning precedents, appeal decisions and a clear risk dashboard.",
+        },
+        {
+          title: "HMO Standards Review",
+          pages: 3,
+          summary: "The applicable bedroom, amenity, ceiling-height, kitchen and facility requirements checked against the design.",
+        },
+      ],
+      guidance: { label: "Official guidance reviewed: Broxbourne HMO Amenity Guidance" },
+      decision: "The feasibility confirmed a compliant six-bedroom layout and a supportable planning strategy, with direct local precedent for the garage conversion and an appeal decision a kilometre away. It also identified flood risk as the one input that cannot be settled before a specialist reports.",
+      roadmap: [
+        "Measured survey",
+        "Flood risk assessment",
+        "Householder application",
+        "Technical design",
+        "Construction",
+        "C4 lawful development certificate",
+      ],
+    },
+  },
+  {
     slug: "gyfford-walk-cheshunt",
     feasibility: {
       // Figures taken from the project's own Feasibility Overview, July 2026.

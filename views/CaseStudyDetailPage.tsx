@@ -140,7 +140,10 @@ export const CaseStudyDetailPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Fact band */}
+      {/* Fact band. Hidden on template studies: the key information table below
+          covers the same ground, and two rows of facts a few hundred pixels
+          apart repeated the communal space and the planning route verbatim. */}
+      {!caseStudy.feasibility && (
       <section className="bg-white border-y border-thistle-black/[0.06] px-fl-margin">
         <div className="max-w-[1360px] mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
           {facts.map((fact, i) => (
@@ -154,6 +157,7 @@ export const CaseStudyDetailPage: React.FC = () => {
           ))}
         </div>
       </section>
+      )}
 
       {/* Ed's feasibility template. Only studies carrying `feasibility` data use
           it, so the rest keep the older layout until they are written up. */}
