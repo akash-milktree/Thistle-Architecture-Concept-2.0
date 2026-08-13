@@ -645,6 +645,39 @@ export const caseStudies: CaseStudy[] = [
   // ---------------------------------------------------------------------
   {
     slug: "beauchamp-house",
+    projectStory: {
+      // Ed's own write-up, from Project Explanations.docx, where the building is
+      // spelt "Beecham House". The site has used Beauchamp throughout and the
+      // street in Leamington Spa is Beauchamp, so that spelling is kept. Worth
+      // confirming with Ed which is right.
+      summary: [
+        "The conversion of an existing office building in Leamington Spa into four luxury apartments, creating one substantial apartment on each floor within a characterful Georgian property.",
+        "The proposals involve a complete internal reconfiguration of the building, alongside the replacement of all existing windows and a considered programme of external alterations. The site sits within a sensitive conservation area, surrounded by a number of listed buildings, requiring a carefully considered approach to both the conversion and the external appearance.",
+        "Thistle Architecture was appointed from the outset, initially securing Class MA Prior Approval for the change of use from commercial to residential, followed by a full planning application for the wider works and alterations to the building.",
+        "The project is currently under construction and will transform the former office building into four high-quality apartments while retaining and enhancing the architectural character of the existing property.",
+      ],
+      // Under construction, so the page ends there rather than inventing a
+      // completed section.
+      sections: [
+        {
+          title: "The Existing Building",
+          caption: "A Georgian property in a conservation area surrounded by listed buildings, in office use before conversion.",
+          images: [
+            { src: "/images/projects/beauchamp2/exterior.jpg", alt: "The Georgian building in its existing condition from the street" },
+          ],
+        },
+        {
+          title: "Construction",
+          caption: "Stripped back to structure internally, with the building scaffolded for the window replacement and external alterations.",
+          images: [
+            { src: "/images/projects/beauchamp2/stripout-1.jpg", alt: "An interior stripped back to brick and joists during conversion" },
+            { src: "/images/projects/beauchamp2/stripout-2.jpg", alt: "A bay-windowed room stripped back, with work in progress" },
+            { src: "/images/projects/beauchamp2/scaffold-1.jpg", alt: "The building fully scaffolded for external alterations" },
+            { src: "/images/projects/beauchamp2/scaffold-2.jpg", alt: "Scaffolding to the side elevation during the window replacement" },
+          ],
+        },
+      ],
+    },
     conversionTypes: ['commercial-to-residential'],
     kind: "project",
     title: "Beauchamp House",
@@ -782,6 +815,31 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "wigan-church",
+    projectStory: {
+      // Ed's own write-up, from Project Explanations.docx.
+      summary: [
+        "The adaptive reuse of a long-vacant former church in Leigh, Greater Manchester, transforming the redundant building into a new headquarters and co-working destination while retaining the character of its historic architecture.",
+        "The proposals create dedicated office accommodation for the client and their employees alongside a substantial co-working space within the main church atrium. The design has been developed around the building's existing features, including stained-glass windows, exposed timber roof structure, stonework and original organ, introducing contemporary interventions while allowing the character and scale of the former church to remain central to the scheme.",
+        "Thistle Architecture was involved from the initial feasibility stage, securing planning permission for the change of use from a church to Class E office accommodation before progressing further applications for the associated external alterations. Our involvement has continued through Stage 4 technical design, full interior design and tendering of the construction works, with the architectural and interior packages developed as one coordinated scheme.",
+        "Planning permission has been secured and the project is progressing through tender, bringing a significant redundant building back into productive use as a distinctive contemporary workplace.",
+      ],
+      // No before-and-after and no completed section: the building is in tender,
+      // so there is nothing finished to photograph yet.
+      sections: [
+        {
+          title: "The Existing Church",
+          caption: "A Gothic former Methodist church, vacant and in use as storage when Thistle first visited. The stained glass, stonework and exposed timber roof are the features the scheme is built around rather than removed.",
+          images: [
+            { src: "/images/projects/wigan/exterior-1.jpg", alt: "The Gothic brick and stone frontage of the former Methodist church" },
+            { src: "/images/projects/wigan/exterior-2.jpg", alt: "The church tower and entrance from the street" },
+            { src: "/images/projects/wigan/interior-nave.jpg", alt: "The nave in its existing condition, in use as storage" },
+            { src: "/images/projects/wigan/interior-gallery.jpg", alt: "The gallery level looking across the nave to the arched windows" },
+            { src: "/images/projects/wigan/interior-roof.jpg", alt: "The exposed timber roof structure over the main atrium" },
+            { src: "/images/projects/wigan/stained-glass.jpg", alt: "One of the original stained-glass windows retained in the scheme" },
+          ],
+        },
+      ],
+    },
     kind: "project",
     title: "Methodist Church To Offices",
     location: "Leigh, Greater Manchester",
