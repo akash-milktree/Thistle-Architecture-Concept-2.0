@@ -7,14 +7,24 @@ import { Reveal } from '../../components/animations/Reveal';
 import { deliverables } from '../../data/howItWorksData';
 import { deliverableDetail } from '../../data/feasibilityPackageData';
 
-// Real imagery per deliverable: Thistle drawings where the deliverable is a
-// drawing, photography where it is a document or a judgement.
+// One real document per deliverable, all from 155 Windmill Lane, the example
+// project Ed nominated. These replace the stock and unrelated sketch images that
+// were standing in for them, which he described as wrong and muddled on
+// 5 August: the risk register showed a photograph, the space standards showed a
+// different project's sketch.
+//
+// Order follows `deliverables` in data/howItWorksData.ts. Each is a page from
+// the report that deliverable actually produces, and the reports themselves are
+// published on the study at /case-studies/windmill-lane-cheshunt.
+//
+// All are 'contain' on white: they are documents, and cropping one to fill a
+// frame cuts off the part that shows what it is.
 const images: { src: string; alt: string; fit: 'contain' | 'cover' }[] = [
-  { src: "/images/projects/st-johns-sk001-1.png", alt: "A sketch scheme showing proposed layouts for a nine-bedroom HMO conversion", fit: "contain" },
-  { src: "/images/generated/desk-plans.jpg", alt: "Printed floor plans and schedules on an architect's desk", fit: "cover" },
-  { src: "/images/projects/greyfriars-option4-1.png", alt: "Colour-coded feasibility sketch showing constraints and shared spaces", fit: "contain" },
-  { src: "/images/generated/report-hands.jpg", alt: "A bound feasibility report held in two hands", fit: "cover" },
-  { src: "/images/projects/sample-report-1.png", alt: "The first page of a real Thistle feasibility document", fit: "contain" },
+  { src: "/images/projects/windmill-lane-sketch-1.png", alt: "Feasibility sketch showing six en-suite bedrooms across two floors with the garage brought into the house", fit: "contain" },
+  { src: "/images/deliverables/schedule-of-accommodation.jpg", alt: "Space standards summary listing minimum room sizes, ceiling heights and communal room requirements", fit: "contain" },
+  { src: "/images/deliverables/planning-policy-analysis.jpg", alt: "Planning policy analysis setting out the determinative HMO policy and the design and amenity policies engaged", fit: "contain" },
+  { src: "/images/deliverables/risk-register.jpg", alt: "Risk dashboard rating each planning issue with its resolution", fit: "contain" },
+  { src: "/images/deliverables/full-feasibility-document.jpg", alt: "First page of the feasibility overview, covering the property, the planning context and the proposed strategy", fit: "contain" },
 ];
 
 const Panel: React.FC<{ index: number; className?: string }> = ({ index, className = '' }) => {
