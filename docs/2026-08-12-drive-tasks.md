@@ -38,7 +38,7 @@ Sub-tasks, each doable alone:
 - 1h. Testimonials with logos
 - 1i. Lighten the palette away from dark sections
 
-## 2. Feasibility case study pages, to Ed's template
+## 2. Feasibility case study pages, to Ed's template — DONE 13 Aug
 `Feasibility Examples/Feasibility Example Page.docx` is the template Ed wants
 used. It defines: hero with tags and a sketch preview, a key-information table
 (bedrooms, room sizes, communal space, planning route, key risk, date, optional
@@ -55,7 +55,7 @@ before/after near the top, then existing building, feasibility and concept,
 technical drawings, and completion. 24k characters, so it likely carries
 per-project notes as well as the structure.
 
-## 4. Feasibility package deliverable documents — READY, self-contained
+## 4. Feasibility package deliverable documents — DONE 13 Aug
 The outstanding item from 5 August. The actual documents now exist:
 
 `Example Feasibility, to be emailed as example/`
@@ -120,3 +120,26 @@ Monument House is the folder marked "Existing videos - use for homepage".
 ## Not from this folder
 
 Ed's latest team information, which Akash has separately. Pairs with item 6.
+
+
+---
+
+# Parked, to pick up at the end
+
+## 9. Magnifier on the deliverable images
+Akash, 13 August. The five deliverable panels on the feasibility package page now
+show real document pages, and at panel size the body text is not readable. That
+is acceptable as a glance, but someone who hovers should be able to actually read
+it.
+
+Wanted: a magnifier on hover over the panel image, so the cursor acts as a loupe
+over the document at full resolution.
+
+Notes for whoever builds it:
+- The source images are 1400px wide, so there is real detail to magnify into.
+- The panel is `Panel` in `sections/feasibility-package/DeliverableShowcase.tsx`.
+- Needs a sensible touch fallback, since hover does not exist on a phone. The
+  simplest is to reuse the full-screen behaviour the case study sketch already
+  has in `components/case-study/SketchViewer.tsx` rather than build a second
+  pattern.
+- Agreed to do this at the end, after the higher-value items.
