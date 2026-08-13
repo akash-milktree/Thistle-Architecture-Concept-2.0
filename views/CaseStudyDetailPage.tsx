@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { Reveal } from '../components/animations/Reveal';
 import { DocumentCards } from '../components/case-study/DocumentCards';
 import { SketchViewer } from '../components/case-study/SketchViewer';
+import { BeforeAfter } from '../components/case-study/BeforeAfter';
 import { ArrowUpRight, ArrowLeft, CheckCircle2, HardHat } from 'lucide-react';
 import { caseStudies } from '../data/caseStudiesData';
 
@@ -159,6 +160,66 @@ export const CaseStudyDetailPage: React.FC = () => {
       </section>
       )}
 
+      {/* Ed's project template, from Project Explanations.docx: the finished
+          building first, the transformation next because many readers stop
+          there, then the stages the project can actually evidence. Projects
+          without a story keep the older layout. */}
+      {caseStudy.projectStory && (
+        <>
+          <section className="bg-thistle-white py-fl-section px-fl-margin">
+            <div className="max-w-[820px] mx-auto space-y-fl-4">
+              {caseStudy.projectStory.summary.map((para, i) => (
+                <Reveal key={i} delay={Math.min(i * 0.05, 0.2)}>
+                  <p className={i === 0
+                    ? "text-fluid-lg text-thistle-black/85 leading-relaxed"
+                    : "text-fluid-base text-thistle-black/70 leading-relaxed"}>
+                    {para}
+                  </p>
+                </Reveal>
+              ))}
+            </div>
+          </section>
+
+          {caseStudy.projectStory.beforeAfter && (
+            <section className="bg-white py-fl-section px-fl-margin">
+              <div className="max-w-[1000px] mx-auto">
+                <Reveal>
+                  <h2 className="text-fluid-h4 font-medium tracking-tight text-thistle-black mb-fl-2">Existing And Proposed</h2>
+                  <p className="text-fluid-sm text-thistle-black/55 mb-fl-6">The house before work, and as completed.</p>
+                </Reveal>
+                <Reveal>
+                  <BeforeAfter {...caseStudy.projectStory.beforeAfter} />
+                </Reveal>
+              </div>
+            </section>
+          )}
+
+          {caseStudy.projectStory.sections.map((sec, i) => (
+            <section key={sec.title} className={`${i % 2 === 0 ? 'bg-thistle-white' : 'bg-white'} py-fl-section px-fl-margin`}>
+              <div className="max-w-[1000px] mx-auto">
+                <Reveal>
+                  <h2 className="text-fluid-h4 font-medium tracking-tight text-thistle-black mb-fl-3">{sec.title}</h2>
+                </Reveal>
+                {sec.caption && (
+                  <Reveal>
+                    <p className="text-fluid-base text-thistle-black/70 leading-relaxed max-w-2xl mb-fl-6">{sec.caption}</p>
+                  </Reveal>
+                )}
+                <div className={sec.images.length > 1 ? 'grid grid-cols-1 sm:grid-cols-2 gap-fl-4' : ''}>
+                  {sec.images.map((img, j) => (
+                    <Reveal key={img.src} delay={Math.min(j * 0.06, 0.2)}>
+                      <div className={`relative rounded-2xl overflow-hidden border border-thistle-black/[0.06] bg-thistle-white/60 ${sec.images.length === 1 ? 'aspect-[16/10]' : 'aspect-[4/3]'}`}>
+                        <Image src={img.src} alt={img.alt} fill sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 500px" className="object-cover" />
+                      </div>
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
+            </section>
+          ))}
+        </>
+      )}
+
       {/* Ed's feasibility template. Only studies carrying `feasibility` data use
           it, so the rest keep the older layout until they are written up. */}
       {caseStudy.feasibility && (
@@ -281,7 +342,7 @@ export const CaseStudyDetailPage: React.FC = () => {
       {/* Narrative, or the in-preparation panel when there is none. Template
           studies render neither: they carry Feasibility in Brief instead, and
           the ternary was falling through to the placeholder for them. */}
-      {!caseStudy.feasibility && (narrative.length > 0 ? (
+      {!caseStudy.feasibility && !caseStudy.projectStory && (narrative.length > 0 ? (
         /* Numbered narrative at reading size */
         <section className="bg-thistle-white py-fl-section px-fl-margin">
           <div className="max-w-[820px] mx-auto space-y-fl-8">
@@ -328,7 +389,7 @@ export const CaseStudyDetailPage: React.FC = () => {
       ))}
 
       {/* Drawings, full width and never cropped */}
-      {!caseStudy.feasibility && caseStudy.galleryImages.length > 0 && (
+      {!caseStudy.feasibility && !caseStudy.projectStory && caseStudy.galleryImages.length > 0 && (
         <section className="bg-white py-fl-section px-fl-margin">
           {/* Drawings need full width to stay readable, so they stay stacked in
               a narrow column. Photography does not, and a long set of photos

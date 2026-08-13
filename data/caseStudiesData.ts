@@ -29,6 +29,23 @@ export interface CaseStudy {
   /** Completed-project entries only. Defaults to Complete when unset. */
   status?: "Complete" | "On site";
   /**
+   * Completed projects only. When present the detail page tells the project
+   * story from Ed's Project Explanations.docx: the finished building first,
+   * then existing against proposed, then the stages the project went through.
+   *
+   * `sections` is deliberately open. The template says to include a stage only
+   * where good material exists rather than pad with placeholders, so a project
+   * carries the stages it can evidence and stops there.
+   */
+  projectStory?: {
+    /** Ed's own write-up, one string per paragraph. */
+    summary: string[];
+    /** The transformation, shown near the top because many readers stop there. */
+    beforeAfter?: { before: string; after: string; beforeAlt: string; afterAlt: string };
+    sections: { title: string; caption?: string; images: { src: string; alt: string }[] }[];
+  };
+
+  /**
    * Feasibility studies only. When present the detail page renders Ed's
    * template (docs/2026-08-12-drive-tasks.md item 2) instead of the older
    * challenge/approach/outcome layout, so studies can move over one at a time.
@@ -658,6 +675,61 @@ export const caseStudies: CaseStudy[] = [
     // incollective.works, the group's parent company (confirmed by Akash
     // 2026-07-17), so it is group work and fine to publish here.
     slug: "bereweeke-avenue",
+    projectStory: {
+      // Ed's own write-up, from Project Explanations.docx.
+      summary: [
+        "A comprehensive extension and reconfiguration of an existing family home in a residential area of Winchester, designed to provide significantly more space for a growing family.",
+        "The proposals included two substantial two-storey rear extensions, a single-storey extension connected by a glazed link, a complete internal reconfiguration, and the redesign and landscaping of both the front and rear gardens.",
+        "Thistle Architecture was appointed from the outset, undertaking the initial feasibility and design development, securing planning permission, progressing the detailed design and subsequently providing Contract Administration throughout construction.",
+        "The completed project has transformed the existing property into a substantially larger, cohesive family home, with the architecture, internal layout and external spaces considered as one complete scheme.",
+      ],
+      beforeAfter: {
+        before: "/images/projects/bereweeke/existing-house.jpg",
+        after: "/images/projects/bereweeke/complete-front.jpg",
+        beforeAlt: "The original 1930s house before work began, seen from the road",
+        afterAlt: "The completed house after extension and remodelling, seen from the drive",
+      },
+      // Feasibility, planning and technical design are not here on purpose: the
+      // drive holds no drawings for them at a quality worth publishing, and the
+      // template says to include a stage only where good material exists.
+      sections: [
+        {
+          title: "The Existing House",
+          caption: "A 1930s detached house on a generous plot, sound but short of space for a growing family and closed off from its own garden.",
+          images: [
+            { src: "/images/projects/bereweeke/existing-house.jpg", alt: "The original house before work, with the Thistle Architecture site board in place" },
+          ],
+        },
+        {
+          title: "CGI And Interior Design",
+          caption: "The scheme was visualised in full before work started, inside and out, so the client could see the finished house rather than read it off a plan.",
+          images: [
+            { src: "/images/projects/bereweeke/cgi-exterior.jpg", alt: "Visualisation of the completed house from the front" },
+            { src: "/images/projects/bereweeke/cgi-rear.jpg", alt: "Visualisation of the rear extensions and garden" },
+            { src: "/images/projects/bereweeke/cgi-interior.jpg", alt: "Visualisation of the open plan kitchen and dining space" },
+          ],
+        },
+        {
+          title: "Construction",
+          caption: "Thistle acted as Contract Administrator through construction, so the detail drawn was the detail built.",
+          images: [
+            { src: "/images/projects/bereweeke/construction-1.jpg", alt: "Materials on site with the rear of the house stripped back" },
+            { src: "/images/projects/bereweeke/construction-2.jpg", alt: "The two-storey rear extensions under construction" },
+          ],
+        },
+        {
+          title: "The Completed House",
+          caption: "Two two-storey rear extensions and a single-storey wing joined by a glazed link, with the internal layout and both gardens reworked as one scheme.",
+          images: [
+            { src: "/images/projects/bereweeke/complete-front.jpg", alt: "The completed house from the drive" },
+            { src: "/images/projects/bereweeke/complete-rear.jpg", alt: "The completed rear extension in brick with full-height glazing" },
+            { src: "/images/projects/bereweeke/interior-kitchen-1.jpg", alt: "The finished kitchen and island under a rooflight" },
+            { src: "/images/projects/bereweeke/interior-kitchen-2.jpg", alt: "The kitchen looking out to the garden through full-height glazing" },
+            { src: "/images/projects/bereweeke/interior-glazing.jpg", alt: "The glazed link connecting the house to the garden" },
+          ],
+        },
+      ],
+    },
     conversionTypes: ['high-end-residential'],
     kind: "project",
     title: "1930s House, Extended And Remade",
