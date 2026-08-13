@@ -80,6 +80,33 @@ export interface CaseStudy {
 export const caseStudies: CaseStudy[] = [
   {
     slug: "st-johns-aylesbury",
+    feasibility: {
+      // All figures from the project's Feasibility Overview, March 2026.
+      keyInfo: [
+        { label: "Bedrooms", value: "9, all en suite" },
+        { label: "Room sizes", value: "12 to 16 sqm" },
+        { label: "Communal space", value: "About 25 sqm" },
+        { label: "Planning route", value: "Full planning, sui generis" },
+        { label: "Key risk", value: "Overdevelopment" },
+        { label: "Date", value: "March 2026" },
+      ],
+      brief: "How many bedrooms will this town centre building actually support, and where is the ceiling?",
+      found: "Nine bedrooms are achievable at feasibility stage, all en suite and generously sized at 12 to 16 sqm, with about 25 sqm of communal amenity in total, which exceeds the minimum identified in recent officer reports. Local precedent is strong: several seven and eight bedroom HMOs have been approved in the area, confirming larger schemes are acceptable in principle where design and amenity standards are met. The site is not in an Article 4 area, so a six-bedroom HMO remains available under permitted development as a fallback, subject to due diligence.",
+      recommendation: "Proceed at nine bedrooms, with the design worked carefully to answer overdevelopment concerns, since nine sits at the upper end of what is likely to be supported. Hold the six-bedroom permitted development route as the fallback position.",
+      sketchCaption: "Nine en-suite bedrooms of 12 to 16 sqm arranged across the existing floors, with about 25 sqm of shared amenity.",
+      documents: [
+        { title: "Feasibility Overview", pages: 7, summary: "The proposed design, planning route, key constraints, commercial position and recommended next steps.", file: "/documents/st-johns-aylesbury/feasibility-overview.pdf" },
+      ],
+      decision: "Nine works, and it is the ceiling rather than the comfortable answer. The scheme performs well on room sizes and amenity, but it sits at the top of what officers have supported locally, so the design has to earn it.",
+      roadmap: [
+        "Measured survey",
+        "Design development",
+        "Pre-application advice",
+        "Full planning application",
+        "Technical design",
+        "Construction",
+      ],
+    },
     kind: "feasibility",
     title: "Nine-Bed HMO Conversion",
     location: "Aylesbury, Buckinghamshire",
@@ -224,6 +251,34 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "beech-house-road-croydon",
+    feasibility: {
+      // All figures from the project's Feasibility Overview, June 2026.
+      keyInfo: [
+        { label: "Bedrooms", value: "13, all en suite" },
+        { label: "Room sizes", value: "12.6 to 27 sqm" },
+        { label: "Communal space", value: "26 sqm kitchen, 13.8 sqm dining" },
+        { label: "Planning route", value: "Full planning, sui generis" },
+        { label: "Key risk", value: "Political, not policy" },
+        { label: "Date", value: "June 2026" },
+      ],
+      brief: "Could an existing six-bedroom HMO be taken to thirteen bedrooms, and would the planning position support it?",
+      found: "Yes, entirely within the existing envelope through internal alterations only, with no extension. All thirteen bedrooms are en suite at 12.6 to 27 sqm, against a Croydon en-suite minimum of 12.5 sqm. The communal hub is a 26 sqm kitchen and a 13.8 sqm dining room on the ground floor, supported by a second kitchen on the second floor and a 9.1 sqm utility. The lawful six-bed C4 use granted under 24/04169/FUL in May 2025 is the baseline, so no family dwelling is lost, Croydon has no adopted HMO density threshold, and a directly comparable thirteen-bed sui generis HMO was approved at 51 Addiscombe Road in 2022.",
+      recommendation: "Proceed at thirteen bedrooms. The policy case is sound and the risk to manage is political: the site is in a conservation area, ward councillors have opposed nearby schemes, and a seven-bed HMO at 10 Woodstock Road was refused at committee in May 2025. The application needs presenting with that in mind.",
+      sketchCaption: "Thirteen en-suite bedrooms from basement to second floor, all within the existing envelope, with the ground floor kitchen and dining room as the communal hub.",
+      documents: [
+        { title: "Feasibility Overview", pages: 5, summary: "The proposed design, planning route, key constraints, commercial position and recommended next steps.", file: "/documents/beech-house-road-croydon/feasibility-overview.pdf" },
+      ],
+      guidance: { label: "Official guidance reviewed: Croydon HMO space standards" },
+      decision: "The scheme works on paper and on policy: an established lawful six-bed use, no density threshold in the borough, and a directly comparable approval nearby. What it has to survive is a committee in a conservation area that has refused smaller schemes.",
+      roadmap: [
+        "Measured survey",
+        "Design development",
+        "Pre-application advice",
+        "Full planning application",
+        "Technical design",
+        "Construction",
+      ],
+    },
     kind: "feasibility",
     title: "Six-Bed HMO To Thirteen",
     location: "Croydon, South London",
@@ -250,6 +305,36 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "claremont-road-luton",
+    feasibility: {
+      // All figures from the project's Feasibility Overview, July 2026.
+      keyInfo: [
+        { label: "Bedrooms", value: "7, all en suite" },
+        { label: "Room sizes", value: "10 sqm and above" },
+        { label: "Communal space", value: "About 32 sqm" },
+        { label: "Planning route", value: "Six-bed LDC, then full planning" },
+        { label: "Key risk", value: "Family housing protection" },
+        { label: "Date", value: "July 2026" },
+      ],
+      brief: "Could a large, already extended mid-terrace take a seven-bedroom all en-suite HMO, and which route gets there with the least planning risk?",
+      found: "Six bedrooms plus a rear dormer loft are permitted development, confirmed by a lawful development certificate. The seventh is sui generis and turns on the protection of family housing, applied in Luton through Policies LLP1 and LLP15. Phasing answers it: establish and tenant the six-bed C4 first, and the seventh is then judged as an addition to an existing HMO rather than the loss of a family home. A nearby approval at 39 Hazelbury Crescent granted a seventh person on exactly that basis. No bedroom falls below 10 sqm against a 6.51 sqm legal minimum, and the communal space is about 32 sqm against a 23.5 sqm target.",
+      recommendation: "Proceed to seven bedrooms in two stages. Take the six-bed certificate first and implement it properly, with tenancies and licence records kept rather than relying on a paper approval, then apply for the seventh. The 20 sqm outbuilding becomes shared co-working space, which strengthens that application. Eight persons is possible later but is not recommended as a base case.",
+      sketchCaption: "Seven en-suite bedrooms across three floors, with the whole rear given over to a single kitchen, dining and living space opening onto the garden, and two further bedrooms in a new rear dormer.",
+      documents: [
+        { title: "Feasibility Overview", pages: 4, summary: "The proposed design, planning route, key constraints, commercial position and recommended next steps.", file: "/documents/claremont-road-luton/feasibility-overview.pdf" },
+        { title: "Planning Research & Risk Analysis", pages: 7, summary: "Site-specific policy research, planning precedents, appeal decisions and a clear risk dashboard.", file: "/documents/claremont-road-luton/planning-research.pdf" },
+        { title: "HMO Standards Review", pages: 3, summary: "The applicable bedroom, amenity, ceiling-height, kitchen and facility requirements checked against the design.", file: "/documents/claremont-road-luton/space-standards.pdf" },
+      ],
+      guidance: { label: "Official guidance reviewed: Luton Borough Council HMO Standards" },
+      decision: "The six-bedroom route is low risk and needs no planning permission. The seventh is achievable when the scheme is phased so that there is no family dwelling left to lose, which is the one policy that could defeat it.",
+      roadmap: [
+        "Measured survey",
+        "Six-bed lawful development certificate",
+        "Implement and tenant",
+        "Full planning for the seventh",
+        "Technical design",
+        "Construction",
+      ],
+    },
     kind: "feasibility",
     title: "Three-Bed House To Seven-Bed HMO",
     location: "Luton, Bedfordshire",
@@ -428,6 +513,35 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "hathaway-road-croydon",
+    feasibility: {
+      // All figures from the project's Feasibility Overview, July 2026. This is
+      // the one No-Go in the set: the answer was a different use, not a refusal.
+      keyInfo: [
+        { label: "Bedrooms", value: "5, 11 to 18 sqm" },
+        { label: "Communal space", value: "16 sqm" },
+        { label: "Floor area", value: "93 to 115 sqm" },
+        { label: "Planning route", value: "C3(b) supported living, by LDC" },
+        { label: "Key risk", value: "Securing a care provider" },
+        { label: "Date", value: "July 2026" },
+      ],
+      brief: "The client wanted to know whether this house could become an HMO.",
+      found: "It could not, and the reason is a floor area threshold rather than anything about the design. Croydon protects family homes below 130 sqm from conversion to an HMO under Policies SP2 and DM1.2 of its Local Plan, and this property is between 93 and 115 sqm, so an HMO application would be very likely to be refused. A different use answers the same building: C3(b) supported living needs no HMO licence, and the layout suits it, with five bedrooms of 11 to 18 sqm and 16 sqm of communal amenity. Permitted development rights are intact, including for a rear extension and a loft conversion.",
+      recommendation: "Do not pursue an HMO. Identify and engage a care or support provider willing to operate the property as C3(b) before committing to works or to the purchase, since that is the step everything else depends on. Confirm the provider's requirements on room count, en suites and communal space, verify the floor area by measured survey, and take a specialist broker's view on end value.",
+      sketchCaption: "Five en-suite bedrooms of 11 to 18 sqm with a 16 sqm communal amenity space, laid out for supported living rather than as a licensed HMO.",
+      documents: [
+        { title: "Feasibility Overview", pages: 4, summary: "The proposed design, planning route, key constraints, commercial position and recommended next steps.", file: "/documents/hathaway-road-croydon/feasibility-overview.pdf" },
+        { title: "Planning Research & Risk Analysis", pages: 9, summary: "Site-specific policy research, planning precedents, appeal decisions and a clear risk dashboard.", file: "/documents/hathaway-road-croydon/planning-research.pdf" },
+      ],
+      guidance: { label: "Official guidance reviewed: Croydon HMO Standards, Housing Act 2004" },
+      decision: "A clear no on the HMO, and a route that works in its place. The value of the study was in finding the threshold before the client bought the building, not after.",
+      roadmap: [
+        "Engage a support provider",
+        "Confirm provider requirements",
+        "Measured survey",
+        "Broker view on end value",
+        "C3(b) lawful development certificate",
+      ],
+    },
     kind: "feasibility",
     title: "When The HMO Is The Wrong Answer",
     location: "Croydon, South London",
@@ -454,6 +568,35 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "bath-street-cheddar",
+    feasibility: {
+      // All figures from the project's Feasibility Overview, June 2026.
+      keyInfo: [
+        { label: "Bedrooms", value: "11, all en suite" },
+        { label: "Room sizes", value: "10 to 22 sqm" },
+        { label: "Communal space", value: "27.5 sqm, plus 10 sqm" },
+        { label: "Retained shop", value: "45.2 sqm Class E" },
+        { label: "Planning route", value: "Full planning, sui generis" },
+        { label: "Date", value: "June 2026" },
+      ],
+      brief: "Could a former Lloyds Bank in a village centre become an HMO without losing the shop the neighbourhood plan protects?",
+      found: "Yes, as a mixed use rather than a straight conversion. The 45.2 sqm Class E unit stays in place at the Bath Street frontage, with an eleven-bed sui generis HMO above and behind it across ground, first, second and a new mansard at third floor. Rooms run from 10 sqm in the mansard to 22 sqm on the ground floor. The first floor communal kitchen and lounge is 27.5 sqm, meeting the standard for the seven to ten person bracket, with a smaller 10 sqm kitchen on the mansard serving the upper cluster. The principle of residential conversion is already established by prior approval 17/25/00004 of March 2025, and the rear car park takes the highways question off the table.",
+      recommendation: "Proceed as a mixed use, retaining the shop. The two real risks are heritage harm to the setting of the Market Cross and conflict with Policy EE1 of the Cheddar Neighbourhood Plan, both matters of design and evidence rather than blockers, and there is direct precedent for the approach in similar Somerset villages.",
+      sketchCaption: "Eleven en-suite bedrooms across four levels above and behind a retained 45.2 sqm shop, with the main communal kitchen and lounge on the first floor.",
+      documents: [
+        { title: "Feasibility Overview", pages: 6, summary: "The proposed design, planning route, key constraints, commercial position and recommended next steps.", file: "/documents/bath-street-cheddar/feasibility-overview.pdf" },
+        { title: "Planning Research & Risk Analysis", pages: 10, summary: "Site-specific policy research, planning precedents, appeal decisions and a clear risk dashboard.", file: "/documents/bath-street-cheddar/planning-research.pdf" },
+      ],
+      guidance: { label: "Official guidance reviewed: Cheddar Neighbourhood Plan, Policy EE1" },
+      decision: "The principle is already established and the highways question is answered. What decides this scheme is heritage: the setting of the Market Cross, and the neighbourhood plan's protection of the ground floor shop, which the mixed use is designed around rather than against.",
+      roadmap: [
+        "Measured survey",
+        "Heritage statement",
+        "Pre-application advice",
+        "Full planning application",
+        "Technical design",
+        "Construction",
+      ],
+    },
     kind: "feasibility",
     title: "Former Bank To Eleven-Bed HMO And Shop",
     location: "Cheddar, Somerset",
