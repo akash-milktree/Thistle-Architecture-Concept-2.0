@@ -1278,6 +1278,294 @@ export const caseStudies: CaseStudy[] = [
   // 81 Crescent and School House were never listed (see
   // docs/case-study-confirmations.md). Restore from history the moment Ed sends
   // photos and a write-up.
+  // ── Projects added 13 August from Ed's Project Explanations.docx ──────────
+  // Each was written up by Ed but had no page on the site. Summaries are his
+  // words; the stages shown are only those with usable imagery in the drive.
+  {
+    slug: "corner-house-hackney",
+    kind: "project",
+    title: "Vacant Corner Plot To New Home",
+    location: "Hackney, London",
+    image: "/images/projects/corner-house/cgi-street.jpg",
+    tag: "New Build",
+    status: "Complete",
+    stats: [
+      { label: "Plot", value: "Previously vacant" },
+      { label: "Facade", value: "Green glazed brick" },
+      { label: "Thistle role", value: "Feasibility to construction" },
+    ],
+    desc: "A new home on a vacant corner plot, bookending an existing Hackney terrace behind a curved wall of green glazed brick.",
+    galleryImages: [],
+    buildingType: "New-build house on an infill plot",
+    completionDate: "Complete",
+    projectStory: {
+      summary: [
+        "A new-build residential project on a previously vacant corner plot in Hackney, London, designed to complete and bookend an existing terrace while creating a distinctive new family home.",
+        "The design responds directly to its prominent corner position, with a curved external wall and green glazed brickwork creating a strong architectural identity. Buff brick, stone detailing to the window sills and cornice, and carefully proportioned openings reference the surrounding street, allowing the building to feel contemporary and individual while remaining grounded in its context.",
+        "Thistle Architecture was involved from the initial feasibility stage, developing the design and securing planning permission before progressing the project through Stage 4 technical design and providing full management of the construction.",
+        "The completed scheme has transformed a constrained vacant plot into a characterful new home, a confident contemporary addition to the Hackney streetscape.",
+      ],
+      sections: [
+        { title: "The Existing Plot", caption: "A constrained corner site, vacant and hoarded, at the end of an existing terrace.",
+          images: [{ src: "/images/projects/corner-house/existing-plot.jpg", alt: "The vacant hoarded corner plot before development" }] },
+        { title: "The Design", caption: "A curved corner in green glazed brick, with buff brick and stone detailing picking up the proportions of the street.",
+          images: [
+            { src: "/images/projects/corner-house/cgi-street.jpg", alt: "The completed house on its corner, seen along the street" },
+            { src: "/images/projects/corner-house/glazed-brick.jpg", alt: "Close view of the green glazed brickwork" },
+            { src: "/images/projects/corner-house/cgi-interior.jpg", alt: "The open plan interior looking out to the garden" },
+          ] },
+      ],
+    },
+  },
+  {
+    slug: "forest-house-lymington",
+    kind: "project",
+    title: "New Home In The New Forest",
+    location: "Lymington, Hampshire",
+    image: "/images/projects/forest-house/exterior-dusk.jpg",
+    tag: "New Build",
+    status: "Complete",
+    stats: [
+      { label: "Setting", value: "New Forest" },
+      { label: "Material", value: "Terracotta clay tile" },
+      { label: "Thistle role", value: "Feasibility to construction" },
+    ],
+    desc: "A new family home on a private plot inside the New Forest, tiled in terracotta across both roof and walls to sit inside a protected landscape.",
+    galleryImages: [],
+    buildingType: "New-build house in a protected landscape",
+    completionDate: "Complete",
+    projectStory: {
+      summary: [
+        "A new-build family home on a privately owned plot in Lymington, within the sensitive landscape setting of the New Forest, designed to respond carefully to its rural surroundings.",
+        "The house uses terracotta clay tiles across both the roof and external elevations, creating a distinctive but contextually appropriate material palette. The design was developed to sit comfortably within its protected landscape setting while delivering a contemporary new home for the owners.",
+        "Thistle Architecture was involved from the initial feasibility stage, progressing the project through planning, technical design and construction. The site presented a number of constraints, particularly in relation to existing trees and the surrounding natural environment, requiring close coordination with specialist consultants throughout.",
+        "The completed scheme responds to its landscape setting through form, materiality and detailing, while overcoming the constraints of the site.",
+      ],
+      sections: [
+        { title: "The Completed House", caption: "Terracotta clay tile across roof and walls, with full-height glazing opening the plan to the garden.",
+          images: [
+            { src: "/images/projects/forest-house/exterior-dusk.jpg", alt: "The completed house at dusk with the interior lit" },
+            { src: "/images/projects/forest-house/exterior-day.jpg", alt: "The house and garden in daylight" },
+            { src: "/images/projects/forest-house/interior.jpg", alt: "The open plan kitchen and dining space" },
+          ] },
+      ],
+    },
+  },
+  {
+    slug: "peterhayes-farm",
+    kind: "project",
+    title: "Class Q Barn To Dwelling",
+    location: "Somerset",
+    image: "/images/projects/peterhayes/cgi-barn.jpg",
+    tag: "Class Q",
+    status: "Complete",
+    stats: [
+      { label: "Route", value: "Class Q prior approval" },
+      { label: "Approved", value: "2024" },
+      { label: "Thistle role", value: "Approval to construction" },
+    ],
+    desc: "An agricultural barn behind a working farmhouse, converted to a house under Class Q and delivered through to completion.",
+    galleryImages: [],
+    buildingType: "Agricultural barn",
+    planningRoute: "Class Q prior approval",
+    completionDate: "Complete",
+    projectStory: {
+      summary: [
+        "The conversion of an existing agricultural barn at Peter Hayes Farm in Somerset into a new residential dwelling. The barn sits to the rear of an existing farmhouse, within a mixed rural setting that also includes surrounding industrial and agricultural buildings.",
+        "Thistle Architecture was commissioned to develop the residential conversion and secure Class Q Prior Approval, establishing the change of use from agricultural to residential while working within the constraints of the existing building and site.",
+        "Following approval in 2024, our involvement continued through Stage 4 technical design and into the construction phase, coordinating the detailed information required to deliver the conversion on site.",
+        "The project is now complete, transforming the former agricultural building into a new home while retaining and adapting the character and fabric of the original barn.",
+      ],
+      sections: [
+        { title: "The Site", caption: "The barn sits behind the farmhouse in a mixed rural setting of agricultural and industrial buildings.",
+          images: [{ src: "/images/projects/peterhayes/site-aerial.jpg", alt: "Aerial view of the farm with the barn to the rear of the farmhouse" }] },
+        { title: "The Conversion", caption: "The barn's form and fabric are retained and adapted rather than replaced.",
+          images: [
+            { src: "/images/projects/peterhayes/cgi-barn.jpg", alt: "The converted barn seen from the approach" },
+            { src: "/images/projects/peterhayes/cgi-garden.jpg", alt: "The barn conversion from the garden side" },
+          ] },
+      ],
+    },
+  },
+  {
+    slug: "rotherfield-homes",
+    kind: "project",
+    title: "One House To Four Homes",
+    location: "Hampshire",
+    image: "/images/projects/rotherfield/cgi.jpg",
+    tag: "Residential Development",
+    status: "Complete",
+    stats: [
+      { label: "Homes", value: "Four" },
+      { label: "Strategy", value: "Phased planning" },
+      { label: "Outcome", value: "Full permission" },
+    ],
+    desc: "A single large plot assessed for capacity, then masterplanned and consented as four new homes through a phased planning strategy.",
+    galleryImages: [],
+    buildingType: "Residential plot with existing dwelling",
+    planningRoute: "Phased, then full planning",
+    completionDate: "Complete",
+    projectStory: {
+      summary: [
+        "The redevelopment of a substantial residential plot with an existing dwelling, where Thistle Architecture was initially commissioned to assess the wider development potential of the site and establish how additional homes could be successfully accommodated.",
+        "The feasibility process considered site capacity, access, highways, pedestrian routes, parking and the relationship between the proposed dwellings and the surrounding context. This resulted in a masterplan for four new homes, incorporating the demolition of the existing property and a comprehensive reconfiguration of the site.",
+        "A phased planning strategy was developed to help establish an appropriate scale and massing for future development, including an initial approval for substantial ancillary buildings around the existing dwelling. The approved built form subsequently helped inform the scale and arrangement of the four-home redevelopment, which was progressed through a full planning application.",
+        "Full planning permission was secured for the redevelopment.",
+      ],
+      sections: [
+        { title: "Masterplan And Design", caption: "Capacity testing first, then a masterplan for four homes and a phased route to permission.",
+          images: [
+            { src: "/images/projects/rotherfield/sketch.jpg", alt: "Sketch view of the proposed homes in their landscape setting" },
+            { src: "/images/projects/rotherfield/cgi.jpg", alt: "Visualisation of one of the four proposed homes" },
+          ] },
+      ],
+    },
+  },
+  {
+    slug: "school-house-south-downs",
+    kind: "project",
+    title: "An Accessible Family Home",
+    location: "South Downs",
+    image: "/images/projects/school-house/cgi-exterior.jpg",
+    tag: "Residential",
+    status: "Complete",
+    stats: [
+      { label: "Brief", value: "Level access throughout" },
+      { label: "Setting", value: "South Downs" },
+      { label: "Constraint", value: "Protected dark skies" },
+    ],
+    desc: "A family home reconfigured and extended around a daughter's mobility needs, in a landscape where even the external lighting was a planning matter.",
+    galleryImages: [],
+    buildingType: "Existing family home",
+    planningRoute: "Full planning",
+    completionDate: "Complete",
+    projectStory: {
+      summary: [
+        "The sensitive reconfiguration and extension of an existing family home within the South Downs, designed to create a more accessible and functional ground floor for the owners and their daughter, whose ongoing mobility requirements were central to the brief.",
+        "The proposals included a new single-storey rear extension, comprehensive ground-floor reconfiguration and level access throughout, alongside the creation of an accessible en-suite bathroom directly connected to the daughter's bedroom. External alterations and landscaping were also incorporated to improve accessibility and create a cohesive relationship between the house and garden.",
+        "Given the property's sensitive landscape setting, the planning application required careful consideration of its environmental context, including external lighting designed to minimise impact on the area's protected dark skies.",
+        "Thistle Architecture progressed the scheme through design and full planning, securing permission for the extension, external alterations and landscaping.",
+      ],
+      sections: [
+        { title: "Design And Massing", caption: "The extension was tested in model form against the existing house before the planning application.",
+          images: [
+            { src: "/images/projects/school-house/model-1.jpg", alt: "Massing model of the proposed extension" },
+            { src: "/images/projects/school-house/model-2.jpg", alt: "Second massing study of the proposal" },
+          ] },
+        { title: "The Proposal", caption: "A single-storey rear extension with level access throughout the ground floor.",
+          images: [
+            { src: "/images/projects/school-house/cgi-exterior.jpg", alt: "Visualisation of the extended house" },
+            { src: "/images/projects/school-house/proposed-plan.jpg", alt: "Proposed ground floor plan showing the reconfigured accessible layout" },
+          ] },
+      ],
+    },
+  },
+  {
+    slug: "boyne-rise-kings-worthy",
+    kind: "project",
+    title: "Bungalow To Contemporary Family Home",
+    location: "Kings Worthy, Winchester",
+    image: "/images/projects/boyne-rise/cgi-1.jpg",
+    tag: "High-End Residential",
+    status: "On site",
+    conversionTypes: ['high-end-residential'],
+    stats: [
+      { label: "Existing", value: "Bungalow" },
+      { label: "Roof", value: "New gable-ended form" },
+      { label: "Thistle role", value: "Feasibility to construction" },
+    ],
+    desc: "A bungalow on a corner plot, reworked internally and extended into a gable-ended house with vaulted ceilings over the open-plan heart.",
+    galleryImages: [],
+    buildingType: "Existing bungalow",
+    planningRoute: "Full planning",
+    completionDate: "On site",
+    projectStory: {
+      summary: [
+        "The comprehensive redevelopment of an existing bungalow on a substantial corner plot in Kings Worthy, Winchester, designed to create a significantly larger and more contemporary family home.",
+        "The proposals include a complete internal reconfiguration alongside a substantial side extension, extending the existing pitched roof form to create a new gable-ended composition. Large areas of glazing to the front elevation and a series of south-facing rooflights bring extensive natural light into the property, while vaulted ceilings across the new kitchen, dining and living spaces create a generous open-plan heart to the home.",
+        "Thistle Architecture was commissioned from the initial feasibility and concept design stage, progressing the project through full planning and subsequently completing the Stage 4 technical design package. Our involvement will continue through construction.",
+      ],
+      sections: [
+        { title: "The Proposed House", caption: "The existing pitched roof is extended into a gable-ended composition, with glazing to the front and south-facing rooflights over the vaulted living spaces.",
+          images: [
+            { src: "/images/projects/boyne-rise/cgi-1.jpg", alt: "Visualisation of the extended house from the front" },
+            { src: "/images/projects/boyne-rise/cgi-2.jpg", alt: "Visualisation showing the new gable and glazing" },
+          ] },
+      ],
+    },
+  },
+  {
+    slug: "campbell-road-croydon",
+    kind: "project",
+    title: "A 22-Bed HMO, Rebuilt",
+    location: "Croydon, South London",
+    image: "/images/projects/campbell-road/existing-2.jpg",
+    tag: "HMO",
+    status: "On site",
+    conversionTypes: ['hmo'],
+    stats: [
+      { label: "Existing", value: "22-bed local authority HMO" },
+      { label: "Proposed", value: "Fewer, larger en-suite rooms" },
+      { label: "Thistle role", value: "Stage 4 and delivery" },
+    ],
+    desc: "An existing 22-bedroom local authority HMO reconfigured into fewer but far larger en-suite rooms, with Thistle running the technical package and the build.",
+    galleryImages: [],
+    buildingType: "Existing large HMO",
+    completionDate: "On site",
+    projectStory: {
+      summary: [
+        "The comprehensive redevelopment of an existing 22-bedroom local authority HMO in Croydon for a large developer client, with the building being reconfigured to provide fewer but substantially larger bedrooms, each incorporating private en-suite facilities and kitchenettes.",
+        "The wider redevelopment includes a substantial two-storey rear extension, additional single-storey accommodation and a complete loft conversion with new dormers. The proposals required an extensive technical design package, coordinating the new accommodation with the existing building and addressing the significant fire, building regulations, servicing and compliance requirements associated with a large-scale HMO.",
+        "Thistle Architecture was appointed to deliver the Stage 4 technical design, drawing on our specialist experience within the HMO, co-living and commercial residential sectors. Following completion of the technical package, our role has continued through construction, providing Contract Administration and acting as Principal Designer.",
+      ],
+      sections: [
+        { title: "The Existing Building", caption: "A large local authority HMO, to be reconfigured, extended to the rear and converted into the loft.",
+          images: [
+            { src: "/images/projects/campbell-road/existing-2.jpg", alt: "The existing HMO building from the street" },
+            { src: "/images/projects/campbell-road/existing-1.jpg", alt: "The side and rear of the existing building" },
+          ] },
+      ],
+    },
+  },
+  {
+    slug: "highbury-buildings-cosham",
+    kind: "project",
+    title: "Commercial To Eleven-Bed Co-Living",
+    location: "Cosham, Portsmouth",
+    image: "/images/projects/highbury/cgi-front.jpg",
+    tag: "Co-Living",
+    status: "On site",
+    conversionTypes: ['hmo', 'commercial-to-residential'],
+    stats: [
+      { label: "Bedrooms", value: "11, all en suite" },
+      { label: "Existing", value: "Commercial and storage" },
+      { label: "Thistle role", value: "Feasibility, planning, Stage 4, interiors" },
+    ],
+    desc: "The end of a 1930s terrace, converted from commercial and storage space into eleven en-suite co-living rooms with shared amenity on every floor.",
+    galleryImages: [],
+    buildingType: "1930s commercial building",
+    planningRoute: "Full planning, change of use",
+    completionDate: "On site",
+    projectStory: {
+      summary: [
+        "The conversion of an existing commercial building in Cosham, Portsmouth, into an 11-bedroom professional co-living HMO. The property forms the end of a 1930s terrace and retains attractive original brickwork and stone detailing, providing a strong architectural base for the redevelopment.",
+        "The proposals involve the complete reconfiguration of the existing commercial and storage accommodation to create 11 generously sized en-suite bedrooms, with shared amenity spaces distributed across each floor. The property also benefits from on-site parking and a highly sustainable location.",
+        "Thistle Architecture was commissioned from the initial feasibility stage, developing the scheme through planning and securing the change of use before progressing into Stage 4 technical design. Our involvement also includes the full interior design of the co-living accommodation, so the architectural and internal packages are developed as one coordinated scheme.",
+      ],
+      sections: [
+        { title: "The Existing Building", caption: "The end of a 1930s terrace in commercial and storage use, with its original brickwork and stone detailing intact.",
+          images: [
+            { src: "/images/projects/highbury/existing-1.jpg", alt: "The existing commercial building on the corner of the terrace" },
+            { src: "/images/projects/highbury/existing-2.jpg", alt: "The parade of shops with the subject building at the end" },
+          ] },
+        { title: "The Proposal", caption: "The original brick and stone are retained, with the accommodation entirely reconfigured behind them.",
+          images: [
+            { src: "/images/projects/highbury/cgi-front.jpg", alt: "Visualisation of the converted building from the front" },
+            { src: "/images/projects/highbury/cgi-side.jpg", alt: "Visualisation of the side elevation" },
+          ] },
+      ],
+    },
+  },
 ];
 
 export const feasibilityStudies = caseStudies.filter((c) => c.kind === 'feasibility');
