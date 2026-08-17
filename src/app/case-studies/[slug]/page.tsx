@@ -13,6 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: cs?.title ?? 'Case Study',
     description: cs?.desc ?? 'Thistle Architecture case study.',
+    alternates: { canonical: `/case-studies/${slug}` },
   };
 }
 

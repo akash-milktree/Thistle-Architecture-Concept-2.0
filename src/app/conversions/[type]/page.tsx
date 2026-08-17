@@ -13,6 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ type: str
   return {
     title: c?.metaTitle ?? 'Conversion Feasibility | Thistle Architecture',
     description: c?.metaDescription ?? 'Data-driven feasibility for residential conversions across the UK.',
+    alternates: { canonical: `/conversions/${type}` },
   };
 }
 

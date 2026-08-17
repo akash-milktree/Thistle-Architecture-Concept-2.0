@@ -4,6 +4,7 @@ import { CookiesPage } from '@/views/CookiesPage';
 export const metadata: Metadata = {
   title: 'Cookie Policy',
   description: 'Thistle Architecture cookie policy.',
+  alternates: { canonical: '/cookies' },
 };
 
 export default function Page() {

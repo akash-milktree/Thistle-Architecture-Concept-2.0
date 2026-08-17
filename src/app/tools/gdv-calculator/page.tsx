@@ -4,9 +4,11 @@ import { getToolBySlug } from '@/data/toolsData';
 
 const tool = getToolBySlug('gdv-calculator');
 
+const CANONICAL = '/tools/gdv-calculator';
+
 export const metadata: Metadata = tool
-  ? { title: tool.metaTitle, description: tool.metaDescription }
-  : { title: 'GDV & Viability Calculator | Thistle Architecture' };
+  ? { title: tool.metaTitle, description: tool.metaDescription, alternates: { canonical: CANONICAL } }
+  : { title: 'GDV & Viability Calculator | Thistle Architecture', alternates: { canonical: CANONICAL } };
 
 export default function Page() {
   return <GDVCalculatorPage />;
