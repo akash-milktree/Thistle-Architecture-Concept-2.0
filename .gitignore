@@ -43,3 +43,7 @@ public/PROJECT_SOP.md
 
 # Formspree deploy key, read by the deploy step. Never commit this.
 .formspree-key
+# The Formspree CLI also reads FORMSPREE_DEPLOY_KEY from a plain .env, which
+# .env*.local above does not cover. Ignored so a key dropped there cannot be
+# committed by accident.
+.env
