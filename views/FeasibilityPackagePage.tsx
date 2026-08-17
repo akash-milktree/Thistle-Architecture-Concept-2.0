@@ -19,6 +19,7 @@ import { DeliverableShowcase } from '../sections/feasibility-package/Deliverable
 import { PackageTeam } from '../sections/feasibility-package/PackageTeam';
 import { HowItWorks } from '../sections/feasibility-package/HowItWorks';
 import { StickyCTA } from '../sections/feasibility-package/StickyCTA';
+import { TrustpilotBadge } from '../components/ui/TrustpilotBadge';
 
 const trustMarkers = [
   { icon: CheckCircle2, label: "98.5% planning success rate" },
@@ -61,6 +62,7 @@ export const FeasibilityPackagePage: React.FC = () => {
               Start Feasibility
             </Button>
             <p className="text-xs text-white/60 mt-fl-4">No obligation. Response within one working day.</p>
+            <TrustpilotBadge tone="light" className="mt-fl-5" />
           </Reveal>
           <Reveal delay={0.4}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-fl-4 sm:gap-fl-7 mt-fl-7">

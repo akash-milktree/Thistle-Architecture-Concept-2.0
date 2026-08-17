@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 287 287">
+  <!-- The Thistle mark, matching components/ui/ThistleLogo.tsx exactly. The two
+       triangles fill the square, so the icon is opaque and reads on a light or
+       dark browser tab without needing a plate behind it. -->
+  <path d="M286.824 0.000244141H0V286.824L286.824 0.000244141Z" fill="#DAAEBB"/>
+  <path d="M0.00143433 286.824L286.825 286.824L286.825 -3.05176e-05L0.00143433 286.824Z" fill="#8F9952"/>
+</svg>

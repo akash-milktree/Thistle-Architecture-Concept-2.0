@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { Button } from '../components/ui/Button';
 import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from '../components/animations/Reveal';
+import { TrustpilotBadge } from '../components/ui/TrustpilotBadge';
 
 const metrics = [
   { value: "98.5%", label: "Planning success rate", detail: "Across all submitted schemes" },
@@ -96,6 +97,7 @@ export const Hero: React.FC = () => {
                 </a>
               </div>
               <p className="text-sm text-white/90 mt-fl-4">No obligation. Response within one working day.</p>
+              <TrustpilotBadge tone="light" className="mt-fl-5" />
             </Reveal>
           </div>
         </div>

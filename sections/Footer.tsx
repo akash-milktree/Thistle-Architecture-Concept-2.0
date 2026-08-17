@@ -8,6 +8,7 @@ import { ThistleLogo } from '../components/ui/ThistleLogo';
 import { Reveal } from '../components/animations/Reveal';
 import { useRouter } from 'next/navigation';
 import { ArrowUpRight } from 'lucide-react';
+import { TrustpilotBadge } from '../components/ui/TrustpilotBadge';
 
 const productLinks = [
   { label: "Feasibility Package", to: "/feasibility-package" },
@@ -83,6 +84,7 @@ export const Footer: React.FC = () => {
               Book Your Feasibility
             </Button>
             <p className="text-xs text-white/60 mt-fl-4">No obligation. Response within one working day.</p>
+            <TrustpilotBadge tone="light" className="mt-fl-5" />
           </Reveal>
         </div>
       </div>
