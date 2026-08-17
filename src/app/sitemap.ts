@@ -1,0 +1,42 @@
+import type { MetadataRoute } from 'next';
+import { blogPosts } from '@/data/blogData';
+import { caseStudies } from '@/data/caseStudiesData';
+import { conversions } from '@/data/conversionsData';
+
+const BASE = 'https://www.thistlearchitecture.co.uk';
+
+// Written when the password gate came off. /case-studies is left out on purpose:
+// it only redirects to the feasibility listing, and pointing crawlers at a
+// redirect wastes the crawl. /team-review is an internal review page.
+const staticPaths = [
+  '/', '/feasibility-package', '/case-studies/feasibility-studies',
+  '/case-studies/completed-projects', '/about', '/blog', '/contact',
+  '/tools/class-ma-checker', '/tools/gdv-calculator', '/tools/hmo-calculator',
+  '/privacy', '/terms', '/cookies',
+];
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [
+    ...staticPaths.map((p) => ({
+      url: `${BASE}${p}`,
+      changeFrequency: 'monthly' as const,
+      priority: p === '/' ? 1 : 0.8,
+    })),
+    ...conversions.map((c) => ({
+      url: `${BASE}/conversions/${c.slug}`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
+    ...caseStudies.map((c) => ({
+      url: `${BASE}/case-studies/${c.slug}`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+    ...blogPosts.map((p) => ({
+      url: `${BASE}/blog/${p.slug}`,
+      lastModified: new Date(p.updated ?? p.date),
+      changeFrequency: 'yearly' as const,
+      priority: 0.6,
+    })),
+  ];
+}
