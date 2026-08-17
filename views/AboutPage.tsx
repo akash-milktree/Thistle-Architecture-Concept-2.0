@@ -83,8 +83,8 @@ export const AboutPage: React.FC = () => {
           <Reveal>
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-thistle-black/[0.06]">
               <Image
-                src="/images/generated/site-visit.jpg"
-                alt="Two people reviewing a feasibility document outside a vacant office building"
+                src="/images/projects/beauchamp2/stripout-1.jpg"
+                alt="Beauchamp House stripped back to brick and joists during conversion"
                 fill
                 sizes="(max-width: 1024px) 90vw, 620px"
                 className="object-cover"

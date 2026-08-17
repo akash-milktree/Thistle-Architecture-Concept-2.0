@@ -107,8 +107,8 @@ export const conversions: Conversion[] = [
         "A single report is a £15.99 one-off, and there are free tools alongside it including an Article 4 checker and a conversion calculator. It is the cheapest way to rule an address out before you spend money on it.",
         "Where HMO Checker tells you whether the address is worth pursuing, a feasibility tells you what the building will actually give you: how many rooms, at what sizes, and whether the deal stacks up.",
       ],
-      image: "/images/generated/layer-density.jpg",
-      imageAlt: "Top-down aerial of dense terraced housing streets",
+      image: "/images/site/hero-winchester.jpg",
+      imageAlt: "Aerial view over Winchester rooftops and streets",
       cta: { label: "Check an address on HMO Checker", href: "https://hmochecker.co.uk", external: true },
     },
     deliverableHighlights: [

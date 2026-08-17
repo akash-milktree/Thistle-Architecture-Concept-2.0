@@ -50,8 +50,8 @@ export const ConversionPage: React.FC<ConversionPageProps> = ({ conversion }) =>
             <Reveal>
               <div className="relative aspect-[4/3] rounded-2xl border border-thistle-black/[0.06] overflow-hidden">
                 <Image
-                  src={conversion.extraSection.image ?? '/images/generated/office-exterior.jpg'}
-                  alt={conversion.extraSection.imageAlt ?? 'Vacant UK office building suitable for residential conversion'}
+                  src={conversion.extraSection.image ?? '/images/projects/beauchamp2/exterior.jpg'}
+                  alt={conversion.extraSection.imageAlt ?? 'Beauchamp House, a period office building converted to flats'}
                   fill
                   sizes="(max-width: 1024px) 90vw, 620px"
                   className="object-cover"

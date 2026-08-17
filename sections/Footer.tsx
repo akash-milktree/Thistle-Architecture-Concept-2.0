@@ -40,10 +40,19 @@ export const Footer: React.FC = () => {
     <footer className="bg-thistle-black text-white overflow-hidden">
       {/* CTA Section */}
       <div className="relative pt-fl-section-sm pb-fl-section-sm px-fl-margin border-b border-white/[0.06] overflow-hidden">
+        {/* This band sits in the footer, so it loads on every page: it was the
+            most-requested image on the site by a distance. It had no `sizes`,
+            and a `fill` image without one defaults to 100vw, so Next served the
+            largest variant everywhere.
+
+            The source was also a 2400x3600 portrait sitting in a wide strip
+            under a 75% black overlay, so object-cover threw most of the height
+            away. It is now cropped to the part that was actually visible. */}
         <Image
-          src="/images/site/cta-band.jpg"
-          alt="Rooftops and mixed commercial and residential buildings in a UK city"
+          src="/images/projects/beauchamp2/scaffold-1.jpg"
+          alt="Beauchamp House under scaffold during its conversion to flats"
           fill
+          sizes="100vw"
           className="object-cover"
         />
         <div className="absolute inset-0 bg-thistle-black/75" />
