@@ -3,15 +3,46 @@
     "feasibility": {
       "name": "Thistle Feasibility Study",
       "actions": [
-        { "type": "email", "to": "hello@incollective.works" },
-        { "type": "email", "to": "jodi@thistlearchitecture.co.uk" }
+        {
+          "type": "email",
+          "to": "hello@incollective.works"
+        },
+        {
+          "type": "email",
+          "to": "jodi@thistlearchitecture.co.uk"
+        }
       ]
     },
     "leads": {
       "name": "Thistle Tool Leads",
       "actions": [
-        { "type": "email", "to": "hello@incollective.works" },
-        { "type": "email", "to": "jodi@thistlearchitecture.co.uk" }
+        {
+          "type": "email",
+          "to": "hello@incollective.works"
+        },
+        {
+          "type": "email",
+          "to": "jodi@thistlearchitecture.co.uk"
+        }
+      ]
+    },
+    "class-ma-checker": {
+      "name": "Thistle Class MA Checker",
+      "actions": [
+        {
+          "type": "email",
+          "to": "hello@incollective.works"
+        },
+        {
+          "type": "email",
+          "to": "jodi@thistlearchitecture.co.uk"
+        },
+        {
+          "type": "autoresponse",
+          "fromName": "Thistle Architecture",
+          "subject": "Your Class MA prior-approval checklist",
+          "message": "Thanks for using the Class MA checker.\n\nYour on-screen verdict is a quick screen, not a planning determination. Here are the prior-approval tests a Class MA application is actually judged on, and what each one needs evidence of:\n\n1. Transport and highways impact, particularly on the movement of goods.\n2. Contamination risk on the site.\n3. Flooding risk on the site.\n4. Natural light in every habitable room. This is the test that most often bites.\n5. Impact on the intended occupiers from nearby commercial uses.\n6. Loss of services such as health centres or nurseries, where relevant.\n7. Fire safety, where the building is above 18 metres.\n\nThe application fee is 120 pounds per dwelling and a decision usually takes up to 56 days.\n\nIf you want these tested properly against your building, a feasibility study gives you a Go or No-Go in five days for a fixed fee:\nhttps://www.thistlearchitecture.co.uk/feasibility-package\n\nThistle Architecture"
+        }
       ]
     }
   }

@@ -20,6 +20,18 @@ const LEAD_ENDPOINT =
   process.env.LEAD_FORMSPREE_ENDPOINT ??
   'https://formspree.io/p/3042010600814149049/f/leads';
 
+// The Class MA checker has its own Formspree form so it can carry an
+// autoresponse without that autoresponse reaching everyone else. The `leads`
+// form is shared by both calculators, the sample report download and the
+// contact page, and a Class MA prior-approval checklist landing in a contact
+// enquiry reply would be worse than sending nothing.
+//
+// Any source without an entry here falls back to the shared form and simply
+// gets no autoresponse, which is the current behaviour for all of them.
+const FORM_BY_SOURCE: Record<string, string> = {
+  'class-ma-checker': 'https://formspree.io/p/3042010600814149049/f/class-ma-checker',
+};
+
 // Where each gate's `source` came from, for a subject line the team can triage
 // from the notification list without opening anything.
 // Keys must match the `source` each gate passes. Checked against the call sites
@@ -62,18 +74,39 @@ export async function POST(request: Request) {
   const payload = {
     _subject: `New tool lead: ${label}`,
     _replyto: email,
+    // Formspree's autoresponse looks for a field named exactly `email`, in
+    // lower case, to decide where to send the confirmation. Only `Email` was
+    // sent, so an autoresponse would have had nowhere to go. `Email` stays
+    // because it is what shows in the team's notification.
+    email,
     Email: email,
     Tool: label,
     Source: source,
     ...extraRows,
   };
 
-  try {
-    const res = await fetch(LEAD_ENDPOINT, {
+  const post = (url: string) =>
+    fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify(payload),
     });
+
+  try {
+    const preferred = FORM_BY_SOURCE[source];
+    let res = await post(preferred ?? LEAD_ENDPOINT);
+
+    // A per-source form only exists once formspree.json has been deployed with
+    // the Formspree CLI, which is a separate release from this site. Until that
+    // happens the dedicated form 404s, and without this the person would be
+    // told their submission failed while we simply had not set the form up.
+    // Fall back to the shared form so the lead is never lost; the only thing
+    // missing in that case is the autoresponse.
+    if (preferred && !res.ok) {
+      console.error('[leads] per-source form failed, falling back', source, res.status);
+      res = await post(LEAD_ENDPOINT);
+    }
+
     if (!res.ok) {
       console.error('[leads] formspree failed', res.status, await res.text().catch(() => ''));
     }

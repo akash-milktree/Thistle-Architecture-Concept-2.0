@@ -13,7 +13,7 @@ export const ClassMACheckerPage: React.FC = () => {
     <ToolShell
       tool={tool}
       heroHeading="Class MA: Does Your Building Qualify?"
-      heroDescription="Six quick questions to screen your building against the main Class MA prior-approval tests. Around two minutes."
+      heroDescription="Four quick questions to screen your building against the main Class MA prior-approval tests. Around a minute."
       disclaimer="This screener is a quick check, not a planning determination. A full feasibility is the final word."
     >
       <EligibilityChecker />

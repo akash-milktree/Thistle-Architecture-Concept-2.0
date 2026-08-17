@@ -5,7 +5,7 @@ import { ArrowUpRight, RotateCcw, CheckCircle2, AlertTriangle, XCircle, type Luc
 import { Reveal } from '../../components/animations/Reveal';
 import { Button } from '../../components/ui/Button';
 import { useRouter } from 'next/navigation';
-import { ToolGate } from '../../components/ui/ToolGate';
+import { ToolEmailOffer } from '../../components/ui/ToolEmailOffer';
 
 interface Question {
   key: string;
@@ -56,15 +56,26 @@ const QUESTIONS: Question[] = [
 export type EligibilityVerdict = 'eligible' | 'borderline' | 'not-eligible';
 
 // Pure verdict helper, aligned with Class MA rules as amended in March 2024
-// (no floorspace cap, no vacancy test). Hard fails: wrong use class, Article 4,
-// listed building. Unknowns and conservation areas surface a borderline.
+// (no floorspace cap, no vacancy test).
+//
+// Hard fails are facts that rule Class MA out: the building is already
+// residential, an Article 4 direction has removed the right, or it is listed.
+//
+// Everything uncertain is a borderline, never a fail. "Other or unsure" on the
+// use class used to sit in the hard-fail branch alongside "already
+// residential", so anyone who did not know their use class was told "Class MA
+// is probably not the route" no matter how well the other four answers lined
+// up. Not knowing the use class is the most common reason someone runs this
+// screener at all, so it was failing exactly the people it should have been
+// helping. Flagged in the August 2026 SEO audit.
 export function computeVerdict(answers: Record<string, string>): EligibilityVerdict {
-  if (answers.useClass === 'residential' || answers.useClass === 'other') return 'not-eligible';
+  if (answers.useClass === 'residential') return 'not-eligible';
   if (answers.article4 === 'yes') return 'not-eligible';
   if (answers.listedStatus === 'listed') return 'not-eligible';
 
   if (
     answers.useClass === 'other-commercial' ||
+    answers.useClass === 'other' ||
     answers.commercialUse2y === 'unknown' || answers.commercialUse2y === 'no' ||
     answers.article4 === 'unknown' ||
     answers.listedStatus === 'conservation'
@@ -173,11 +184,14 @@ export const EligibilityChecker: React.FC = () => {
                 <h3 className="text-fluid-h3 font-medium tracking-tight leading-tight text-thistle-black mb-fl-4">
                   {copy.headline}
                 </h3>
-                <ToolGate source="class-ma-checker" extra={{ answers, verdict }}>
-                  <p className="text-fluid-base text-thistle-black/80 leading-relaxed mb-fl-6 max-w-2xl">
-                    {copy.body}
-                  </p>
-                </ToolGate>
+                {/* The verdict used to sit half in and half out of a ToolGate:
+                    the headline above was free and only this paragraph was
+                    blurred, so an email bought a sentence saying a feasibility
+                    would confirm it. The screener's job is to qualify someone
+                    into a booking, and that is the wrong place to put a wall. */}
+                <p className="text-fluid-base text-thistle-black/80 leading-relaxed mb-fl-6 max-w-2xl">
+                  {copy.body}
+                </p>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-fl-4">
                   <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/feasibility-package')}>
                     Book Your Feasibility
@@ -189,6 +203,14 @@ export const EligibilityChecker: React.FC = () => {
                     <RotateCcw size={14} /> Start over
                   </button>
                 </div>
+                {/* Named after something that actually gets sent. The Formspree
+                    autoresponse carries this checklist; see formspree.json. */}
+                <ToolEmailOffer
+                  source="class-ma-checker"
+                  extra={{ answers, verdict }}
+                  heading="Want the prior-approval checklist?"
+                  blurb="We will email you the prior-approval tests a Class MA application is judged on, and what evidence each one needs. Useful whichever way your answers landed."
+                />
               </div>
             </Reveal>
           );
