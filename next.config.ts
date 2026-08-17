@@ -1,6 +1,17 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  // Every redirect below uses `statusCode: 301` rather than `permanent: true`.
+  // They do the same job: `permanent: true` emits a 308, and Google has treated
+  // 308 as equivalent to 301 for years. The difference is that a 308 forbids
+  // changing the method, so a POST stays a POST, where a 301 lets clients
+  // downgrade it to GET.
+  //
+  // These are all old Wix URLs being pointed at their new homes, and everything
+  // hitting them is a GET from a bookmark, an inbound link or a search result.
+  // Neither status is wrong. 301 is stated explicitly because it is what the
+  // SEO audit asked for and what crawl tools expect to see, so this stops the
+  // same row reappearing on the next report.
   async redirects() {
     return [
       // Removed 2026-07-17: both were stock placeholders with no material
@@ -12,18 +23,18 @@ const nextConfig: NextConfig = {
       {
         source: '/case-studies/bishopstoke',
         destination: '/case-studies/bishopstoke-road',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/case-studies/forest-home',
         destination: '/case-studies/completed-projects',
-        permanent: true,
+        statusCode: 301,
       },
       // Old live-site journal URLs (root-level on Wix) map to /blog.
       {
         source: '/journal',
         destination: '/blog',
-        permanent: true,
+        statusCode: 301,
       },
       // The rest of the Wix top-level nav. Added 2026-08-05, after the domain
       // moved off Wix and these four started returning 404 on the real domain:
@@ -31,19 +42,19 @@ const nextConfig: NextConfig = {
       {
         source: '/works',
         destination: '/case-studies/completed-projects',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/studio',
         destination: '/about',
-        permanent: true,
+        statusCode: 301,
       },
       {
         // Wix's only project page. It is Bereweeke Avenue, which we already
         // publish, so send it to the real case study rather than a hub.
         source: '/winchesterproject',
         destination: '/case-studies/bereweeke-avenue',
-        permanent: true,
+        statusCode: 301,
       },
       // /contact used to redirect to /feasibility-package, on the reasoning that
       // the booking was the equivalent entry point. That call was reversed on
@@ -57,102 +68,271 @@ const nextConfig: NextConfig = {
       {
         source: '/post/:slug',
         destination: '/blog/:slug',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/class-ma-prior-approval-what-you-need-to-know',
         destination: '/blog/class-ma-prior-approval-what-you-need-to-know',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/buying-vs-building-a-home-in-the-uk',
         destination: '/blog/buying-vs-building-a-home-in-the-uk',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/self-building-an-eco-home-in-the-uk',
         destination: '/blog/self-building-an-eco-home-in-the-uk',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/brick-vs-stone-vs-concrete-masonry-in-self-build-homes',
         destination: '/blog/brick-vs-stone-vs-concrete-masonry-in-self-build-homes',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/class-q-barn-conversions',
         destination: '/blog/class-q-barn-conversions',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/10-pros-and-cons-of-masonry-for-self-build-houses',
         destination: '/blog/10-pros-and-cons-of-masonry-for-self-build-houses',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/self-build-icfs-construction',
         destination: '/blog/self-build-icfs-construction',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/self-build-timber-frame-house',
         destination: '/blog/self-build-timber-frame-house',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/self-build-sips-construction',
         destination: '/blog/self-build-sips-construction',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/how-much-does-it-cost-to-self-build-in-2023',
         destination: '/blog/how-much-does-it-cost-to-self-build-in-2023',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/how-to-fund-a-self-build-home',
         destination: '/blog/how-to-fund-a-self-build-home',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/top-10-considerations-when-it-comes-to-self-building',
         destination: '/blog/top-10-considerations-when-it-comes-to-self-building',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/how-to-find-the-right-self-build-architect',
         destination: '/blog/how-to-find-the-right-self-build-architect',
-        permanent: true,
+        statusCode: 301,
+      },
+      // Found 2026-08-17 by pulling the old site's URL list out of the Wayback
+      // Machine, rather than trusting the Wix nav. These eight were live and
+      // returning 200 on Wix, were never in the redirect map, and had been
+      // 404ing since the domain moved.
+      //
+      // The first six are project pages. Wix named them after the order they
+      // were created ("2nd-project") or after the page they were duplicated
+      // from ("copy-of-school-house"), so the slug says nothing useful about
+      // the content. Each destination below was matched on the archived page's
+      // own title and body text, not on its slug:
+      //   /2nd-project                 was "HACKNEY HOUSE"
+      //   /3rd-project                 was "SCHOOL HOUSE"
+      //   /4th-project                 was "FOREST HOUSE"
+      //   /copy-of-bereweeke-avenue    was "WINCHESTER HOUSE, CONCEPT"
+      //   /copy-of-historic-commercial was "BEAUCHAMP HOUSE"
+      //   /copy-of-school-house        was "UPPER HIGH STREET", i.e. 5 Upper
+      //                                High Street, Winchester = Monument House
+      {
+        source: '/2nd-project',
+        destination: '/case-studies/corner-house-hackney',
+        statusCode: 301,
+      },
+      {
+        source: '/3rd-project',
+        destination: '/case-studies/school-house-south-downs',
+        statusCode: 301,
+      },
+      {
+        source: '/4th-project',
+        destination: '/case-studies/forest-house-lymington',
+        statusCode: 301,
+      },
+      {
+        source: '/copy-of-bereweeke-avenue',
+        destination: '/case-studies/bereweeke-avenue',
+        statusCode: 301,
+      },
+      {
+        source: '/copy-of-historic-commercial',
+        destination: '/case-studies/beauchamp-house',
+        statusCode: 301,
+      },
+      {
+        source: '/copy-of-school-house',
+        destination: '/case-studies/monument-house',
+        statusCode: 301,
+      },
+      // Wix system pages for its gallery lightbox. No content of their own, but
+      // they answered 200 and so were indexable. Sent to the projects hub,
+      // which is the nearest thing to what someone clicking a gallery wanted.
+      {
+        source: '/fullscreen-page-1',
+        destination: '/case-studies/completed-projects',
+        statusCode: 301,
+      },
+      {
+        source: '/fullscreen-page-2',
+        destination: '/case-studies/completed-projects',
+        statusCode: 301,
+      },
+      // Recovered 2026-08-17 from Wix's own URL Redirect Manager, read out of the
+      // Wix dashboard. Wix was serving 301s for these 16 URLs right up to the
+      // migration, and every one of them was lost when the domain moved. All
+      // but /blog were confirmed 404 on the live site before this was written.
+      //
+      // These are older than the Wayback list: they are URLs from an even
+      // earlier version of the site, which Wix was already redirecting. That is
+      // why a crawl of the Wix site never surfaced them, and why guessing did
+      // not either.
+      //
+      // Wix pointed most of them at other Wix URLs (/studio, /works,
+      // /winchesterproject), so the destinations below are the resolved end of
+      // each chain rather than a second hop.
+      //
+      // /blog is deliberately absent. On Wix it redirected to /journal; on this
+      // site /blog is the real page, so it must serve directly. Adding it here
+      // would create a loop with the /journal redirect above.
+      {
+        source: '/1st-project',
+        destination: '/case-studies/bereweeke-avenue',
+        statusCode: 301,
+      },
+      {
+        source: '/about-us',
+        destination: '/about',
+        statusCode: 301,
+      },
+      {
+        // Wix sent this to the homepage because it had no cookie policy page.
+        // This site does, so it goes to the real thing.
+        source: '/cookie-policy',
+        destination: '/cookies',
+        statusCode: 301,
+      },
+      {
+        source: '/featured-projects',
+        destination: '/case-studies/completed-projects',
+        statusCode: 301,
+      },
+      {
+        // Wix sent this to /studio, its about page, for want of anywhere
+        // better. This site has an actual process section, and /how-it-works
+        // already points at it, so this matches that rather than Wix.
+        source: '/our-process',
+        destination: '/feasibility-package#how-it-works',
+        statusCode: 301,
+      },
+      {
+        // Wix had this as a group redirect for /post/*. The /post/:slug form is
+        // already handled above and lands on the real article, which is better
+        // than Wix managed, so this only needs to catch the bare /post.
+        source: '/post',
+        destination: '/blog',
+        statusCode: 301,
+      },
+      {
+        // Wix chained this to /2nd-project, which was "HACKNEY HOUSE".
+        source: '/project/courtyard-house',
+        destination: '/case-studies/corner-house-hackney',
+        statusCode: 301,
+      },
+      {
+        // Wix sent this to the homepage because the project page was gone. We
+        // publish a Queens Road case study, so it goes there instead.
+        // WORTH ED CONFIRMING this is the same Queens Road.
+        source: '/project/queens-road',
+        destination: '/case-studies/queens-road',
+        statusCode: 301,
+      },
+      // The remaining four Wix project pages have no equivalent on this site.
+      // Wix sent them to the homepage; the projects hub is the closer match for
+      // someone who clicked through expecting a project.
+      {
+        source: '/project/interior-design',
+        destination: '/case-studies/completed-projects',
+        statusCode: 301,
+      },
+      {
+        source: '/project/terrace-end-house',
+        destination: '/case-studies/completed-projects',
+        statusCode: 301,
+      },
+      {
+        source: '/project/wharf-house',
+        destination: '/case-studies/completed-projects',
+        statusCode: 301,
+      },
+      {
+        source: '/project/zinc-house',
+        destination: '/case-studies/completed-projects',
+        statusCode: 301,
+      },
+      // Wix pointed the /what-we-do tree at /studio, its about page. This site
+      // separates who we are from what we sell, so these go to the service.
+      {
+        source: '/what-we-do',
+        destination: '/feasibility-package',
+        statusCode: 301,
+      },
+      {
+        source: '/what-we-do/residential-architecture',
+        destination: '/conversions/high-end-residential',
+        statusCode: 301,
+      },
+      {
+        source: '/what-we-do/self-build-architecture',
+        destination: '/feasibility-package',
+        statusCode: 301,
       },
       {
         source: '/how-it-works',
         destination: '/feasibility-package#how-it-works',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/tools',
         destination: '/tools/class-ma-checker',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/conversions/office-to-resi-class-ma',
         destination: '/conversions/commercial-to-residential',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/commercial-conversions',
         destination: '/feasibility-package',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/hmos',
         destination: '/feasibility-package',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/high-end-residential',
         destination: '/feasibility-package',
-        permanent: true,
+        statusCode: 301,
       },
     ];
   },
