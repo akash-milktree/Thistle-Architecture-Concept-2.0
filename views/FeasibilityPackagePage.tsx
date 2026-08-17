@@ -35,8 +35,8 @@ export const FeasibilityPackagePage: React.FC = () => {
       {/* Hero */}
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         <Image
-          src="/images/projects/bereweeke/construction-1.jpg"
-          alt="Bereweeke Avenue under construction, with materials stacked on site"
+          src="/images/projects/bereweeke/complete-front.jpg"
+          alt="Bereweeke Avenue completed, a brick house with a tiled roof"
           fill
           priority
           className="object-cover"

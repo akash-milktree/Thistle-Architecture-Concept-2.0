@@ -53,7 +53,7 @@ export const post: BlogPost = {
     "In the UK, a majority of people opt to purchase existing homes, making it a great choice in terms of market value and competition. However, building your own house provides complete control over the design, size, location, interior, and more, allowing you to create something truly unique. While building a new house can involve considerable costs, the most substantial expense is often the land itself.",
     "Ultimately, your choice depends on your personal preferences and circumstances. To make an informed decision, consider the advantages and disadvantages of both building and buying a house in the UK.",
   ],
-  image: "/images/projects/bereweeke/complete-front.jpg",
+  image: "/images/projects/bereweeke/interior-kitchen-1.jpg",
   date: "August 31, 2024",
   updated: "January 17, 2025",
   readTime: "4 min read",

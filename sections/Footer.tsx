@@ -49,8 +49,8 @@ export const Footer: React.FC = () => {
             under a 75% black overlay, so object-cover threw most of the height
             away. It is now cropped to the part that was actually visible. */}
         <Image
-          src="/images/projects/beauchamp2/scaffold-1.jpg"
-          alt="Beauchamp House under scaffold during its conversion to flats"
+          src="/images/projects/bereweeke/complete-rear.jpg"
+          alt="The completed rear extension at Bereweeke Avenue, in brick with steel windows"
           fill
           sizes="100vw"
           className="object-cover"

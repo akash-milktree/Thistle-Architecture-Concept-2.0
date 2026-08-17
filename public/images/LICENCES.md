@@ -19,12 +19,12 @@ been deleted and replaced with Thistle's own photography.
 
 | Placement | Now uses |
 |---|---|
-| `/feasibility-package` hero | `projects/bereweeke/construction-1.jpg` |
+| `/feasibility-package` hero | `projects/bereweeke/complete-front.jpg` |
 | `/about`, who we are | `projects/beauchamp2/stripout-1.jpg` |
 | `/conversions/commercial-to-residential` | `projects/beauchamp2/exterior.jpg` |
 | `/conversions/hmo`, HMO Checker | `site/hero-winchester.jpg` |
-| Footer CTA band, every page | `projects/beauchamp2/scaffold-1.jpg` |
-| `buying-vs-building` blog hero | `projects/bereweeke/complete-front.jpg` |
+| Footer CTA band, every page | `projects/bereweeke/complete-rear.jpg` |
+| `buying-vs-building` blog hero | `projects/bereweeke/interior-kitchen-1.jpg` |
 
 **There is no AI-generated or stock imagery on the site.** Every image is either
 client supplied, client owned drone footage, a Thistle drawing or CGI, or a
