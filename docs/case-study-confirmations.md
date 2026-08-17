@@ -261,13 +261,36 @@ areas, planning routes or technical strategies are claimed for any of them.
 
 ## Testimonials
 
-- [~] RESOLVED IN PRINCIPLE 2026-07-29: the ten placeholder testimonials
-  (Marcus Cole / Sterling Property Group, Rachel Simmons / Oakbridge Capital,
-  etc.) are to be replaced with real **Google reviews from both Thistle
-  Architecture and HMO Designers**. Waiting on the two Google Business Profile
-  links so the review text and reviewer names can be pulled. Where a review
-  comes from HMO Designers, label the provenance rather than implying Thistle
-  did the work. Placeholders remain live until the swap.
+- [x] DONE 2026-08-18. The ten invented testimonials are gone, replaced with
+  the five real reviews from Thistle's **Trustpilot** profile. Data in
+  `data/reviewsData.ts`, every quote a verbatim contiguous excerpt with the
+  source named and linked on each card.
+
+  **Google was checked and deliberately not used**, which reverses the July plan.
+  Its five reviews are all three years old; three name inCollective and "Tim",
+  who is not on the Thistle team; one reads only "Brilliant service and very
+  helpful"; and one is from a Ben Kercher, sharing a surname with the founder.
+  Trustpilot's five are all from 2026, all five star, all about this practice,
+  and they name Ed, Kaan and Jodi.
+
+  Placement matches review to page rather than repeating one set everywhere:
+
+  | Page | Review | Why |
+  |---|---|---|
+  | `/feasibility-package` | Maywood Group | Is about booking a feasibility before a purchase, and about the study returning an answer they did not want |
+  | `/about` | Sunny Berhane leads, all five shown | Repeat work with Edward and Kaan, so it is about the practice |
+  | `/conversions/commercial-to-residential` | Liam Thomas | Office-to-residential conversion in Winchester |
+  | `/conversions/mixed-use-commercial` | Liam Thomas | Nearest commercial match |
+  | `/conversions/hmo` | Gemma | First HMO conversion |
+  | `/conversions/high-end-residential` | Sunny Berhane | Planning applications |
+
+  On the rating shown: the copy says "every review on our Trustpilot profile is
+  five star", which is true and checkable. Trustpilot's own TrustScore reads 4.1
+  because it is weighted for volume and recency, so quoting it would understate;
+  quoting an average would need a caveat. Google shows 5.0 from 5.
+
+  Not added: schema.org Review markup. Self-serving review markup on your own
+  site is not eligible for rich results and carries a manual action risk.
 
 ## Class MA Checker logic update
 

@@ -131,7 +131,11 @@ export const FeasibilityPackagePage: React.FC = () => {
         </div>
       </section>
 
-      <Testimonials eyebrow="The Clients" />
+      {/* Maywood Group leads here because their review is literally about
+          booking a feasibility before committing to a purchase, and about the
+          study returning an answer they did not want. That is a better argument
+          for the product than any wording of ours. */}
+      <Testimonials eyebrow="The Clients" featuredAuthor="Maywood Group" />
 
       <PackageFAQ />
 

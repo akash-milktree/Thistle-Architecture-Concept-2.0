@@ -13,6 +13,8 @@ import { Opportunity } from '../sections/conversions/Opportunity';
 import { Challenges } from '../sections/conversions/Challenges';
 import { HowThistleSolves } from '../sections/conversions/HowThistleSolves';
 import { RelatedCaseStudy } from '../sections/conversions/RelatedCaseStudy';
+import { ReviewQuote } from '../sections/Testimonials';
+import { reviewFor } from '../data/reviewsData';
 import type { Conversion } from '../data/conversionsData';
 
 interface ConversionPageProps {
@@ -90,6 +92,19 @@ export const ConversionPage: React.FC<ConversionPageProps> = ({ conversion }) =>
       <HowThistleSolves typeLabel={conversion.label} highlights={conversion.deliverableHighlights} tinted={hasExtra} />
 
       <RelatedCaseStudy slug={conversion.relatedCaseStudySlug} tinted={!hasExtra} />
+
+      {/* One review, chosen for this conversion type, sitting between the
+          case study and the ask: proof of the work, then proof from a client,
+          then the request. */}
+      {conversion.reviewTopic && (
+        <section className={`px-fl-margin pb-fl-section ${hasExtra ? 'bg-white' : 'bg-thistle-white'}`}>
+          <div className="max-w-3xl mx-auto">
+            <Reveal>
+              <ReviewQuote review={reviewFor(conversion.reviewTopic)} />
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       {/* Closing CTA */}
       <section className={`py-fl-section px-fl-margin ${hasExtra ? 'bg-thistle-white' : 'bg-white'}`}>

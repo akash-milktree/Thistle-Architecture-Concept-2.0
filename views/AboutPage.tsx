@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { PageHero } from '../components/ui/PageHero';
+import { Testimonials } from '../sections/Testimonials';
 import { Reveal } from '../components/animations/Reveal';
 import { motion } from 'framer-motion';
 
@@ -177,6 +178,16 @@ export const AboutPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Reviews sit after the team, so the names in them are people the
+          reader has just met. Sunny Berhane leads: it is about repeat work with
+          Edward and Kaan rather than a single project, which suits a page about
+          the practice. */}
+      <Testimonials
+        eyebrow="Client Reviews"
+        heading="Judged On The Outcome."
+        featuredAuthor="Sunny Berhane"
+      />
 
       {/* Approach statement */}
       <section className="py-fl-section px-fl-margin bg-white">

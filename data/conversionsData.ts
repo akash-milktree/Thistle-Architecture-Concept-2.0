@@ -29,6 +29,12 @@ export interface ConversionExtraSection {
 
 export interface Conversion {
   slug: string;
+  /**
+   * Which client review to show on this page. Set per conversion so a reader
+   * sees a review about the thing they are reading about, rather than the same
+   * quote on all four pages.
+   */
+  reviewTopic?: 'feasibility' | 'hmo' | 'commercial' | 'planning';
   label: string;
   heroHeading: string;
   heroDescription: string;
@@ -45,6 +51,7 @@ export interface Conversion {
 export const conversions: Conversion[] = [
   {
     slug: "commercial-to-residential",
+    reviewTopic: "commercial",
     label: "Commercial to Residential",
     heroHeading: "Turn A Commercial Building Into Viable Homes.",
     heroDescription: "A feasibility built for developers buying offices, retail upper parts, and small commercial blocks to convert into housing.",
@@ -82,6 +89,7 @@ export const conversions: Conversion[] = [
   },
   {
     slug: "hmo",
+    reviewTopic: "hmo",
     label: "HMO",
     heroHeading: "HMO Feasibility, Without The Guesswork.",
     heroDescription: "Houses of multiple occupation work on tight margins. A feasibility that pressure-tests density, licensing, and layout before you put in an offer.",
@@ -127,6 +135,7 @@ export const conversions: Conversion[] = [
   // structure, so treat the copy below as a first pass.
   {
     slug: "mixed-use-commercial",
+    reviewTopic: "commercial",
     label: "Mixed-Use Commercial",
     heroHeading: "Keep The Shop. Build Homes Above It.",
     heroDescription: "High-street buildings where the ground floor has to stay commercial and the value sits in the floors above.",
@@ -153,6 +162,7 @@ export const conversions: Conversion[] = [
   },
   {
     slug: "high-end-residential",
+    reviewTopic: "planning",
     label: "High-End Residential",
     heroHeading: "Extend, Remodel, Or Convert To Something Better.",
     heroDescription: "Feasibility for high-end residential projects, where the question is what the house could become rather than how many units fit in it.",
