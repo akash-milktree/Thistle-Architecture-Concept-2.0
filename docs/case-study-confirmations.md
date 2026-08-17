@@ -361,3 +361,29 @@ Two things still to settle:
   `gdv-calculator`.
 - [ ] Developer logos (Property & Poppadoms, HMO Academy, Brentor Group,
   Frame 4, DNB Homes) were already live; confirm permissions exist.
+
+## Trustpilot widget: blocked on the free plan
+
+Tried 18 August, on the argument that an official embed reads as more authentic
+than a badge we draw ourselves. That argument is right; the embed is simply not
+available.
+
+Thistle's business unit is `6a00407e1ded7e5a2b924339` (4.1 TrustScore, 5
+reviews). Every TrustBox template was tested against it and all eleven return
+**"BusinessUnit does not have access to that trustbox"**: micro combo, micro
+star, micro review count, micro TrustScore, mini, review carousel, grid,
+horizontal, starter, list, drop-down. TrustBoxes need a paid Trustpilot plan.
+
+**The failure mode is the important part.** A blocked TrustBox does not render
+empty or throw. It renders Trustpilot's sample data. The first attempt put
+"Excellent, 4.5 stars, 390 reviews" on the feasibility hero, which is FasTreat's
+data, an unrelated company. That would have been a false claim on the site, in
+the same position we had just cleared of invented testimonials.
+
+- [ ] **Decision for Ed:** upgrade the Trustpilot plan to get the real widget,
+  or stay on the hand-built badge. The badge states only what the link can
+  verify and cannot go stale, but it is our assertion rather than Trustpilot's.
+
+Also worth knowing when pricing that up: a paid plan would also let the review
+carousel show the actual review text, and would make the Trustpilot star rating
+eligible for Google seller ratings, which the current setup cannot do.

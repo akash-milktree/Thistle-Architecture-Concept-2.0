@@ -6,10 +6,25 @@ import { reviews, REVIEWS_URL } from '../../data/reviewsData';
 //
 // Two things it deliberately does not do.
 //
-// It does not embed Trustpilot's official widget. That pulls a third-party
-// script on every page it appears, and it renders the TrustScore, which is 4.1
-// here because Trustpilot weights for volume and recency. That number reads
-// worse than the reviews actually are, so the widget would understate them.
+// It does not embed Trustpilot's official widget. That was tried on 18 August,
+// on the reasonable argument that a third-party embed reads as more authentic
+// than a badge we draw ourselves. It cannot be done on this account.
+//
+// Thistle's Trustpilot profile is on the free tier, and every TrustBox template
+// was checked against their business unit (6a00407e1ded7e5a2b924339). All of
+// them return "BusinessUnit does not have access to that trustbox": micro
+// combo, micro star, review count, TrustScore, mini, carousel, grid,
+// horizontal, starter, list and drop-down.
+//
+// The failure mode is what makes this worth recording. A blocked TrustBox does
+// not render empty or error, it renders Trustpilot's sample data. On the first
+// attempt the feasibility hero displayed "Excellent, 4.5 stars, 390 reviews",
+// which belongs to an unrelated company. Shipping that would have put a false
+// claim on the site, in the same place we had just removed invented
+// testimonials from.
+//
+// If Thistle upgrades to a paid Trustpilot plan the widget becomes the better
+// answer and this should be revisited.
 //
 // It does not reproduce the Trustpilot logo. The name is used as plain text in
 // a link to the profile, which is attribution rather than trademark use.
