@@ -1,4 +1,9 @@
-# Site password gate
+> **This gate no longer exists.** It was removed on 14 August 2026 when Akash
+> took the site public. The middleware and the SITE_PASSWORD variable are both
+> gone, robots.txt now allows crawling, and a sitemap of 65 URLs was added.
+> Kept for the record, and for the sequencing note if it is ever put back.
+
+# Site password gate (REMOVED 14 August 2026)
 
 Put up 2026-08-07 at Ed's request. The site went live on the real domain, but he
 does not want the public seeing it until the outstanding work is finished. He
