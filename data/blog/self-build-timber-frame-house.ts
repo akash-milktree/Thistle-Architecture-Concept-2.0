@@ -74,8 +74,6 @@ export const post: BlogPost = {
     "- Masonry Construction in self building >",
     "- ICF in self building >",
     "Originally written by [Scarlett Pirie](https://scarlettilona.co.uk/)",
-    "## Recent Posts",
-    "[Buying vs Building a Home in the UK: Which is Cheaper?](/blog/buying-vs-building-a-home-in-the-uk)",
   ],
   image: "/images/blog/self-build-timber-frame-house.jpg",
   date: "June 27, 2024",

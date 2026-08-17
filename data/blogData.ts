@@ -65,3 +65,56 @@ export const blogPosts: BlogPost[] = allPosts.sort(
 export const blogCategories: BlogCategory[] = Array.from(
   new Set(blogPosts.map((p) => p.category))
 ) as BlogCategory[];
+
+// Categories have their own URLs at /blog/category/<slug>. The filter on /blog
+// used to be React state, so every category shared one URL and none of them
+// could be indexed, given a title, or linked to.
+//
+// Derived from the posts, not from the BlogCategory union, on purpose. The union
+// lists seven categories and only three are in use; generating pages for the
+// other four would publish empty listings.
+export const categorySlug = (c: BlogCategory): string =>
+  c.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
+export const getCategoryBySlug = (slug: string): BlogCategory | undefined =>
+  blogCategories.find((c) => categorySlug(c) === slug);
+
+export const postsInCategory = (c: BlogCategory): BlogPost[] =>
+  blogPosts.filter((p) => p.category === c);
+
+// Written per category rather than generated from a template, so each page has
+// a description that says something. A templated "Articles about X" on every
+// page is the kind of thin duplication the category URLs are meant to avoid.
+export const categoryMeta: Record<BlogCategory, { title: string; description: string }> = {
+  'Self Build': {
+    title: 'Self Build Guides',
+    description:
+      'Practical guides to building your own home in the UK: what it costs, how to fund it, which construction method to choose, and how to find the right architect.',
+  },
+  'Permitted Development': {
+    title: 'Permitted Development',
+    description:
+      'How permitted development rights work in practice, including Class MA prior approval for commercial to residential and Class Q for barn conversions.',
+  },
+  Investment: {
+    title: 'Property Investment',
+    description:
+      'Funding and viability for residential development projects, written for developers weighing up whether a scheme stacks up.',
+  },
+  Planning: {
+    title: 'Planning',
+    description: 'Articles on the UK planning system and how applications are decided.',
+  },
+  Feasibility: {
+    title: 'Feasibility',
+    description: 'How to test whether a building or site can become something more valuable.',
+  },
+  HMO: {
+    title: 'HMOs',
+    description: 'Licensing, layouts and viability for houses in multiple occupation.',
+  },
+  News: {
+    title: 'News',
+    description: 'Changes to planning policy and permitted development rights.',
+  },
+};

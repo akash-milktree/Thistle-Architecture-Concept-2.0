@@ -75,8 +75,6 @@ export const post: BlogPost = {
     "ICFs are quickly becoming a more and more popular choice for self build projects in the UK, with more people looking for ICF construction as their chosen method. The energy efficiency and strength of the design will offer many wonderful benefits for homeowners, but they might not be right for everyone.",
     "If you are looking for some more tailored advice around your self build project, or are generally feeling a bit swamped in information, please reach out to the Thistle Architecture team. We have years of experience in self build architecture and design, and have worked on many different projects.",
     "Head over to our online contact page, or give us a call on 0808 175 5405.",
-    "## Recent Posts",
-    "[Buying vs Building a Home in the UK: Which is Cheaper?](/blog/buying-vs-building-a-home-in-the-uk)",
   ],
   image: "/images/blog/self-build-icfs-construction.jpg",
   date: "July 5, 2024",

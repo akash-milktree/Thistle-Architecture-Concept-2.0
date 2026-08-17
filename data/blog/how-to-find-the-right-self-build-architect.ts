@@ -50,8 +50,6 @@ export const post: BlogPost = {
     "Here at Thistle Architecture, if you hadn’t already guessed, we have a huge passion for and also specialise in self build architectural design and residential architecture and consultancy. We have worked with a number of different clients throughout the UK to help them [build their own homes](/blog/top-10-considerations-when-it-comes-to-self-building), from initial ideas through to the construction process and final details. We have a huge network of trustworthy professionals we work with closely and bring to the table a wealth of experience.",
     "We are happy to be as involved in the process as you like and we understand all projects are different. The advice and involvement we can offer will always considerate of your needs.",
     "Hopefully, the advice in this article has offered some understanding of how to go about choosing your self build architect. If you find Thistle Architecture to be a suitable match for your project through your research, please reach out to us through our contact page or by giving us a call!",
-    "## Recent Posts",
-    "[Class MA Prior Approval: What You Need to Know](/blog/class-ma-prior-approval-what-you-need-to-know)",
   ],
   image: "/images/blog/how-to-find-the-right-self-build-architect.jpg",
   date: "October 13, 2023",

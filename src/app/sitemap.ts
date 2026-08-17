@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { blogPosts } from '@/data/blogData';
+import { blogPosts, blogCategories, categorySlug } from '@/data/blogData';
 import { caseStudies } from '@/data/caseStudiesData';
 import { conversions } from '@/data/conversionsData';
 
@@ -31,6 +31,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${BASE}/case-studies/${c.slug}`,
       changeFrequency: 'monthly' as const,
       priority: 0.7,
+    })),
+    // Added when the categories got real URLs. Only categories with posts are
+    // in blogCategories, so this never lists an empty page.
+    ...blogCategories.map((c) => ({
+      url: `${BASE}/blog/category/${categorySlug(c)}`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
     })),
     ...blogPosts.map((p) => ({
       url: `${BASE}/blog/${p.slug}`,

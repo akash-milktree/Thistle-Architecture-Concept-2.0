@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { Reveal } from '../components/animations/Reveal';
 import { Button } from '../components/ui/Button';
 import { ArrowUpRight, ArrowLeft } from 'lucide-react';
-import { blogPosts } from '../data/blogData';
+import { blogPosts, categorySlug } from '../data/blogData';
 import { seedFor, useViewCounts } from '../data/blogViews';
 import { motion } from 'framer-motion';
 
@@ -54,11 +54,37 @@ type Block =
   | { kind: 'h3'; text: string }
   | { kind: 'ul'; items: string[] }
   | { kind: 'img'; src: string; alt: string }
+  | { kind: 'table'; head: string[]; rows: string[][] }
   | { kind: 'p'; text: string };
+
+// Standard markdown pipe tables: a header row, a |---|---| separator, then body
+// rows. Written this way so a future article can just use the normal syntax
+// rather than needing a bespoke format.
+const isTableRow = (s: string) => s.trim().startsWith('|') && s.trim().endsWith('|');
+const isTableDivider = (s: string) => /^\|[\s:|-]+\|$/.test(s.trim()) && s.includes('-');
+const splitRow = (s: string) =>
+  s.trim().slice(1, -1).split('|').map((c) => c.trim());
 
 const toBlocks = (content: string[]): Block[] => {
   const blocks: Block[] = [];
-  for (const raw of content) {
+  for (let i = 0; i < content.length; i++) {
+    const raw = content[i];
+
+    // A table is a header row, a divider, then rows, so it is the one block
+    // that has to look ahead rather than being decided line by line.
+    if (isTableRow(raw) && isTableDivider(content[i + 1] ?? '')) {
+      const head = splitRow(raw);
+      const rows: string[][] = [];
+      let j = i + 2;
+      while (j < content.length && isTableRow(content[j])) {
+        rows.push(splitRow(content[j]));
+        j++;
+      }
+      blocks.push({ kind: 'table', head, rows });
+      i = j - 1;
+      continue;
+    }
+
     // ![alt](/path) is a body image, restored from the original article.
     const img = /^!\[([^\]]*)\]\(([^)]+)\)$/.exec(raw);
     if (img) blocks.push({ kind: 'img', src: img[2], alt: img[1] });
@@ -72,6 +98,82 @@ const toBlocks = (content: string[]): Block[] => {
   }
   return blocks;
 };
+
+// Comparison tables in these articles score options on an ordinal scale, so the
+// same three words repeat down every column. Rendered flat that is a wall of
+// text you have to read cell by cell. Tinting the rank makes the shape of the
+// answer legible at a glance, while the words stay for anyone who cannot see
+// the colour.
+const RANK_TONE: Record<string, string> = {
+  highest: 'text-thistle-green font-semibold',
+  high: 'text-thistle-green font-semibold',
+  mid: 'text-thistle-black/70',
+  medium: 'text-thistle-black/70',
+  lowest: 'text-thistle-black/35',
+  low: 'text-thistle-black/35',
+};
+
+const ArticleTable: React.FC<{ head: string[]; rows: string[][] }> = ({ head, rows }) => (
+  // The wrapper scrolls, never the page. A four-column table cannot fit 375px,
+  // and a body that scrolls sideways breaks every other section on the page.
+  <div className="relative my-fl-6 -mx-fl-2 sm:mx-0">
+    <div className="overflow-x-auto rounded-xl border border-thistle-black/[0.08]">
+      <table className="w-full min-w-[520px] border-collapse text-left">
+        <thead>
+          <tr className="bg-thistle-white">
+            {head.map((h, i) => (
+              <th
+                key={i}
+                scope="col"
+                // The first column stays put while the values scroll. Without
+                // it you lose sight of which row you are reading two columns in,
+                // which is the whole point of a comparison table.
+                className={`px-fl-4 py-fl-3 text-[10px] uppercase tracking-[0.16em] font-semibold text-thistle-black/50 border-b border-thistle-black/[0.08] whitespace-nowrap ${
+                  i === 0 ? 'sticky left-0 z-10 bg-thistle-white border-r border-thistle-black/[0.08] sm:border-r-0' : ''
+                }`}
+              >
+                {h}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, r) => (
+            <tr key={r} className="border-b border-thistle-black/[0.06] last:border-0">
+              {row.map((cell, c) =>
+                // First cell of each row is the thing being compared, so it is a
+                // row header rather than a data cell.
+                c === 0 ? (
+                  <th
+                    key={c}
+                    scope="row"
+                    className="sticky left-0 z-10 bg-thistle-white border-r border-thistle-black/[0.08] sm:border-r-0 px-fl-4 py-fl-3 text-fluid-sm font-medium text-thistle-black text-left whitespace-nowrap"
+                  >
+                    {cell}
+                  </th>
+                ) : (
+                  <td
+                    key={c}
+                    className={`px-fl-4 py-fl-3 text-fluid-sm ${RANK_TONE[cell.trim().toLowerCase()] ?? 'text-thistle-black/60'}`}
+                  >
+                    {renderInline(cell)}
+                  </td>
+                )
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    {/* Tells you there is more table to the right. A scrollable region with no
+        edge treatment reads as a table that simply stops at the third column.
+        Hidden once the table fits, and never a click target. */}
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-y-0 right-0 w-10 rounded-r-xl bg-gradient-to-l from-thistle-white to-transparent sm:hidden"
+    />
+  </div>
+);
 
 const MidArticleCTA: React.FC<{ onClick: () => void }> = ({ onClick }) => (
   <div className="my-fl-7 rounded-2xl border border-thistle-green/25 bg-thistle-green/[0.06] p-fl-6 text-center">
@@ -146,7 +248,16 @@ export const BlogPostPage: React.FC = () => {
 
           <Reveal>
             <div className="flex items-center gap-fl-3 mb-fl-4">
-              <span className="px-3 py-1 rounded-full bg-thistle-green/10 text-[10px] uppercase tracking-widest text-thistle-green font-semibold">{post.category}</span>
+              {/* Links to the category listing now that categories have real
+                  URLs. Thirteen articles pointing at three category pages is
+                  the internal linking that makes those pages worth indexing;
+                  as a bare span it was a label that led nowhere. */}
+              <Link
+                href={`/blog/category/${categorySlug(post.category)}`}
+                className="px-3 py-1 rounded-full bg-thistle-green/10 text-[10px] uppercase tracking-widest text-thistle-green font-semibold hover:bg-thistle-green/20 transition-colors"
+              >
+                {post.category}
+              </Link>
               <span className="text-xs text-thistle-black/30">{post.readTime}</span>
               <span className="text-xs text-thistle-black/30">{views.toLocaleString('en-GB')} views</span>
             </div>
@@ -213,6 +324,8 @@ export const BlogPostPage: React.FC = () => {
                     <li key={j} className="text-fluid-sm text-thistle-black/60 leading-[1.8]">{renderInline(item)}</li>
                   ))}
                 </ul>
+              ) : block.kind === 'table' ? (
+                <ArticleTable head={block.head} rows={block.rows} />
               ) : block.kind === 'img' ? (
                 // Body image from the original article, at its original position.
                 <figure className="my-fl-6 -mx-fl-2 sm:mx-0">

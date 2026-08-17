@@ -99,8 +99,6 @@ export const post: BlogPost = {
     "Lastly, you may or may not be aware that you are able to claim back VAT on self build projects under what’s known as VAT Notice 431 NB. Not all self build projects are eligible but generally if you are building your own home from scratch that is an individual dwelling in it’s own right that you intend to live in, you will be eligible.",
     "The scheme essentially exists to encourage private individuals to create new properties. Because home buyers don’t pay VAT when they buy a house on the market, this also levels the cost with self builders.",
     "To apply you need to fill in form [431NB](https://www.gov.uk/government/publications/vat-refunds-for-diy-housebuilders-claim-form-for-new-houses-vat431nb) on the [government website](https://www.gov.uk/vat-building-new-home/how-to-claim) once the project is completed.",
-    "## Recent Posts",
-    "[Class MA Prior Approval: What You Need to Know](/blog/class-ma-prior-approval-what-you-need-to-know)",
   ],
   image: "/images/site/hero-winchester.jpg",
   date: "May 8, 2024",

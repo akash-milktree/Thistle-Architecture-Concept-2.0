@@ -1,20 +1,30 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { PageHero } from '../components/ui/PageHero';
 import { Reveal } from '../components/animations/Reveal';
 import { motion } from 'framer-motion';
-import { blogPosts, blogCategories, type BlogCategory } from '../data/blogData';
+import { blogPosts, blogCategories, categorySlug, type BlogCategory } from '../data/blogData';
 import { useViewCounts } from '../data/blogViews';
 
-type Filter = 'All' | BlogCategory;
+interface BlogPageProps {
+  /** Omitted on /blog, which lists everything. Set on a category page. */
+  category?: BlogCategory;
+  /** The category page supplies its own H1 and intro. */
+  heading?: string;
+  description?: string;
+}
 
-export const BlogPage: React.FC = () => {
-  const [filter, setFilter] = useState<Filter>('All');
-
-  const posts = filter === 'All' ? blogPosts : blogPosts.filter((p) => p.category === filter);
+// Shared by /blog and /blog/category/[slug].
+//
+// The category chips were buttons driving useState, so every category lived at
+// /blog with one title and one H1 and none could be indexed. They are links to
+// real routes now. Filtering happens on the server from the route, so a category
+// page is a real page rather than a view of this one.
+export const BlogPage: React.FC<BlogPageProps> = ({ category, heading, description }) => {
+  const posts = category ? blogPosts.filter((p) => p.category === category) : blogPosts;
   const views = useViewCounts();
   const [featured, ...rest] = posts;
 
@@ -22,28 +32,36 @@ export const BlogPage: React.FC = () => {
     <>
       <PageHero
         label="Blog"
-        heading="Insights For Developers."
-        description={`Practical articles on planning, feasibility, and the commercial conversion market, written by architects, for developers. ${blogPosts.length} articles and growing.`}
+        heading={heading ?? 'Insights For Developers.'}
+        description={
+          description ??
+          `Practical articles on planning, feasibility, and the commercial conversion market, written by architects, for developers. ${blogPosts.length} articles and growing.`
+        }
       />
 
       {/* Category filters */}
       <section className="px-fl-margin bg-thistle-white pb-fl-6">
         <div className="max-w-[1360px] mx-auto">
-          <div className="flex flex-wrap gap-fl-2">
-            {(['All', ...blogCategories] as Filter[]).map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setFilter(cat)}
+          <nav aria-label="Blog categories" className="flex flex-wrap gap-fl-2">
+            {[{ label: 'All', href: '/blog', active: !category }, ...blogCategories.map((c) => ({
+              label: c,
+              href: `/blog/category/${categorySlug(c)}`,
+              active: category === c,
+            }))].map(({ label, href, active }) => (
+              <Link
+                key={label}
+                href={href}
+                aria-current={active ? 'page' : undefined}
                 className={`px-4 py-2 rounded-full text-xs font-medium border transition-colors ${
-                  filter === cat
+                  active
                     ? 'bg-thistle-black text-white border-thistle-black'
                     : 'bg-white text-thistle-black/60 border-thistle-black/[0.08] hover:border-thistle-black/25'
                 }`}
               >
-                {cat}
-              </button>
+                {label}
+              </Link>
             ))}
-          </div>
+          </nav>
         </div>
       </section>
 

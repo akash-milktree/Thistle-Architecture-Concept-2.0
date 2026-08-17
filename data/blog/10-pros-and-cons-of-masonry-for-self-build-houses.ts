@@ -51,8 +51,6 @@ export const post: BlogPost = {
     "Masonry self builds continue to be popular in the UK due to their performance, reliability and cost effectiveness. While masonry will be a great option for some self builders, they are not always going to be perfect for others.",
     "We recommend carrying out your own research on all construction methods.",
     "If you are interested in a masonry self build, reach out to us on 0808 175 5405 or head over to our [contact page.](/contact)",
-    "## Recent Posts",
-    "[Buying vs Building a Home in the UK: Which is Cheaper?](/blog/buying-vs-building-a-home-in-the-uk)",
   ],
   image: "/images/blog/10-pros-and-cons-of-masonry-for-self-build-houses.jpg",
   date: "July 16, 2024",

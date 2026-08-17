@@ -47,8 +47,6 @@ export const post: BlogPost = {
     "## Conclusion: Class MA Prior Approval",
     "Whether you are a seasoned property developer or are just starting research for your first project, Class MA offers a fantastic opportunity to capitalise on changing market demands.",
     "Do you have a commercial unit that falls within Class E of the GPDO and want to explore whether it can be converted into residential units? Why not reach out to our team..",
-    "## Recent Posts",
-    "[Buying vs Building a Home in the UK: Which is Cheaper?](/blog/buying-vs-building-a-home-in-the-uk)",
   ],
   image: "/images/blog/class-ma-prior-approval-what-you-need-to-know.jpg",
   date: "January 17, 2025",

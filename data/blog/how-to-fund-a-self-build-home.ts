@@ -48,8 +48,6 @@ export const post: BlogPost = {
     "## Contact Us at Thistle Architecture",
     "At Thistle Architecture, we are familiar with working on self build projects for clients throughout the UK, and therefore have a great understanding of the full process, from funding through to what the requirements are for these kinds of projects.",
     "As mentioned earlier in the article, we work closely with mortgage providers Windsor Hill, who are qualified in providing expert mortgage advice.If you have any questions or would like to chat to us, pop us an email or head over to our online contact form.",
-    "## Recent Posts",
-    "[Buying vs Building a Home in the UK: Which is Cheaper?](/blog/buying-vs-building-a-home-in-the-uk)",
   ],
   image: "/images/blog/how-to-fund-a-self-build-home.jpg",
   date: "May 25, 2024",
