@@ -20,7 +20,7 @@ import { deliverableDetail } from '../../data/feasibilityPackageData';
 // All are 'contain' on white: they are documents, and cropping one to fill a
 // frame cuts off the part that shows what it is.
 const images: { src: string; alt: string; fit: 'contain' | 'cover' }[] = [
-  { src: "/images/projects/windmill-lane-sketch-1.png", alt: "Feasibility sketch showing six en-suite bedrooms across two floors with the garage brought into the house", fit: "contain" },
+  { src: "/images/projects/windmill-lane-sketch-1.webp", alt: "Feasibility sketch showing six en-suite bedrooms across two floors with the garage brought into the house", fit: "contain" },
   { src: "/images/deliverables/schedule-of-accommodation.jpg", alt: "Space standards summary listing minimum room sizes, ceiling heights and communal room requirements", fit: "contain" },
   { src: "/images/deliverables/planning-policy-analysis.jpg", alt: "Planning policy analysis setting out the determinative HMO policy and the design and amenity policies engaged", fit: "contain" },
   { src: "/images/deliverables/risk-register.jpg", alt: "Risk dashboard rating each planning issue with its resolution", fit: "contain" },

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from '../../components/animations/Reveal';
@@ -41,7 +42,18 @@ export const RelatedCaseStudy: React.FC<RelatedCaseStudyProps> = ({ slug, tinted
               className="grid grid-cols-1 lg:grid-cols-2 rounded-2xl overflow-hidden bg-white border border-thistle-black/[0.06] hover:border-thistle-black/[0.12] hover:shadow-xl hover:shadow-thistle-black/[0.04] transition-all duration-500"
             >
               <div className="aspect-[4/3] lg:aspect-auto overflow-hidden relative">
-                <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                {/* This was a plain <img>, the only one left on the site. It
+                    served the source file untouched, so a card sitting on four
+                    conversion pages was shipping multi-megabyte PNGs: the St
+                    John's sketch alone is 4.7MB raw against 56KB as the WebP
+                    next/image serves at the same display size. */}
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 680px"
+                  className="object-cover"
+                />
                 <div className="absolute top-4 left-4">
                   <span className="px-3 py-1.5 rounded-full bg-black/30 backdrop-blur-xl border border-white/10 text-[10px] uppercase tracking-widest text-white/80 font-medium">
                     {item.tag}

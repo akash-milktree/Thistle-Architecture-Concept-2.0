@@ -9,7 +9,8 @@
     "start": "next start",
     "sweep": "node scripts/responsive-sweep.mjs",
     "find-overflow": "node scripts/find-overflow.mjs",
-    "probe": "node scripts/probe-panel.mjs"
+    "probe": "node scripts/probe-panel.mjs",
+    "optimise-media": "node scripts/optimise-media.mjs"
   },
   "dependencies": {
     "@vercel/blob": "^2.6.1",

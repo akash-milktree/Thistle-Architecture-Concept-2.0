@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Reveal } from '../components/animations/Reveal';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, ArrowRight } from 'lucide-react';
@@ -39,13 +40,25 @@ export const CaseCard: React.FC<{ item: CaseStudy }> = ({ item }) => {
       >
         {/* Image */}
         <div className="aspect-[16/9] overflow-hidden relative">
-          <motion.img
-            src={item.image}
-            alt={item.title}
-            className="w-full h-full object-cover"
+          {/* This was a motion.img, which served the source file untouched.
+              CaseCard is the card used on the homepage, the completed projects
+              listing and the feasibility listing, so every one of those pages
+              was shipping a full-size PNG per card: three-column grids of
+              multi-megabyte sketches. The wrapper keeps the hover zoom, which
+              is why this is not simply an Image on its own. */}
+          <motion.div
+            className="w-full h-full"
             whileHover={{ scale: 1.04 }}
             transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
-          />
+          >
+            <Image
+              src={item.image}
+              alt={item.title}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover"
+            />
+          </motion.div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
 
           {/* Tag badge + recommendation */}
