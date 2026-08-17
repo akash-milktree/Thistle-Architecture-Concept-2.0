@@ -22,6 +22,12 @@ interface TeamMember {
   credentials?: string[];
 }
 
+// Portraits are AI-generated studio headshots, made from each person's real
+// photo. They are a likeness, not a photograph, and the generation put everyone
+// in a suit rather than the clothes they were actually wearing. Akash is
+// regenerating them with the real clothing preserved; these are the interim set.
+// Source photos and the review of all three options are in
+// public/images/team-review/ and the internal /team-review page.
 const team: TeamMember[] = [
   {
     name: "Edward Kercher",
@@ -55,11 +61,23 @@ const team: TeamMember[] = [
   },
   {
     name: "Adouj Abu Saadeh",
+    role: "Architectural Designer",
     image: "/images/team/adouj.jpg",
+    credentials: [
+      "BA Architecture, Bilkent University, graduated with High Honours in 2019",
+      "LEED Green Associate, certified 2019",
+      "Practised in Turkey, Azerbaijan, and the UAE before moving to the UK",
+    ],
   },
   {
     name: "Beverley Gibbs",
+    role: "Practice Manager",
     image: "/images/team/beverley.jpg",
+    credentials: [
+      "BA (Hons)",
+      "Over 20 years of practice and studio management experience",
+      "Looks after the finance and admin for the team",
+    ],
   },
 ];
 

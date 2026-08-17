@@ -302,6 +302,46 @@ areas, planning routes or technical strategies are claimed for any of them.
 
 ## Team page
 
+**Updated 18 August.** Ed supplied captions for Seyma, Adouj and Beverley, and
+the About page portraits were swapped to the AI-generated set.
+
+- [x] **Adouj Abu Saadeh**: now live as Architectural Designer, with the Bilkent
+  BA (High Honours, 2019), LEED Green Associate (2019), and prior practice in
+  Turkey, Azerbaijan and the UAE. Her own message spelt it "High Honors"; the
+  site uses UK spelling throughout so it reads "Honours".
+- [x] **Beverley Gibbs**: now live with BA (Hons), 20+ years of practice and
+  studio management, and finance and admin for the team. **Title inferred.** Ed
+  gave the detail but no job title; "Practice Manager" is our reading of
+  "practice and studio management" plus finance and admin. Confirm or replace.
+- [ ] **Seyma**: caption supplied and ready to use (Architectural Designer, BSc
+  Architecture, MA Interior Design, 6+ years across residential and HMO,
+  commercial surveying, design and planning, experienced from initial survey
+  through to planning and technical stages). **Blocked: still no photo.** Her
+  folder in the client drop is empty and there is no AI variant for her either,
+  so she cannot go on the page yet.
+- [ ] **Adouj's photo**: she asked Ed for until Monday to take a better one. The
+  current card uses an AI headshot generated from her existing photo. Worth
+  telling her that, given she wanted to supply her own.
+
+### Portraits: AI, and interim
+
+The five portraits are **AI-generated likenesses**, not photographs, generated
+from each person's real photo. Akash's call, 18 August, to use them for now.
+
+**They put everyone in a suit.** Nobody is wearing what they wore in their real
+photo: Ed's navy coat, Kaan's grey Tommy sweatshirt, Beverley's burgundy top,
+Jan's patterned blouse. Akash is regenerating them in ChatGPT with the real
+clothing preserved and will send them over, at which point these are replaced.
+
+Two things still to settle:
+
+- **Consent.** These are synthetic likenesses of five named, identifiable people
+  on a public site. The internal `/team-review` page's own note says they should
+  only go live if each person is happy with it. No record of that being asked.
+- **Ed's position on AI.** He objected to AI imagery this week and all of it was
+  removed on that basis. These portraits are the same category, so he should be
+  told rather than notice later.
+
 - [ ] Nick: photo supplied but no role/title anywhere. He is currently NOT on
   the About page. Supply role and credentials to add him.
 - [ ] Seyma: folder exists but no photo. Supply photo plus role to add.
