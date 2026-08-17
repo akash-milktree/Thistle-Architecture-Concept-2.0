@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Jump links used to snap instantly: the blog table of contents, #process on
+   the homepage hero, and #how-it-works on the feasibility page. Landing with no
+   transition makes it hard to tell whether the page moved or reloaded.
+
+   Behind prefers-reduced-motion on purpose. Smooth scrolling is a common
+   vestibular-migraine trigger, and this is the one motion setting that applies
+   to the whole document rather than a single component, so it has to respect
+   the system preference. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 :root {
   --color-black: #2F3B36;
   --color-white: #EDEDE9;

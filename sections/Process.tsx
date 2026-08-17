@@ -41,7 +41,7 @@ const steps = [
 
 export const Process: React.FC = () => {
   return (
-    <section id="process" className="bg-white py-fl-section px-fl-margin overflow-hidden">
+    <section id="process" className="bg-white py-fl-section px-fl-margin overflow-hidden scroll-mt-28">
       <div className="max-w-[1360px] mx-auto">
         {/* Header */}
         <div className="text-center mb-fl-8">
