@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowUpRight, ArrowLeft, RotateCcw, Check, MessageSquare } from 'lucide-react';
 import Link from 'next/link';
 import { Reveal } from '../../components/animations/Reveal';
@@ -157,6 +157,14 @@ const Toggle: React.FC<{ label: string; checked: boolean; onChange: (v: boolean)
 export const FeasibilityCalculator: React.FC = () => {
   const [a, setA] = useState<Answers>(EMPTY);
   const [submitted, setSubmitted] = useState(false);
+  const box = useRef<HTMLDivElement>(null);
+
+  // The result card is much shorter than the form it replaces, so submitting
+  // used to collapse the page under the reader and leave them looking at a
+  // section further down, wondering what had happened to their answer.
+  useEffect(() => {
+    if (submitted) box.current?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  }, [submitted]);
   const [checkout, setCheckout] = useState<'idle' | 'working' | 'error'>('idle');
 
   const handleCheckout = async () => {
@@ -191,6 +199,7 @@ export const FeasibilityCalculator: React.FC = () => {
     const instant = result.route === 'instant_payment';
     return (
       <Reveal>
+        <div ref={box} className="scroll-mt-28">
         <div
           className={`rounded-2xl border p-fl-7 ${
             instant ? 'border-thistle-green/30 bg-thistle-green/[0.06]' : 'border-thistle-black/[0.08] bg-white'
@@ -280,6 +289,7 @@ export const FeasibilityCalculator: React.FC = () => {
             <RotateCcw size={12} /> Start over
           </button>
         </div>
+        </div>
       </Reveal>
     );
   }
@@ -363,7 +373,10 @@ export const FeasibilityCalculator: React.FC = () => {
           />
         </Field>
 
-        <Field label="Anything else that applies?">
+        <Field
+          label="Anything else that applies?"
+          hint="Leave these unticked if none apply. Each one changes the fee, and a masterplan or whole-site redevelopment is always scoped in a conversation rather than priced automatically."
+        >
           <div className="space-y-fl-1">
             <Toggle
               label="The scheme includes a significant extension"
