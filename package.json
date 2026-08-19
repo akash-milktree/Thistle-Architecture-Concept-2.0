@@ -10,7 +10,8 @@
     "sweep": "node scripts/responsive-sweep.mjs",
     "find-overflow": "node scripts/find-overflow.mjs",
     "probe": "node scripts/probe-panel.mjs",
-    "optimise-media": "node scripts/optimise-media.mjs"
+    "optimise-media": "node scripts/optimise-media.mjs",
+    "pricing-check": "node --experimental-strip-types scripts/pricing-check.mjs"
   },
   "dependencies": {
     "@vercel/blob": "^2.6.1",
