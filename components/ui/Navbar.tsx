@@ -23,6 +23,10 @@ interface NavItem {
 
 const navLinks: NavItem[] = [
   { label: "Feasibility Package", path: "/feasibility-package" },
+  // Pricing sits second, next to the package it prices. Ed's brief is explicit
+  // that the site should not feel like "contact us for a quote", which only
+  // works if the fee is reachable from anywhere.
+  { label: "Pricing", path: "/pricing" },
   {
     label: "Our Work",
     path: "/case-studies/feasibility-studies",
