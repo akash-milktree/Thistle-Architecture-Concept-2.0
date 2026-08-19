@@ -70,7 +70,7 @@ export async function POST(request: Request) {
     'line_items[0][price_data][product_data][name]': 'Architectural Feasibility',
     'line_items[0][price_data][product_data][description]':
       'Fixed-fee architectural feasibility, delivered in five working days.',
-    success_url: `${SITE}/feasibility-package?paid=1&session_id={CHECKOUT_SESSION_ID}`,
+    success_url: `${SITE}/feasibility-confirmed?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${SITE}/pricing?cancelled=1`,
     // The scope that was priced, so a dispute can be settled against what was
     // actually answered rather than what anyone remembers.
