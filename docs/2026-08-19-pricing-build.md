@@ -37,14 +37,45 @@ page, so anything the client posts is a number the customer controls; a posted
 amount would let someone pay £1. The engine is pure, so it runs again in the
 route and that result is what gets charged.
 
-Still to do once keys are in:
-- [ ] A webhook at `/api/checkout/webhook` for `checkout.session.completed`, so
-      a paid feasibility creates the project rather than relying on the success
-      redirect, which a customer can close.
+### Webhook
+
+Built at `/api/checkout/webhook`. It exists because the success redirect is not
+a reliable signal: it fires in the customer's browser, and they can close the
+tab, lose signal or have it blocked, all after the card has been charged. Stripe
+retries the webhook until it gets a 2xx, so it is the only place a payment can
+be treated as final.
+
+On `checkout.session.completed` it posts the paid job to the feasibility
+Formspree form, subject line "PAID feasibility: <address> (£amount)", carrying
+the floor area, base fee, uplift, factor count and Stripe session id from the
+session metadata. If that notification fails it returns non-2xx on purpose, so
+Stripe retries rather than the money being taken with nobody told.
+
+Signature verification is written by hand, same reasoning as the checkout route:
+no SDK to install or keep current. Tested against Stripe's scheme: valid
+signature accepted; wrong secret, tampered body, replay outside the five-minute
+window, missing header, malformed header and a short signature all rejected, the
+last without throwing.
+
+**It needs one more variable to work:**
+
+```
+STRIPE_WEBHOOK_SECRET=whsec_...
+```
+
+Get it from Stripe → Developers → Webhooks → add endpoint
+`https://www.thistlearchitecture.co.uk/api/checkout/webhook`, subscribe to
+`checkout.session.completed`, then copy the signing secret. Without it the route
+rejects everything, which is deliberate: an unverified webhook is an open
+endpoint that lets anyone claim a feasibility has been paid for.
+
+Still to do:
 - [ ] Decide whether the £49.99 automated product also takes card here, or stays
       with the existing enquiry flow.
 - [ ] The success page at `/feasibility-package?paid=1` currently just returns
       to the package page.
+- [ ] Run the whole journey once on a test key before trusting it with a
+      customer. Nobody has yet clicked through Stripe, paid, and come back.
 
 ## Three things in the brief for Ed
 

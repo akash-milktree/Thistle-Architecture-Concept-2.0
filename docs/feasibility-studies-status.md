@@ -98,3 +98,10 @@ noted. Worth confirming he is happy with both being public.
   feasibility better than the six approvals do: Croydon protects family homes
   below 130 sqm from HMO conversion, the house is 93 to 115 sqm, so an HMO would
   very likely have been refused. The study found supported living instead.
+
+---
+
+**Update, 19 August 2026.** The complete question list for Ed, including the
+client names and postcodes inside the published report PDFs, now lives in
+`docs/2026-08-19-ed-questions-feasibility.md`. Highbury Buildings is no longer an
+open question here: it is live as a completed project.

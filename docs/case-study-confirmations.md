@@ -387,3 +387,26 @@ the same position we had just cleared of invented testimonials.
 Also worth knowing when pricing that up: a paid plan would also let the review
 carousel show the actual review text, and would make the Trustpilot star rating
 eligible for Google seller ratings, which the current setup cannot do.
+
+## Feasibility studies: full question list, 19 August 2026
+
+All open questions for Ed on `/case-studies/feasibility-studies` and the twelve
+single study pages are gathered in
+`docs/2026-08-19-ed-questions-feasibility.md`, written to be sent as it is.
+
+The one that needs answering first: the fifteen reports published as downloads
+are the real client files. Five name the client (Sam Notaro, Cliff Besley, Daniel
+Browne, Daniel Grant, Neel Dilip) and all fifteen carry the full address and
+postcode, while the web pages themselves stay anonymous. Redact, remove, or
+confirm they can stay.
+
+## Completed projects: full question list, 19 August 2026
+
+All open questions for Ed on `/case-studies/completed-projects` and the
+twenty-three project pages are gathered in
+`docs/2026-08-19-ed-questions-projects.md`, written to be sent as it is.
+
+The one that needs answering first: the page is called Completed Projects, but
+Monument House and Wigan Church are at tender, School House and Rotherfield are
+consented only, and five more are marked on site. Confirm the stage of each, and
+decide whether the page gets renamed.
