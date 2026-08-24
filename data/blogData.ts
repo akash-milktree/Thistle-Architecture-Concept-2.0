@@ -10,6 +10,9 @@ export type BlogCategory =
 export interface BlogPost {
   slug: string;
   title: string;
+  /** Exact title tag when it must differ from the on-page h1 (rendered as an
+   *  absolute title, so the layout template does not append the brand again). */
+  metaTitle?: string;
   excerpt: string;
   /** Content blocks: "## " renders an h2, "### " an h3, "- " a bullet,
    *  anything else a paragraph. Inline links use [text](/path). */
@@ -40,8 +43,10 @@ import { post as selfBuildCost } from './blog/how-much-does-it-cost-to-self-buil
 import { post as fundSelfBuild } from './blog/how-to-fund-a-self-build-home';
 import { post as topTenConsiderations } from './blog/top-10-considerations-when-it-comes-to-self-building';
 import { post as findSelfBuildArchitect } from './blog/how-to-find-the-right-self-build-architect';
+import { post as thistleRebrand } from './blog/hmo-designers-thistle-architecture-rebrand';
 
 const allPosts: BlogPost[] = [
+  thistleRebrand,
   classMaPriorApproval,
   buyingVsBuilding,
   ecoHome,
@@ -115,6 +120,7 @@ export const categoryMeta: Record<BlogCategory, { title: string; description: st
   },
   News: {
     title: 'News',
-    description: 'Changes to planning policy and permitted development rights.',
+    description:
+      'News from the practice, plus changes to planning policy and permitted development rights.',
   },
 };

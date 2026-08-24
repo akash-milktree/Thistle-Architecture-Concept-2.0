@@ -70,6 +70,14 @@ const nextConfig: NextConfig = {
         destination: '/blog/:slug',
         statusCode: 301,
       },
+      // Scarlett's rebrand article was briefed with a root-level URL. The post
+      // lives at /blog/ like every other article, so her suggested URL 301s to
+      // it, matching how all the old root-level Wix slugs are handled.
+      {
+        source: '/hmo-designers-thistle-architecture-rebrand',
+        destination: '/blog/hmo-designers-thistle-architecture-rebrand',
+        statusCode: 301,
+      },
       {
         source: '/class-ma-prior-approval-what-you-need-to-know',
         destination: '/blog/class-ma-prior-approval-what-you-need-to-know',

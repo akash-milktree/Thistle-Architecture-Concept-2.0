@@ -25,7 +25,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = blogPosts.find((p) => p.slug === slug);
   return {
-    title: post?.title ?? 'Blog Post',
+    // metaTitle is the exact tag the article was briefed with; absolute stops
+    // the layout template appending "| Thistle Architecture" on top of it.
+    title: post?.metaTitle ? { absolute: post.metaTitle } : (post?.title ?? 'Blog Post'),
     description: post?.excerpt ?? 'Thistle Architecture blog post.',
     alternates: { canonical: `/blog/${slug}` },
   };
