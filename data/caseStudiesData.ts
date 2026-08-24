@@ -212,9 +212,22 @@ export const caseStudies: CaseStudy[] = [
     challenge: "Axis House is an office building in a village setting, and the client wanted to understand its highest-value residential future. Flats, a small number of large houses, and a terrace of family homes were all plausible, with very different values and build scopes.",
     approach: "We tested three sketch proposals over the existing plans, working with the building's structural grid. The preferred scheme divides the building into four three-bed houses of around 83 sqm each plus one larger two-bed unit, using ground floor timber-frame extensions, new rear openings, dormers, and rooflights to make each house work over three floors.",
     outcome: "The client received drawn options with elevations for the preferred scheme, a clear unit mix, and the alterations list that planning and costing conversations need. Three rounds of sketch testing settled the direction before any detailed design fees were spent.",
+    // Section 04 audit, August 2026: both images were the raw PDF export with
+    // the full title block, disclaimer and Thistle logo still visible, which
+    // is exactly what Ed's final brief asks to be cropped out. Re-cropped from
+    // the source PDFs in "03 New Website/Feasibility Examples", content only.
+    // The second proposal's sketch (elevation-2/plans-2) is added here since
+    // the source folder has it and the copy already refers to multiple
+    // proposals being tested. NB: the source also contains a file named
+    // "Sketch Proposal 3 - Elevation.pdf", but its content (including the red
+    // unit-schedule annotations) is identical to Proposal 2's, just faintly
+    // rendered, so it reads as a duplicate export rather than a genuine third
+    // design. Not included here pending confirmation; flagged to Akash.
     galleryImages: [
       "/images/projects/axis-house-plans-1.webp",
       "/images/projects/axis-house-elevation-1.webp",
+      "/images/projects/axis-house-plans-2.webp",
+      "/images/projects/axis-house-elevation-2.webp",
     ],
     buildingType: "Office",
     planningRoute: "Full planning",
@@ -1533,29 +1546,36 @@ export const caseStudies: CaseStudy[] = [
       ],
     },
   },
+  // Section 04 audit, August 2026: every "11 bedrooms" / "eleven-bed" mention
+  // was corrected to 10 after checking against the source drawing (SK003 -
+  // Highbury 10 Bed HMO Layout.pdf, "03 New Website/Feasibility Examples"),
+  // which labels exactly ten rooms (bed 1 through bed 10) across ground,
+  // first, second and mansard. galleryImages was empty despite that sketch
+  // already existing as a processed asset in public/images/projects/; it's
+  // now used here instead of sitting unreferenced.
   {
     slug: "highbury-buildings-cosham",
     kind: "project",
-    title: "Commercial To Eleven-Bed Co-Living",
+    title: "Commercial To Ten-Bed Co-Living",
     location: "Cosham, Portsmouth",
     image: "/images/projects/highbury/cgi-front.jpg",
     tag: "Co-Living",
     status: "On site",
     conversionTypes: ['co-living-large-hmo', 'hmo', 'commercial-to-residential'],
     stats: [
-      { label: "Bedrooms", value: "11, all en suite" },
+      { label: "Bedrooms", value: "10, all en suite" },
       { label: "Existing", value: "Commercial and storage" },
       { label: "Thistle role", value: "Feasibility, planning, Stage 4, interiors" },
     ],
-    desc: "The end of a 1930s terrace, converted from commercial and storage space into eleven en-suite co-living rooms with shared amenity on every floor.",
-    galleryImages: [],
+    desc: "The end of a 1930s terrace, converted from commercial and storage space into ten en-suite co-living rooms with shared amenity on every floor.",
+    galleryImages: ["/images/projects/highbury-sk003-1.webp"],
     buildingType: "1930s commercial building",
     planningRoute: "Full planning, change of use",
     completionDate: "On site",
     projectStory: {
       summary: [
-        "The conversion of an existing commercial building in Cosham, Portsmouth, into an 11-bedroom professional co-living HMO. The property forms the end of a 1930s terrace and retains attractive original brickwork and stone detailing, providing a strong architectural base for the redevelopment.",
-        "The proposals involve the complete reconfiguration of the existing commercial and storage accommodation to create 11 generously sized en-suite bedrooms, with shared amenity spaces distributed across each floor. The property also benefits from on-site parking and a highly sustainable location.",
+        "The conversion of an existing commercial building in Cosham, Portsmouth, into a 10-bedroom professional co-living HMO. The property forms the end of a 1930s terrace and retains attractive original brickwork and stone detailing, providing a strong architectural base for the redevelopment.",
+        "The proposals involve the complete reconfiguration of the existing commercial and storage accommodation to create 10 generously sized en-suite bedrooms, with shared amenity spaces distributed across each floor. The property also benefits from on-site parking and a highly sustainable location.",
         "Thistle Architecture was commissioned from the initial feasibility stage, developing the scheme through planning and securing the change of use before progressing into Stage 4 technical design. Our involvement also includes the full interior design of the co-living accommodation, so the architectural and internal packages are developed as one coordinated scheme.",
       ],
       sections: [

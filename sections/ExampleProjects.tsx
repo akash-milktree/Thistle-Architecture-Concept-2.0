@@ -16,6 +16,18 @@ import { caseStudies } from '../data/caseStudiesData';
 // conversion, and an HMO.
 const FEATURED_SLUGS = ['beauchamp-house', 'bath-street-cheddar', 'beech-house-road-croydon'];
 
+// Ed's August 2026 final brief, section 01: "add a subtle stage or outcome
+// line where useful, e.g. 'Feasibility → Planning → Technical → Construction'
+// or 'Commercial → 4 Apartments / Planning Approved'." Written per card here
+// rather than as a generic field on CaseStudy, since it's a homepage-specific
+// summary of facts that already live on each project (status, units,
+// recommendation), not new data.
+const STAGE_LINE: Record<string, string> = {
+  'beauchamp-house': 'Office → 4 Flats / On Site',
+  'bath-street-cheddar': 'Feasibility → Go Recommendation',
+  'beech-house-road-croydon': 'Feasibility → Go Recommendation',
+};
+
 const display = FEATURED_SLUGS
   .map((slug) => caseStudies.find((c) => c.slug === slug))
   .filter((c): c is NonNullable<typeof c> => !!c);
@@ -70,6 +82,9 @@ export const ExampleProjects: React.FC = () => (
                   <div>
                     <h3 className="text-fluid-h5 font-medium tracking-tight text-thistle-black">{project.title}</h3>
                     <p className="text-[11px] text-thistle-black/40 uppercase tracking-wider mt-1">{project.location}</p>
+                    {STAGE_LINE[project.slug] && (
+                      <p className="text-[11px] text-thistle-green font-medium tracking-wide mt-1.5">{STAGE_LINE[project.slug]}</p>
+                    )}
                   </div>
                   <div className="w-8 h-8 flex-shrink-0 rounded-full border border-thistle-black/[0.1] flex items-center justify-center group-hover:bg-thistle-black group-hover:border-thistle-black transition-colors">
                     <ArrowUpRight size={14} className="text-thistle-black/60 group-hover:text-white transition-colors" />

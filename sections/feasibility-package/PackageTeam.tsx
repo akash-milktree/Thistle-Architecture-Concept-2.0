@@ -84,6 +84,21 @@ export const PackageTeam: React.FC = () => (
         ))}
       </div>
 
+      {/* Ed's August 2026 final brief: "Use concise credibility proof such as
+          hundreds of conversions designed, nationwide project experience,
+          planning success and core project types." Phrased generally rather
+          than borrowing HMO Designers' own project-count figures, which are a
+          different business's numbers. */}
+      <Reveal delay={0.15}>
+        <div className="flex flex-wrap items-center justify-center gap-x-fl-6 gap-y-fl-2 mt-fl-7 text-xs text-thistle-black/50">
+          <span>Hundreds of conversions designed, nationwide</span>
+          <span className="hidden sm:inline text-thistle-black/20">·</span>
+          <span>98.5% planning success rate</span>
+          <span className="hidden sm:inline text-thistle-black/20">·</span>
+          <span>Commercial, HMO, co-living and high-end residential</span>
+        </div>
+      </Reveal>
+
       <Reveal delay={0.2}>
         <p className="text-center mt-fl-6">
           <Link href="/about" className="inline-flex items-center gap-1.5 text-sm font-medium text-thistle-green hover:text-thistle-black transition-colors">

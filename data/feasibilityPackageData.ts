@@ -88,7 +88,12 @@ export const packageFaqs: PackageFaq[] = [
   },
   {
     question: "How quickly can you start?",
-    answer: "We aim to start the day you instruct us. The five-day clock begins on the first working day after submission.",
+    // Ed's August 2026 final brief, Feasibility Journey & Pricing Structure:
+    // "Define the five-working-day SLA as starting once both payment and all
+    // required project information are complete." That's payment plus the
+    // detailed brief, not payment alone, since the brief is what the analysis
+    // actually runs from.
+    answer: "The five-day clock starts once both your payment and your full project brief are in, not just from payment. That's the point we have everything we need to actually begin the analysis.",
   },
   {
     question: "Are revisions included?",
