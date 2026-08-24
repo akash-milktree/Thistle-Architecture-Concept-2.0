@@ -2,19 +2,14 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { ArrowUpRight, CheckCircle2, Clock, ShieldCheck } from 'lucide-react';
 import { Reveal } from '../components/animations/Reveal';
 import { Button } from '../components/ui/Button';
-import { useRouter } from 'next/navigation';
-import { pricingFrom } from '../data/feasibilityPackageData';
-import { caseStudies } from '../data/caseStudiesData';
 import { Testimonials } from '../sections/Testimonials';
 import { DeveloperLogos } from '../sections/DeveloperLogos';
 import { FeasibilityEngine } from '../sections/FeasibilityEngine';
-import { SampleReport } from '../sections/feasibility-package/SampleReport';
 import { PackageFAQ } from '../sections/feasibility-package/PackageFAQ';
-import { PackagePricing } from '../sections/feasibility-package/PackagePricing';
+import { PackageEntry } from '../sections/feasibility-package/PackageEntry';
 import { DeliverableShowcase } from '../sections/feasibility-package/DeliverableShowcase';
 import { PackageTeam } from '../sections/feasibility-package/PackageTeam';
 import { HowItWorks } from '../sections/feasibility-package/HowItWorks';
@@ -28,9 +23,6 @@ const trustMarkers = [
 ];
 
 export const FeasibilityPackagePage: React.FC = () => {
-  const router = useRouter();
-  const highlight = caseStudies[0];
-
   return (
     <>
       {/* Hero */}
@@ -52,15 +44,26 @@ export const FeasibilityPackagePage: React.FC = () => {
               Your Building, Answered<br />In Five Days.
             </h1>
           </Reveal>
+          {/* Ed's August 2026 final brief: "Replace 'from £298' as the headline
+              starting price with: 'Feasibility from £49.99' and immediately
+              below 'Architect-led feasibility from £298'." */}
           <Reveal delay={0.2}>
+            <p className="text-fluid-h5 font-medium tracking-tight text-white mb-fl-2">
+              Feasibility from £49.99.
+            </p>
+            <p className="text-fluid-base text-white/70 mb-fl-4">
+              Architect-led feasibility from £298.
+            </p>
             <p className="text-fluid-base text-white/85 leading-relaxed font-light mb-fl-6 max-w-xl mx-auto">
-              One package, one fixed fee from {pricingFrom}. Five deliverables and a clear Go or No-Go on whether your building is worth taking forward.
+              Five deliverables and a clear Go or No-Go on whether your building is worth taking forward.
             </p>
           </Reveal>
           <Reveal delay={0.3}>
-            <Button size="lg" variant="primary" icon={<ArrowUpRight size={18} />} onClick={() => router.push('/pricing#calculator')}>
-              Get Your Instant Fixed Fee
-            </Button>
+            <a href="#instant-quote">
+              <Button size="lg" variant="primary" icon={<ArrowUpRight size={18} />}>
+                Get Your Instant Fixed Fee
+              </Button>
+            </a>
             <p className="text-xs text-white/60 mt-fl-4">No obligation. Response within one working day.</p>
             <TrustpilotBadge tone="light" className="mt-fl-5" />
           </Reveal>
@@ -80,10 +83,16 @@ export const FeasibilityPackagePage: React.FC = () => {
       {/* Social proof strip */}
       <DeveloperLogos />
 
-      {/* How it works, absorbed from the old page */}
+      {/* Product choice + the shared pricing calculator, near the top per the
+          brief: "the website should never feel like contact us for a quote". */}
+      <PackageEntry />
+
+      {/* How it works, updated for the pay-first journey */}
       <HowItWorks />
 
-      {/* The deliverables, compact selector */}
+      {/* "What You Actually Receive": the deliverables selector, the real
+          sample report, and the nine-bed HMO "see it in practice" example, all
+          merged into one section per the brief. */}
       <DeliverableShowcase />
 
       {/* What's included in data analysis */}
@@ -91,47 +100,6 @@ export const FeasibilityPackagePage: React.FC = () => {
 
       {/* Who you're working with */}
       <PackageTeam />
-
-      <SampleReport />
-
-      <PackagePricing />
-
-      {/* Case study highlight */}
-      <section className="bg-thistle-white py-fl-section px-fl-margin">
-        <div className="max-w-[1360px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-fl-8 items-center">
-            <Reveal>
-              <div className={`relative aspect-[4/3] rounded-2xl border border-thistle-black/[0.06] overflow-hidden ${highlight.image.startsWith('/images/projects/') ? 'bg-white' : 'bg-thistle-white/60'}`}>
-                <Image
-                  src={highlight.image}
-                  alt={highlight.title}
-                  fill
-                  sizes="(max-width: 1024px) 90vw, 620px"
-                  className={highlight.image.startsWith('/images/projects/') ? 'object-contain p-3' : 'object-cover'}
-                />
-              </div>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">The Proof</p>
-                <h2 className="text-fluid-h3 font-medium tracking-tight leading-tight text-thistle-black mb-fl-4">
-                  {highlight.title}
-                </h2>
-                <p className="text-fluid-base text-thistle-black/80 leading-relaxed mb-fl-5 max-w-md">
-                  {highlight.desc}
-                </p>
-                <Link
-                  href={`/case-studies/${highlight.slug}`}
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-thistle-green hover:text-thistle-black transition-colors"
-                >
-                  Read the case study
-                  <ArrowUpRight size={15} />
-                </Link>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
 
       {/* Maywood Group leads here because their review is literally about
           booking a feasibility before committing to a purchase, and about the

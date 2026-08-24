@@ -20,7 +20,7 @@ const EASE = [0.21, 0.47, 0.32, 0.98] as const;
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
 export const FeasibilityModal: React.FC = () => {
-  const { isOpen, closeModal, step, setStep, answers, files, errors, setErrors } = useFeasibility();
+  const { isOpen, closeModal, step, setStep, answers, files, errors, setErrors, tier } = useFeasibility();
   const [status, setStatus] = useState<Status>('idle');
   const [uploading, setUploading] = useState(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -87,7 +87,7 @@ export const FeasibilityModal: React.FC = () => {
       const res = await fetch('/api/feasibility/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ answers, files }),
+        body: JSON.stringify({ answers, files, tier }),
       });
       if (!res.ok) throw new Error('failed');
       setStatus('success');
@@ -142,8 +142,9 @@ export const FeasibilityModal: React.FC = () => {
                   Thanks, we have your details
                 </h2>
                 <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-thistle-black/60">
-                  Your enquiry and floor plans are with our architects. We will come back to you within one working day
-                  to confirm scope and start your feasibility.
+                  {tier === 'automated'
+                    ? 'Your brief is with us. Your automated analysis is generated from it directly, and the report lands in your inbox once it is ready.'
+                    : 'Your enquiry and floor plans are with our architects. We will come back to you within one working day to confirm scope and start your feasibility.'}
                 </p>
                 <button
                   onClick={closeModal}

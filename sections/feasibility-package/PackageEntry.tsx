@@ -1,0 +1,209 @@
+"use client";
+
+import React, { useState } from 'react';
+import { ArrowUpRight, Check } from 'lucide-react';
+import { Reveal } from '../../components/animations/Reveal';
+import { Button } from '../../components/ui/Button';
+import { FeasibilityCalculator } from '../pricing/FeasibilityCalculator';
+
+// Ed's August 2026 final brief, section 03: "Bring the product choice and
+// short pricing calculator near the top. Use the same calculator component and
+// pricing logic as the Pricing page." and "Replace 'from £298' as the headline
+// starting price with: 'Feasibility from £49.99' and immediately below
+// 'Architect-led feasibility from £298'."
+//
+// £49.99 is a flat fee with no questionnaire behind it (there is nothing to
+// price), so it gets its own small checkout form rather than the calculator.
+// £298+ varies by scope, so it keeps the shared FeasibilityCalculator, the
+// same component and pricing logic used on /pricing.
+
+const AUTOMATED_INCLUDES = [
+  'Planning and standards check',
+  'Indicative development capacity',
+  'Commercial context and risks',
+  'Recommended next steps',
+];
+
+const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+const AutomatedCheckout: React.FC = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [status, setStatus] = useState<'idle' | 'working' | 'error'>('idle');
+
+  const ready = !!name.trim() && emailOk(email) && phone.trim().length >= 7;
+
+  const submit = async () => {
+    if (!ready) return;
+    setStatus('working');
+
+    // Fire and forget: a lead that never reaches Stripe (no key set, or the
+    // request fails) must not be lost, same principle as the pricing
+    // calculator revealing a fee before payment.
+    fetch('/api/leads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, source: 'automated-checkout', Name: name, Phone: phone }),
+    }).catch(() => {});
+
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tier: 'automated', email, name, phone }),
+      });
+      const data = await res.json();
+      if (data.route === 'payment' && data.url) {
+        window.location.href = data.url;
+        return;
+      }
+      // Card payment not switched on yet. The lead is already captured above,
+      // so send them somewhere a human will pick it up rather than a dead end.
+      window.location.href = '/contact';
+    } catch {
+      setStatus('error');
+    }
+  };
+
+  return (
+    <div className="mt-auto pt-fl-5 border-t border-thistle-black/[0.06]">
+      <div className="grid grid-cols-1 gap-fl-2 mb-fl-3">
+        <input
+          type="text"
+          autoComplete="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Full name"
+          className="border border-thistle-black/10 rounded-full px-4 py-2.5 text-sm bg-thistle-white/50 focus:border-thistle-green focus:ring-1 focus:ring-thistle-green/20 outline-none transition-colors placeholder:text-thistle-black/25"
+        />
+        <div className="grid grid-cols-2 gap-fl-2">
+          <input
+            type="email"
+            autoComplete="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+            className="border border-thistle-black/10 rounded-full px-4 py-2.5 text-sm bg-thistle-white/50 focus:border-thistle-green focus:ring-1 focus:ring-thistle-green/20 outline-none transition-colors placeholder:text-thistle-black/25"
+          />
+          <input
+            type="tel"
+            autoComplete="tel"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="Phone"
+            className="border border-thistle-black/10 rounded-full px-4 py-2.5 text-sm bg-thistle-white/50 focus:border-thistle-green focus:ring-1 focus:ring-thistle-green/20 outline-none transition-colors placeholder:text-thistle-black/25"
+          />
+        </div>
+      </div>
+      <Button
+        variant="outline"
+        size="md"
+        icon={<ArrowUpRight size={16} />}
+        onClick={submit}
+        disabled={!ready || status === 'working'}
+        className="w-full justify-center"
+      >
+        {status === 'working' ? 'One moment…' : 'Pay £49.99 Now'}
+      </Button>
+      {status === 'error' && (
+        <p className="text-xs text-red-700 mt-fl-2" role="alert">
+          Something went wrong. Please try again, or email hello@thistlearchitecture.co.uk.
+        </p>
+      )}
+    </div>
+  );
+};
+
+export const PackageEntry: React.FC = () => (
+  <section id="instant-quote" className="bg-thistle-white py-fl-section px-fl-margin scroll-mt-24">
+    <div className="max-w-[1100px] mx-auto">
+      <div className="text-center mb-fl-8 max-w-2xl mx-auto">
+        <Reveal>
+          <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">Choose Your Route</p>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black">
+            Feasibility From £49.99.
+          </h2>
+          <p className="text-fluid-h5 font-medium tracking-tight text-thistle-black/50 mt-fl-1">
+            Architect-led feasibility from £298.
+          </p>
+        </Reveal>
+        <Reveal delay={0.15}>
+          <p className="text-fluid-base text-thistle-black/70 leading-relaxed mt-fl-4">
+            Both start from the same data. Pick the automated appraisal to screen a site fast, or go straight to the
+            architect-led feasibility if you already know you want the full picture.
+          </p>
+        </Reveal>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-fl-5 items-stretch mb-fl-8">
+        {/* £49.99, flat fee */}
+        <Reveal delay={0.1} fullHeight>
+          <div className="h-full flex flex-col rounded-2xl border border-thistle-black/[0.08] bg-white p-fl-6">
+            <h3 className="text-fluid-h6 font-medium tracking-tight text-thistle-black">Automated Site Feasibility</h3>
+            <p className="text-fluid-h3 font-medium tracking-tight text-thistle-black my-fl-3 leading-none">£49.99</p>
+            <p className="text-fluid-sm font-medium text-thistle-black/80 mb-fl-4">Data-led. No architect. About 30 minutes.</p>
+            <ul className="space-y-fl-2 mb-fl-2">
+              {AUTOMATED_INCLUDES.map((item) => (
+                <li key={item} className="flex items-start gap-2.5">
+                  <Check size={14} className="text-thistle-green mt-0.5 shrink-0" />
+                  <span className="text-fluid-sm text-thistle-black/65">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <AutomatedCheckout />
+          </div>
+        </Reveal>
+
+        {/* From £298, recommended */}
+        <Reveal delay={0.15} fullHeight>
+          <div className="relative h-full flex flex-col rounded-2xl border border-thistle-green/40 bg-thistle-green/[0.06] shadow-lg shadow-thistle-green/[0.08] p-fl-6">
+            <span className="absolute -top-3 left-fl-6 px-3 py-1 rounded-full bg-thistle-green text-thistle-black text-[10px] uppercase tracking-[0.16em] font-bold">
+              Recommended
+            </span>
+            <h3 className="text-fluid-h6 font-medium tracking-tight text-thistle-black">Architectural Feasibility</h3>
+            <p className="text-fluid-h3 font-medium tracking-tight text-thistle-black my-fl-3 leading-none">From £298</p>
+            <p className="text-fluid-sm font-medium text-thistle-black/80 mb-fl-4">
+              Data, plus an architect: planning interpretation, sketch and layout testing, and a professional
+              recommendation.
+            </p>
+            <p className="text-fluid-sm text-thistle-black/65 leading-relaxed flex-1">
+              Everything in the automated appraisal, plus the sketch scheme and full report described below. Answer
+              seven questions and your fixed fee is on screen.
+            </p>
+            <div className="mt-fl-5">
+              <a href="#calculator" className="inline-block">
+                <Button variant="primary" size="md" icon={<ArrowUpRight size={16} />}>
+                  Get Your Instant Fixed Fee
+                </Button>
+              </a>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+
+      <div id="calculator" className="scroll-mt-28">
+        <FeasibilityCalculator />
+      </div>
+
+      {/* Ed's brief: do not use £15.99 as the main feasibility headline, and
+          make clear it is a partner offer, so it sits here, faint. */}
+      <Reveal delay={0.2}>
+        <p className="text-center text-xs text-thistle-black/40 mt-fl-7">
+          Only need a quick HMO screen?{' '}
+          <a
+            href="https://hmochecker.co.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-thistle-black/60 transition-colors"
+          >
+            HMO Property Check, £15.99
+          </a>{' '}
+          — a partner tool from HMO Checker, not an architectural feasibility.
+        </p>
+      </Reveal>
+    </div>
+  </section>
+);

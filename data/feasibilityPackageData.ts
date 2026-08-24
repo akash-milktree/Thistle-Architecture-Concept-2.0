@@ -18,12 +18,19 @@ export interface SampleReportPage {
 export interface PackageFaq {
   question: string;
   answer: string;
+  /** Rendered as a bulleted list under the answer, when present. Used for the
+   *  exclusions entry, folded in here per Ed's August 2026 final brief once
+   *  the standalone "One Fee. Everything In." section was removed. */
+  list?: string[];
 }
 
-// "From £X" anchor. Set from Ed's video feedback 2026-07-08 ("it starts at 298
-// from the lowest package"); £1,800 before that.
-export const pricingFrom = "£298";
-export const pricingCaption = "Fixed fee, scoped before you start. No hourly rates, no scope creep.";
+// "From £X" anchor for the whole feasibility range, not just the
+// Architectural Feasibility. Ed's August 2026 final brief made the Automated
+// Site Feasibility (£49.99) the accessible entry point; £298 was the
+// Architectural-only anchor before that, set from his video feedback
+// 2026-07-08 ("it starts at 298 from the lowest package"), and £1,800 before
+// that.
+export const pricingFrom = "£49.99";
 
 // Indexed to match the deliverables array in data/howItWorksData.ts.
 export const deliverableDetail: DeliverableDetail[] = [
@@ -55,18 +62,21 @@ export const sampleReportPages: SampleReportPage[] = [
   { label: "Page 03", title: "Financial appraisal and risk register" },
 ];
 
-export const notIncluded: string[] = [
-  "Planning application submission and full planning drawings.",
-  "Structural engineering surveys, party wall, or measured surveys.",
-  "Pre-application meetings with the local authority.",
-  "Detailed design or construction-stage architectural services.",
-  "Specialist reports such as daylight, transport, or ecology.",
-];
-
 export const packageFaqs: PackageFaq[] = [
   {
     question: "Is the fee really fixed?",
     answer: "Yes. The price you see is the price you pay, regardless of how the analysis unfolds. We absorb the cost if a deliverable takes longer than expected.",
+  },
+  {
+    question: "What isn't included in the fixed fee?",
+    answer: "Honest scope from the start. We can quote separately if any of these are needed.",
+    list: [
+      "Planning application submission and full planning drawings.",
+      "Structural engineering surveys, party wall, or measured surveys.",
+      "Pre-application meetings with the local authority.",
+      "Detailed design or construction-stage architectural services.",
+      "Specialist reports such as daylight, transport, or ecology.",
+    ],
   },
   {
     question: "What if the recommendation is No-Go?",

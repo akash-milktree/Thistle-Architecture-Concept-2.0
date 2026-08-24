@@ -15,45 +15,51 @@ export interface Deliverable {
 }
 
 // Duration labels are a proposal, flagged for confirmation with the client.
+//
+// Rewritten for Ed's August 2026 final brief: the journey now starts with
+// payment (a 50% deposit for the Architectural Feasibility, or £49.99 in full
+// for the Automated Site Feasibility), which secures the fixed fee and unlocks
+// the detailed brief. The five-day clock itself still starts once the brief
+// and payment are both complete, per the brief's Feasibility Journey section.
 export const howItWorksSteps: HowItWorksStep[] = [
   {
     num: "01",
     durationLabel: "Under 2 minutes",
-    title: "Upload Property Details",
-    lead: "Share your property's address with a few basic details: size, floor count, and current use.",
-    detail: "You do not need detailed drawings. Basic floor plans, an address, and your initial assumptions on unit count are enough. If you do not have floor plans, we can often source them ourselves.",
+    title: "Secure Your Fixed Fee",
+    lead: "Answer a few questions and pay online to lock in your fee. No obligation before this point, and no surprises after it.",
+    detail: "The Architectural Feasibility takes a 50% holding deposit; the balance follows once your feasibility is delivered. The Automated Site Feasibility is £49.99, paid in full.",
     graphic: "step1",
   },
   {
     num: "02",
-    durationLabel: "Instant call",
-    title: "Project Data Gathering Session",
-    lead: "An instant call with Jodi, our property expert, to gather the details we need and walk through your goals for the site.",
-    detail: "A short, focused conversation. Jodi captures anything specific to your plans for the building, so the analysis is pointed at the scheme you actually want.",
-    graphic: "jodi-call",
+    durationLabel: "Under 10 minutes",
+    title: "Complete Your Project Brief",
+    lead: "Your calculator answers carry forward automatically, so you pick up straight into plans, photos and the details that define the building.",
+    detail: "You do not need detailed drawings. Basic floor plans, an address, and your initial assumptions on unit count are enough. If you do not have floor plans, we can often source them ourselves.",
+    graphic: "step1",
   },
   {
     num: "03",
-    durationLabel: "Automated, within 48 hours",
-    title: "Automated Analysis",
-    lead: "Our data engine checks planning history, site constraints, density data, and comparable schemes across your local area.",
-    detail: "Hundreds of data points are cross-referenced across trusted sources before a human looks at the site. This is the desk study, done in hours, not weeks. Automating the laborious part is what frees our architects to spend their time on the sketch scheme, which is where the real value sits.",
-    graphic: "step2",
+    durationLabel: "Instant call, Architectural tier only",
+    title: "Jodi Validates Your Brief",
+    lead: "A short call with Jodi, our property expert, to check the brief and walk through your goals for the site.",
+    detail: "Jodi captures anything specific to your plans for the building, so the analysis is pointed at the scheme you actually want. The Automated Site Feasibility skips this call and moves straight to analysis.",
+    graphic: "jodi-call",
   },
   {
     num: "04",
-    durationLabel: "Days 3 to 4",
-    title: "Sketch Scheme Stage",
-    lead: "One of our architects carries out the sketch scheme analysis to find the best possible layout for the building.",
-    detail: "The architect pressure-tests the data against the physical building, sketches the optimal unit layout, and works through the spatial problems automation cannot solve.",
-    graphic: "step4",
+    durationLabel: "Automated within hours, architect review over days 2 to 4",
+    title: "Analysis, Then Architect Review",
+    lead: "Our data engine checks planning history, site constraints, density data and comparable schemes, before an architect sketches the optimal layout.",
+    detail: "Hundreds of data points are cross-referenced across trusted sources first. This is the desk study, done in hours, not weeks. On the Architectural Feasibility, an architect then pressure-tests the data against the physical building and works through the spatial problems automation cannot solve. The Automated Site Feasibility stops after the data stage.",
+    graphic: "step2",
   },
   {
     num: "05",
     durationLabel: "Day 5",
-    title: "Final Meeting",
-    lead: "We review the completed feasibility together on a video call, five days after you uploaded your details.",
-    detail: "You leave the call with complete clarity: the full feasibility document, the sketch schemes, and a clear Go or No-Go. Enough to bid, to walk away, or to move into conveyancing with confidence.",
+    title: "Your Feasibility, Delivered",
+    lead: "Architectural Feasibility: a final video call to review everything together. Automated Site Feasibility: your report, by email.",
+    detail: "Either way you leave with complete clarity: the full feasibility document and a clear Go or No-Go. Enough to bid, to walk away, or to move into conveyancing with confidence.",
     graphic: "final-meeting",
   },
 ];

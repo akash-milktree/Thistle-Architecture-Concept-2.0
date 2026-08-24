@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import Link from 'next/link';
 import { useFeasibility } from '../../components/feasibility/FeasibilityContext';
 import { pricingFrom } from '../../data/feasibilityPackageData';
 
@@ -33,13 +32,13 @@ export const StickyCTA: React.FC = () => {
             <span className="block text-[10px] uppercase tracking-wider text-white/50 font-semibold">Fixed fee, from</span>
             <span className="block text-base font-semibold">{pricingFrom} inc. VAT</span>
           </div>
-          <Link
-            href="/pricing#calculator"
+          <a
+            href="#instant-quote"
             className="inline-flex items-center gap-1.5 text-sm font-medium px-5 py-2.5 rounded-full bg-thistle-green text-thistle-black"
           >
             Get Your Instant Fixed Fee
             <ArrowUpRight size={15} />
-          </Link>
+          </a>
         </motion.div>
       )}
     </AnimatePresence>

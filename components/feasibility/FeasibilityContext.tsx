@@ -35,6 +35,12 @@ export const FEASIBILITY_STEPS: { key: FeasibilityStep; label: string; title: st
   },
 ];
 
+/** Which paid product this brief belongs to. Set once, from the Stripe success
+ *  redirect's tier param, before the brief is opened; carried through to the
+ *  submit payload so the team (and Kaan's automation) know which service was
+ *  bought without asking the client again. */
+export type FeasibilityTier = 'architectural' | 'automated';
+
 interface FeasibilityContextType {
   isOpen: boolean;
   openModal: () => void;
@@ -47,6 +53,8 @@ interface FeasibilityContextType {
   setFiles: React.Dispatch<React.SetStateAction<FeasibilityFiles>>;
   errors: Record<string, string>;
   setErrors: React.Dispatch<React.SetStateAction<Record<string, string>>>;
+  tier: FeasibilityTier;
+  setTier: (tier: FeasibilityTier) => void;
 }
 
 const FeasibilityContext = createContext<FeasibilityContextType | null>(null);
@@ -63,6 +71,7 @@ export const FeasibilityProvider: React.FC<{ children: React.ReactNode }> = ({ c
   const [answers, setAnswers] = useState<FeasibilityAnswers>(EMPTY_ANSWERS);
   const [files, setFiles] = useState<FeasibilityFiles>(EMPTY_FILES);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [tier, setTier] = useState<FeasibilityTier>('architectural');
 
   const openModal = useCallback(() => {
     // Carry the pricing calculator's answers forward, per Ed's August 2026
@@ -97,6 +106,7 @@ export const FeasibilityProvider: React.FC<{ children: React.ReactNode }> = ({ c
       setAnswers(EMPTY_ANSWERS);
       setFiles(EMPTY_FILES);
       setErrors({});
+      setTier('architectural');
     }, 300);
   }, []);
 
@@ -108,7 +118,10 @@ export const FeasibilityProvider: React.FC<{ children: React.ReactNode }> = ({ c
 
   return (
     <FeasibilityContext.Provider
-      value={{ isOpen, openModal, closeModal, step, setStep, answers, setAnswer, files, setFiles, errors, setErrors }}
+      value={{
+        isOpen, openModal, closeModal, step, setStep, answers, setAnswer, files, setFiles, errors, setErrors,
+        tier, setTier,
+      }}
     >
       {children}
     </FeasibilityContext.Provider>

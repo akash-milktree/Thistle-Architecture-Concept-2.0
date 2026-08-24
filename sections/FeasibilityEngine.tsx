@@ -242,13 +242,15 @@ const GraphicLayout: React.FC = () => (
 // Bodies stay as Ed rewrote them in round 1, when the layer titles changed too.
 // Graphic order follows the layer order, so each diagram sits with the analysis
 // it illustrates.
+// Bodies shortened for Ed's August 2026 final brief: "keep 'What Is Analysed',
+// but shorten the copy and let the data/graphics do more of the work."
 const rows = [
-  { ...feasibilityLayers[0], body: "The planning history of your property and its surroundings: what has been approved, refused, or is pending nearby.", Graphic: GraphicPlanning },
-  { ...feasibilityLayers[1], body: "The local and national policy that decides whether your scheme is viable, and the constraints that bite: Article 4, density caps, and change-of-use thresholds.", Graphic: GraphicConstraints },
-  { ...feasibilityLayers[2], body: "Nearby conversions, achieved unit counts, and actual sale values. Benchmarks sourced automatically, not guessed from memory.", Graphic: GraphicComparables },
-  { ...feasibilityLayers[3], body: "Build cost modelling, margin analysis, and ROI projections. A clear view of whether the deal pencils before you commit.", Graphic: GraphicGDV },
-  { ...feasibilityLayers[4], body: "The space the building can actually give you: local and national space standards, Building Regulations, and the licensing requirements for that area.", Graphic: GraphicDensity },
-  { ...feasibilityLayers[5], body: "The part automation cannot do. An architect draws the layout options over your plans, then walks you through them on a video call.", Graphic: GraphicLayout },
+  { ...feasibilityLayers[0], body: "What has been approved, refused, or is pending nearby.", Graphic: GraphicPlanning },
+  { ...feasibilityLayers[1], body: "The policy and constraints that decide whether your scheme is viable.", Graphic: GraphicConstraints },
+  { ...feasibilityLayers[2], body: "Nearby conversions, unit counts, and achieved sale values.", Graphic: GraphicComparables },
+  { ...feasibilityLayers[3], body: "Build cost, margin, and ROI, before you commit.", Graphic: GraphicGDV },
+  { ...feasibilityLayers[4], body: "Space standards, Building Regs, and licensing for your area.", Graphic: GraphicDensity },
+  { ...feasibilityLayers[5], body: "The part automation cannot do: an architect draws the layout options over your plans.", Graphic: GraphicLayout },
 ];
 
 export const FeasibilityEngine: React.FC = () => {
@@ -267,7 +269,7 @@ export const FeasibilityEngine: React.FC = () => {
           </Reveal>
           <Reveal delay={0.15}>
             <p className="text-fluid-base text-thistle-black/80 leading-relaxed">
-              Hundreds of data points cross-referenced across trusted sources, so our architects can focus on intelligent layouts and clear recommendations.
+              Hundreds of data points, cross-referenced automatically, so our architects spend their time on layouts and recommendations.
             </p>
           </Reveal>
         </div>
@@ -292,7 +294,7 @@ export const FeasibilityEngine: React.FC = () => {
 
         <Reveal delay={0.2}>
           <div className="mt-fl-section-sm">
-            <InlineCTA href="/pricing#calculator" label="Get Your Instant Fixed Fee" />
+            <InlineCTA href="#instant-quote" label="Get Your Instant Fixed Fee" />
           </div>
         </Reveal>
       </div>

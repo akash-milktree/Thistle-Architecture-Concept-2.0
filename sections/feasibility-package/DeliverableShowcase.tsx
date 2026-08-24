@@ -2,10 +2,19 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Reveal } from '../../components/animations/Reveal';
 import { deliverables } from '../../data/howItWorksData';
 import { deliverableDetail } from '../../data/feasibilityPackageData';
+import { caseStudies } from '../../data/caseStudiesData';
+import { SampleReportGate } from './SampleReportGate';
+
+// The nine-bed HMO conversion, Ed's nominated compact "see it in practice"
+// example (August 2026 final brief, section 03). st-johns-aylesbury is the
+// first entry in caseStudiesData on purpose, so this is not a magic index.
+const ninebedExample = caseStudies.find((c) => c.slug === 'st-johns-aylesbury');
 
 // One real document per deliverable, all from 155 Windmill Lane, the example
 // project Ed nominated. These replace the stock and unrelated sketch images that
@@ -56,6 +65,12 @@ const Panel: React.FC<{ index: number; className?: string }> = ({ index, classNa
 // Compact selector: every deliverable in one viewport instead of a stack of
 // full-height alternating rows. Desktop shows the active image beside the
 // list; mobile expands the image inside the open item.
+//
+// Ed's August 2026 final brief merges three former sections into this one:
+// "Five Deliverables. One Decision." (the selector below), "Real Documents.
+// Not A Brochure." (the sample report gate), and the nine-bed HMO example as a
+// compact "see it in practice" proof. One heading, "What You Actually
+// Receive.", covers all three.
 export const DeliverableShowcase: React.FC = () => {
   const [active, setActive] = useState(0);
 
@@ -64,12 +79,18 @@ export const DeliverableShowcase: React.FC = () => {
       <div className="max-w-[1360px] mx-auto">
         <div className="text-center mb-fl-8 max-w-2xl mx-auto">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">The Deliverables</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">What You Receive</p>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black">
-              Five Deliverables.<br /><span className="text-thistle-green">One Decision.</span>
+              What You Actually<br /><span className="text-thistle-green">Receive.</span>
             </h2>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <p className="text-fluid-base text-thistle-black/70 leading-relaxed mt-fl-4">
+              Five deliverables, drawn from a feasibility we actually delivered. Not a brochure: these are pages
+              from the real report.
+            </p>
           </Reveal>
         </div>
 
@@ -131,6 +152,38 @@ export const DeliverableShowcase: React.FC = () => {
             </Reveal>
           </div>
         </div>
+
+        {/* "Real Documents. Not A Brochure.", folded in here per the brief. */}
+        <SampleReportGate />
+
+        {/* The nine-bed HMO, Ed's compact "see it in practice" example. */}
+        {ninebedExample && (
+          <Reveal delay={0.1}>
+            <div className="max-w-3xl mx-auto mt-fl-6 rounded-2xl border border-thistle-black/[0.06] bg-thistle-white/70 p-fl-6 flex flex-col sm:flex-row items-center gap-fl-5">
+              <div className={`relative w-full sm:w-40 aspect-[4/3] shrink-0 rounded-xl overflow-hidden border border-thistle-black/[0.06] ${ninebedExample.image.startsWith('/images/projects/') ? 'bg-white' : 'bg-white/60'}`}>
+                <Image
+                  src={ninebedExample.image}
+                  alt={ninebedExample.title}
+                  fill
+                  sizes="160px"
+                  className={ninebedExample.image.startsWith('/images/projects/') ? 'object-contain p-2' : 'object-cover'}
+                />
+              </div>
+              <div className="flex-1 text-center sm:text-left">
+                <span className="block text-[10px] uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-2">See It In Practice</span>
+                <h3 className="text-fluid-h6 font-medium tracking-tight text-thistle-black mb-fl-2">{ninebedExample.title}</h3>
+                <p className="text-fluid-sm text-thistle-black/60 leading-relaxed mb-fl-3">{ninebedExample.desc}</p>
+                <Link
+                  href={`/case-studies/${ninebedExample.slug}`}
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-thistle-green hover:text-thistle-black transition-colors"
+                >
+                  Read the full feasibility
+                  <ArrowUpRight size={15} />
+                </Link>
+              </div>
+            </div>
+          </Reveal>
+        )}
       </div>
     </section>
   );

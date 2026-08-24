@@ -4,14 +4,12 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from '../../components/animations/Reveal';
-import { useRouter } from 'next/navigation';
 import { Button } from '../../components/ui/Button';
 import { packageFaqs } from '../../data/feasibilityPackageData';
 
 // Package-specific accordion FAQ. Same UX as the general site FAQ, different
 // content focused on the package itself (fee, revisions, VAT, scope changes).
 export const PackageFAQ: React.FC = () => {
-  const router = useRouter();
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
@@ -33,9 +31,11 @@ export const PackageFAQ: React.FC = () => {
               </p>
             </Reveal>
             <Reveal delay={0.2}>
-              <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/pricing#calculator')}>
-                Get Your Instant Fixed Fee
-              </Button>
+              <a href="#instant-quote">
+                <Button variant="primary" icon={<ArrowUpRight size={16} />}>
+                  Get Your Instant Fixed Fee
+                </Button>
+              </a>
             </Reveal>
           </div>
 
@@ -82,9 +82,19 @@ export const PackageFAQ: React.FC = () => {
                         transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
                         className="overflow-hidden"
                       >
-                        <p className="text-fluid-base text-thistle-black/80 leading-relaxed px-fl-5 pb-fl-4">
-                          {faq.answer}
-                        </p>
+                        <div className="px-fl-5 pb-fl-4">
+                          <p className="text-fluid-base text-thistle-black/80 leading-relaxed">{faq.answer}</p>
+                          {faq.list && (
+                            <ul className="mt-fl-3 space-y-2">
+                              {faq.list.map((item) => (
+                                <li key={item} className="flex items-start gap-2.5 text-fluid-sm text-thistle-black/65 leading-relaxed">
+                                  <span className="mt-2 w-1 h-1 rounded-full bg-thistle-black/30 shrink-0" />
+                                  {item}
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>

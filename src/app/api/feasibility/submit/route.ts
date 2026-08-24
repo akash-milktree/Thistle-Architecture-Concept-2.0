@@ -14,7 +14,14 @@ export const runtime = 'nodejs';
 // one address confirmed to work.
 const FORMSPREE_ENDPOINT = 'https://formspree.io/p/3042010600814149049/f/feasibility';
 
-type Body = { answers?: Partial<FeasibilityAnswers>; files?: Partial<FeasibilityFiles> };
+type Body = {
+  answers?: Partial<FeasibilityAnswers>;
+  files?: Partial<FeasibilityFiles>;
+  /** Which paid product this brief follows. Absent from older callers, so it
+   *  defaults to 'architectural', the only tier that existed before Ed's
+   *  August 2026 final brief added the automated £49.99 flow. */
+  tier?: 'architectural' | 'automated';
+};
 
 /**
  * Hand the enquiry to Thistle's feasibility automation API (Kaan's server), which
@@ -31,6 +38,7 @@ type Body = { answers?: Partial<FeasibilityAnswers>; files?: Partial<Feasibility
 async function forwardToAutomation(
   a: Partial<FeasibilityAnswers>,
   files: Partial<FeasibilityFiles>,
+  tier: 'architectural' | 'automated',
 ): Promise<void> {
   const url = process.env.FEASIBILITY_API_URL;
   const secret = process.env.FEASIBILITY_API_SECRET;
@@ -63,6 +71,10 @@ async function forwardToAutomation(
     // Blob URLs are public and unguessable, so their server can fetch them
     // without auth, which is what their contract requires.
     files: fileUrls,
+    // Added for the automated £49.99 tier: their system needs this to decide
+    // between the automated-only pipeline and the full architect-reviewed one.
+    // An unrecognised field should be harmless if their API predates it.
+    tier,
   };
 
   const send = () =>
@@ -110,6 +122,7 @@ export async function POST(req: NextRequest) {
 
   const a = body.answers ?? {};
   const files = body.files ?? {};
+  const tier = body.tier === 'automated' ? 'automated' : 'architectural';
   if (!a.email || !a.firstName || !a.address1) {
     return NextResponse.json({ ok: false, error: 'Missing required details.' }, { status: 400 });
   }
@@ -119,13 +132,22 @@ export async function POST(req: NextRequest) {
   // Flat, readable keys: Formspree renders these as the field rows in the email.
   //
   // Since Ed's August 2026 final brief the form behind this route is the
-  // post-payment project brief, and the brief-submitted moment is when Jodi is
-  // to be notified so she can validate it on a call. Jodi's own address must be
-  // added as a verified Formspree recipient for that to reach her directly;
+  // post-payment project brief. For the architectural tier, this is when Jodi
+  // is to be notified so she can validate it on a call; her own address must be
+  // added as a verified Formspree recipient for that to reach her directly,
   // until then this lands in the shared feasibility inbox with her name on it.
+  // The automated tier skips Jodi's call per the brief and goes straight to
+  // the automated report, so the subject and next step read differently.
   const payload = {
-    _subject: `Project brief submitted, for Jodi: ${s(a.address1)}${a.postcode ? `, ${s(a.postcode)}` : ''}`,
-    'Next step': 'Jodi to review the brief and book the validation call.',
+    _subject:
+      tier === 'automated'
+        ? `Automated brief submitted: ${s(a.address1)}${a.postcode ? `, ${s(a.postcode)}` : ''}`
+        : `Project brief submitted, for Jodi: ${s(a.address1)}${a.postcode ? `, ${s(a.postcode)}` : ''}`,
+    Tier: tier === 'automated' ? 'Automated Site Feasibility (£49.99, no architect)' : 'Architectural Feasibility',
+    'Next step':
+      tier === 'automated'
+        ? 'Automated analysis to run from this brief; report goes to the client by email.'
+        : 'Jodi to review the brief and book the validation call.',
     // Lets the team reply straight to the enquirer from the notification email.
     _replyto: s(a.email),
     'Property type': s(a.propertyType),
@@ -164,7 +186,7 @@ export async function POST(req: NextRequest) {
   // 2) Forward to Thistle's feasibility automation API when configured. Same
   //    rule as the CRM forward below: the email has already gone, so nothing
   //    here may fail the user's submission.
-  await forwardToAutomation(a, files);
+  await forwardToAutomation(a, files, tier);
 
   // 3) Forward to the CRM webhook when configured. Non-blocking: the email has
   //    already gone, so a CRM outage must not fail the submission.
@@ -176,6 +198,7 @@ export async function POST(req: NextRequest) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           source: 'feasibility-form',
+          tier,
           ...a,
           floorPlanUrl: files.floorPlan?.url ?? '',
           otherDocUrls: (files.otherDocs ?? []).map((d) => d.url).join(', '),

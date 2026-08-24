@@ -46,6 +46,9 @@ const SOURCE_LABELS: Record<string, string> = {
   // so an abandoned payment still leaves a lead. The Outcome row says whether
   // they saw a price or were routed to an Expert Session.
   'pricing-calculator': 'Pricing calculator (fee revealed)',
+  // Posted just before the £49.99 flat-fee Stripe redirect, so a checkout that
+  // is abandoned or fails to load still leaves a lead.
+  'automated-checkout': 'Automated Site Feasibility (£49.99 checkout started)',
   // The contact page rides this route too, so a general enquiry lands in the
   // same inbox without needing a third form on the Formspree project.
   'contact-form': 'Contact form',

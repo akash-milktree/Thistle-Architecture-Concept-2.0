@@ -171,7 +171,7 @@ export const PRODUCTS = [
     strapline: 'Detailed data-led appraisal.',
     body: 'For existing buildings nationwide: commercial to residential, apartments, HMOs, co-living, mixed use and similar opportunities.',
     cta: 'Analyse My Site',
-    href: '/feasibility-package',
+    href: '/feasibility-package#instant-quote',
     external: false,
     turnaround: 'Around 30 minutes',
   },
