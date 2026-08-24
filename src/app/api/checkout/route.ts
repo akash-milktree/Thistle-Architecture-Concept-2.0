@@ -60,16 +60,24 @@ export async function POST(request: Request) {
     });
   }
 
+  // Ed's August 2026 final brief: the customer secures the feasibility with a
+  // 50% holding deposit, then completes the detailed brief; the balance
+  // follows. Fees are VAT-inclusive. Uplifts of £75 make odd totals possible,
+  // so the deposit is computed in pence and can carry 50p exactly.
+  const depositPence = Math.round(route.price * 100) / 2;
+  const depositLabel = `£${(depositPence / 100).toFixed(2).replace(/\.00$/, '')}`;
+
   // Stripe's REST API directly, so the project carries no SDK dependency until
   // someone decides it needs one. Amount is in pence.
   const form = new URLSearchParams({
     mode: 'payment',
     'line_items[0][quantity]': '1',
     'line_items[0][price_data][currency]': 'gbp',
-    'line_items[0][price_data][unit_amount]': String(route.price * 100),
-    'line_items[0][price_data][product_data][name]': 'Architectural Feasibility',
+    'line_items[0][price_data][unit_amount]': String(depositPence),
+    'line_items[0][price_data][product_data][name]': 'Architectural Feasibility: 50% holding deposit',
     'line_items[0][price_data][product_data][description]':
-      'Fixed-fee architectural feasibility, delivered in five working days.',
+      `50% holding deposit (${depositLabel} of a £${route.price} fixed fee, VAT inclusive). ` +
+      'Secures your architectural feasibility, delivered in five working days once your brief is complete.',
     success_url: `${SITE}/feasibility-confirmed?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${SITE}/pricing?cancelled=1`,
     // The scope that was priced, so a dispute can be settled against what was
@@ -78,7 +86,10 @@ export async function POST(request: Request) {
     'metadata[base]': String(route.base),
     'metadata[uplift]': String(route.uplift),
     'metadata[factors]': String(route.factors),
+    'metadata[fee_total]': String(route.price),
+    'metadata[payment_type]': 'deposit_50',
     'metadata[address]': (body.address ?? '').slice(0, 490),
+    'metadata[name]': (body.name ?? '').slice(0, 200),
   });
   if (body.email) form.set('customer_email', body.email);
 

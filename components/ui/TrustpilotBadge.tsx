@@ -29,8 +29,11 @@ import { reviews, REVIEWS_URL } from '../../data/reviewsData';
 // It does not reproduce the Trustpilot logo. The name is used as plain text in
 // a link to the profile, which is attribution rather than trademark use.
 //
-// What it claims is only what can be checked on the link: how many reviews
-// there are, and that all of them are five star.
+// The wording is evergreen on purpose. Ed's August 2026 final brief: "use
+// evergreen wording such as '5-star customer reviews on Trustpilot'; do not
+// hard-code the number of reviews". A count goes stale the day a review lands,
+// and this badge is on every page. What it claims is still checkable on the
+// link, and the star row only fills when every review really is five star.
 
 const allFiveStar = reviews.every((r) => r.rating === 5);
 
@@ -61,9 +64,9 @@ export const TrustpilotBadge: React.FC<TrustpilotBadgeProps> = ({ tone = 'dark',
       </span>
       <span className={`text-xs ${text}`}>
         <span className={`font-medium ${strong}`}>
-          {allFiveStar ? `All ${reviews.length} reviews` : `${reviews.length} reviews`}
+          {allFiveStar ? '5-star customer reviews' : 'Customer reviews'}
         </span>{' '}
-        {allFiveStar ? 'five star on' : 'on'} <span className={`font-medium ${strong}`}>Trustpilot</span>
+        on <span className={`font-medium ${strong}`}>Trustpilot</span>
       </span>
     </a>
   );

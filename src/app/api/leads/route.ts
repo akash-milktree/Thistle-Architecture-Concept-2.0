@@ -42,6 +42,10 @@ const SOURCE_LABELS: Record<string, string> = {
   'gdv-calculator': 'GDV calculator',
   'class-ma-checker': 'Class MA eligibility checker',
   'sample-report': 'Sample feasibility report',
+  // The pricing calculator captures contact details before it reveals the fee,
+  // so an abandoned payment still leaves a lead. The Outcome row says whether
+  // they saw a price or were routed to an Expert Session.
+  'pricing-calculator': 'Pricing calculator (fee revealed)',
   // The contact page rides this route too, so a general enquiry lands in the
   // same inbox without needing a third form on the Formspree project.
   'contact-form': 'Contact form',

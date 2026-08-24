@@ -52,6 +52,18 @@ export const EMPTY_ANSWERS: FeasibilityAnswers = {
 
 export const EMPTY_FILES: FeasibilityFiles = { otherDocs: [] };
 
+// localStorage key the pricing calculator writes before Stripe checkout, so the
+// detailed brief can carry the answers forward and ask nothing twice (Ed's
+// August 2026 final brief). The shape is a partial contact + gia snapshot.
+export const CALCULATOR_CARRY_KEY = 'thistle-feasibility-carry';
+
+export type CalculatorCarry = {
+  name?: string;
+  email?: string;
+  phone?: string;
+  gia?: string;
+};
+
 // --- Uploads -----------------------------------------------------------------
 // Files upload from the browser straight to Vercel Blob (client uploads), so
 // they never pass through a route handler. Routing them through a function

@@ -117,8 +117,15 @@ export async function POST(req: NextRequest) {
   const s = (v: unknown) => String(v ?? '').slice(0, 1000);
 
   // Flat, readable keys: Formspree renders these as the field rows in the email.
+  //
+  // Since Ed's August 2026 final brief the form behind this route is the
+  // post-payment project brief, and the brief-submitted moment is when Jodi is
+  // to be notified so she can validate it on a call. Jodi's own address must be
+  // added as a verified Formspree recipient for that to reach her directly;
+  // until then this lands in the shared feasibility inbox with her name on it.
   const payload = {
-    _subject: `New feasibility enquiry: ${s(a.address1)}${a.postcode ? `, ${s(a.postcode)}` : ''}`,
+    _subject: `Project brief submitted, for Jodi: ${s(a.address1)}${a.postcode ? `, ${s(a.postcode)}` : ''}`,
+    'Next step': 'Jodi to review the brief and book the validation call.',
     // Lets the team reply straight to the enquirer from the notification email.
     _replyto: s(a.email),
     'Property type': s(a.propertyType),

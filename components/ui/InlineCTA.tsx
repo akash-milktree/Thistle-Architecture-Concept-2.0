@@ -17,12 +17,14 @@ interface InlineCTAProps {
 
 /**
  * Inline CTA used between sections to keep conversion scent.
- * Tier 1 (default): links to the feasibility package page.
- * Tier 2 (package page only): href="" opens the full-page form.
+ * Tier 1 (default): the standard high-intent CTA from Ed's August 2026 brief,
+ * "Get Your Fixed Fee", into the pricing calculator.
+ * Tier 2: href="" opens the detailed brief form, which is now post-payment
+ * only, so pass it deliberately or not at all.
  */
 export const InlineCTA: React.FC<InlineCTAProps> = ({
-  label = "Book Your Feasibility",
-  href = "/feasibility-package",
+  label = "Get Your Fixed Fee",
+  href = "/pricing",
   align = "center",
   className = "",
 }) => {

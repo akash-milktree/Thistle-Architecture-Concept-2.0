@@ -1,35 +1,35 @@
 import React from 'react';
 import Link from 'next/link';
 import { Check, ArrowUpRight } from 'lucide-react';
+import { CompleteBriefButton } from '../components/feasibility/CompleteBriefButton';
 
 // Where Stripe returns someone after a successful payment.
 //
-// It used to redirect to /feasibility-package?paid=1, which just showed the
-// sales page again. Someone who has handed over several hundred pounds should
-// be told it worked and what happens next, not sold the thing they have just
-// bought.
+// Since Ed's August 2026 final brief this is also where the detailed brief
+// unlocks: the deposit is paid, so the next step is the full project brief,
+// with the calculator's answers carried forward.
 //
-// Deliberately not a client component and it reads nothing from the URL: the
-// payment is confirmed by the Stripe webhook, not by the browser arriving here.
-// Anyone can visit this page, so it must never be the thing that marks a
-// payment as complete.
+// Deliberately not a client component beyond the brief button, and it reads
+// nothing from the URL: the payment is confirmed by the Stripe webhook, not by
+// the browser arriving here. Anyone can visit this page, so it must never be
+// the thing that marks a payment as complete.
 
 const NEXT_STEPS = [
   {
     title: 'A receipt from Stripe',
-    body: 'In your inbox in the next few minutes, with the amount and reference.',
+    body: 'In your inbox in the next few minutes, with your deposit amount and reference.',
   },
   {
-    title: 'We are already on it',
-    body: 'Your answers came through with the payment, so nothing needs repeating.',
+    title: 'Complete your project brief',
+    body: 'The button above opens it. Your calculator answers are carried forward, so nothing is asked twice. This is where you add plans, photos and anything else that defines the building.',
   },
   {
-    title: 'We may ask for drawings',
-    body: 'If we need plans, surveys or photos to define the existing building, we will email you.',
+    title: 'A call to validate the brief',
+    body: 'Once your brief is in, our team reviews it and books a short call to capture anything the form could not.',
   },
   {
     title: 'Your feasibility in five working days',
-    body: 'Sketch scheme, proposed layout, unit and bedroom testing, and a one-hour call with the architect.',
+    body: 'Sketch scheme, proposed layout, unit and bedroom testing, and a one-hour call with the architect. The five days start once your brief and payment are complete.',
   },
 ];
 
@@ -40,16 +40,20 @@ export const FeasibilityConfirmedPage: React.FC = () => (
         <span className="w-10 h-10 rounded-full bg-thistle-green/15 flex items-center justify-center">
           <Check size={20} strokeWidth={2.5} />
         </span>
-        <span className="text-[11px] uppercase tracking-[0.2em] font-semibold">Payment received</span>
+        <span className="text-[11px] uppercase tracking-[0.2em] font-semibold">Deposit received</span>
       </div>
 
       <h1 className="text-fluid-h1 font-medium tracking-tight leading-tight text-thistle-black mb-fl-5">
-        Thank you. Your feasibility is booked.
+        Thank you. Your feasibility is secured.
       </h1>
 
-      <p className="text-fluid-lg text-thistle-black/70 leading-relaxed mb-fl-8 max-w-xl">
-        That is the hard part done. Here is exactly what happens next, so you are not left wondering.
+      <p className="text-fluid-lg text-thistle-black/70 leading-relaxed mb-fl-6 max-w-xl">
+        One thing left to do: tell us about the project properly, so the analysis starts from everything you know.
       </p>
+
+      <div className="mb-fl-8">
+        <CompleteBriefButton />
+      </div>
 
       <ol className="space-y-fl-5 mb-fl-8">
         {NEXT_STEPS.map((s, i) => (

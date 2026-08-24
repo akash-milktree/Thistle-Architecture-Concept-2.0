@@ -65,16 +65,17 @@ export const Hero: React.FC = () => {
             </Reveal>
 
             <Reveal delay={0.1}>
-              {/* Ed's video feedback 2026-07-08: "feasibility first" over
-                  "developer led", because it covers high-end residential too. */}
+              {/* Ed's August 2026 final brief: the headline is "Feasibility-First
+                  Architecture", with "Nationwide" in the supporting copy rather
+                  than forced into the headline. */}
               <h1 className="text-[clamp(2.6rem,5.2vw,4.6rem)] font-medium tracking-tighter leading-[1.05] text-white mb-fl-5">
-                Nationwide Feasibility<br />First Architecture.
+                Feasibility-First<br />Architecture.
               </h1>
             </Reveal>
 
             <Reveal delay={0.2}>
               <p className="text-fluid-base text-white/90 leading-relaxed font-light mb-fl-7 max-w-xl">
-                Thistle is a developer-led architecture practice specialising in feasibility studies and the retrofit and reuse of existing buildings. We test what a building can become, give you a clear Go or No-Go in five days, then design and deliver the conversion.
+                Thistle is a nationwide, developer-led architecture practice specialising in feasibility studies and the retrofit and reuse of existing buildings. We test what a building can become, give you a clear Go or No-Go in five days, then design and deliver the conversion.
               </p>
             </Reveal>
 
@@ -84,16 +85,16 @@ export const Hero: React.FC = () => {
                   size="lg"
                   variant="primary"
                   icon={<ArrowUpRight size={18} />}
-                  onClick={() => router.push('/feasibility-package')}
+                  onClick={() => router.push('/pricing')}
                   className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/85 hover:!border-thistle-green/85"
                 >
-                  Book Your Feasibility
+                  Get Your Fixed Fee
                 </Button>
                 <a
-                  href="#process"
+                  href="/feasibility-package"
                   className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/40 text-white text-sm font-medium hover:bg-white/10 hover:border-white/60 transition-colors"
                 >
-                  See how it works
+                  See How Feasibility Works
                 </a>
               </div>
               <p className="text-sm text-white/90 mt-fl-4">No obligation. Response within one working day.</p>

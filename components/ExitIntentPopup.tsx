@@ -3,12 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowUpRight } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { Button } from './ui/Button';
 import { useFeasibility } from './feasibility/FeasibilityContext';
 
 export const ExitIntentPopup: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { openModal, isOpen: isModalOpen } = useFeasibility();
+  const router = useRouter();
+  const { isOpen: isModalOpen } = useFeasibility();
 
   useEffect(() => {
     const handleMouseLeave = (e: MouseEvent) => {
@@ -28,9 +30,11 @@ export const ExitIntentPopup: React.FC = () => {
 
   const handleClose = () => setIsVisible(false);
 
+  // The popup's own copy offers the free expert session, so the button books
+  // one rather than opening the detailed intake, which is post-payment now.
   const handleCTA = () => {
     setIsVisible(false);
-    openModal();
+    router.push('/contact');
   };
 
   return (
@@ -84,7 +88,7 @@ export const ExitIntentPopup: React.FC = () => {
                 className="w-full justify-center"
                 onClick={handleCTA}
               >
-                Start Feasibility
+                Book a Free Expert Session
               </Button>
 
               <button

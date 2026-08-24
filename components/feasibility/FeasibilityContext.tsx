@@ -1,7 +1,14 @@
 "use client";
 
 import React, { createContext, useContext, useState, useCallback } from 'react';
-import { EMPTY_ANSWERS, EMPTY_FILES, type FeasibilityAnswers, type FeasibilityFiles } from './feasibility';
+import {
+  EMPTY_ANSWERS,
+  EMPTY_FILES,
+  CALCULATOR_CARRY_KEY,
+  type CalculatorCarry,
+  type FeasibilityAnswers,
+  type FeasibilityFiles,
+} from './feasibility';
 
 // Step keys mirror the HMO Designers flow. A "payment" step slots in after
 // "details" when the Stripe flow is added (client decision: email only for now).
@@ -58,6 +65,26 @@ export const FeasibilityProvider: React.FC<{ children: React.ReactNode }> = ({ c
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const openModal = useCallback(() => {
+    // Carry the pricing calculator's answers forward, per Ed's August 2026
+    // final brief: nothing is asked twice. Only empty fields are filled, so a
+    // person editing a half-completed brief never has typing overwritten.
+    try {
+      const raw = localStorage.getItem(CALCULATOR_CARRY_KEY);
+      if (raw) {
+        const carry = JSON.parse(raw) as CalculatorCarry;
+        const [firstName, ...rest] = (carry.name ?? '').trim().split(/\s+/);
+        setAnswers((prev) => ({
+          ...prev,
+          firstName: prev.firstName || firstName || '',
+          lastName: prev.lastName || rest.join(' '),
+          email: prev.email || (carry.email ?? ''),
+          phone: prev.phone || (carry.phone ?? ''),
+          gia: prev.gia || (carry.gia ?? ''),
+        }));
+      }
+    } catch {
+      // A malformed or blocked store just means an unprefilled form.
+    }
     setIsOpen(true);
     setStep('property');
   }, []);

@@ -92,7 +92,7 @@ export const ContactForm: React.FC = () => {
 
         {status === 'error' && (
           <p aria-live="polite" className="text-fluid-sm text-red-700">
-            Something went wrong. Please try again, or email hello@incollective.works.
+            Something went wrong. Please try again, or email hello@thistlearchitecture.co.uk.
           </p>
         )}
       </form>

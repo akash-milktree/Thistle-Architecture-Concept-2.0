@@ -27,10 +27,10 @@ export const CTABlock: React.FC = () => {
             size="lg"
             variant="primary"
             icon={<ArrowUpRight size={18} />}
-            onClick={() => router.push('/feasibility-package')}
+            onClick={() => router.push('/pricing')}
             className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80"
           >
-            Book Your Feasibility
+            Get Your Fixed Fee
           </Button>
         </Reveal>
       </div>

@@ -45,7 +45,23 @@ export type FeasibilityRoute =
   | { route: 'instant_payment'; price: number; base: number; uplift: number; factors: number }
   | { route: 'expert_session'; price: null; reason: string };
 
-/** Base fee by gross internal area, for display. The formula below is the source of truth. */
+/**
+ * What the customer sees about how their fee is reached. Ed's August 2026 final
+ * brief: "show the customer exactly what they pay; do not publish the underlying
+ * pricing engine". Factors only, no amounts. The bands and uplifts below stay
+ * for the engine and internal checks, but are no longer rendered.
+ */
+export const FEE_FACTORS = [
+  'Property size',
+  'Existing and proposed use',
+  'Units or bedrooms',
+  'Extent of alterations',
+  'Planning complexity',
+  'Heritage and listed status',
+  'Alternative options tested',
+] as const;
+
+/** Base fee by gross internal area. Engine reference only; not rendered. */
 export const AREA_BANDS = [
   { label: 'Up to 150m²', fee: 298 },
   { label: '151 to 250m²', fee: 348 },
@@ -165,7 +181,7 @@ export const PRODUCTS = [
     price: 'From £298',
     strapline: 'Data, architectural judgement and design.',
     body: 'Architect review, sketch scheme, proposed layout, unit and bedroom testing, a one-hour architect meeting, a project review and recommended next steps.',
-    cta: 'Get My Instant Feasibility Price',
+    cta: 'Get Your Instant Fixed Fee',
     href: '/pricing#calculator',
     external: false,
     turnaround: '5 working days',

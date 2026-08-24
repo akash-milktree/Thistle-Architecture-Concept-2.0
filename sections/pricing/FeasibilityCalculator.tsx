@@ -11,6 +11,7 @@ import {
   type HeritageGrade,
   type ProjectType,
 } from '../../data/pricingData';
+import { CALCULATOR_CARRY_KEY } from '../../components/feasibility/feasibility';
 
 // The questionnaire from section 4 of Ed's pricing brief.
 //
@@ -20,6 +21,11 @@ import {
 // is that Thistle never quotes a number for a scope it has not seen.
 
 interface Answers {
+  // Contact first, per the final brief: "capture name, email and phone so a
+  // lead exists even if payment is abandoned".
+  name: string;
+  email: string;
+  phone: string;
   gia: string;
   giaUnknown: boolean;
   existingUse: string;
@@ -35,6 +41,9 @@ interface Answers {
 }
 
 const EMPTY: Answers = {
+  name: '',
+  email: '',
+  phone: '',
   gia: '',
   giaUnknown: false,
   existingUse: '',
@@ -173,7 +182,7 @@ export const FeasibilityCalculator: React.FC = () => {
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ project: toProject(a) }),
+        body: JSON.stringify({ project: toProject(a), email: a.email, name: a.name }),
       });
       const data = await res.json();
       if (data.route === 'payment' && data.url) {
@@ -181,19 +190,58 @@ export const FeasibilityCalculator: React.FC = () => {
         return;
       }
       // Either payment is not switched on yet, or the server disagreed and
-      // routed this to an Expert Session. Both go to the enquiry form with the
-      // answers intact rather than leaving the person on a dead button.
-      window.location.href = '/feasibility-package#book';
+      // routed this to an Expert Session. Both go to the contact page rather
+      // than leaving the person on a dead button; their lead is already
+      // captured, so the team can pick it up either way.
+      window.location.href = '/contact';
     } catch {
       setCheckout('error');
     }
   };
   const set = <K extends keyof Answers>(k: K, v: Answers[K]) => setA((s) => ({ ...s, [k]: v }));
 
+  const contactReady = !!a.name.trim() && /.+@.+\..+/.test(a.email) && a.phone.trim().length >= 7;
   const ready =
+    contactReady &&
     (a.giaUnknown || !!a.gia) && !!a.existingUse && !!a.proposedUse && !!a.buildings && !!a.options && !!a.info;
 
   const result = useMemo(() => (submitted ? getFeasibilityRoute(toProject(a)) : null), [submitted, a]);
+
+  // Revealing the price is the moment the lead exists, per the final brief:
+  // a person who sees their fee and walks away is still a lead. Fire and
+  // forget; the price must never wait on the lead post. The same answers are
+  // written to localStorage so the post-payment brief can carry them forward.
+  const handleReveal = () => {
+    const route = getFeasibilityRoute(toProject(a));
+    try {
+      localStorage.setItem(
+        CALCULATOR_CARRY_KEY,
+        JSON.stringify({ name: a.name, email: a.email, phone: a.phone, gia: a.giaUnknown ? '' : a.gia }),
+      );
+    } catch {
+      // Storage can be full or blocked; carrying answers forward is a nicety.
+    }
+    fetch('/api/leads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: a.email,
+        source: 'pricing-calculator',
+        Name: a.name,
+        Phone: a.phone,
+        'Floor area': a.giaUnknown ? 'not known' : `${a.gia} m²`,
+        'Existing use': a.existingUse,
+        'Proposed use': a.proposedUse,
+        Heritage: a.heritage,
+        Outcome: route.route === 'instant_payment' ? `Priced £${route.price}` : `Expert Session: ${route.reason}`,
+      }),
+    }).catch(() => {});
+    setSubmitted(true);
+  };
+
+  // Deposits are half of fees that can end in £75 uplifts, so they can carry
+  // 50p. Whole pounds render clean, anything else keeps its pence.
+  const money = (n: number) => (Number.isInteger(n) ? String(n) : n.toFixed(2));
 
   if (result) {
     const instant = result.route === 'instant_payment';
@@ -214,13 +262,17 @@ export const FeasibilityCalculator: React.FC = () => {
                 £{result.price}
               </p>
               <p className="text-fluid-base text-thistle-black/80 leading-relaxed mb-fl-2 max-w-xl">
-                A fixed fee, inclusive of everything in the Architectural Feasibility. Delivered in five working days.
+                A fixed fee including VAT, covering everything in the Architectural Feasibility. Delivered in five
+                working days.
               </p>
-              {result.uplift > 0 && (
-                <p className="text-xs text-thistle-black/50 mb-fl-6">
-                  £{result.base} for the floor area, plus £{result.uplift} for the complexity you described.
-                </p>
-              )}
+              {/* The 50% holding deposit from the final brief's Architectural
+                  Feasibility flow. The balance follows once the study is
+                  underway; the deposit is what secures the slot. */}
+              <p className="text-fluid-sm text-thistle-black/70 leading-relaxed mb-fl-6 max-w-xl">
+                Secure it today with a 50% holding deposit of{' '}
+                <span className="font-semibold text-thistle-black">£{money(result.price / 2)}</span>. You then
+                complete your project brief, and the balance is due before your feasibility is delivered.
+              </p>
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-fl-4">
                 {/* Posts the answers, not the price. The server recalculates
                     and charges its own number, because the one on screen is a
@@ -234,7 +286,7 @@ export const FeasibilityCalculator: React.FC = () => {
                   onClick={handleCheckout}
                   disabled={checkout === 'working'}
                 >
-                  {checkout === 'working' ? 'One moment…' : 'Continue'}
+                  {checkout === 'working' ? 'One moment…' : 'Secure My Feasibility'}
                 </Button>
                 <button
                   onClick={() => setSubmitted(false)}
@@ -396,19 +448,53 @@ export const FeasibilityCalculator: React.FC = () => {
           </div>
         </Field>
 
-        <div className="pt-fl-4 border-t border-thistle-black/[0.06] flex flex-col sm:flex-row sm:items-center gap-fl-4">
-          <Button
-            variant="primary"
-            icon={<ArrowUpRight size={16} />}
-            onClick={() => setSubmitted(true)}
-            disabled={!ready}
+        <div className="pt-fl-5 border-t border-thistle-black/[0.06]">
+          <Field
+            label="Where do we send your fixed fee?"
+            hint="Your fee appears on screen instantly; these let us hold it for you and pick the conversation up if you want to talk it through."
           >
-            Get my instant price
-          </Button>
-          <p className="text-xs text-thistle-black/45 max-w-sm">
-            No payment yet. Larger or more involved projects route to a free Expert Session rather than an
-            automatic price.
-          </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-fl-3">
+              <input
+                type="text"
+                autoComplete="name"
+                value={a.name}
+                onChange={(e) => set('name', e.target.value)}
+                placeholder="Full name"
+                className="border border-thistle-black/10 rounded-full px-4 py-2.5 text-sm bg-thistle-white/50 focus:border-thistle-green focus:ring-1 focus:ring-thistle-green/20 outline-none transition-colors placeholder:text-thistle-black/25"
+              />
+              <input
+                type="email"
+                autoComplete="email"
+                value={a.email}
+                onChange={(e) => set('email', e.target.value)}
+                placeholder="Email"
+                className="border border-thistle-black/10 rounded-full px-4 py-2.5 text-sm bg-thistle-white/50 focus:border-thistle-green focus:ring-1 focus:ring-thistle-green/20 outline-none transition-colors placeholder:text-thistle-black/25"
+              />
+              <input
+                type="tel"
+                autoComplete="tel"
+                value={a.phone}
+                onChange={(e) => set('phone', e.target.value)}
+                placeholder="Phone"
+                className="border border-thistle-black/10 rounded-full px-4 py-2.5 text-sm bg-thistle-white/50 focus:border-thistle-green focus:ring-1 focus:ring-thistle-green/20 outline-none transition-colors placeholder:text-thistle-black/25"
+              />
+            </div>
+          </Field>
+
+          <div className="flex flex-col sm:flex-row sm:items-center gap-fl-4">
+            <Button
+              variant="primary"
+              icon={<ArrowUpRight size={16} />}
+              onClick={handleReveal}
+              disabled={!ready}
+            >
+              Get My Instant Fixed Fee
+            </Button>
+            <p className="text-xs text-thistle-black/45 max-w-sm">
+              No payment yet. All fees include VAT. Larger or more involved projects route to a free Expert
+              Session rather than an automatic price.
+            </p>
+          </div>
         </div>
       </div>
     </Reveal>

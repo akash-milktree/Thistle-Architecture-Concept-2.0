@@ -52,8 +52,8 @@ export const ToolShell: React.FC<ToolShellProps> = ({ tool, heroHeading, heroDes
             </p>
           </Reveal>
           <Reveal delay={0.2}>
-            <Button variant="primary" size="lg" icon={<ArrowUpRight size={18} />} onClick={() => router.push('/feasibility-package')}>
-              Book Your Feasibility
+            <Button variant="primary" size="lg" icon={<ArrowUpRight size={18} />} onClick={() => router.push('/pricing')}>
+              Get Your Fixed Fee
             </Button>
           </Reveal>
         </div>

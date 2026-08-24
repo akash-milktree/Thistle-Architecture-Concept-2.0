@@ -292,7 +292,7 @@ export const FeasibilityEngine: React.FC = () => {
 
         <Reveal delay={0.2}>
           <div className="mt-fl-section-sm">
-            <InlineCTA href="" label="Start Feasibility" />
+            <InlineCTA href="/pricing#calculator" label="Get Your Instant Fixed Fee" />
           </div>
         </Reveal>
       </div>

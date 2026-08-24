@@ -4,14 +4,14 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from '../../components/animations/Reveal';
+import { useRouter } from 'next/navigation';
 import { Button } from '../../components/ui/Button';
-import { useFeasibility } from '../../components/feasibility/FeasibilityContext';
 import { packageFaqs } from '../../data/feasibilityPackageData';
 
 // Package-specific accordion FAQ. Same UX as the general site FAQ, different
 // content focused on the package itself (fee, revisions, VAT, scope changes).
 export const PackageFAQ: React.FC = () => {
-  const { openModal } = useFeasibility();
+  const router = useRouter();
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
@@ -33,8 +33,8 @@ export const PackageFAQ: React.FC = () => {
               </p>
             </Reveal>
             <Reveal delay={0.2}>
-              <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={openModal}>
-                Start Feasibility
+              <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/pricing#calculator')}>
+                Get Your Instant Fixed Fee
               </Button>
             </Reveal>
           </div>

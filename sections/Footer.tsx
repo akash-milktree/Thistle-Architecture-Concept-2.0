@@ -78,10 +78,10 @@ export const Footer: React.FC = () => {
               variant="glass"
               size="lg"
               icon={<ArrowUpRight size={18} />}
-              onClick={() => router.push('/feasibility-package')}
+              onClick={() => router.push('/pricing')}
               className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80"
             >
-              Book Your Feasibility
+              Get Your Fixed Fee
             </Button>
             <p className="text-xs text-white/60 mt-fl-4">No obligation. Response within one working day.</p>
             <TrustpilotBadge tone="light" className="mt-fl-5" />
@@ -102,11 +102,10 @@ export const Footer: React.FC = () => {
                 Data-driven feasibility for commercial conversions, HMOs, and high-end residential across the UK.
               </p>
               <div className="flex flex-col gap-fl-2 text-fluid-sm text-white/70">
-                {/* Swapped off hello@thistlearchitecture.co.uk on 2026-08-11.
-                    That inbox was not confirmed to be monitored, and this is
-                    the only address the team have confirmed they read. */}
-                <a href="mailto:hello@incollective.works" className="hover:text-thistle-green transition-colors w-fit">
-                  hello@incollective.works
+                {/* Ed's August 2026 final brief asks for this address site-wide,
+                    reversing the 2026-08-11 swap to hello@incollective.works. */}
+                <a href="mailto:hello@thistlearchitecture.co.uk" className="hover:text-thistle-green transition-colors w-fit">
+                  hello@thistlearchitecture.co.uk
                 </a>
                 {/* Real number and registered address, taken from the practice's
                     own site before the domain moved off Wix. */}
@@ -130,9 +129,9 @@ export const Footer: React.FC = () => {
               </div>
             </div>
 
-            {/* Conversions */}
+            {/* Expertise (the /conversions/ URLs stay; only the label changed) */}
             <div>
-              <p className="text-[10px] uppercase tracking-widest text-white/60 font-semibold mb-fl-5">Conversions</p>
+              <p className="text-[10px] uppercase tracking-widest text-white/60 font-semibold mb-fl-5">Expertise</p>
               <div className="flex flex-col gap-fl-3">
                 {conversionsLinks.map((link) => (
                   <Link key={link.to} href={link.to} className="text-fluid-sm text-white/80 hover:text-white transition-colors">

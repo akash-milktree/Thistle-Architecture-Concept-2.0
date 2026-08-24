@@ -74,7 +74,7 @@ export const packageFaqs: PackageFaq[] = [
   },
   {
     question: "Do you charge VAT?",
-    answer: "Yes. The headline price is exclusive of VAT, charged at the prevailing rate where applicable. UK-registered businesses can normally reclaim it.",
+    answer: "All our feasibility fees are inclusive of VAT, so the price you see is the price you pay. VAT-registered businesses can normally reclaim the VAT element.",
   },
   {
     question: "How quickly can you start?",

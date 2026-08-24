@@ -3,12 +3,13 @@
 import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import Link from 'next/link';
 import { useFeasibility } from '../../components/feasibility/FeasibilityContext';
 import { pricingFrom } from '../../data/feasibilityPackageData';
 
 // Mobile-only sticky bar that appears once the hero has scrolled past.
 export const StickyCTA: React.FC = () => {
-  const { openModal, isOpen } = useFeasibility();
+  const { isOpen } = useFeasibility();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -30,15 +31,15 @@ export const StickyCTA: React.FC = () => {
         >
           <div className="leading-tight">
             <span className="block text-[10px] uppercase tracking-wider text-white/50 font-semibold">Fixed fee, from</span>
-            <span className="block text-base font-semibold">{pricingFrom} + VAT</span>
+            <span className="block text-base font-semibold">{pricingFrom} inc. VAT</span>
           </div>
-          <button
-            onClick={openModal}
+          <Link
+            href="/pricing#calculator"
             className="inline-flex items-center gap-1.5 text-sm font-medium px-5 py-2.5 rounded-full bg-thistle-green text-thistle-black"
           >
-            Start Feasibility
+            Get Your Instant Fixed Fee
             <ArrowUpRight size={15} />
-          </button>
+          </Link>
         </motion.div>
       )}
     </AnimatePresence>

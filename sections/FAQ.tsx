@@ -62,8 +62,8 @@ export const FAQ: React.FC<{ tinted?: boolean }> = ({ tinted = false }) => {
               </p>
             </Reveal>
             <Reveal delay={0.2}>
-              <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/feasibility-package')}>
-                Book Your Feasibility
+              <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/pricing')}>
+                Get Your Fixed Fee
               </Button>
             </Reveal>
           </div>

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { ArrowUpRight, CheckCircle2, Clock, ShieldCheck } from 'lucide-react';
 import { Reveal } from '../components/animations/Reveal';
 import { Button } from '../components/ui/Button';
-import { useFeasibility } from '../components/feasibility/FeasibilityContext';
+import { useRouter } from 'next/navigation';
 import { pricingFrom } from '../data/feasibilityPackageData';
 import { caseStudies } from '../data/caseStudiesData';
 import { Testimonials } from '../sections/Testimonials';
@@ -28,7 +28,7 @@ const trustMarkers = [
 ];
 
 export const FeasibilityPackagePage: React.FC = () => {
-  const { openModal } = useFeasibility();
+  const router = useRouter();
   const highlight = caseStudies[0];
 
   return (
@@ -58,8 +58,8 @@ export const FeasibilityPackagePage: React.FC = () => {
             </p>
           </Reveal>
           <Reveal delay={0.3}>
-            <Button size="lg" variant="primary" icon={<ArrowUpRight size={18} />} onClick={openModal}>
-              Start Feasibility
+            <Button size="lg" variant="primary" icon={<ArrowUpRight size={18} />} onClick={() => router.push('/pricing#calculator')}>
+              Get Your Instant Fixed Fee
             </Button>
             <p className="text-xs text-white/60 mt-fl-4">No obligation. Response within one working day.</p>
             <TrustpilotBadge tone="light" className="mt-fl-5" />

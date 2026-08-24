@@ -182,7 +182,7 @@ const MidArticleCTA: React.FC<{ onClick: () => void }> = ({ onClick }) => (
       Get a clear Go or No-Go on your building in five days, for a fixed fee.
     </p>
     <Button variant="primary" size="md" icon={<ArrowUpRight size={15} />} onClick={onClick}>
-      Book Your Feasibility
+      Get Your Fixed Fee
     </Button>
   </div>
 );
@@ -227,7 +227,7 @@ export const BlogPostPage: React.FC = () => {
     );
   }
 
-  const goPackage = () => router.push('/feasibility-package');
+  const goPackage = () => router.push('/pricing');
   const blocks = toBlocks(post.content);
   const headings = blocks.filter((b): b is Extract<Block, { kind: 'h2' }> => b.kind === 'h2');
   const showToc = headings.length >= 3;
@@ -401,7 +401,7 @@ export const BlogPostPage: React.FC = () => {
           </Reveal>
           <Reveal delay={0.1}>
             <Button variant="glass" size="lg" icon={<ArrowUpRight size={18} />} onClick={goPackage} className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80">
-              Book Your Feasibility
+              Get Your Fixed Fee
             </Button>
           </Reveal>
         </div>

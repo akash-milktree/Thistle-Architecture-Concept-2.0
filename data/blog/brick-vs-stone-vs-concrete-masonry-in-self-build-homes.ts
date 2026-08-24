@@ -42,7 +42,7 @@ export const post: BlogPost = {
     "## Cons of Masonry Construction Methods",
     "### Brick Masonry Cons",
     "### 1. Less Durability",
-    "Bricks are a very durable material when compared to other construction materials or methods, such as [timber frame](https://incollective.works/self-build-timber-frame-house/). However, when compared to stone or concrete, bricks are the least durable of the three and can be more susceptible to seismic damage.",
+    "Bricks are a very durable material when compared to other construction materials or methods, such as [timber frame](/blog/self-build-timber-frame-house). However, when compared to stone or concrete, bricks are the least durable of the three and can be more susceptible to seismic damage.",
     "### 2. Design Limitations",
     "While bricks offer a lot of design flexibility, compared to other methods it can be more challenging to create complex architectural features, such as curved ceilings or doorways. This means you will often require specialised expertise and engineering.",
     "![brick house](/images/blog/inline/brick-vs-stone-vs-concrete-masonry-in-self-build-homes-3-d32d3339.jpg)",

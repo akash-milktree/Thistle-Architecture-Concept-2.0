@@ -21,11 +21,11 @@ export const ContactPage: React.FC = () => (
           <Reveal>
             <div className="flex flex-col gap-fl-4">
               <a
-                href="mailto:hello@incollective.works"
+                href="mailto:hello@thistlearchitecture.co.uk"
                 className="flex items-center gap-fl-3 text-fluid-base text-thistle-black hover:text-thistle-green transition-colors w-fit"
               >
                 <Mail size={18} className="text-thistle-black/40 shrink-0" />
-                hello@incollective.works
+                hello@thistlearchitecture.co.uk
               </a>
               <a
                 href="tel:+448081755405"

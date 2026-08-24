@@ -38,7 +38,10 @@ const navLinks: NavItem[] = [
     ],
   },
   {
-    label: "Conversions",
+    // Ed's August 2026 final brief: the label is "Expertise", the /conversions/
+    // URLs stay put. The label and the paths change independently on purpose;
+    // moving the URLs needs a deliberate 301 plan that has not been made.
+    label: "Expertise",
     path: "/conversions/commercial-to-residential",
     children: [
       { label: "Commercial to Residential", path: "/conversions/commercial-to-residential" },
@@ -167,9 +170,9 @@ export const Navbar: React.FC = () => {
                 variant="primary"
                 icon={<ArrowUpRight size={16} />}
                 className="!bg-white !text-thistle-black !border-white hover:!bg-thistle-pink hover:!text-thistle-black hover:!border-thistle-pink"
-                onClick={() => router.push('/feasibility-package')}
+                onClick={() => router.push('/pricing')}
               >
-                Book Your Feasibility
+                Get Your Fixed Fee
               </Button>
             </div>
 
@@ -233,10 +236,10 @@ export const Navbar: React.FC = () => {
                 className="w-full justify-center"
                 onClick={() => {
                   setIsMobileMenuOpen(false);
-                  router.push('/feasibility-package');
+                  router.push('/pricing');
                 }}
               >
-                Book Your Feasibility
+                Get Your Fixed Fee
               </Button>
             </div>
           </motion.div>

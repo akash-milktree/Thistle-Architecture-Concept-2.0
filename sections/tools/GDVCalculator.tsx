@@ -114,8 +114,8 @@ export const GDVCalculator: React.FC = () => {
                 <p className="text-fluid-sm text-thistle-black/80 leading-relaxed mb-fl-5">
                   {bandCopy.body}
                 </p>
-                <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/feasibility-package')}>
-                  Book Your Feasibility
+                <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/pricing')}>
+                  Get Your Fixed Fee
                 </Button>
               </div>
             </div>

@@ -3,15 +3,15 @@
 import React from 'react';
 import { ArrowUpRight, Check, X } from 'lucide-react';
 import { Reveal } from '../../components/animations/Reveal';
+import { useRouter } from 'next/navigation';
 import { Button } from '../../components/ui/Button';
-import { useFeasibility } from '../../components/feasibility/FeasibilityContext';
 import { deliverables } from '../../data/howItWorksData';
 import { pricingFrom, notIncluded } from '../../data/feasibilityPackageData';
 
 // The pricing block: one fee, everything in, honest exclusions beside it.
 // Replaces the old floating price band and the separate scope section.
 export const PackagePricing: React.FC = () => {
-  const { openModal } = useFeasibility();
+  const router = useRouter();
 
   return (
     <section className="bg-white py-fl-section px-fl-margin">
@@ -34,7 +34,7 @@ export const PackagePricing: React.FC = () => {
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-fl-2">
                 <span className="text-sm text-thistle-black/50 font-medium">Fixed fee, from</span>
                 <span className="text-fluid-h1 font-medium tracking-tighter text-thistle-black leading-none">{pricingFrom}</span>
-                <span className="text-sm text-thistle-black/50 font-medium">+ VAT</span>
+                <span className="text-sm text-thistle-black/50 font-medium">inc. VAT</span>
               </div>
               <p className="text-fluid-sm text-thistle-black/60 leading-relaxed mb-fl-5">
                 Scoped before you start. No hourly rates, no scope creep, and the fee is the same whether the answer is Go or No-Go.
@@ -55,8 +55,8 @@ export const PackagePricing: React.FC = () => {
               </div>
 
               <div className="mt-auto">
-                <Button variant="primary" size="lg" icon={<ArrowUpRight size={18} />} onClick={openModal}>
-                  Start Feasibility
+                <Button variant="primary" size="lg" icon={<ArrowUpRight size={18} />} onClick={() => router.push('/pricing#calculator')}>
+                  Get Your Instant Fixed Fee
                 </Button>
                 <p className="text-xs text-thistle-black/50 mt-fl-3">No obligation. Response within one working day.</p>
               </div>

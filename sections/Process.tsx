@@ -91,8 +91,18 @@ export const Process: React.FC = () => {
           })}
         </div>
 
+        {/* Ed's August 2026 final brief: one short bridge after the five steps,
+            so the architecture side of the practice stays visible without a
+            services section. */}
+        <Reveal delay={0.45}>
+          <p className="text-fluid-base text-thistle-black/70 text-center max-w-2xl mx-auto mt-fl-7">
+            If it&apos;s a Go, we can take it forward: planning, design, technical, tender and construction, with the
+            same team throughout.
+          </p>
+        </Reveal>
+
         <Reveal delay={0.5}>
-          <InlineCTA />
+          <InlineCTA className="mt-fl-6" />
         </Reveal>
       </div>
     </section>

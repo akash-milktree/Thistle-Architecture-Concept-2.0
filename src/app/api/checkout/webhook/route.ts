@@ -79,11 +79,19 @@ export async function POST(request: Request) {
   const session = (event.data?.object ?? {}) as Record<string, any>;
   const meta = (session.metadata ?? {}) as Record<string, string>;
   const amount = typeof session.amount_total === 'number' ? session.amount_total / 100 : null;
+  // Since Ed's August 2026 final brief, what gets charged at checkout is a 50%
+  // holding deposit, not the full fee. The metadata says which, so an older
+  // full-fee session paid late still reports itself correctly.
+  const isDeposit = meta.payment_type === 'deposit_50';
 
   const payload = {
-    _subject: `PAID feasibility: ${meta.address || 'address not captured'} (£${amount ?? '?'})`,
-    Status: 'Paid, awaiting project setup',
+    _subject: `PAID feasibility ${isDeposit ? 'deposit' : ''}: ${meta.address || meta.name || 'not captured'} (£${amount ?? '?'})`,
+    Status: isDeposit
+      ? 'Deposit paid, awaiting detailed brief. Balance due before delivery.'
+      : 'Paid, awaiting project setup',
     Amount: amount === null ? 'unknown' : `£${amount}`,
+    'Fixed fee (total)': meta.fee_total ? `£${meta.fee_total}` : '',
+    'Balance due': isDeposit && amount !== null && meta.fee_total ? `£${Number(meta.fee_total) - amount}` : '',
     Email: session.customer_details?.email ?? session.customer_email ?? '',
     Name: session.customer_details?.name ?? '',
     Address: meta.address ?? '',
