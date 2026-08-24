@@ -15,7 +15,7 @@ import { HowThistleSolves } from '../sections/conversions/HowThistleSolves';
 import { RelatedCaseStudy } from '../sections/conversions/RelatedCaseStudy';
 import { ReviewQuote } from '../sections/Testimonials';
 import { reviewFor } from '../data/reviewsData';
-import type { Conversion } from '../data/conversionsData';
+import { conversions, type Conversion } from '../data/conversionsData';
 
 interface ConversionPageProps {
   conversion: Conversion;
@@ -24,6 +24,9 @@ interface ConversionPageProps {
 export const ConversionPage: React.FC<ConversionPageProps> = ({ conversion }) => {
   const router = useRouter();
   const hasExtra = !!conversion.extraSection;
+  // Two-way linking between Expertise pages, per Ed's August 2026 final
+  // brief. Not the current page, so a reader always sees genuine alternatives.
+  const otherExpertise = conversions.filter((c) => c.slug !== conversion.slug);
 
   return (
     <>
@@ -127,7 +130,29 @@ export const ConversionPage: React.FC<ConversionPageProps> = ({ conversion }) =>
         </div>
       </section>
 
-      <FAQ tinted={!hasExtra} />
+      <FAQ tinted={!hasExtra} faqs={conversion.faqs} />
+
+      {/* Other Expertise pages, so the site's five sectors link to each other
+          rather than each being a dead end. */}
+      <section className={`py-fl-8 px-fl-margin ${hasExtra ? 'bg-white' : 'bg-thistle-white'}`}>
+        <div className="max-w-[1360px] mx-auto">
+          <p className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-4">
+            Other Expertise
+          </p>
+          <div className="flex flex-wrap gap-fl-3">
+            {otherExpertise.map((c) => (
+              <Link
+                key={c.slug}
+                href={`/conversions/${c.slug}`}
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border border-thistle-black/[0.08] bg-white text-sm font-medium text-thistle-black hover:border-thistle-green/40 hover:text-thistle-green transition-colors"
+              >
+                {c.label}
+                <ArrowUpRight size={14} />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 };

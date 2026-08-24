@@ -27,6 +27,11 @@ export interface ConversionExtraSection {
   cta?: { label: string; href: string; external?: boolean };
 }
 
+export interface ConversionFaq {
+  question: string;
+  answer: string;
+}
+
 export interface Conversion {
   slug: string;
   /**
@@ -46,6 +51,13 @@ export interface Conversion {
   relatedCaseStudySlug?: string;
   metaTitle: string;
   metaDescription: string;
+  /**
+   * Sector-specific planning/design questions. Ed's August 2026 final brief:
+   * "Replace repeated generic feasibility FAQs with sector-specific planning/
+   * design questions." Falls back to the generic FAQ list in sections/FAQ.tsx
+   * when unset, so a page can ship before its own FAQs are written.
+   */
+  faqs?: ConversionFaq[];
 }
 
 export const conversions: Conversion[] = [
@@ -53,8 +65,10 @@ export const conversions: Conversion[] = [
     slug: "commercial-to-residential",
     reviewTopic: "commercial",
     label: "Commercial to Residential",
-    heroHeading: "Turn A Commercial Building Into Viable Homes.",
-    heroDescription: "A feasibility built for developers buying offices, retail upper parts, and small commercial blocks to convert into housing.",
+    // Ed's August 2026 final brief: search-intent-led H1, with the previous
+    // punchy line kept as the supporting copy underneath it.
+    heroHeading: "Commercial to Residential Conversion Architects",
+    heroDescription: "Turn a commercial building into viable homes. A feasibility built for developers buying offices, retail upper parts, and small commercial blocks to convert into housing.",
     opportunityCopy: "Commercial-to-residential conversions are the fastest route from a tired commercial asset to a stabilised residential scheme. Less risk than ground-up, faster than full redevelopment, and supported by national permitted-development rights.",
     opportunityStats: [
       { label: "Typical unit yield", value: "6 to 14" },
@@ -84,15 +98,33 @@ export const conversions: Conversion[] = [
       { deliverableIndex: 4, forThisType: "Net-to-gross and commercial position set out in full, since commercial-to-resi often loses more area than developers expect." },
     ],
     relatedCaseStudySlug: "axis-house",
-    metaTitle: "Commercial to Residential Feasibility | Thistle Architecture",
+    metaTitle: "Commercial to Residential Conversion Architects | Thistle Architecture",
     metaDescription: "Data-driven feasibility for converting commercial buildings into residential schemes, including office conversions under Class MA. Five-day turnaround, fixed fee.",
+    faqs: [
+      {
+        question: "Does my building qualify for Class MA prior approval?",
+        answer: "Only if it has been in genuine Class E use, which covers offices, shops, restaurants, and similar commercial or business uses. The building needs two years in that use, and the site must sit outside an Article 4 direction removing the right. Our feasibility checks both before you commit to a purchase.",
+      },
+      {
+        question: "What if the building isn't in Class E, or Class MA doesn't apply?",
+        answer: "A full planning application is still a route to residential use, it just loses the 56-day prior approval clock and the more limited set of tests. We assess which route actually applies to your building rather than assuming Class MA by default.",
+      },
+      {
+        question: "How do you deal with daylight to lower or rear-facing floors?",
+        answer: "It's one of the tests that quietly kills commercial conversions. We model which units are at risk from the floor plate depth before you commit, so you know whether a layout change or a different unit mix is needed rather than finding out at decision stage.",
+      },
+      {
+        question: "What extra costs catch people out in commercial conversions?",
+        answer: "Fire compartmentation, means of escape, and routing new bathroom and kitchen services through a structure built for open-plan commercial use. These rarely show up on a headline GDV, which is why our risk register prices them in rather than leaving them as a surprise.",
+      },
+    ],
   },
   {
     slug: "hmo",
     reviewTopic: "hmo",
     label: "HMO",
-    heroHeading: "HMO Feasibility, Without The Guesswork.",
-    heroDescription: "Houses of multiple occupation work on tight margins. A feasibility that pressure-tests density, licensing, and layout before you put in an offer.",
+    heroHeading: "HMO Architects & Feasibility Specialists",
+    heroDescription: "HMO feasibility, without the guesswork. Houses of multiple occupation work on tight margins, so we pressure-test density, licensing, and layout before you put in an offer.",
     opportunityCopy: "HMO conversions deliver strong yield in the right area, but Article 4 directions, density caps, and licensing thresholds can quietly kill a deal before it starts. The numbers only stack up when the regulatory picture is genuinely clear.",
     opportunityStats: [
       { label: "Typical room count", value: "5 to 9" },
@@ -126,8 +158,26 @@ export const conversions: Conversion[] = [
       { deliverableIndex: 4, forThisType: "Net-to-gross and per-room yield projections benchmarked against local market data." },
     ],
     relatedCaseStudySlug: "st-johns-aylesbury",
-    metaTitle: "HMO Feasibility | Thistle Architecture",
+    metaTitle: "HMO Architects & Feasibility Specialists | Thistle Architecture",
     metaDescription: "HMO conversion feasibility. Density, Article 4, licensing, and layout pressure-tested in five days. Fixed fee, clear Go or No-Go.",
+    faqs: [
+      {
+        question: "Is this address inside an Article 4 direction?",
+        answer: "It depends entirely on the local authority; Article 4 removes the permitted-development right to convert to a small HMO borough by borough, sometimes street by street. We check the specific address rather than assuming the area's general position applies to your site.",
+      },
+      {
+        question: "Which licensing scheme applies to my HMO?",
+        answer: "Mandatory licensing applies nationally above five occupants; many councils layer additional or selective licensing on top, each with its own thresholds and standards. We identify which schemes bite on your specific property and what they will require.",
+      },
+      {
+        question: "How many bedrooms will actually fit, not just on paper?",
+        answer: "We test room sizes against local and national space standards and realistic communal amenity requirements, not an optimistic brochure layout. That number is usually lower than a quick sketch suggests, and it is the number that survives a licensing inspection.",
+      },
+      {
+        question: "What's the difference between a standard HMO and a large or co-living scheme?",
+        answer: "Once you're above the typical five-to-nine room range, or into shared amenity space, management and fire strategy change materially, and planning usually shifts to a Sui Generis application rather than Class C4. Larger schemes are a distinct specialism of ours.",
+      },
+    ],
   },
   // Added on Ed's video feedback 2026-07-08: he wants four conversion types,
   // "high-end residential, commercial to residential, HMO, a mixed-use
@@ -137,8 +187,8 @@ export const conversions: Conversion[] = [
     slug: "mixed-use-commercial",
     reviewTopic: "commercial",
     label: "Mixed-Use Commercial",
-    heroHeading: "Keep The Shop. Build Homes Above It.",
-    heroDescription: "High-street buildings where the ground floor has to stay commercial and the value sits in the floors above.",
+    heroHeading: "Mixed-Use Development Architects",
+    heroDescription: "Keep the shop, build homes above it. High-street buildings where the ground floor has to stay commercial and the value sits in the floors above.",
     opportunityCopy: "Plenty of high-street buildings are worth more as a mixed-use scheme than as either pure commercial or pure residential. Retaining an active ground-floor unit is often what makes the residential above acceptable in policy terms, and it keeps an income stream while the rest is converted.",
     opportunityStats: [
       { label: "Typical arrangement", value: "Retail below, homes above" },
@@ -157,15 +207,33 @@ export const conversions: Conversion[] = [
       { deliverableIndex: 4, forThisType: "The commercial case for the mixed scheme against the pure-residential fallback, so you can see which is actually worth more." },
     ],
     relatedCaseStudySlug: "bath-street-cheddar",
-    metaTitle: "Mixed-Use Commercial Feasibility | Thistle Architecture",
+    metaTitle: "Mixed-Use Development Architects | Thistle Architecture",
     metaDescription: "Feasibility for mixed-use conversions: retained commercial at ground floor with residential above. Ground-floor policy, access separation, and viability tested in five days.",
+    faqs: [
+      {
+        question: "Can I lose the ground-floor commercial use altogether?",
+        answer: "Often not without a fight. Many local and neighbourhood plans specifically resist losing active commercial frontage in a centre. If that's the ambition, you generally need evidence: a documented marketing exercise, sustained vacancy, or a viability appraisal showing the commercial use is no longer sustainable.",
+      },
+      {
+        question: "How do you separate the commercial and residential parts of the building?",
+        answer: "Independent access, fire separation between uses, acoustic separation, and separate services all have to be designed in from the outset. Retrofitting them onto a layout that ignored them is where most mixed-use schemes lose money and time.",
+      },
+      {
+        question: "What extra servicing does a mixed-use scheme need?",
+        answer: "Two uses under one roof usually means two sets of bins, deliveries, and cycle storage, which officers scrutinise closely on tight high-street sites. We test whether the site can actually accommodate this before you commit to the scheme.",
+      },
+      {
+        question: "Does the residential above still need its own front door?",
+        answer: "In almost every case, yes. Shared access through a commercial unit is a common reason for refusal or for a licensing condition later, so genuinely independent residential access is something we check for at feasibility stage, not left to detailed design.",
+      },
+    ],
   },
   {
     slug: "high-end-residential",
     reviewTopic: "planning",
     label: "High-End Residential",
-    heroHeading: "Extend, Remodel, Or Convert To Something Better.",
-    heroDescription: "Feasibility for high-end residential projects, where the question is what the house could become rather than how many units fit in it.",
+    heroHeading: "High-End Residential Architects",
+    heroDescription: "Extend, remodel, or convert to something better. Feasibility for high-end residential projects, where the question is what the house could become rather than how many units fit in it.",
     opportunityCopy: "High-end residential works differently to a yield play. The value is in the quality of the finished house and how well the design uses what is already there, but the constraints are the same ones that catch developers: planning policy, heritage, and what the existing fabric will actually allow.",
     opportunityStats: [
       { label: "Typical scope", value: "Extension or remodel" },
@@ -184,8 +252,77 @@ export const conversions: Conversion[] = [
       { deliverableIndex: 4, forThisType: "A clear view of whether the project is worth doing, and which option is worth doing." },
     ],
     relatedCaseStudySlug: "bereweeke-avenue",
-    metaTitle: "High-End Residential Feasibility | Thistle Architecture",
+    metaTitle: "High-End Residential Architects | Thistle Architecture",
     metaDescription: "Feasibility for high-end residential projects: extensions, remodels, and conversions. Heritage, permitted development, and existing fabric tested before you commit to design.",
+    faqs: [
+      {
+        question: "My house isn't listed, does heritage still apply?",
+        answer: "Possibly. A conservation area, or simply sitting near a listed building, can shape what's acceptable externally even without your own house being listed. It's one of the constraints most often discovered too late, so we check it at feasibility stage rather than after design has started.",
+      },
+      {
+        question: "How much can I do under permitted development before I need a full application?",
+        answer: "More than most people expect, but the volume allowances are cumulative: a previous extension, a loft conversion, or an outbuilding can all eat into what's left. We check what has already been used against the property before assuming a route is available.",
+      },
+      {
+        question: "Why do you need a survey before scoping the design?",
+        answer: "Older houses rarely match their existing drawings. Head heights, structural spans, and floor levels decide what a remodel can actually deliver, and only a measured survey settles those questions with certainty.",
+      },
+      {
+        question: "Can a feasibility test more than one design option?",
+        answer: "Yes, and for a high-end project it's often worth it. One additional design option can be added to the fixed fee, so you're comparing two genuine routes rather than committing to the first idea that came up.",
+      },
+    ],
+  },
+  // Added for Ed's August 2026 final brief: a dedicated Co-Living & Large HMO
+  // page, differentiated from the standard HMO page by Sui Generis planning,
+  // shared amenity, larger-building circulation, management and fire/acoustic
+  // standards. highbury-buildings-cosham is a genuine Thistle example at this
+  // scale (eleven en-suite co-living rooms, on site).
+  {
+    slug: "co-living-large-hmo",
+    reviewTopic: "hmo",
+    label: "Co-Living & Large HMO",
+    heroHeading: "Co-Living & Large HMO Architects",
+    heroDescription: "Beyond the standard HMO. Feasibility for co-living and large shared-living schemes, where amenity, management and fire strategy carry as much weight as the room count.",
+    opportunityCopy: "Co-living and large HMOs work on a different model to a five- or six-bed conversion: more generous shared amenity, on-site management, and a building designed around communal living rather than a house with extra locks on the doors. Done well, the yield and the planning case are both stronger for it.",
+    opportunityStats: [
+      { label: "Typical scale", value: "10+ rooms" },
+      { label: "Planning route", value: "Sui Generis" },
+      { label: "Defining factor", value: "Shared amenity provision" },
+    ],
+    challenges: [
+      { title: "Sui Generis, not Class C4", detail: "Once a scheme moves beyond the small-HMO thresholds, it falls outside Class C4 and needs its own planning permission, judged on its own merits rather than against a permitted-development fallback." },
+      { title: "Shared amenity that actually works", detail: "Communal kitchens, lounges and laundry have to be sized and located for the number of residents actually using them, not a token room ticked off a policy checklist." },
+      { title: "Fire strategy and acoustics at scale", detail: "More occupants and more shared circulation raise the fire engineering and acoustic separation bar well above a standard house conversion, and getting it wrong is expensive to fix after the event." },
+      { title: "Management and licensing", detail: "Larger schemes usually need a formal management plan and sit across more than one licensing regime at once, which has to be designed for, not bolted on afterwards." },
+    ],
+    deliverableHighlights: [
+      { deliverableIndex: 0, forThisType: "Circulation and layout tested for a larger building, including how residents actually move through shared spaces." },
+      { deliverableIndex: 2, forThisType: "Sui Generis precedent, licensing regimes and amenity policy read together, not treated as a bigger version of a small-HMO check." },
+      { deliverableIndex: 3, forThisType: "Fire strategy, acoustic separation and management-plan risk named and costed at feasibility stage." },
+      { deliverableIndex: 4, forThisType: "Yield and viability modelled against the shared-amenity space the scheme actually needs to provide." },
+    ],
+    relatedCaseStudySlug: "highbury-buildings-cosham",
+    metaTitle: "Co-Living & Large HMO Architects | Thistle Architecture",
+    metaDescription: "Feasibility for co-living and large HMO schemes: Sui Generis planning, shared amenity, fire and acoustic strategy, and management plans, tested in five days.",
+    faqs: [
+      {
+        question: "What's the difference between a large HMO and co-living?",
+        answer: "There's overlap, but co-living usually implies more generous, better-designed shared amenity and often on-site management, marketed as a lifestyle rather than simply a shared house. Planning officers increasingly expect that distinction to be visible in the design, not just the marketing.",
+      },
+      {
+        question: "Do I need Sui Generis planning permission?",
+        answer: "Once a scheme moves beyond the small-HMO thresholds (typically more than six unrelated occupants, though the exact figure depends on the council), it falls outside permitted development and Class C4 and needs its own planning permission as a Sui Generis use.",
+      },
+      {
+        question: "How much shared amenity space do I actually need?",
+        answer: "There's no single national figure. Local space and amenity standards set minimums per occupant for kitchens, lounges and laundry, and officers on larger schemes expect that provision to be realistic for the number of residents, not the minimum technically compliant.",
+      },
+      {
+        question: "What fire and acoustic standards apply to larger shared buildings?",
+        answer: "Fire compartmentation, escape strategy and acoustic separation requirements step up materially once you're managing a larger number of unrelated occupants and more shared circulation space. We flag where the building's existing structure will make this straightforward or expensive before you commit to a layout.",
+      },
+    ],
   },
 ];
 

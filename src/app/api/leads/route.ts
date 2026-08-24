@@ -49,6 +49,9 @@ const SOURCE_LABELS: Record<string, string> = {
   // Posted just before the £49.99 flat-fee Stripe redirect, so a checkout that
   // is abandoned or fails to load still leaves a lead.
   'automated-checkout': 'Automated Site Feasibility (£49.99 checkout started)',
+  // Contact page: "not sure what I need" route. Stands in for a direct Jodi
+  // Calendly booking until that link exists (Ed's August 2026 final brief).
+  'expert-session': 'Free Expert Session request, for Jodi',
   // The contact page rides this route too, so a general enquiry lands in the
   // same inbox without needing a third form on the Formspree project.
   'contact-form': 'Contact form',

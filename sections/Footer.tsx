@@ -20,6 +20,7 @@ const productLinks = [
 const conversionsLinks = [
   { label: "Commercial to Residential", to: "/conversions/commercial-to-residential" },
   { label: "HMO", to: "/conversions/hmo" },
+  { label: "Co-Living & Large HMO", to: "/conversions/co-living-large-hmo" },
 ];
 
 const companyLinks = [

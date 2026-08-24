@@ -10,6 +10,7 @@ import { SketchViewer } from '../components/case-study/SketchViewer';
 import { BeforeAfter } from '../components/case-study/BeforeAfter';
 import { ArrowUpRight, ArrowLeft, CheckCircle2, HardHat } from 'lucide-react';
 import { caseStudies } from '../data/caseStudiesData';
+import { conversions } from '../data/conversionsData';
 
 // Drawings (converted sketch PDFs) live in /images/projects/ and must never
 // be crop-covered; photography can fill its frame.
@@ -66,6 +67,15 @@ export const CaseStudyDetailPage: React.FC = () => {
   // Completed projects carry real photography, often a dozen shots or more.
   // Feasibility studies carry drawings, usually one or two.
   const photoGrid = isProject && caseStudy.galleryImages.length > 3;
+
+  // The reverse of the link on each Expertise page, which already points to
+  // its strongest case study. Ed's August 2026 final brief asks for two-way
+  // contextual links, so a reader landing here can go straight to the
+  // relevant service page rather than only browsing forward within case
+  // studies. Silently absent when a study has no conversionTypes set.
+  const relatedExpertise = (caseStudy.conversionTypes ?? [])
+    .map((type) => conversions.find((c) => c.slug === type))
+    .filter((c): c is (typeof conversions)[number] => !!c);
 
   // One modest fact band replaces both the old display-size stats row and
   // the near-empty sidebar.
@@ -410,6 +420,28 @@ export const CaseStudyDetailPage: React.FC = () => {
                     sizes={photoGrid ? '(max-width: 640px) 92vw, (max-width: 1360px) 46vw, 660px' : '(max-width: 1024px) 92vw, 1000px'}
                   />
                 </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {relatedExpertise.length > 0 && (
+        <section className="bg-white py-fl-7 px-fl-margin border-t border-thistle-black/[0.06]">
+          <div className="max-w-[1360px] mx-auto">
+            <p className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-4">
+              We Can Help With This
+            </p>
+            <div className="flex flex-wrap gap-fl-3">
+              {relatedExpertise.map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/conversions/${c.slug}`}
+                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border border-thistle-black/[0.08] text-sm font-medium text-thistle-black hover:border-thistle-green/40 hover:text-thistle-green transition-colors"
+                >
+                  {c.label} Feasibility
+                  <ArrowUpRight size={14} />
+                </Link>
               ))}
             </div>
           </div>

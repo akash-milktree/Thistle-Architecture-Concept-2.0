@@ -7,7 +7,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
-const faqs = [
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+const genericFaqs: FaqItem[] = [
   {
     question: "How much does a feasibility cost?",
     answer: "Fixed-fee pricing based on building size and complexity, no hourly rates, no scope creep. You know exactly what you're paying before we start. Most feasibilities range from a few hundred to a few thousand pounds, depending on scheme complexity.",
@@ -38,9 +43,19 @@ const faqs = [
   },
 ];
 
-export const FAQ: React.FC<{ tinted?: boolean }> = ({ tinted = false }) => {
+interface FAQProps {
+  tinted?: boolean;
+  /** Sector-specific questions, per Ed's August 2026 final brief: "Replace
+   *  repeated generic feasibility FAQs with sector-specific planning/design
+   *  questions." Falls back to the generic list when a page hasn't set its
+   *  own yet, so this never renders empty. */
+  faqs?: FaqItem[];
+}
+
+export const FAQ: React.FC<FAQProps> = ({ tinted = false, faqs }) => {
   const router = useRouter();
   const [openIndex, setOpenIndex] = useState(0);
+  const items = faqs && faqs.length > 0 ? faqs : genericFaqs;
 
   return (
     <section className={`py-fl-section px-fl-margin ${tinted ? 'bg-thistle-white' : 'bg-white'}`}>
@@ -70,7 +85,7 @@ export const FAQ: React.FC<{ tinted?: boolean }> = ({ tinted = false }) => {
 
           {/* Right: Accordion */}
           <div className="flex flex-col gap-fl-3">
-            {faqs.map((faq, i) => (
+            {items.map((faq, i) => (
               <Reveal key={i} delay={i * 0.05}>
                 <div
                   className={`rounded-xl border transition-colors duration-300 ${

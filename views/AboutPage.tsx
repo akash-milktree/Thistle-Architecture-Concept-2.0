@@ -15,11 +15,18 @@ import { motion } from 'framer-motion';
 // role and credentials are optional ON PURPOSE. No document anywhere gives job
 // titles for Adouj or Beverley, and design.md forbids inventing team
 // credentials, so their cards show name and photo until Ed confirms the titles.
+//
+// `contribution` replaces the old CV-style bullet lists, per Ed's August 2026
+// final brief: "Rewrite profiles around what each person contributes to
+// projects rather than CV-style bullet lists." One factual credential line is
+// kept underneath where it exists, since dropping it entirely would be losing
+// real, confirmed information for the sake of a format change.
 interface TeamMember {
   name: string;
   role?: string;
   image: string;
-  credentials?: string[];
+  contribution?: string;
+  credential?: string;
 }
 
 // Portraits are AI-generated studio headshots, made from each person's real
@@ -33,58 +40,62 @@ const team: TeamMember[] = [
     name: "Edward Kercher",
     role: "Founder & Director",
     image: "/images/team/ed.jpg",
-    credentials: [
-      "BA (Hons) Architectural Technology, CIAT Affiliate",
-      "Founder across the Thistle Group: Thistle Architecture, HMO Designers, HMO Checker",
-      "Experience from £50,000 refurbs to £20m construction management",
-    ],
+    contribution: "Sets the commercial and technical standard every feasibility is judged against, from £50,000 refurbishments to £20m construction management. Founded the Thistle Group, so the developer's perspective is built into how the practice works, not bolted on afterwards.",
+    credential: "BA (Hons) Architectural Technology, CIAT Affiliate",
   },
   {
     name: "Kaan",
-    role: "Design Lead",
+    role: "Design & Planning Lead",
     image: "/images/team/kaan.jpg",
-    credentials: [
-      "BArch in Architecture",
-      "Leads every feasibility from sketch scheme to sign-off",
-      "5+ years across residential and HMO, from deal sourcing to planning",
-    ],
+    contribution: "Runs every feasibility from sketch scheme to sign-off, and is the architect most clients work with through planning. Five-plus years across residential and HMO projects, from deal sourcing through to submission.",
+    credential: "BArch in Architecture",
   },
   {
     name: "Jan",
     role: "Interior Designer",
     image: "/images/team/jan.jpg",
-    credentials: [
-      "HND Design, Associate CIPD",
-      "25 years across interior design, graphic design, and brand management",
-      "Ensures every scheme is finished to a demanding standard",
-    ],
+    contribution: "Makes sure every scheme is finished to a demanding standard once the architecture is settled, drawing on 25 years across interior design, graphic design, and brand management.",
+    credential: "HND Design, Associate CIPD",
   },
   {
     name: "Adouj Abu Saadeh",
     role: "Architectural Designer",
     image: "/images/team/adouj.jpg",
-    credentials: [
-      "BA Architecture, Bilkent University, graduated with High Honours in 2019",
-      "LEED Green Associate, certified 2019",
-      "Practised in Turkey, Azerbaijan, and the UAE before moving to the UK",
-    ],
+    contribution: "Brings international practice experience in Turkey, Azerbaijan, and the UAE to the design team, since moving to the UK.",
+    credential: "BA Architecture, Bilkent University (High Honours, 2019); LEED Green Associate",
   },
   {
     name: "Beverley Gibbs",
     role: "Practice Manager",
     image: "/images/team/beverley.jpg",
-    credentials: [
-      "BA (Hons)",
-      "Over 20 years of practice and studio management experience",
-      "Looks after the finance and admin for the team",
-    ],
+    contribution: "Looks after the finance and admin that keeps every project on track behind the scenes, with over 20 years of practice and studio management experience.",
+    credential: "BA (Hons)",
   },
 ];
 
+// Ed's August 2026 final brief: "Keep '86% faster' only if the calculation is
+// defensible; otherwise replace it with a factual proof point such as '500+
+// conversions designed and built'." It's flagged unconfirmed in
+// docs/case-study-confirmations.md and docs/dns-migration.md, so it's
+// replaced here with the phrasing Ed used himself for the same kind of claim
+// elsewhere in this brief (section 03), which doesn't depend on an unverified
+// exact number.
 const stats = [
   { value: "98.5%", label: "Planning success rate" },
   { value: "5 days", label: "Guaranteed turnaround" },
-  { value: "86%", label: "Faster than traditional routes" },
+  { value: "Hundreds", label: "Of conversions designed nationwide" },
+];
+
+// The five themes from Ed's August 2026 final brief, section 07: "Core
+// themes: Feasibility First; Existing Buildings & Retrofit; Data-Informed
+// Decisions; Developer-Led / Commercially Aware Design; One Team Through
+// Delivery."
+const themes = [
+  { title: "Feasibility First", body: "Every project starts with the same question: does this actually work? We answer it with a fixed-fee feasibility before a single line is drawn." },
+  { title: "Existing Buildings & Retrofit", body: "Most of what we do is testing and reusing what's already there, not building on a clean slate." },
+  { title: "Data-Informed Decisions", body: "Planning history, policy, comparables and viability, checked before judgement is applied, not instead of it." },
+  { title: "Developer-Led, Commercially Aware Design", body: "We design with the numbers in view throughout, not as a check at the end." },
+  { title: "One Team Through Delivery", body: "The person who runs your feasibility is the architect you keep working with through planning and delivery." },
 ];
 
 export const AboutPage: React.FC = () => {
@@ -96,9 +107,14 @@ export const AboutPage: React.FC = () => {
         description="We analyse the data, so the answer is accurate and the wait is short. We work with developers and high-end residential clients on retrofit, conversion, and the reuse of existing buildings."
       />
 
-      {/* Who we are */}
+      {/* Who we are / how we work. Ed's August 2026 final brief: "Make the
+          page about Thistle Architecture as a practice, not primarily about
+          the fact that the team buys and invests in buildings." The old
+          headline led with "We Buy, Convert, And Invest In Buildings Too.";
+          direct development experience is now supporting credibility in the
+          closing paragraph, not the practice's main definition. */}
       <section className="py-fl-section px-fl-margin bg-white">
-        <div className="max-w-[1360px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-fl-8 items-center">
+        <div className="max-w-[1360px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-fl-8 items-center mb-fl-8">
           <Reveal>
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-thistle-black/[0.06]">
               <Image
@@ -114,16 +130,27 @@ export const AboutPage: React.FC = () => {
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">Who We Are</p>
               <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-5">
-                We Buy, Convert, And<br /><span className="text-thistle-green">Invest In Buildings Too.</span>
+                An Architecture Practice,<br /><span className="text-thistle-green">Built Around Feasibility.</span>
               </h2>
               <p className="text-fluid-base text-thistle-black/80 leading-relaxed mb-fl-4">
-                Thistle Architecture is part of the Thistle Group, alongside HMO Designers and HMO Checker. Between them, the team has designed hundreds of conversions and invests in the same kinds of buildings our clients buy.
+                Thistle Architecture tests whether a building can become something more valuable, then designs and delivers the answer. Every scheme starts with the numbers, the planning policy, and the existing structure, so you know whether a deal stacks up before you commit to it.
               </p>
               <p className="text-fluid-base text-thistle-black/80 leading-relaxed">
-                That changes how we work. Every scheme starts with the numbers, the planning policy, and the building, so you know whether a deal stacks up before you commit. The same person who runs your feasibility is the architect you keep working with through to planning.
+                Thistle Architecture is part of the Thistle Group, alongside HMO Designers and HMO Checker. Some of the team also develop and invest in the same kinds of buildings our clients buy, which sharpens the advice, but it supports the architecture, it doesn't replace it.
               </p>
             </div>
           </Reveal>
+        </div>
+
+        <div className="max-w-[1360px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-fl-4">
+          {themes.map((theme, i) => (
+            <Reveal key={theme.title} delay={0.15 + Math.min(i * 0.05, 0.2)} fullHeight>
+              <div className="h-full rounded-2xl bg-thistle-white/70 border border-thistle-black/[0.06] p-fl-5">
+                <h3 className="text-fluid-sm font-semibold tracking-tight text-thistle-black mb-fl-2">{theme.title}</h3>
+                <p className="text-fluid-sm text-thistle-black/60 leading-relaxed">{theme.body}</p>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </section>
 
@@ -181,14 +208,12 @@ export const AboutPage: React.FC = () => {
                     {member.role && (
                       <p className="text-[11px] uppercase tracking-wider text-thistle-green font-semibold mt-fl-1 mb-fl-3">{member.role}</p>
                     )}
-                    <ul className="space-y-1.5">
-                      {(member.credentials ?? []).map((c, j) => (
-                        <li key={j} className="text-fluid-sm text-thistle-black/60 leading-snug flex gap-2">
-                          <span className="text-thistle-green mt-[3px] flex-shrink-0">·</span>
-                          {c}
-                        </li>
-                      ))}
-                    </ul>
+                    {member.contribution && (
+                      <p className="text-fluid-sm text-thistle-black/70 leading-relaxed mb-fl-2">{member.contribution}</p>
+                    )}
+                    {member.credential && (
+                      <p className="text-xs text-thistle-black/40">{member.credential}</p>
+                    )}
                   </div>
                 </motion.div>
               </Reveal>

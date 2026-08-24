@@ -1,9 +1,10 @@
 export type CaseStudyKind = 'feasibility' | 'project';
 
-/** The four conversion types the site sells, matching data/conversionsData.ts. */
+/** The five conversion types the site sells, matching data/conversionsData.ts. */
 export type ConversionType =
   | 'commercial-to-residential'
   | 'hmo'
+  | 'co-living-large-hmo'
   | 'mixed-use-commercial'
   | 'high-end-residential';
 
@@ -227,6 +228,7 @@ export const caseStudies: CaseStudy[] = [
     location: "Winchester, Hampshire",
     image: "/images/projects/southgate-sketch-1.png",
     tag: "HMO",
+    conversionTypes: ['co-living-large-hmo', 'hmo'],
     stats: [
       { label: "Co-living design", value: "10 beds" },
       { label: "Ground floor", value: "Shop retained" },
@@ -682,7 +684,11 @@ export const caseStudies: CaseStudy[] = [
     kind: "project",
     title: "Beauchamp House",
     location: "Royal Leamington Spa, Warwickshire",
-    image: "/images/projects/beauchamp-elevation-1.png",
+    // Ed's August 2026 final brief: card thumbnails must be a real completed-
+    // project photograph, never a drawing preview. beauchamp-elevation-1.png
+    // is a drawing crop; a real exterior shot already exists in this
+    // project's own gallery below, so the listing card now uses that instead.
+    image: "/images/projects/beauchamp2/exterior.jpg",
     tag: "Office to Flats",
     stats: [
       { label: "Flats", value: "4" },
@@ -1238,7 +1244,7 @@ export const caseStudies: CaseStudy[] = [
     // Pizza Hut next door) and its interior shots match this gallery frame for
     // frame. HMO Designers' own record had no street, only "South Sea".
     slug: "southsea-co-living",
-    conversionTypes: ['hmo'],
+    conversionTypes: ['co-living-large-hmo', 'hmo'],
     kind: "project",
     title: "Southsea Co-Living",
     location: "Festing Road, Southsea, Portsmouth",
@@ -1535,7 +1541,7 @@ export const caseStudies: CaseStudy[] = [
     image: "/images/projects/highbury/cgi-front.jpg",
     tag: "Co-Living",
     status: "On site",
-    conversionTypes: ['hmo', 'commercial-to-residential'],
+    conversionTypes: ['co-living-large-hmo', 'hmo', 'commercial-to-residential'],
     stats: [
       { label: "Bedrooms", value: "11, all en suite" },
       { label: "Existing", value: "Commercial and storage" },
@@ -1569,4 +1575,32 @@ export const caseStudies: CaseStudy[] = [
 ];
 
 export const feasibilityStudies = caseStudies.filter((c) => c.kind === 'feasibility');
-export const completedProjects = caseStudies.filter((c) => c.kind === 'project');
+
+// Ed's August 2026 final brief, section 05: the ten completed projects he
+// wants leading the page, in this exact order. Anything not listed keeps its
+// existing relative order and follows after. A priority list here, rather
+// than physically reordering ~1500 lines of case study data, so the ordering
+// intent stays obvious and editable on its own.
+const COMPLETED_PROJECTS_PRIORITY = [
+  'bereweeke-avenue',
+  'highbury-buildings-cosham',
+  'monument-house',
+  'bishopstoke-road',
+  'derby-road',
+  'corner-house-hackney',
+  'forest-house-lymington',
+  'peterhayes-farm',
+  'rotherfield-homes',
+  'school-house-south-downs',
+];
+
+export const completedProjects = caseStudies
+  .filter((c) => c.kind === 'project')
+  .sort((a, b) => {
+    const ai = COMPLETED_PROJECTS_PRIORITY.indexOf(a.slug);
+    const bi = COMPLETED_PROJECTS_PRIORITY.indexOf(b.slug);
+    if (ai === -1 && bi === -1) return 0; // stable: keep existing relative order
+    if (ai === -1) return 1;
+    if (bi === -1) return -1;
+    return ai - bi;
+  });

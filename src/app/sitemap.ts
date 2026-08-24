@@ -10,7 +10,7 @@ const BASE = 'https://www.thistlearchitecture.co.uk';
 // redirect wastes the crawl. /team-review is an internal review page.
 const staticPaths = [
   '/', '/pricing', '/feasibility-package', '/case-studies/feasibility-studies',
-  '/case-studies/completed-projects', '/about', '/blog', '/contact',
+  '/case-studies/completed-projects', '/about', '/blog', '/contact', '/conversions',
   '/tools/class-ma-checker', '/tools/gdv-calculator', '/tools/hmo-calculator',
   '/privacy', '/terms', '/cookies',
 ];

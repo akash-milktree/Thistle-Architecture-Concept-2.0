@@ -39,13 +39,17 @@ const navLinks: NavItem[] = [
   },
   {
     // Ed's August 2026 final brief: the label is "Expertise", the /conversions/
-    // URLs stay put. The label and the paths change independently on purpose;
-    // moving the URLs needs a deliberate 301 plan that has not been made.
+    // URLs stay put (moving them needs a deliberate 301 plan that has not been
+    // made). The parent link now goes to a genuine Expertise overview instead
+    // of dropping straight into Commercial-to-Residential, per the brief:
+    // "make it a simple Expertise overview rather than effectively dropping
+    // users straight into Commercial-to-Residential."
     label: "Expertise",
-    path: "/conversions/commercial-to-residential",
+    path: "/conversions",
     children: [
       { label: "Commercial to Residential", path: "/conversions/commercial-to-residential" },
       { label: "HMO", path: "/conversions/hmo" },
+      { label: "Co-Living & Large HMO", path: "/conversions/co-living-large-hmo" },
       { label: "Mixed-Use Commercial", path: "/conversions/mixed-use-commercial" },
       { label: "High-End Residential", path: "/conversions/high-end-residential" },
     ],
@@ -123,7 +127,7 @@ export const Navbar: React.FC = () => {
           <div className="hidden lg:flex items-center justify-center gap-4 xl:gap-fl-6 text-xs xl:text-fluid-sm font-medium text-white/80">
             {navLinks.map((link) => {
               if (link.children) {
-                const active = link.children.some((ch) => pathname.startsWith(ch.path));
+                const active = pathname === link.path || link.children.some((ch) => pathname.startsWith(ch.path));
                 return (
                   <div key={link.path} className="relative group">
                     <Link

@@ -17,6 +17,7 @@ import { WorkTabs } from '../components/ui/WorkTabs';
 const TYPES: { key: ConversionType; label: string }[] = [
   { key: 'commercial-to-residential', label: 'Commercial to Residential' },
   { key: 'hmo', label: 'HMO' },
+  { key: 'co-living-large-hmo', label: 'Co-Living & Large HMO' },
   { key: 'mixed-use-commercial', label: 'Mixed-Use Commercial' },
   { key: 'high-end-residential', label: 'High-End Residential' },
 ];
