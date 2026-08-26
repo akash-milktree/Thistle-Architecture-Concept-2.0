@@ -91,9 +91,13 @@ export const CaseCard: React.FC<{ item: CaseStudy }> = ({ item }) => {
           {/* Key facts */}
           <div className="grid grid-cols-3 gap-3 py-fl-4 border-y border-thistle-black/[0.06] mb-fl-4">
             {item.stats.slice(0, 3).map((stat, i) => (
-              <div key={i}>
-                <div className="text-[9px] uppercase tracking-wider text-thistle-black/40 font-semibold mb-1">{stat.label}</div>
-                <div className="text-fluid-sm font-semibold text-thistle-black">{stat.value}</div>
+              // min-w-0 lets the column shrink below its content, and break-words
+              // wraps values like "Conservation Area" that are wider than the
+              // 77px column a three-up grid leaves at 320px. Without both, the
+              // value ran under the neighbouring column.
+              <div key={i} className="min-w-0">
+                <div className="text-[9px] uppercase tracking-wider text-thistle-black/40 font-semibold mb-1 break-words">{stat.label}</div>
+                <div className="text-fluid-sm font-semibold text-thistle-black break-words">{stat.value}</div>
               </div>
             ))}
           </div>

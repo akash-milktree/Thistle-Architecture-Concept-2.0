@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { Button } from './Button';
@@ -78,25 +78,77 @@ export const Navbar: React.FC = () => {
   const pathname = usePathname();
   const router = useRouter();
 
+  // Set while the menu is closing and the page is being put back where it was.
+  // That restore moves the scroll position in one jump, which is indistinguishable
+  // from a fast downward scroll and would otherwise retract the bar the instant
+  // the menu closes. Consumed by the next scroll event, so it suppresses exactly
+  // the one change it was set for.
+  const restoringScroll = useRef(false);
+
   useMotionValueEvent(scrollY, "change", (latest) => {
+    // The close button lives inside this bar, so retracting it while the mobile
+    // menu is open leaves no way out of the menu. Never hide while it is open.
+    if (isMobileMenuOpen) {
+      setHidden(false);
+      return;
+    }
+    setScrolled(latest > 50);
+    if (restoringScroll.current) {
+      restoringScroll.current = false;
+      return;
+    }
     const previous = scrollY.getPrevious() || 0;
     if (latest > 150 && latest > previous) {
       setHidden(true);
     } else {
       setHidden(false);
     }
-    setScrolled(latest > 50);
   });
 
-  // Lock body scroll when mobile menu is open
+  // Lock background scroll while the mobile menu is open.
+  //
+  // overflow:hidden on body is ignored by iOS Safari, so the page used to keep
+  // scrolling behind the open menu. Pinning the body with position:fixed is the
+  // approach that actually holds there, at the cost of having to carry the
+  // scroll offset by hand: fixing the body drops the page to the top, so the
+  // offset goes on as a negative top and is restored on the way out.
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    if (!isMobileMenuOpen) return;
+
+    const { scrollY: y } = window;
+    const { body } = document;
+    const prev = {
+      position: body.style.position,
+      top: body.style.top,
+      left: body.style.left,
+      right: body.style.right,
+      width: body.style.width,
+      overflow: body.style.overflow,
+    };
+
+    body.style.position = 'fixed';
+    body.style.top = `-${y}px`;
+    body.style.left = '0';
+    body.style.right = '0';
+    body.style.width = '100%';
+    body.style.overflow = 'hidden';
+
     return () => {
-      document.body.style.overflow = 'unset';
+      body.style.position = prev.position;
+      body.style.top = prev.top;
+      body.style.left = prev.left;
+      body.style.right = prev.right;
+      body.style.width = prev.width;
+      body.style.overflow = prev.overflow;
+      // Jump straight back, with no smooth-scroll easing from globals.css.
+      // Flag it first so the resulting scroll event is not mistaken for the
+      // user scrolling down, which would hide the bar as the menu closes.
+      if (y > 0) restoringScroll.current = true;
+      const html = document.documentElement;
+      const behaviour = html.style.scrollBehavior;
+      html.style.scrollBehavior = 'auto';
+      window.scrollTo(0, y);
+      html.style.scrollBehavior = behaviour;
     };
   }, [isMobileMenuOpen]);
 
@@ -183,8 +235,11 @@ export const Navbar: React.FC = () => {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 -mr-2 text-white transition-colors"
-              aria-label="Toggle menu"
+              // p-3 rather than p-2 so the hit area clears the 44px minimum.
+              className="lg:hidden p-3 -mr-3 text-white transition-colors"
+              aria-label="Menu"
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -200,7 +255,8 @@ export const Navbar: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-thistle-white pt-24 pb-8 px-6 lg:hidden flex flex-col overflow-y-auto"
+            id="mobile-menu"
+            className="fixed inset-0 z-40 bg-thistle-white pt-24 pb-8 px-6 lg:hidden flex flex-col overflow-y-auto overscroll-contain"
           >
             <div className="flex flex-col flex-1">
               <div className="flex flex-col gap-1">
@@ -221,7 +277,9 @@ export const Navbar: React.FC = () => {
                             href={child.path}
                             {...(child.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                             onClick={() => setIsMobileMenuOpen(false)}
-                            className={`py-2 text-sm ${pathname === child.path ? 'text-thistle-green' : 'text-thistle-black/70'}`}
+                            // min-h-[44px] with the text centred: these sat at
+                            // 36px, under the 44px touch minimum.
+                            className={`flex items-center min-h-[44px] py-2 text-sm ${pathname === child.path ? 'text-thistle-green' : 'text-thistle-black/70'}`}
                           >
                             {child.label}
                           </Link>

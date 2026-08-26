@@ -58,6 +58,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* iOS Safari zooms the whole page in whenever you focus a field whose text is
+   under 16px, and it does not zoom back out afterwards. Every field on this
+   site was 14px (--font-text-sm), so tapping any of them, the feasibility
+   brief, both calculators, the fee calculator, the contact form, threw the
+   layout off. 16px is the threshold, so fields get exactly that on the touch
+   sizes and keep the smaller type from the design at desktop widths.
+   Checkboxes and radios are excluded: they render no text and sizing them
+   here would change the control itself. */
+@media (max-width: 767px) {
+  input:not([type="checkbox"]):not([type="radio"]),
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
 ::selection {
   background-color: var(--color-pink);
   color: var(--color-black);

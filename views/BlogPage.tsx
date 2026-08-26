@@ -52,7 +52,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ category, heading, descripti
                 key={label}
                 href={href}
                 aria-current={active ? 'page' : undefined}
-                className={`px-4 py-2 rounded-full text-xs font-medium border transition-colors ${
+                className={`inline-flex items-center justify-center min-h-[44px] px-4 py-2 rounded-full text-xs font-medium border transition-colors ${
                   active
                     ? 'bg-thistle-black text-white border-thistle-black'
                     : 'bg-white text-thistle-black/60 border-thistle-black/[0.08] hover:border-thistle-black/25'

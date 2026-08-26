@@ -279,7 +279,13 @@ export const FeasibilityEngine: React.FC = () => {
           {rows.map((row, i) => (
             <Reveal key={row.eyebrow} delay={Math.min(i * 0.06, 0.3)}>
               <div className="h-full rounded-2xl overflow-hidden bg-white border border-thistle-black/[0.06]">
-                <div className="relative aspect-[4/3] overflow-hidden">
+                {/* The graphics inside are drawn at a fixed type size, so on a
+                    320px card the 4:3 box came out shorter than its own content
+                    and sliced the legend and stat rows in half. min-h wins over
+                    the ratio when the ratio would be the smaller of the two, so
+                    the box keeps 4:3 wherever there is room and stops shrinking
+                    past the point the content fits. */}
+                <div className="relative aspect-[4/3] min-h-[15rem] overflow-hidden">
                   <row.Graphic />
                 </div>
                 <div className="p-fl-5">

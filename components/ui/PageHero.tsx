@@ -41,7 +41,10 @@ export const PageHero: React.FC<PageHeroProps> = ({
         </Reveal>
 
         <Reveal delay={0.1}>
-          <h1 className="text-fluid-h1 font-medium tracking-tight leading-tight max-w-5xl text-balance mb-fl-5">
+          {/* This section clips its overflow, so an over-wide heading was being
+              sliced off mid-word rather than scrolling. See the note on the
+              case-study h1: same 50.88px floor, same fix. */}
+          <h1 className="text-fluid-h1 font-medium tracking-tight leading-tight max-w-5xl text-balance mb-fl-5 break-words hyphens-auto">
             {heading}
           </h1>
         </Reveal>

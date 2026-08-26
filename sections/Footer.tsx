@@ -105,12 +105,12 @@ export const Footer: React.FC = () => {
               <div className="flex flex-col gap-fl-2 text-fluid-sm text-white/70">
                 {/* Ed's August 2026 final brief asks for this address site-wide,
                     reversing the 2026-08-11 swap to hello@incollective.works. */}
-                <a href="mailto:hello@thistlearchitecture.co.uk" className="hover:text-thistle-green transition-colors w-fit">
+                <a href="mailto:hello@thistlearchitecture.co.uk" className="inline-flex items-center min-h-[32px] hover:text-thistle-green transition-colors w-fit">
                   hello@thistlearchitecture.co.uk
                 </a>
                 {/* Real number and registered address, taken from the practice's
                     own site before the domain moved off Wix. */}
-                <a href="tel:+448081755405" className="hover:text-thistle-green transition-colors w-fit">
+                <a href="tel:+448081755405" className="inline-flex items-center min-h-[32px] hover:text-thistle-green transition-colors w-fit">
                   0808 175 5405
                 </a>
                 <span>Itchen Court, Eastgate Street, Winchester, SO23 8RE</span>
@@ -123,7 +123,7 @@ export const Footer: React.FC = () => {
               <p className="text-[10px] uppercase tracking-widest text-white/60 font-semibold mb-fl-5">Product</p>
               <div className="flex flex-col gap-fl-3">
                 {productLinks.map((link) => (
-                  <Link key={link.to} href={link.to} className="text-fluid-sm text-white/80 hover:text-white transition-colors">
+                  <Link key={link.to} href={link.to} className="inline-flex items-center min-h-[32px] text-fluid-sm text-white/80 hover:text-white transition-colors">
                     {link.label}
                   </Link>
                 ))}
@@ -135,7 +135,7 @@ export const Footer: React.FC = () => {
               <p className="text-[10px] uppercase tracking-widest text-white/60 font-semibold mb-fl-5">Expertise</p>
               <div className="flex flex-col gap-fl-3">
                 {conversionsLinks.map((link) => (
-                  <Link key={link.to} href={link.to} className="text-fluid-sm text-white/80 hover:text-white transition-colors">
+                  <Link key={link.to} href={link.to} className="inline-flex items-center min-h-[32px] text-fluid-sm text-white/80 hover:text-white transition-colors">
                     {link.label}
                   </Link>
                 ))}
@@ -147,7 +147,7 @@ export const Footer: React.FC = () => {
               <p className="text-[10px] uppercase tracking-widest text-white/60 font-semibold mb-fl-5">Company</p>
               <div className="flex flex-col gap-fl-3">
                 {companyLinks.map((link) => (
-                  <Link key={link.to} href={link.to} className="text-fluid-sm text-white/80 hover:text-white transition-colors">
+                  <Link key={link.to} href={link.to} className="inline-flex items-center min-h-[32px] text-fluid-sm text-white/80 hover:text-white transition-colors">
                     {link.label}
                   </Link>
                 ))}
@@ -178,13 +178,13 @@ export const Footer: React.FC = () => {
           </div>
           <div className="flex items-center gap-fl-4 flex-wrap">
             {legalLinks.map((link) => (
-              <Link key={link.to} href={link.to} className="text-xs text-white/60 hover:text-white transition-colors">
+              <Link key={link.to} href={link.to} className="inline-flex items-center min-h-[32px] text-xs text-white/60 hover:text-white transition-colors">
                 {link.label}
               </Link>
             ))}
             <span className="text-xs text-white/40">·</span>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-xs text-white/70 hover:text-white transition-colors">LinkedIn</a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-xs text-white/70 hover:text-white transition-colors">Instagram</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[32px] text-xs text-white/70 hover:text-white transition-colors">LinkedIn</a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[32px] text-xs text-white/70 hover:text-white transition-colors">Instagram</a>
           </div>
         </div>
       </div>

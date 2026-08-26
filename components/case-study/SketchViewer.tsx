@@ -69,13 +69,13 @@ export const SketchViewer: React.FC<{ images: string[]; alt: string; caption?: s
 
         {many && (
           <div className="flex items-center justify-center gap-fl-3 border-t border-thistle-black/[0.06] py-fl-3">
-            <button type="button" onClick={prev} aria-label="Previous option" className="p-1.5 rounded-full hover:bg-thistle-black/[0.05] transition-colors">
+            <button type="button" onClick={prev} aria-label="Previous option" className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] rounded-full hover:bg-thistle-black/[0.05] transition-colors">
               <ChevronLeft size={18} />
             </button>
             <span className="text-xs text-thistle-black/50 tabular-nums">
               Option {index + 1} of {images.length}
             </span>
-            <button type="button" onClick={next} aria-label="Next option" className="p-1.5 rounded-full hover:bg-thistle-black/[0.05] transition-colors">
+            <button type="button" onClick={next} aria-label="Next option" className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] rounded-full hover:bg-thistle-black/[0.05] transition-colors">
               <ChevronRight size={18} />
             </button>
           </div>

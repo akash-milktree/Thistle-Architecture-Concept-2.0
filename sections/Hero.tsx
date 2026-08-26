@@ -28,7 +28,14 @@ export const Hero: React.FC = () => {
           embed sets no cookies and stays clear of the cookie policy.
           The iframe is fixed to 16:9, so it is sized to the larger of the two
           axes and centred, which is how you get object-cover behaviour out of
-          an element that has no object-fit. */}
+          an element that has no object-fit. That cover maths holds on portrait
+          phones too, where the height is the binding axis.
+          It plays at every width. It used to be gated behind sm:, which meant
+          phones saw only the poster while the iframe still loaded and streamed
+          the film behind display:none, so the data was spent either way.
+          Vimeo's background mode is muted and inline, which is what iOS
+          requires to autoplay; if a device still refuses, the poster below is
+          already painted and stays put. */}
       <Image
         src="/images/site/hero-showreel-v5-poster.jpg"
         alt="Thistle conversion and retrofit projects across the UK"
@@ -37,7 +44,7 @@ export const Hero: React.FC = () => {
         className="object-cover"
       />
       <div
-        className="absolute inset-0 overflow-hidden hidden sm:motion-safe:block pointer-events-none"
+        className="absolute inset-0 overflow-hidden hidden motion-safe:block pointer-events-none"
         aria-hidden="true"
       >
         <iframe

@@ -128,7 +128,9 @@ const Choice: React.FC<{
         type="button"
         onClick={() => onChange(o.value)}
         aria-pressed={value === o.value}
-        className={`px-4 py-2 rounded-full text-xs font-medium border transition-colors ${
+        // These pills are how the whole fee calculator is driven, so they get
+        // the full 44px touch height rather than the 34px they had.
+        className={`inline-flex items-center justify-center min-h-[44px] px-4 py-2 rounded-full text-xs font-medium border transition-colors ${
           value === o.value
             ? 'bg-thistle-black text-white border-thistle-black'
             : 'bg-white text-thistle-black/60 border-thistle-black/[0.08] hover:border-thistle-black/25'

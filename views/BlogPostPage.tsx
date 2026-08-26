@@ -26,7 +26,12 @@ const linkClass = "text-thistle-green underline underline-offset-2 hover:text-th
 // it was written; nofollow stops it handing them ranking value.
 const renderInline = (text: string): React.ReactNode[] => {
   const parts: React.ReactNode[] = [];
-  const re = /\[([^\]]+)\]\(([^)]+)\)/g;
+  // The label may itself contain a bracketed aside, as in the Class MA piece:
+  // "[... Order 2024 [SI 2024 No. 141]](https://...)". A plain [^\]]+ stops at
+  // the inner "]", so the link never matched and the whole thing rendered as
+  // raw markdown, taking a long bare URL onto the page with it. This allows one
+  // level of nesting: either a non-bracket character, or a complete [ ... ] run.
+  const re = /\[((?:[^[\]]|\[[^[\]]*\])*)\]\(([^)]+)\)/g;
   let last = 0;
   let m: RegExpExecArray | null;
   while ((m = re.exec(text)) !== null) {
@@ -339,7 +344,9 @@ export const BlogPostPage: React.FC = () => {
                   />
                 </figure>
               ) : (
-                <p className="text-fluid-sm text-thistle-black/60 leading-[1.8] mb-fl-4">{renderInline(block.text)}</p>
+                // break-words so a bare URL in body copy can never widen the
+                // page on a phone, whatever a future article puts here.
+                <p className="text-fluid-sm text-thistle-black/60 leading-[1.8] mb-fl-4 break-words">{renderInline(block.text)}</p>
               )}
               {i === ctaAfter && <MidArticleCTA onClick={goPackage} />}
             </React.Fragment>
