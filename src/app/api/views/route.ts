@@ -1,13 +1,19 @@
 import { NextResponse } from 'next/server';
 import { put, list } from '@vercel/blob';
-import { seedViews } from '@/data/blogViews';
+import { seedViews } from '@/data/blogViewSeeds';
+import { blogPosts } from '@/data/blogData';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 // Blog view counter. The old Wix site showed view counts and Ed wants them to
 // carry on rather than restart, so each post starts from the number it had
-// there (data/blogViews.ts) and this adds live views on top.
+// there (data/blogViewSeeds.ts) and this adds live views on top.
+//
+// The seeds are imported from blogViewSeeds rather than blogViews: the latter
+// is a "use client" module because of the hook it exports, and importing its
+// data here meant the route got nothing across the boundary. Every GET returned
+// an empty object and every POST was rejected as an unknown slug.
 //
 // Stored in Vercel Blob because it is the only storage this project has. Blob
 // has no atomic increment, so this is a read, add, write. Two views landing in
@@ -46,10 +52,15 @@ async function writeCounts(counts: Counts) {
 /** Live total for a post: what it had on the old site, plus views since. */
 const total = (counts: Counts, slug: string) => (seedViews[slug] ?? 0) + (counts[slug] ?? 0);
 
+// The real article list, not the seed list. Anything published since the Wix
+// migration has no seed to carry but is still a valid post, so keying off the
+// seeds alone would leave new articles permanently uncountable.
+const knownSlugs = new Set(blogPosts.map((p) => p.slug));
+
 export async function GET() {
   const counts = await readCounts();
   const out: Counts = {};
-  for (const slug of Object.keys(seedViews)) out[slug] = total(counts, slug);
+  for (const slug of knownSlugs) out[slug] = total(counts, slug);
   return NextResponse.json(out, { headers: { 'Cache-Control': 'public, max-age=60' } });
 }
 
@@ -61,7 +72,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false }, { status: 400 });
   }
   // Only count posts we know about, so a junk slug cannot grow the store.
-  if (!slug || !(slug in seedViews)) {
+  if (!slug || !knownSlugs.has(slug)) {
     return NextResponse.json({ ok: false }, { status: 400 });
   }
 
