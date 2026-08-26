@@ -82,3 +82,11 @@ These were raised on the call and are not resolved by it.
 **The Trustpilot answer given on the call was wrong, and he should be told.** Ed asked whether the review count on the site updates itself as new reviews come in, and was told yes, it is a live integration. It is not. Thistle's Trustpilot account is on the free tier, every widget type was tested and refused, and the badge on the site is deliberately worded so it never states a number. A genuinely live rating needs a paid Trustpilot plan at £119 a month billed annually. He is expecting behaviour the site does not have.
 
 **He gave two real numbers on this call that are better than the claims currently on the site**: "we've definitely done 350 plus feasibilities, and then 500 plus completed projects". Those are his own words and far stronger than the unverified 98.5% and 86% figures still on the homepage. Worth confirming he is happy to publish them, and then using them.
+
+## Update, 26 August
+
+The August studio shoot arrived and is live. Real photographs of Ed, Kaan, Jan, Adouj and Seyma replaced the AI headshots, and Seyma is on the team page for the first time, which closes an item that had been open since 18 August waiting only on a photo. Beverley was not photographed, so her card uses the picture she supplied and she should be included next time.
+
+The outstanding-items pack was reissued as `Thistle-website-outstanding-items-for-Ed-2026-08-26`. Fifty-eight items, eleven blockers, down from sixty and twelve.
+
+**Trustpilot changed from a decision into an ask.** Rather than asking Ed to choose between paying £119 a month and keeping the hand-built badge, the pack now asks for his Trustpilot login. Their pricing page says the free plan includes one widget while our testing had all eleven widget types refused, and only an inside view of the account settles which is true. It costs nothing to check and may turn out to need no spend at all. The correction about what he was told on the call still runs on the last page, so he sees it before deciding anything.
