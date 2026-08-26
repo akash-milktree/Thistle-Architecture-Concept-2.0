@@ -14,11 +14,11 @@ Two parts need a decision before anything is built, and they happen to be the tw
 
 The gap is durability, not capability. Formspree's privacy policy commits to retaining data "for as long as your account is active" and its storage limits vary by plan. That is not a retention policy, and R3.2 asks for fifteen years for a record whose entire purpose is to be producible in year fourteen to defend a claim. Submissions can also be deleted from the dashboard by anyone with access, which is a real risk for a legal record.
 
-The fix is not a database. It is a scheduled export into storage Thistle controls, which is needed regardless of where the record lives, because fifteen years outlives any vendor relationship in this stack.
+The fix is not a database, and on reflection it is not a build either. Formspree holds submissions for as long as the account is active, and it exports on demand, so the realistic failure cases are a lapsed account, a deleted row, or Formspree itself winding down, and that last one would come with notice. A documented export, taken periodically and before any infrastructure change, covers all three without writing anything. That is a process for Thistle to own rather than a feature to pay for.
 
 **R4 as written conflicts with R5.** Client email currently goes through Formspree, whose autoresponse text is edited in their dashboard. That is exactly the silent edit R5.3 prohibits, and it cannot carry the full disclaimer text reliably. The confirmation email needs to be generated from the same versioned source as the page, which means a transactional email provider rather than the current pipe.
 
-Neither is a reason to change the brief. Between them they are what decides the number, which is why the estimate below is given three ways rather than one.
+Neither is a reason to change the brief. Between them they decide the number, which is why the estimate is given three ways rather than one.
 
 ## What fits without difficulty
 
@@ -42,9 +42,9 @@ Neither is a reason to change the brief. Between them they are what decides the 
 
 **5. R6.2, UK or EEA storage, is a decision rather than a task.** Whatever database is chosen has to be provisioned in a UK or EEA region deliberately, and the answer has to be recorded because the brief asks us to state it. Worth settling before provisioning rather than after.
 
-**6. R3.2, fifteen-year retention, is the requirement that actually costs something.** No form backend or database in this stack commits to fifteen years. Formspree's stated position is "as long as your account is active". A database would be no better on its own: fifteen years is longer than most hosting relationships and considerably longer than any SaaS contract here.
+**6. R3.2, fifteen-year retention, is a process rather than a build.** No form backend or database in this stack commits to fifteen years, so this was never going to be solved by choosing the right vendor. Formspree keeps submissions while the account is active and exports on demand, which means the exposure is a lapsed account, a deleted row, or the vendor winding down with notice. A standing instruction to export the record periodically, and always before any change of infrastructure, covers all three at no build cost. Worth writing into whoever owns the Formspree account's routine rather than treating as a feature.
 
-The answer either way is a scheduled export into storage Thistle owns, so the record survives a lapsed account, a plan change or a vendor disappearing. Because that export is needed regardless, it removes most of the argument for building a database at all. One open question we should put to Formspree directly: whether stored submissions are ever purged by age or by a cap on total stored records, as distinct from the monthly volume limits they publish. Their documentation does not say, and the answer changes how often the export needs to run.
+One open question we cannot answer from Formspree's documentation and should put to them directly: whether stored submissions are ever purged by age or by a cap on total records, as distinct from the monthly volume limits they publish. If they are, that sets how often the export needs to happen.
 
 **7. The appendix cannot ship with the blanks in it.** The liability cap at section 8 and the PI limit are both `£[     ]`. Version 1.0 cannot go live showing those, so either they arrive before launch or v1.0 publishes later than the rest of the work. Flagging it because it is the sort of thing that quietly becomes the critical path.
 
@@ -60,40 +60,43 @@ So there are three ways to do this, not two.
 
 **Option B, a database with a hosted console.** Same database, no bespoke admin. Search and CSV export come from the host's own dashboard, which satisfies R3.3 and R3.4 in substance but looks like a developer's tool.
 
-**Option C, Formspree plus a scheduled archive.** Acceptances post to their own dedicated Formspree form, separate from the leads pipeline. Search and export are the Formspree dashboard the team already uses. A scheduled job copies every record into storage Thistle owns, which is what actually delivers R3.2, and which A and B need anyway.
+**Option C, Formspree with a documented export routine.** Acceptances post to their own dedicated Formspree form, separate from the leads pipeline. Search and export are the Formspree dashboard the team already uses. R3.2 is met by a standing instruction to export periodically and before any infrastructure change, rather than by anything built.
 
-What Option C gives up is worth stating plainly. The record sits in the United States rather than the UK or EEA, so R6.2 is answered as US-with-SCCs and needs a data processing agreement on file. Submissions are deletable by anyone with dashboard access. And retention depends on the account staying active, which is exactly what the archive exists to cover.
+What Option C gives up is worth stating plainly. The record sits in the United States rather than the UK or EEA, so R6.2 is answered as US-with-SCCs and needs a data processing agreement on file. Submissions are deletable by anyone with dashboard access. And retention depends on the Formspree account staying paid and active, which is a real dependency even if a small one.
 
-**Our recommendation is Option C.** Volume here will be low for a long time, the archive is required under every option, and it is hard to justify building a database and an admin screen to replace a dashboard the team already has open. If Ed's answer to R6.2 is that the record must stay in the UK or EEA, that rules out C on its own and the choice becomes A or B. That is the question worth answering first, because it decides the price.
+**Our recommendation is Option C.** Volume here will be low for a long time, and it is hard to justify building a database and an admin screen to replace a dashboard the team already has open and already knows how to use. If Ed's answer to R6.2 is that the record must stay in the UK or EEA, that rules out C on its own and the choice becomes A or B. That is the question worth answering first, because it decides the price.
 
 There is also a belt-and-braces answer already in the brief. R4.4 asks for a blind copy of every confirmation to the studio. If that copy goes to a dedicated mailbox, Thistle has a second, independent record from day one at no extra cost, timestamped by the mail system and separate from whatever the primary store turns out to be. Worth having under any of the three.
 
 ## Estimate
 
-Effort, in working days. This is build effort only and excludes the commercial rate, which Akash will set.
+Effort, in working days, revised down after a second pass. The first version of this document costed the archive as a build and was generous on several lines. This is the honest read. Build effort only; the commercial rate is Akash's.
 
 | Requirement | Option A | Option B | Option C |
 | --- | --- | --- | --- |
-| R1 disclaimer page, versioned URLs, appendix as clean HTML | 1 | 1 | 1 |
-| R2 acceptance step on both flows, server-side enforcement | 1 | 1 | 1 |
-| R3 record: fields, hash, write path | 1.5 | 1.5 | 0.5 |
-| R3.2 scheduled archive into storage Thistle owns | 0.5 | 0.5 | 1 |
-| R3.3 and R3.4 admin list, authentication, CSV export | 2.5 | 0.5 | 0 |
-| R4 transactional email, templating, domain verification | 1.5 | 1.5 | 1.5 |
-| R5 version control mechanics | 0.5 | 0.5 | 0.5 |
-| R6 privacy notice, region decision, DPA on file | 0.5 | 0.5 | 0.5 |
-| Testing against the section 7 criteria, on both flows | 1 | 1 | 1 |
-| **Total** | **10 days** | **8 days** | **6.5 days** |
+| R1 disclaimer page and versioned URLs, appendix marked up | 0.5 | 0.5 | 0.5 |
+| R2 acceptance step on both flows, server-side enforcement | 0.5 | 0.5 | 0.5 |
+| R3 record: extra fields, version, hash, IP and user agent | 1 | 1 | 0.5 |
+| R3.3 and R3.4 admin list, authentication, CSV export | 2.5 | 0.25 | 0 |
+| R4 confirmation email: provider, template, domain verification | 1 | 1 | 1 |
+| R5 version control mechanics | 0.25 | 0.25 | 0.25 |
+| R6 privacy notice wording, region decision recorded | 0.25 | 0.25 | 0.25 |
+| Testing against the nine criteria at section 7, on both flows | 0.5 | 0.5 | 0.5 |
+| **Total** | **6.5 days** | **4.25 days** | **3.5 days** |
 
-Rough timescale, assuming this runs alongside the outstanding website items rather than instead of them: **about two and a half weeks for Option A, two weeks for B, a week and a half for C.** If it runs as the only piece of work, roughly half that.
+Where the time actually goes under Option C: about a day of it is the confirmation email, because a provider has to be chosen, the sending domain verified with DNS records, and deliverability tested properly, since an email that lands in spam fails R4 as surely as one that never sends. The disclaimer page and the acceptance step together are under a day, because the text is supplied and the checkout already validates server-side. The record itself is close to free, because it is extra fields on a post that already happens.
 
-Ongoing cost differs by option. A and B add a hosted database, C does not. All three add a transactional email provider for R4. Expect under £25 a month for A or B, under £15 for C, with exact figures once R6.2 is settled.
+**Rough timescale for Option C: about a week elapsed**, allowing for DNS propagation on the email domain and for the work sitting alongside the outstanding website items rather than replacing them. As a single focused piece it is three or four days.
+
+Ongoing cost under Option C is a transactional email provider, which is free or close to it at this volume. Options A and B add a hosted database on top.
+
+One thing outside our control: version 1.0 cannot publish while the liability cap and the PI limit are still blank, so the date those arrive is the real constraint on going live, not the build.
 
 ## What we need before starting
 
 1. The two blank figures, the liability cap and the PI limit. Everything else in the appendix is final and usable as supplied.
 2. An answer to R6.2, because it decides the rest: must the acceptance record be stored in the UK or EEA, or is the United States acceptable with standard contractual clauses and a data processing agreement on file? If it must stay in the UK or EEA, Option C is out and the choice is A or B.
-3. Confirmation that a fifteen-year retention period is a settled decision rather than an opening position, since it shapes the export and backup design.
+3. Agreement on who owns the periodic export, since under Option C that routine is what actually delivers the fifteen years rather than anything on the site.
 
 ## One thing worth raising
 
