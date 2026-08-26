@@ -7,7 +7,7 @@ import { Button } from '../components/ui/Button';
 import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from '../components/animations/Reveal';
 import { TrustpilotBadge } from '../components/ui/TrustpilotBadge';
-import { pruneEmpty } from '../lib/tina';
+import { pruneEmpty, normalizeImage } from '../lib/tina';
 
 /** A metric card, plus the CMS field ids for its own three fields. */
 export interface HeroMetric {
@@ -26,6 +26,7 @@ interface HeroCopy {
   reassurance: string;
   /** Not rendered as text. Describes the poster still for screen readers. */
   posterAlt: string;
+  posterImage: string;
 }
 
 interface HeroProps {
@@ -47,6 +48,7 @@ const HERO_FALLBACK: HeroCopy = {
   secondaryCtaLabel: 'See How Feasibility Works',
   reassurance: 'No obligation. Response within one working day.',
   posterAlt: 'Thistle conversion and retrofit projects across the UK',
+  posterImage: '/images/site/hero-showreel-v5-poster.jpg',
 };
 
 const METRICS_FALLBACK: HeroMetric[] = [
@@ -83,15 +85,19 @@ export const Hero: React.FC<HeroProps> = ({ copy, metrics, tina }) => {
           Vimeo's background mode is muted and inline, which is what iOS
           requires to autoplay; if a device still refuses, the poster below is
           already painted and stays put.
-          The film id and the poster path are configuration rather than copy, so
-          they stay here. Only the poster's alt text is a CMS field, and it
-          carries no marker because there is nothing on the page to click. */}
+          The Vimeo id stays in code — it is configuration, and the film is
+          hosted and encoded there. The still IS editable: it is the whole hero
+          on phones and before the film loads, so it is a real design choice
+          rather than plumbing. The marker sits on the image itself; the
+          readability overlays below are pointer-transparent so they do not
+          swallow the click. */}
       <Image
-        src="/images/site/hero-showreel-v5-poster.jpg"
+        src={normalizeImage(c.posterImage, HERO_FALLBACK.posterImage)}
         alt={c.posterAlt}
         fill
         priority
         className="object-cover"
+        data-tina-field={tina?.posterImage}
       />
       <div
         className="absolute inset-0 overflow-hidden hidden motion-safe:block pointer-events-none"
@@ -107,7 +113,7 @@ export const Hero: React.FC<HeroProps> = ({ copy, metrics, tina }) => {
       </div>
 
       {/* Readability overlays: heavier on the left where the copy sits, plus a bottom wash for the stat band */}
-      <div className="absolute inset-0 bg-gradient-to-r from-thistle-black/85 via-thistle-black/55 to-thistle-black/25" />
+      <div className="absolute inset-0 bg-gradient-to-r from-thistle-black/85 via-thistle-black/55 to-thistle-black/25 pointer-events-none" />
       <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-thistle-black/75 to-transparent" />
 
       {/* Copy block */}

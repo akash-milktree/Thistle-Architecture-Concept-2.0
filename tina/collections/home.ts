@@ -33,7 +33,7 @@ export const homeCollection: Collection = {
       name: 'hero',
       label: 'Hero',
       description:
-        'The full-height opening section, over the background film. The film itself and the still image behind it are set in code — only the words are editable here.',
+        'The full-height opening section. The background film is set in code (it is hosted on Vimeo); the still image behind it, which is what shows on phones and before the film loads, is editable below.',
       fields: [
         {
           type: 'string',
@@ -67,6 +67,13 @@ export const homeCollection: Collection = {
           name: 'reassurance',
           label: 'Reassurance line',
           description: 'The small print under the buttons.',
+        },
+        {
+          type: 'image',
+          name: 'posterImage',
+          label: 'Background image',
+          description:
+            'The still behind the hero. It is what visitors see on phones, and before the film loads on desktop, so it should read well on its own. A wide landscape photograph works best — it is cropped to fill the screen.',
         },
         {
           type: 'string',

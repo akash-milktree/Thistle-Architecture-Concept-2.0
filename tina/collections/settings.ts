@@ -67,6 +67,20 @@ export const settingsCollection: Collection = {
         { type: 'string', name: 'body', label: 'Supporting paragraph', ui: { component: 'textarea' } },
         { type: 'string', name: 'buttonLabel', label: 'Button label' },
         { type: 'string', name: 'reassurance', label: 'Reassurance line', description: 'The small print under the button.' },
+        {
+          type: 'image',
+          name: 'backgroundImage',
+          label: 'Background image',
+          description:
+            'The photograph behind this band. It sits under a dark wash so the white text stays readable, so a busy or very pale image still works. This band ends every page on the site, so it is the most-seen image here.',
+        },
+        {
+          type: 'string',
+          name: 'backgroundAlt',
+          label: 'Background image description',
+          description:
+            'Describes the photograph for screen readers and search engines. Not shown on the page.',
+        },
       ],
     },
 

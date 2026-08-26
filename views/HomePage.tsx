@@ -97,6 +97,7 @@ export const HomePage: React.FC<HomePageProps> = ({ page }) => {
                 secondaryCtaLabel: str(hero.secondaryCtaLabel),
                 reassurance: str(hero.reassurance),
                 posterAlt: str(hero.posterAlt),
+                posterImage: str(hero.posterImage),
               }
             : undefined
         }
@@ -108,6 +109,7 @@ export const HomePage: React.FC<HomePageProps> = ({ page }) => {
           primaryCtaLabel: f(hero, 'primaryCtaLabel'),
           secondaryCtaLabel: f(hero, 'secondaryCtaLabel'),
           reassurance: f(hero, 'reassurance'),
+          posterImage: f(hero, 'posterImage'),
         }}
       />
       <DeveloperLogos

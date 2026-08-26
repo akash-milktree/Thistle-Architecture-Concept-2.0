@@ -9,7 +9,7 @@ import { Reveal } from '../components/animations/Reveal';
 import { useRouter } from 'next/navigation';
 import { ArrowUpRight } from 'lucide-react';
 import { TrustpilotBadge } from '../components/ui/TrustpilotBadge';
-import { pruneEmpty, telHref } from '../lib/tina';
+import { pruneEmpty, telHref, normalizeImage } from '../lib/tina';
 
 const productLinks = [
   { label: "Feasibility Package", to: "/feasibility-package" },
@@ -42,6 +42,8 @@ interface FooterCta {
   body: string;
   buttonLabel: string;
   reassurance: string;
+  backgroundImage: string;
+  backgroundAlt: string;
 }
 
 interface FooterDetails {
@@ -73,6 +75,8 @@ const CTA_FALLBACK: FooterCta = {
   body: "Understand your property's design potential, planning position and principal risks before committing further time or money.",
   buttonLabel: 'Get Your Fixed Fee',
   reassurance: 'No obligation. Response within one working day.',
+  backgroundImage: '/images/projects/bereweeke/complete-rear.jpg',
+  backgroundAlt: 'The completed rear extension at Bereweeke Avenue, in brick with steel windows',
 };
 
 const DETAILS_FALLBACK: FooterDetails = {
@@ -105,13 +109,18 @@ export const Footer: React.FC<FooterProps> = ({ cta, details, tina }) => {
             under a 75% black overlay, so object-cover threw most of the height
             away. It is now cropped to the part that was actually visible. */}
         <Image
-          src="/images/projects/bereweeke/complete-rear.jpg"
-          alt="The completed rear extension at Bereweeke Avenue, in brick with steel windows"
+          src={normalizeImage(c.backgroundImage, CTA_FALLBACK.backgroundImage)}
+          alt={c.backgroundAlt}
           fill
           sizes="100vw"
           className="object-cover"
+          // Marked so the band's background can be replaced by clicking it.
+          // The overlay below sits on top and would otherwise swallow the
+          // click, so the marker goes on this wrapper's image element and the
+          // overlay is left pointer-transparent.
+          data-tina-field={tina?.cta?.backgroundImage}
         />
-        <div className="absolute inset-0 bg-thistle-black/75" />
+        <div className="absolute inset-0 bg-thistle-black/75 pointer-events-none" />
         <div className="relative z-10 max-w-[1360px] mx-auto text-center">
           <Reveal>
             <p

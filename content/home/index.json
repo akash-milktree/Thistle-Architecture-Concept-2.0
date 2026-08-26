@@ -23,22 +23,56 @@
         "label": "Faster than traditional routes",
         "detail": "5 days vs 2 to 6 weeks"
       }
-    ]
+    ],
+    "posterImage": "/images/site/hero-showreel-v5-poster.jpg"
   },
   "logos": {
     "label": "Trusted by developers across the UK",
     "items": [
-      { "key": "poppadoms", "name": "Property & Poppadoms" },
-      { "key": "academy", "name": "HMO Academy" },
-      { "key": "brentor-group", "name": "Brentor Group" },
-      { "key": "frame-4", "name": "Frame 4" },
-      { "key": "dnb-homes", "name": "DNB Homes" },
-      { "key": "goldgate", "name": "Goldgate Properties" },
-      { "key": "freedom-homes", "name": "Freedom Homes" },
-      { "key": "ajito", "name": "Ajito Property Group" },
-      { "key": "zero-in", "name": "Zero In Developments" },
-      { "key": "highfield", "name": "Highfield Professional Solutions" },
-      { "key": "black-flamingo", "name": "Black Flamingo Homes" }
+      {
+        "key": "poppadoms",
+        "name": "Property & Poppadoms"
+      },
+      {
+        "key": "academy",
+        "name": "HMO Academy"
+      },
+      {
+        "key": "brentor-group",
+        "name": "Brentor Group"
+      },
+      {
+        "key": "frame-4",
+        "name": "Frame 4"
+      },
+      {
+        "key": "dnb-homes",
+        "name": "DNB Homes"
+      },
+      {
+        "key": "goldgate",
+        "name": "Goldgate Properties"
+      },
+      {
+        "key": "freedom-homes",
+        "name": "Freedom Homes"
+      },
+      {
+        "key": "ajito",
+        "name": "Ajito Property Group"
+      },
+      {
+        "key": "zero-in",
+        "name": "Zero In Developments"
+      },
+      {
+        "key": "highfield",
+        "name": "Highfield Professional Solutions"
+      },
+      {
+        "key": "black-flamingo",
+        "name": "Black Flamingo Homes"
+      }
     ]
   },
   "projects": {
@@ -46,9 +80,18 @@
     "heading": "Buildings We Have Tested\nAnd Built.",
     "buttonLabel": "View All Our Work",
     "stageLines": [
-      { "slug": "beauchamp-house", "line": "Office → 4 Flats / On Site" },
-      { "slug": "bath-street-cheddar", "line": "Feasibility → Go Recommendation" },
-      { "slug": "beech-house-road-croydon", "line": "Feasibility → Go Recommendation" }
+      {
+        "slug": "beauchamp-house",
+        "line": "Office → 4 Flats / On Site"
+      },
+      {
+        "slug": "bath-street-cheddar",
+        "line": "Feasibility → Go Recommendation"
+      },
+      {
+        "slug": "beech-house-road-croydon",
+        "line": "Feasibility → Go Recommendation"
+      }
     ]
   },
   "process": {

@@ -54,6 +54,8 @@ export const PageShell: React.FC<{ children: React.ReactNode; settings?: TinaQue
                   body: str(s.closingCta?.body),
                   buttonLabel: str(s.closingCta?.buttonLabel),
                   reassurance: str(s.closingCta?.reassurance),
+                  backgroundImage: str(s.closingCta?.backgroundImage),
+                  backgroundAlt: str(s.closingCta?.backgroundAlt),
                 }
               : undefined
           }
@@ -79,6 +81,7 @@ export const PageShell: React.FC<{ children: React.ReactNode; settings?: TinaQue
               body: f(s?.closingCta, 'body'),
               buttonLabel: f(s?.closingCta, 'buttonLabel'),
               reassurance: f(s?.closingCta, 'reassurance'),
+              backgroundImage: f(s?.closingCta, 'backgroundImage'),
             },
             details: {
               blurb: f(s?.footer, 'blurb'),
