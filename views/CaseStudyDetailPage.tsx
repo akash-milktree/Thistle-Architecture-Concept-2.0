@@ -125,7 +125,11 @@ export const CaseStudyDetailPage: React.FC = () => {
                 </div>
               </Reveal>
               <Reveal delay={0.05}>
-                <h1 className="text-fluid-h1 font-medium tracking-tight leading-[1.05] text-thistle-black mb-fl-3">
+                {/* break-words + hyphens: --font-h1 bottoms out at 50.88px, and
+                    a long single word in a title ("Reconfiguration") is wider
+                    than a 320px screen, which pushed the whole page sideways.
+                    Both only engage when a word genuinely cannot fit. */}
+                <h1 className="text-fluid-h1 font-medium tracking-tight leading-[1.05] text-thistle-black mb-fl-3 break-words hyphens-auto">
                   {caseStudy.title}
                 </h1>
               </Reveal>
@@ -310,7 +314,7 @@ export const CaseStudyDetailPage: React.FC = () => {
                 <h2 className="text-fluid-h4 font-medium tracking-tight text-thistle-black mb-fl-6">What The Client Received</h2>
               </Reveal>
               <Reveal>
-                <DocumentCards documents={caseStudy.feasibility.documents} guidance={caseStudy.feasibility.guidance} />
+                <DocumentCards guidance={caseStudy.feasibility.guidance} />
               </Reveal>
             </div>
           </section>

@@ -55,6 +55,9 @@ const SOURCE_LABELS: Record<string, string> = {
   // The contact page rides this route too, so a general enquiry lands in the
   // same inbox without needing a third form on the Formspree project.
   'contact-form': 'Contact form',
+  // Asked for from a feasibility study page. The real reports are not published,
+  // so this one always needs a person to send a redacted example back.
+  'feasibility-documents': 'Feasibility documents requested, send redacted example',
 };
 
 export async function POST(request: Request) {
