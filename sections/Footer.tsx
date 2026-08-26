@@ -108,12 +108,18 @@ export const Footer: React.FC = () => {
                 <a href="mailto:hello@thistlearchitecture.co.uk" className="inline-flex items-center min-h-[32px] hover:text-thistle-green transition-colors w-fit">
                   hello@thistlearchitecture.co.uk
                 </a>
-                {/* Real number and registered address, taken from the practice's
-                    own site before the domain moved off Wix. */}
+                {/* One number for Thistle and HMO Designers, per Ed on the
+                    August call: "anyone coming from designers, they're just
+                    getting in touch with Thistle now." */}
                 <a href="tel:+448081755405" className="inline-flex items-center min-h-[32px] hover:text-thistle-green transition-colors w-fit">
                   0808 175 5405
                 </a>
-                <span>Itchen Court, Eastgate Street, Winchester, SO23 8RE</span>
+                {/* Ed's current address, supplied 2026-08-26. It replaced Itchen
+                    Court, Eastgate Street, which came off the practice's Wix
+                    site and was out of date. His Google Business Profile still
+                    shows the older Portsmouth address, so the two disagree until
+                    he updates it. */}
+                <span>The Pump House, Garnier Road, Winchester, SO23 9QG</span>
                 <span className="text-white/50">Mon to Fri, 9am to 6pm GMT</span>
               </div>
             </div>

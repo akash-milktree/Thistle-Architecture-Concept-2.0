@@ -90,3 +90,11 @@ The August studio shoot arrived and is live. Real photographs of Ed, Kaan, Jan, 
 The outstanding-items pack was reissued as `Thistle-website-outstanding-items-for-Ed-2026-08-26`. Fifty-eight items, eleven blockers, down from sixty and twelve.
 
 **Trustpilot changed from a decision into an ask.** Rather than asking Ed to choose between paying £119 a month and keeping the hand-built badge, the pack now asks for his Trustpilot login. Their pricing page says the free plan includes one widget while our testing had all eleven widget types refused, and only an inside view of the account settles which is true. It costs nothing to check and may turn out to need no spend at all. The correction about what he was told on the call still runs on the last page, so he sees it before deciding anything.
+
+## Answers received 26 August
+
+- **Office address**: The Pump House, Garnier Road, Winchester SO23 9QG. Live in the footer of every page, replacing Itchen Court. His Google Business Profile still shows the older Portsmouth address, so those two still disagree until he updates it.
+- **Jodi's email**: jodi@thistlearchitecture.co.uk. Now shown on her Expert Session card, both before and after the form is sent. She was already a direct Formspree recipient on every form, so the earlier worry that briefs for her were landing only in a shared inbox was wrong.
+- **Stripe**: already configured and working. Verified against the live site rather than assumed: `POST /api/checkout` returns a real `cs_live_` session at £49.99. The keys are set in Vercel's production environment, which is why they are not visible in `.env.local`.
+
+Pack reissued at 55 items and 8 blockers, down from 58 and 11.

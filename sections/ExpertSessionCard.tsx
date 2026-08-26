@@ -57,16 +57,24 @@ export const ExpertSessionCard: React.FC = () => {
         </div>
 
         {status === 'done' ? (
-          <p className="text-fluid-sm text-thistle-black/70 leading-relaxed">
-            Thanks. Jodi will be in touch to find a time, usually within one working day.
-          </p>
+          <>
+            <p className="text-fluid-sm text-thistle-black/70 leading-relaxed mb-fl-3">
+              Thanks. Jodi will be in touch to find a time, usually within one working day.
+            </p>
+            <p className="text-fluid-sm text-thistle-black/60 leading-relaxed">
+              If it is urgent, reach her directly at{' '}
+              <a href="mailto:jodi@thistlearchitecture.co.uk" className="text-thistle-black underline underline-offset-2 hover:text-thistle-green transition-colors">
+                jodi@thistlearchitecture.co.uk
+              </a>.
+            </p>
+          </>
         ) : (
           <>
             <p className="text-fluid-sm text-thistle-black/70 leading-relaxed mb-fl-4">
               Not sure which route fits your project? A free 15-minute call with Jodi to talk through the
               opportunity and point you at the right feasibility.
             </p>
-            <form onSubmit={submit} className="flex flex-col gap-fl-3 mt-auto">
+            <form onSubmit={submit} className="flex flex-col gap-fl-3">
               <div className="grid sm:grid-cols-2 gap-fl-3">
                 <input
                   className={field}
@@ -120,6 +128,17 @@ export const ExpertSessionCard: React.FC = () => {
               )}
             </form>
           </>
+        )}
+        {status !== 'done' && (
+          /* A named address that reaches a person, which matters while nobody
+             has confirmed hello@ is monitored. Her Calendly still does not
+             exist, so the form above remains the booking route. */
+          <p className="text-xs text-thistle-black/45 mt-fl-4">
+            Prefer email?{' '}
+            <a href="mailto:jodi@thistlearchitecture.co.uk" className="underline underline-offset-2 hover:text-thistle-black transition-colors">
+              jodi@thistlearchitecture.co.uk
+            </a>
+          </p>
         )}
       </div>
     </Reveal>
