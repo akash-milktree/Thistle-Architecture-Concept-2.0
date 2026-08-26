@@ -58,6 +58,16 @@ export const pruneEmpty = <T extends object>(o: T | undefined | null): Partial<T
 };
 
 /**
+ * The top-level folders under public/images that hold the curated, committed
+ * image set — everything that predates the CMS. They are developer-managed and
+ * deliberately outside the media store, so the editor cannot overwrite a
+ * hand-optimised drawing.
+ *
+ * Keep this in step with public/images/ if a new folder is added there.
+ */
+const CURATED_IMAGE_DIRS = new Set(['blog', 'deliverables', 'projects', 'site', 'team', 'team-review']);
+
+/**
  * Normalise an image value coming out of Tina back to a repo-relative path.
  *
  * Media is repo-based (tina/config.ts), so what is committed is already a
@@ -83,13 +93,25 @@ export function normalizeImage(v: unknown, fallback = ''): string {
 
   if (/^https?:\/\/assets\.tina\.io\//i.test(s)) {
     // Two CDN shapes exist: a current '<clientId>/<path>' and an older
-    // '…/__file/<path>'. Both reduce to the path under mediaRoot.
+    // '…/__file/<path>'. Both reduce to a path.
     const viaFile = s.match(/\/__file\/(.+)$/);
     const rest = (viaFile ? viaFile[1] : s.replace(/^https?:\/\/assets\.tina\.io\/[^/]+\//i, ''))
       .replace(/^\/+/, '')
-      .replace(/^images\/uploads\//, '')
       .replace(/^images\//, '');
-    return `/images/uploads/${rest}`;
+
+    // Where that path maps back to depends on which of two populations the
+    // file belongs to, and getting this wrong 404s silently in production
+    // (it did: /images/projects/... came back as /images/uploads/projects/...).
+    //
+    // The curated set was committed long before the CMS existed and lives
+    // directly under /images/<dir>/. It is not in the media store, so a CDN
+    // URL for one carries its real subdirectory and must keep it.
+    //
+    // Anything an editor uploads goes to mediaRoot (images/uploads), and its
+    // CDN path is relative to that root, so it arrives with no leading
+    // directory and needs the upload root put back.
+    const head = rest.split('/')[0];
+    return CURATED_IMAGE_DIRS.has(head) ? `/images/${rest}` : `/images/uploads/${rest}`;
   }
 
   if (s.startsWith('http://') || s.startsWith('https://')) return s;
