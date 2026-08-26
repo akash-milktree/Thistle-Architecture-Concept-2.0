@@ -29,14 +29,15 @@ interface TeamMember {
   credential?: string;
 }
 
-// Real photographs, from the studio shoot on 23 August 2026. They replaced the
-// AI-generated headshots that stood here before: those were a likeness rather
-// than a photograph, the generation had put everyone in a suit instead of what
-// they were actually wearing, and Ed objected to AI imagery on the site.
+// Real photographs from the studio shoot on 23 August 2026, using the posed
+// headshot set rather than the candid working shots: everyone faces the camera
+// against the same background, so the six cards read as one set. They replaced
+// AI-generated headshots, which were a likeness rather than a photograph and
+// had put everyone in a suit instead of what they were actually wearing.
 //
-// Beverley is the exception. She is not in the shoot, so her card uses the
-// photo she supplied, which is real but a plain snapshot rather than part of
-// the set. She should be included next time the photographer is in.
+// Beverley is the exception. Only five people were photographed, so her card
+// uses the photo she supplied. It is real but a plain snapshot rather than part
+// of the set, and she should be included next time the photographer is in.
 //
 // The old AI set is still in public/images/team-review/ with the internal
 // /team-review page, which compared the three options.
