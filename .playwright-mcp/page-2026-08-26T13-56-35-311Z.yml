@@ -1,0 +1,602 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link [ref=e6] [cursor=pointer]:
+          - /url: /
+        - button "Menu" [ref=e30] [cursor=pointer]
+    - generic [ref=e33]:
+      - paragraph [ref=e36]: Our Work
+      - heading "Completed Projects." [level=1] [ref=e39]
+      - paragraph [ref=e42]: Conversions and schemes delivered through to completion across the Thistle Group.
+    - generic [ref=e44]:
+      - generic [ref=e45]:
+        - link "Feasibility Studies" [ref=e46] [cursor=pointer]:
+          - /url: /case-studies/feasibility-studies
+        - link "Completed Projects" [ref=e47] [cursor=pointer]:
+          - /url: /case-studies/completed-projects
+      - generic [ref=e48]:
+        - link "All 23" [ref=e49] [cursor=pointer]:
+          - /url: /case-studies/completed-projects
+        - link "Commercial to Residential 3" [ref=e50] [cursor=pointer]:
+          - /url: /case-studies/completed-projects?type=commercial-to-residential
+        - link "HMO 13" [ref=e51] [cursor=pointer]:
+          - /url: /case-studies/completed-projects?type=hmo
+        - link "Co-Living & Large HMO 2" [ref=e52] [cursor=pointer]:
+          - /url: /case-studies/completed-projects?type=co-living-large-hmo
+        - link "High-End Residential 2" [ref=e53] [cursor=pointer]:
+          - /url: /case-studies/completed-projects?type=high-end-residential
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - link "1930s House, Extended And Remade High-End Residential 1930s House, Extended And Remade Winchester, Hampshire Existing 1930s detached Extensions Single and two storey Change of use None A tired 1930s detached house in Winchester, reworked with new extensions and a full fenestration change. Read case study" [ref=e59] [cursor=pointer]:
+          - /url: /case-studies/bereweeke-avenue
+          - generic [ref=e60]:
+            - generic [ref=e61]:
+              - img "1930s House, Extended And Remade" [ref=e63]
+              - generic [ref=e65]: High-End Residential
+            - generic [ref=e67]:
+              - heading "1930s House, Extended And Remade" [level=3] [ref=e68]
+              - paragraph [ref=e69]: Winchester, Hampshire
+              - generic [ref=e70]:
+                - generic [ref=e71]:
+                  - generic [ref=e72]: Existing
+                  - generic [ref=e73]: 1930s detached
+                - generic [ref=e74]:
+                  - generic [ref=e75]: Extensions
+                  - generic [ref=e76]: Single and two storey
+                - generic [ref=e77]:
+                  - generic [ref=e78]: Change of use
+                  - generic [ref=e79]: None
+              - paragraph [ref=e80]: A tired 1930s detached house in Winchester, reworked with new extensions and a full fenestration change.
+              - generic [ref=e81]: Read case study
+        - link "Commercial To Ten-Bed Co-Living Co-Living Commercial To Ten-Bed Co-Living Cosham, Portsmouth Bedrooms 10, all en suite Existing Commercial and storage Thistle role Feasibility, planning, Stage 4, interiors The end of a 1930s terrace, converted from commercial and storage space into ten en-suite co-living rooms with shared amenity on every floor. Read case study" [ref=e89] [cursor=pointer]:
+          - /url: /case-studies/highbury-buildings-cosham
+          - generic [ref=e90]:
+            - generic [ref=e91]:
+              - img "Commercial To Ten-Bed Co-Living" [ref=e93]
+              - generic [ref=e95]: Co-Living
+            - generic [ref=e97]:
+              - heading "Commercial To Ten-Bed Co-Living" [level=3] [ref=e98]
+              - paragraph [ref=e99]: Cosham, Portsmouth
+              - generic [ref=e100]:
+                - generic [ref=e101]:
+                  - generic [ref=e102]: Bedrooms
+                  - generic [ref=e103]: 10, all en suite
+                - generic [ref=e104]:
+                  - generic [ref=e105]: Existing
+                  - generic [ref=e106]: Commercial and storage
+                - generic [ref=e107]:
+                  - generic [ref=e108]: Thistle role
+                  - generic [ref=e109]: Feasibility, planning, Stage 4, interiors
+              - paragraph [ref=e110]: The end of a 1930s terrace, converted from commercial and storage space into ten en-suite co-living rooms with shared amenity on every floor.
+              - generic [ref=e111]: Read case study
+        - link "Monument House Office to Flats Monument House Winchester, Hampshire Apartments 4 Apartment sizes 46.6 to 90.4 sqm Windows Sash, reinstated A building on Winchester's Upper High Street converted into four apartments, with the modern uPVC swapped back for traditional sash windows. Read case study" [ref=e119] [cursor=pointer]:
+          - /url: /case-studies/monument-house
+          - generic [ref=e120]:
+            - generic [ref=e121]:
+              - img "Monument House" [ref=e123]
+              - generic [ref=e125]: Office to Flats
+            - generic [ref=e127]:
+              - heading "Monument House" [level=3] [ref=e128]
+              - paragraph [ref=e129]: Winchester, Hampshire
+              - generic [ref=e130]:
+                - generic [ref=e131]:
+                  - generic [ref=e132]: Apartments
+                  - generic [ref=e133]: "4"
+                - generic [ref=e134]:
+                  - generic [ref=e135]: Apartment sizes
+                  - generic [ref=e136]: 46.6 to 90.4 sqm
+                - generic [ref=e137]:
+                  - generic [ref=e138]: Windows
+                  - generic [ref=e139]: Sash, reinstated
+              - paragraph [ref=e140]: A building on Winchester's Upper High Street converted into four apartments, with the modern uPVC swapped back for traditional sash windows.
+              - generic [ref=e141]: Read case study
+        - link "Bishopstoke Road HMO Bishopstoke Road Eastleigh, Hampshire Communal Kitchen and dining Outside Walled courtyard En suites Marble tiled A house converted to an HMO in Eastleigh, built around a full-length navy kitchen that runs the depth of the plan into a rooflit dining room. Read case study" [ref=e149] [cursor=pointer]:
+          - /url: /case-studies/bishopstoke-road
+          - generic [ref=e150]:
+            - generic [ref=e151]:
+              - img "Bishopstoke Road" [ref=e153]
+              - generic [ref=e155]: HMO
+            - generic [ref=e157]:
+              - heading "Bishopstoke Road" [level=3] [ref=e158]
+              - paragraph [ref=e159]: Eastleigh, Hampshire
+              - generic [ref=e160]:
+                - generic [ref=e161]:
+                  - generic [ref=e162]: Communal
+                  - generic [ref=e163]: Kitchen and dining
+                - generic [ref=e164]:
+                  - generic [ref=e165]: Outside
+                  - generic [ref=e166]: Walled courtyard
+                - generic [ref=e167]:
+                  - generic [ref=e168]: En suites
+                  - generic [ref=e169]: Marble tiled
+              - paragraph [ref=e170]: A house converted to an HMO in Eastleigh, built around a full-length navy kitchen that runs the depth of the plan into a rooflit dining room.
+              - generic [ref=e171]: Read case study
+        - link "Derby Road HMO Derby Road South Coast, England · By HMO Designers, part of Thistle Group Bedrooms 8 Specification Ultra luxury Communal space Living and dining An eight-bedroom ultra luxury HMO on the south coast, built around a rooflit living and dining space at the back of the house. Read case study" [ref=e179] [cursor=pointer]:
+          - /url: /case-studies/derby-road
+          - generic [ref=e180]:
+            - generic [ref=e181]:
+              - img "Derby Road" [ref=e183]
+              - generic [ref=e185]: HMO
+            - generic [ref=e187]:
+              - heading "Derby Road" [level=3] [ref=e188]
+              - paragraph [ref=e189]:
+                - text: South Coast, England
+                - generic [ref=e190]: · By HMO Designers, part of Thistle Group
+              - generic [ref=e191]:
+                - generic [ref=e192]:
+                  - generic [ref=e193]: Bedrooms
+                  - generic [ref=e194]: "8"
+                - generic [ref=e195]:
+                  - generic [ref=e196]: Specification
+                  - generic [ref=e197]: Ultra luxury
+                - generic [ref=e198]:
+                  - generic [ref=e199]: Communal space
+                  - generic [ref=e200]: Living and dining
+              - paragraph [ref=e201]: An eight-bedroom ultra luxury HMO on the south coast, built around a rooflit living and dining space at the back of the house.
+              - generic [ref=e202]: Read case study
+        - link "Vacant Corner Plot To New Home New Build Vacant Corner Plot To New Home Hackney, London Plot Previously vacant Facade Green glazed brick Thistle role Feasibility to construction A new home on a vacant corner plot, bookending an existing Hackney terrace behind a curved wall of green glazed brick. Read case study" [ref=e210] [cursor=pointer]:
+          - /url: /case-studies/corner-house-hackney
+          - generic [ref=e211]:
+            - generic [ref=e212]:
+              - img "Vacant Corner Plot To New Home" [ref=e214]
+              - generic [ref=e216]: New Build
+            - generic [ref=e218]:
+              - heading "Vacant Corner Plot To New Home" [level=3] [ref=e219]
+              - paragraph [ref=e220]: Hackney, London
+              - generic [ref=e221]:
+                - generic [ref=e222]:
+                  - generic [ref=e223]: Plot
+                  - generic [ref=e224]: Previously vacant
+                - generic [ref=e225]:
+                  - generic [ref=e226]: Facade
+                  - generic [ref=e227]: Green glazed brick
+                - generic [ref=e228]:
+                  - generic [ref=e229]: Thistle role
+                  - generic [ref=e230]: Feasibility to construction
+              - paragraph [ref=e231]: A new home on a vacant corner plot, bookending an existing Hackney terrace behind a curved wall of green glazed brick.
+              - generic [ref=e232]: Read case study
+        - link "New Home In The New Forest New Build New Home In The New Forest Lymington, Hampshire Setting New Forest Material Terracotta clay tile Thistle role Feasibility to construction A new family home on a private plot inside the New Forest, tiled in terracotta across both roof and walls to sit inside a protected landscape. Read case study" [ref=e240] [cursor=pointer]:
+          - /url: /case-studies/forest-house-lymington
+          - generic [ref=e241]:
+            - generic [ref=e242]:
+              - img "New Home In The New Forest" [ref=e244]
+              - generic [ref=e246]: New Build
+            - generic [ref=e248]:
+              - heading "New Home In The New Forest" [level=3] [ref=e249]
+              - paragraph [ref=e250]: Lymington, Hampshire
+              - generic [ref=e251]:
+                - generic [ref=e252]:
+                  - generic [ref=e253]: Setting
+                  - generic [ref=e254]: New Forest
+                - generic [ref=e255]:
+                  - generic [ref=e256]: Material
+                  - generic [ref=e257]: Terracotta clay tile
+                - generic [ref=e258]:
+                  - generic [ref=e259]: Thistle role
+                  - generic [ref=e260]: Feasibility to construction
+              - paragraph [ref=e261]: A new family home on a private plot inside the New Forest, tiled in terracotta across both roof and walls to sit inside a protected landscape.
+              - generic [ref=e262]: Read case study
+        - link "Class Q Barn To Dwelling Class Q Class Q Barn To Dwelling Somerset Route Class Q prior approval Approved 2024 Thistle role Approval to construction An agricultural barn behind a working farmhouse, converted to a house under Class Q and delivered through to completion. Read case study" [ref=e270] [cursor=pointer]:
+          - /url: /case-studies/peterhayes-farm
+          - generic [ref=e271]:
+            - generic [ref=e272]:
+              - img "Class Q Barn To Dwelling" [ref=e274]
+              - generic [ref=e276]: Class Q
+            - generic [ref=e278]:
+              - heading "Class Q Barn To Dwelling" [level=3] [ref=e279]
+              - paragraph [ref=e280]: Somerset
+              - generic [ref=e281]:
+                - generic [ref=e282]:
+                  - generic [ref=e283]: Route
+                  - generic [ref=e284]: Class Q prior approval
+                - generic [ref=e285]:
+                  - generic [ref=e286]: Approved
+                  - generic [ref=e287]: "2024"
+                - generic [ref=e288]:
+                  - generic [ref=e289]: Thistle role
+                  - generic [ref=e290]: Approval to construction
+              - paragraph [ref=e291]: An agricultural barn behind a working farmhouse, converted to a house under Class Q and delivered through to completion.
+              - generic [ref=e292]: Read case study
+        - link "One House To Four Homes Residential Development One House To Four Homes Hampshire Homes Four Strategy Phased planning Outcome Full permission A single large plot assessed for capacity, then masterplanned and consented as four new homes through a phased planning strategy. Read case study" [ref=e300] [cursor=pointer]:
+          - /url: /case-studies/rotherfield-homes
+          - generic [ref=e301]:
+            - generic [ref=e302]:
+              - img "One House To Four Homes" [ref=e304]
+              - generic [ref=e306]: Residential Development
+            - generic [ref=e308]:
+              - heading "One House To Four Homes" [level=3] [ref=e309]
+              - paragraph [ref=e310]: Hampshire
+              - generic [ref=e311]:
+                - generic [ref=e312]:
+                  - generic [ref=e313]: Homes
+                  - generic [ref=e314]: Four
+                - generic [ref=e315]:
+                  - generic [ref=e316]: Strategy
+                  - generic [ref=e317]: Phased planning
+                - generic [ref=e318]:
+                  - generic [ref=e319]: Outcome
+                  - generic [ref=e320]: Full permission
+              - paragraph [ref=e321]: A single large plot assessed for capacity, then masterplanned and consented as four new homes through a phased planning strategy.
+              - generic [ref=e322]: Read case study
+        - link "An Accessible Family Home Residential An Accessible Family Home South Downs Brief Level access throughout Setting South Downs Constraint Protected dark skies A family home reconfigured and extended around a daughter's mobility needs, in a landscape where even the external lighting was a planning matter. Read case study" [ref=e330] [cursor=pointer]:
+          - /url: /case-studies/school-house-south-downs
+          - generic [ref=e331]:
+            - generic [ref=e332]:
+              - img "An Accessible Family Home" [ref=e334]
+              - generic [ref=e336]: Residential
+            - generic [ref=e338]:
+              - heading "An Accessible Family Home" [level=3] [ref=e339]
+              - paragraph [ref=e340]: South Downs
+              - generic [ref=e341]:
+                - generic [ref=e342]:
+                  - generic [ref=e343]: Brief
+                  - generic [ref=e344]: Level access throughout
+                - generic [ref=e345]:
+                  - generic [ref=e346]: Setting
+                  - generic [ref=e347]: South Downs
+                - generic [ref=e348]:
+                  - generic [ref=e349]: Constraint
+                  - generic [ref=e350]: Protected dark skies
+              - paragraph [ref=e351]: A family home reconfigured and extended around a daughter's mobility needs, in a landscape where even the external lighting was a planning matter.
+              - generic [ref=e352]: Read case study
+        - link "Beauchamp House Office to Flats Beauchamp House Royal Leamington Spa, Warwickshire Flats 4 Flat sizes 73.4 to 80.3 sqm Status On site A Regency building on Kenilworth Road being converted from offices into four flats, from the basement up into the roof. Read case study" [ref=e360] [cursor=pointer]:
+          - /url: /case-studies/beauchamp-house
+          - generic [ref=e361]:
+            - generic [ref=e362]:
+              - img "Beauchamp House" [ref=e364]
+              - generic [ref=e366]: Office to Flats
+            - generic [ref=e368]:
+              - heading "Beauchamp House" [level=3] [ref=e369]
+              - paragraph [ref=e370]: Royal Leamington Spa, Warwickshire
+              - generic [ref=e371]:
+                - generic [ref=e372]:
+                  - generic [ref=e373]: Flats
+                  - generic [ref=e374]: "4"
+                - generic [ref=e375]:
+                  - generic [ref=e376]: Flat sizes
+                  - generic [ref=e377]: 73.4 to 80.3 sqm
+                - generic [ref=e378]:
+                  - generic [ref=e379]: Status
+                  - generic [ref=e380]: On site
+              - paragraph [ref=e381]: A Regency building on Kenilworth Road being converted from offices into four flats, from the basement up into the roof.
+              - generic [ref=e382]: Read case study
+        - link "Methodist Church To Offices Commercial Conversion Methodist Church To Offices Leigh, Greater Manchester Offices 10 Conference rooms 2 Office sizes 12.7 to 19.9 sqm A Gothic Methodist church on Wigan Road, converted into offices without losing the stained glass or the vaulted roof. Read case study" [ref=e390] [cursor=pointer]:
+          - /url: /case-studies/wigan-church
+          - generic [ref=e391]:
+            - generic [ref=e392]:
+              - img "Methodist Church To Offices" [ref=e394]
+              - generic [ref=e396]: Commercial Conversion
+            - generic [ref=e398]:
+              - heading "Methodist Church To Offices" [level=3] [ref=e399]
+              - paragraph [ref=e400]: Leigh, Greater Manchester
+              - generic [ref=e401]:
+                - generic [ref=e402]:
+                  - generic [ref=e403]: Offices
+                  - generic [ref=e404]: "10"
+                - generic [ref=e405]:
+                  - generic [ref=e406]: Conference rooms
+                  - generic [ref=e407]: "2"
+                - generic [ref=e408]:
+                  - generic [ref=e409]: Office sizes
+                  - generic [ref=e410]: 12.7 to 19.9 sqm
+              - paragraph [ref=e411]: A Gothic Methodist church on Wigan Road, converted into offices without losing the stained glass or the vaulted roof.
+              - generic [ref=e412]: Read case study
+        - link "162 Millbrook Road HMO 162 Millbrook Road Southampton, Hampshire Bedrooms, all en suite 8 Room sizes 9 to 17 sqm Kitchens 2 A Southampton house taken to an eight-bedroom large sui generis HMO, every room en suite, alongside its neighbour at 160. Read case study" [ref=e420] [cursor=pointer]:
+          - /url: /case-studies/162-millbrook
+          - generic [ref=e421]:
+            - generic [ref=e422]:
+              - img "162 Millbrook Road" [ref=e424]
+              - generic [ref=e426]: HMO
+            - generic [ref=e428]:
+              - heading "162 Millbrook Road" [level=3] [ref=e429]
+              - paragraph [ref=e430]: Southampton, Hampshire
+              - generic [ref=e431]:
+                - generic [ref=e432]:
+                  - generic [ref=e433]: Bedrooms, all en suite
+                  - generic [ref=e434]: "8"
+                - generic [ref=e435]:
+                  - generic [ref=e436]: Room sizes
+                  - generic [ref=e437]: 9 to 17 sqm
+                - generic [ref=e438]:
+                  - generic [ref=e439]: Kitchens
+                  - generic [ref=e440]: "2"
+              - paragraph [ref=e441]: A Southampton house taken to an eight-bedroom large sui generis HMO, every room en suite, alongside its neighbour at 160.
+              - generic [ref=e442]: Read case study
+        - 'link "Eastleigh HMO HMO Eastleigh HMO Eastleigh, Hampshire Roof Converted, rooflit En suites Throughout Communal Galley kitchen An HMO conversion in Eastleigh finished in a warmer register than most: brass bedsteads, patterned rugs and sage green en suites, with the roof taken as living space. Read case study" [ref=e450] [cursor=pointer]':
+          - /url: /case-studies/eastleigh-hmo
+          - generic [ref=e451]:
+            - generic [ref=e452]:
+              - img "Eastleigh HMO" [ref=e454]
+              - generic [ref=e456]: HMO
+            - generic [ref=e458]:
+              - heading "Eastleigh HMO" [level=3] [ref=e459]
+              - paragraph [ref=e460]: Eastleigh, Hampshire
+              - generic [ref=e461]:
+                - generic [ref=e462]:
+                  - generic [ref=e463]: Roof
+                  - generic [ref=e464]: Converted, rooflit
+                - generic [ref=e465]:
+                  - generic [ref=e466]: En suites
+                  - generic [ref=e467]: Throughout
+                - generic [ref=e468]:
+                  - generic [ref=e469]: Communal
+                  - generic [ref=e470]: Galley kitchen
+              - paragraph [ref=e471]: "An HMO conversion in Eastleigh finished in a warmer register than most: brass bedsteads, patterned rugs and sage green en suites, with the roof taken as living space."
+              - generic [ref=e472]: Read case study
+        - link "81 The Crescent HMO 81 The Crescent England En suites Every room In room Desk and tea station Joinery Oak and cane An en suite HMO finished to a high specification, with a desk and a tea station in every room and oak joinery running throughout. Read case study" [ref=e480] [cursor=pointer]:
+          - /url: /case-studies/81-the-crescent
+          - generic [ref=e481]:
+            - generic [ref=e482]:
+              - img "81 The Crescent" [ref=e484]
+              - generic [ref=e486]: HMO
+            - generic [ref=e488]:
+              - heading "81 The Crescent" [level=3] [ref=e489]
+              - paragraph [ref=e490]: England
+              - generic [ref=e491]:
+                - generic [ref=e492]:
+                  - generic [ref=e493]: En suites
+                  - generic [ref=e494]: Every room
+                - generic [ref=e495]:
+                  - generic [ref=e496]: In room
+                  - generic [ref=e497]: Desk and tea station
+                - generic [ref=e498]:
+                  - generic [ref=e499]: Joinery
+                  - generic [ref=e500]: Oak and cane
+              - paragraph [ref=e501]: An en suite HMO finished to a high specification, with a desk and a tea station in every room and oak joinery running throughout.
+              - generic [ref=e502]: Read case study
+        - link "George Street HMO George Street Eastleigh, Hampshire · By HMO Designers, part of Thistle Group Bedrooms 7 Scope Design to construction Market Professional lets A seven-bedroom luxury HMO for professionals in the centre of Eastleigh, taken from first design through to finished build. Read case study" [ref=e510] [cursor=pointer]:
+          - /url: /case-studies/george-street-eastleigh
+          - generic [ref=e511]:
+            - generic [ref=e512]:
+              - img "George Street" [ref=e514]
+              - generic [ref=e516]: HMO
+            - generic [ref=e518]:
+              - heading "George Street" [level=3] [ref=e519]
+              - paragraph [ref=e520]:
+                - text: Eastleigh, Hampshire
+                - generic [ref=e521]: · By HMO Designers, part of Thistle Group
+              - generic [ref=e522]:
+                - generic [ref=e523]:
+                  - generic [ref=e524]: Bedrooms
+                  - generic [ref=e525]: "7"
+                - generic [ref=e526]:
+                  - generic [ref=e527]: Scope
+                  - generic [ref=e528]: Design to construction
+                - generic [ref=e529]:
+                  - generic [ref=e530]: Market
+                  - generic [ref=e531]: Professional lets
+              - paragraph [ref=e532]: A seven-bedroom luxury HMO for professionals in the centre of Eastleigh, taken from first design through to finished build.
+              - generic [ref=e533]: Read case study
+        - link "Queens Road HMO Queens Road South Coast, England · By HMO Designers, part of Thistle Group Bedrooms 7 Before 3 bed family house En suite Every room A three-bedroom city centre family house turned into a seven-bedroom high-end HMO, every room en suite. Read case study" [ref=e541] [cursor=pointer]:
+          - /url: /case-studies/queens-road
+          - generic [ref=e542]:
+            - generic [ref=e543]:
+              - img "Queens Road" [ref=e545]
+              - generic [ref=e547]: HMO
+            - generic [ref=e549]:
+              - heading "Queens Road" [level=3] [ref=e550]
+              - paragraph [ref=e551]:
+                - text: South Coast, England
+                - generic [ref=e552]: · By HMO Designers, part of Thistle Group
+              - generic [ref=e553]:
+                - generic [ref=e554]:
+                  - generic [ref=e555]: Bedrooms
+                  - generic [ref=e556]: "7"
+                - generic [ref=e557]:
+                  - generic [ref=e558]: Before
+                  - generic [ref=e559]: 3 bed family house
+                - generic [ref=e560]:
+                  - generic [ref=e561]: En suite
+                  - generic [ref=e562]: Every room
+              - paragraph [ref=e563]: A three-bedroom city centre family house turned into a seven-bedroom high-end HMO, every room en suite.
+              - generic [ref=e564]: Read case study
+        - link "Shadwell Road HMO Shadwell Road Portsmouth, Hampshire · By HMO Designers, part of Thistle Group Bedrooms 7 Completed 2023 Scope Feasibility to approvals A seven-bedroom HMO in Portsmouth, taken from a feasibility study of the existing property through to planning and building regulations approval. Read case study" [ref=e572] [cursor=pointer]:
+          - /url: /case-studies/shadwell-road
+          - generic [ref=e573]:
+            - generic [ref=e574]:
+              - img "Shadwell Road" [ref=e576]
+              - generic [ref=e578]: HMO
+            - generic [ref=e580]:
+              - heading "Shadwell Road" [level=3] [ref=e581]
+              - paragraph [ref=e582]:
+                - text: Portsmouth, Hampshire
+                - generic [ref=e583]: · By HMO Designers, part of Thistle Group
+              - generic [ref=e584]:
+                - generic [ref=e585]:
+                  - generic [ref=e586]: Bedrooms
+                  - generic [ref=e587]: "7"
+                - generic [ref=e588]:
+                  - generic [ref=e589]: Completed
+                  - generic [ref=e590]: "2023"
+                - generic [ref=e591]:
+                  - generic [ref=e592]: Scope
+                  - generic [ref=e593]: Feasibility to approvals
+              - paragraph [ref=e594]: A seven-bedroom HMO in Portsmouth, taken from a feasibility study of the existing property through to planning and building regulations approval.
+              - generic [ref=e595]: Read case study
+        - link "Burlington Road HMO Burlington Road Southampton, Hampshire · By HMO Designers, part of Thistle Group Bedrooms 7 Completed 2023 Specification Essential A seven-bedroom HMO in Southampton delivered to an essential specification, with en suite rooms worked into the roof under new rooflights. Read case study" [ref=e603] [cursor=pointer]:
+          - /url: /case-studies/burlington-road
+          - generic [ref=e604]:
+            - generic [ref=e605]:
+              - img "Burlington Road" [ref=e607]
+              - generic [ref=e609]: HMO
+            - generic [ref=e611]:
+              - heading "Burlington Road" [level=3] [ref=e612]
+              - paragraph [ref=e613]:
+                - text: Southampton, Hampshire
+                - generic [ref=e614]: · By HMO Designers, part of Thistle Group
+              - generic [ref=e615]:
+                - generic [ref=e616]:
+                  - generic [ref=e617]: Bedrooms
+                  - generic [ref=e618]: "7"
+                - generic [ref=e619]:
+                  - generic [ref=e620]: Completed
+                  - generic [ref=e621]: "2023"
+                - generic [ref=e622]:
+                  - generic [ref=e623]: Specification
+                  - generic [ref=e624]: Essential
+              - paragraph [ref=e625]: A seven-bedroom HMO in Southampton delivered to an essential specification, with en suite rooms worked into the roof under new rooflights.
+              - generic [ref=e626]: Read case study
+        - link "Project Prince HMO Project Prince Southend-on-Sea, Essex · By HMO Designers, part of Thistle Group Bedrooms 7 Let Individually Amenities En suite plus shared A high-end seven-bedroom HMO in Southend-on-Sea, with seven individually let en suite rooms and shared amenities. Read case study" [ref=e634] [cursor=pointer]:
+          - /url: /case-studies/project-prince
+          - generic [ref=e635]:
+            - generic [ref=e636]:
+              - img "Project Prince" [ref=e638]
+              - generic [ref=e640]: HMO
+            - generic [ref=e642]:
+              - heading "Project Prince" [level=3] [ref=e643]
+              - paragraph [ref=e644]:
+                - text: Southend-on-Sea, Essex
+                - generic [ref=e645]: · By HMO Designers, part of Thistle Group
+              - generic [ref=e646]:
+                - generic [ref=e647]:
+                  - generic [ref=e648]: Bedrooms
+                  - generic [ref=e649]: "7"
+                - generic [ref=e650]:
+                  - generic [ref=e651]: Let
+                  - generic [ref=e652]: Individually
+                - generic [ref=e653]:
+                  - generic [ref=e654]: Amenities
+                  - generic [ref=e655]: En suite plus shared
+              - paragraph [ref=e656]: A high-end seven-bedroom HMO in Southend-on-Sea, with seven individually let en suite rooms and shared amenities.
+              - generic [ref=e657]: Read case study
+        - link "Southsea Co-Living HMO Southsea Co-Living Festing Road, Southsea, Portsmouth · By HMO Designers, part of Thistle Group Bedrooms 8 Format Luxury co-living Building Victorian terrace An eight-bedroom luxury co-living conversion inside a bay-fronted Victorian terrace in Southsea. Read case study" [ref=e665] [cursor=pointer]:
+          - /url: /case-studies/southsea-co-living
+          - generic [ref=e666]:
+            - generic [ref=e667]:
+              - img "Southsea Co-Living" [ref=e669]
+              - generic [ref=e671]: HMO
+            - generic [ref=e673]:
+              - heading "Southsea Co-Living" [level=3] [ref=e674]
+              - paragraph [ref=e675]:
+                - text: Festing Road, Southsea, Portsmouth
+                - generic [ref=e676]: · By HMO Designers, part of Thistle Group
+              - generic [ref=e677]:
+                - generic [ref=e678]:
+                  - generic [ref=e679]: Bedrooms
+                  - generic [ref=e680]: "8"
+                - generic [ref=e681]:
+                  - generic [ref=e682]: Format
+                  - generic [ref=e683]: Luxury co-living
+                - generic [ref=e684]:
+                  - generic [ref=e685]: Building
+                  - generic [ref=e686]: Victorian terrace
+              - paragraph [ref=e687]: An eight-bedroom luxury co-living conversion inside a bay-fronted Victorian terrace in Southsea.
+              - generic [ref=e688]: Read case study
+        - link "Bungalow To Contemporary Family Home High-End Residential Bungalow To Contemporary Family Home Kings Worthy, Winchester Existing Bungalow Roof New gable-ended form Thistle role Feasibility to construction A bungalow on a corner plot, reworked internally and extended into a gable-ended house with vaulted ceilings over the open-plan heart. Read case study" [ref=e696] [cursor=pointer]:
+          - /url: /case-studies/boyne-rise-kings-worthy
+          - generic [ref=e697]:
+            - generic [ref=e698]:
+              - img "Bungalow To Contemporary Family Home" [ref=e700]
+              - generic [ref=e702]: High-End Residential
+            - generic [ref=e704]:
+              - heading "Bungalow To Contemporary Family Home" [level=3] [ref=e705]
+              - paragraph [ref=e706]: Kings Worthy, Winchester
+              - generic [ref=e707]:
+                - generic [ref=e708]:
+                  - generic [ref=e709]: Existing
+                  - generic [ref=e710]: Bungalow
+                - generic [ref=e711]:
+                  - generic [ref=e712]: Roof
+                  - generic [ref=e713]: New gable-ended form
+                - generic [ref=e714]:
+                  - generic [ref=e715]: Thistle role
+                  - generic [ref=e716]: Feasibility to construction
+              - paragraph [ref=e717]: A bungalow on a corner plot, reworked internally and extended into a gable-ended house with vaulted ceilings over the open-plan heart.
+              - generic [ref=e718]: Read case study
+        - link "A 22-Bed HMO, Rebuilt HMO A 22-Bed HMO, Rebuilt Croydon, South London Existing 22-bed local authority HMO Proposed Fewer, larger en-suite rooms Thistle role Stage 4 and delivery An existing 22-bedroom local authority HMO reconfigured into fewer but far larger en-suite rooms, with Thistle running the technical package and the build. Read case study" [ref=e726] [cursor=pointer]:
+          - /url: /case-studies/campbell-road-croydon
+          - generic [ref=e727]:
+            - generic [ref=e728]:
+              - img "A 22-Bed HMO, Rebuilt" [ref=e730]
+              - generic [ref=e732]: HMO
+            - generic [ref=e734]:
+              - heading "A 22-Bed HMO, Rebuilt" [level=3] [ref=e735]
+              - paragraph [ref=e736]: Croydon, South London
+              - generic [ref=e737]:
+                - generic [ref=e738]:
+                  - generic [ref=e739]: Existing
+                  - generic [ref=e740]: 22-bed local authority HMO
+                - generic [ref=e741]:
+                  - generic [ref=e742]: Proposed
+                  - generic [ref=e743]: Fewer, larger en-suite rooms
+                - generic [ref=e744]:
+                  - generic [ref=e745]: Thistle role
+                  - generic [ref=e746]: Stage 4 and delivery
+              - paragraph [ref=e747]: An existing 22-bedroom local authority HMO reconfigured into fewer but far larger en-suite rooms, with Thistle running the technical package and the build.
+              - generic [ref=e748]: Read case study
+      - paragraph [ref=e754]: Some of these were delivered by HMO Designers, our sister practice within the Thistle Group. Each one says so on its own page.
+    - generic [ref=e755]:
+      - generic [ref=e756]:
+        - img "The completed rear extension at Bereweeke Avenue, in brick with steel windows" [ref=e757]
+        - generic [ref=e758]:
+          - paragraph [ref=e761]: Get Started
+          - heading "Make Faster Decisions." [level=2] [ref=e764]
+          - paragraph [ref=e767]: Understand your property's design potential, planning position and principal risks before committing further time or money.
+          - generic [ref=e769]:
+            - button [ref=e770] [cursor=pointer]
+            - paragraph [ref=e775]: No obligation. Response within one working day.
+            - link "5-star customer reviews on Trustpilot" [ref=e776] [cursor=pointer]:
+              - /url: https://uk.trustpilot.com/review/thistlearchitecture.co.uk
+      - generic [ref=e791]:
+        - generic [ref=e792]:
+          - link [ref=e793] [cursor=pointer]:
+            - /url: /
+          - paragraph [ref=e816]: Data-driven feasibility for commercial conversions, HMOs, and high-end residential across the UK.
+          - generic [ref=e817]:
+            - link "hello@thistlearchitecture.co.uk" [ref=e818] [cursor=pointer]:
+              - /url: mailto:hello@thistlearchitecture.co.uk
+            - link "0808 175 5405" [ref=e819] [cursor=pointer]:
+              - /url: tel:+448081755405
+            - generic [ref=e820]: The Pump House, Garnier Road, Winchester, SO23 9QG
+            - generic [ref=e821]: Mon to Fri, 9am to 6pm GMT
+        - generic [ref=e822]:
+          - paragraph [ref=e823]: Product
+          - generic [ref=e824]:
+            - link "Feasibility Package" [ref=e825] [cursor=pointer]:
+              - /url: /feasibility-package
+            - link "Case Studies" [ref=e826] [cursor=pointer]:
+              - /url: /case-studies/feasibility-studies
+            - link "Class MA Checker" [ref=e827] [cursor=pointer]:
+              - /url: /tools/class-ma-checker
+            - link "GDV Calculator" [ref=e828] [cursor=pointer]:
+              - /url: /tools/gdv-calculator
+        - generic [ref=e829]:
+          - paragraph [ref=e830]: Expertise
+          - generic [ref=e831]:
+            - link "Commercial to Residential" [ref=e832] [cursor=pointer]:
+              - /url: /conversions/commercial-to-residential
+            - link "HMO" [ref=e833] [cursor=pointer]:
+              - /url: /conversions/hmo
+            - link "Co-Living & Large HMO" [ref=e834] [cursor=pointer]:
+              - /url: /conversions/co-living-large-hmo
+        - generic [ref=e835]:
+          - paragraph [ref=e836]: Company
+          - generic [ref=e837]:
+            - link "About" [ref=e838] [cursor=pointer]:
+              - /url: /about
+            - link "Blog" [ref=e839] [cursor=pointer]:
+              - /url: /blog
+            - link "Contact" [ref=e840] [cursor=pointer]:
+              - /url: /contact
+      - generic [ref=e842]:
+        - generic [ref=e843]:
+          - generic [ref=e847]: © 2026 Thistle Architecture Ltd. Registered in England and Wales.
+          - generic [ref=e848]: ·
+          - generic [ref=e849]:
+            - text: Made by
+            - link "Riftly.ai" [ref=e850] [cursor=pointer]:
+              - /url: https://riftly.ai
+        - generic [ref=e851]:
+          - link "Privacy Policy" [ref=e852] [cursor=pointer]:
+            - /url: /privacy
+          - link "Terms of Service" [ref=e853] [cursor=pointer]:
+            - /url: /terms
+          - link "Cookie Policy" [ref=e854] [cursor=pointer]:
+            - /url: /cookies
+          - generic [ref=e855]: ·
+          - link "LinkedIn" [ref=e856] [cursor=pointer]:
+            - /url: https://linkedin.com
+          - link "Instagram" [ref=e857] [cursor=pointer]:
+            - /url: https://instagram.com
+  - alert [ref=e858]

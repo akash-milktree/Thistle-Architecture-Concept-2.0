@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useTina } from 'tinacms/dist/react';
@@ -71,8 +71,6 @@ export const CompletedProjectsPage: React.FC<CompletedProjectsPageProps> = ({
   page,
   items = completedProjects,
 }) => {
-  const searchParams = useSearchParams();
-
   // useTina returns the server data verbatim on the public site and swaps in
   // the live form values inside the editor. Passing a null-ish query is not
   // allowed, and hooks cannot be called conditionally, so it runs against a
@@ -102,21 +100,9 @@ export const CompletedProjectsPage: React.FC<CompletedProjectsPageProps> = ({
     if (key && label) typeLabels[key] = { label, field: f(row, 'label') };
   }
 
-  // The URL drives the filter, so a filtered view can be linked to and the back
-  // button works. Same lesson as the tab bug Ed reported twice: state seeded
-  // once from the URL goes stale on client-side navigation.
-  const raw = searchParams.get('type');
-  const active: ConversionType | 'all' =
-    TYPES.some((t) => t.key === raw) ? (raw as ConversionType) : 'all';
-
   const countFor = (key: ConversionType) =>
     items.filter((p) => p.conversionTypes?.includes(key)).length;
   const available = TYPES.filter((t) => countFor(t.key) > 0);
-
-  const shown =
-    active === 'all'
-      ? items
-      : items.filter((p) => p.conversionTypes?.includes(active));
 
   const chip = (isActive: boolean) =>
     `px-4 py-2 rounded-full text-sm font-medium border transition-colors ${
@@ -125,21 +111,29 @@ export const CompletedProjectsPage: React.FC<CompletedProjectsPageProps> = ({
         : 'bg-white text-thistle-black/60 border-thistle-black/[0.08] hover:border-thistle-black/25'
     }`;
 
-  return (
-    <>
-      <PageHero
-        label={copy.label}
-        heading={copy.heading}
-        description={copy.description}
-        // Unlike the blog index, nothing is appended to this paragraph, so the
-        // <p> renders exactly the field and can carry its marker.
-        tina={{
-          label: f(cms?.hero, 'label'),
-          heading: f(cms?.hero, 'heading'),
-          description: f(cms?.hero, 'description'),
-        }}
-      />
+  // The chips and the grid both depend on the ?type= filter, and reading that
+  // filter is what used to cost this page its prerendered HTML: useSearchParams
+  // opts a route out of static rendering, and with the whole page inside one
+  // Suspense boundary what shipped was the empty fallback. Crawlers saw a page
+  // with no projects on it.
+  //
+  // So the results are a plain render function rather than a component (a
+  // component declared here would remount on every parent render), called in
+  // two places below: once as the Suspense fallback with no filter applied,
+  // which is what gets prerendered and is therefore what a crawler reads, and
+  // once inside ResultsFromUrl, which reads the URL on the client.
+  //
+  // The filter still comes from the URL rather than from state seeded once,
+  // which is the point of the original note above: a filtered view has to be
+  // linkable and the back button has to work.
+  const renderResults = (active: ConversionType | 'all') => {
+    const shown =
+      active === 'all'
+        ? items
+        : items.filter((p) => p.conversionTypes?.includes(active));
 
+    return (
+      <>
       <section className="px-fl-margin bg-thistle-white pb-fl-6">
         <div className="max-w-[1360px] mx-auto">
           {/* The two tab labels are shared with Feasibility Studies and repeat
@@ -183,6 +177,46 @@ export const CompletedProjectsPage: React.FC<CompletedProjectsPageProps> = ({
           </p>
         </div>
       </section>
+      </>
+    );
+  };
+
+  return (
+    <>
+      <PageHero
+        label={copy.label}
+        heading={copy.heading}
+        description={copy.description}
+        // Unlike the blog index, nothing is appended to this paragraph, so the
+        // <p> renders exactly the field and can carry its marker.
+        tina={{
+          label: f(cms?.hero, 'label'),
+          heading: f(cms?.hero, 'heading'),
+          description: f(cms?.hero, 'description'),
+        }}
+      />
+
+      <Suspense fallback={renderResults('all')}>
+        <ResultsFromUrl render={renderResults} />
+      </Suspense>
     </>
   );
+};
+
+/**
+ * The only thing on this page that reads the URL.
+ *
+ * Isolated here so the de-opt it causes is contained: everything outside this
+ * boundary still prerenders, and the fallback above renders the full,
+ * unfiltered list into the static HTML.
+ */
+const ResultsFromUrl: React.FC<{
+  render: (active: ConversionType | 'all') => React.ReactNode;
+}> = ({ render }) => {
+  const searchParams = useSearchParams();
+  const raw = searchParams.get('type');
+  const active: ConversionType | 'all' = TYPES.some((t) => t.key === raw)
+    ? (raw as ConversionType)
+    : 'all';
+  return <>{render(active)}</>;
 };
