@@ -48,6 +48,11 @@ interface ConversionPageProps {
    * the source of everything that is not copy.
    */
   conversion: Conversion;
+  /**
+   * Slug of the case study featured near the bottom, resolved on the server
+   * from this sector's CMS reference. Falls back to the record in code.
+   */
+  relatedCaseStudySlug?: string;
   // The four below are raw CMS queries, passed straight through from the server
   // page so that useTina can re-run them live inside the editor. All optional,
   // so the page still renders if it is mounted without them.
@@ -67,6 +72,7 @@ export const ConversionPage: React.FC<ConversionPageProps> = ({
   overview,
   sectors,
   reviews,
+  relatedCaseStudySlug,
 }) => {
   const router = useRouter();
 
@@ -324,7 +330,7 @@ export const ConversionPage: React.FC<ConversionPageProps> = ({
       />
 
       <RelatedCaseStudy
-        slug={conversion.relatedCaseStudySlug}
+        slug={relatedCaseStudySlug ?? conversion.relatedCaseStudySlug}
         tinted={!hasExtra}
         eyebrow={str(shared?.caseStudyEyebrow) || undefined}
         heading={str(shared?.caseStudyHeading) || undefined}

@@ -81,3 +81,42 @@ export const getCompletedProjects = cache(async () =>
 export const getFeasibilityStudies = cache(async () =>
   (await getCaseStudies()).filter((c) => c.kind === 'feasibility')
 );
+
+/**
+ * Turn a Tina reference into the slug of the case study it points at.
+ *
+ * A reference has two shapes depending on where it is read, and both turn up:
+ *
+ *  - Through the generated client it is a RESOLVED DOCUMENT. Tina inlines the
+ *    whole referenced record, including `_sys`, so the slug is `_sys.filename`.
+ *    This is the shape every server page sees, and assuming the other one is
+ *    why the first version of this silently fell back to the code defaults on
+ *    every page — the value was right in the CMS and never reached the page.
+ *  - On disk, and in a raw JSON read, it is the PATH string
+ *    'content/case-studies/axis-house.json'.
+ *
+ * The filename is the slug, so both reduce to the same thing.
+ */
+export const slugFromRef = (ref: unknown): string => {
+  if (typeof ref === 'string') return ref.split('/').pop()?.replace(/\.json$/, '') ?? '';
+  const sys = (ref as any)?._sys;
+  if (sys?.filename) return String(sys.filename);
+  // Some shapes carry the path but not _sys.
+  const path = (ref as any)?._sys?.relativePath ?? (ref as any)?.id;
+  return typeof path === 'string' ? path.split('/').pop()?.replace(/\.json$/, '') ?? '' : '';
+};
+
+/** Resolve one reference to its case study. */
+export const getCaseStudyByRef = async (ref: unknown): Promise<CaseStudy | undefined> => {
+  const slug = slugFromRef(ref);
+  if (!slug) return undefined;
+  return (await getCaseStudies()).find((c) => c.slug === slug);
+};
+
+/** Resolve a list of references, dropping any that no longer point anywhere. */
+export const getCaseStudiesByRefs = async (refs: readonly unknown[]): Promise<CaseStudy[]> => {
+  const all = await getCaseStudies();
+  return refs
+    .map((r) => all.find((c) => c.slug === slugFromRef(r)))
+    .filter((c): c is CaseStudy => !!c);
+};

@@ -24,7 +24,8 @@
         "detail": "5 days vs 2 to 6 weeks"
       }
     ],
-    "posterImage": "/images/site/hero-showreel-v5-poster.jpg"
+    "posterImage": "/images/site/hero-showreel-v5-poster.jpg",
+    "videoId": "1217009975"
   },
   "logos": {
     "label": "Trusted by developers across the UK",
@@ -91,6 +92,17 @@
       {
         "slug": "beech-house-road-croydon",
         "line": "Feasibility → Go Recommendation"
+      }
+    ],
+    "featured": [
+      {
+        "study": "content/case-studies/beauchamp-house.json"
+      },
+      {
+        "study": "content/case-studies/bath-street-cheddar.json"
+      },
+      {
+        "study": "content/case-studies/beech-house-road-croydon.json"
       }
     ]
   },

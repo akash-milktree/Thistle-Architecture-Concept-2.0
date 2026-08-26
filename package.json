@@ -14,7 +14,8 @@
     "probe": "node scripts/probe-panel.mjs",
     "optimise-media": "node scripts/optimise-media.mjs",
     "pricing-check": "node --experimental-strip-types scripts/pricing-check.mjs",
-    "test:images": "node --experimental-strip-types scripts/test-image-normalise.mjs"
+    "test:images": "node --experimental-strip-types scripts/test-image-normalise.mjs",
+    "test:video": "node --experimental-strip-types scripts/test-vimeo-embed.mjs"
   },
   "dependencies": {
     "@tinacms/cli": "^2.6.1",

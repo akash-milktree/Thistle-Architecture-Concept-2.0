@@ -8,6 +8,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from '../components/animations/Reveal';
 import { TrustpilotBadge } from '../components/ui/TrustpilotBadge';
 import { pruneEmpty, normalizeImage } from '../lib/tina';
+import { vimeoEmbed } from '../lib/vimeo';
 
 /** A metric card, plus the CMS field ids for its own three fields. */
 export interface HeroMetric {
@@ -27,6 +28,7 @@ interface HeroCopy {
   /** Not rendered as text. Describes the poster still for screen readers. */
   posterAlt: string;
   posterImage: string;
+  videoId: string;
 }
 
 interface HeroProps {
@@ -49,6 +51,7 @@ const HERO_FALLBACK: HeroCopy = {
   reassurance: 'No obligation. Response within one working day.',
   posterAlt: 'Thistle conversion and retrofit projects across the UK',
   posterImage: '/images/site/hero-showreel-v5-poster.jpg',
+  videoId: '1217009975',
 };
 
 const METRICS_FALLBACK: HeroMetric[] = [
@@ -57,9 +60,18 @@ const METRICS_FALLBACK: HeroMetric[] = [
   { value: "86%", label: "Faster than traditional routes", detail: "5 days vs 2 to 6 weeks" },
 ];
 
+
 export const Hero: React.FC<HeroProps> = ({ copy, metrics, tina }) => {
   const router = useRouter();
   const c: HeroCopy = { ...HERO_FALLBACK, ...pruneEmpty(copy) };
+
+  // videoId is deliberately outside the pruneEmpty merge. Everywhere else an
+  // empty field means "the editor cleared it, keep the standing copy" — a blank
+  // heading is a mistake, not an instruction. Here it is an instruction: "no
+  // film, just the still", which is a real choice and has no other way of being
+  // expressed. So absent falls back, and empty means empty.
+  const videoId = copy?.videoId === undefined ? HERO_FALLBACK.videoId : copy.videoId;
+  const embed = vimeoEmbed(videoId);
   // Whole-list fallback rather than per-item: an empty list in the CMS means
   // the section has not been filled in, not that the editor wants three blank
   // cards in the hero.
@@ -85,12 +97,13 @@ export const Hero: React.FC<HeroProps> = ({ copy, metrics, tina }) => {
           Vimeo's background mode is muted and inline, which is what iOS
           requires to autoplay; if a device still refuses, the poster below is
           already painted and stays put.
-          The Vimeo id stays in code — it is configuration, and the film is
-          hosted and encoded there. The still IS editable: it is the whole hero
-          on phones and before the film loads, so it is a real design choice
-          rather than plumbing. The marker sits on the image itself; the
-          readability overlays below are pointer-transparent so they do not
-          swallow the click. */}
+          Which film plays and which still sits behind it are both editable.
+          The embed's PARAMETERS are not — see lib/vimeo.ts for why. The
+          poster's marker sits on the image itself; the readability overlays
+          below are pointer-transparent so they do not swallow the click. The
+          film carries no marker: the iframe is aria-hidden and click-through,
+          so a click there lands on the poster, and the film is chosen in the
+          sidebar instead. */}
       <Image
         src={normalizeImage(c.posterImage, HERO_FALLBACK.posterImage)}
         alt={c.posterAlt}
@@ -99,18 +112,22 @@ export const Hero: React.FC<HeroProps> = ({ copy, metrics, tina }) => {
         className="object-cover"
         data-tina-field={tina?.posterImage}
       />
-      <div
+      {/* No film when the field is empty or unparseable: the poster above is
+          already painted and carries the hero on its own, which is exactly what
+          phones and reduced-motion visitors see. Better a still hero than a
+          broken embed. */}
+      {embed && <div
         className="absolute inset-0 overflow-hidden hidden motion-safe:block pointer-events-none"
         aria-hidden="true"
       >
         <iframe
-          src="https://player.vimeo.com/video/1217009975?background=1&autoplay=1&loop=1&muted=1&autopause=0&dnt=1"
+          src={embed}
           title=""
           tabIndex={-1}
           allow="autoplay; fullscreen"
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[56.25vw] min-w-full min-h-full border-0"
         />
-      </div>
+      </div>}
 
       {/* Readability overlays: heavier on the left where the copy sits, plus a bottom wash for the stat band */}
       <div className="absolute inset-0 bg-gradient-to-r from-thistle-black/85 via-thistle-black/55 to-thistle-black/25 pointer-events-none" />

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { HomePage } from '@/views/HomePage';
 import client from '@/tina/__generated__/client';
+import { getCaseStudiesByRefs } from '@/lib/caseStudies';
 
 export async function generateMetadata(): Promise<Metadata> {
   // Title and description come from the root layout defaults, which are written
@@ -37,5 +38,17 @@ export default async function Page() {
   // useTina needs the query to re-run it against the editor's live values.
   const home = await client.queries.home({ relativePath: 'index.json' });
 
-  return <HomePage page={{ query: home.query, variables: home.variables, data: home.data }} />;
+  // Which three projects the band shows is chosen on the Home Page document, as
+  // references to case studies. Resolved here because only the server can read
+  // them; the card contents still come from each study.
+  const featured = await getCaseStudiesByRefs(
+    ((home.data.home?.projects?.featured ?? []) as any[]).map((f) => f?.study)
+  );
+
+  return (
+    <HomePage
+      page={{ query: home.query, variables: home.variables, data: home.data }}
+      featured={featured}
+    />
+  );
 }

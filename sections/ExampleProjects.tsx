@@ -86,12 +86,19 @@ interface ExampleProjectsProps {
   tina?: Partial<Record<keyof typeof HEADER_FALLBACK, string>>;
 }
 
-const display = FEATURED_SLUGS
+// Which three projects appear here is now chosen in the CMS, on the Home Page
+// document. This stays as the fallback for a page rendered without that prop —
+// and as the record of what the band showed before it became editable.
+const FALLBACK_DISPLAY = FEATURED_SLUGS
   .map((slug) => caseStudies.find((c) => c.slug === slug))
   .filter((c): c is NonNullable<typeof c> => !!c);
 
 export const ExampleProjects: React.FC<ExampleProjectsProps> = ({ copy, stageLines, projects, tina }) => {
   const c = { ...HEADER_FALLBACK, ...pruneEmpty(copy) };
+
+  // An empty list from the CMS falls back rather than emptying the band: three
+  // missing cards read as a broken page, not as an editorial choice.
+  const display = projects?.length ? projects : FALLBACK_DISPLAY;
 
   // Keyed by slug, so the line and its field id travel together and a card with
   // no line in the CMS falls back to the one above rather than losing it.

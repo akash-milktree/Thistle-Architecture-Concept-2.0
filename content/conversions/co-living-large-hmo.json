@@ -76,5 +76,6 @@
       "question": "What fire and acoustic standards apply to larger shared buildings?",
       "answer": "Fire compartmentation, escape strategy and acoustic separation requirements step up materially once you're managing a larger number of unrelated occupants and more shared circulation space. We flag where the building's existing structure will make this straightforward or expensive before you commit to a layout."
     }
-  ]
+  ],
+  "relatedCaseStudy": "content/case-studies/highbury-buildings-cosham.json"
 }

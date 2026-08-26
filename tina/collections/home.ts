@@ -1,6 +1,16 @@
 import type { Collection } from 'tinacms';
 import { joinKeyField } from '../fields';
 
+/**
+ * A readable label for a reference, for the collapsed row in the sidebar.
+ * A reference stores a path; the filename is the slug, which is the closest
+ * thing to a name available without loading the referenced document.
+ */
+const refLabel = (ref: unknown): string =>
+  typeof ref === 'string'
+    ? (ref.split('/').pop() ?? '').replace(/\.json$/, '').replace(/-/g, ' ') || 'Case study'
+    : 'Case study';
+
 // The homepage. Four sections and nothing else, which is deliberate — Ed's
 // video feedback 2026-07-08: "really simplify this home page... example
 // projects underneath trusted by developers, then the five step feasibility
@@ -67,6 +77,13 @@ export const homeCollection: Collection = {
           name: 'reassurance',
           label: 'Reassurance line',
           description: 'The small print under the buttons.',
+        },
+        {
+          type: 'string',
+          name: 'videoId',
+          label: 'Background film',
+          description:
+            'Paste the Vimeo link for the film, or just its number. Both work — the Share link, the Embed link, or the id on its own. Leave it empty and the hero shows the still image alone, which is what phones and anyone who has asked for reduced motion see anyway. The film always plays silently, on a loop, with no player controls and no tracking; that part is fixed and is not something a different link can change.',
         },
         {
           type: 'image',
@@ -145,8 +162,28 @@ export const homeCollection: Collection = {
       name: 'projects',
       label: 'Example projects',
       description:
-        'The three project cards. Which three they are, and everything printed on the card itself, comes from the case studies and is edited there. Only the wording around them lives here.',
+        'The three project cards. Everything printed on a card — image, title, location, tag — comes from the case study itself and is edited there; pick which studies appear, and the wording around them, here.',
       fields: [
+        {
+          // A list of objects each holding one reference, rather than a list of
+          // references: Tina's reference field does not support list: true --
+          // it warns and then fails codegen with a fragment-spread error.
+          type: 'object',
+          name: 'featured',
+          label: 'Featured case studies',
+          list: true,
+          ui: { itemProps: (item) => ({ label: refLabel(item?.study) }) },
+          description:
+            'The three studies shown on the homepage, in this order. Picked from the case studies rather than typed, so one cannot be named here and then not exist. The band is built for three: fewer leaves a gap in the row, more overflows it. Clearing the list restores the three it shipped with rather than emptying the section.',
+          fields: [
+            {
+              type: 'reference',
+              name: 'study',
+              label: 'Case study',
+              collections: ['caseStudy'],
+            },
+          ],
+        },
         { type: 'string', name: 'eyebrow', label: 'Eyebrow' },
         {
           type: 'string',

@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { getConversion } from '@/data/conversionsData';
 import { ConversionPage } from '@/views/ConversionPage';
 import client from '@/tina/__generated__/client';
+import { slugFromRef } from '@/lib/caseStudies';
 
 /**
  * The sector's own CMS document, or null if it has none.
@@ -78,9 +79,17 @@ export default async function Page({ params }: { params: Promise<{ type: string 
     client.queries.reviewConnection(),
   ]);
 
+  // Which study is featured is chosen on this sector's own CMS document, as a
+  // reference. Falls back to the slug in the data module so a sector that has
+  // not been given one still shows what it showed before.
+  const relatedSlug =
+    slugFromRef((sector?.data as any)?.conversion?.relatedCaseStudy) ||
+    conversion.relatedCaseStudySlug;
+
   return (
     <ConversionPage
       conversion={conversion}
+      relatedCaseStudySlug={relatedSlug}
       page={sector ? { query: sector.query, variables: sector.variables, data: sector.data } : undefined}
       overview={{ query: overview.query, variables: overview.variables, data: overview.data }}
       sectors={{ query: sectors.query, variables: sectors.variables, data: sectors.data }}

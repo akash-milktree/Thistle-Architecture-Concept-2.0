@@ -72,5 +72,6 @@
       "question": "Does the residential above still need its own front door?",
       "answer": "In almost every case, yes. Shared access through a commercial unit is a common reason for refusal or for a licensing condition later, so genuinely independent residential access is something we check for at feasibility stage, not left to detailed design."
     }
-  ]
+  ],
+  "relatedCaseStudy": "content/case-studies/bath-street-cheddar.json"
 }

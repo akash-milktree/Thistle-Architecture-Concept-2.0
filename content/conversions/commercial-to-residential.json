@@ -88,5 +88,6 @@
       "question": "What extra costs catch people out in commercial conversions?",
       "answer": "Fire compartmentation, means of escape, and routing new bathroom and kitchen services through a structure built for open-plan commercial use. These rarely show up on a headline GDV, which is why our risk register prices them in rather than leaving them as a surprise."
     }
-  ]
+  ],
+  "relatedCaseStudy": "content/case-studies/axis-house.json"
 }

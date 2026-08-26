@@ -241,6 +241,14 @@ export const conversionCollection: Collection = {
 
     // --- Sector FAQs ---
     {
+      type: 'reference',
+      name: 'relatedCaseStudy',
+      label: 'Related case study',
+      collections: ['caseStudy'],
+      description:
+        'The single study featured near the bottom of this page. Picked from the case studies rather than typed, so it cannot point at one that does not exist. Leave it empty and the section is left out of the page entirely rather than rendering blank.',
+    },
+    {
       type: 'object',
       name: 'faqs',
       label: 'Questions & answers',

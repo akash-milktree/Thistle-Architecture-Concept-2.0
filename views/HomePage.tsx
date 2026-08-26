@@ -4,7 +4,7 @@ import React from 'react';
 import { useTina } from 'tinacms/dist/react';
 import { Hero, type HeroMetric } from '../sections/Hero';
 import { DeveloperLogos, type DeveloperLogoCopy } from '../sections/DeveloperLogos';
-import { ExampleProjects, type StageLine } from '../sections/ExampleProjects';
+import { ExampleProjects, type StageLine, type FeaturedProject } from '../sections/ExampleProjects';
 import { Process, type ProcessStep } from '../sections/Process';
 import { f, type TinaQuery, EMPTY_QUERY } from '../lib/tina-fields';
 import { str, arr } from '../lib/tina';
@@ -29,6 +29,11 @@ import { str, arr } from '../lib/tina';
 
 interface HomePageProps {
   /**
+   * The three case studies behind the example-project cards, chosen in the CMS
+   * and resolved on the server. Absent falls back to the slugs in the section.
+   */
+  featured?: FeaturedProject[];
+  /**
    * Raw CMS query, passed straight through from the server page so that
    * useTina can re-run it live inside the editor. Optional so the page still
    * renders if it is mounted without it.
@@ -36,7 +41,7 @@ interface HomePageProps {
   page?: TinaQuery;
 }
 
-export const HomePage: React.FC<HomePageProps> = ({ page }) => {
+export const HomePage: React.FC<HomePageProps> = ({ page, featured }) => {
   // useTina returns the server data verbatim on the public site and swaps in
   // the live form values inside the editor. Passing a null-ish query is not
   // allowed, and a hook cannot be called conditionally, so it runs against a
@@ -98,6 +103,7 @@ export const HomePage: React.FC<HomePageProps> = ({ page }) => {
                 reassurance: str(hero.reassurance),
                 posterAlt: str(hero.posterAlt),
                 posterImage: str(hero.posterImage),
+                videoId: str(hero.videoId),
               }
             : undefined
         }
@@ -118,6 +124,7 @@ export const HomePage: React.FC<HomePageProps> = ({ page }) => {
         tina={{ label: f(logos, 'label') }}
       />
       <ExampleProjects
+        projects={featured}
         copy={
           projects
             ? {
