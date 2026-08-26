@@ -50,11 +50,13 @@
         "images": [
           {
             "src": "/images/projects/highbury/existing-1.jpg",
-            "alt": "The existing commercial building on the corner of the terrace"
+            "alt": "The existing commercial building on the corner of the terrace",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/highbury/existing-2.jpg",
-            "alt": "The parade of shops with the subject building at the end"
+            "alt": "The parade of shops with the subject building at the end",
+            "kind": "drawing"
           }
         ]
       },
@@ -64,11 +66,13 @@
         "images": [
           {
             "src": "/images/projects/highbury/cgi-front.jpg",
-            "alt": "Visualisation of the converted building from the front"
+            "alt": "Visualisation of the converted building from the front",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/highbury/cgi-side.jpg",
-            "alt": "Visualisation of the side elevation"
+            "alt": "Visualisation of the side elevation",
+            "kind": "drawing"
           }
         ]
       }

@@ -41,11 +41,13 @@
         "images": [
           {
             "src": "/images/projects/campbell-road/existing-2.jpg",
-            "alt": "The existing HMO building from the street"
+            "alt": "The existing HMO building from the street",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/campbell-road/existing-1.jpg",
-            "alt": "The side and rear of the existing building"
+            "alt": "The side and rear of the existing building",
+            "kind": "drawing"
           }
         ]
       }

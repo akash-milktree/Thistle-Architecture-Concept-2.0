@@ -39,7 +39,8 @@
         "images": [
           {
             "src": "/images/projects/corner-house/existing-plot.jpg",
-            "alt": "The vacant hoarded corner plot before development"
+            "alt": "The vacant hoarded corner plot before development",
+            "kind": "drawing"
           }
         ]
       },
@@ -49,15 +50,18 @@
         "images": [
           {
             "src": "/images/projects/corner-house/cgi-street.jpg",
-            "alt": "The completed house on its corner, seen along the street"
+            "alt": "The completed house on its corner, seen along the street",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/corner-house/glazed-brick.jpg",
-            "alt": "Close view of the green glazed brickwork"
+            "alt": "Close view of the green glazed brickwork",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/corner-house/cgi-interior.jpg",
-            "alt": "The open plan interior looking out to the garden"
+            "alt": "The open plan interior looking out to the garden",
+            "kind": "drawing"
           }
         ]
       }

@@ -56,27 +56,33 @@
         "images": [
           {
             "src": "/images/projects/wigan/exterior-1.jpg",
-            "alt": "The Gothic brick and stone frontage of the former Methodist church"
+            "alt": "The Gothic brick and stone frontage of the former Methodist church",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/wigan/exterior-2.jpg",
-            "alt": "The church tower and entrance from the street"
+            "alt": "The church tower and entrance from the street",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/wigan/interior-nave.jpg",
-            "alt": "The nave in its existing condition, in use as storage"
+            "alt": "The nave in its existing condition, in use as storage",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/wigan/interior-gallery.jpg",
-            "alt": "The gallery level looking across the nave to the arched windows"
+            "alt": "The gallery level looking across the nave to the arched windows",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/wigan/interior-roof.jpg",
-            "alt": "The exposed timber roof structure over the main atrium"
+            "alt": "The exposed timber roof structure over the main atrium",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/wigan/stained-glass.jpg",
-            "alt": "One of the original stained-glass windows retained in the scheme"
+            "alt": "One of the original stained-glass windows retained in the scheme",
+            "kind": "drawing"
           }
         ]
       }

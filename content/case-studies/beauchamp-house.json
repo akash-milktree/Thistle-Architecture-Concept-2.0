@@ -60,7 +60,8 @@
         "images": [
           {
             "src": "/images/projects/beauchamp2/exterior.jpg",
-            "alt": "The Georgian building in its existing condition from the street"
+            "alt": "The Georgian building in its existing condition from the street",
+            "kind": "drawing"
           }
         ]
       },
@@ -70,19 +71,23 @@
         "images": [
           {
             "src": "/images/projects/beauchamp2/stripout-1.jpg",
-            "alt": "An interior stripped back to brick and joists during conversion"
+            "alt": "An interior stripped back to brick and joists during conversion",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/beauchamp2/stripout-2.jpg",
-            "alt": "A bay-windowed room stripped back, with work in progress"
+            "alt": "A bay-windowed room stripped back, with work in progress",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/beauchamp2/scaffold-1.jpg",
-            "alt": "The building fully scaffolded for external alterations"
+            "alt": "The building fully scaffolded for external alterations",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/beauchamp2/scaffold-2.jpg",
-            "alt": "Scaffolding to the side elevation during the window replacement"
+            "alt": "Scaffolding to the side elevation during the window replacement",
+            "kind": "drawing"
           }
         ]
       }

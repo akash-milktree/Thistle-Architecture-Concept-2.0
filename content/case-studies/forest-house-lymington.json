@@ -39,15 +39,18 @@
         "images": [
           {
             "src": "/images/projects/forest-house/exterior-dusk.jpg",
-            "alt": "The completed house at dusk with the interior lit"
+            "alt": "The completed house at dusk with the interior lit",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/forest-house/exterior-day.jpg",
-            "alt": "The house and garden in daylight"
+            "alt": "The house and garden in daylight",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/forest-house/interior.jpg",
-            "alt": "The open plan kitchen and dining space"
+            "alt": "The open plan kitchen and dining space",
+            "kind": "drawing"
           }
         ]
       }

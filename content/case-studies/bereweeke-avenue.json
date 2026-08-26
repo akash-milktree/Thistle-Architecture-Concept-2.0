@@ -65,7 +65,8 @@
         "images": [
           {
             "src": "/images/projects/bereweeke/existing-house.jpg",
-            "alt": "The original house before work, with the Thistle Architecture site board in place"
+            "alt": "The original house before work, with the Thistle Architecture site board in place",
+            "kind": "drawing"
           }
         ]
       },
@@ -75,15 +76,18 @@
         "images": [
           {
             "src": "/images/projects/bereweeke/cgi-exterior.jpg",
-            "alt": "Visualisation of the completed house from the front"
+            "alt": "Visualisation of the completed house from the front",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/bereweeke/cgi-rear.jpg",
-            "alt": "Visualisation of the rear extensions and garden"
+            "alt": "Visualisation of the rear extensions and garden",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/bereweeke/cgi-interior.jpg",
-            "alt": "Visualisation of the open plan kitchen and dining space"
+            "alt": "Visualisation of the open plan kitchen and dining space",
+            "kind": "drawing"
           }
         ]
       },
@@ -93,11 +97,13 @@
         "images": [
           {
             "src": "/images/projects/bereweeke/construction-1.jpg",
-            "alt": "Materials on site with the rear of the house stripped back"
+            "alt": "Materials on site with the rear of the house stripped back",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/bereweeke/construction-2.jpg",
-            "alt": "The two-storey rear extensions under construction"
+            "alt": "The two-storey rear extensions under construction",
+            "kind": "drawing"
           }
         ]
       },
@@ -107,23 +113,28 @@
         "images": [
           {
             "src": "/images/projects/bereweeke/complete-front.jpg",
-            "alt": "The completed house from the drive"
+            "alt": "The completed house from the drive",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/bereweeke/complete-rear.jpg",
-            "alt": "The completed rear extension in brick with full-height glazing"
+            "alt": "The completed rear extension in brick with full-height glazing",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/bereweeke/interior-kitchen-1.jpg",
-            "alt": "The finished kitchen and island under a rooflight"
+            "alt": "The finished kitchen and island under a rooflight",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/bereweeke/interior-kitchen-2.jpg",
-            "alt": "The kitchen looking out to the garden through full-height glazing"
+            "alt": "The kitchen looking out to the garden through full-height glazing",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/bereweeke/interior-glazing.jpg",
-            "alt": "The glazed link connecting the house to the garden"
+            "alt": "The glazed link connecting the house to the garden",
+            "kind": "drawing"
           }
         ]
       }

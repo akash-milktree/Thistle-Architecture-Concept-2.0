@@ -165,7 +165,7 @@ export const caseStudyCollection: Collection = {
             { value: 'photo', label: 'Photograph — fill the frame, crop if needed' },
           ],
           description:
-            'A drawing is shown complete on a white ground, because cropping one cuts off the part that matters. A photograph fills its frame instead. Set this to match what the picture actually is.',
+            'A drawing is shown complete on a white ground, because cropping one cuts off the part that matters. A photograph fills its frame instead, cropping to fit. Every existing image is set to Drawing, which is how the site has always shown them — switching one to Photograph will crop it, so change it only when you want that.',
         },
       ],
     },

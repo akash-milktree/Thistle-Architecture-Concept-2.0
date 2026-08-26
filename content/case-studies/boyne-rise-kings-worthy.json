@@ -42,11 +42,13 @@
         "images": [
           {
             "src": "/images/projects/boyne-rise/cgi-1.jpg",
-            "alt": "Visualisation of the extended house from the front"
+            "alt": "Visualisation of the extended house from the front",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/boyne-rise/cgi-2.jpg",
-            "alt": "Visualisation showing the new gable and glazing"
+            "alt": "Visualisation showing the new gable and glazing",
+            "kind": "drawing"
           }
         ]
       }

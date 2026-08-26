@@ -40,7 +40,8 @@
         "images": [
           {
             "src": "/images/projects/peterhayes/site-aerial.jpg",
-            "alt": "Aerial view of the farm with the barn to the rear of the farmhouse"
+            "alt": "Aerial view of the farm with the barn to the rear of the farmhouse",
+            "kind": "drawing"
           }
         ]
       },
@@ -50,11 +51,13 @@
         "images": [
           {
             "src": "/images/projects/peterhayes/cgi-barn.jpg",
-            "alt": "The converted barn seen from the approach"
+            "alt": "The converted barn seen from the approach",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/peterhayes/cgi-garden.jpg",
-            "alt": "The barn conversion from the garden side"
+            "alt": "The barn conversion from the garden side",
+            "kind": "drawing"
           }
         ]
       }

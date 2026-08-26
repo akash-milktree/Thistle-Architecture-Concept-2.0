@@ -40,11 +40,13 @@
         "images": [
           {
             "src": "/images/projects/school-house/model-1.jpg",
-            "alt": "Massing model of the proposed extension"
+            "alt": "Massing model of the proposed extension",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/school-house/model-2.jpg",
-            "alt": "Second massing study of the proposal"
+            "alt": "Second massing study of the proposal",
+            "kind": "drawing"
           }
         ]
       },
@@ -54,11 +56,13 @@
         "images": [
           {
             "src": "/images/projects/school-house/cgi-exterior.jpg",
-            "alt": "Visualisation of the extended house"
+            "alt": "Visualisation of the extended house",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/school-house/proposed-plan.jpg",
-            "alt": "Proposed ground floor plan showing the reconfigured accessible layout"
+            "alt": "Proposed ground floor plan showing the reconfigured accessible layout",
+            "kind": "drawing"
           }
         ]
       }

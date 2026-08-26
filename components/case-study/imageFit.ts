@@ -17,12 +17,22 @@
  * an image that has no kind — every value in data/caseStudiesData.ts, which is
  * still the fallback the components render from when there is no CMS query.
  *
- * WORTH KNOWING: all 173 seeded values are 'drawing', because all 173 paths in
- * the data module are under /images/projects/ — the photographs included. The
- * seed was derived from the prefix precisely so that nothing moved on the way
- * into the CMS, which means the 'photo' branch is currently unused for case
- * studies rather than merely rare. Reclassifying the real photographs is a
- * visible change to the page and belongs with Ed, not in a migration.
+ * WORTH KNOWING: every one of the 219 values is 'drawing', set explicitly. An
+ * audit of the actual image content found only 29 of the 198 distinct files are
+ * genuine drawings; the other 169 are photographs, and 135 of those would be
+ * framed differently if they were labelled as such — wide shots letterboxed
+ * today would fill and crop, and the 19 portrait ones would change most.
+ *
+ * That was reviewed and the decision was to keep the pre-CMS appearance: the
+ * site has always shown all of them whole-on-white, and changing 135 images at
+ * once is a visible redesign of the case-study pages, not a migration. So the
+ * values are pinned rather than corrected, and the page renders exactly as it
+ * did before the CMS existed.
+ *
+ * Pinned explicitly, not left to the prefix fallback, because the fallback is
+ * fragile: CMS uploads land in /images/uploads/, which fails the prefix test,
+ * so a replaced image would silently start cropping. An explicit kind survives
+ * that. Switching any image to 'photo' is a deliberate, per-image decision.
  *
  * This is the only copy. Import it; do not reimplement the prefix test.
  * sections/feasibility-package/DeliverableShowcase.tsx still has two inline

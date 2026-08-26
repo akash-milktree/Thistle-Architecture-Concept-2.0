@@ -40,11 +40,13 @@
         "images": [
           {
             "src": "/images/projects/rotherfield/sketch.jpg",
-            "alt": "Sketch view of the proposed homes in their landscape setting"
+            "alt": "Sketch view of the proposed homes in their landscape setting",
+            "kind": "drawing"
           },
           {
             "src": "/images/projects/rotherfield/cgi.jpg",
-            "alt": "Visualisation of one of the four proposed homes"
+            "alt": "Visualisation of one of the four proposed homes",
+            "kind": "drawing"
           }
         ]
       }
