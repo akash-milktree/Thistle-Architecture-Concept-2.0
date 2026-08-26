@@ -47,3 +47,9 @@ public/PROJECT_SOP.md
 # .env*.local above does not cover. Ignored so a key dropped there cannot be
 # committed by accident.
 .env
+
+# TinaCMS. The generated GraphQL client and types are rebuilt by `tinacms
+# build` on every build, and public/admin is the compiled editor SPA. Both are
+# build output, not source.
+tina/__generated__
+public/admin

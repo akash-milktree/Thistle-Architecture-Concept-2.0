@@ -4,6 +4,7 @@ import React from 'react';
 import { Reveal } from '../components/animations/Reveal';
 import { feasibilityLayers } from '../data/feasibilityLayers';
 import { InlineCTA } from '../components/ui/InlineCTA';
+import { pruneEmpty } from '../lib/tina';
 
 // The six data layers, drawn rather than photographed. Ed asked on 5 August for
 // these diagrams back: he called the photographic versions that replaced them
@@ -239,68 +240,142 @@ const GraphicLayout: React.FC = () => (
   </div>
 );
 
-// Bodies stay as Ed rewrote them in round 1, when the layer titles changed too.
-// Graphic order follows the layer order, so each diagram sits with the analysis
-// it illustrates.
-// Bodies shortened for Ed's August 2026 final brief: "keep 'What Is Analysed',
-// but shorten the copy and let the data/graphics do more of the work."
-const rows = [
-  { ...feasibilityLayers[0], body: "What has been approved, refused, or is pending nearby.", Graphic: GraphicPlanning },
-  { ...feasibilityLayers[1], body: "The policy and constraints that decide whether your scheme is viable.", Graphic: GraphicConstraints },
-  { ...feasibilityLayers[2], body: "Nearby conversions, unit counts, and achieved sale values.", Graphic: GraphicComparables },
-  { ...feasibilityLayers[3], body: "Build cost, margin, and ROI, before you commit.", Graphic: GraphicGDV },
-  { ...feasibilityLayers[4], body: "Space standards, Building Regs, and licensing for your area.", Graphic: GraphicDensity },
-  { ...feasibilityLayers[5], body: "The part automation cannot do: an architect draws the layout options over your plans.", Graphic: GraphicLayout },
+// The six diagrams, in layer order, so each drawing sits with the analysis it
+// illustrates. They pair with the layers BY POSITION and there are six of them,
+// so a seventh layer added in the CMS renders with an empty frame rather than
+// borrowing the diagram of a layer it has nothing to do with.
+const GRAPHICS: React.FC[] = [
+  GraphicPlanning,
+  GraphicConstraints,
+  GraphicComparables,
+  GraphicGDV,
+  GraphicDensity,
+  GraphicLayout,
 ];
 
-export const FeasibilityEngine: React.FC = () => {
+/**
+ * One analysis card: its number, its name, its description, and the CMS field
+ * ids for that one card.
+ *
+ * The three strings used to come from two places — eyebrow and title from
+ * data/feasibilityLayers.ts, `body` from a `rows` array right here — so a layer
+ * could be renamed in one file and described in another and nothing would say
+ * so. They are one record now, written by one Tina field set
+ * ("What's Included In Data Analysis" → Layers).
+ */
+export interface EngineLayer {
+  eyebrow: string;
+  title: string;
+  body: string;
+  /**
+   * CMS field ids for this one card. Per-item, never per-list: an id taken from
+   * the list itself opens an empty form instead of the card that was clicked.
+   */
+  tina?: Partial<Record<'eyebrow' | 'title' | 'body', string>>;
+}
+
+// The header copy is now a fallback rather than this section's only source: the
+// same strings live in content/feasibility/package.json, seeded byte-for-byte
+// from here. They stay so the section renders unchanged if it is ever mounted
+// without CMS props.
+const HEADER_FALLBACK = {
+  eyebrow: 'The Analysis',
+  heading: "What's Included",
+  headingAccent: 'In Data Analysis.',
+  lede: 'Hundreds of data points, cross-referenced automatically, so our architects spend their time on layouts and recommendations.',
+  ctaLabel: 'Get Your Instant Fixed Fee',
+};
+
+interface FeasibilityEngineProps {
+  eyebrow?: string;
+  heading?: string;
+  headingAccent?: string;
+  lede?: string;
+  ctaLabel?: string;
+  /**
+   * The six cards. All-or-nothing rather than merged card by card: an editor
+   * deleting the sixth layer has to be able to delete it, not have it reappear.
+   */
+  layers?: EngineLayer[];
+  /** CMS field ids for this section's own copy. */
+  tina?: Partial<Record<'eyebrow' | 'heading' | 'headingAccent' | 'lede' | 'ctaLabel', string>>;
+}
+
+export const FeasibilityEngine: React.FC<FeasibilityEngineProps> = ({
+  eyebrow,
+  heading,
+  headingAccent,
+  lede,
+  ctaLabel,
+  layers,
+  tina,
+}) => {
+  // pruneEmpty, exactly as the pages do: a field the editor has cleared arrives
+  // as '' and would otherwise blank the section, so an empty field leaves the
+  // standing copy in place.
+  const copy = { ...HEADER_FALLBACK, ...pruneEmpty({ eyebrow, heading, headingAccent, lede, ctaLabel }) };
+  const rows = layers?.length ? layers : feasibilityLayers;
+
   return (
     <section className="bg-thistle-white py-fl-section px-fl-margin">
       <div className="max-w-[1360px] mx-auto">
         {/* Header */}
         <div className="text-center mb-fl-section-sm max-w-2xl mx-auto">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">The Analysis</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4" data-tina-field={tina?.eyebrow}>{copy.eyebrow}</p>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-4">
-              What&apos;s Included<br /><span className="text-thistle-green">In Data Analysis.</span>
+            {/* Two fields, two markers. The h2 holds the first line, so it
+                carries `heading`; the green span holds the second and carries
+                its own, and closest() finds the span first for a click on the
+                green words. */}
+            <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-4" data-tina-field={tina?.heading}>
+              {copy.heading}<br /><span className="text-thistle-green" data-tina-field={tina?.headingAccent}>{copy.headingAccent}</span>
             </h2>
           </Reveal>
           <Reveal delay={0.15}>
-            <p className="text-fluid-base text-thistle-black/80 leading-relaxed">
-              Hundreds of data points, cross-referenced automatically, so our architects spend their time on layouts and recommendations.
+            <p className="text-fluid-base text-thistle-black/80 leading-relaxed" data-tina-field={tina?.lede}>
+              {copy.lede}
             </p>
           </Reveal>
         </div>
 
         {/* Card grid, as before the diagrams came back. */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-fl-5 mb-fl-8">
-          {rows.map((row, i) => (
-            <Reveal key={row.eyebrow} delay={Math.min(i * 0.06, 0.3)}>
-              <div className="h-full rounded-2xl overflow-hidden bg-white border border-thistle-black/[0.06]">
-                {/* The graphics inside are drawn at a fixed type size, so on a
-                    320px card the 4:3 box came out shorter than its own content
-                    and sliced the legend and stat rows in half. min-h wins over
-                    the ratio when the ratio would be the smaller of the two, so
-                    the box keeps 4:3 wherever there is room and stops shrinking
-                    past the point the content fits. */}
-                <div className="relative aspect-[4/3] min-h-[15rem] overflow-hidden">
-                  <row.Graphic />
+          {rows.map((row, i) => {
+            // Keyed by position rather than by the layer number, which is a
+            // live form value in the editor: keying on it remounts the card on
+            // every keystroke and replays the reveal animation as you type.
+            const Graphic = GRAPHICS[i];
+            return (
+              <Reveal key={i} delay={Math.min(i * 0.06, 0.3)}>
+                <div className="h-full rounded-2xl overflow-hidden bg-white border border-thistle-black/[0.06]">
+                  {/* The graphics inside are drawn at a fixed type size, so on a
+                      320px card the 4:3 box came out shorter than its own content
+                      and sliced the legend and stat rows in half. min-h wins over
+                      the ratio when the ratio would be the smaller of the two, so
+                      the box keeps 4:3 wherever there is room and stops shrinking
+                      past the point the content fits. */}
+                  <div className="relative aspect-[4/3] min-h-[15rem] overflow-hidden">
+                    {/* Guarded because the layer list is editable and the
+                        diagrams are not: a seventh layer has no drawing, and
+                        an empty frame is better than a crash. */}
+                    {Graphic && <Graphic />}
+                  </div>
+                  <div className="p-fl-5">
+                    <span className="block text-[10px] uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-2" data-tina-field={row.tina?.eyebrow}>{row.eyebrow}</span>
+                    <h3 className="text-fluid-h6 font-medium tracking-tight text-thistle-black mb-fl-2" data-tina-field={row.tina?.title}>{row.title}</h3>
+                    <p className="text-fluid-sm text-thistle-black/65 leading-relaxed" data-tina-field={row.tina?.body}>{row.body}</p>
+                  </div>
                 </div>
-                <div className="p-fl-5">
-                  <span className="block text-[10px] uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-2">{row.eyebrow}</span>
-                  <h3 className="text-fluid-h6 font-medium tracking-tight text-thistle-black mb-fl-2">{row.title}</h3>
-                  <p className="text-fluid-sm text-thistle-black/65 leading-relaxed">{row.body}</p>
-                </div>
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            );
+          })}
         </div>
 
         <Reveal delay={0.2}>
           <div className="mt-fl-section-sm">
-            <InlineCTA href="#instant-quote" label="Get Your Instant Fixed Fee" />
+            <InlineCTA href="#instant-quote" label={copy.ctaLabel} tinaLabel={tina?.ctaLabel} />
           </div>
         </Reveal>
       </div>

@@ -1,0 +1,11 @@
+{
+  "_template": "blog",
+  "metaTitle": "Blog",
+  "metaDescription": "Insights, guides, and industry updates on commercial conversions, planning, and property feasibility.",
+  "hero": {
+    "label": "Blog",
+    "heading": "Insights For Developers.",
+    "description": "Practical articles on planning, feasibility, and the commercial conversion market, written by architects, for developers."
+  },
+  "allLabel": "All"
+}

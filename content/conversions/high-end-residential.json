@@ -1,0 +1,76 @@
+{
+  "metaTitle": "High-End Residential Architects | Thistle Architecture",
+  "metaDescription": "Feasibility for high-end residential projects: extensions, remodels, and conversions. Heritage, permitted development, and existing fabric tested before you commit to design.",
+  "hero": {
+    "label": "High-End Residential",
+    "heading": "High-End Residential Architects",
+    "description": "Extend, remodel, or convert to something better. Feasibility for high-end residential projects, where the question is what the house could become rather than how many units fit in it."
+  },
+  "opportunity": {
+    "copy": "High-end residential works differently to a yield play. The value is in the quality of the finished house and how well the design uses what is already there, but the constraints are the same ones that catch developers: planning policy, heritage, and what the existing fabric will actually allow.",
+    "stats": [
+      {
+        "label": "Typical scope",
+        "value": "Extension or remodel"
+      },
+      {
+        "label": "Planning route",
+        "value": "Full or permitted development"
+      },
+      {
+        "label": "Common blocker",
+        "value": "Heritage and conservation"
+      }
+    ]
+  },
+  "challenges": [
+    {
+      "title": "Heritage and conservation",
+      "detail": "Listing, conservation areas, and the setting of nearby listed buildings all shape what is possible externally, and they are the constraints most often discovered too late."
+    },
+    {
+      "title": "What permitted development still allows",
+      "detail": "A surprising amount can be done without a full application, but volume allowances are cumulative and easy to exceed by accident, which turns a simple project into an application."
+    },
+    {
+      "title": "The existing fabric",
+      "detail": "Older houses rarely match their drawings. Head heights, structure, and floor levels decide what a remodel can actually deliver, and only a survey settles it."
+    }
+  ],
+  "deliverableHighlights": [
+    {
+      "deliverableId": "sketch-schemes",
+      "forThisType": "Options drawn over your existing plans, so you can see what the house becomes before committing to a route."
+    },
+    {
+      "deliverableId": "planning-policy",
+      "forThisType": "Conservation, listing, and permitted development allowances checked before you spend on design."
+    },
+    {
+      "deliverableId": "risk-register",
+      "forThisType": "The risks that move a high-end budget, from structure to heritage objection, named early."
+    },
+    {
+      "deliverableId": "full-feasibility",
+      "forThisType": "A clear view of whether the project is worth doing, and which option is worth doing."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "My house isn't listed, does heritage still apply?",
+      "answer": "Possibly. A conservation area, or simply sitting near a listed building, can shape what's acceptable externally even without your own house being listed. It's one of the constraints most often discovered too late, so we check it at feasibility stage rather than after design has started."
+    },
+    {
+      "question": "How much can I do under permitted development before I need a full application?",
+      "answer": "More than most people expect, but the volume allowances are cumulative: a previous extension, a loft conversion, or an outbuilding can all eat into what's left. We check what has already been used against the property before assuming a route is available."
+    },
+    {
+      "question": "Why do you need a survey before scoping the design?",
+      "answer": "Older houses rarely match their existing drawings. Head heights, structural spans, and floor levels decide what a remodel can actually deliver, and only a measured survey settles those questions with certainty."
+    },
+    {
+      "question": "Can a feasibility test more than one design option?",
+      "answer": "Yes, and for a high-end project it's often worth it. One additional design option can be added to the fixed fee, so you're comparing two genuine routes rather than committing to the first idea that came up."
+    }
+  ]
+}

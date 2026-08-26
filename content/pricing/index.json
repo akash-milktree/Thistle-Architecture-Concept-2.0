@@ -1,0 +1,95 @@
+{
+  "hero": {
+    "label": "Pricing",
+    "heading": "Know The Fee Before You Commit.",
+    "description": "Four ways to test a building, from a £15.99 automated check to an architect-led feasibility. Answer a few questions and the price is on screen, not in an email."
+  },
+  "products": {
+    "recommendedLabel": "Recommended",
+    "items": [
+      {
+        "key": "hmo-check",
+        "name": "HMO Property Check",
+        "strapline": "Automated HMO screening.",
+        "body": "Planning and Article 4 checks, local HMO information, property and location data, key planning considerations and initial development indicators.",
+        "cta": "Check an HMO"
+      },
+      {
+        "key": "automated-feasibility",
+        "name": "Automated Site Feasibility",
+        "strapline": "Detailed data-led appraisal.",
+        "body": "For existing buildings nationwide: commercial to residential, apartments, HMOs, co-living, mixed use and similar opportunities.",
+        "cta": "Analyse My Site",
+        "turnaround": "Around 30 minutes"
+      },
+      {
+        "key": "architectural-feasibility",
+        "name": "Architectural Feasibility",
+        "strapline": "Data, architectural judgement and design.",
+        "body": "Architect review, sketch scheme, proposed layout, unit and bedroom testing, a one-hour architect meeting, a project review and recommended next steps.",
+        "cta": "Get Your Instant Fixed Fee",
+        "turnaround": "5 working days"
+      },
+      {
+        "key": "bespoke",
+        "name": "Bespoke",
+        "strapline": "Complex and larger projects.",
+        "body": "Anything over 600m², development land, new build, masterplanning or a scheme with several strategies to test. We scope it properly first, then quote a fixed fee.",
+        "cta": "Book a Free Expert Session"
+      }
+    ],
+    "vatNote": "All fees include VAT."
+  },
+  "calculator": {
+    "eyebrow": "Architectural Feasibility",
+    "heading": "Get Your Fixed Fee.",
+    "lede": "Seven questions, about a minute. Straightforward projects get a price on screen. Anything larger or more involved routes to a free Expert Session, because a scope we have not seen is not one we will put a number on."
+  },
+  "feeFactors": {
+    "heading": "What Affects Your Fee.",
+    "lede": "Every fee is fixed before you pay. These are the things that move it, and the calculator asks about each one, so the number you see is the number you pay.",
+    "items": [
+      { "label": "Property size" },
+      { "label": "Existing and proposed use" },
+      { "label": "Units or bedrooms" },
+      { "label": "Extent of alterations" },
+      { "label": "Planning complexity" },
+      { "label": "Heritage and listed status" },
+      { "label": "Alternative options tested" }
+    ],
+    "footnote": "Where a project has several of these at once, we stop pricing automatically and talk to you first, through a free Expert Session."
+  },
+  "comparison": {
+    "heading": "£49.99 Or From £298?",
+    "lede": "Both start from the same data. The difference is what happens to it.",
+    "automatedLabel": "Automated Site Feasibility",
+    "automatedBody": "Data-led and fully automated. Planning, standards, indicative capacity, commercial context, risks and next steps, in around 30 minutes. No drawings, no architect.",
+    "architecturalLabel": "Architectural Feasibility",
+    "architecturalBody": "Everything in the automated appraisal, plus an architect: planning interpretation, sketch and layout testing, and a professional recommendation you can act on."
+  },
+  "automated": {
+    "eyebrow": "Automated Site Feasibility, £49.99",
+    "heading": "What You Get For £49.99.",
+    "items": [
+      { "text": "Property and site overview, location and surrounding context" },
+      { "text": "Existing use, potential development routes and relevant planning policy" },
+      { "text": "Planning history, nearby precedents, constraints and planning-risk assessment" },
+      { "text": "Local space and amenity standards, and indicative development capacity" },
+      { "text": "Indicative bedroom or unit potential" },
+      { "text": "Local rental and sales comparables, indicative income and GDV" },
+      { "text": "High-level viability indicators" },
+      { "text": "Building Regulations and technical constraint flags" },
+      { "text": "Heritage, highways and parking considerations" },
+      { "text": "Recommended development strategy, roadmap and next steps" }
+    ],
+    "boundary": "The £49.99 appraisal is fully automated and data-led. It does not include architectural drawings or an architect review."
+  },
+  "reviews": {
+    "eyebrow": "Client Reviews",
+    "heading": "Priced Up Front."
+  },
+  "seo": {
+    "metaTitle": "Pricing",
+    "metaDescription": "Fixed-fee feasibility pricing: a £15.99 HMO check, a £49.99 automated site appraisal, and architect-led feasibility from £298. Get your price on screen in about a minute."
+  }
+}

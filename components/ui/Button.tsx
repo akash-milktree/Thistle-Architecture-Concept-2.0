@@ -3,7 +3,25 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+// framer-motion declares its own drag, animation and transition handlers with
+// signatures that do not match React's DOM ones, so those names are dropped
+// before the rest are forwarded to motion.button. None of them is used on a
+// Button; everything else (aria-*, data-*, id, name, form) passes through.
+type MotionConflicting =
+  | 'onDrag'
+  | 'onDragStart'
+  | 'onDragEnd'
+  | 'onDragEnter'
+  | 'onDragExit'
+  | 'onDragLeave'
+  | 'onDragOver'
+  | 'onDrop'
+  | 'onAnimationStart'
+  | 'onAnimationEnd'
+  | 'onAnimationIteration'
+  | 'onTransitionEnd';
+
+interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, MotionConflicting> {
   variant?: 'primary' | 'secondary' | 'outline' | 'glass';
   size?: 'sm' | 'md' | 'lg';
   icon?: React.ReactNode;
@@ -43,6 +61,12 @@ export const Button: React.FC<ButtonProps> = ({
       onClick={onClick}
       disabled={disabled}
       type={type}
+      // `rest` was destructured but never applied, so every passthrough
+      // attribute was silently dropped: aria-*, id, name, and the
+      // `data-tina-field` markers the CMS needs to resolve a click to a field.
+      // TypeScript could not catch it because ButtonProps extends
+      // ButtonHTMLAttributes, so the call sites always type-checked.
+      {...rest}
     >
       {children}
       {icon && <span className="ml-2">{icon}</span>}

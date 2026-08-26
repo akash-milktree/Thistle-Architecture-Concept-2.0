@@ -6,7 +6,8 @@ import { useRouter } from 'next/navigation';
 import { Reveal } from '../../components/animations/Reveal';
 import { Button } from '../../components/ui/Button';
 import { ToolGate } from '../../components/ui/ToolGate';
-import { NumberInput, OutputRow, formatGBP } from './calcUi';
+import { pruneEmpty } from '../../lib/tina';
+import { NumberInput, OutputRow, formatGBP, type OutcomeCopy } from './calcUi';
 
 // An HMO is valued on the income it produces, not on comparable sales, so it
 // needs its own model rather than the apartment GDV one. The method here is the
@@ -79,11 +80,50 @@ const BAND_COPY: Record<HmoBand, { label: string; body: string; bg: string; text
   },
 };
 
-export const HMOCalculator: React.FC = () => {
+// The note under the inputs describes DEFAULTS above it. The two are not
+// wired together — the note is CMS copy and the figures are code — so if a
+// benchmark is ever revised, both have to be changed, and the field
+// description in tina/collections/tool.ts says so where the editor will read
+// it.
+const NOTE_FALLBACK =
+  'The operating allowance covers bills, management and voids. Defaults follow the benchmarks our feasibility documents use, but every one of them varies by area and product.';
+
+interface HMOCalculatorProps {
+  /** Panel headings. The input labels and units below them stay in code. */
+  inputsHeading?: string;
+  outputsHeading?: string;
+  /** The small print under the inputs, explaining what the defaults assume. */
+  note?: string;
+  /**
+   * CMS wording for the three verdict bands, keyed by band. Only the words:
+   * which band a set of inputs lands in is computeHmo()'s decision, and the
+   * 10% / 25% boundaries stay in code with it.
+   */
+  bands?: Partial<Record<HmoBand, OutcomeCopy>>;
+  /** Label on the "Get Your Fixed Fee" button, shared with the page shell. */
+  ctaLabel?: string;
+  tina?: { inputsHeading?: string; outputsHeading?: string; note?: string; ctaLabel?: string };
+}
+
+export const HMOCalculator: React.FC<HMOCalculatorProps> = ({
+  inputsHeading = 'Your numbers',
+  outputsHeading = 'Projected outcome',
+  note = NOTE_FALLBACK,
+  bands,
+  ctaLabel = 'Get Your Fixed Fee',
+  tina,
+}) => {
   const router = useRouter();
   const [inputs, setInputs] = useState<HmoInputs>(DEFAULTS);
   const result = useMemo(() => computeHmo(inputs), [inputs]);
-  const bandCopy = BAND_COPY[result.band];
+  // Only `label` and `body` are merged in from the CMS. The colours are part of
+  // the verdict rather than part of the copy, and are not an editor's to
+  // change.
+  const cmsBand = bands?.[result.band];
+  const bandCopy = {
+    ...BAND_COPY[result.band],
+    ...pruneEmpty({ label: cmsBand?.label, body: cmsBand?.body }),
+  };
 
   const update = (key: keyof HmoInputs, value: number) => {
     setInputs((prev) => ({ ...prev, [key]: value }));
@@ -95,7 +135,7 @@ export const HMOCalculator: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-fl-7">
           <Reveal>
             <div className="bg-white rounded-2xl border border-thistle-black/[0.06] p-fl-7">
-              <h3 className="text-fluid-h5 font-medium tracking-tight text-thistle-black mb-fl-5">Your numbers</h3>
+              <h3 className="text-fluid-h5 font-medium tracking-tight text-thistle-black mb-fl-5" data-tina-field={tina?.inputsHeading}>{inputsHeading}</h3>
               <div className="flex flex-col gap-fl-5">
                 <NumberInput label="Purchase price" value={inputs.purchasePrice} prefix="£" step={10000} onChange={(n) => update('purchasePrice', n)} />
                 <NumberInput label="Number of rooms" value={inputs.roomCount} step={1} onChange={(n) => update('roomCount', n)} />
@@ -104,9 +144,8 @@ export const HMOCalculator: React.FC = () => {
                 <NumberInput label="Target yield" value={inputs.yieldPct} suffix="%" step={0.5} onChange={(n) => update('yieldPct', n)} />
                 <NumberInput label="Conversion cost per room" value={inputs.buildCostPerRoom} prefix="£" step={2500} onChange={(n) => update('buildCostPerRoom', n)} />
               </div>
-              <p className="text-xs text-thistle-black/45 leading-relaxed mt-fl-5">
-                The operating allowance covers bills, management and voids. Defaults follow the benchmarks our feasibility
-                documents use, but every one of them varies by area and product.
+              <p className="text-xs text-thistle-black/45 leading-relaxed mt-fl-5" data-tina-field={tina?.note}>
+                {note}
               </p>
             </div>
           </Reveal>
@@ -114,7 +153,7 @@ export const HMOCalculator: React.FC = () => {
           <Reveal delay={0.1}>
             <div className="flex flex-col gap-fl-4 h-full">
               <div className="bg-white rounded-2xl border border-thistle-black/[0.06] p-fl-7">
-                <h3 className="text-fluid-h5 font-medium tracking-tight text-thistle-black mb-fl-5">Projected outcome</h3>
+                <h3 className="text-fluid-h5 font-medium tracking-tight text-thistle-black mb-fl-5" data-tina-field={tina?.outputsHeading}>{outputsHeading}</h3>
                 <div className="space-y-fl-4">
                   <OutputRow label="Gross annual rent" value={formatGBP(result.grossAnnualRent)} />
                   <ToolGate source="hmo-calculator" extra={{ inputs }}>
@@ -130,12 +169,15 @@ export const HMOCalculator: React.FC = () => {
               </div>
 
               <div className={`rounded-2xl border ${bandCopy.bg} p-fl-6`}>
-                <span className={`block text-[10px] uppercase tracking-widest font-semibold mb-fl-3 ${bandCopy.text}`}>{bandCopy.label}</span>
-                <p className="text-fluid-sm text-thistle-black/80 leading-relaxed mb-fl-5">
+                {/* Markers go on the badge and the paragraph themselves, never
+                    on the card around them: a marker on the wrapper would
+                    capture the click meant for either. */}
+                <span className={`block text-[10px] uppercase tracking-widest font-semibold mb-fl-3 ${bandCopy.text}`} data-tina-field={cmsBand?.tina?.label}>{bandCopy.label}</span>
+                <p className="text-fluid-sm text-thistle-black/80 leading-relaxed mb-fl-5" data-tina-field={cmsBand?.tina?.body}>
                   {bandCopy.body}
                 </p>
-                <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/pricing')}>
-                  Get Your Fixed Fee
+                <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/pricing')} data-tina-field={tina?.ctaLabel}>
+                  {ctaLabel}
                 </Button>
               </div>
             </div>

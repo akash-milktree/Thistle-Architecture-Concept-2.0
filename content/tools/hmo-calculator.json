@@ -1,0 +1,38 @@
+{
+  "metaTitle": "HMO Valuation Calculator | Thistle Architecture",
+  "metaDescription": "Free HMO valuation calculator. Enter room count, room rate, operating allowance, and target yield to see gross rent, net income, and the indicative capital value of an HMO conversion.",
+  "hero": {
+    "label": "HMO Valuation Calculator",
+    "heading": "What Is The HMO Worth?",
+    "description": "An HMO is valued on the income it produces, not on what the house next door sold for. Set the room count and rate, and see the indicative value."
+  },
+  "panels": {
+    "inputsHeading": "Your numbers",
+    "outputsHeading": "Projected outcome",
+    "note": "The operating allowance covers bills, management and voids. Defaults follow the benchmarks our feasibility documents use, but every one of them varies by area and product."
+  },
+  "outcomes": [
+    {
+      "key": "marginal",
+      "label": "Marginal",
+      "body": "Under 10% over cost. On an HMO the room count is usually what decides this, and the room count is decided by planning and space standards, not by hope. A feasibility tells you how many rooms the building will actually be allowed."
+    },
+    {
+      "key": "viable",
+      "label": "Viable",
+      "body": "Between 10 and 25% over cost. Workable on paper. The things that move it most are the achievable room rate and whether every room clears the local space standard, both of which a feasibility checks against real local evidence."
+    },
+    {
+      "key": "strong",
+      "label": "Strong",
+      "body": "Over 25% over cost. Strong on these numbers, which usually means either the deal is genuinely good or the room count assumes a planning position you do not have yet. A feasibility tells you which."
+    }
+  ],
+  "disclaimer": "Indicative numbers only. The room count depends on planning and space standards, which is what a feasibility establishes.",
+  "ctaLabel": "Get Your Fixed Fee",
+  "closing": {
+    "heading": "The Tool Is A Hint.",
+    "headingAccent": "The Feasibility Is The Answer.",
+    "body": "Get a real, architect-led feasibility on the building in five days. Fixed fee, clear Go or No-Go."
+  }
+}

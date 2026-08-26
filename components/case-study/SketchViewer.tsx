@@ -10,10 +10,25 @@ import { Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';
 // Sketches are the one thing on these pages worth looking at closely, and the
 // text on them is small, so a cropped thumbnail is no use. Full-screen opens the
 // image at its natural size on a dark ground with the page scroll locked.
-export const SketchViewer: React.FC<{ images: string[]; alt: string; caption?: string }> = ({
+export const SketchViewer: React.FC<{
+  images: string[];
+  alt: string;
+  caption?: string;
+  /**
+   * CMS field id per image, index-aligned with `images`, and one for the
+   * caption. Only the sketch currently on screen is marked: a click inside the
+   * editor opens that option's picker instead of enlarging, which is the
+   * trade-off Tina makes everywhere, and the full-screen view is a dialog
+   * rather than page content so it carries no marker at all.
+   */
+  tina?: (string | undefined)[];
+  tinaCaption?: string;
+}> = ({
   images,
   alt,
   caption,
+  tina,
+  tinaCaption,
 }) => {
   const [index, setIndex] = useState(0);
   const [open, setOpen] = useState(false);
@@ -60,6 +75,7 @@ export const SketchViewer: React.FC<{ images: string[]; alt: string; caption?: s
             height={1100}
             sizes="(max-width: 1024px) 100vw, 960px"
             className="w-full h-auto object-contain bg-white"
+            data-tina-field={tina?.[index]}
           />
         </button>
 
@@ -82,7 +98,7 @@ export const SketchViewer: React.FC<{ images: string[]; alt: string; caption?: s
         )}
       </div>
 
-      {caption && <p className="text-fluid-sm text-thistle-black/55 leading-relaxed mt-fl-4 max-w-2xl">{caption}</p>}
+      {caption && <p className="text-fluid-sm text-thistle-black/55 leading-relaxed mt-fl-4 max-w-2xl" data-tina-field={tinaCaption}>{caption}</p>}
 
       {open && (
         <div

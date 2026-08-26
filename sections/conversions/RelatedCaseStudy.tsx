@@ -11,11 +11,29 @@ import { caseStudies } from '../../data/caseStudiesData';
 interface RelatedCaseStudyProps {
   tinted?: boolean;
   slug?: string;
+  /**
+   * The two lines above the card are the same on all five sector pages, so
+   * they come from the Expertise Overview document rather than from each
+   * sector's record. Which project is featured stays in code: it selects a
+   * record rather than saying anything.
+   */
+  eyebrow?: string;
+  heading?: string;
+  tina?: Partial<Record<'eyebrow' | 'heading', string>>;
 }
+
+const EYEBROW_FALLBACK = 'A Real Project';
+const HEADING_FALLBACK = 'We Have Done This Before.';
 
 // A single case-study feature card looked up by slug. Returns null when the
 // slug is missing or does not match any case so the page degrades cleanly.
-export const RelatedCaseStudy: React.FC<RelatedCaseStudyProps> = ({ slug, tinted = true }) => {
+export const RelatedCaseStudy: React.FC<RelatedCaseStudyProps> = ({
+  slug,
+  tinted = true,
+  eyebrow = EYEBROW_FALLBACK,
+  heading = HEADING_FALLBACK,
+  tina,
+}) => {
   if (!slug) return null;
   const item = caseStudies.find((c) => c.slug === slug);
   if (!item) return null;
@@ -25,11 +43,13 @@ export const RelatedCaseStudy: React.FC<RelatedCaseStudyProps> = ({ slug, tinted
       <div className="max-w-[1360px] mx-auto">
         <div className="text-center mb-fl-8 max-w-2xl mx-auto">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">A Real Project</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4" data-tina-field={tina?.eyebrow}>{eyebrow}</p>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black">
-              We Have Done This Before.
+            {/* The card below carries no markers: everything in it is the case
+                study's own record, which this page does not load. */}
+            <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black" data-tina-field={tina?.heading}>
+              {heading}
             </h2>
           </Reveal>
         </div>

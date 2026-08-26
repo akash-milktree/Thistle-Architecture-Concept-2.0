@@ -1,3 +1,17 @@
+// The fourteen journal articles.
+//
+// These records are now the FALLBACK rather than the only copy: the same words
+// also live in content/posts/<slug>.json, seeded byte-for-byte from the modules
+// below and editable through Tina (tina/collections/post.ts). They stay here
+// because this file is still what defines the article set — generateStaticParams
+// builds the routes from it, /blog/category/<slug> filters it, blogViews seeds
+// the counters from it — and because a field an editor clears has to leave the
+// page reading properly rather than blank.
+//
+// Which means the two have to be kept in step. Adding an article is still a
+// code change: add data/blog/<slug>.ts, register it below, then add the JSON
+// with the same filename. Changing an article's category needs both.
+
 export type BlogCategory =
   | 'Planning'
   | 'Permitted Development'
@@ -15,7 +29,13 @@ export interface BlogPost {
   metaTitle?: string;
   excerpt: string;
   /** Content blocks: "## " renders an h2, "### " an h3, "- " a bullet,
-   *  anything else a paragraph. Inline links use [text](/path). */
+   *  anything else a paragraph. Inline links use [text](/path).
+   *
+   *  Plain strings, and deliberately not rich text. views/BlogPostPage.tsx
+   *  parses this subset itself so that every outbound link keeps
+   *  rel="noopener noreferrer nofollow" — the articles cite suppliers who
+   *  compete with Thistle — and so the comparison tables keep their per-cell
+   *  tinting. The CMS field mirrors the shape for the same reason. */
   content: string[];
   image: string;
   date: string;

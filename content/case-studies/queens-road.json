@@ -1,0 +1,56 @@
+{
+  "kind": "project",
+  "title": "Queens Road",
+  "location": "South Coast, England",
+  "provenance": "By HMO Designers, part of Thistle Group",
+  "tag": "HMO",
+  "status": "Complete",
+  "desc": "A three-bedroom city centre family house turned into a seven-bedroom high-end HMO, every room en suite.",
+  "image": {
+    "src": "/images/projects/hmo-queens-road/queens-road-1.jpg",
+    "kind": "drawing"
+  },
+  "stats": [
+    {
+      "label": "Bedrooms",
+      "value": "7"
+    },
+    {
+      "label": "Before",
+      "value": "3 bed family house"
+    },
+    {
+      "label": "En suite",
+      "value": "Every room"
+    }
+  ],
+  "buildingType": "Three-bed family house (C3)",
+  "conversionTypes": [
+    "hmo"
+  ],
+  "challenge": "The starting point was an ordinary three-bedroom family house in a city centre. Getting seven en suite rooms out of that means finding the rooms and the drainage for seven bathrooms at the same time, without leaving the shared space so thin that the house stops working for the people actually living in it.",
+  "approach": "Managed end to end: existing surveys, proposals, planning and building regulations approval, then construction. The rear of the house opens into a communal living space under a glazed lantern, with bifold doors onto a small walled courtyard. On a tight urban plot that courtyard is how the shared amenity space gets won, and it is why the lounge does not feel like a leftover.",
+  "outcome": "Complete, and in use as seven high-end en suite rooms.",
+  "galleryImages": [
+    {
+      "src": "/images/projects/hmo-queens-road/queens-road-2.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-queens-road/queens-road-3.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-queens-road/queens-road-4.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-queens-road/queens-road-5.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-queens-road/queens-road-6.jpg",
+      "kind": "drawing"
+    }
+  ]
+}

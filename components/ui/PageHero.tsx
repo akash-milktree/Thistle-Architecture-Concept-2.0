@@ -9,6 +9,12 @@ interface PageHeroProps {
   description?: string;
   variant?: 'dark' | 'light';
   children?: React.ReactNode;
+  /**
+   * CMS field ids. Optional, and undefined values make React omit the
+   * attribute entirely, so a page that does not pass them renders exactly as
+   * it did before.
+   */
+  tina?: { label?: string; heading?: string; description?: string };
 }
 
 export const PageHero: React.FC<PageHeroProps> = ({
@@ -17,6 +23,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
   description,
   variant = 'light',
   children,
+  tina,
 }) => {
   const isDark = variant === 'dark';
 
@@ -35,7 +42,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
         <Reveal>
           <p className={`text-xs uppercase tracking-[0.2em] font-semibold mb-fl-5 ${
             isDark ? 'text-white/30' : 'text-thistle-black/40'
-          }`}>
+          }`} data-tina-field={tina?.label}>
             {label}
           </p>
         </Reveal>
@@ -44,7 +51,10 @@ export const PageHero: React.FC<PageHeroProps> = ({
           {/* This section clips its overflow, so an over-wide heading was being
               sliced off mid-word rather than scrolling. See the note on the
               case-study h1: same 50.88px floor, same fix. */}
-          <h1 className="text-fluid-h1 font-medium tracking-tight leading-tight max-w-5xl text-balance mb-fl-5 break-words hyphens-auto">
+          <h1
+            className="text-fluid-h1 font-medium tracking-tight leading-tight max-w-5xl text-balance mb-fl-5 break-words hyphens-auto"
+            data-tina-field={tina?.heading}
+          >
             {heading}
           </h1>
         </Reveal>
@@ -53,7 +63,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
           <Reveal delay={0.2}>
             <p className={`text-fluid-sm leading-relaxed max-w-lg ${
               isDark ? 'text-white/50' : 'text-thistle-black/50'
-            }`}>
+            }`} data-tina-field={tina?.description}>
               {description}
             </p>
           </Reveal>

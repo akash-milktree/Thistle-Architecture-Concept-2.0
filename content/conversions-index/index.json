@@ -1,0 +1,22 @@
+{
+  "metaTitle": "Expertise",
+  "metaDescription": "Feasibility-first architecture across commercial to residential, HMO, co-living and large HMO, mixed-use, and high-end residential.",
+  "hero": {
+    "label": "Expertise",
+    "heading": "Feasibility, By Sector.",
+    "description": "The same feasibility-first approach, applied to the risks and planning routes specific to each type of scheme."
+  },
+  "shared": {
+    "opportunityEyebrow": "The Opportunity",
+    "challengesEyebrow": "What Is Hard",
+    "challengesHeading": "The Risks Unique To",
+    "solveEyebrow": "How We Solve It",
+    "solveHeading": "Built For",
+    "caseStudyEyebrow": "A Real Project",
+    "caseStudyHeading": "We Have Done This Before.",
+    "ctaHeading": "Test This Building.",
+    "ctaBody": "Submit your property and get a clear Go or No-Go in five days, for a fixed fee.",
+    "ctaLabel": "Get Your Fixed Fee",
+    "otherExpertiseEyebrow": "Other Expertise"
+  }
+}

@@ -14,7 +14,22 @@ const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 // feasibility form, which asks the questions that actually let the team price
 // the work; this is for everyone else, so asking more than name, email and a
 // message would only put them off.
-export const ContactForm: React.FC = () => {
+interface ContactFormProps {
+  /**
+   * The practice phone number, for the "if it is urgent" line in the success
+   * message. Passed in from the CMS settings document rather than written here,
+   * because this line quotes the same number the footer and contact details
+   * show — hardcoding it meant changing the number in the CMS left this one
+   * copy behind, still telling people to ring the old one.
+   *
+   * Only the success message is CMS-driven. Every field label, placeholder,
+   * validation message and button state in this form stays in code: they are
+   * functional UI, and an edit that breaks one breaks lead capture silently.
+   */
+  phone?: string;
+}
+
+export const ContactForm: React.FC<ContactFormProps> = ({ phone: contactPhone = '0808 175 5405' }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -48,7 +63,7 @@ export const ContactForm: React.FC = () => {
       <div className="bg-white rounded-2xl border border-thistle-black/[0.08] p-fl-6 text-center">
         <p className="text-fluid-base text-thistle-black mb-fl-2">Thanks, that has reached us.</p>
         <p className="text-fluid-sm text-thistle-black/60">
-          We reply within one working day. If it is urgent, call 0808 175 5405.
+          We reply within one working day. If it is urgent, call {contactPhone}.
         </p>
       </div>
     );

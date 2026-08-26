@@ -1,0 +1,67 @@
+{
+  "kind": "project",
+  "title": "An Accessible Family Home",
+  "location": "South Downs",
+  "tag": "Residential",
+  "status": "Complete",
+  "desc": "A family home reconfigured and extended around a daughter's mobility needs, in a landscape where even the external lighting was a planning matter.",
+  "image": {
+    "src": "/images/projects/school-house/cgi-exterior.jpg",
+    "kind": "drawing"
+  },
+  "stats": [
+    {
+      "label": "Brief",
+      "value": "Level access throughout"
+    },
+    {
+      "label": "Setting",
+      "value": "South Downs"
+    },
+    {
+      "label": "Constraint",
+      "value": "Protected dark skies"
+    }
+  ],
+  "buildingType": "Existing family home",
+  "planningRoute": "Full planning",
+  "completionDate": "Complete",
+  "projectStory": {
+    "summary": [
+      "The sensitive reconfiguration and extension of an existing family home within the South Downs, designed to create a more accessible and functional ground floor for the owners and their daughter, whose ongoing mobility requirements were central to the brief.",
+      "The proposals included a new single-storey rear extension, comprehensive ground-floor reconfiguration and level access throughout, alongside the creation of an accessible en-suite bathroom directly connected to the daughter's bedroom. External alterations and landscaping were also incorporated to improve accessibility and create a cohesive relationship between the house and garden.",
+      "Given the property's sensitive landscape setting, the planning application required careful consideration of its environmental context, including external lighting designed to minimise impact on the area's protected dark skies.",
+      "Thistle Architecture progressed the scheme through design and full planning, securing permission for the extension, external alterations and landscaping."
+    ],
+    "sections": [
+      {
+        "title": "Design And Massing",
+        "caption": "The extension was tested in model form against the existing house before the planning application.",
+        "images": [
+          {
+            "src": "/images/projects/school-house/model-1.jpg",
+            "alt": "Massing model of the proposed extension"
+          },
+          {
+            "src": "/images/projects/school-house/model-2.jpg",
+            "alt": "Second massing study of the proposal"
+          }
+        ]
+      },
+      {
+        "title": "The Proposal",
+        "caption": "A single-storey rear extension with level access throughout the ground floor.",
+        "images": [
+          {
+            "src": "/images/projects/school-house/cgi-exterior.jpg",
+            "alt": "Visualisation of the extended house"
+          },
+          {
+            "src": "/images/projects/school-house/proposed-plan.jpg",
+            "alt": "Proposed ground floor plan showing the reconfigured accessible layout"
+          }
+        ]
+      }
+    ]
+  }
+}

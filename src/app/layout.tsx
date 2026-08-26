@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { GeistSans } from 'geist/font/sans';
 import './globals.css';
 import { PageShell } from '@/layouts/PageShell';
+import client from '@/tina/__generated__/client';
 
 export const metadata: Metadata = {
   // Every canonical below is written as a path, which Next resolves against
@@ -18,11 +19,20 @@ export const metadata: Metadata = {
   description: 'Data-driven feasibility for commercial conversions, HMOs, and high-end residential across the UK.',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  // The navigation, closing CTA band and footer are the same on every route, so
+  // they are fetched once here rather than by each page. Passing the raw query
+  // down lets PageShell re-run it live inside the editor.
+  const settings = await client.queries.settings({ relativePath: 'index.json' });
+
   return (
     <html lang="en" className={GeistSans.className}>
       <body>
-          <PageShell>{children}</PageShell>
+          <PageShell
+            settings={{ query: settings.query, variables: settings.variables, data: settings.data }}
+          >
+            {children}
+          </PageShell>
       </body>
     </html>
   );

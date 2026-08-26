@@ -1,0 +1,56 @@
+{
+  "kind": "project",
+  "title": "New Home In The New Forest",
+  "location": "Lymington, Hampshire",
+  "tag": "New Build",
+  "status": "Complete",
+  "desc": "A new family home on a private plot inside the New Forest, tiled in terracotta across both roof and walls to sit inside a protected landscape.",
+  "image": {
+    "src": "/images/projects/forest-house/exterior-dusk.jpg",
+    "kind": "drawing"
+  },
+  "stats": [
+    {
+      "label": "Setting",
+      "value": "New Forest"
+    },
+    {
+      "label": "Material",
+      "value": "Terracotta clay tile"
+    },
+    {
+      "label": "Thistle role",
+      "value": "Feasibility to construction"
+    }
+  ],
+  "buildingType": "New-build house in a protected landscape",
+  "completionDate": "Complete",
+  "projectStory": {
+    "summary": [
+      "A new-build family home on a privately owned plot in Lymington, within the sensitive landscape setting of the New Forest, designed to respond carefully to its rural surroundings.",
+      "The house uses terracotta clay tiles across both the roof and external elevations, creating a distinctive but contextually appropriate material palette. The design was developed to sit comfortably within its protected landscape setting while delivering a contemporary new home for the owners.",
+      "Thistle Architecture was involved from the initial feasibility stage, progressing the project through planning, technical design and construction. The site presented a number of constraints, particularly in relation to existing trees and the surrounding natural environment, requiring close coordination with specialist consultants throughout.",
+      "The completed scheme responds to its landscape setting through form, materiality and detailing, while overcoming the constraints of the site."
+    ],
+    "sections": [
+      {
+        "title": "The Completed House",
+        "caption": "Terracotta clay tile across roof and walls, with full-height glazing opening the plan to the garden.",
+        "images": [
+          {
+            "src": "/images/projects/forest-house/exterior-dusk.jpg",
+            "alt": "The completed house at dusk with the interior lit"
+          },
+          {
+            "src": "/images/projects/forest-house/exterior-day.jpg",
+            "alt": "The house and garden in daylight"
+          },
+          {
+            "src": "/images/projects/forest-house/interior.jpg",
+            "alt": "The open plan kitchen and dining space"
+          }
+        ]
+      }
+    ]
+  }
+}

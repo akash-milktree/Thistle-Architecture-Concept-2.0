@@ -1,0 +1,107 @@
+{
+  "nav": {
+    "items": [
+      {
+        "key": "feasibility-package",
+        "label": "Feasibility Package"
+      },
+      {
+        "key": "pricing",
+        "label": "Pricing"
+      },
+      {
+        "key": "our-work",
+        "label": "Our Work"
+      },
+      {
+        "key": "our-work.feasibility",
+        "label": "Feasibility Studies"
+      },
+      {
+        "key": "our-work.completed",
+        "label": "Completed Projects"
+      },
+      {
+        "key": "expertise",
+        "label": "Expertise"
+      },
+      {
+        "key": "expertise.c2r",
+        "label": "Commercial to Residential"
+      },
+      {
+        "key": "expertise.hmo",
+        "label": "HMO"
+      },
+      {
+        "key": "expertise.coliving",
+        "label": "Co-Living & Large HMO"
+      },
+      {
+        "key": "expertise.mixed",
+        "label": "Mixed-Use Commercial"
+      },
+      {
+        "key": "expertise.highend",
+        "label": "High-End Residential"
+      },
+      {
+        "key": "tools",
+        "label": "Tools"
+      },
+      {
+        "key": "tools.classma",
+        "label": "Class MA Checker"
+      },
+      {
+        "key": "tools.gdv",
+        "label": "Apartment GDV Calculator"
+      },
+      {
+        "key": "tools.hmocalc",
+        "label": "HMO Valuation Calculator"
+      },
+      {
+        "key": "tools.hmochecker",
+        "label": "HMO Checker ↗"
+      },
+      {
+        "key": "about",
+        "label": "About"
+      },
+      {
+        "key": "blog",
+        "label": "Blog"
+      },
+      {
+        "key": "contact",
+        "label": "Contact"
+      }
+    ],
+    "ctaLabel": "Get Your Fixed Fee"
+  },
+  "closingCta": {
+    "eyebrow": "Get Started",
+    "heading": "Make Faster\nDecisions.",
+    "body": "Understand your property's design potential, planning position and principal risks before committing further time or money.",
+    "buttonLabel": "Get Your Fixed Fee",
+    "reassurance": "No obligation. Response within one working day."
+  },
+  "footer": {
+    "blurb": "Data-driven feasibility for commercial conversions, HMOs, and high-end residential across the UK.",
+    "email": "hello@thistlearchitecture.co.uk",
+    "phone": "0808 175 5405",
+    "address": "The Pump House, Garnier Road, Winchester, SO23 9QG",
+    "hours": "Mon to Fri, 9am to 6pm GMT",
+    "productHeading": "Product",
+    "expertiseHeading": "Expertise",
+    "companyHeading": "Company",
+    "copyright": "© 2026 Thistle Architecture Ltd. Registered in England and Wales."
+  },
+  "testimonials": {
+    "eyebrow": "Client Reviews",
+    "heading": "What Clients Say.",
+    "lede": "Every review on our Trustpilot profile is five star.",
+    "linkLabel": "Read them all"
+  }
+}

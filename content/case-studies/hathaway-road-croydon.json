@@ -1,0 +1,81 @@
+{
+  "kind": "feasibility",
+  "title": "When The HMO Is The Wrong Answer",
+  "location": "Croydon, South London",
+  "tag": "Supported Living",
+  "recommendation": "No-Go",
+  "desc": "A feasibility that told the client not to do what they asked for, then found a route that needs no planning permission at all.",
+  "image": {
+    "src": "/images/projects/hathaway-sketch-1.webp",
+    "kind": "drawing"
+  },
+  "stats": [
+    {
+      "label": "HMO refusal risk",
+      "value": "~95%"
+    },
+    {
+      "label": "Bedrooms via C3(b)",
+      "value": "5"
+    },
+    {
+      "label": "Planning permission",
+      "value": "Not required"
+    }
+  ],
+  "buildingType": "Existing dwelling (C3)",
+  "planningRoute": "C3(b) supported living, confirmed by LDC",
+  "completionDate": "July 2026",
+  "challenge": "The client wanted an HMO in a highly sustainable Croydon location: PTAL 6a, a short walk from West Croydon station, generously sized rooms, and full permitted development rights intact. On the face of it the property looked ideal.",
+  "approach": "One fact decided it. The gross internal floor area is below 130 sqm, and Croydon protects family homes below that threshold from HMO conversion under Policies SP2 and DM1.2 of its Local Plan. The council measures the original floor area and disregards any extension or loft space, so neither a rear extension nor a loft conversion overcomes the policy, and reducing the room count does not help because the loss of the family house is the objection. The local planning authority indicated it would not even recommend a pre-application enquiry. Rather than stop there, the study tested an alternative: C3(b) supported living, a dwellinghouse for up to six adults living as a single household where care is provided.",
+  "outcome": "A No-Go on the HMO, with a recommended route instead. Because C3(b) stays within Use Class C3, a genuine change from a family dwelling is not development and needs no planning permission, and neither the family housing policy nor the Article 4 direction applies. The sketch layout shows five bedrooms from 11 to 18 sqm and 16 sqm of communal amenity within the existing building, without touching the loft or extending. This is not an HMO by another name: it requires a genuine care provider, contracts evidenced to the council, and confirmation by a Lawful Development Certificate.",
+  "galleryImages": [
+    {
+      "src": "/images/projects/hathaway-sketch-1.webp",
+      "kind": "drawing"
+    }
+  ],
+  "feasibility": {
+    "keyInfo": [
+      {
+        "label": "Bedrooms",
+        "value": "5, 11 to 18 sqm"
+      },
+      {
+        "label": "Communal space",
+        "value": "16 sqm"
+      },
+      {
+        "label": "Floor area",
+        "value": "93 to 115 sqm"
+      },
+      {
+        "label": "Planning route",
+        "value": "C3(b) supported living, by LDC"
+      },
+      {
+        "label": "Key risk",
+        "value": "Securing a care provider"
+      },
+      {
+        "label": "Date",
+        "value": "July 2026"
+      }
+    ],
+    "brief": "The client wanted to know whether this house could become an HMO.",
+    "found": "It could not, and the reason is a floor area threshold rather than anything about the design. Croydon protects family homes below 130 sqm from conversion to an HMO under Policies SP2 and DM1.2 of its Local Plan, and this property is between 93 and 115 sqm, so an HMO application would be very likely to be refused. A different use answers the same building: C3(b) supported living needs no HMO licence, and the layout suits it, with five bedrooms of 11 to 18 sqm and 16 sqm of communal amenity. Permitted development rights are intact, including for a rear extension and a loft conversion.",
+    "recommendation": "Do not pursue an HMO. Identify and engage a care or support provider willing to operate the property as C3(b) before committing to works or to the purchase, since that is the step everything else depends on. Confirm the provider's requirements on room count, en suites and communal space, verify the floor area by measured survey, and take a specialist broker's view on end value.",
+    "sketchCaption": "Five en-suite bedrooms of 11 to 18 sqm with a 16 sqm communal amenity space, laid out for supported living rather than as a licensed HMO.",
+    "guidance": {
+      "label": "Official guidance reviewed: Croydon HMO Standards, Housing Act 2004"
+    },
+    "decision": "A clear no on the HMO, and a route that works in its place. The value of the study was in finding the threshold before the client bought the building, not after.",
+    "roadmap": [
+      "Engage a support provider",
+      "Confirm provider requirements",
+      "Measured survey",
+      "Broker view on end value",
+      "C3(b) lawful development certificate"
+    ]
+  }
+}

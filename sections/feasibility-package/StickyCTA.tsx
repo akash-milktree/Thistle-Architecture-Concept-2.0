@@ -5,11 +5,32 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { useFeasibility } from '../../components/feasibility/FeasibilityContext';
 import { pricingFrom } from '../../data/feasibilityPackageData';
+import { pruneEmpty } from '../../lib/tina';
+
+// Now a fallback rather than this bar's only copy: the same two strings live in
+// content/feasibility/package.json, seeded byte-for-byte from here.
+//
+// The price is NOT one of them. `{pricingFrom} inc. VAT` reads as the price of
+// the product, and it is rendered straight from the constant that sits beside
+// the pricing engine, so the bar cannot advertise a fee the site does not
+// honour. Same line tina/collections/pricing.ts draws, for the same reason.
+const FALLBACK = {
+  label: 'Fixed fee, from',
+  ctaLabel: 'Get Your Instant Fixed Fee',
+};
+
+interface StickyCTAProps {
+  label?: string;
+  ctaLabel?: string;
+  /** CMS field ids for the two editable strings. The price and the destination stay in code. */
+  tina?: Partial<Record<'label' | 'ctaLabel', string>>;
+}
 
 // Mobile-only sticky bar that appears once the hero has scrolled past.
-export const StickyCTA: React.FC = () => {
+export const StickyCTA: React.FC<StickyCTAProps> = ({ label, ctaLabel, tina }) => {
   const { isOpen } = useFeasibility();
   const [visible, setVisible] = useState(false);
+  const copy = { ...FALLBACK, ...pruneEmpty({ label, ctaLabel }) };
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 600);
@@ -33,14 +54,15 @@ export const StickyCTA: React.FC = () => {
               shrink; the button takes what is left with tighter padding on the
               narrowest phones. */}
           <div className="leading-tight shrink-0">
-            <span className="block text-[10px] uppercase tracking-wider text-white/50 font-semibold whitespace-nowrap">Fixed fee, from</span>
+            <span className="block text-[10px] uppercase tracking-wider text-white/50 font-semibold whitespace-nowrap" data-tina-field={tina?.label}>{copy.label}</span>
             <span className="block text-base font-semibold whitespace-nowrap">{pricingFrom} inc. VAT</span>
           </div>
           <a
             href="#instant-quote"
             className="inline-flex min-w-0 items-center justify-center gap-1.5 text-sm font-medium px-3.5 sm:px-5 py-2.5 rounded-full bg-thistle-green text-thistle-black text-center"
+            data-tina-field={tina?.ctaLabel}
           >
-            Get Your Instant Fixed Fee
+            {copy.ctaLabel}
             <ArrowUpRight size={15} className="shrink-0" />
           </a>
         </motion.div>

@@ -9,6 +9,8 @@ import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-
 import { ArrowUpRight, Menu, X, ChevronDown } from 'lucide-react';
 
 interface NavChild {
+  /** Stable id used to look up the CMS label. Never shown, never changes. */
+  key: string;
   label: string;
   path: string;
   /** Opens in a new tab. Used for sister products outside this site. */
@@ -16,25 +18,28 @@ interface NavChild {
 }
 
 interface NavItem {
+  /** Stable id used to look up the CMS label. Never shown, never changes. */
+  key: string;
   label: string;
   path: string;
   children?: NavChild[];
 }
 
 const navLinks: NavItem[] = [
-  { label: "Feasibility Package", path: "/feasibility-package" },
+  { key: "feasibility-package", label: "Feasibility Package", path: "/feasibility-package" },
   // Pricing sits second, next to the package it prices. Ed's brief is explicit
   // that the site should not feel like "contact us for a quote", which only
   // works if the fee is reachable from anywhere.
-  { label: "Pricing", path: "/pricing" },
+  { key: "pricing", label: "Pricing", path: "/pricing" },
   {
+    key: "our-work",
     label: "Our Work",
     path: "/case-studies/feasibility-studies",
     children: [
       // Explicit ?view=feasibility, not a bare /case-studies. Without the param
       // this link is a no-op when you are already on the projects tab.
-      { label: "Feasibility Studies", path: "/case-studies/feasibility-studies" },
-      { label: "Completed Projects", path: "/case-studies/completed-projects" },
+      { key: "our-work.feasibility", label: "Feasibility Studies", path: "/case-studies/feasibility-studies" },
+      { key: "our-work.completed", label: "Completed Projects", path: "/case-studies/completed-projects" },
     ],
   },
   {
@@ -44,33 +49,51 @@ const navLinks: NavItem[] = [
     // of dropping straight into Commercial-to-Residential, per the brief:
     // "make it a simple Expertise overview rather than effectively dropping
     // users straight into Commercial-to-Residential."
+    key: "expertise",
     label: "Expertise",
     path: "/conversions",
     children: [
-      { label: "Commercial to Residential", path: "/conversions/commercial-to-residential" },
-      { label: "HMO", path: "/conversions/hmo" },
-      { label: "Co-Living & Large HMO", path: "/conversions/co-living-large-hmo" },
-      { label: "Mixed-Use Commercial", path: "/conversions/mixed-use-commercial" },
-      { label: "High-End Residential", path: "/conversions/high-end-residential" },
+      { key: "expertise.c2r", label: "Commercial to Residential", path: "/conversions/commercial-to-residential" },
+      { key: "expertise.hmo", label: "HMO", path: "/conversions/hmo" },
+      { key: "expertise.coliving", label: "Co-Living & Large HMO", path: "/conversions/co-living-large-hmo" },
+      { key: "expertise.mixed", label: "Mixed-Use Commercial", path: "/conversions/mixed-use-commercial" },
+      { key: "expertise.highend", label: "High-End Residential", path: "/conversions/high-end-residential" },
     ],
   },
   {
+    key: "tools",
     label: "Tools",
     path: "/tools/class-ma-checker",
     children: [
-      { label: "Class MA Checker", path: "/tools/class-ma-checker" },
-      { label: "Apartment GDV Calculator", path: "/tools/gdv-calculator" },
-      { label: "HMO Valuation Calculator", path: "/tools/hmo-calculator" },
+      { key: "tools.classma", label: "Class MA Checker", path: "/tools/class-ma-checker" },
+      { key: "tools.gdv", label: "Apartment GDV Calculator", path: "/tools/gdv-calculator" },
+      { key: "tools.hmocalc", label: "HMO Valuation Calculator", path: "/tools/hmo-calculator" },
       // Ed's video feedback 2026-07-08: "in tools also get HMO Checker in there".
-      { label: "HMO Checker ↗", path: "https://hmochecker.co.uk", external: true },
+      { key: "tools.hmochecker", label: "HMO Checker ↗", path: "https://hmochecker.co.uk", external: true },
     ],
   },
-  { label: "About", path: "/about" },
-  { label: "Blog", path: "/blog" },
-  { label: "Contact", path: "/contact" },
+  { key: "about", label: "About", path: "/about" },
+  { key: "blog", label: "Blog", path: "/blog" },
+  { key: "contact", label: "Contact", path: "/contact" },
 ];
 
-export const Navbar: React.FC = () => {
+interface NavbarProps {
+  /**
+   * CMS label overrides, keyed by the stable `key` on each nav entry. Absent
+   * keys keep the label defined in code, so the menu still renders correctly
+   * before the CMS has any content for it.
+   */
+  labels?: Record<string, { label: string; field?: string }>;
+  ctaLabel?: string;
+  tina?: { ctaLabel?: string };
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ labels, ctaLabel, tina }) => {
+  // Resolve a nav entry to the text and CMS marker it should render with.
+  const nav = (entry: { key: string; label: string }) => {
+    const o = labels?.[entry.key];
+    return { text: o?.label || entry.label, field: o?.field };
+  };
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -186,7 +209,7 @@ export const Navbar: React.FC = () => {
                       href={link.path}
                       className={`inline-flex items-center gap-1 whitespace-nowrap transition-colors hover:text-white ${active ? 'text-white' : ''}`}
                     >
-                      {link.label}
+                      <span data-tina-field={nav(link).field}>{nav(link).text}</span>
                       <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180" />
                     </Link>
                     <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 hidden group-hover:block">
@@ -198,7 +221,7 @@ export const Navbar: React.FC = () => {
                             {...(child.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                             className={`block px-fl-4 py-fl-3 text-sm transition-colors hover:bg-white/[0.05] hover:text-white ${pathname === child.path ? 'text-white' : 'text-white/70'}`}
                           >
-                            {child.label}
+                            <span data-tina-field={nav(child).field}>{nav(child).text}</span>
                           </Link>
                         ))}
                       </div>
@@ -212,7 +235,7 @@ export const Navbar: React.FC = () => {
                   href={link.path}
                   className={`whitespace-nowrap transition-colors hover:text-white ${pathname.startsWith(link.path) ? 'text-white' : ''}`}
                 >
-                  {link.label}
+                  <span data-tina-field={nav(link).field}>{nav(link).text}</span>
                 </Link>
               );
             })}
@@ -228,7 +251,7 @@ export const Navbar: React.FC = () => {
                 className="!bg-white !text-thistle-black !border-white hover:!bg-thistle-pink hover:!text-thistle-black hover:!border-thistle-pink"
                 onClick={() => router.push('/pricing')}
               >
-                Get Your Fixed Fee
+                <span data-tina-field={tina?.ctaLabel}>{ctaLabel || 'Get Your Fixed Fee'}</span>
               </Button>
             </div>
 
@@ -267,7 +290,7 @@ export const Navbar: React.FC = () => {
                       onClick={() => setIsMobileMenuOpen(false)}
                       className={`block py-3 px-3 rounded-lg text-lg font-medium ${pathname.startsWith(link.path) || (link.children && link.children.some((ch) => pathname.startsWith(ch.path))) ? 'text-thistle-green' : 'text-thistle-black'}`}
                     >
-                      {link.label}
+                      <span data-tina-field={nav(link).field}>{nav(link).text}</span>
                     </Link>
                     {link.children && (
                       <div className="flex flex-col pl-fl-5 pb-fl-2">
@@ -281,7 +304,7 @@ export const Navbar: React.FC = () => {
                             // 36px, under the 44px touch minimum.
                             className={`flex items-center min-h-[44px] py-2 text-sm ${pathname === child.path ? 'text-thistle-green' : 'text-thistle-black/70'}`}
                           >
-                            {child.label}
+                            <span data-tina-field={nav(child).field}>{nav(child).text}</span>
                           </Link>
                         ))}
                       </div>
@@ -301,7 +324,7 @@ export const Navbar: React.FC = () => {
                   router.push('/pricing');
                 }}
               >
-                Get Your Fixed Fee
+                <span data-tina-field={tina?.ctaLabel}>{ctaLabel || 'Get Your Fixed Fee'}</span>
               </Button>
             </div>
           </motion.div>

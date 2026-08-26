@@ -5,8 +5,22 @@ import { Reveal } from '../components/animations/Reveal';
 import { motion } from 'framer-motion';
 import { Upload, Cpu, Phone, PenTool, Video } from 'lucide-react';
 import { InlineCTA } from '../components/ui/InlineCTA';
+import { pruneEmpty } from '../lib/tina';
 
-const steps = [
+/** One step, plus the CMS field ids for that step's own three fields. */
+export interface ProcessStep {
+  num: string;
+  title: string;
+  desc: string;
+  tina?: Partial<Record<'num' | 'title' | 'desc', string>>;
+}
+
+// The wording below is the fallback for the same five steps in the CMS. The
+// icons are not in the CMS and are matched by position, so the first step gets
+// the upload icon whatever it ends up being called. That is also how `isFinal`
+// has always worked — the last step in the list is the wide green one — so the
+// two agree.
+const STEPS_FALLBACK: (ProcessStep & { icon: React.ElementType })[] = [
   {
     num: "01",
     title: "Upload Property Details",
@@ -39,27 +53,63 @@ const steps = [
   }
 ];
 
-export const Process: React.FC = () => {
+const COPY_FALLBACK = {
+  eyebrow: 'Our Process',
+  // Two fields because the second line is picked out in green, which one
+  // string with a newline in it cannot express.
+  heading: 'Our Five-Step',
+  headingAccent: 'Feasibility Process.',
+  // Ed's August 2026 final brief: one short bridge after the five steps, so the
+  // architecture side of the practice stays visible without a services section.
+  bridge: "If it's a Go, we can take it forward: planning, design, technical, tender and construction, with the same team throughout.",
+  ctaLabel: 'Get Your Fixed Fee',
+};
+
+interface ProcessProps {
+  /** CMS copy for the section's own wording. Falls back per field. */
+  copy?: Partial<typeof COPY_FALLBACK>;
+  /** CMS steps. Falls back whole to STEPS_FALLBACK when empty or absent. */
+  steps?: ProcessStep[];
+  tina?: Partial<Record<keyof typeof COPY_FALLBACK, string>>;
+}
+
+export const Process: React.FC<ProcessProps> = ({ copy, steps, tina }) => {
+  const c = { ...COPY_FALLBACK, ...pruneEmpty(copy) };
+  // Whole-list fallback: an empty list means the section has not been filled
+  // in, not that the editor wants five blank cards.
+  const list: ProcessStep[] = steps && steps.length ? steps : STEPS_FALLBACK;
+
   return (
     <section id="process" className="bg-white py-fl-section px-fl-margin overflow-hidden scroll-mt-28">
       <div className="max-w-[1360px] mx-auto">
         {/* Header */}
         <div className="text-center mb-fl-8">
           <Reveal>
-            <p className="text-sm uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">Our Process</p>
+            <p
+              className="text-sm uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4"
+              data-tina-field={tina?.eyebrow}
+            >
+              {c.eyebrow}
+            </p>
           </Reveal>
           <Reveal delay={0.1}>
+            {/* One marker per line rather than one on the h2. The two lines are
+                separate fields, so a marker on the heading as a whole would
+                open the first one wherever you clicked. */}
             <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black">
-              Our Five-Step<br />
-              <span className="text-thistle-green">Feasibility Process.</span>
+              <span data-tina-field={tina?.heading}>{c.heading}</span><br />
+              <span className="text-thistle-green" data-tina-field={tina?.headingAccent}>{c.headingAccent}</span>
             </h2>
           </Reveal>
         </div>
 
         {/* Steps */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-fl-4 mb-fl-7">
-          {steps.map((step, i) => {
-            const isFinal = i === steps.length - 1;
+          {list.map((step, i) => {
+            const isFinal = i === list.length - 1;
+            // Icons are code, matched by position. A sixth step added in the
+            // CMS reuses the last icon rather than rendering nothing.
+            const Icon = (STEPS_FALLBACK[i] ?? STEPS_FALLBACK[STEPS_FALLBACK.length - 1]).icon;
             return (
               <Reveal key={i} delay={i * 0.1} className={isFinal ? 'md:col-span-2' : ''}>
                 <motion.div
@@ -77,32 +127,40 @@ export const Process: React.FC = () => {
                         ? 'bg-thistle-green text-white'
                         : 'bg-thistle-green/10 text-thistle-green group-hover:bg-thistle-green/20'
                     }`}>
-                      <step.icon size={20} />
+                      <Icon size={20} />
                     </div>
                     {/* Ed's video feedback 2026-07-08: step numbers must read clearly at a glance. */}
-                    <span className={`text-3xl font-semibold tracking-tight tabular-nums leading-none ${isFinal ? 'text-thistle-green' : 'text-thistle-black/35'}`}>{step.num}</span>
+                    <span
+                      className={`text-3xl font-semibold tracking-tight tabular-nums leading-none ${isFinal ? 'text-thistle-green' : 'text-thistle-black/35'}`}
+                      data-tina-field={step.tina?.num}
+                    >
+                      {step.num}
+                    </span>
                   </div>
 
-                  <h3 className="text-fluid-h5 font-medium mb-fl-3 tracking-tight text-thistle-black">{step.title}</h3>
-                  <p className="text-fluid-base text-thistle-black/80 leading-relaxed">{step.desc}</p>
+                  <h3 className="text-fluid-h5 font-medium mb-fl-3 tracking-tight text-thistle-black" data-tina-field={step.tina?.title}>
+                    {step.title}
+                  </h3>
+                  <p className="text-fluid-base text-thistle-black/80 leading-relaxed" data-tina-field={step.tina?.desc}>
+                    {step.desc}
+                  </p>
                 </motion.div>
               </Reveal>
             );
           })}
         </div>
 
-        {/* Ed's August 2026 final brief: one short bridge after the five steps,
-            so the architecture side of the practice stays visible without a
-            services section. */}
         <Reveal delay={0.45}>
-          <p className="text-fluid-base text-thistle-black/70 text-center max-w-2xl mx-auto mt-fl-7">
-            If it&apos;s a Go, we can take it forward: planning, design, technical, tender and construction, with the
-            same team throughout.
+          <p
+            className="text-fluid-base text-thistle-black/70 text-center max-w-2xl mx-auto mt-fl-7"
+            data-tina-field={tina?.bridge}
+          >
+            {c.bridge}
           </p>
         </Reveal>
 
         <Reveal delay={0.5}>
-          <InlineCTA className="mt-fl-6" />
+          <InlineCTA className="mt-fl-6" label={c.ctaLabel} tinaLabel={tina?.ctaLabel} />
         </Reveal>
       </div>
     </section>

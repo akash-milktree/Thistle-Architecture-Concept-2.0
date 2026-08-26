@@ -1,0 +1,71 @@
+{
+  "kind": "project",
+  "title": "Derby Road",
+  "location": "South Coast, England",
+  "provenance": "By HMO Designers, part of Thistle Group",
+  "tag": "HMO",
+  "status": "Complete",
+  "desc": "An eight-bedroom ultra luxury HMO on the south coast, built around a rooflit living and dining space at the back of the house.",
+  "image": {
+    "src": "/images/projects/hmo-derby-road/derby-road-1.jpg",
+    "kind": "drawing"
+  },
+  "stats": [
+    {
+      "label": "Bedrooms",
+      "value": "8"
+    },
+    {
+      "label": "Specification",
+      "value": "Ultra luxury"
+    },
+    {
+      "label": "Communal space",
+      "value": "Living and dining"
+    }
+  ],
+  "buildingType": "Existing dwelling",
+  "conversionTypes": [
+    "hmo"
+  ],
+  "approach": "The communal heart of the house is a rear living and dining room lit by a large flush rooflight, with French doors to the outside. The finish is pitched well above the standard letting specification: wall lights either side of a sculptural panel, cane and black timber dining chairs, and a soft palette that reads as a home rather than a room let by the week.",
+  "outcome": "Complete and let. HMO Designers worked as part of the wider project team on this scheme rather than as sole designer, so the credit is shared with the others involved.",
+  "galleryImages": [
+    {
+      "src": "/images/projects/hmo-derby-road/derby-road-2.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-derby-road/derby-road-3.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-derby-road/derby-road-4.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-derby-road/derby-road-5.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-derby-road/derby-road-6.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-derby-road/derby-road-7.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-derby-road/derby-road-8.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-derby-road/derby-road-9.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-derby-road/derby-road-10.jpg",
+      "kind": "drawing"
+    }
+  ]
+}

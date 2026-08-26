@@ -13,6 +13,11 @@ interface ToolEmailOfferProps {
   /** What they get. Has to name something real that actually arrives. */
   heading: string;
   blurb: string;
+  /**
+   * CMS field ids for the two lines above. The email field, its button and its
+   * error message stay in code: they are the mechanic, not copy.
+   */
+  tina?: { heading?: string; blurb?: string };
 }
 
 // The open counterpart to ToolGate: it asks for an email without holding
@@ -27,7 +32,7 @@ interface ToolEmailOfferProps {
 // So the verdict is free and this sits underneath it as an offer. The rule for
 // using it: the heading must name something that genuinely gets sent, otherwise
 // it is the same broken promise in a friendlier shape.
-export const ToolEmailOffer: React.FC<ToolEmailOfferProps> = ({ source, extra, heading, blurb }) => {
+export const ToolEmailOffer: React.FC<ToolEmailOfferProps> = ({ source, extra, heading, blurb, tina }) => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'done' | 'error'>('idle');
 
@@ -63,8 +68,8 @@ export const ToolEmailOffer: React.FC<ToolEmailOfferProps> = ({ source, extra, h
 
   return (
     <div className="mt-fl-6 rounded-2xl border border-thistle-black/[0.08] bg-white p-fl-5">
-      <p className="text-fluid-sm font-medium text-thistle-black mb-fl-1">{heading}</p>
-      <p className="text-xs text-thistle-black/55 leading-relaxed mb-fl-4 max-w-md">{blurb}</p>
+      <p className="text-fluid-sm font-medium text-thistle-black mb-fl-1" data-tina-field={tina?.heading}>{heading}</p>
+      <p className="text-xs text-thistle-black/55 leading-relaxed mb-fl-4 max-w-md" data-tina-field={tina?.blurb}>{blurb}</p>
       <div className="flex flex-col sm:flex-row gap-fl-2 sm:items-center">
         <label htmlFor={`offer-${source}`} className="sr-only">
           Your email address

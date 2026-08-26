@@ -1,0 +1,77 @@
+{
+  "kind": "project",
+  "title": "Commercial To Ten-Bed Co-Living",
+  "location": "Cosham, Portsmouth",
+  "tag": "Co-Living",
+  "status": "On site",
+  "desc": "The end of a 1930s terrace, converted from commercial and storage space into ten en-suite co-living rooms with shared amenity on every floor.",
+  "image": {
+    "src": "/images/projects/highbury/cgi-front.jpg",
+    "kind": "drawing"
+  },
+  "stats": [
+    {
+      "label": "Bedrooms",
+      "value": "10, all en suite"
+    },
+    {
+      "label": "Existing",
+      "value": "Commercial and storage"
+    },
+    {
+      "label": "Thistle role",
+      "value": "Feasibility, planning, Stage 4, interiors"
+    }
+  ],
+  "buildingType": "1930s commercial building",
+  "planningRoute": "Full planning, change of use",
+  "completionDate": "On site",
+  "conversionTypes": [
+    "co-living-large-hmo",
+    "hmo",
+    "commercial-to-residential"
+  ],
+  "galleryImages": [
+    {
+      "src": "/images/projects/highbury-sk003-1.webp",
+      "kind": "drawing"
+    }
+  ],
+  "projectStory": {
+    "summary": [
+      "The conversion of an existing commercial building in Cosham, Portsmouth, into a 10-bedroom professional co-living HMO. The property forms the end of a 1930s terrace and retains attractive original brickwork and stone detailing, providing a strong architectural base for the redevelopment.",
+      "The proposals involve the complete reconfiguration of the existing commercial and storage accommodation to create 10 generously sized en-suite bedrooms, with shared amenity spaces distributed across each floor. The property also benefits from on-site parking and a highly sustainable location.",
+      "Thistle Architecture was commissioned from the initial feasibility stage, developing the scheme through planning and securing the change of use before progressing into Stage 4 technical design. Our involvement also includes the full interior design of the co-living accommodation, so the architectural and internal packages are developed as one coordinated scheme."
+    ],
+    "sections": [
+      {
+        "title": "The Existing Building",
+        "caption": "The end of a 1930s terrace in commercial and storage use, with its original brickwork and stone detailing intact.",
+        "images": [
+          {
+            "src": "/images/projects/highbury/existing-1.jpg",
+            "alt": "The existing commercial building on the corner of the terrace"
+          },
+          {
+            "src": "/images/projects/highbury/existing-2.jpg",
+            "alt": "The parade of shops with the subject building at the end"
+          }
+        ]
+      },
+      {
+        "title": "The Proposal",
+        "caption": "The original brick and stone are retained, with the accommodation entirely reconfigured behind them.",
+        "images": [
+          {
+            "src": "/images/projects/highbury/cgi-front.jpg",
+            "alt": "Visualisation of the converted building from the front"
+          },
+          {
+            "src": "/images/projects/highbury/cgi-side.jpg",
+            "alt": "Visualisation of the side elevation"
+          }
+        ]
+      }
+    ]
+  }
+}

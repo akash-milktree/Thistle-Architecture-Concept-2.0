@@ -4,40 +4,98 @@ import React from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTina } from 'tinacms/dist/react';
 import { Reveal } from '../components/animations/Reveal';
 import { DocumentCards } from '../components/case-study/DocumentCards';
 import { SketchViewer } from '../components/case-study/SketchViewer';
 import { BeforeAfter } from '../components/case-study/BeforeAfter';
+import { isDrawing } from '../components/case-study/imageFit';
 import { ArrowUpRight, ArrowLeft, CheckCircle2, HardHat } from 'lucide-react';
-import { caseStudies } from '../data/caseStudiesData';
+import { caseStudies, type CaseStudy } from '../data/caseStudiesData';
 import { conversions } from '../data/conversionsData';
+import { f, type TinaQuery, EMPTY_QUERY } from '../lib/tina-fields';
+import { str, arr, normalizeImage } from '../lib/tina';
 
 // Drawings (converted sketch PDFs) live in /images/projects/ and must never
-// be crop-covered; photography can fill its frame.
-const isDrawing = (src: string) => src.startsWith('/images/projects/');
-
-const Frame: React.FC<{ src: string; alt: string; aspect?: string; sizes?: string }> = ({
+// be crop-covered; photography can fill its frame. That rule now travels on the
+// image itself as an explicit `kind`, because the CMS uploads to
+// /images/uploads/ and the old path test failed silently for anything an editor
+// replaced — see components/case-study/imageFit.ts, which is the only copy.
+const Frame: React.FC<{
+  src: string;
+  alt: string;
+  kind?: string;
+  /** CMS field id for THIS image, so a click opens this picker and no other. */
+  tina?: string;
+  aspect?: string;
+  sizes?: string;
+}> = ({
   src,
   alt,
+  kind,
+  tina,
   aspect = 'aspect-[4/3]',
   sizes = '(max-width: 1024px) 92vw, 640px',
 }) => (
-  <div className={`relative ${aspect} rounded-2xl border border-thistle-black/[0.06] overflow-hidden ${isDrawing(src) ? 'bg-white' : 'bg-thistle-white/60'}`}>
+  <div className={`relative ${aspect} rounded-2xl border border-thistle-black/[0.06] overflow-hidden ${isDrawing(src, kind) ? 'bg-white' : 'bg-thistle-white/60'}`}>
     <Image
       src={src}
       alt={alt}
       fill
       sizes={sizes}
-      className={isDrawing(src) ? 'object-contain p-3' : 'object-cover'}
+      // On the image, not the frame around it: Tina resolves a click by walking
+      // up with closest(), so a marker on the wrapper would swallow anything
+      // else that ever sits inside it.
+      data-tina-field={tina}
+      className={isDrawing(src, kind) ? 'object-contain p-3' : 'object-cover'}
     />
   </div>
 );
 
-export const CaseStudyDetailPage: React.FC = () => {
-  const { slug } = useParams<{ slug: string }>();
-  const caseStudy = caseStudies.find(c => c.slug === slug);
+/**
+ * The field id for one entry of a list of plain strings — the roadmap steps and
+ * the project-story paragraphs.
+ *
+ * `f()` has no index parameter, and the rule for lists is to mark each item
+ * rather than the list: a marker on the list opens the form with nothing
+ * selected, so a click on the fourth paragraph would present all four. Tina's
+ * id format is documented as "queryId---path.to.array.index", so appending the
+ * index to the list's own id addresses that one input.
+ *
+ * Returns undefined when there is no list id at all, because `${undefined}.3`
+ * is a real attribute value that matches nothing, and an empty or wrong marker
+ * still swallows the click.
+ */
+const at = (listId: string | undefined, index: number): string | undefined =>
+  listId ? `${listId}.${index}` : undefined;
 
-  if (!caseStudy) {
+interface CaseStudyDetailPageProps {
+  /**
+   * This case study's own document, passed straight through from the server
+   * page so useTina can re-run the query against the editor's live values.
+   * Optional so the page still renders if it is mounted without it.
+   */
+  page?: TinaQuery;
+}
+
+export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ page }) => {
+  const { slug } = useParams<{ slug: string }>();
+
+  // useTina returns the server data verbatim on the public site and swaps in
+  // the live form values inside the editor. Passing a null-ish query is not
+  // allowed, so the hook runs against the shared stub when the prop is absent.
+  const { data: live } = useTina(page ?? EMPTY_QUERY);
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  const cms = page ? (live as any)?.caseStudy : undefined;
+
+  // The record in data/caseStudiesData.ts stays the fallback rather than
+  // becoming dead weight: this page renders byte-for-byte as it does today when
+  // mounted without a CMS query, and every provenance note in that file stays
+  // next to the words it explains. It is also still the source for the listing
+  // pages, the home page band and the conversion pages.
+  const fallback = caseStudies.find((c) => c.slug === slug);
+
+  if (!fallback && !cms) {
     return (
       <section className="min-h-[60vh] flex items-center justify-center px-6">
         <div className="text-center">
@@ -48,43 +106,174 @@ export const CaseStudyDetailPage: React.FC = () => {
     );
   }
 
-  const isProject = caseStudy.kind === 'project';
+  // `|| fallback` is pruneEmpty written out. A field an editor has cleared comes
+  // back as '' and must leave the standing copy in place rather than blank the
+  // page. It is spelled out rather than spread because several of these are
+  // meaningfully absent on most records — a study with no recommendation must
+  // not inherit the previous one's, so those fall through to undefined.
+  const kind = (str(cms?.kind) || fallback?.kind || 'project') as CaseStudy['kind'];
+  const title = str(cms?.title) || fallback?.title || '';
+  const location = str(cms?.location) || fallback?.location || '';
+  const provenance = str(cms?.provenance) || fallback?.provenance;
+  const tag = str(cms?.tag) || fallback?.tag || '';
+  const desc = str(cms?.desc) || fallback?.desc || '';
+  const buildingType = str(cms?.buildingType) || fallback?.buildingType || '';
+  const planningRoute = str(cms?.planningRoute) || fallback?.planningRoute;
+  const completionDate = str(cms?.completionDate) || fallback?.completionDate;
+  const recommendation = (str(cms?.recommendation) || fallback?.recommendation) as CaseStudy['recommendation'];
+  const status = (str(cms?.status) || fallback?.status) as CaseStudy['status'];
+  const challenge = str(cms?.challenge) || fallback?.challenge;
+  const approach = str(cms?.approach) || fallback?.approach;
+  const outcome = str(cms?.outcome) || fallback?.outcome;
+
+  const image = normalizeImage(cms?.image?.src, fallback?.image ?? '');
+  const imageKind = str(cms?.image?.kind) || undefined;
+
+  const isProject = kind === 'project';
   const backHref = isProject ? '/case-studies/completed-projects' : '/case-studies/feasibility-studies';
   const backLabel = isProject ? 'All Completed Projects' : 'All Feasibility Studies';
 
   // Next link cycles within the same category, so a project never hands
   // over to a feasibility study mid-browse.
-  const siblings = caseStudies.filter(c => c.kind === caseStudy.kind);
+  //
+  // Still read from code, not from the CMS: this is the browsing order of the
+  // whole set, which no single document knows, and fetching all 35 into every
+  // one of 35 static pages to render one link would be a poor trade. The title
+  // shown here carries no marker for the same reason, and because a marker on a
+  // link cancels the navigation.
+  const siblings = caseStudies.filter(c => c.kind === kind);
   const idx = siblings.findIndex(c => c.slug === slug);
   const nextCase = siblings[(idx + 1) % siblings.length];
 
-  const narrative = [
-    { num: '01', title: 'The Challenge', body: caseStudy.challenge },
-    { num: '02', title: 'Our Approach', body: caseStudy.approach },
-    { num: '03', title: 'The Outcome', body: caseStudy.outcome },
-  ].filter((s): s is { num: string; title: string; body: string } => !!s.body);
+  // Lists are all-or-nothing rather than merged item by item: the record in
+  // code stands in only while the CMS has no list at all, because an editor
+  // deleting the third fact has to be able to delete it, not have it reappear.
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  const cmsStats = arr<any>(cms?.stats);
+  const stats = cmsStats.length
+    ? cmsStats.map((s) => ({
+        label: str(s?.label),
+        value: str(s?.value),
+        tinaLabel: f(s, 'label'),
+        tinaValue: f(s, 'value'),
+      }))
+    : (fallback?.stats ?? []).map((s) => ({ label: s.label, value: s.value, tinaLabel: undefined, tinaValue: undefined }));
+
+  const cmsGallery = arr<any>(cms?.galleryImages);
+  const gallery = cmsGallery.length
+    ? cmsGallery.map((g) => ({ src: normalizeImage(g?.src), kind: str(g?.kind) || undefined, tina: f(g, 'src') }))
+    : (fallback?.galleryImages ?? []).map((src) => ({ src, kind: undefined, tina: undefined }));
+
+  const cmsTypes = arr<any>(cms?.conversionTypes).map(str).filter(Boolean);
+  const conversionTypes = (cmsTypes.length ? cmsTypes : fallback?.conversionTypes ?? []) as string[];
+
+  // The three headings are the page's own, identical on every case study, so
+  // only the bodies carry a marker. Sections with nothing written stay out.
+  const narrative = ([
+    { num: '01', title: 'The Challenge', body: challenge, tina: f(cms, 'challenge') },
+    { num: '02', title: 'Our Approach', body: approach, tina: f(cms, 'approach') },
+    { num: '03', title: 'The Outcome', body: outcome, tina: f(cms, 'outcome') },
+  ] as { num: string; title: string; body?: string; tina?: string }[])
+    .filter((s): s is { num: string; title: string; body: string; tina?: string } => !!s.body);
 
   // Completed projects carry real photography, often a dozen shots or more.
   // Feasibility studies carry drawings, usually one or two.
-  const photoGrid = isProject && caseStudy.galleryImages.length > 3;
+  const photoGrid = isProject && gallery.length > 3;
 
   // The reverse of the link on each Expertise page, which already points to
   // its strongest case study. Ed's August 2026 final brief asks for two-way
   // contextual links, so a reader landing here can go straight to the
   // relevant service page rather than only browsing forward within case
   // studies. Silently absent when a study has no conversionTypes set.
-  const relatedExpertise = (caseStudy.conversionTypes ?? [])
+  const relatedExpertise = conversionTypes
     .map((type) => conversions.find((c) => c.slug === type))
     .filter((c): c is (typeof conversions)[number] => !!c);
 
   // One modest fact band replaces both the old display-size stats row and
-  // the near-empty sidebar.
+  // the near-empty sidebar. The three labels added here are the page's own
+  // wording rather than anything on the record, so only the values carry a
+  // marker.
   const facts = [
-    ...caseStudy.stats,
-    { label: 'Building type', value: caseStudy.buildingType },
-    ...(caseStudy.planningRoute ? [{ label: 'Planning route', value: caseStudy.planningRoute }] : []),
-    ...(caseStudy.completionDate ? [{ label: isProject ? 'Completed' : 'Feasibility date', value: caseStudy.completionDate }] : []),
+    ...stats,
+    { label: 'Building type', value: buildingType, tinaLabel: undefined, tinaValue: f(cms, 'buildingType') },
+    ...(planningRoute ? [{ label: 'Planning route', value: planningRoute, tinaLabel: undefined, tinaValue: f(cms, 'planningRoute') }] : []),
+    ...(completionDate ? [{ label: isProject ? 'Completed' : 'Feasibility date', value: completionDate, tinaLabel: undefined, tinaValue: f(cms, 'completionDate') }] : []),
   ].slice(0, 6);
+
+  // Both templates stay optional, which is the reason data/caseStudiesData.ts
+  // gives for keeping them optional there: a study or project moves on to Ed's
+  // template only when there is real material to fill it, and the rest keep the
+  // older challenge / approach / outcome narrative until they are written up.
+  const cmsFeas = cms?.feasibility;
+  const fbFeas = fallback?.feasibility;
+  const cmsKeyInfo = arr<any>(cmsFeas?.keyInfo);
+  const cmsRoadmap = arr<any>(cmsFeas?.roadmap).map(str).filter(Boolean);
+  const feasibility = (cmsFeas || fbFeas)
+    ? {
+        keyInfo: cmsKeyInfo.length
+          ? cmsKeyInfo.map((k) => ({
+              label: str(k?.label),
+              value: str(k?.value),
+              tinaLabel: f(k, 'label'),
+              tinaValue: f(k, 'value'),
+            }))
+          : (fbFeas?.keyInfo ?? []).map((k) => ({ label: k.label, value: k.value, tinaLabel: undefined, tinaValue: undefined })),
+        indicativeValue: str(cmsFeas?.indicativeValue) || fbFeas?.indicativeValue,
+        brief: str(cmsFeas?.brief) || fbFeas?.brief || '',
+        found: str(cmsFeas?.found) || fbFeas?.found || '',
+        recommendation: str(cmsFeas?.recommendation) || fbFeas?.recommendation || '',
+        sketchCaption: str(cmsFeas?.sketchCaption) || fbFeas?.sketchCaption || '',
+        guidanceLabel: str(cmsFeas?.guidance?.label) || fbFeas?.guidance?.label,
+        guidanceHref: str(cmsFeas?.guidance?.href) || fbFeas?.guidance?.href,
+        decision: str(cmsFeas?.decision) || fbFeas?.decision || '',
+        roadmap: cmsRoadmap.length ? cmsRoadmap : fbFeas?.roadmap ?? [],
+        // The list ids the per-item markers hang off. Read once here so the
+        // markup below stays readable.
+        tinaRoadmap: f(cmsFeas, 'roadmap'),
+      }
+    : undefined;
+
+  const cmsStory = cms?.projectStory;
+  const fbStory = fallback?.projectStory;
+  const cmsSummary = arr<any>(cmsStory?.summary).map(str).filter(Boolean);
+  const cmsSections = arr<any>(cmsStory?.sections);
+  const cmsBeforeAfter = cmsStory?.beforeAfter;
+  const fbBeforeAfter = fbStory?.beforeAfter;
+  const projectStory = (cmsStory || fbStory)
+    ? {
+        summary: cmsSummary.length ? cmsSummary : fbStory?.summary ?? [],
+        tinaSummary: f(cmsStory, 'summary'),
+        beforeAfter: (cmsBeforeAfter || fbBeforeAfter)
+          ? {
+              before: normalizeImage(cmsBeforeAfter?.before, fbBeforeAfter?.before ?? ''),
+              after: normalizeImage(cmsBeforeAfter?.after, fbBeforeAfter?.after ?? ''),
+              beforeAlt: str(cmsBeforeAfter?.beforeAlt) || fbBeforeAfter?.beforeAlt || '',
+              afterAlt: str(cmsBeforeAfter?.afterAlt) || fbBeforeAfter?.afterAlt || '',
+              tina: { before: f(cmsBeforeAfter, 'before'), after: f(cmsBeforeAfter, 'after') },
+            }
+          : undefined,
+        sections: cmsSections.length
+          ? cmsSections.map((s) => ({
+              title: str(s?.title),
+              caption: str(s?.caption) || undefined,
+              tinaTitle: f(s, 'title'),
+              tinaCaption: f(s, 'caption'),
+              images: arr<any>(s?.images).map((i) => ({
+                src: normalizeImage(i?.src),
+                alt: str(i?.alt),
+                tina: f(i, 'src'),
+              })),
+            }))
+          : (fbStory?.sections ?? []).map((s) => ({
+              title: s.title,
+              caption: s.caption,
+              tinaTitle: undefined,
+              tinaCaption: undefined,
+              images: s.images.map((i) => ({ src: i.src, alt: i.alt, tina: undefined })),
+            })),
+      }
+    : undefined;
+  /* eslint-enable @typescript-eslint/no-explicit-any */
 
   return (
     <>
@@ -100,26 +289,35 @@ export const CaseStudyDetailPage: React.FC = () => {
             <div>
               <Reveal>
                 <div className="flex flex-wrap items-center gap-fl-2 mb-fl-4">
-                  <span className="px-3 py-1.5 rounded-full bg-thistle-green/10 text-[10px] uppercase tracking-widest text-thistle-green font-semibold">
-                    {caseStudy.tag}
+                  <span
+                    className="px-3 py-1.5 rounded-full bg-thistle-green/10 text-[10px] uppercase tracking-widest text-thistle-green font-semibold"
+                    data-tina-field={f(cms, 'tag')}
+                  >
+                    {tag}
                   </span>
-                  {caseStudy.recommendation && (
-                    <span className={`px-3 py-1.5 rounded-full text-[10px] uppercase tracking-widest font-semibold ${
-                      caseStudy.recommendation === 'No-Go'
-                        ? 'bg-red-50 text-red-600'
-                        : 'bg-thistle-black/[0.05] text-thistle-black/60'
-                    }`}>
-                      {caseStudy.recommendation}
+                  {recommendation && (
+                    <span
+                      className={`px-3 py-1.5 rounded-full text-[10px] uppercase tracking-widest font-semibold ${
+                        recommendation === 'No-Go'
+                          ? 'bg-red-50 text-red-600'
+                          : 'bg-thistle-black/[0.05] text-thistle-black/60'
+                      }`}
+                      data-tina-field={f(cms, 'recommendation')}
+                    >
+                      {recommendation}
                     </span>
                   )}
                   {isProject && (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-thistle-black/[0.05] text-[10px] uppercase tracking-widest text-thistle-black/60 font-semibold">
-                      {caseStudy.status === 'On site' ? (
+                    <span
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-thistle-black/[0.05] text-[10px] uppercase tracking-widest text-thistle-black/60 font-semibold"
+                      data-tina-field={f(cms, 'status')}
+                    >
+                      {status === 'On site' ? (
                         <HardHat size={11} className="text-thistle-green" />
                       ) : (
                         <CheckCircle2 size={11} className="text-thistle-green" />
                       )}
-                      {caseStudy.status ?? 'Complete'}
+                      {status ?? 'Complete'}
                     </span>
                   )}
                 </div>
@@ -129,27 +327,35 @@ export const CaseStudyDetailPage: React.FC = () => {
                     a long single word in a title ("Reconfiguration") is wider
                     than a 320px screen, which pushed the whole page sideways.
                     Both only engage when a word genuinely cannot fit. */}
-                <h1 className="text-fluid-h1 font-medium tracking-tight leading-[1.05] text-thistle-black mb-fl-3 break-words hyphens-auto">
-                  {caseStudy.title}
+                <h1
+                  className="text-fluid-h1 font-medium tracking-tight leading-[1.05] text-thistle-black mb-fl-3 break-words hyphens-auto"
+                  data-tina-field={f(cms, 'title')}
+                >
+                  {title}
                 </h1>
               </Reveal>
               <Reveal delay={0.1}>
-                <p className={`text-sm uppercase tracking-wider text-thistle-black/45 font-medium ${caseStudy.provenance ? 'mb-fl-2' : 'mb-fl-5'}`}>
-                  {caseStudy.location}
+                <p
+                  className={`text-sm uppercase tracking-wider text-thistle-black/45 font-medium ${provenance ? 'mb-fl-2' : 'mb-fl-5'}`}
+                  data-tina-field={f(cms, 'location')}
+                >
+                  {location}
                 </p>
-                {caseStudy.provenance && (
-                  <p className="text-sm text-thistle-black/50 mb-fl-5">{caseStudy.provenance}</p>
+                {provenance && (
+                  <p className="text-sm text-thistle-black/50 mb-fl-5" data-tina-field={f(cms, 'provenance')}>{provenance}</p>
                 )}
               </Reveal>
               <Reveal delay={0.15}>
-                <p className="text-fluid-lg text-thistle-black/75 leading-relaxed max-w-xl">
-                  {caseStudy.desc}
+                <p className="text-fluid-lg text-thistle-black/75 leading-relaxed max-w-xl" data-tina-field={f(cms, 'desc')}>
+                  {desc}
                 </p>
               </Reveal>
             </div>
 
             <Reveal delay={0.1}>
-              <Frame src={caseStudy.image} alt={caseStudy.title} />
+              {/* alt is the title, so it stays correct on its own when the
+                  title is edited and needs no field of its own. */}
+              <Frame src={image} alt={title} kind={imageKind} tina={f(cms?.image, 'src')} />
             </Reveal>
           </div>
         </div>
@@ -158,7 +364,7 @@ export const CaseStudyDetailPage: React.FC = () => {
       {/* Fact band. Hidden on template studies: the key information table below
           covers the same ground, and two rows of facts a few hundred pixels
           apart repeated the communal space and the planning route verbatim. */}
-      {!caseStudy.feasibility && (
+      {!feasibility && (
       <section className="bg-white border-y border-thistle-black/[0.06] px-fl-margin">
         <div className="max-w-[1360px] mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
           {facts.map((fact, i) => (
@@ -166,8 +372,8 @@ export const CaseStudyDetailPage: React.FC = () => {
               key={i}
               className={`py-fl-5 px-fl-4 ${i > 0 ? 'sm:border-l sm:border-thistle-black/[0.05]' : ''}`}
             >
-              <span className="block text-[10px] uppercase tracking-widest text-thistle-black/40 font-semibold mb-1.5">{fact.label}</span>
-              <span className="block text-fluid-h6 font-medium tracking-tight text-thistle-black leading-snug">{fact.value}</span>
+              <span className="block text-[10px] uppercase tracking-widest text-thistle-black/40 font-semibold mb-1.5" data-tina-field={fact.tinaLabel}>{fact.label}</span>
+              <span className="block text-fluid-h6 font-medium tracking-tight text-thistle-black leading-snug" data-tina-field={fact.tinaValue}>{fact.value}</span>
             </div>
           ))}
         </div>
@@ -178,15 +384,18 @@ export const CaseStudyDetailPage: React.FC = () => {
           building first, the transformation next because many readers stop
           there, then the stages the project can actually evidence. Projects
           without a story keep the older layout. */}
-      {caseStudy.projectStory && (
+      {projectStory && (
         <>
           <section className="bg-thistle-white py-fl-section px-fl-margin">
             <div className="max-w-[820px] mx-auto space-y-fl-4">
-              {caseStudy.projectStory.summary.map((para, i) => (
+              {projectStory.summary.map((para, i) => (
                 <Reveal key={i} delay={Math.min(i * 0.05, 0.2)}>
-                  <p className={i === 0
-                    ? "text-fluid-lg text-thistle-black/85 leading-relaxed"
-                    : "text-fluid-base text-thistle-black/70 leading-relaxed"}>
+                  <p
+                    className={i === 0
+                      ? "text-fluid-lg text-thistle-black/85 leading-relaxed"
+                      : "text-fluid-base text-thistle-black/70 leading-relaxed"}
+                    data-tina-field={at(projectStory.tinaSummary, i)}
+                  >
                     {para}
                   </p>
                 </Reveal>
@@ -194,36 +403,44 @@ export const CaseStudyDetailPage: React.FC = () => {
             </div>
           </section>
 
-          {caseStudy.projectStory.beforeAfter && (
+          {projectStory.beforeAfter && (
             <section className="bg-white py-fl-section px-fl-margin">
               <div className="max-w-[1000px] mx-auto">
                 <Reveal>
+                  {/* The heading and standfirst are the template's fixed
+                      wording, the same on every project, so they stay in code
+                      and carry no marker. */}
                   <h2 className="text-fluid-h4 font-medium tracking-tight text-thistle-black mb-fl-2">Existing And Proposed</h2>
                   <p className="text-fluid-sm text-thistle-black/55 mb-fl-6">The house before work, and as completed.</p>
                 </Reveal>
                 <Reveal>
-                  <BeforeAfter {...caseStudy.projectStory.beforeAfter} />
+                  <BeforeAfter {...projectStory.beforeAfter} />
                 </Reveal>
               </div>
             </section>
           )}
 
-          {caseStudy.projectStory.sections.map((sec, i) => (
+          {projectStory.sections.map((sec, i) => (
             <section key={sec.title} className={`${i % 2 === 0 ? 'bg-thistle-white' : 'bg-white'} py-fl-section px-fl-margin`}>
               <div className="max-w-[1000px] mx-auto">
                 <Reveal>
-                  <h2 className="text-fluid-h4 font-medium tracking-tight text-thistle-black mb-fl-3">{sec.title}</h2>
+                  <h2 className="text-fluid-h4 font-medium tracking-tight text-thistle-black mb-fl-3" data-tina-field={sec.tinaTitle}>{sec.title}</h2>
                 </Reveal>
                 {sec.caption && (
                   <Reveal>
-                    <p className="text-fluid-base text-thistle-black/70 leading-relaxed max-w-2xl mb-fl-6">{sec.caption}</p>
+                    <p className="text-fluid-base text-thistle-black/70 leading-relaxed max-w-2xl mb-fl-6" data-tina-field={sec.tinaCaption}>{sec.caption}</p>
                   </Reveal>
                 )}
                 <div className={sec.images.length > 1 ? 'grid grid-cols-1 sm:grid-cols-2 gap-fl-4' : ''}>
                   {sec.images.map((img, j) => (
                     <Reveal key={img.src} delay={Math.min(j * 0.06, 0.2)}>
+                      {/* Cover, unconditionally, and no drawing/photograph
+                          choice on these: the stage grid crops everything to a
+                          common shape so the rows line up, which is what the
+                          section is for. Only the hero image and the gallery
+                          below fork on kind. */}
                       <div className={`relative rounded-2xl overflow-hidden border border-thistle-black/[0.06] bg-thistle-white/60 ${sec.images.length === 1 ? 'aspect-[16/10]' : 'aspect-[4/3]'}`}>
-                        <Image src={img.src} alt={img.alt} fill sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 500px" className="object-cover" />
+                        <Image src={img.src} alt={img.alt} fill sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 500px" className="object-cover" data-tina-field={img.tina} />
                       </div>
                     </Reveal>
                   ))}
@@ -236,26 +453,28 @@ export const CaseStudyDetailPage: React.FC = () => {
 
       {/* Ed's feasibility template. Only studies carrying `feasibility` data use
           it, so the rest keep the older layout until they are written up. */}
-      {caseStudy.feasibility && (
+      {feasibility && (
         <>
           {/* 2. Key project information. Full-bleed band with dividers, the
               same treatment the fact band uses, rather than a contained card:
               it reads as the page's headline numbers that way. */}
           <section className="bg-white border-y border-thistle-black/[0.06] px-fl-margin">
             <div className="max-w-[1360px] mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
-              {caseStudy.feasibility.keyInfo.map((f, i) => (
-                <div key={f.label} className={`py-fl-5 px-fl-4 ${i > 0 ? 'sm:border-l sm:border-thistle-black/[0.05]' : ''}`}>
-                  <span className="block text-[10px] uppercase tracking-widest text-thistle-black/40 font-semibold mb-1.5">{f.label}</span>
-                  <span className="block text-fluid-h6 font-medium tracking-tight text-thistle-black leading-snug">{f.value}</span>
+              {feasibility.keyInfo.map((info, i) => (
+                <div key={info.label} className={`py-fl-5 px-fl-4 ${i > 0 ? 'sm:border-l sm:border-thistle-black/[0.05]' : ''}`}>
+                  <span className="block text-[10px] uppercase tracking-widest text-thistle-black/40 font-semibold mb-1.5" data-tina-field={info.tinaLabel}>{info.label}</span>
+                  <span className="block text-fluid-h6 font-medium tracking-tight text-thistle-black leading-snug" data-tina-field={info.tinaValue}>{info.value}</span>
                 </div>
               ))}
             </div>
           </section>
-          {caseStudy.feasibility.indicativeValue && (
+          {feasibility.indicativeValue && (
             <section className="bg-white px-fl-margin pb-fl-5 border-b border-thistle-black/[0.06]">
               <div className="max-w-[1360px] mx-auto px-fl-4">
                 <span className="text-fluid-sm text-thistle-black/55">
-                  Indicative end value: <span className="text-thistle-black font-medium">{caseStudy.feasibility.indicativeValue}</span>
+                  {/* The marker is on the figure alone: "Indicative end value:"
+                      is the page's label, not part of the field. */}
+                  Indicative end value: <span className="text-thistle-black font-medium" data-tina-field={f(cmsFeas, 'indicativeValue')}>{feasibility.indicativeValue}</span>
                 </span>
               </div>
             </section>
@@ -271,17 +490,19 @@ export const CaseStudyDetailPage: React.FC = () => {
               </Reveal>
               <div className="space-y-fl-8">
                 {[
-                  { num: '01', h: 'The Brief', b: caseStudy.feasibility.brief },
-                  { num: '02', h: 'What We Found', b: caseStudy.feasibility.found },
-                  { num: '03', h: 'Our Recommendation', b: caseStudy.feasibility.recommendation },
+                  { num: '01', h: 'The Brief', b: feasibility.brief, tina: f(cmsFeas, 'brief') },
+                  { num: '02', h: 'What We Found', b: feasibility.found, tina: f(cmsFeas, 'found') },
+                  { num: '03', h: 'Our Recommendation', b: feasibility.recommendation, tina: f(cmsFeas, 'recommendation') },
                 ].map((c, i) => (
                   <Reveal key={c.h} delay={i * 0.05}>
                     <div>
+                      {/* The three headings are the template's, identical on
+                          every study, so they stay in code. */}
                       <div className="flex items-baseline gap-fl-3 mb-fl-4">
                         <span className="text-sm font-semibold text-thistle-green tabular-nums">{c.num}</span>
                         <h2 className="text-fluid-h4 font-medium tracking-tight text-thistle-black">{c.h}</h2>
                       </div>
-                      <p className="text-fluid-base text-thistle-black/75 leading-relaxed">{c.b}</p>
+                      <p className="text-fluid-base text-thistle-black/75 leading-relaxed" data-tina-field={c.tina}>{c.b}</p>
                     </div>
                   </Reveal>
                 ))}
@@ -290,7 +511,7 @@ export const CaseStudyDetailPage: React.FC = () => {
           </section>
 
           {/* 4. The sketch */}
-          {caseStudy.galleryImages.length > 0 && (
+          {gallery.length > 0 && (
             <section className="bg-white py-fl-section px-fl-margin">
               <div className="max-w-[1000px] mx-auto">
                 <Reveal>
@@ -298,9 +519,11 @@ export const CaseStudyDetailPage: React.FC = () => {
                 </Reveal>
                 <Reveal>
                   <SketchViewer
-                    images={caseStudy.galleryImages}
-                    alt={`Feasibility sketch for ${caseStudy.title}`}
-                    caption={caseStudy.feasibility.sketchCaption}
+                    images={gallery.map((g) => g.src)}
+                    tina={gallery.map((g) => g.tina)}
+                    alt={`Feasibility sketch for ${title}`}
+                    caption={feasibility.sketchCaption}
+                    tinaCaption={f(cmsFeas, 'sketchCaption')}
                   />
                 </Reveal>
               </div>
@@ -314,7 +537,10 @@ export const CaseStudyDetailPage: React.FC = () => {
                 <h2 className="text-fluid-h4 font-medium tracking-tight text-thistle-black mb-fl-6">What The Client Received</h2>
               </Reveal>
               <Reveal>
-                <DocumentCards guidance={caseStudy.feasibility.guidance} />
+                <DocumentCards
+                  guidance={feasibility.guidanceLabel ? { label: feasibility.guidanceLabel, href: feasibility.guidanceHref } : undefined}
+                  tinaLabel={f(cmsFeas?.guidance, 'label')}
+                />
               </Reveal>
             </div>
           </section>
@@ -331,19 +557,21 @@ export const CaseStudyDetailPage: React.FC = () => {
                 <p className="text-fluid-base text-thistle-green mb-fl-5">A clear route forward before purchase.</p>
               </Reveal>
               <Reveal>
-                <p className="text-fluid-base text-thistle-black/75 leading-relaxed max-w-2xl mb-fl-8">{caseStudy.feasibility.decision}</p>
+                <p className="text-fluid-base text-thistle-black/75 leading-relaxed max-w-2xl mb-fl-8" data-tina-field={f(cmsFeas, 'decision')}>{feasibility.decision}</p>
               </Reveal>
               <Reveal>
                 <p className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-5">Recommended roadmap</p>
               </Reveal>
               <Reveal>
                 <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-fl-5 gap-y-fl-5">
-                  {caseStudy.feasibility.roadmap.map((step, i) => (
+                  {feasibility.roadmap.map((step, i) => (
                     <li key={step} className="relative flex items-start gap-fl-3 pt-fl-4 border-t border-thistle-black/[0.08]">
+                      {/* The number is generated from the position, so the
+                          marker goes on the step's own words. */}
                       <span className="text-sm font-semibold text-thistle-green tabular-nums shrink-0">
                         {String(i + 1).padStart(2, '0')}
                       </span>
-                      <span className="text-fluid-sm text-thistle-black/75 leading-snug">{step}</span>
+                      <span className="text-fluid-sm text-thistle-black/75 leading-snug" data-tina-field={at(feasibility.tinaRoadmap, i)}>{step}</span>
                     </li>
                   ))}
                 </ol>
@@ -356,7 +584,7 @@ export const CaseStudyDetailPage: React.FC = () => {
       {/* Narrative, or the in-preparation panel when there is none. Template
           studies render neither: they carry Feasibility in Brief instead, and
           the ternary was falling through to the placeholder for them. */}
-      {!caseStudy.feasibility && !caseStudy.projectStory && (narrative.length > 0 ? (
+      {!feasibility && !projectStory && (narrative.length > 0 ? (
         /* Numbered narrative at reading size */
         <section className="bg-thistle-white py-fl-section px-fl-margin">
           <div className="max-w-[820px] mx-auto space-y-fl-8">
@@ -367,7 +595,7 @@ export const CaseStudyDetailPage: React.FC = () => {
                     <span className="text-sm font-semibold text-thistle-green tabular-nums">{section.num}</span>
                     <h2 className="text-fluid-h4 font-medium tracking-tight text-thistle-black">{section.title}</h2>
                   </div>
-                  <p className="text-fluid-base text-thistle-black/75 leading-relaxed">{section.body}</p>
+                  <p className="text-fluid-base text-thistle-black/75 leading-relaxed" data-tina-field={section.tina}>{section.body}</p>
                 </div>
               </Reveal>
             ))}
@@ -375,7 +603,10 @@ export const CaseStudyDetailPage: React.FC = () => {
         </section>
       ) : (
         /* Placeholder projects get a designed in-preparation panel, not an
-           orphan sentence in an empty grid. */
+           orphan sentence in an empty grid. This is the site's own apology for
+           a missing write-up rather than anything about this building, so it
+           stays in code: the fix is to write the project up, not to edit the
+           holding text. */
         <section className="bg-thistle-white py-fl-section px-fl-margin">
           <div className="max-w-[820px] mx-auto">
             <Reveal>
@@ -403,7 +634,7 @@ export const CaseStudyDetailPage: React.FC = () => {
       ))}
 
       {/* Drawings, full width and never cropped */}
-      {!caseStudy.feasibility && !caseStudy.projectStory && caseStudy.galleryImages.length > 0 && (
+      {!feasibility && !projectStory && gallery.length > 0 && (
         <section className="bg-white py-fl-section px-fl-margin">
           {/* Drawings need full width to stay readable, so they stay stacked in
               a narrow column. Photography does not, and a long set of photos
@@ -415,11 +646,13 @@ export const CaseStudyDetailPage: React.FC = () => {
               </p>
             </Reveal>
             <div className={photoGrid ? 'grid grid-cols-1 sm:grid-cols-2 gap-fl-5' : 'space-y-fl-6'}>
-              {caseStudy.galleryImages.map((img, i) => (
+              {gallery.map((img, i) => (
                 <Reveal key={i} delay={Math.min(i * 0.08, 0.2)}>
                   <Frame
-                    src={img}
-                    alt={`${caseStudy.title}, ${isProject ? 'photograph' : 'drawing'} ${i + 1}`}
+                    src={img.src}
+                    kind={img.kind}
+                    tina={img.tina}
+                    alt={`${title}, ${isProject ? 'photograph' : 'drawing'} ${i + 1}`}
                     aspect="aspect-[16/10]"
                     sizes={photoGrid ? '(max-width: 640px) 92vw, (max-width: 1360px) 46vw, 660px' : '(max-width: 1024px) 92vw, 1000px'}
                   />

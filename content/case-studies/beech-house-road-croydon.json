@@ -1,0 +1,82 @@
+{
+  "kind": "feasibility",
+  "title": "Six-Bed HMO To Thirteen",
+  "location": "Croydon, South London",
+  "tag": "HMO",
+  "recommendation": "Go",
+  "desc": "A four-storey period house already running as a six-bed HMO, tested for more than double the room count using internal works only.",
+  "image": {
+    "src": "/images/projects/beech-house-sketch-1.webp",
+    "kind": "drawing"
+  },
+  "stats": [
+    {
+      "label": "Bedrooms, all en suite",
+      "value": "13"
+    },
+    {
+      "label": "Room sizes",
+      "value": "12.6 to 27 sqm"
+    },
+    {
+      "label": "Indicative value at 8.5% yield",
+      "value": "£1.24m"
+    }
+  ],
+  "buildingType": "Existing HMO (C4)",
+  "planningRoute": "Full planning (Sui Generis)",
+  "completionDate": "June 2026",
+  "challenge": "The house was a lawful six-bedroom HMO in a Croydon conservation area, and the owner wanted to know how far it could go. The obstacle was not policy but politics: ward councillors had opposed HMO schemes nearby, a seven-bed application on Woodstock Road had been refused at committee, and Croydon has no allowed HMO appeal on record since 2021. Any scheme had to be designed to pass at first determination.",
+  "approach": "The analysis confirmed the strongest possible location case: East Croydon station 540 metres away, PTAL 6a to 6b, and a Central controlled parking zone that supports a car-free scheme. It also found the lead precedent, a 13-bed sui generis HMO approved at 51 Addiscombe Road in 2022 against 353 objections, in the same high-PTAL context. The sketch scheme then matched that precedent on every measurable point: 13 en-suite rooms from 12.6 to 27 sqm against a 12.5 sqm standard, around 40 sqm of internal communal space, three kitchen sets, and no external alterations at all, which largely removed the conservation area from the assessment.",
+  "outcome": "A Go. Because the property is already a lawful HMO, no family dwelling is lost, the logic Croydon officers used to approve 6 Ledbury Road. Indicative figures: £900 per room per month gives £140,400 gross a year and roughly £105,300 net, supporting a value in the order of £1.24m against a conversion cost of about £429,000. The recommendation was to proceed straight to planning drawings and a complete first-time submission.",
+  "galleryImages": [
+    {
+      "src": "/images/projects/beech-house-sketch-1.webp",
+      "kind": "drawing"
+    }
+  ],
+  "feasibility": {
+    "keyInfo": [
+      {
+        "label": "Bedrooms",
+        "value": "13, all en suite"
+      },
+      {
+        "label": "Room sizes",
+        "value": "12.6 to 27 sqm"
+      },
+      {
+        "label": "Communal space",
+        "value": "26 sqm kitchen, 13.8 sqm dining"
+      },
+      {
+        "label": "Planning route",
+        "value": "Full planning, sui generis"
+      },
+      {
+        "label": "Key risk",
+        "value": "Political, not policy"
+      },
+      {
+        "label": "Date",
+        "value": "June 2026"
+      }
+    ],
+    "brief": "Could an existing six-bedroom HMO be taken to thirteen bedrooms, and would the planning position support it?",
+    "found": "Yes, entirely within the existing envelope through internal alterations only, with no extension. All thirteen bedrooms are en suite at 12.6 to 27 sqm, against a Croydon en-suite minimum of 12.5 sqm. The communal hub is a 26 sqm kitchen and a 13.8 sqm dining room on the ground floor, supported by a second kitchen on the second floor and a 9.1 sqm utility. The lawful six-bed C4 use granted under 24/04169/FUL in May 2025 is the baseline, so no family dwelling is lost, Croydon has no adopted HMO density threshold, and a directly comparable thirteen-bed sui generis HMO was approved at 51 Addiscombe Road in 2022.",
+    "recommendation": "Proceed at thirteen bedrooms. The policy case is sound and the risk to manage is political: the site is in a conservation area, ward councillors have opposed nearby schemes, and a seven-bed HMO at 10 Woodstock Road was refused at committee in May 2025. The application needs presenting with that in mind.",
+    "sketchCaption": "Thirteen en-suite bedrooms from basement to second floor, all within the existing envelope, with the ground floor kitchen and dining room as the communal hub.",
+    "guidance": {
+      "label": "Official guidance reviewed: Croydon HMO space standards"
+    },
+    "decision": "The scheme works on paper and on policy: an established lawful six-bed use, no density threshold in the borough, and a directly comparable approval nearby. What it has to survive is a committee in a conservation area that has refused smaller schemes.",
+    "roadmap": [
+      "Measured survey",
+      "Design development",
+      "Pre-application advice",
+      "Full planning application",
+      "Technical design",
+      "Construction"
+    ]
+  }
+}

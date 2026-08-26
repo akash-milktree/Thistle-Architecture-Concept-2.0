@@ -344,6 +344,31 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
+  // The CMS editor is a static SPA that `tinacms build` emits to
+  // public/admin/index.html. Without this rewrite /admin is a 404, because
+  // there is no such route in the app directory.
+  //
+  // Rewrites run after redirects in Next's pipeline, and none of the 50
+  // redirect sources above is /admin or a prefix of it, so there is no
+  // interaction between the two.
+  async rewrites() {
+    return [{ source: '/admin', destination: '/admin/index.html' }];
+  },
+
+  images: {
+    // Media is repo-based (see tina/config.ts): editors upload into
+    // public/images/uploads and what gets committed is a relative
+    // '/images/uploads/...' path. But while the editor is open, TinaCloud
+    // serves the file it just accepted from its own CDN, and the live preview
+    // renders that absolute URL before the save round-trips. next/image
+    // rejects any host that is not listed here, so without this entry an
+    // editor sees a broken image every time they upload one.
+    //
+    // This is the only reason assets.tina.io is allowed. Committed content
+    // should never point at it.
+    remotePatterns: [{ protocol: 'https', hostname: 'assets.tina.io' }],
+  },
 };
 
 export default nextConfig;

@@ -1,0 +1,76 @@
+{
+  "metaTitle": "Mixed-Use Development Architects | Thistle Architecture",
+  "metaDescription": "Feasibility for mixed-use conversions: retained commercial at ground floor with residential above. Ground-floor policy, access separation, and viability tested in five days.",
+  "hero": {
+    "label": "Mixed-Use Commercial",
+    "heading": "Mixed-Use Development Architects",
+    "description": "Keep the shop, build homes above it. High-street buildings where the ground floor has to stay commercial and the value sits in the floors above."
+  },
+  "opportunity": {
+    "copy": "Plenty of high-street buildings are worth more as a mixed-use scheme than as either pure commercial or pure residential. Retaining an active ground-floor unit is often what makes the residential above acceptable in policy terms, and it keeps an income stream while the rest is converted.",
+    "stats": [
+      {
+        "label": "Typical arrangement",
+        "value": "Retail below, homes above"
+      },
+      {
+        "label": "Planning route",
+        "value": "Full or prior approval"
+      },
+      {
+        "label": "Common blocker",
+        "value": "Ground-floor policy"
+      }
+    ]
+  },
+  "challenges": [
+    {
+      "title": "Policy protects the ground floor",
+      "detail": "Many local and neighbourhood plans resist losing commercial frontage in a centre. Overturning that needs evidence: a documented marketing exercise, sustained vacancy, and ideally a viability appraisal."
+    },
+    {
+      "title": "Separating the uses",
+      "detail": "Independent access, fire separation, acoustics between commercial and residential, and separate services all have to be designed in from the start, not retrofitted onto a layout that ignored them."
+    },
+    {
+      "title": "Servicing and refuse",
+      "detail": "Two uses in one envelope means two sets of bins, deliveries, and cycle storage, all of which officers scrutinise closely on constrained high-street sites."
+    }
+  ],
+  "deliverableHighlights": [
+    {
+      "deliverableId": "sketch-schemes",
+      "forThisType": "Layouts that keep the commercial unit working while the floors above become homes, with genuinely independent access."
+    },
+    {
+      "deliverableId": "planning-policy",
+      "forThisType": "The ground-floor retention policy read properly, including whether a change is arguable and what evidence it would take."
+    },
+    {
+      "deliverableId": "risk-register",
+      "forThisType": "The risks of running two uses in one building named and costed, from acoustics to refuse strategy."
+    },
+    {
+      "deliverableId": "full-feasibility",
+      "forThisType": "The commercial case for the mixed scheme against the pure-residential fallback, so you can see which is actually worth more."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Can I lose the ground-floor commercial use altogether?",
+      "answer": "Often not without a fight. Many local and neighbourhood plans specifically resist losing active commercial frontage in a centre. If that's the ambition, you generally need evidence: a documented marketing exercise, sustained vacancy, or a viability appraisal showing the commercial use is no longer sustainable."
+    },
+    {
+      "question": "How do you separate the commercial and residential parts of the building?",
+      "answer": "Independent access, fire separation between uses, acoustic separation, and separate services all have to be designed in from the outset. Retrofitting them onto a layout that ignored them is where most mixed-use schemes lose money and time."
+    },
+    {
+      "question": "What extra servicing does a mixed-use scheme need?",
+      "answer": "Two uses under one roof usually means two sets of bins, deliveries, and cycle storage, which officers scrutinise closely on tight high-street sites. We test whether the site can actually accommodate this before you commit to the scheme."
+    },
+    {
+      "question": "Does the residential above still need its own front door?",
+      "answer": "In almost every case, yes. Shared access through a commercial unit is a common reason for refusal or for a licensing condition later, so genuinely independent residential access is something we check for at feasibility stage, not left to detailed design."
+    }
+  ]
+}

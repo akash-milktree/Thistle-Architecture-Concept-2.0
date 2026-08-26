@@ -24,6 +24,16 @@ export interface PackageFaq {
   list?: string[];
 }
 
+// deliverableDetail and packageFaqs below are now FALLBACKS as well as data:
+// the same strings are seeded into content/feasibility/package.json and are
+// edited there. They stay here so /feasibility-package renders unchanged if it
+// is ever mounted without a CMS query, and so these notes stay next to the
+// words they explain.
+//
+// pricingFrom is the exception and is NOT in the CMS. It is the price of a
+// product, rendered next to the engine that decides what a customer is
+// actually charged — see the note at the top of tina/collections/pricing.ts.
+
 // "From £X" anchor for the whole feasibility range, not just the
 // Architectural Feasibility. Ed's August 2026 final brief made the Automated
 // Site Feasibility (£49.99) the accessible entry point; £298 was the

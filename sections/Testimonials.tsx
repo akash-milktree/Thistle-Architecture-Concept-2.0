@@ -3,7 +3,18 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from '../components/animations/Reveal';
-import { reviews, REVIEWS_URL, type Review } from '../data/reviewsData';
+import { reviews as fallbackReviews, REVIEWS_URL, type Review } from '../data/reviewsData';
+
+/**
+ * A review plus the CMS field ids for its own editable fields.
+ *
+ * The ids are per-item, not per-list: `tinaField(reviews[2], 'quote')` resolves
+ * to that one review's quote, so clicking it in the editor opens that record
+ * rather than an empty form.
+ */
+export type ReviewItem = Review & {
+  tina?: { title?: string; quote?: string; author?: string; date?: string };
+};
 
 // This section used to run ten invented testimonials past each other in two
 // infinite marquees. The names and companies were all made up.
@@ -27,11 +38,16 @@ const Stars: React.FC<{ className?: string }> = ({ className = '' }) => (
 // Attribution is deliberately explicit on every card. The reason these replaced
 // the invented set is that a reader can go and check them, which only works if
 // the source is named and linked.
-const Attribution: React.FC<{ review: Review }> = ({ review }) => (
+const Attribution: React.FC<{ review: ReviewItem }> = ({ review }) => (
   <div className="flex items-baseline gap-fl-2 flex-wrap">
-    <span className="text-fluid-sm font-medium text-thistle-black">{review.author}</span>
+    <span className="text-fluid-sm font-medium text-thistle-black" data-tina-field={review.tina?.author}>
+      {review.author}
+    </span>
     <span className="text-xs text-thistle-black/40">
-      {review.date} · via{' '}
+      {/* Only the date carries the marker, not the " · via Trustpilot" that
+          follows it, so clicking the date edits the date and clicking the link
+          still opens Trustpilot. */}
+      <span data-tina-field={review.tina?.date}>{review.date}</span> · via{' '}
       <a
         href={REVIEWS_URL}
         target="_blank"
@@ -44,13 +60,18 @@ const Attribution: React.FC<{ review: Review }> = ({ review }) => (
   </div>
 );
 
-const ReviewCard: React.FC<{ review: Review }> = ({ review }) => (
+const ReviewCard: React.FC<{ review: ReviewItem }> = ({ review }) => (
   <figure className="h-full flex flex-col bg-thistle-white/70 border border-thistle-black/[0.06] rounded-2xl p-fl-5">
     <Stars className="mb-fl-3" />
     {review.title && (
-      <figcaption className="text-fluid-sm font-semibold text-thistle-black mb-fl-2">{review.title}</figcaption>
+      <figcaption className="text-fluid-sm font-semibold text-thistle-black mb-fl-2" data-tina-field={review.tina?.title}>
+        {review.title}
+      </figcaption>
     )}
-    <blockquote className="text-fluid-sm text-thistle-black/70 leading-[1.75] mb-fl-4 flex-1">
+    <blockquote
+      className="text-fluid-sm text-thistle-black/70 leading-[1.75] mb-fl-4 flex-1"
+      data-tina-field={review.tina?.quote}
+    >
       {review.quote}
     </blockquote>
     <div className="pt-fl-4 border-t border-thistle-black/[0.06]">
@@ -64,12 +85,32 @@ interface TestimonialsProps {
   heading?: string;
   /** Lead with a specific review, so a page can front the most relevant one. */
   featuredAuthor?: string;
+  /**
+   * Supporting line under the heading. Falls back to the standing line, which
+   * is a checkable factual claim rather than a score — see the note below.
+   */
+  lede?: string;
+  /** Label on the link out to the full Trustpilot profile. */
+  linkLabel?: string;
+  /**
+   * The reviews to render. Defaults to the data module so that pages not yet
+   * reading from the CMS render exactly as before.
+   */
+  reviews?: ReviewItem[];
+  /** CMS field ids for this section's own copy. */
+  tina?: { eyebrow?: string; heading?: string; lede?: string; linkLabel?: string };
 }
 
 export const Testimonials: React.FC<TestimonialsProps> = ({
   eyebrow = 'Client Reviews',
   heading = 'What Clients Say.',
   featuredAuthor,
+  lede = 'Every review on our Trustpilot profile is five star.',
+  linkLabel = 'Read them all',
+  // Widened explicitly: the fallback is a plain Review[] with no field ids, and
+  // without this the binding is inferred as the union and loses `tina`.
+  reviews = fallbackReviews as ReviewItem[],
+  tina,
 }) => {
   const featured = reviews.find((r) => r.author === featuredAuthor) ?? reviews[0];
   const rest = reviews.filter((r) => r !== featured);
@@ -79,10 +120,18 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
       <div className="max-w-[1360px] mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-fl-8">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">{eyebrow}</p>
+            <p
+              className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4"
+              data-tina-field={tina?.eyebrow}
+            >
+              {eyebrow}
+            </p>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-4">
+            <h2
+              className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black mb-fl-4"
+              data-tina-field={tina?.heading}
+            >
               {heading}
             </h2>
           </Reveal>
@@ -93,14 +142,15 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
                 caveat. That every review is five star is simply true and can be
                 checked on the link. */}
             <p className="text-fluid-sm text-thistle-black/60 leading-relaxed">
-              Every review on our Trustpilot profile is five star.{' '}
+              <span data-tina-field={tina?.lede}>{lede}</span>{' '}
               <a
                 href={REVIEWS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-thistle-green underline underline-offset-2 hover:text-thistle-black transition-colors inline-flex items-center gap-0.5"
+                data-tina-field={tina?.linkLabel}
               >
-                Read them all <ArrowUpRight size={13} />
+                {linkLabel} <ArrowUpRight size={13} />
               </a>
             </p>
           </Reveal>
@@ -110,7 +160,10 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
         <Reveal delay={0.1}>
           <figure className="max-w-3xl mx-auto text-center mb-fl-8">
             <Stars className="justify-center mb-fl-4" />
-            <blockquote className="text-fluid-h5 font-medium tracking-tight text-thistle-black leading-[1.5] mb-fl-5">
+            <blockquote
+              className="text-fluid-h5 font-medium tracking-tight text-thistle-black leading-[1.5] mb-fl-5"
+              data-tina-field={featured?.tina?.quote}
+            >
               {featured.quote}
             </blockquote>
             <div className="flex justify-center">
@@ -133,10 +186,10 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
 
 // A single review, for dropping into a page next to related content rather
 // than running the whole set again.
-export const ReviewQuote: React.FC<{ review: Review; className?: string }> = ({ review, className = '' }) => (
+export const ReviewQuote: React.FC<{ review: ReviewItem; className?: string }> = ({ review, className = '' }) => (
   <figure className={`rounded-2xl border border-thistle-black/[0.08] bg-thistle-white/70 p-fl-6 ${className}`}>
     <Stars className="mb-fl-3" />
-    <blockquote className="text-fluid-base text-thistle-black/80 leading-relaxed mb-fl-4">
+    <blockquote className="text-fluid-base text-thistle-black/80 leading-relaxed mb-fl-4" data-tina-field={review.tina?.quote}>
       {review.quote}
     </blockquote>
     <Attribution review={review} />

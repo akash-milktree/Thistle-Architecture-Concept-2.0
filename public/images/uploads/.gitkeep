@@ -1,0 +1,17 @@
+Media uploaded through the CMS lands here.
+
+This folder is committed empty so it exists in a fresh clone: tina/config.ts
+points mediaRoot at it, and Tina cannot write into a directory that is not
+there. Git does not track empty directories, hence this file.
+
+Why uploads live here and not in /images directly: the rest of public/images is
+a curated, hand-optimised set with a documented size and format budget
+(scripts/optimise-media.mjs). Pointing the media browser at the whole tree
+would let an editor overwrite a hand-prepared architectural drawing, and would
+show them 54 unreferenced orphan files. Keeping uploads in their own folder
+means the curated trees stay developer-managed.
+
+Note for whoever maintains this: scripts/optimise-media.mjs is macOS-only (it
+shells out to Clop and sips) and is run by hand, so files uploaded through the
+CMS bypass the size budget entirely. Porting it to sharp and running it over
+this folder in CI is the fix.

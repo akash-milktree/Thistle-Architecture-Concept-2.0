@@ -2,8 +2,30 @@
 
 import React, { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import { pruneEmpty } from '../../lib/tina';
 
 const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+// Now a fallback rather than this card's only copy: the same three strings live
+// in content/feasibility/package.json, seeded byte-for-byte from here.
+//
+// Only these three are editable. The placeholder, the button's two states, the
+// error line and the whole success message are the mechanic rather than copy —
+// a reworded button state is a broken button, and the success text has to keep
+// matching what the form has just done.
+const FALLBACK = {
+  heading: 'Read a real report first.',
+  body: 'Enter your email and the team will send you a full sample feasibility document from a real project, with the client details removed.',
+  privacyNote: 'No spam. Just the report and one follow-up.',
+};
+
+interface SampleReportGateProps {
+  heading?: string;
+  body?: string;
+  privacyNote?: string;
+  /** CMS field ids for the three editable strings. */
+  tina?: Partial<Record<'heading' | 'body' | 'privacyNote', string>>;
+}
 
 // Email-gated request for a sample feasibility document.
 //
@@ -15,9 +37,13 @@ const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 //
 // It reveals nothing on success on purpose. When a redacted example exists,
 // this can go back to an instant download by restoring the link here.
-export const SampleReportGate: React.FC = () => {
+export const SampleReportGate: React.FC<SampleReportGateProps> = ({ heading, body, privacyNote, tina }) => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'done' | 'error'>('idle');
+
+  // pruneEmpty: a field the editor has cleared arrives as '' and would blank the
+  // card, so an empty field leaves the standing copy in place.
+  const copy = { ...FALLBACK, ...pruneEmpty({ heading, body, privacyNote }) };
 
   const submit = async () => {
     if (!emailOk(email)) return;
@@ -46,9 +72,9 @@ export const SampleReportGate: React.FC = () => {
         </>
       ) : (
         <>
-          <h3 className="text-fluid-h5 font-medium tracking-tight text-thistle-black mb-fl-2">Read a real report first.</h3>
-          <p className="text-fluid-sm text-thistle-black/60 leading-relaxed mb-fl-5">
-            Enter your email and the team will send you a full sample feasibility document from a real project, with the client details removed.
+          <h3 className="text-fluid-h5 font-medium tracking-tight text-thistle-black mb-fl-2" data-tina-field={tina?.heading}>{copy.heading}</h3>
+          <p className="text-fluid-sm text-thistle-black/60 leading-relaxed mb-fl-5" data-tina-field={tina?.body}>
+            {copy.body}
           </p>
           <div className="flex flex-col sm:flex-row gap-fl-3">
             <input
@@ -71,7 +97,7 @@ export const SampleReportGate: React.FC = () => {
           {status === 'error' && (
             <p className="text-xs text-red-700 mt-fl-3">Something went wrong. Please try again.</p>
           )}
-          <p className="text-[11px] text-thistle-black/40 mt-fl-3">No spam. Just the report and one follow-up.</p>
+          <p className="text-[11px] text-thistle-black/40 mt-fl-3" data-tina-field={tina?.privacyNote}>{copy.privacyNote}</p>
         </>
       )}
     </div>

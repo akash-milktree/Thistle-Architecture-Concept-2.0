@@ -1,0 +1,92 @@
+{
+  "metaTitle": "Commercial to Residential Conversion Architects | Thistle Architecture",
+  "metaDescription": "Data-driven feasibility for converting commercial buildings into residential schemes, including office conversions under Class MA. Five-day turnaround, fixed fee.",
+  "hero": {
+    "label": "Commercial to Residential",
+    "heading": "Commercial to Residential Conversion Architects",
+    "description": "Turn a commercial building into viable homes. A feasibility built for developers buying offices, retail upper parts, and small commercial blocks to convert into housing."
+  },
+  "opportunity": {
+    "copy": "Commercial-to-residential conversions are the fastest route from a tired commercial asset to a stabilised residential scheme. Less risk than ground-up, faster than full redevelopment, and supported by national permitted-development rights.",
+    "stats": [
+      {
+        "label": "Typical unit yield",
+        "value": "6 to 14"
+      },
+      {
+        "label": "Planning route",
+        "value": "Class MA or full"
+      },
+      {
+        "label": "Prior approval decision",
+        "value": "56 days"
+      }
+    ]
+  },
+  "challenges": [
+    {
+      "title": "Building Regs and fire compliance",
+      "detail": "Office and retail buildings often need significant work to meet residential Building Regulations, especially around fire compartmentation and means of escape."
+    },
+    {
+      "title": "Daylight to lower floors",
+      "detail": "Deep commercial floor plates can leave ground-floor or rear-facing units short of daylight, which tanks the scheme on planning and on resale."
+    },
+    {
+      "title": "Hidden structural costs",
+      "detail": "Removing walls, adding bathrooms, and routing services through a commercial structure can add cost that the headline GDV does not reveal."
+    }
+  ],
+  "extraSection": {
+    "eyebrow": "Office To Residential",
+    "title": "Office Conversions Under Class MA.",
+    "body": [
+      {
+        "text": "Office-to-residential is the most-used permitted development route in the country. Class MA lets you change a qualifying commercial building (Class E) to residential (Class C3) through prior approval rather than full planning, with the council required to decide within 56 days."
+      },
+      {
+        "text": "Since March 2024 the rules have loosened: the old 1,500 sqm floorspace cap and the vacancy requirement have both been removed. The building still needs two years in Class E use, and the prior approval tests on daylight, noise, flooding, contamination, transport, and fire safety all still apply."
+      },
+      {
+        "text": "The route fails quietly when a building sits inside an Article 4 direction, or when deep floor plates cannot deliver acceptable natural light. That is exactly what our desk study screens before you commit to a purchase. You can run a first check yourself with our free Class MA Checker."
+      }
+    ],
+    "ctaLabel": "Try the free Class MA Checker"
+  },
+  "deliverableHighlights": [
+    {
+      "deliverableId": "sketch-schemes",
+      "forThisType": "Tested against the building's real structural grid and core positions, not an assumed plan."
+    },
+    {
+      "deliverableId": "planning-policy",
+      "forThisType": "Class MA eligibility, Article 4 directions, conservation, and noise mapping covered before you bid."
+    },
+    {
+      "deliverableId": "risk-register",
+      "forThisType": "Every conversion risk named and costed, so the deal model reflects reality."
+    },
+    {
+      "deliverableId": "full-feasibility",
+      "forThisType": "Net-to-gross and commercial position set out in full, since commercial-to-resi often loses more area than developers expect."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Does my building qualify for Class MA prior approval?",
+      "answer": "Only if it has been in genuine Class E use, which covers offices, shops, restaurants, and similar commercial or business uses. The building needs two years in that use, and the site must sit outside an Article 4 direction removing the right. Our feasibility checks both before you commit to a purchase."
+    },
+    {
+      "question": "What if the building isn't in Class E, or Class MA doesn't apply?",
+      "answer": "A full planning application is still a route to residential use, it just loses the 56-day prior approval clock and the more limited set of tests. We assess which route actually applies to your building rather than assuming Class MA by default."
+    },
+    {
+      "question": "How do you deal with daylight to lower or rear-facing floors?",
+      "answer": "It's one of the tests that quietly kills commercial conversions. We model which units are at risk from the floor plate depth before you commit, so you know whether a layout change or a different unit mix is needed rather than finding out at decision stage."
+    },
+    {
+      "question": "What extra costs catch people out in commercial conversions?",
+      "answer": "Fire compartmentation, means of escape, and routing new bathroom and kitchen services through a structure built for open-plan commercial use. These rarely show up on a headline GDV, which is why our risk register prices them in rather than leaving them as a surprise."
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import { ArrowUpRight, Check } from 'lucide-react';
 import { Reveal } from '../../components/animations/Reveal';
 import { Button } from '../../components/ui/Button';
 import { FeasibilityCalculator } from '../pricing/FeasibilityCalculator';
+import { pruneEmpty } from '../../lib/tina';
 
 // Ed's August 2026 final brief, section 03: "Bring the product choice and
 // short pricing calculator near the top. Use the same calculator component and
@@ -17,6 +18,35 @@ import { FeasibilityCalculator } from '../pricing/FeasibilityCalculator';
 // £298+ varies by scope, so it keeps the shared FeasibilityCalculator, the
 // same component and pricing logic used on /pricing.
 
+// THE TWO CARD PRICES STAY IN CODE. They are the price OF a product, and an
+// editable one could publish a fee the site does not honour — the card saying
+// £250 while Stripe takes £298 — with nothing to catch it. Both sit here, next
+// to the checkout call that actually charges. The headings above them quote the
+// same figures and ARE editable, because they are sentences; their field
+// descriptions warn that the number has to move in code at the same time. Same
+// line tina/collections/pricing.ts draws, for the same reason.
+const AUTOMATED_PRICE = '£49.99';
+const ARCHITECTURAL_PRICE = 'From £298';
+
+// Now a fallback rather than this section's only copy: the same strings live in
+// content/feasibility/package.json, seeded byte-for-byte from here.
+const FALLBACK = {
+  eyebrow: 'Choose Your Route',
+  heading: 'Feasibility From £49.99.',
+  priceSub: 'Architect-led feasibility from £298.',
+  lede: 'Both start from the same data. Pick the automated appraisal to screen a site fast, or go straight to the architect-led feasibility if you already know you want the full picture.',
+  automatedName: 'Automated Site Feasibility',
+  automatedStrapline: 'Data-led. No architect. About 30 minutes.',
+  architecturalBadge: 'Recommended',
+  architecturalName: 'Architectural Feasibility',
+  architecturalStrapline: 'Data, plus an architect: planning interpretation, sketch and layout testing, and a professional recommendation.',
+  architecturalBody: 'Everything in the automated appraisal, plus the sketch scheme and full report described below. Answer seven questions and your fixed fee is on screen.',
+  architecturalCtaLabel: 'Get Your Instant Fixed Fee',
+  partnerPrefix: 'Only need a quick HMO screen?',
+  partnerLinkLabel: 'HMO Property Check, £15.99',
+  partnerSuffix: '— a partner tool from HMO Checker, not an architectural feasibility.',
+};
+
 const AUTOMATED_INCLUDES = [
   'Planning and standards check',
   'Indicative development capacity',
@@ -26,6 +56,9 @@ const AUTOMATED_INCLUDES = [
 
 const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
+// The checkout form is deliberately outside the CMS: its placeholders, its
+// button states and its error line are the mechanic, not copy, and a reworded
+// button state is a broken button.
 const AutomatedCheckout: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -104,7 +137,7 @@ const AutomatedCheckout: React.FC = () => {
         disabled={!ready || status === 'working'}
         className="w-full justify-center"
       >
-        {status === 'working' ? 'One moment…' : 'Pay £49.99 Now'}
+        {status === 'working' ? 'One moment…' : `Pay ${AUTOMATED_PRICE} Now`}
       </Button>
       {status === 'error' && (
         <p className="text-xs text-red-700 mt-fl-2" role="alert">
@@ -115,95 +148,191 @@ const AutomatedCheckout: React.FC = () => {
   );
 };
 
-export const PackageEntry: React.FC = () => (
-  <section id="instant-quote" className="bg-thistle-white py-fl-section px-fl-margin scroll-mt-24">
-    <div className="max-w-[1100px] mx-auto">
-      <div className="text-center mb-fl-8 max-w-2xl mx-auto">
-        <Reveal>
-          <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4">Choose Your Route</p>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black">
-            Feasibility From £49.99.
-          </h2>
-          <p className="text-fluid-h5 font-medium tracking-tight text-thistle-black/50 mt-fl-1">
-            Architect-led feasibility from £298.
-          </p>
-        </Reveal>
-        <Reveal delay={0.15}>
-          <p className="text-fluid-base text-thistle-black/70 leading-relaxed mt-fl-4">
-            Both start from the same data. Pick the automated appraisal to screen a site fast, or go straight to the
-            architect-led feasibility if you already know you want the full picture.
-          </p>
-        </Reveal>
-      </div>
+interface PackageEntryProps {
+  eyebrow?: string;
+  heading?: string;
+  priceSub?: string;
+  lede?: string;
+  automated?: {
+    name?: string;
+    strapline?: string;
+    /** The ticked list. All-or-nothing: a deleted line has to stay deleted. */
+    includes?: { label: string; tina?: string }[];
+  };
+  architectural?: {
+    badge?: string;
+    name?: string;
+    strapline?: string;
+    body?: string;
+    ctaLabel?: string;
+  };
+  partnerPrefix?: string;
+  partnerLinkLabel?: string;
+  partnerSuffix?: string;
+  /** CMS field ids for this section's own copy. */
+  tina?: Partial<
+    Record<
+      | 'eyebrow'
+      | 'heading'
+      | 'priceSub'
+      | 'lede'
+      | 'automatedName'
+      | 'automatedStrapline'
+      | 'architecturalBadge'
+      | 'architecturalName'
+      | 'architecturalStrapline'
+      | 'architecturalBody'
+      | 'architecturalCtaLabel'
+      | 'partnerPrefix'
+      | 'partnerLinkLabel'
+      | 'partnerSuffix',
+      string
+    >
+  >;
+}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-fl-5 items-stretch mb-fl-8">
-        {/* £49.99, flat fee */}
-        <Reveal delay={0.1} fullHeight>
-          <div className="h-full flex flex-col rounded-2xl border border-thistle-black/[0.08] bg-white p-fl-6">
-            <h3 className="text-fluid-h6 font-medium tracking-tight text-thistle-black">Automated Site Feasibility</h3>
-            <p className="text-fluid-h3 font-medium tracking-tight text-thistle-black my-fl-3 leading-none">£49.99</p>
-            <p className="text-fluid-sm font-medium text-thistle-black/80 mb-fl-4">Data-led. No architect. About 30 minutes.</p>
-            <ul className="space-y-fl-2 mb-fl-2">
-              {AUTOMATED_INCLUDES.map((item) => (
-                <li key={item} className="flex items-start gap-2.5">
-                  <Check size={14} className="text-thistle-green mt-0.5 shrink-0" />
-                  <span className="text-fluid-sm text-thistle-black/65">{item}</span>
-                </li>
-              ))}
-            </ul>
-            <AutomatedCheckout />
-          </div>
-        </Reveal>
+export const PackageEntry: React.FC<PackageEntryProps> = ({
+  eyebrow,
+  heading,
+  priceSub,
+  lede,
+  automated,
+  architectural,
+  partnerPrefix,
+  partnerLinkLabel,
+  partnerSuffix,
+  tina,
+}) => {
+  // pruneEmpty: a field the editor has cleared arrives as '' and would blank the
+  // card, so an empty field leaves the standing copy in place.
+  const copy = {
+    ...FALLBACK,
+    ...pruneEmpty({
+      eyebrow,
+      heading,
+      priceSub,
+      lede,
+      automatedName: automated?.name,
+      automatedStrapline: automated?.strapline,
+      architecturalBadge: architectural?.badge,
+      architecturalName: architectural?.name,
+      architecturalStrapline: architectural?.strapline,
+      architecturalBody: architectural?.body,
+      architecturalCtaLabel: architectural?.ctaLabel,
+      partnerPrefix,
+      partnerLinkLabel,
+      partnerSuffix,
+    }),
+  };
 
-        {/* From £298, recommended */}
-        <Reveal delay={0.15} fullHeight>
-          <div className="relative h-full flex flex-col rounded-2xl border border-thistle-green/40 bg-thistle-green/[0.06] shadow-lg shadow-thistle-green/[0.08] p-fl-6">
-            <span className="absolute -top-3 left-fl-6 px-3 py-1 rounded-full bg-thistle-green text-thistle-black text-[10px] uppercase tracking-[0.16em] font-bold">
-              Recommended
-            </span>
-            <h3 className="text-fluid-h6 font-medium tracking-tight text-thistle-black">Architectural Feasibility</h3>
-            <p className="text-fluid-h3 font-medium tracking-tight text-thistle-black my-fl-3 leading-none">From £298</p>
-            <p className="text-fluid-sm font-medium text-thistle-black/80 mb-fl-4">
-              Data, plus an architect: planning interpretation, sketch and layout testing, and a professional
-              recommendation.
+  // Annotated rather than inferred: the fallback branch has no `tina` key, so
+  // without this the union narrows to { label: string } and the field id is
+  // dropped from the type at the render site.
+  const includes: { label: string; tina?: string }[] = automated?.includes?.length
+    ? automated.includes
+    : AUTOMATED_INCLUDES.map((label) => ({ label }));
+
+  return (
+    <section id="instant-quote" className="bg-thistle-white py-fl-section px-fl-margin scroll-mt-24">
+      <div className="max-w-[1100px] mx-auto">
+        <div className="text-center mb-fl-8 max-w-2xl mx-auto">
+          <Reveal>
+            <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-4" data-tina-field={tina?.eyebrow}>{copy.eyebrow}</p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <h2 className="text-fluid-h2 font-medium tracking-tight leading-tight text-thistle-black" data-tina-field={tina?.heading}>
+              {copy.heading}
+            </h2>
+            <p className="text-fluid-h5 font-medium tracking-tight text-thistle-black/50 mt-fl-1" data-tina-field={tina?.priceSub}>
+              {copy.priceSub}
             </p>
-            <p className="text-fluid-sm text-thistle-black/65 leading-relaxed flex-1">
-              Everything in the automated appraisal, plus the sketch scheme and full report described below. Answer
-              seven questions and your fixed fee is on screen.
+          </Reveal>
+          <Reveal delay={0.15}>
+            <p className="text-fluid-base text-thistle-black/70 leading-relaxed mt-fl-4" data-tina-field={tina?.lede}>
+              {copy.lede}
             </p>
-            <div className="mt-fl-5">
-              <a href="#calculator" className="inline-block">
-                <Button variant="primary" size="md" icon={<ArrowUpRight size={16} />}>
-                  Get Your Instant Fixed Fee
-                </Button>
-              </a>
+          </Reveal>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-fl-5 items-stretch mb-fl-8">
+          {/* £49.99, flat fee */}
+          <Reveal delay={0.1} fullHeight>
+            <div className="h-full flex flex-col rounded-2xl border border-thistle-black/[0.08] bg-white p-fl-6">
+              <h3 className="text-fluid-h6 font-medium tracking-tight text-thistle-black" data-tina-field={tina?.automatedName}>{copy.automatedName}</h3>
+              {/* No marker: the price is not editable, so a marker here would
+                  open a form that cannot change it. */}
+              <p className="text-fluid-h3 font-medium tracking-tight text-thistle-black my-fl-3 leading-none">{AUTOMATED_PRICE}</p>
+              <p className="text-fluid-sm font-medium text-thistle-black/80 mb-fl-4" data-tina-field={tina?.automatedStrapline}>{copy.automatedStrapline}</p>
+              <ul className="space-y-fl-2 mb-fl-2">
+                {/* Keyed by position, not by the line itself: the text is a live
+                    form value in the editor, so keying on it remounts the row on
+                    every keystroke. The marker goes on the span that renders the
+                    line, not the <li> around it, so the tick is not part of the
+                    click target. */}
+                {includes.map((item, i) => (
+                  <li key={i} className="flex items-start gap-2.5">
+                    <Check size={14} className="text-thistle-green mt-0.5 shrink-0" />
+                    <span className="text-fluid-sm text-thistle-black/65" data-tina-field={item.tina}>{item.label}</span>
+                  </li>
+                ))}
+              </ul>
+              <AutomatedCheckout />
             </div>
-          </div>
+          </Reveal>
+
+          {/* From £298, recommended */}
+          <Reveal delay={0.15} fullHeight>
+            <div className="relative h-full flex flex-col rounded-2xl border border-thistle-green/40 bg-thistle-green/[0.06] shadow-lg shadow-thistle-green/[0.08] p-fl-6">
+              <span className="absolute -top-3 left-fl-6 px-3 py-1 rounded-full bg-thistle-green text-thistle-black text-[10px] uppercase tracking-[0.16em] font-bold" data-tina-field={tina?.architecturalBadge}>
+                {copy.architecturalBadge}
+              </span>
+              <h3 className="text-fluid-h6 font-medium tracking-tight text-thistle-black" data-tina-field={tina?.architecturalName}>{copy.architecturalName}</h3>
+              {/* No marker, for the same reason as the price opposite. */}
+              <p className="text-fluid-h3 font-medium tracking-tight text-thistle-black my-fl-3 leading-none">{ARCHITECTURAL_PRICE}</p>
+              <p className="text-fluid-sm font-medium text-thistle-black/80 mb-fl-4" data-tina-field={tina?.architecturalStrapline}>
+                {copy.architecturalStrapline}
+              </p>
+              <p className="text-fluid-sm text-thistle-black/65 leading-relaxed flex-1" data-tina-field={tina?.architecturalBody}>
+                {copy.architecturalBody}
+              </p>
+              <div className="mt-fl-5">
+                <a href="#calculator" className="inline-block">
+                  <Button variant="primary" size="md" icon={<ArrowUpRight size={16} />} data-tina-field={tina?.architecturalCtaLabel}>
+                    {copy.architecturalCtaLabel}
+                  </Button>
+                </a>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+
+        <div id="calculator" className="scroll-mt-28">
+          <FeasibilityCalculator />
+        </div>
+
+        {/* Ed's brief: do not use £15.99 as the main feasibility headline, and
+            make clear it is a partner offer, so it sits here, faint.
+
+            Three fields, three spans, because a link sits in the middle of the
+            sentence. A single marker on the <p> would be a wrapper: closest()
+            would find it from the link too, opening a form instead of following
+            the link. The spans carry no styling and change nothing on screen. */}
+        <Reveal delay={0.2}>
+          <p className="text-center text-xs text-thistle-black/40 mt-fl-7">
+            <span data-tina-field={tina?.partnerPrefix}>{copy.partnerPrefix}</span>{' '}
+            <a
+              href="https://hmochecker.co.uk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 hover:text-thistle-black/60 transition-colors"
+              data-tina-field={tina?.partnerLinkLabel}
+            >
+              {copy.partnerLinkLabel}
+            </a>{' '}
+            <span data-tina-field={tina?.partnerSuffix}>{copy.partnerSuffix}</span>
+          </p>
         </Reveal>
       </div>
-
-      <div id="calculator" className="scroll-mt-28">
-        <FeasibilityCalculator />
-      </div>
-
-      {/* Ed's brief: do not use £15.99 as the main feasibility headline, and
-          make clear it is a partner offer, so it sits here, faint. */}
-      <Reveal delay={0.2}>
-        <p className="text-center text-xs text-thistle-black/40 mt-fl-7">
-          Only need a quick HMO screen?{' '}
-          <a
-            href="https://hmochecker.co.uk"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline underline-offset-2 hover:text-thistle-black/60 transition-colors"
-          >
-            HMO Property Check, £15.99
-          </a>{' '}
-          — a partner tool from HMO Checker, not an architectural feasibility.
-        </p>
-      </Reveal>
-    </div>
-  </section>
-);
+    </section>
+  );
+};

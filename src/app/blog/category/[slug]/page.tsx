@@ -8,6 +8,7 @@ import {
   postsInCategory,
 } from '@/data/blogData';
 import { BlogPage } from '@/views/BlogPage';
+import client from '@/tina/__generated__/client';
 
 // One route per category that actually has posts. The SEO audit flagged that
 // the filters on /blog were client-side state, so no category had its own URL,
@@ -24,6 +25,11 @@ export function generateStaticParams() {
 // routes.
 export const dynamicParams = false;
 
+// Deliberately unchanged, and deliberately not reading from Tina. The title and
+// description for each category come from categoryMeta in data/blogData.ts,
+// written one per category so each page says something rather than repeating a
+// template. They belong with the posts they describe, so they move into the CMS
+// with the posts, not with the listing chrome.
 export async function generateMetadata({
   params,
 }: {
@@ -48,11 +54,19 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const meta = categoryMeta[category];
   const count = postsInCategory(category).length;
 
+  // The blog index document, on a category page, because the two share their
+  // chrome: the eyebrow above the heading and the first category chip are the
+  // same strings here as on /blog and are edited in one place. The heading and
+  // intro below override what that document holds, so the view leaves their
+  // markers off on this route.
+  const listing = await client.queries.listings({ relativePath: 'blog.json' });
+
   return (
     <BlogPage
       category={category}
       heading={meta.title}
       description={`${meta.description} ${count} ${count === 1 ? 'article' : 'articles'}.`}
+      page={{ query: listing.query, variables: listing.variables, data: listing.data }}
     />
   );
 }

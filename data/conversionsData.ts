@@ -1,4 +1,4 @@
-import { deliverables } from './howItWorksData';
+import { deliverables, type Deliverable } from './howItWorksData';
 
 export interface ConversionStat {
   label: string;
@@ -10,8 +10,58 @@ export interface ConversionChallenge {
   detail: string;
 }
 
+/**
+ * The five deliverables in data/howItWorksData.ts, addressed by a stable name
+ * rather than by their position in that array.
+ *
+ * This was `deliverableIndex: number` — a raw index into `deliverables`. That
+ * held while the array was only ever edited in code, but the deliverables are
+ * moving into the CMS, and an editor reordering them there would silently
+ * repoint every highlight on every conversion page at the wrong deliverable:
+ * the right cards, the wrong "for this type" line under each. No error, no
+ * 404, nothing to notice until a client reads it.
+ *
+ * So the join is by identity instead of position. The id is matched to the
+ * deliverable's canonical title below, which survives a reorder. It does not
+ * survive a retitle — but a retitle is a deliberate act and the check at the
+ * bottom of this file throws on it at import time, where a reorder was silent.
+ */
+export type DeliverableId =
+  | 'sketch-schemes'
+  | 'schedule-of-accommodation'
+  | 'planning-policy'
+  | 'risk-register'
+  | 'full-feasibility';
+
+/**
+ * id -> the title the deliverable carries in data/howItWorksData.ts.
+ *
+ * Kept here rather than added to the Deliverable records themselves because
+ * that array belongs to the feasibility-package pages; this map is the
+ * conversions unit's own view of it, and the only place the two are tied
+ * together.
+ */
+const DELIVERABLE_TITLES: Record<DeliverableId, string> = {
+  'sketch-schemes': 'Sketch Schemes',
+  'schedule-of-accommodation': 'Schedule of Accommodation & Space Standards',
+  'planning-policy': 'Planning Policy Analysis',
+  'risk-register': 'Risk Register',
+  'full-feasibility': 'Full Feasibility Document',
+};
+
+/**
+ * The deliverable a highlight points at, or undefined if the id no longer
+ * matches anything. Takes a plain string because the id also arrives from the
+ * CMS, where it is a read-only text field rather than a union type.
+ */
+export const deliverableFor = (id: string): Deliverable | undefined => {
+  const title = DELIVERABLE_TITLES[id as DeliverableId];
+  return title ? deliverables.find((d) => d.title === title) : undefined;
+};
+
 export interface DeliverableHighlight {
-  deliverableIndex: number; // 0..4, index into deliverables in data/howItWorksData.ts
+  /** Which of the five deliverables this card is about. */
+  deliverableId: DeliverableId;
   forThisType: string;
 }
 
@@ -92,10 +142,10 @@ export const conversions: Conversion[] = [
       cta: { label: "Try the free Class MA Checker", href: "/tools/class-ma-checker" },
     },
     deliverableHighlights: [
-      { deliverableIndex: 0, forThisType: "Tested against the building's real structural grid and core positions, not an assumed plan." },
-      { deliverableIndex: 2, forThisType: "Class MA eligibility, Article 4 directions, conservation, and noise mapping covered before you bid." },
-      { deliverableIndex: 3, forThisType: "Every conversion risk named and costed, so the deal model reflects reality." },
-      { deliverableIndex: 4, forThisType: "Net-to-gross and commercial position set out in full, since commercial-to-resi often loses more area than developers expect." },
+      { deliverableId: 'sketch-schemes', forThisType: "Tested against the building's real structural grid and core positions, not an assumed plan." },
+      { deliverableId: 'planning-policy', forThisType: "Class MA eligibility, Article 4 directions, conservation, and noise mapping covered before you bid." },
+      { deliverableId: 'risk-register', forThisType: "Every conversion risk named and costed, so the deal model reflects reality." },
+      { deliverableId: 'full-feasibility', forThisType: "Net-to-gross and commercial position set out in full, since commercial-to-resi often loses more area than developers expect." },
     ],
     relatedCaseStudySlug: "axis-house",
     metaTitle: "Commercial to Residential Conversion Architects | Thistle Architecture",
@@ -152,10 +202,10 @@ export const conversions: Conversion[] = [
       cta: { label: "Check an address on HMO Checker", href: "https://hmochecker.co.uk", external: true },
     },
     deliverableHighlights: [
-      { deliverableIndex: 2, forThisType: "HMO density saturation, Article 4 exposure, and licensing scheme overlap mapped at desk-study stage." },
-      { deliverableIndex: 0, forThisType: "Room layouts checked against HMO minimum sizes and amenity standards, not just optimistic plans." },
-      { deliverableIndex: 3, forThisType: "Licensing costs, planning risks, and standards-compliance gaps each costed and ranked." },
-      { deliverableIndex: 4, forThisType: "Net-to-gross and per-room yield projections benchmarked against local market data." },
+      { deliverableId: 'planning-policy', forThisType: "HMO density saturation, Article 4 exposure, and licensing scheme overlap mapped at desk-study stage." },
+      { deliverableId: 'sketch-schemes', forThisType: "Room layouts checked against HMO minimum sizes and amenity standards, not just optimistic plans." },
+      { deliverableId: 'risk-register', forThisType: "Licensing costs, planning risks, and standards-compliance gaps each costed and ranked." },
+      { deliverableId: 'full-feasibility', forThisType: "Net-to-gross and per-room yield projections benchmarked against local market data." },
     ],
     relatedCaseStudySlug: "st-johns-aylesbury",
     metaTitle: "HMO Architects & Feasibility Specialists | Thistle Architecture",
@@ -201,10 +251,10 @@ export const conversions: Conversion[] = [
       { title: "Servicing and refuse", detail: "Two uses in one envelope means two sets of bins, deliveries, and cycle storage, all of which officers scrutinise closely on constrained high-street sites." },
     ],
     deliverableHighlights: [
-      { deliverableIndex: 0, forThisType: "Layouts that keep the commercial unit working while the floors above become homes, with genuinely independent access." },
-      { deliverableIndex: 2, forThisType: "The ground-floor retention policy read properly, including whether a change is arguable and what evidence it would take." },
-      { deliverableIndex: 3, forThisType: "The risks of running two uses in one building named and costed, from acoustics to refuse strategy." },
-      { deliverableIndex: 4, forThisType: "The commercial case for the mixed scheme against the pure-residential fallback, so you can see which is actually worth more." },
+      { deliverableId: 'sketch-schemes', forThisType: "Layouts that keep the commercial unit working while the floors above become homes, with genuinely independent access." },
+      { deliverableId: 'planning-policy', forThisType: "The ground-floor retention policy read properly, including whether a change is arguable and what evidence it would take." },
+      { deliverableId: 'risk-register', forThisType: "The risks of running two uses in one building named and costed, from acoustics to refuse strategy." },
+      { deliverableId: 'full-feasibility', forThisType: "The commercial case for the mixed scheme against the pure-residential fallback, so you can see which is actually worth more." },
     ],
     relatedCaseStudySlug: "bath-street-cheddar",
     metaTitle: "Mixed-Use Development Architects | Thistle Architecture",
@@ -246,10 +296,10 @@ export const conversions: Conversion[] = [
       { title: "The existing fabric", detail: "Older houses rarely match their drawings. Head heights, structure, and floor levels decide what a remodel can actually deliver, and only a survey settles it." },
     ],
     deliverableHighlights: [
-      { deliverableIndex: 0, forThisType: "Options drawn over your existing plans, so you can see what the house becomes before committing to a route." },
-      { deliverableIndex: 2, forThisType: "Conservation, listing, and permitted development allowances checked before you spend on design." },
-      { deliverableIndex: 3, forThisType: "The risks that move a high-end budget, from structure to heritage objection, named early." },
-      { deliverableIndex: 4, forThisType: "A clear view of whether the project is worth doing, and which option is worth doing." },
+      { deliverableId: 'sketch-schemes', forThisType: "Options drawn over your existing plans, so you can see what the house becomes before committing to a route." },
+      { deliverableId: 'planning-policy', forThisType: "Conservation, listing, and permitted development allowances checked before you spend on design." },
+      { deliverableId: 'risk-register', forThisType: "The risks that move a high-end budget, from structure to heritage objection, named early." },
+      { deliverableId: 'full-feasibility', forThisType: "A clear view of whether the project is worth doing, and which option is worth doing." },
     ],
     relatedCaseStudySlug: "bereweeke-avenue",
     metaTitle: "High-End Residential Architects | Thistle Architecture",
@@ -297,10 +347,10 @@ export const conversions: Conversion[] = [
       { title: "Management and licensing", detail: "Larger schemes usually need a formal management plan and sit across more than one licensing regime at once, which has to be designed for, not bolted on afterwards." },
     ],
     deliverableHighlights: [
-      { deliverableIndex: 0, forThisType: "Circulation and layout tested for a larger building, including how residents actually move through shared spaces." },
-      { deliverableIndex: 2, forThisType: "Sui Generis precedent, licensing regimes and amenity policy read together, not treated as a bigger version of a small-HMO check." },
-      { deliverableIndex: 3, forThisType: "Fire strategy, acoustic separation and management-plan risk named and costed at feasibility stage." },
-      { deliverableIndex: 4, forThisType: "Yield and viability modelled against the shared-amenity space the scheme actually needs to provide." },
+      { deliverableId: 'sketch-schemes', forThisType: "Circulation and layout tested for a larger building, including how residents actually move through shared spaces." },
+      { deliverableId: 'planning-policy', forThisType: "Sui Generis precedent, licensing regimes and amenity policy read together, not treated as a bigger version of a small-HMO check." },
+      { deliverableId: 'risk-register', forThisType: "Fire strategy, acoustic separation and management-plan risk named and costed at feasibility stage." },
+      { deliverableId: 'full-feasibility', forThisType: "Yield and viability modelled against the shared-amenity space the scheme actually needs to provide." },
     ],
     relatedCaseStudySlug: "highbury-buildings-cosham",
     metaTitle: "Co-Living & Large HMO Architects | Thistle Architecture",
@@ -329,15 +379,16 @@ export const conversions: Conversion[] = [
 export const getConversion = (slug: string): Conversion | undefined =>
   conversions.find((c) => c.slug === slug);
 
-// deliverableIndex points into the deliverables array by position, so removing
-// a deliverable silently drops any highlight pointing past the end (the
-// renderer guards with `if (!deliverable) return null`). That happened when
-// "Efficiency Metrics" was removed on Ed's instruction. Fail loudly instead.
+// A highlight whose deliverable has gone is dropped silently by the renderer
+// (`if (!deliverable) return null`), which is how removing "Efficiency Metrics"
+// on Ed's instruction quietly deleted cards from four pages. Fail loudly
+// instead — now also covering a deliverable that has been retitled out from
+// under DELIVERABLE_TITLES, which is the one way the id join can break.
 for (const c of conversions) {
   for (const h of c.deliverableHighlights) {
-    if (!deliverables[h.deliverableIndex]) {
+    if (!deliverableFor(h.deliverableId)) {
       throw new Error(
-        `conversionsData: "${c.slug}" references deliverableIndex ${h.deliverableIndex}, but only ${deliverables.length} deliverables exist.`,
+        `conversionsData: "${c.slug}" references deliverable "${h.deliverableId}", which no longer matches any of the ${deliverables.length} deliverables in howItWorksData.`,
       );
     }
   }

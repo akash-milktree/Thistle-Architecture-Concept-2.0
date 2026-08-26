@@ -1,0 +1,55 @@
+{
+  "_template": "confirmed",
+  "metaTitle": "Feasibility booked",
+  "architectural": {
+    "eyebrow": "Deposit received",
+    "heading": "Thank you. Your feasibility is secured.",
+    "lede": "One thing left to do: tell us about the project properly, so the analysis starts from everything you know.",
+    "steps": [
+      {
+        "title": "A receipt from Stripe",
+        "body": "In your inbox in the next few minutes, with your deposit amount and reference."
+      },
+      {
+        "title": "Complete your project brief",
+        "body": "The button above opens it. Your calculator answers are carried forward, so nothing is asked twice. This is where you add plans, photos and anything else that defines the building."
+      },
+      {
+        "title": "A call to validate the brief",
+        "body": "Once your brief is in, our team reviews it and books a short call to capture anything the form could not."
+      },
+      {
+        "title": "Your feasibility in five working days",
+        "body": "Sketch scheme, proposed layout, unit and bedroom testing, and a one-hour call with the architect. The five days start once your brief and payment are complete."
+      }
+    ]
+  },
+  "automated": {
+    "eyebrow": "Payment received",
+    "heading": "Thank you. Your automated feasibility is underway.",
+    "lede": "One thing left to do: tell us about the project properly, so the analysis starts from everything you know.",
+    "steps": [
+      {
+        "title": "A receipt from Stripe",
+        "body": "In your inbox in the next few minutes, with the amount and reference. £49.99 paid in full, nothing further to pay."
+      },
+      {
+        "title": "Complete your project brief",
+        "body": "The button above opens it. This is what your automated analysis is built from, so the more complete it is, the better the report."
+      },
+      {
+        "title": "Your report, by email",
+        "body": "Fully automated, no architect review at this tier: planning, standards, indicative capacity, risks and recommended next steps."
+      },
+      {
+        "title": "A free Expert Session, if it makes sense",
+        "body": "Once you have the report, we will offer a short call with Jodi to talk through whether an Architectural Feasibility or another service is the right next step."
+      }
+    ]
+  },
+  "support": {
+    "heading": "Something to send us, or a question?",
+    "body": "Reply to your receipt, or email us directly and we will pick it up.",
+    "linkLabel": "See what a feasibility looks like"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "kind": "project",
+  "title": "Methodist Church To Offices",
+  "location": "Leigh, Greater Manchester",
+  "tag": "Commercial Conversion",
+  "status": "Complete",
+  "desc": "A Gothic Methodist church on Wigan Road, converted into offices without losing the stained glass or the vaulted roof.",
+  "image": {
+    "src": "/images/projects/wigan-church-1.jpg",
+    "kind": "drawing"
+  },
+  "stats": [
+    {
+      "label": "Offices",
+      "value": "10"
+    },
+    {
+      "label": "Conference rooms",
+      "value": "2"
+    },
+    {
+      "label": "Office sizes",
+      "value": "12.7 to 19.9 sqm"
+    }
+  ],
+  "buildingType": "Former Methodist church",
+  "planningRoute": "Change of use to offices",
+  "challenge": "The building is a red-brick Gothic Methodist church with stone tracery, stained glass and an open vaulted timber roof, and it had ended up in use as storage. Everything worth keeping about it was also the thing that made an office conversion difficult: you cannot cut a church nave into cellular offices without either wrecking the interior or ending up with rooms nobody wants to work in.",
+  "approach": "The scheme works within the existing envelope. Ten offices from 12.7 to 19.9 sqm and two conference rooms of 22.1 and 22.9 sqm sit alongside a 31.3 sqm open office, a 21.6 sqm waiting area at the entrance, a kitchen, showers and changing rooms, with a 176.5 sqm storage space retained at the rear. The stained glass stays: existing stone frames and stained glass are repaired and made good, with secondary triple glazing introduced inside the existing reveals rather than replacing the windows. Original windows to the frontage are retained and made good like for like. Card access control runs to all exterior and connecting doors.",
+  "outcome": "The conversion is documented through to Rev G. The result keeps a landmark building in use and in one piece, which is usually the argument that carries a scheme like this: the alternative for a redundant church is rarely a better outcome for the street.",
+  "galleryImages": [
+    {
+      "src": "/images/projects/wigan-church-2.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/wigan-church-3.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/wigan-church-4.jpg",
+      "kind": "drawing"
+    }
+  ],
+  "projectStory": {
+    "summary": [
+      "The adaptive reuse of a long-vacant former church in Leigh, Greater Manchester, transforming the redundant building into a new headquarters and co-working destination while retaining the character of its historic architecture.",
+      "The proposals create dedicated office accommodation for the client and their employees alongside a substantial co-working space within the main church atrium. The design has been developed around the building's existing features, including stained-glass windows, exposed timber roof structure, stonework and original organ, introducing contemporary interventions while allowing the character and scale of the former church to remain central to the scheme.",
+      "Thistle Architecture was involved from the initial feasibility stage, securing planning permission for the change of use from a church to Class E office accommodation before progressing further applications for the associated external alterations. Our involvement has continued through Stage 4 technical design, full interior design and tendering of the construction works, with the architectural and interior packages developed as one coordinated scheme.",
+      "Planning permission has been secured and the project is progressing through tender, bringing a significant redundant building back into productive use as a distinctive contemporary workplace."
+    ],
+    "sections": [
+      {
+        "title": "The Existing Church",
+        "caption": "A Gothic former Methodist church, vacant and in use as storage when Thistle first visited. The stained glass, stonework and exposed timber roof are the features the scheme is built around rather than removed.",
+        "images": [
+          {
+            "src": "/images/projects/wigan/exterior-1.jpg",
+            "alt": "The Gothic brick and stone frontage of the former Methodist church"
+          },
+          {
+            "src": "/images/projects/wigan/exterior-2.jpg",
+            "alt": "The church tower and entrance from the street"
+          },
+          {
+            "src": "/images/projects/wigan/interior-nave.jpg",
+            "alt": "The nave in its existing condition, in use as storage"
+          },
+          {
+            "src": "/images/projects/wigan/interior-gallery.jpg",
+            "alt": "The gallery level looking across the nave to the arched windows"
+          },
+          {
+            "src": "/images/projects/wigan/interior-roof.jpg",
+            "alt": "The exposed timber roof structure over the main atrium"
+          },
+          {
+            "src": "/images/projects/wigan/stained-glass.jpg",
+            "alt": "One of the original stained-glass windows retained in the scheme"
+          }
+        ]
+      }
+    ]
+  }
+}

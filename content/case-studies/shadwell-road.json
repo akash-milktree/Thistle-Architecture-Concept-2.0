@@ -1,0 +1,60 @@
+{
+  "kind": "project",
+  "title": "Shadwell Road",
+  "location": "Portsmouth, Hampshire",
+  "provenance": "By HMO Designers, part of Thistle Group",
+  "tag": "HMO",
+  "status": "Complete",
+  "desc": "A seven-bedroom HMO in Portsmouth, taken from a feasibility study of the existing property through to planning and building regulations approval.",
+  "image": {
+    "src": "/images/projects/hmo-shadwell-road/shadwell-road-1.jpg",
+    "kind": "drawing"
+  },
+  "stats": [
+    {
+      "label": "Bedrooms",
+      "value": "7"
+    },
+    {
+      "label": "Completed",
+      "value": "2023"
+    },
+    {
+      "label": "Scope",
+      "value": "Feasibility to approvals"
+    }
+  ],
+  "buildingType": "Existing dwelling",
+  "completionDate": "2023",
+  "conversionTypes": [
+    "hmo"
+  ],
+  "approach": "The instruction started with a feasibility study of the building as it stood, then the relevant surveys, then planning and building regulations approval. The communal room sits at the rear under a glazed lantern with French doors to the yard, finished in sage green with pale timber, so the shared space is the brightest room in the house rather than the one nobody uses.",
+  "outcome": "Completed in 2023.",
+  "galleryImages": [
+    {
+      "src": "/images/projects/hmo-shadwell-road/shadwell-road-2.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-shadwell-road/shadwell-road-3.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-shadwell-road/shadwell-road-4.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-shadwell-road/shadwell-road-5.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-shadwell-road/shadwell-road-6.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-shadwell-road/shadwell-road-7.jpg",
+      "kind": "drawing"
+    }
+  ]
+}

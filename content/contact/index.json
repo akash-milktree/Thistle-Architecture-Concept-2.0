@@ -1,0 +1,35 @@
+{
+  "metaTitle": "Contact",
+  "metaDescription": "Get in touch with Thistle Architecture about a commercial conversion, HMO, or high-end residential scheme. We reply within one working day.",
+  "hero": {
+    "label": "Contact",
+    "heading": "Get in touch.",
+    "description": "Three ways in, depending on how ready you are to move."
+  },
+  "routeReady": {
+    "eyebrow": "Ready To Assess A Property",
+    "body": "Answer a few questions and your fixed fee is on screen. Fastest way to a Go or No-Go.",
+    "buttonLabel": "Get Your Fixed Fee"
+  },
+  "routeGeneral": {
+    "eyebrow": "General Or Other Enquiry",
+    "body": "Anything else, from a press enquiry to a question about a project we've already delivered.",
+    "buttonLabel": "Use The Form Below"
+  },
+  "feasibilityNudge": {
+    "heading": "Already have a building in mind?",
+    "body": "The feasibility form asks the few questions we need to tell you whether it stacks up, and you get a clear Go or No-Go in five days.",
+    "linkLabel": "Book your feasibility"
+  },
+  "expertSession": {
+    "personName": "Jodi",
+    "personRole": "Business Development & Expert Sessions",
+    "pitch": "Not sure which route fits your project? A free 15-minute call with Jodi to talk through the opportunity and point you at the right feasibility.",
+    "buttonLabel": "Request a Call Back",
+    "reassurance": "No obligation. Usually within one working day.",
+    "successHeading": "Thanks. Jodi will be in touch to find a time, usually within one working day.",
+    "successUrgent": "If it is urgent, reach her directly at",
+    "emailPrompt": "Prefer email?",
+    "email": "jodi@thistlearchitecture.co.uk"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "hero": {
+    "badge": "Feasibility-first architecture",
+    "heading": "Feasibility-First\nArchitecture.",
+    "lede": "Thistle is a nationwide, developer-led architecture practice specialising in feasibility studies and the retrofit and reuse of existing buildings. We test what a building can become, give you a clear Go or No-Go in five days, then design and deliver the conversion.",
+    "primaryCtaLabel": "Get Your Fixed Fee",
+    "secondaryCtaLabel": "See How Feasibility Works",
+    "reassurance": "No obligation. Response within one working day.",
+    "posterAlt": "Thistle conversion and retrofit projects across the UK",
+    "metrics": [
+      {
+        "value": "98.5%",
+        "label": "Planning success rate",
+        "detail": "Across all submitted schemes"
+      },
+      {
+        "value": "5 days",
+        "label": "Guaranteed turn around",
+        "detail": "Submission to recommendation"
+      },
+      {
+        "value": "86%",
+        "label": "Faster than traditional routes",
+        "detail": "5 days vs 2 to 6 weeks"
+      }
+    ]
+  },
+  "logos": {
+    "label": "Trusted by developers across the UK",
+    "items": [
+      { "key": "poppadoms", "name": "Property & Poppadoms" },
+      { "key": "academy", "name": "HMO Academy" },
+      { "key": "brentor-group", "name": "Brentor Group" },
+      { "key": "frame-4", "name": "Frame 4" },
+      { "key": "dnb-homes", "name": "DNB Homes" },
+      { "key": "goldgate", "name": "Goldgate Properties" },
+      { "key": "freedom-homes", "name": "Freedom Homes" },
+      { "key": "ajito", "name": "Ajito Property Group" },
+      { "key": "zero-in", "name": "Zero In Developments" },
+      { "key": "highfield", "name": "Highfield Professional Solutions" },
+      { "key": "black-flamingo", "name": "Black Flamingo Homes" }
+    ]
+  },
+  "projects": {
+    "eyebrow": "Example Projects",
+    "heading": "Buildings We Have Tested\nAnd Built.",
+    "buttonLabel": "View All Our Work",
+    "stageLines": [
+      { "slug": "beauchamp-house", "line": "Office → 4 Flats / On Site" },
+      { "slug": "bath-street-cheddar", "line": "Feasibility → Go Recommendation" },
+      { "slug": "beech-house-road-croydon", "line": "Feasibility → Go Recommendation" }
+    ]
+  },
+  "process": {
+    "eyebrow": "Our Process",
+    "heading": "Our Five-Step",
+    "headingAccent": "Feasibility Process.",
+    "steps": [
+      {
+        "num": "01",
+        "title": "Upload Property Details",
+        "desc": "Share your property's address with a few basic details: size, floor count, and current use. Takes under two minutes."
+      },
+      {
+        "num": "02",
+        "title": "Project Data Gathering Session",
+        "desc": "An instant call with Jodi, our property expert, to gather the details we need and walk through your goals for the site. A short, focused conversation that keeps the five-day clock moving."
+      },
+      {
+        "num": "03",
+        "title": "Automated Analysis",
+        "desc": "Our system checks planning history, site constraints, density data, and comparable schemes in your local area. Automating the laborious part is what frees our architects to spend their time on the sketch scheme."
+      },
+      {
+        "num": "04",
+        "title": "Sketch Scheme Stage",
+        "desc": "One of our architects will carry out the sketch scheme analysis to determine the best possible layout based on your brief, local comparables, local and national constraints, and the best commercial outcome."
+      },
+      {
+        "num": "05",
+        "title": "Final Meeting",
+        "desc": "You'll be sent a video call link after uploading your information. We'll review the completed feasibility together after 5 days, so you can bid, walk away, or move into conveyancing with confidence."
+      }
+    ],
+    "bridge": "If it's a Go, we can take it forward: planning, design, technical, tender and construction, with the same team throughout.",
+    "ctaLabel": "Get Your Fixed Fee"
+  }
+}

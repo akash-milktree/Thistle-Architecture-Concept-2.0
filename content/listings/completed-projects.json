@@ -1,0 +1,34 @@
+{
+  "_template": "completedProjects",
+  "metaTitle": "Completed Projects",
+  "metaDescription": "Conversions and schemes delivered through to completion across the Thistle Group, filterable by conversion type.",
+  "hero": {
+    "label": "Our Work",
+    "heading": "Completed Projects.",
+    "description": "Conversions and schemes delivered through to completion across the Thistle Group."
+  },
+  "allLabel": "All",
+  "typeLabels": [
+    {
+      "key": "commercial-to-residential",
+      "label": "Commercial to Residential"
+    },
+    {
+      "key": "hmo",
+      "label": "HMO"
+    },
+    {
+      "key": "co-living-large-hmo",
+      "label": "Co-Living & Large HMO"
+    },
+    {
+      "key": "mixed-use-commercial",
+      "label": "Mixed-Use Commercial"
+    },
+    {
+      "key": "high-end-residential",
+      "label": "High-End Residential"
+    }
+  ],
+  "footnote": "Some of these were delivered by HMO Designers, our sister practice within the Thistle Group. Each one says so on its own page."
+}

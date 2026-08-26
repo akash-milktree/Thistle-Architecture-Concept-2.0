@@ -6,6 +6,8 @@ import { Reveal } from '../../components/animations/Reveal';
 import { Button } from '../../components/ui/Button';
 import { useRouter } from 'next/navigation';
 import { ToolEmailOffer } from '../../components/ui/ToolEmailOffer';
+import { pruneEmpty } from '../../lib/tina';
+import type { OutcomeCopy } from './calcUi';
 
 interface Question {
   key: string;
@@ -120,9 +122,41 @@ const VERDICT_COPY: Record<EligibilityVerdict, VerdictCopy> = {
   },
 };
 
-export const EligibilityChecker: React.FC = () => {
+// Named after something that actually gets sent: the Formspree autoresponse
+// carries this checklist, see formspree.json. Kept in code as the fallback, and
+// the field description in tina/collections/tool.ts repeats the rule where an
+// editor will read it.
+const OFFER_FALLBACK = {
+  heading: 'Want the prior-approval checklist?',
+  blurb:
+    'We will email you the prior-approval tests a Class MA application is judged on, and what evidence each one needs. Useful whichever way your answers landed.',
+};
+
+interface EligibilityCheckerProps {
+  /**
+   * CMS wording for the three verdicts, keyed by verdict. Only the wording:
+   * which verdict a set of answers reaches is computeVerdict()'s decision, and
+   * the hard-fail rules stay in code with it. The four questions and their
+   * answer options stay in code too — the option values are the keys that
+   * function branches on.
+   */
+  verdicts?: Partial<Record<EligibilityVerdict, OutcomeCopy>>;
+  /** Copy for the email offer under the verdict. */
+  emailOffer?: { heading?: string; blurb?: string };
+  /** Label on the "Get Your Fixed Fee" button, shared with the page shell. */
+  ctaLabel?: string;
+  tina?: { ctaLabel?: string; emailOffer?: { heading?: string; blurb?: string } };
+}
+
+export const EligibilityChecker: React.FC<EligibilityCheckerProps> = ({
+  verdicts,
+  emailOffer,
+  ctaLabel = 'Get Your Fixed Fee',
+  tina,
+}) => {
   const router = useRouter();
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  const offer = { ...OFFER_FALLBACK, ...pruneEmpty(emailOffer) };
 
   const currentStep = QUESTIONS.findIndex((q) => !answers[q.key]);
   const isDone = currentStep === -1;
@@ -172,7 +206,15 @@ export const EligibilityChecker: React.FC = () => {
 
         {isDone && (() => {
           const verdict = computeVerdict(answers);
-          const copy = VERDICT_COPY[verdict];
+          // The CMS calls the first line `label`, because on the two
+          // calculators that field is a one-word badge; here the same field is
+          // the full headline sentence. Only those two strings are merged in:
+          // the icon and the colours are part of the verdict, not the copy.
+          const cms = verdicts?.[verdict];
+          const copy = {
+            ...VERDICT_COPY[verdict],
+            ...pruneEmpty({ headline: cms?.label, body: cms?.body }),
+          };
           const Icon = copy.Icon;
           return (
             <Reveal>
@@ -181,7 +223,10 @@ export const EligibilityChecker: React.FC = () => {
                   <Icon size={28} />
                   <span className="text-[11px] uppercase tracking-[0.2em] font-semibold">Verdict</span>
                 </div>
-                <h3 className="text-fluid-h3 font-medium tracking-tight leading-tight text-thistle-black mb-fl-4">
+                <h3
+                  className="text-fluid-h3 font-medium tracking-tight leading-tight text-thistle-black mb-fl-4"
+                  data-tina-field={cms?.tina?.label}
+                >
                   {copy.headline}
                 </h3>
                 {/* The verdict used to sit half in and half out of a ToolGate:
@@ -189,12 +234,15 @@ export const EligibilityChecker: React.FC = () => {
                     blurred, so an email bought a sentence saying a feasibility
                     would confirm it. The screener's job is to qualify someone
                     into a booking, and that is the wrong place to put a wall. */}
-                <p className="text-fluid-base text-thistle-black/80 leading-relaxed mb-fl-6 max-w-2xl">
+                <p
+                  className="text-fluid-base text-thistle-black/80 leading-relaxed mb-fl-6 max-w-2xl"
+                  data-tina-field={cms?.tina?.body}
+                >
                   {copy.body}
                 </p>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-fl-4">
-                  <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/pricing')}>
-                    Get Your Fixed Fee
+                  <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/pricing')} data-tina-field={tina?.ctaLabel}>
+                    {ctaLabel}
                   </Button>
                   <button
                     onClick={restart}
@@ -203,13 +251,14 @@ export const EligibilityChecker: React.FC = () => {
                     <RotateCcw size={14} /> Start over
                   </button>
                 </div>
-                {/* Named after something that actually gets sent. The Formspree
-                    autoresponse carries this checklist; see formspree.json. */}
+                {/* Copy and its provenance are at OFFER_FALLBACK above, which
+                    is where the strings moved to when they became editable. */}
                 <ToolEmailOffer
                   source="class-ma-checker"
                   extra={{ answers, verdict }}
-                  heading="Want the prior-approval checklist?"
-                  blurb="We will email you the prior-approval tests a Class MA application is judged on, and what evidence each one needs. Useful whichever way your answers landed."
+                  heading={offer.heading}
+                  blurb={offer.blurb}
+                  tina={tina?.emailOffer}
                 />
               </div>
             </Reveal>

@@ -1,0 +1,46 @@
+{
+  "metaTitle": "Team photo options (internal review)",
+  "eyebrow": "Internal review, not public",
+  "heading": "Team photo options",
+  "intro": "Three options for each person, side by side. Column B keeps their real face and just makes the set consistent. Column C is an AI-generated headshot, which looks the most polished but is a synthetic likeness rather than a real photograph, so it should only go live if each person is happy with it.",
+  "note": "Nothing here is live on the site. The real About page still shows the current photos (column A).",
+  "columns": [
+    {
+      "key": "current",
+      "label": "A. Current",
+      "note": "What is live now: the original supplied photos, inconsistent framing and backgrounds."
+    },
+    {
+      "key": "real",
+      "label": "B. Cleaned real photo",
+      "note": "Their actual face, cut out and placed on one matched studio grey, uniform framing. Genuinely them."
+    },
+    {
+      "key": "ai",
+      "label": "C. AI-generated",
+      "note": "A synthetic studio headshot generated from their photo. Polished, but a regenerated likeness, not a real photo. Needs each person’s consent before publishing."
+    }
+  ],
+  "people": [
+    {
+      "slug": "ed",
+      "name": "Edward Kercher"
+    },
+    {
+      "slug": "kaan",
+      "name": "Kaan"
+    },
+    {
+      "slug": "jan",
+      "name": "Jan"
+    },
+    {
+      "slug": "adouj",
+      "name": "Adouj Abu Saadeh"
+    },
+    {
+      "slug": "beverley",
+      "name": "Beverley Gibbs"
+    }
+  ]
+}

@@ -1,9 +1,17 @@
 "use client";
 
 import React from 'react';
+import { arr, str } from '../../lib/tina';
+import { f } from '../../lib/tina-fields';
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 // Shared presentation bits for the tool calculators. Extracted when the HMO
 // calculator was added so the two tools cannot drift apart visually.
+//
+// The outcome helpers at the bottom are shared one tool wider, with the Class
+// MA screener: all three tools end on a card that says one of three things, so
+// all three read that wording out of the CMS the same way.
 
 export const formatGBP = (n: number) => {
   if (Math.abs(n) >= 1_000_000) return `£${(n / 1_000_000).toFixed(2)}M`;
@@ -45,6 +53,40 @@ export const NumberInput: React.FC<NumberInputProps> = ({ label, value, prefix, 
     </span>
   </label>
 );
+
+/** CMS wording for one result, carrying the field ids for its own two strings. */
+export interface OutcomeCopy {
+  label?: string;
+  body?: string;
+  tina?: { label?: string; body?: string };
+}
+
+/**
+ * Turn the CMS `outcomes` list into a record keyed by result.
+ *
+ * Keyed rather than positional on purpose. The tool picks its result by name,
+ * so an editor who drags the list into a different order must not thereby swap
+ * what "Marginal" says for what "Strong" says. An entry with no key, or with a
+ * key this tool never asks for, is simply never read, and any result the list
+ * does not cover falls back to the copy in the component.
+ *
+ * Each entry keeps the field ids taken from the item itself, never from the
+ * list: an id read off the list opens an empty form instead of the card that
+ * was clicked.
+ */
+export function outcomeCopy<K extends string>(list: unknown): Partial<Record<K, OutcomeCopy>> {
+  const out: Record<string, OutcomeCopy> = {};
+  for (const item of arr<any>(list)) {
+    const key = str(item?.key);
+    if (!key) continue;
+    out[key] = {
+      label: str(item?.label) || undefined,
+      body: str(item?.body) || undefined,
+      tina: { label: f(item, 'label'), body: f(item, 'body') },
+    };
+  }
+  return out as Partial<Record<K, OutcomeCopy>>;
+}
 
 export const OutputRow: React.FC<{ label: string; value: string; accent?: boolean }> = ({ label, value, accent }) => (
   <div className="flex items-baseline justify-between gap-fl-4 pb-fl-3 border-b border-thistle-black/[0.05] last:border-b-0 last:pb-0">

@@ -1,0 +1,87 @@
+{
+  "kind": "project",
+  "title": "81 The Crescent",
+  "location": "England",
+  "tag": "HMO",
+  "status": "Complete",
+  "desc": "An en suite HMO finished to a high specification, with a desk and a tea station in every room and oak joinery running throughout.",
+  "image": {
+    "src": "/images/projects/crescent-81/crescent-1.jpg",
+    "kind": "drawing"
+  },
+  "stats": [
+    {
+      "label": "En suites",
+      "value": "Every room"
+    },
+    {
+      "label": "In room",
+      "value": "Desk and tea station"
+    },
+    {
+      "label": "Joinery",
+      "value": "Oak and cane"
+    }
+  ],
+  "buildingType": "Existing dwelling",
+  "completionDate": "2025",
+  "conversionTypes": [
+    "hmo"
+  ],
+  "approach": "Each room is a self-contained unit rather than a bedroom with a shared bathroom down the hall: its own en suite behind an oak door, a slatted timber headboard panel wired with sockets and switches at the bed, a desk under the window, and a wardrobe and chest in cane-fronted oak. The en suites are tiled in large-format stone with quadrant showers and backlit round mirrors. Separate tea stations sit outside the rooms, which is the arrangement that keeps a scheme like this the right side of the licensing standards on kitchen provision.",
+  "outcome": "Complete and photographed in September 2025. The palette is warm throughout, oak, cream, terracotta and mustard, which is a deliberate step away from the grey-and-white that most rooms at this rent level default to.",
+  "galleryImages": [
+    {
+      "src": "/images/projects/crescent-81/crescent-2.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/crescent-81/crescent-3.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/crescent-81/crescent-4.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/crescent-81/crescent-5.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/crescent-81/crescent-6.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/crescent-81/crescent-7.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/crescent-81/crescent-8.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/crescent-81/crescent-9.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/crescent-81/crescent-10.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/crescent-81/crescent-11.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/crescent-81/crescent-12.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/crescent-81/crescent-13.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/crescent-81/crescent-14.jpg",
+      "kind": "drawing"
+    }
+  ]
+}

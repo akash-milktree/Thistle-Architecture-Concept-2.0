@@ -13,6 +13,8 @@ interface InlineCTAProps {
   href?: string;
   align?: 'left' | 'center' | 'right';
   className?: string;
+  /** CMS field id for the label. The destination stays in code. */
+  tinaLabel?: string;
 }
 
 /**
@@ -27,6 +29,7 @@ export const InlineCTA: React.FC<InlineCTAProps> = ({
   href = "/pricing",
   align = "center",
   className = "",
+  tinaLabel,
 }) => {
   const router = useRouter();
   const { openModal } = useFeasibility();
@@ -44,7 +47,7 @@ export const InlineCTA: React.FC<InlineCTAProps> = ({
 
   return (
     <div className={`flex ${alignCls} ${className}`}>
-      <Button size="md" variant="primary" icon={<ArrowUpRight size={16} />} onClick={go}>
+      <Button size="md" variant="primary" icon={<ArrowUpRight size={16} />} onClick={go} data-tina-field={tinaLabel}>
         {label}
       </Button>
     </div>

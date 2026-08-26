@@ -1,0 +1,71 @@
+{
+  "kind": "project",
+  "title": "Project Prince",
+  "location": "Southend-on-Sea, Essex",
+  "provenance": "By HMO Designers, part of Thistle Group",
+  "tag": "HMO",
+  "status": "Complete",
+  "desc": "A high-end seven-bedroom HMO in Southend-on-Sea, with seven individually let en suite rooms and shared amenities.",
+  "image": {
+    "src": "/images/projects/hmo-project-prince/project-prince-1.jpg",
+    "kind": "drawing"
+  },
+  "stats": [
+    {
+      "label": "Bedrooms",
+      "value": "7"
+    },
+    {
+      "label": "Let",
+      "value": "Individually"
+    },
+    {
+      "label": "Amenities",
+      "value": "En suite plus shared"
+    }
+  ],
+  "buildingType": "Existing dwelling",
+  "conversionTypes": [
+    "hmo"
+  ],
+  "approach": "Seven rooms, each individually let and each with its own en suite, alongside the shared amenity space. The bedrooms carry the high-end brief properly rather than decoratively: deep colour taken across the walls and the ceiling, slatted timber panelling behind the bed, and a pendant hung either side instead of one light in the middle of the room.",
+  "outcome": "Complete, and let to professionals in the area. It is a fair demonstration of what a high-end brief buys when the team specialises in HMOs.",
+  "galleryImages": [
+    {
+      "src": "/images/projects/hmo-project-prince/project-prince-2.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-project-prince/project-prince-3.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-project-prince/project-prince-4.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-project-prince/project-prince-5.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-project-prince/project-prince-6.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-project-prince/project-prince-7.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-project-prince/project-prince-8.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-project-prince/project-prince-9.jpg",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/hmo-project-prince/project-prince-10.jpg",
+      "kind": "drawing"
+    }
+  ]
+}

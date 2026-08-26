@@ -1,0 +1,54 @@
+{
+  "kind": "project",
+  "title": "A 22-Bed HMO, Rebuilt",
+  "location": "Croydon, South London",
+  "tag": "HMO",
+  "status": "On site",
+  "desc": "An existing 22-bedroom local authority HMO reconfigured into fewer but far larger en-suite rooms, with Thistle running the technical package and the build.",
+  "image": {
+    "src": "/images/projects/campbell-road/existing-2.jpg",
+    "kind": "drawing"
+  },
+  "stats": [
+    {
+      "label": "Existing",
+      "value": "22-bed local authority HMO"
+    },
+    {
+      "label": "Proposed",
+      "value": "Fewer, larger en-suite rooms"
+    },
+    {
+      "label": "Thistle role",
+      "value": "Stage 4 and delivery"
+    }
+  ],
+  "buildingType": "Existing large HMO",
+  "completionDate": "On site",
+  "conversionTypes": [
+    "hmo"
+  ],
+  "projectStory": {
+    "summary": [
+      "The comprehensive redevelopment of an existing 22-bedroom local authority HMO in Croydon for a large developer client, with the building being reconfigured to provide fewer but substantially larger bedrooms, each incorporating private en-suite facilities and kitchenettes.",
+      "The wider redevelopment includes a substantial two-storey rear extension, additional single-storey accommodation and a complete loft conversion with new dormers. The proposals required an extensive technical design package, coordinating the new accommodation with the existing building and addressing the significant fire, building regulations, servicing and compliance requirements associated with a large-scale HMO.",
+      "Thistle Architecture was appointed to deliver the Stage 4 technical design, drawing on our specialist experience within the HMO, co-living and commercial residential sectors. Following completion of the technical package, our role has continued through construction, providing Contract Administration and acting as Principal Designer."
+    ],
+    "sections": [
+      {
+        "title": "The Existing Building",
+        "caption": "A large local authority HMO, to be reconfigured, extended to the rear and converted into the loft.",
+        "images": [
+          {
+            "src": "/images/projects/campbell-road/existing-2.jpg",
+            "alt": "The existing HMO building from the street"
+          },
+          {
+            "src": "/images/projects/campbell-road/existing-1.jpg",
+            "alt": "The side and rear of the existing building"
+          }
+        ]
+      }
+    ]
+  }
+}

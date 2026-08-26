@@ -1,0 +1,50 @@
+{
+  "kind": "feasibility",
+  "title": "Office To High-End Houses",
+  "location": "Compton, Newbury",
+  "tag": "Commercial to Residential",
+  "recommendation": "Options Tested",
+  "desc": "A rural office building tested against three different sketch schemes, landing on a terrace of four three-bed houses and one two-bed unit.",
+  "image": {
+    "src": "/images/projects/axis-house-elevation-1.webp",
+    "kind": "drawing"
+  },
+  "stats": [
+    {
+      "label": "Sketch proposals tested",
+      "value": "3"
+    },
+    {
+      "label": "Unit mix identified",
+      "value": "5 houses"
+    },
+    {
+      "label": "Three-bed units",
+      "value": "83 sqm"
+    }
+  ],
+  "buildingType": "Office",
+  "planningRoute": "Full planning",
+  "completionDate": "October 2025",
+  "challenge": "Axis House is an office building in a village setting, and the client wanted to understand its highest-value residential future. Flats, a small number of large houses, and a terrace of family homes were all plausible, with very different values and build scopes.",
+  "approach": "We tested three sketch proposals over the existing plans, working with the building's structural grid. The preferred scheme divides the building into four three-bed houses of around 83 sqm each plus one larger two-bed unit, using ground floor timber-frame extensions, new rear openings, dormers, and rooflights to make each house work over three floors.",
+  "outcome": "The client received drawn options with elevations for the preferred scheme, a clear unit mix, and the alterations list that planning and costing conversations need. Three rounds of sketch testing settled the direction before any detailed design fees were spent.",
+  "galleryImages": [
+    {
+      "src": "/images/projects/axis-house-plans-1.webp",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/axis-house-elevation-1.webp",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/axis-house-plans-2.webp",
+      "kind": "drawing"
+    },
+    {
+      "src": "/images/projects/axis-house-elevation-2.webp",
+      "kind": "drawing"
+    }
+  ]
+}

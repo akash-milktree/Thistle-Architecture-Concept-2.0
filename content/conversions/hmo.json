@@ -1,0 +1,94 @@
+{
+  "metaTitle": "HMO Architects & Feasibility Specialists | Thistle Architecture",
+  "metaDescription": "HMO conversion feasibility. Density, Article 4, licensing, and layout pressure-tested in five days. Fixed fee, clear Go or No-Go.",
+  "hero": {
+    "label": "HMO",
+    "heading": "HMO Architects & Feasibility Specialists",
+    "description": "HMO feasibility, without the guesswork. Houses of multiple occupation work on tight margins, so we pressure-test density, licensing, and layout before you put in an offer."
+  },
+  "opportunity": {
+    "copy": "HMO conversions deliver strong yield in the right area, but Article 4 directions, density caps, and licensing thresholds can quietly kill a deal before it starts. The numbers only stack up when the regulatory picture is genuinely clear.",
+    "stats": [
+      {
+        "label": "Typical room count",
+        "value": "5 to 9"
+      },
+      {
+        "label": "Planning route",
+        "value": "Full or Class C4"
+      },
+      {
+        "label": "Typical yield",
+        "value": "8% to 12%"
+      }
+    ]
+  },
+  "challenges": [
+    {
+      "title": "Density and Article 4",
+      "detail": "Local HMO density caps and Article 4 directions vary borough by borough. The right address can sail through, the wrong one is blocked entirely."
+    },
+    {
+      "title": "Licensing thresholds",
+      "detail": "Mandatory, additional, and selective licensing schemes overlap unpredictably. Each adds cost, time, and standards the conversion must meet."
+    },
+    {
+      "title": "Space-standard compliance",
+      "detail": "HMO room sizes are tightly regulated. A scheme that looks viable on a brochure plan often fails the minimum-area tests for habitable rooms."
+    }
+  ],
+  "extraSection": {
+    "eyebrow": "Sister Product",
+    "title": "Check The Address First.",
+    "body": [
+      {
+        "text": "HMO Checker is part of the Thistle Group, and it answers the first question about any HMO: does this address work at all? It pulls planning and licensing data for a property and reports the Article 4 position, the licensing schemes that apply, and what has been approved nearby."
+      },
+      {
+        "text": "A single report is a £15.99 one-off, and there are free tools alongside it including an Article 4 checker and a conversion calculator. It is the cheapest way to rule an address out before you spend money on it."
+      },
+      {
+        "text": "Where HMO Checker tells you whether the address is worth pursuing, a feasibility tells you what the building will actually give you: how many rooms, at what sizes, and whether the deal stacks up."
+      }
+    ],
+    "image": "/images/site/hero-winchester.jpg",
+    "imageAlt": "Aerial view over Winchester rooftops and streets",
+    "ctaLabel": "Check an address on HMO Checker"
+  },
+  "deliverableHighlights": [
+    {
+      "deliverableId": "planning-policy",
+      "forThisType": "HMO density saturation, Article 4 exposure, and licensing scheme overlap mapped at desk-study stage."
+    },
+    {
+      "deliverableId": "sketch-schemes",
+      "forThisType": "Room layouts checked against HMO minimum sizes and amenity standards, not just optimistic plans."
+    },
+    {
+      "deliverableId": "risk-register",
+      "forThisType": "Licensing costs, planning risks, and standards-compliance gaps each costed and ranked."
+    },
+    {
+      "deliverableId": "full-feasibility",
+      "forThisType": "Net-to-gross and per-room yield projections benchmarked against local market data."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Is this address inside an Article 4 direction?",
+      "answer": "It depends entirely on the local authority; Article 4 removes the permitted-development right to convert to a small HMO borough by borough, sometimes street by street. We check the specific address rather than assuming the area's general position applies to your site."
+    },
+    {
+      "question": "Which licensing scheme applies to my HMO?",
+      "answer": "Mandatory licensing applies nationally above five occupants; many councils layer additional or selective licensing on top, each with its own thresholds and standards. We identify which schemes bite on your specific property and what they will require."
+    },
+    {
+      "question": "How many bedrooms will actually fit, not just on paper?",
+      "answer": "We test room sizes against local and national space standards and realistic communal amenity requirements, not an optimistic brochure layout. That number is usually lower than a quick sketch suggests, and it is the number that survives a licensing inspection."
+    },
+    {
+      "question": "What's the difference between a standard HMO and a large or co-living scheme?",
+      "answer": "Once you're above the typical five-to-nine room range, or into shared amenity space, management and fire strategy change materially, and planning usually shifts to a Sui Generis application rather than Class C4. Larger schemes are a distinct specialism of ours."
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "kind": "project",
+  "title": "One House To Four Homes",
+  "location": "Hampshire",
+  "tag": "Residential Development",
+  "status": "Complete",
+  "desc": "A single large plot assessed for capacity, then masterplanned and consented as four new homes through a phased planning strategy.",
+  "image": {
+    "src": "/images/projects/rotherfield/cgi.jpg",
+    "kind": "drawing"
+  },
+  "stats": [
+    {
+      "label": "Homes",
+      "value": "Four"
+    },
+    {
+      "label": "Strategy",
+      "value": "Phased planning"
+    },
+    {
+      "label": "Outcome",
+      "value": "Full permission"
+    }
+  ],
+  "buildingType": "Residential plot with existing dwelling",
+  "planningRoute": "Phased, then full planning",
+  "completionDate": "Complete",
+  "projectStory": {
+    "summary": [
+      "The redevelopment of a substantial residential plot with an existing dwelling, where Thistle Architecture was initially commissioned to assess the wider development potential of the site and establish how additional homes could be successfully accommodated.",
+      "The feasibility process considered site capacity, access, highways, pedestrian routes, parking and the relationship between the proposed dwellings and the surrounding context. This resulted in a masterplan for four new homes, incorporating the demolition of the existing property and a comprehensive reconfiguration of the site.",
+      "A phased planning strategy was developed to help establish an appropriate scale and massing for future development, including an initial approval for substantial ancillary buildings around the existing dwelling. The approved built form subsequently helped inform the scale and arrangement of the four-home redevelopment, which was progressed through a full planning application.",
+      "Full planning permission was secured for the redevelopment."
+    ],
+    "sections": [
+      {
+        "title": "Masterplan And Design",
+        "caption": "Capacity testing first, then a masterplan for four homes and a phased route to permission.",
+        "images": [
+          {
+            "src": "/images/projects/rotherfield/sketch.jpg",
+            "alt": "Sketch view of the proposed homes in their landscape setting"
+          },
+          {
+            "src": "/images/projects/rotherfield/cgi.jpg",
+            "alt": "Visualisation of one of the four proposed homes"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -20,9 +20,16 @@ const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 // email field, the address goes to the team through the same lead route as the
 // other gates, and a person sends the documents back. Nothing is revealed on
 // submit, because there is nothing publishable to reveal.
+// The three cards themselves stay in code (FEASIBILITY_DOCUMENTS in
+// data/caseStudiesData.ts): every feasibility produces the same set, so it is
+// one shared constant rather than the same three cards repeated across 35
+// documents. Only the guidance line below varies by study, so only it is
+// editable and only it carries a marker.
 export const DocumentCards: React.FC<{
   guidance?: { label: string; href?: string };
-}> = ({ guidance }) => {
+  /** CMS field id for the guidance line on THIS study. */
+  tinaLabel?: string;
+}> = ({ guidance, tinaLabel }) => {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'done' | 'error'>('idle');
@@ -132,8 +139,12 @@ export const DocumentCards: React.FC<{
         )}
       </div>
 
+      {/* The marker sits on the paragraph rather than on the text inside it.
+          The paragraph renders this one field and nothing else, and the
+          alternative — wrapping the words in a span — would change the markup
+          of every page that has no CMS query behind it. */}
       {guidance && (
-        <p className="text-xs text-thistle-black/40 mt-fl-4">
+        <p className="text-xs text-thistle-black/40 mt-fl-4" data-tina-field={tinaLabel}>
           {guidance.href ? (
             <a href={guidance.href} target="_blank" rel="noopener noreferrer" className="hover:text-thistle-black transition-colors underline underline-offset-2">
               {guidance.label}

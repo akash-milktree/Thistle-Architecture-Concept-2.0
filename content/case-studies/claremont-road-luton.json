@@ -1,0 +1,84 @@
+{
+  "kind": "feasibility",
+  "title": "Three-Bed House To Seven-Bed HMO",
+  "location": "Luton, Bedfordshire",
+  "tag": "HMO",
+  "recommendation": "Go",
+  "desc": "A mid-terrace house tested for a seven-bed HMO, delivered in two stages so the riskiest room is argued from the strongest position.",
+  "image": {
+    "src": "/images/projects/claremont-sketch-1.webp",
+    "kind": "drawing"
+  },
+  "stats": [
+    {
+      "label": "Bedrooms, all en suite",
+      "value": "7"
+    },
+    {
+      "label": "Communal space provided",
+      "value": "32 sqm"
+    },
+    {
+      "label": "Indicative value at 8.5% yield",
+      "value": "£500,000"
+    }
+  ],
+  "buildingType": "Existing dwelling (C3)",
+  "planningRoute": "Permitted development (C4), then full planning",
+  "completionDate": "July 2026",
+  "unitsBefore": "3-bed house",
+  "unitsAfter": "7-bed HMO",
+  "challenge": "The client was looking at a three-bedroom terrace guided around £350,000 and wanted seven en-suite rooms out of it. The planning designations were clean, no Article 4, conservation area, flood zone or green belt, so a six-bed C4 HMO was permitted development. The seventh bedroom was the problem: it tips the scheme into sui generis and runs into Luton's protection of family housing.",
+  "approach": "Rather than apply for seven rooms in one go, the study phased it. Stage one takes the six-bed C4 HMO plus a rear dormer loft, both permitted development, confirmed by a Lawful Development Certificate. Stage two adds the seventh bedroom by full planning, once the six-bed HMO is established and tenanted. The sequence matters: once the property is a lawful HMO there is no family dwelling left to lose, so the seventh room is judged as an addition to an existing HMO rather than the loss of a family home. A nearby approval at 39 Hazelbury Crescent granted a seventh person on exactly that basis.",
+  "outcome": "A Go, with the phasing as the core recommendation. Every bedroom exceeds 10 sqm against a 6.51 sqm legal minimum, and communal space lands at about 32 sqm against a 23.5 sqm target. A 20 sqm outbuilding becomes shared co-working space, which strengthens the seventh-bed case because officers view extra amenity favourably. Seven rooms at an indicative £675 per month give about £56,700 gross a year, roughly £42,500 net, implying about £500,000 of value against a build cost of £200,000 to £220,000. The loft head height was flagged as the main survey item.",
+  "galleryImages": [
+    {
+      "src": "/images/projects/claremont-sketch-1.webp",
+      "kind": "drawing"
+    }
+  ],
+  "feasibility": {
+    "keyInfo": [
+      {
+        "label": "Bedrooms",
+        "value": "7, all en suite"
+      },
+      {
+        "label": "Room sizes",
+        "value": "10 sqm and above"
+      },
+      {
+        "label": "Communal space",
+        "value": "About 32 sqm"
+      },
+      {
+        "label": "Planning route",
+        "value": "Six-bed LDC, then full planning"
+      },
+      {
+        "label": "Key risk",
+        "value": "Family housing protection"
+      },
+      {
+        "label": "Date",
+        "value": "July 2026"
+      }
+    ],
+    "brief": "Could a large, already extended mid-terrace take a seven-bedroom all en-suite HMO, and which route gets there with the least planning risk?",
+    "found": "Six bedrooms plus a rear dormer loft are permitted development, confirmed by a lawful development certificate. The seventh is sui generis and turns on the protection of family housing, applied in Luton through Policies LLP1 and LLP15. Phasing answers it: establish and tenant the six-bed C4 first, and the seventh is then judged as an addition to an existing HMO rather than the loss of a family home. A nearby approval at 39 Hazelbury Crescent granted a seventh person on exactly that basis. No bedroom falls below 10 sqm against a 6.51 sqm legal minimum, and the communal space is about 32 sqm against a 23.5 sqm target.",
+    "recommendation": "Proceed to seven bedrooms in two stages. Take the six-bed certificate first and implement it properly, with tenancies and licence records kept rather than relying on a paper approval, then apply for the seventh. The 20 sqm outbuilding becomes shared co-working space, which strengthens that application. Eight persons is possible later but is not recommended as a base case.",
+    "sketchCaption": "Seven en-suite bedrooms across three floors, with the whole rear given over to a single kitchen, dining and living space opening onto the garden, and two further bedrooms in a new rear dormer.",
+    "guidance": {
+      "label": "Official guidance reviewed: Luton Borough Council HMO Standards"
+    },
+    "decision": "The six-bedroom route is low risk and needs no planning permission. The seventh is achievable when the scheme is phased so that there is no family dwelling left to lose, which is the one policy that could defeat it.",
+    "roadmap": [
+      "Measured survey",
+      "Six-bed lawful development certificate",
+      "Implement and tenant",
+      "Full planning for the seventh",
+      "Technical design",
+      "Construction"
+    ]
+  }
+}

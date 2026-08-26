@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from '../components/animations/Reveal';
+import { pruneEmpty } from '../lib/tina';
 
 const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
@@ -11,7 +12,42 @@ const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 // Calendly booking." Jodi's Calendly link doesn't exist yet, so this captures
 // the request and a preferred time instead of leaving a dead CTA; swapping in
 // a real embed later is a like-for-like replacement of this one component.
-export const ExpertSessionCard: React.FC = () => {
+interface ExpertSessionCopy {
+  personName: string;
+  personRole: string;
+  pitch: string;
+  buttonLabel: string;
+  reassurance: string;
+  successHeading: string;
+  successUrgent: string;
+  emailPrompt: string;
+  email: string;
+}
+
+interface ExpertSessionCardProps {
+  copy?: Partial<ExpertSessionCopy>;
+  tina?: Partial<Record<keyof ExpertSessionCopy, string>>;
+}
+
+// The standing copy, kept here as the fallback so the card renders exactly as
+// it did before if it is mounted without CMS values.
+const COPY_FALLBACK: ExpertSessionCopy = {
+  personName: 'Jodi',
+  personRole: 'Business Development & Expert Sessions',
+  pitch: 'Not sure which route fits your project? A free 15-minute call with Jodi to talk through the opportunity and point you at the right feasibility.',
+  buttonLabel: 'Request a Call Back',
+  reassurance: 'No obligation. Usually within one working day.',
+  successHeading: 'Thanks. Jodi will be in touch to find a time, usually within one working day.',
+  successUrgent: 'If it is urgent, reach her directly at',
+  emailPrompt: 'Prefer email?',
+  email: 'jodi@thistlearchitecture.co.uk',
+};
+
+export const ExpertSessionCard: React.FC<ExpertSessionCardProps> = ({ copy, tina }) => {
+  const c: ExpertSessionCopy = { ...COPY_FALLBACK, ...pruneEmpty(copy) };
+  // The avatar is the first letter of the name, so it follows a rename rather
+  // than becoming a stale initial.
+  const initial = c.personName.trim().charAt(0).toUpperCase() || 'J';
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -48,31 +84,34 @@ export const ExpertSessionCard: React.FC = () => {
             className="w-12 h-12 rounded-full bg-thistle-green/15 ring-2 ring-thistle-green/20 flex items-center justify-center text-base font-bold text-thistle-green shrink-0"
             aria-hidden="true"
           >
-            J
+            {initial}
           </div>
           <div>
-            <p className="text-fluid-base font-medium text-thistle-black">Jodi</p>
-            <p className="text-xs text-thistle-black/50">Business Development & Expert Sessions</p>
+            <p className="text-fluid-base font-medium text-thistle-black" data-tina-field={tina?.personName}>
+              {c.personName}
+            </p>
+            <p className="text-xs text-thistle-black/50" data-tina-field={tina?.personRole}>
+              {c.personRole}
+            </p>
           </div>
         </div>
 
         {status === 'done' ? (
           <>
-            <p className="text-fluid-sm text-thistle-black/70 leading-relaxed mb-fl-3">
-              Thanks. Jodi will be in touch to find a time, usually within one working day.
+            <p className="text-fluid-sm text-thistle-black/70 leading-relaxed mb-fl-3" data-tina-field={tina?.successHeading}>
+              {c.successHeading}
             </p>
             <p className="text-fluid-sm text-thistle-black/60 leading-relaxed">
-              If it is urgent, reach her directly at{' '}
-              <a href="mailto:jodi@thistlearchitecture.co.uk" className="text-thistle-black underline underline-offset-2 hover:text-thistle-green transition-colors">
-                jodi@thistlearchitecture.co.uk
+              <span data-tina-field={tina?.successUrgent}>{c.successUrgent}</span>{' '}
+              <a href={`mailto:${c.email}`} className="text-thistle-black underline underline-offset-2 hover:text-thistle-green transition-colors" data-tina-field={tina?.email}>
+                {c.email}
               </a>.
             </p>
           </>
         ) : (
           <>
-            <p className="text-fluid-sm text-thistle-black/70 leading-relaxed mb-fl-4">
-              Not sure which route fits your project? A free 15-minute call with Jodi to talk through the
-              opportunity and point you at the right feasibility.
+            <p className="text-fluid-sm text-thistle-black/70 leading-relaxed mb-fl-4" data-tina-field={tina?.pitch}>
+              {c.pitch}
             </p>
             <form onSubmit={submit} className="flex flex-col gap-fl-3">
               <div className="grid sm:grid-cols-2 gap-fl-3">
@@ -116,10 +155,13 @@ export const ExpertSessionCard: React.FC = () => {
                   disabled={!ready || status === 'submitting'}
                   className="inline-flex items-center justify-center gap-1.5 text-fluid-sm font-medium px-6 py-3 rounded-full bg-thistle-green text-thistle-black hover:bg-thistle-green/80 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                 >
-                  {status === 'submitting' ? 'Sending…' : 'Request a Call Back'}
+                  {/* The busy state stays in code: it is functional UI, not
+                      copy, and an editor blanking it would leave a button that
+                      looks unresponsive mid-submit. */}
+                  {status === 'submitting' ? 'Sending…' : c.buttonLabel}
                   <ArrowUpRight size={16} />
                 </button>
-                <p className="text-xs text-thistle-black/45">No obligation. Usually within one working day.</p>
+                <p className="text-xs text-thistle-black/45" data-tina-field={tina?.reassurance}>{c.reassurance}</p>
               </div>
               {status === 'error' && (
                 <p aria-live="polite" className="text-xs text-red-700">
@@ -134,9 +176,9 @@ export const ExpertSessionCard: React.FC = () => {
              has confirmed hello@ is monitored. Her Calendly still does not
              exist, so the form above remains the booking route. */
           <p className="text-xs text-thistle-black/45 mt-fl-4">
-            Prefer email?{' '}
-            <a href="mailto:jodi@thistlearchitecture.co.uk" className="underline underline-offset-2 hover:text-thistle-black transition-colors">
-              jodi@thistlearchitecture.co.uk
+            <span data-tina-field={tina?.emailPrompt}>{c.emailPrompt}</span>{' '}
+            <a href={`mailto:${c.email}`} className="underline underline-offset-2 hover:text-thistle-black transition-colors" data-tina-field={tina?.email}>
+              {c.email}
             </a>
           </p>
         )}

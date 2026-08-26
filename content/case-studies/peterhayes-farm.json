@@ -1,0 +1,63 @@
+{
+  "kind": "project",
+  "title": "Class Q Barn To Dwelling",
+  "location": "Somerset",
+  "tag": "Class Q",
+  "status": "Complete",
+  "desc": "An agricultural barn behind a working farmhouse, converted to a house under Class Q and delivered through to completion.",
+  "image": {
+    "src": "/images/projects/peterhayes/cgi-barn.jpg",
+    "kind": "drawing"
+  },
+  "stats": [
+    {
+      "label": "Route",
+      "value": "Class Q prior approval"
+    },
+    {
+      "label": "Approved",
+      "value": "2024"
+    },
+    {
+      "label": "Thistle role",
+      "value": "Approval to construction"
+    }
+  ],
+  "buildingType": "Agricultural barn",
+  "planningRoute": "Class Q prior approval",
+  "completionDate": "Complete",
+  "projectStory": {
+    "summary": [
+      "The conversion of an existing agricultural barn at Peter Hayes Farm in Somerset into a new residential dwelling. The barn sits to the rear of an existing farmhouse, within a mixed rural setting that also includes surrounding industrial and agricultural buildings.",
+      "Thistle Architecture was commissioned to develop the residential conversion and secure Class Q Prior Approval, establishing the change of use from agricultural to residential while working within the constraints of the existing building and site.",
+      "Following approval in 2024, our involvement continued through Stage 4 technical design and into the construction phase, coordinating the detailed information required to deliver the conversion on site.",
+      "The project is now complete, transforming the former agricultural building into a new home while retaining and adapting the character and fabric of the original barn."
+    ],
+    "sections": [
+      {
+        "title": "The Site",
+        "caption": "The barn sits behind the farmhouse in a mixed rural setting of agricultural and industrial buildings.",
+        "images": [
+          {
+            "src": "/images/projects/peterhayes/site-aerial.jpg",
+            "alt": "Aerial view of the farm with the barn to the rear of the farmhouse"
+          }
+        ]
+      },
+      {
+        "title": "The Conversion",
+        "caption": "The barn's form and fabric are retained and adapted rather than replaced.",
+        "images": [
+          {
+            "src": "/images/projects/peterhayes/cgi-barn.jpg",
+            "alt": "The converted barn seen from the approach"
+          },
+          {
+            "src": "/images/projects/peterhayes/cgi-garden.jpg",
+            "alt": "The barn conversion from the garden side"
+          }
+        ]
+      }
+    ]
+  }
+}

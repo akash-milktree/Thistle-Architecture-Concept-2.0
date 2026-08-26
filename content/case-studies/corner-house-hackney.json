@@ -1,0 +1,66 @@
+{
+  "kind": "project",
+  "title": "Vacant Corner Plot To New Home",
+  "location": "Hackney, London",
+  "tag": "New Build",
+  "status": "Complete",
+  "desc": "A new home on a vacant corner plot, bookending an existing Hackney terrace behind a curved wall of green glazed brick.",
+  "image": {
+    "src": "/images/projects/corner-house/cgi-street.jpg",
+    "kind": "drawing"
+  },
+  "stats": [
+    {
+      "label": "Plot",
+      "value": "Previously vacant"
+    },
+    {
+      "label": "Facade",
+      "value": "Green glazed brick"
+    },
+    {
+      "label": "Thistle role",
+      "value": "Feasibility to construction"
+    }
+  ],
+  "buildingType": "New-build house on an infill plot",
+  "completionDate": "Complete",
+  "projectStory": {
+    "summary": [
+      "A new-build residential project on a previously vacant corner plot in Hackney, London, designed to complete and bookend an existing terrace while creating a distinctive new family home.",
+      "The design responds directly to its prominent corner position, with a curved external wall and green glazed brickwork creating a strong architectural identity. Buff brick, stone detailing to the window sills and cornice, and carefully proportioned openings reference the surrounding street, allowing the building to feel contemporary and individual while remaining grounded in its context.",
+      "Thistle Architecture was involved from the initial feasibility stage, developing the design and securing planning permission before progressing the project through Stage 4 technical design and providing full management of the construction.",
+      "The completed scheme has transformed a constrained vacant plot into a characterful new home, a confident contemporary addition to the Hackney streetscape."
+    ],
+    "sections": [
+      {
+        "title": "The Existing Plot",
+        "caption": "A constrained corner site, vacant and hoarded, at the end of an existing terrace.",
+        "images": [
+          {
+            "src": "/images/projects/corner-house/existing-plot.jpg",
+            "alt": "The vacant hoarded corner plot before development"
+          }
+        ]
+      },
+      {
+        "title": "The Design",
+        "caption": "A curved corner in green glazed brick, with buff brick and stone detailing picking up the proportions of the street.",
+        "images": [
+          {
+            "src": "/images/projects/corner-house/cgi-street.jpg",
+            "alt": "The completed house on its corner, seen along the street"
+          },
+          {
+            "src": "/images/projects/corner-house/glazed-brick.jpg",
+            "alt": "Close view of the green glazed brickwork"
+          },
+          {
+            "src": "/images/projects/corner-house/cgi-interior.jpg",
+            "alt": "The open plan interior looking out to the garden"
+          }
+        ]
+      }
+    ]
+  }
+}

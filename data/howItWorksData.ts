@@ -66,6 +66,14 @@ export const howItWorksSteps: HowItWorksStep[] = [
 
 // One-line descriptions for the six compact layer cards nested under the
 // analysis step. Indexed to match feasibilityLayers in data/feasibilityLayers.ts.
+//
+// OPEN QUESTION, 2026-08-26: nothing imports this any more. The compact layer
+// cards it was written for went when the analysis step folded into
+// sections/FeasibilityEngine.tsx, and the copy the six cards actually render is
+// now `body` on feasibilityLayers, seeded into content/feasibility/package.json
+// and editable there. Left in place rather than deleted because these are Ed's
+// words for the same six layers and may be wanted again, but they are NOT a
+// second place to edit the live cards: editing them changes nothing on the site.
 export const layerBlurbs: string[] = [
   "Five years of approvals and refusals around the site.",
   "Local and national policy, Article 4, and change-of-use thresholds.",

@@ -6,7 +6,8 @@ import { Reveal } from '../../components/animations/Reveal';
 import { Button } from '../../components/ui/Button';
 import { useRouter } from 'next/navigation';
 import { ToolGate } from '../../components/ui/ToolGate';
-import { NumberInput, OutputRow, formatGBP } from './calcUi';
+import { pruneEmpty } from '../../lib/tina';
+import { NumberInput, OutputRow, formatGBP, type OutcomeCopy } from './calcUi';
 
 export type ViabilityBand = 'marginal' | 'viable' | 'strong';
 
@@ -66,11 +67,40 @@ const BAND_COPY: Record<ViabilityBand, { label: string; body: string; bg: string
   },
 };
 
-export const GDVCalculator: React.FC = () => {
+interface GDVCalculatorProps {
+  /** Panel headings. The input labels below them stay in code — they name what
+   *  the arithmetic expects, not what the page says. */
+  inputsHeading?: string;
+  outputsHeading?: string;
+  /**
+   * CMS wording for the three verdict bands, keyed by band. Only the words:
+   * which band a set of inputs lands in is computeViability()'s decision, and
+   * the 10% / 25% boundaries stay in code with it.
+   */
+  bands?: Partial<Record<ViabilityBand, OutcomeCopy>>;
+  /** Label on the "Get Your Fixed Fee" button, shared with the page shell. */
+  ctaLabel?: string;
+  tina?: { inputsHeading?: string; outputsHeading?: string; ctaLabel?: string };
+}
+
+export const GDVCalculator: React.FC<GDVCalculatorProps> = ({
+  inputsHeading = 'Your numbers',
+  outputsHeading = 'Projected outcome',
+  bands,
+  ctaLabel = 'Get Your Fixed Fee',
+  tina,
+}) => {
   const router = useRouter();
   const [inputs, setInputs] = useState<ViabilityInputs>(DEFAULTS);
   const result = useMemo(() => computeViability(inputs), [inputs]);
-  const bandCopy = BAND_COPY[result.band];
+  // Only `label` and `body` are merged in from the CMS. The colours are part of
+  // the verdict, not part of the copy: red for marginal is what makes the band
+  // readable at a glance, and it is not an editor's to change.
+  const cmsBand = bands?.[result.band];
+  const bandCopy = {
+    ...BAND_COPY[result.band],
+    ...pruneEmpty({ label: cmsBand?.label, body: cmsBand?.body }),
+  };
 
   const update = (key: keyof ViabilityInputs, value: number) => {
     setInputs((prev) => ({ ...prev, [key]: value }));
@@ -82,7 +112,7 @@ export const GDVCalculator: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-fl-7">
           <Reveal>
             <div className="bg-white rounded-2xl border border-thistle-black/[0.06] p-fl-7">
-              <h3 className="text-fluid-h5 font-medium tracking-tight text-thistle-black mb-fl-5">Your numbers</h3>
+              <h3 className="text-fluid-h5 font-medium tracking-tight text-thistle-black mb-fl-5" data-tina-field={tina?.inputsHeading}>{inputsHeading}</h3>
               <div className="flex flex-col gap-fl-5">
                 <NumberInput label="Purchase price" value={inputs.purchasePrice} prefix="£" step={10000} onChange={(n) => update('purchasePrice', n)} />
                 <NumberInput label="Floor area" value={inputs.floorAreaSqm} suffix="sqm" step={50} onChange={(n) => update('floorAreaSqm', n)} />
@@ -96,7 +126,7 @@ export const GDVCalculator: React.FC = () => {
           <Reveal delay={0.1}>
             <div className="flex flex-col gap-fl-4 h-full">
               <div className="bg-white rounded-2xl border border-thistle-black/[0.06] p-fl-7">
-                <h3 className="text-fluid-h5 font-medium tracking-tight text-thistle-black mb-fl-5">Projected outcome</h3>
+                <h3 className="text-fluid-h5 font-medium tracking-tight text-thistle-black mb-fl-5" data-tina-field={tina?.outputsHeading}>{outputsHeading}</h3>
                 <div className="space-y-fl-4">
                   <OutputRow label="Projected GDV" value={formatGBP(result.gdv)} />
                   <ToolGate source="gdv-calculator" extra={{ inputs }}>
@@ -110,12 +140,15 @@ export const GDVCalculator: React.FC = () => {
               </div>
 
               <div className={`rounded-2xl border ${bandCopy.bg} p-fl-6`}>
-                <span className={`block text-[10px] uppercase tracking-widest font-semibold mb-fl-3 ${bandCopy.text}`}>{bandCopy.label}</span>
-                <p className="text-fluid-sm text-thistle-black/80 leading-relaxed mb-fl-5">
+                {/* Markers go on the badge and the paragraph themselves. The
+                    card around them is a wrapper, and a marker there would
+                    capture the click meant for either. */}
+                <span className={`block text-[10px] uppercase tracking-widest font-semibold mb-fl-3 ${bandCopy.text}`} data-tina-field={cmsBand?.tina?.label}>{bandCopy.label}</span>
+                <p className="text-fluid-sm text-thistle-black/80 leading-relaxed mb-fl-5" data-tina-field={cmsBand?.tina?.body}>
                   {bandCopy.body}
                 </p>
-                <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/pricing')}>
-                  Get Your Fixed Fee
+                <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/pricing')} data-tina-field={tina?.ctaLabel}>
+                  {ctaLabel}
                 </Button>
               </div>
             </div>

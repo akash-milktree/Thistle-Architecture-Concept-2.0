@@ -1,0 +1,37 @@
+{
+  "metaTitle": "Class MA Eligibility Checker | Thistle Architecture",
+  "metaDescription": "Free Class MA eligibility checker. Four quick questions on use class, Article 4, and listing status. See whether your office-to-resi conversion qualifies for permitted development.",
+  "hero": {
+    "label": "Class MA Eligibility Checker",
+    "heading": "Class MA: Does Your Building Qualify?",
+    "description": "Four quick questions to screen your building against the main Class MA prior-approval tests. Around a minute."
+  },
+  "outcomes": [
+    {
+      "key": "eligible",
+      "label": "Likely eligible for Class MA.",
+      "body": "Your answers do not trigger any of the hard-fail conditions. A full feasibility confirms it against live planning data and runs the prior-approval tests in detail."
+    },
+    {
+      "key": "borderline",
+      "label": "Borderline. A feasibility removes the doubt.",
+      "body": "You have at least one unknown or borderline answer. Class MA might still work, but the prior-approval tests need real data, not assumptions. A feasibility runs them for you."
+    },
+    {
+      "key": "not-eligible",
+      "label": "Class MA is probably not the route.",
+      "body": "Something in your answers rules out Class MA permitted development. That does not mean the scheme is dead; full planning may still work. A feasibility tells you which route, if any, stacks up."
+    }
+  ],
+  "emailOffer": {
+    "heading": "Want the prior-approval checklist?",
+    "blurb": "We will email you the prior-approval tests a Class MA application is judged on, and what evidence each one needs. Useful whichever way your answers landed."
+  },
+  "disclaimer": "This screener is a quick check, not a planning determination. A full feasibility is the final word.",
+  "ctaLabel": "Get Your Fixed Fee",
+  "closing": {
+    "heading": "The Tool Is A Hint.",
+    "headingAccent": "The Feasibility Is The Answer.",
+    "body": "Get a real, architect-led feasibility on the building in five days. Fixed fee, clear Go or No-Go."
+  }
+}

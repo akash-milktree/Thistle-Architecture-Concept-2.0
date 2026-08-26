@@ -1,0 +1,287 @@
+{
+  "_template": "package",
+  "metaTitle": "Feasibility Package",
+  "metaDescription": "Get complete clarity on your property's development potential with our comprehensive feasibility package.",
+  "hero": {
+    "label": "The Feasibility Package",
+    "heading": "Your Building, Answered\nIn Five Days.",
+    "priceHeadline": "Feasibility from £49.99.",
+    "priceSub": "Architect-led feasibility from £298.",
+    "lede": "Five deliverables and a clear Go or No-Go on whether your building is worth taking forward.",
+    "ctaLabel": "Get Your Instant Fixed Fee",
+    "ctaNote": "No obligation. Response within one working day.",
+    "image": "/images/projects/bereweeke/complete-front.jpg",
+    "imageAlt": "Bereweeke Avenue completed, a brick house with a tiled roof",
+    "markers": [
+      {
+        "label": "98.5% planning success rate"
+      },
+      {
+        "label": "5-day guaranteed turnaround"
+      },
+      {
+        "label": "Fixed fee, scoped up front"
+      }
+    ]
+  },
+  "entry": {
+    "eyebrow": "Choose Your Route",
+    "heading": "Feasibility From £49.99.",
+    "priceSub": "Architect-led feasibility from £298.",
+    "lede": "Both start from the same data. Pick the automated appraisal to screen a site fast, or go straight to the architect-led feasibility if you already know you want the full picture.",
+    "automated": {
+      "name": "Automated Site Feasibility",
+      "strapline": "Data-led. No architect. About 30 minutes.",
+      "includes": [
+        {
+          "label": "Planning and standards check"
+        },
+        {
+          "label": "Indicative development capacity"
+        },
+        {
+          "label": "Commercial context and risks"
+        },
+        {
+          "label": "Recommended next steps"
+        }
+      ]
+    },
+    "architectural": {
+      "badge": "Recommended",
+      "name": "Architectural Feasibility",
+      "strapline": "Data, plus an architect: planning interpretation, sketch and layout testing, and a professional recommendation.",
+      "body": "Everything in the automated appraisal, plus the sketch scheme and full report described below. Answer seven questions and your fixed fee is on screen.",
+      "ctaLabel": "Get Your Instant Fixed Fee"
+    },
+    "partnerPrefix": "Only need a quick HMO screen?",
+    "partnerLinkLabel": "HMO Property Check, £15.99",
+    "partnerSuffix": "— a partner tool from HMO Checker, not an architectural feasibility."
+  },
+  "howItWorks": {
+    "eyebrow": "The Process",
+    "heading": "Five Days,",
+    "headingAccent": "Five Steps.",
+    "steps": [
+      {
+        "durationLabel": "Under 2 minutes",
+        "title": "Secure Your Fixed Fee",
+        "lead": "Answer a few questions and pay online to lock in your fee. No obligation before this point, and no surprises after it.",
+        "detail": "The Architectural Feasibility takes a 50% holding deposit; the balance follows once your feasibility is delivered. The Automated Site Feasibility is £49.99, paid in full."
+      },
+      {
+        "durationLabel": "Under 10 minutes",
+        "title": "Complete Your Project Brief",
+        "lead": "Your calculator answers carry forward automatically, so you pick up straight into plans, photos and the details that define the building.",
+        "detail": "You do not need detailed drawings. Basic floor plans, an address, and your initial assumptions on unit count are enough. If you do not have floor plans, we can often source them ourselves."
+      },
+      {
+        "durationLabel": "Instant call, Architectural tier only",
+        "title": "Jodi Validates Your Brief",
+        "lead": "A short call with Jodi, our property expert, to check the brief and walk through your goals for the site.",
+        "detail": "Jodi captures anything specific to your plans for the building, so the analysis is pointed at the scheme you actually want. The Automated Site Feasibility skips this call and moves straight to analysis."
+      },
+      {
+        "durationLabel": "Automated within hours, architect review over days 2 to 4",
+        "title": "Analysis, Then Architect Review",
+        "lead": "Our data engine checks planning history, site constraints, density data and comparable schemes, before an architect sketches the optimal layout.",
+        "detail": "Hundreds of data points are cross-referenced across trusted sources first. This is the desk study, done in hours, not weeks. On the Architectural Feasibility, an architect then pressure-tests the data against the physical building and works through the spatial problems automation cannot solve. The Automated Site Feasibility stops after the data stage."
+      },
+      {
+        "durationLabel": "Day 5",
+        "title": "Your Feasibility, Delivered",
+        "lead": "Architectural Feasibility: a final video call to review everything together. Automated Site Feasibility: your report, by email.",
+        "detail": "Either way you leave with complete clarity: the full feasibility document and a clear Go or No-Go. Enough to bid, to walk away, or to move into conveyancing with confidence."
+      }
+    ]
+  },
+  "deliverables": {
+    "eyebrow": "What You Receive",
+    "heading": "What You Actually",
+    "headingAccent": "Receive.",
+    "lede": "Five deliverables, drawn from a feasibility we actually delivered. Not a brochure: these are pages from the real report.",
+    "items": [
+      {
+        "key": "Sketch Schemes",
+        "why": "The part our architects spend their time on, because automation cannot do it. Real layouts you can show a buyer, a lender, or a JV partner.",
+        "image": "/images/projects/windmill-lane-sketch-1.webp",
+        "imageAlt": "Feasibility sketch showing six en-suite bedrooms across two floors with the garage brought into the house"
+      },
+      {
+        "key": "Schedule of Accommodation & Space Standards",
+        "why": "The single document a QS, a valuer, or a planning officer asks for first. You will not be chasing it from a separate consultant.",
+        "image": "/images/deliverables/schedule-of-accommodation.jpg",
+        "imageAlt": "Space standards summary listing minimum room sizes, ceiling heights and communal room requirements"
+      },
+      {
+        "key": "Planning Policy Analysis",
+        "why": "We surface the planning risks that quietly kill schemes before you have spent money on a pre-app or a survey.",
+        "image": "/images/deliverables/planning-policy-analysis.jpg",
+        "imageAlt": "Planning policy analysis setting out the determinative HMO policy and the design and amenity policies engaged"
+      },
+      {
+        "key": "Risk Register",
+        "why": "Every risk is named, sized, and assigned a cost. You go into the deal with eyes open, not optimism.",
+        "image": "/images/deliverables/risk-register.jpg",
+        "imageAlt": "Risk dashboard rating each planning issue with its resolution"
+      },
+      {
+        "key": "Full Feasibility Document",
+        "why": "The whole picture in one place, ending in a clear answer. We will tell you to walk away if the numbers do not stack up, even if you wanted a Go.",
+        "image": "/images/deliverables/full-feasibility-document.jpg",
+        "imageAlt": "First page of the feasibility overview, covering the property, the planning context and the proposed strategy"
+      }
+    ],
+    "sample": {
+      "heading": "Read a real report first.",
+      "body": "Enter your email and the team will send you a full sample feasibility document from a real project, with the client details removed.",
+      "privacyNote": "No spam. Just the report and one follow-up."
+    },
+    "example": {
+      "eyebrow": "See It In Practice",
+      "linkLabel": "Read the full feasibility"
+    }
+  },
+  "analysis": {
+    "eyebrow": "The Analysis",
+    "heading": "What's Included",
+    "headingAccent": "In Data Analysis.",
+    "lede": "Hundreds of data points, cross-referenced automatically, so our architects spend their time on layouts and recommendations.",
+    "layers": [
+      {
+        "eyebrow": "Layer 01",
+        "title": "Planning history & policy analysis",
+        "body": "What has been approved, refused, or is pending nearby."
+      },
+      {
+        "eyebrow": "Layer 02",
+        "title": "Policy analysis",
+        "body": "The policy and constraints that decide whether your scheme is viable."
+      },
+      {
+        "eyebrow": "Layer 03",
+        "title": "Comparable schemes",
+        "body": "Nearby conversions, unit counts, and achieved sale values."
+      },
+      {
+        "eyebrow": "Layer 04",
+        "title": "GDV and viability",
+        "body": "Build cost, margin, and ROI, before you commit."
+      },
+      {
+        "eyebrow": "Layer 05",
+        "title": "Spatial analysis",
+        "body": "Space standards, Building Regs, and licensing for your area."
+      },
+      {
+        "eyebrow": "Layer 06",
+        "title": "Architectural sketch scheme & video call",
+        "body": "The part automation cannot do: an architect draws the layout options over your plans."
+      }
+    ],
+    "ctaLabel": "Get Your Instant Fixed Fee"
+  },
+  "team": {
+    "eyebrow": "The People",
+    "heading": "Who You're Working With.",
+    "people": [
+      {
+        "name": "Edward Kercher",
+        "role": "Founder & Director",
+        "line": "Commercial and technical experience from £50,000 refurbs to £20m construction management. Founder of HMO Designers and HMO Checker, and a developer himself, so the advice comes from someone who has taken the risk personally.",
+        "image": "/images/team/ed.jpg"
+      },
+      {
+        "name": "Kaan",
+        "role": "Design & Planning Lead",
+        "line": "BArch. Runs every feasibility from sketch scheme to sign-off, with 5+ years across residential and HMO planning, from deal sourcing through to submission.",
+        "image": "/images/team/kaan.jpg"
+      },
+      {
+        "name": "Jodi",
+        "role": "Business Development & Expert Sessions",
+        "line": "A property sales background and strong HMO and developer knowledge. Jodi is the first point of contact for a free Expert Session: she helps you understand the opportunity, clarify your objectives, and choose the right feasibility route."
+      }
+    ],
+    "proofPoints": [
+      {
+        "label": "Hundreds of conversions designed, nationwide"
+      },
+      {
+        "label": "98.5% planning success rate"
+      },
+      {
+        "label": "Commercial, HMO, co-living and high-end residential"
+      }
+    ],
+    "linkLabel": "Meet the whole team"
+  },
+  "reviews": {
+    "eyebrow": "The Clients"
+  },
+  "faq": {
+    "eyebrow": "The Questions",
+    "heading": "The Practical Questions.",
+    "lede": "Fee, scope, VAT, what happens on a No-Go. The things that matter once you are ready to instruct.",
+    "ctaLabel": "Get Your Instant Fixed Fee",
+    "items": [
+      {
+        "question": "Is the fee really fixed?",
+        "answer": "Yes. The price you see is the price you pay, regardless of how the analysis unfolds. We absorb the cost if a deliverable takes longer than expected."
+      },
+      {
+        "question": "What isn't included in the fixed fee?",
+        "answer": "Honest scope from the start. We can quote separately if any of these are needed.",
+        "exclusions": [
+          {
+            "label": "Planning application submission and full planning drawings."
+          },
+          {
+            "label": "Structural engineering surveys, party wall, or measured surveys."
+          },
+          {
+            "label": "Pre-application meetings with the local authority."
+          },
+          {
+            "label": "Detailed design or construction-stage architectural services."
+          },
+          {
+            "label": "Specialist reports such as daylight, transport, or ecology."
+          }
+        ]
+      },
+      {
+        "question": "What if the recommendation is No-Go?",
+        "answer": "You still receive the full report, the risk register, and the reasoning. You will know exactly why the scheme does not stack up and what would need to change. The fee is the same either way."
+      },
+      {
+        "question": "Do you charge VAT?",
+        "answer": "All our feasibility fees are inclusive of VAT, so the price you see is the price you pay. VAT-registered businesses can normally reclaim the VAT element."
+      },
+      {
+        "question": "How quickly can you start?",
+        "answer": "The five-day clock starts once both your payment and your full project brief are in, not just from payment. That's the point we have everything we need to actually begin the analysis."
+      },
+      {
+        "question": "Are revisions included?",
+        "answer": "One round of layout revisions is included if the architect-led stage surfaces options worth comparing. Beyond that we agree a fixed fee for further iteration."
+      },
+      {
+        "question": "What if my building is more complex than the package assumes?",
+        "answer": "If the desk study flags genuine complexity, we will pause and agree a revised scope and fee with you before continuing. No surprises mid-feasibility."
+      },
+      {
+        "question": "Can the report be used to apply for funding?",
+        "answer": "Yes. Reports include GDV projections, accommodation schedules, and a risk register, all structured to support lender, investor, and JV partner conversations."
+      },
+      {
+        "question": "What happens after a Go recommendation?",
+        "answer": "You receive a fee proposal for the full project and a clear programme showing exactly what happens next. There is no obligation to proceed with us."
+      }
+    ]
+  },
+  "stickyCta": {
+    "label": "Fixed fee, from",
+    "ctaLabel": "Get Your Instant Fixed Fee"
+  }
+}

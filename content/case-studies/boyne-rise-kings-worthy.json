@@ -1,0 +1,55 @@
+{
+  "kind": "project",
+  "title": "Bungalow To Contemporary Family Home",
+  "location": "Kings Worthy, Winchester",
+  "tag": "High-End Residential",
+  "status": "On site",
+  "desc": "A bungalow on a corner plot, reworked internally and extended into a gable-ended house with vaulted ceilings over the open-plan heart.",
+  "image": {
+    "src": "/images/projects/boyne-rise/cgi-1.jpg",
+    "kind": "drawing"
+  },
+  "stats": [
+    {
+      "label": "Existing",
+      "value": "Bungalow"
+    },
+    {
+      "label": "Roof",
+      "value": "New gable-ended form"
+    },
+    {
+      "label": "Thistle role",
+      "value": "Feasibility to construction"
+    }
+  ],
+  "buildingType": "Existing bungalow",
+  "planningRoute": "Full planning",
+  "completionDate": "On site",
+  "conversionTypes": [
+    "high-end-residential"
+  ],
+  "projectStory": {
+    "summary": [
+      "The comprehensive redevelopment of an existing bungalow on a substantial corner plot in Kings Worthy, Winchester, designed to create a significantly larger and more contemporary family home.",
+      "The proposals include a complete internal reconfiguration alongside a substantial side extension, extending the existing pitched roof form to create a new gable-ended composition. Large areas of glazing to the front elevation and a series of south-facing rooflights bring extensive natural light into the property, while vaulted ceilings across the new kitchen, dining and living spaces create a generous open-plan heart to the home.",
+      "Thistle Architecture was commissioned from the initial feasibility and concept design stage, progressing the project through full planning and subsequently completing the Stage 4 technical design package. Our involvement will continue through construction."
+    ],
+    "sections": [
+      {
+        "title": "The Proposed House",
+        "caption": "The existing pitched roof is extended into a gable-ended composition, with glazing to the front and south-facing rooflights over the vaulted living spaces.",
+        "images": [
+          {
+            "src": "/images/projects/boyne-rise/cgi-1.jpg",
+            "alt": "Visualisation of the extended house from the front"
+          },
+          {
+            "src": "/images/projects/boyne-rise/cgi-2.jpg",
+            "alt": "Visualisation showing the new gable and glazing"
+          }
+        ]
+      }
+    ]
+  }
+}
