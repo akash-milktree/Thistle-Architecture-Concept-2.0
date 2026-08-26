@@ -7,10 +7,10 @@ import { Testimonials } from '../sections/Testimonials';
 import { Reveal } from '../components/animations/Reveal';
 import { motion } from 'framer-motion';
 
-// Roster matched to the photos in the client's "03 New Website/Team Photos"
-// folder (Akash, 2026-07-16). Onaiza was removed: no photo in the new folder and
-// not on the client's live site. Seyma's folder is empty, so she cannot be added
-// until a photo arrives.
+// Roster of six. Seyma joined on 2026-08-26: her caption had been ready for
+// weeks and the only thing missing was a photograph, which the August studio
+// shoot supplied. Onaiza is still off the page, with no photo and no presence
+// on the client's live site.
 //
 // role and credentials are optional ON PURPOSE. No document anywhere gives job
 // titles for Adouj or Beverley, and design.md forbids inventing team
@@ -29,12 +29,17 @@ interface TeamMember {
   credential?: string;
 }
 
-// Portraits are AI-generated studio headshots, made from each person's real
-// photo. They are a likeness, not a photograph, and the generation put everyone
-// in a suit rather than the clothes they were actually wearing. Akash is
-// regenerating them with the real clothing preserved; these are the interim set.
-// Source photos and the review of all three options are in
-// public/images/team-review/ and the internal /team-review page.
+// Real photographs, from the studio shoot on 23 August 2026. They replaced the
+// AI-generated headshots that stood here before: those were a likeness rather
+// than a photograph, the generation had put everyone in a suit instead of what
+// they were actually wearing, and Ed objected to AI imagery on the site.
+//
+// Beverley is the exception. She is not in the shoot, so her card uses the
+// photo she supplied, which is real but a plain snapshot rather than part of
+// the set. She should be included next time the photographer is in.
+//
+// The old AI set is still in public/images/team-review/ with the internal
+// /team-review page, which compared the three options.
 const team: TeamMember[] = [
   {
     name: "Edward Kercher",
@@ -63,6 +68,15 @@ const team: TeamMember[] = [
     image: "/images/team/adouj.jpg",
     contribution: "Brings international practice experience in Turkey, Azerbaijan, and the UAE to the design team, since moving to the UK.",
     credential: "BA Architecture, Bilkent University (High Honours, 2019); LEED Green Associate",
+  },
+  {
+    // Caption supplied by Ed on WhatsApp; photo from the August 2026 studio
+    // shoot, which is what had been blocking her going on the page.
+    name: "Seyma",
+    role: "Architectural Designer",
+    image: "/images/team/seyma.jpg",
+    contribution: "Takes projects from the first survey through design and into the planning and technical stages. Six-plus years across residential and HMO work, commercial surveying, design and planning in the UK.",
+    credential: "BSc Architecture, MA Interior Design",
   },
   {
     name: "Beverley Gibbs",
@@ -117,9 +131,13 @@ export const AboutPage: React.FC = () => {
         <div className="max-w-[1360px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-fl-8 items-center mb-fl-8">
           <Reveal>
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-thistle-black/[0.06]">
+              {/* The practice, not a building. This section is "Who We Are", and
+                  it ran on a strip-out shot of Beauchamp House, which says more
+                  about the work than the people doing it. From the August 2026
+                  studio shoot. */}
               <Image
-                src="/images/projects/beauchamp2/stripout-1.jpg"
-                alt="Beauchamp House stripped back to brick and joists during conversion"
+                src="/images/site/team-at-work.jpg"
+                alt="The Thistle Architecture team working together in the studio, reviewing plans on laptops and tablets"
                 fill
                 sizes="(max-width: 1024px) 90vw, 620px"
                 className="object-cover"
@@ -184,8 +202,8 @@ export const AboutPage: React.FC = () => {
             </Reveal>
           </div>
 
-          {/* 3 columns, not 4: the roster is 5 and a 4-col grid strands the last
-              card alone on its own row. 3 gives 3+2, and 3+3 if Seyma joins. */}
+          {/* 3 columns, not 4: the roster is 6, so three gives a clean 3+3.
+              A 4-col grid would strand the last two on their own row. */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-fl-5 items-stretch">
             {team.map((member, i) => (
               <Reveal key={member.name} delay={i * 0.08} fullHeight>
