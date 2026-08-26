@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { CompletedProjectsPage } from '@/views/CompletedProjectsPage';
 import client from '@/tina/__generated__/client';
+import { getCompletedProjects } from '@/lib/caseStudies';
 
 export async function generateMetadata(): Promise<Metadata> {
   // This was a static `metadata` export. It has to run now, because the search
@@ -29,12 +30,18 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Page() {
   // The raw query, variables and data are all handed down, not just the data:
   // useTina needs the query to re-run it against the editor's live values.
-  const listing = await client.queries.listings({ relativePath: 'completed-projects.json' });
+  // The cards come from the CMS now, not from data/caseStudiesData.ts, so a
+  // study an editor adds shows up here rather than only at its own URL.
+  const [listing, items] = await Promise.all([
+    client.queries.listings({ relativePath: 'completed-projects.json' }),
+    getCompletedProjects(),
+  ]);
 
   return (
     <Suspense>
       <CompletedProjectsPage
         page={{ query: listing.query, variables: listing.variables, data: listing.data }}
+        items={items}
       />
     </Suspense>
   );

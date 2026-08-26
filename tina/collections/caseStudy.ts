@@ -66,11 +66,38 @@ export const caseStudyCollection: Collection = {
   ui: {
     // Filename to URL, one to one.
     router: ({ document }) => `/case-studies/${document._sys.filename}`,
-    allowedActions: { create: false, delete: false },
-    filename: { readonly: true },
+    allowedActions: { create: true, delete: false },
+    filename: {
+      // The filename IS the URL: content/case-studies/<name>.json serves at
+      // /case-studies/<name>. Derived from the title on create so a new study
+      // gets a clean, readable slug without anyone having to think about it.
+      //
+      // Not readonly, because a readonly filename cannot be set at all and
+      // creation would be impossible. The cost is that an existing study CAN be
+      // renamed, which changes a live URL — and several of these slugs are the
+      // destination of a 301 in next.config.ts, so a rename breaks an inbound
+      // link silently. Hence the warning on `title` below.
+      slugify: (values) =>
+        String(values?.title ?? 'new-case-study')
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '')
+          .slice(0, 60) || 'new-case-study',
+    },
+
+    // Deleting is still off. A deleted study leaves a 404 where a page used to
+    // be, and several are linked from the conversion pages and the homepage.
+    // Removing one is a redirect decision, not an editing one.
   },
 
   fields: [
+    {
+      type: 'number',
+      name: 'order',
+      label: 'Position in the list',
+      description:
+        'Lower numbers appear first on the Feasibility Studies and Completed Projects pages. The two lists are numbered separately. Leave a gap between numbers (10, 20, 30) so a new study can be slotted in without renumbering everything.',
+    },
     {
       type: 'string',
       name: 'kind',
@@ -90,7 +117,7 @@ export const caseStudyCollection: Collection = {
       label: 'Title',
       required: true,
       description:
-        'The big heading at the top of the page, and the name on every card that links here. House style is what the job was rather than the address — "Six-Bed HMO To Thirteen", not "Beech House Road". Capitalise Each Word.',
+        'The big heading at the top of the page, and the name on every card that links here. House style is what the job was rather than the address — "Six-Bed HMO To Thirteen", not "Beech House Road". Capitalise Each Word. On a NEW study the web address is built from this title, so get it right before saving; on an existing study the address is already fixed and changing the title leaves it alone.',
     },
     {
       type: 'string',
