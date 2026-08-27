@@ -1,0 +1,11 @@
+{
+  "title": "Blog Test",
+  "excerpt": "This is a blog test after adding feature",
+  "image": "/images/uploads/cheddar-sketch-1.webp",
+  "date": "August 20, 2026",
+  "readTime": "5 min read",
+  "category": "Self Build",
+  "content": [
+    "Test this blog"
+  ]
+}
