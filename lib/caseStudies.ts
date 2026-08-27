@@ -1,6 +1,6 @@
 import { cache } from 'react';
 import client from '@/tina/__generated__/client';
-import type { CaseStudy, ConversionType } from '@/data/caseStudiesData';
+import { caseStudies, type CaseStudy, type ConversionType } from '@/data/caseStudiesData';
 import { str, num, arr, normalizeImage } from '@/lib/tina';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -42,33 +42,48 @@ export const getCaseStudies = cache(async (): Promise<CaseStudy[]> => {
   }
 
   return nodes
-    .map((n): CaseStudy => ({
+    .map((n): CaseStudy => {
       // The filename is the slug; there is no separate field that could disagree
       // with the URL the page is served at.
-      slug: str(n._sys?.filename),
-      kind: (str(n.kind) === 'project' ? 'project' : 'feasibility') as CaseStudy['kind'],
-      title: str(n.title),
-      location: str(n.location),
-      image: normalizeImage(n.image),
-      tag: str(n.tag),
-      desc: str(n.desc),
-      buildingType: str(n.buildingType),
-      stats: arr<any>(n.stats).map((s) => ({ label: str(s?.label), value: str(s?.value) })),
-      galleryImages: arr<any>(n.galleryImages).map((g) =>
-        normalizeImage(typeof g === 'string' ? g : g?.src)
-      ),
-      conversionTypes: arr<string>(n.conversionTypes) as ConversionType[],
-      recommendation: (str(n.recommendation) || undefined) as CaseStudy['recommendation'],
-      status: (str(n.status) || undefined) as CaseStudy['status'],
-      challenge: str(n.challenge) || undefined,
-      approach: str(n.approach) || undefined,
-      outcome: str(n.outcome) || undefined,
-      floorArea: str(n.floorArea) || undefined,
-      planningRoute: str(n.planningRoute) || undefined,
-      completionDate: str(n.completionDate) || undefined,
-      // Carried so the sort below can use it; not part of the rendered card.
-      order: num(n.order, Number.MAX_SAFE_INTEGER),
-    } as CaseStudy & { order: number }))
+      const slug = str(n._sys?.filename);
+
+      // Same fallback the detail page uses: a study whose image field is empty
+      // shows the picture from code rather than an empty frame. It only bites a
+      // document seeded without one, but an image is the whole of a card.
+      const fallback = caseStudies.find((c) => c.slug === slug);
+
+      return {
+        slug,
+        kind: (str(n.kind) === 'project' ? 'project' : 'feasibility') as CaseStudy['kind'],
+        title: str(n.title),
+        location: str(n.location),
+        image: normalizeImage(n.image, fallback?.image ?? ''),
+        // Carried, not dropped. The homepage band fits the picture with
+        // isDrawing(), which falls back to testing for the '/images/projects/'
+        // prefix, and an image an editor uploads lands in '/images/uploads/',
+        // fails that test and starts cropping a drawing. The explicit kind is
+        // what stops that; see components/case-study/imageFit.ts.
+        imageKind: str(n.image?.kind) || undefined,
+        tag: str(n.tag),
+        desc: str(n.desc),
+        buildingType: str(n.buildingType),
+        stats: arr<any>(n.stats).map((s) => ({ label: str(s?.label), value: str(s?.value) })),
+        // normalizeImage unwraps the { src, kind } object itself, so this
+        // takes either shape.
+        galleryImages: arr<any>(n.galleryImages).map((g) => normalizeImage(g)),
+        conversionTypes: arr<string>(n.conversionTypes) as ConversionType[],
+        recommendation: (str(n.recommendation) || undefined) as CaseStudy['recommendation'],
+        status: (str(n.status) || undefined) as CaseStudy['status'],
+        challenge: str(n.challenge) || undefined,
+        approach: str(n.approach) || undefined,
+        outcome: str(n.outcome) || undefined,
+        floorArea: str(n.floorArea) || undefined,
+        planningRoute: str(n.planningRoute) || undefined,
+        completionDate: str(n.completionDate) || undefined,
+        // Carried so the sort below can use it; not part of the rendered card.
+        order: num(n.order, Number.MAX_SAFE_INTEGER),
+      } as CaseStudy & { order: number };
+    })
     .sort((a, b) => (a as any).order - (b as any).order);
 });
 

@@ -39,6 +39,15 @@ const cases = [
   ['/images/uploads/a.jpg', '/images/uploads/a.jpg'],
   ['images/site/x.jpg', '/images/site/x.jpg'],
   ['https://player.vimeo.com/video/1', 'https://player.vimeo.com/video/1'],
+
+  // --- the { src, kind } object a fitted image field produces. A case study's
+  // main image and every gallery entry are this shape, and passing the whole
+  // object used to return the fallback, so the <img> rendered with no src at
+  // all. That shipped and emptied the homepage band and both case-study
+  // listings. Unwrapping happens in the normaliser now, so a call site cannot
+  // reintroduce it.
+  [{ src: '/images/projects/hero.jpg', kind: 'drawing' }, '/images/projects/hero.jpg'],
+  [{ src: 'https://assets.tina.io/abc123/projects/b.webp', kind: 'drawing' }, '/images/projects/b.webp'],
 ];
 
 let failed = 0;
@@ -46,7 +55,7 @@ for (const [input, want] of cases) {
   const got = normalizeImage(input, 'FALLBACK');
   if (got !== want) {
     failed++;
-    console.error(`FAIL  ${input}\n  got:  ${got}\n  want: ${want}`);
+    console.error(`FAIL  ${JSON.stringify(input)}\n  got:  ${got}\n  want: ${want}`);
   }
 }
 
@@ -55,8 +64,17 @@ if (normalizeImage('', 'FALLBACK') !== 'FALLBACK') {
   console.error('FAIL  empty value should return the fallback');
 }
 
+// An object whose src an editor never filled in, or cleared, is the same case
+// as an empty string: fall back rather than render a picture-less frame.
+for (const empty of [{}, { src: '' }, { src: null }, { kind: 'drawing' }]) {
+  if (normalizeImage(empty, 'FALLBACK') !== 'FALLBACK') {
+    failed++;
+    console.error(`FAIL  ${JSON.stringify(empty)} should return the fallback`);
+  }
+}
+
 if (failed) {
   console.error(`\n${failed} failing case(s).`);
   process.exit(1);
 }
-console.log(`normalizeImage: ${cases.length + 1} cases pass`);
+console.log(`normalizeImage: ${cases.length + 5} cases pass`);

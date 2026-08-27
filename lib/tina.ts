@@ -85,10 +85,19 @@ const CURATED_IMAGE_DIRS = new Set(['blog', 'deliverables', 'projects', 'site', 
  *
  * The CDN path is relative to mediaRoot, so 'images/uploads/' is re-prepended.
  *
+ * Accepts either the raw string or the `{ src, kind }` object that a fitted
+ * image field produces (tina/collections/caseStudy.ts), because passing the
+ * whole object is the obvious mistake and it fails silently: a non-string used
+ * to fall straight through to the fallback, so every card fed by that field
+ * rendered an <img> with no src at all. That shipped, and took the images off
+ * the homepage band and both case-study listings. Unwrapping here means the
+ * call site cannot get it wrong.
+ *
  * This is the only copy. Import it; do not reimplement it.
  */
 export function normalizeImage(v: unknown, fallback = ''): string {
-  const s = typeof v === 'string' ? v.trim() : '';
+  const raw = typeof v === 'object' && v !== null && 'src' in v ? (v as { src?: unknown }).src : v;
+  const s = typeof raw === 'string' ? raw.trim() : '';
   if (!s) return fallback;
 
   if (/^https?:\/\/assets\.tina\.io\//i.test(s)) {

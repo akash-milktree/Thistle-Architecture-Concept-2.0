@@ -15,6 +15,12 @@ export interface CaseStudy {
   title: string;
   location: string;
   image: string;
+  /**
+   * 'drawing' or 'photo': how the image is fitted to its frame. Set only from
+   * the CMS; the records in this file carry paths under /images/projects/, and
+   * isDrawing() reads that prefix when the kind is absent.
+   */
+  imageKind?: string;
   tag: string;
   stats: { label: string; value: string }[];
   desc: string;
