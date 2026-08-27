@@ -1,12 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import {
-  blogCategories,
-  categoryMeta,
-  categorySlug,
-  getCategoryBySlug,
-  postsInCategory,
-} from '@/data/blogData';
+import { categoryMeta, categorySlug } from '@/data/blogData';
+import { getCategoryFromSlug, getPostCategories, getPostsInCategory } from '@/lib/posts';
 import { BlogPage } from '@/views/BlogPage';
 import client from '@/tina/__generated__/client';
 
@@ -16,8 +11,8 @@ import client from '@/tina/__generated__/client';
 //
 // blogCategories is derived from the posts rather than from the BlogCategory
 // union, so a category with nothing in it never gets a page.
-export function generateStaticParams() {
-  return blogCategories.map((c) => ({ slug: categorySlug(c) }));
+export async function generateStaticParams() {
+  return (await getPostCategories()).map((c) => ({ slug: categorySlug(c) }));
 }
 
 // Anything outside the list above is a 404, not a soft 404 showing an empty
@@ -36,7 +31,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const category = getCategoryBySlug(slug);
+  const category = await getCategoryFromSlug(slug);
   if (!category) return {};
   const meta = categoryMeta[category];
   return {
@@ -48,11 +43,12 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const category = getCategoryBySlug(slug);
+  const category = await getCategoryFromSlug(slug);
   if (!category) notFound();
 
   const meta = categoryMeta[category];
-  const count = postsInCategory(category).length;
+  const posts = await getPostsInCategory(category);
+  const count = posts.length;
 
   // The blog index document, on a category page, because the two share their
   // chrome: the eyebrow above the heading and the first category chip are the
@@ -63,6 +59,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
   return (
     <BlogPage
+      posts={posts}
       category={category}
       heading={meta.title}
       description={`${meta.description} ${count} ${count === 1 ? 'article' : 'articles'}.`}

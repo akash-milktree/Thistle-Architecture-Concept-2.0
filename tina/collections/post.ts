@@ -10,15 +10,16 @@ import type { Collection } from 'tinacms';
 // link the article has ever earned landing on a 404. Hence the read-only
 // filename.
 //
-// Create and delete are off for a related reason. The article SET still lives
-// in code: data/blogData.ts is what generateStaticParams builds the routes
-// from, what /blog/category/<slug> filters, and what data/blogViews.ts seeds
-// the view counters from. A document created here would have no route, appear
-// on no category page and start its view count at zero; a document deleted here
-// would leave a live route with nothing to render. Publishing a new article is
-// therefore still a code change — add data/blog/<slug>.ts, register it in
-// data/blogData.ts, then add the JSON — and this collection edits the fourteen
-// that exist.
+// Articles can be published from here. The SET is read from this collection
+// now (lib/posts.ts): the routes, the /blog listing, the category pages, the
+// sitemap and the view counter all build from it, so a document created here
+// gets a page, appears in its category, and is counted. data/blogData.ts is
+// still the per-field fallback for the fourteen that shipped in code, so a
+// field an editor clears on one of those leaves the page reading properly.
+//
+// Delete stays off. Removing an article leaves a 404 where an indexed URL used
+// to be, and the older ones carry 301s from the Wix journal pointing at them.
+// Retiring one is a redirect decision, not an editing one.
 //
 // Deliberately NOT here, and staying in code:
 //
@@ -46,11 +47,22 @@ export const postCollection: Collection = {
   ui: {
     // Filename to URL, one to one: class-q-barn-conversions.json -> /blog/class-q-barn-conversions.
     router: ({ document }) => `/blog/${document._sys.filename}`,
-    allowedActions: { create: false, delete: false },
+    allowedActions: { create: true, delete: false },
     filename: {
-      // The filename is the URL, and every one of them is a redirect target in
-      // next.config.ts. See the note at the top.
-      readonly: true,
+      // The filename is the URL. Built from the title on create so a new
+      // article gets a readable address without anyone composing one.
+      //
+      // Not readonly, because a readonly filename cannot be set and creating
+      // would be impossible. The cost is that one of the original fourteen can
+      // now be renamed, and each of those is the destination of a 301 from the
+      // old Wix journal — a rename sends every inbound link the article has
+      // earned to a 404. The title field says so where an editor reads it.
+      slugify: (values) =>
+        String(values?.title ?? 'new-article')
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '')
+          .slice(0, 70) || 'new-article',
     },
   },
 
@@ -61,7 +73,7 @@ export const postCollection: Collection = {
       label: 'Headline',
       required: true,
       description:
-        'The headline at the top of the article, and on the card for it on /blog. It is also the alt text for the main photograph, so it is worth reading as a description of the picture as well.',
+        'The headline at the top of the article, and on its card on /blog. On a NEW article the web address is built from this, so get it right before saving; on an existing one the address is already fixed and changing the headline leaves it alone.',
     },
 
     // Search-result copy. Never appears on the page itself, so it carries no

@@ -1,16 +1,15 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { blogPosts } from '@/data/blogData';
 import { BlogPostPage } from '@/views/BlogPostPage';
 import { normalizeImage } from '@/lib/tina';
 import client from '@/tina/__generated__/client';
+import { getPosts } from '@/lib/posts';
 
-// The article set still lives in code, so the routes still come from it. A
-// document created in Tina alone would have no route here, which is why
-// tina/collections/post.ts has create and delete switched off — see the note
-// at the top of that file.
-export function generateStaticParams() {
-  return blogPosts.map((p) => ({ slug: p.slug }));
+// The routes come from the CMS, so an article an editor publishes gets a page.
+// The records in data/blogData.ts are still the per-field fallback for the
+// fourteen that shipped in code; they are no longer what decides the set.
+export async function generateStaticParams() {
+  return (await getPosts()).map((p) => ({ slug: p.slug }));
 }
 
 // Only the slugs above exist. Without this, any other slug still matched this
@@ -41,7 +40,10 @@ const isoDate = (value: string, fallback: string): string => {
 // The case-studies route already did this correctly.
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const post = blogPosts.find((p) => p.slug === slug);
+  // Looked up in the CMS set, not the code list: an article an editor
+  // published exists only there, and searching the code list for it returned
+  // nothing, so the route 404'd on the very articles this is meant to enable.
+  const post = (await getPosts()).find((p) => p.slug === slug);
   // The search listing is editable alongside the article, so it is read from
   // the same document as the copy, with the record in code as the fallback for
   // a field an editor has cleared. Skipped entirely when there is no such
@@ -61,7 +63,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = blogPosts.find((p) => p.slug === slug);
+  const post = (await getPosts()).find((p) => p.slug === slug);
   // Belt and braces alongside dynamicParams: a real 404 status, not a page that
   // says "not found" while the response says everything is fine. It also means
   // the view below can take a guaranteed article rather than looking one up

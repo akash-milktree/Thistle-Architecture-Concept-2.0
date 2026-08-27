@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
-import { blogPosts, blogCategories, categorySlug } from '@/data/blogData';
+import { categorySlug } from '@/data/blogData';
+import { getPosts, getPostCategories } from '@/lib/posts';
 import { getCaseStudies } from '@/lib/caseStudies';
 import { conversions } from '@/data/conversionsData';
 
@@ -18,7 +19,11 @@ const staticPaths = [
 // async now: the case studies come from the CMS rather than a static module, so
 // a study an editor adds is in the sitemap without a developer touching this.
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const caseStudies = await getCaseStudies();
+  const [caseStudies, blogPosts, blogCategories] = await Promise.all([
+    getCaseStudies(),
+    getPosts(),
+    getPostCategories(),
+  ]);
 
   return [
     ...staticPaths.map((p) => ({

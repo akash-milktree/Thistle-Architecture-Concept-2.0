@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { BlogPage } from '@/views/BlogPage';
 import client from '@/tina/__generated__/client';
+import { getPosts } from '@/lib/posts';
 
 export async function generateMetadata(): Promise<Metadata> {
   // This was a static `metadata` export. It has to run now, because the search
@@ -34,13 +35,20 @@ export default async function Page() {
   // which is a client module — calling it here would be calling a client
   // function on the server. The view merges each document onto the record in
   // code by slug.
-  const [listing, posts] = await Promise.all([
+  //
+  // `articles` is the SET — which articles exist and in what order — and comes
+  // from the CMS so one an editor publishes appears here. The connection beside
+  // it is the same documents again, carried raw purely so the view can read
+  // field ids off them with f().
+  const [listing, posts, articles] = await Promise.all([
     client.queries.listings({ relativePath: 'blog.json' }),
     client.queries.postConnection(),
+    getPosts(),
   ]);
 
   return (
     <BlogPage
+      posts={articles}
       page={{ query: listing.query, variables: listing.variables, data: listing.data }}
       postsQuery={{ query: posts.query, variables: posts.variables, data: posts.data }}
     />

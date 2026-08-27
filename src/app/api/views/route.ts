@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { put, list } from '@vercel/blob';
 import { seedViews } from '@/data/blogViewSeeds';
-import { blogPosts } from '@/data/blogData';
+import { getPosts } from '@/lib/posts';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -55,12 +55,16 @@ const total = (counts: Counts, slug: string) => (seedViews[slug] ?? 0) + (counts
 // The real article list, not the seed list. Anything published since the Wix
 // migration has no seed to carry but is still a valid post, so keying off the
 // seeds alone would leave new articles permanently uncountable.
-const knownSlugs = new Set(blogPosts.map((p) => p.slug));
+//
+// Read from the CMS for the same reason, now that articles can be published
+// there: a list taken from code would have left anything an editor wrote
+// uncountable in exactly the way this note warns about.
+const knownSlugs = async () => new Set((await getPosts()).map((p) => p.slug));
 
 export async function GET() {
-  const counts = await readCounts();
+  const [counts, slugs] = await Promise.all([readCounts(), knownSlugs()]);
   const out: Counts = {};
-  for (const slug of knownSlugs) out[slug] = total(counts, slug);
+  for (const slug of slugs) out[slug] = total(counts, slug);
   return NextResponse.json(out, { headers: { 'Cache-Control': 'public, max-age=60' } });
 }
 
@@ -72,7 +76,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false }, { status: 400 });
   }
   // Only count posts we know about, so a junk slug cannot grow the store.
-  if (!slug || !knownSlugs.has(slug)) {
+  if (!slug || !(await knownSlugs()).has(slug)) {
     return NextResponse.json({ ok: false }, { status: 400 });
   }
 
