@@ -3,32 +3,12 @@
   "title": "Nine-Bed HMO Conversion",
   "location": "Aylesbury, Buckinghamshire",
   "tag": "HMO",
-  "recommendation": "Go",
   "desc": "A town-centre house tested for a large HMO. The scheme reached nine generously sized en-suite rooms while staying ahead of the refusal patterns seen locally.",
   "image": {
     "src": "/images/projects/st-johns-sk001-1.webp",
     "kind": "drawing"
   },
-  "stats": [
-    {
-      "label": "Bedrooms, all en-suite",
-      "value": "9"
-    },
-    {
-      "label": "Room sizes",
-      "value": "12 to 16 sqm"
-    },
-    {
-      "label": "Communal amenity",
-      "value": "25 sqm"
-    }
-  ],
   "buildingType": "Existing dwelling (C3)",
-  "planningRoute": "Full planning (Sui Generis)",
-  "completionDate": "March 2026",
-  "challenge": "The client wanted to know whether a substantial HMO was achievable at 4 St John's Street. Local precedent supported larger HMOs, but recent refusals in the area had been driven by undersized kitchens and insufficient communal space. The scheme had to maximise bedrooms without triggering the overdevelopment concerns that had sunk nearby applications.",
-  "approach": "The desk study confirmed a sustainable town-centre location with strong precedent for 7 to 8 bedroom HMOs and no Article 4 direction, which preserved a six-bed fallback under permitted development. The sketch scheme tested a nine-bedroom Sui Generis layout with every room between 12 and 16 sqm, and deliberately split 25 sqm of communal amenity across two floors, an approach the council has been more receptive to in schemes above seven occupants.",
-  "outcome": "The feasibility confirmed nine bedrooms are achievable, with a planning-safe eight-bed fallback if design quality concerns arise at application stage. Loft head heights and parking were flagged as the key items to confirm through measured survey. Local room rates of £800 to £850 pcm support the income case. The client left with a clear Go, a fallback position, and a defined list of next steps.",
   "galleryImages": [
     {
       "src": "/images/projects/st-johns-existing-1.png",
@@ -80,5 +60,31 @@
       "Construction"
     ]
   },
-  "order": 10
+  "listing": {
+    "order": 10,
+    "recommendation": "Go"
+  },
+  "facts": {
+    "stats": [
+      {
+        "label": "Bedrooms, all en-suite",
+        "value": "9"
+      },
+      {
+        "label": "Room sizes",
+        "value": "12 to 16 sqm"
+      },
+      {
+        "label": "Communal amenity",
+        "value": "25 sqm"
+      }
+    ],
+    "planningRoute": "Full planning (Sui Generis)",
+    "completionDate": "March 2026"
+  },
+  "writeup": {
+    "challenge": "The client wanted to know whether a substantial HMO was achievable at 4 St John's Street. Local precedent supported larger HMOs, but recent refusals in the area had been driven by undersized kitchens and insufficient communal space. The scheme had to maximise bedrooms without triggering the overdevelopment concerns that had sunk nearby applications.",
+    "approach": "The desk study confirmed a sustainable town-centre location with strong precedent for 7 to 8 bedroom HMOs and no Article 4 direction, which preserved a six-bed fallback under permitted development. The sketch scheme tested a nine-bedroom Sui Generis layout with every room between 12 and 16 sqm, and deliberately split 25 sqm of communal amenity across two floors, an approach the council has been more receptive to in schemes above seven occupants.",
+    "outcome": "The feasibility confirmed nine bedrooms are achievable, with a planning-safe eight-bed fallback if design quality concerns arise at application stage. Loft head heights and parking were flagged as the key items to confirm through measured survey. Local room rates of £800 to £850 pcm support the income case. The client left with a clear Go, a fallback position, and a defined list of next steps."
+  }
 }

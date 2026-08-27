@@ -3,31 +3,12 @@
   "title": "Three-Bed House To Six-Bed HMO",
   "location": "Cheshunt, Hertfordshire",
   "tag": "HMO",
-  "recommendation": "Go",
   "desc": "Pre-purchase feasibility testing the conversion of a detached family home into a six-bedroom, all en-suite HMO, with the garage brought into the house.",
   "image": {
     "src": "/images/projects/windmill-lane-hero.jpg",
     "kind": "drawing"
   },
-  "stats": [
-    {
-      "label": "Bedrooms, all en suite",
-      "value": "6"
-    },
-    {
-      "label": "Communal space",
-      "value": "26 sqm"
-    },
-    {
-      "label": "Planning permission",
-      "value": "Householder only"
-    }
-  ],
   "buildingType": "Detached three-bed house (C3)",
-  "planningRoute": "Householder application, then C4 lawful development certificate",
-  "completionDate": "July 2026",
-  "unitsBefore": "3-bed house",
-  "unitsAfter": "6-bed HMO",
   "galleryImages": [
     {
       "src": "/images/projects/windmill-lane-sketch-1.webp",
@@ -79,5 +60,28 @@
       "C4 lawful development certificate"
     ]
   },
-  "order": 90
+  "listing": {
+    "order": 90,
+    "recommendation": "Go"
+  },
+  "facts": {
+    "stats": [
+      {
+        "label": "Bedrooms, all en suite",
+        "value": "6"
+      },
+      {
+        "label": "Communal space",
+        "value": "26 sqm"
+      },
+      {
+        "label": "Planning permission",
+        "value": "Householder only"
+      }
+    ],
+    "planningRoute": "Householder application, then C4 lawful development certificate",
+    "completionDate": "July 2026",
+    "unitsBefore": "3-bed house",
+    "unitsAfter": "6-bed HMO"
+  }
 }

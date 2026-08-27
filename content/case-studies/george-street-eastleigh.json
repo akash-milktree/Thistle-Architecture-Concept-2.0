@@ -2,34 +2,13 @@
   "kind": "project",
   "title": "George Street",
   "location": "Eastleigh, Hampshire",
-  "provenance": "By HMO Designers, part of Thistle Group",
   "tag": "HMO",
-  "status": "Complete",
   "desc": "A seven-bedroom luxury HMO for professionals in the centre of Eastleigh, taken from first design through to finished build.",
   "image": {
     "src": "/images/projects/hmo-george-street-eastleigh/george-street-eastleigh-1.jpg",
     "kind": "drawing"
   },
-  "stats": [
-    {
-      "label": "Bedrooms",
-      "value": "7"
-    },
-    {
-      "label": "Scope",
-      "value": "Design to construction"
-    },
-    {
-      "label": "Market",
-      "value": "Professional lets"
-    }
-  ],
   "buildingType": "Existing dwelling",
-  "conversionTypes": [
-    "hmo"
-  ],
-  "approach": "The client was carried through every stage: design, planning, interior design and construction. The ground floor is the part that does the work. A full-length shaker kitchen in deep grey, with brass handles and integrated ovens down one side, opens straight into a rooflit dining room at the rear, so the shared space reads as one long room rather than a corridor with a table at the end of it.",
-  "outcome": "Complete. It is the clearest example in this group of what the extra effort buys at the top of the professional letting market.",
   "galleryImages": [
     {
       "src": "/images/projects/hmo-george-street-eastleigh/george-street-eastleigh-2.jpg",
@@ -88,5 +67,32 @@
       "kind": "drawing"
     }
   ],
-  "order": 160
+  "listing": {
+    "order": 160,
+    "provenance": "By HMO Designers, part of Thistle Group",
+    "status": "Complete",
+    "conversionTypes": [
+      "hmo"
+    ]
+  },
+  "facts": {
+    "stats": [
+      {
+        "label": "Bedrooms",
+        "value": "7"
+      },
+      {
+        "label": "Scope",
+        "value": "Design to construction"
+      },
+      {
+        "label": "Market",
+        "value": "Professional lets"
+      }
+    ]
+  },
+  "writeup": {
+    "approach": "The client was carried through every stage: design, planning, interior design and construction. The ground floor is the part that does the work. A full-length shaker kitchen in deep grey, with brass handles and integrated ovens down one side, opens straight into a rooflit dining room at the rear, so the shared space reads as one long room rather than a corridor with a table at the end of it.",
+    "outcome": "Complete. It is the clearest example in this group of what the extra effort buys at the top of the professional letting market."
+  }
 }

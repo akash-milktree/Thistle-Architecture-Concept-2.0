@@ -67,21 +67,24 @@ export const getCaseStudies = cache(async (): Promise<CaseStudy[]> => {
         tag: str(n.tag),
         desc: str(n.desc),
         buildingType: str(n.buildingType),
-        stats: arr<any>(n.stats).map((s) => ({ label: str(s?.label), value: str(s?.value) })),
+        // The grouped paths below are the Create-form regrouping: these fifteen
+        // fields moved into listing/facts/writeup/seo so the form opens on the
+        // seven things every study needs rather than twenty-five flat ones.
+        stats: arr<any>(n.facts?.stats).map((s) => ({ label: str(s?.label), value: str(s?.value) })),
         // normalizeImage unwraps the { src, kind } object itself, so this
         // takes either shape.
         galleryImages: arr<any>(n.galleryImages).map((g) => normalizeImage(g)),
-        conversionTypes: arr<string>(n.conversionTypes) as ConversionType[],
-        recommendation: (str(n.recommendation) || undefined) as CaseStudy['recommendation'],
-        status: (str(n.status) || undefined) as CaseStudy['status'],
-        challenge: str(n.challenge) || undefined,
-        approach: str(n.approach) || undefined,
-        outcome: str(n.outcome) || undefined,
+        conversionTypes: arr<string>(n.listing?.conversionTypes) as ConversionType[],
+        recommendation: (str(n.listing?.recommendation) || undefined) as CaseStudy['recommendation'],
+        status: (str(n.listing?.status) || undefined) as CaseStudy['status'],
+        challenge: str(n.writeup?.challenge) || undefined,
+        approach: str(n.writeup?.approach) || undefined,
+        outcome: str(n.writeup?.outcome) || undefined,
         floorArea: str(n.floorArea) || undefined,
-        planningRoute: str(n.planningRoute) || undefined,
-        completionDate: str(n.completionDate) || undefined,
+        planningRoute: str(n.facts?.planningRoute) || undefined,
+        completionDate: str(n.facts?.completionDate) || undefined,
         // Carried so the sort below can use it; not part of the rendered card.
-        order: num(n.order, Number.MAX_SAFE_INTEGER),
+        order: num(n.listing?.order, Number.MAX_SAFE_INTEGER),
       } as CaseStudy & { order: number };
     })
     .sort((a, b) => (a as any).order - (b as any).order);

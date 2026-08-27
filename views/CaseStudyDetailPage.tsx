@@ -114,17 +114,17 @@ export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ page }
   const kind = (str(cms?.kind) || fallback?.kind || 'project') as CaseStudy['kind'];
   const title = str(cms?.title) || fallback?.title || '';
   const location = str(cms?.location) || fallback?.location || '';
-  const provenance = str(cms?.provenance) || fallback?.provenance;
+  const provenance = str(cms?.listing?.provenance) || fallback?.provenance;
   const tag = str(cms?.tag) || fallback?.tag || '';
   const desc = str(cms?.desc) || fallback?.desc || '';
   const buildingType = str(cms?.buildingType) || fallback?.buildingType || '';
-  const planningRoute = str(cms?.planningRoute) || fallback?.planningRoute;
-  const completionDate = str(cms?.completionDate) || fallback?.completionDate;
-  const recommendation = (str(cms?.recommendation) || fallback?.recommendation) as CaseStudy['recommendation'];
-  const status = (str(cms?.status) || fallback?.status) as CaseStudy['status'];
-  const challenge = str(cms?.challenge) || fallback?.challenge;
-  const approach = str(cms?.approach) || fallback?.approach;
-  const outcome = str(cms?.outcome) || fallback?.outcome;
+  const planningRoute = str(cms?.facts?.planningRoute) || fallback?.planningRoute;
+  const completionDate = str(cms?.facts?.completionDate) || fallback?.completionDate;
+  const recommendation = (str(cms?.listing?.recommendation) || fallback?.recommendation) as CaseStudy['recommendation'];
+  const status = (str(cms?.listing?.status) || fallback?.status) as CaseStudy['status'];
+  const challenge = str(cms?.writeup?.challenge) || fallback?.challenge;
+  const approach = str(cms?.writeup?.approach) || fallback?.approach;
+  const outcome = str(cms?.writeup?.outcome) || fallback?.outcome;
 
   const image = normalizeImage(cms?.image?.src, fallback?.image ?? '');
   const imageKind = str(cms?.image?.kind) || undefined;
@@ -149,7 +149,7 @@ export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ page }
   // code stands in only while the CMS has no list at all, because an editor
   // deleting the third fact has to be able to delete it, not have it reappear.
   /* eslint-disable @typescript-eslint/no-explicit-any */
-  const cmsStats = arr<any>(cms?.stats);
+  const cmsStats = arr<any>(cms?.facts?.stats);
   const stats = cmsStats.length
     ? cmsStats.map((s) => ({
         label: str(s?.label),
@@ -164,7 +164,7 @@ export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ page }
     ? cmsGallery.map((g) => ({ src: normalizeImage(g?.src), kind: str(g?.kind) || undefined, tina: f(g, 'src') }))
     : (fallback?.galleryImages ?? []).map((src) => ({ src, kind: undefined, tina: undefined }));
 
-  const cmsTypes = arr<any>(cms?.conversionTypes).map(str).filter(Boolean);
+  const cmsTypes = arr<any>(cms?.listing?.conversionTypes).map(str).filter(Boolean);
   const conversionTypes = (cmsTypes.length ? cmsTypes : fallback?.conversionTypes ?? []) as string[];
 
   // The three headings are the page's own, identical on every case study, so

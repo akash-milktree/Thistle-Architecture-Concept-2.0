@@ -3,34 +3,12 @@
   "title": "Commercial To Ten-Bed Co-Living",
   "location": "Cosham, Portsmouth",
   "tag": "Co-Living",
-  "status": "On site",
   "desc": "The end of a 1930s terrace, converted from commercial and storage space into ten en-suite co-living rooms with shared amenity on every floor.",
   "image": {
     "src": "/images/projects/highbury/cgi-front.jpg",
     "kind": "drawing"
   },
-  "stats": [
-    {
-      "label": "Bedrooms",
-      "value": "10, all en suite"
-    },
-    {
-      "label": "Existing",
-      "value": "Commercial and storage"
-    },
-    {
-      "label": "Thistle role",
-      "value": "Feasibility, planning, Stage 4, interiors"
-    }
-  ],
   "buildingType": "1930s commercial building",
-  "planningRoute": "Full planning, change of use",
-  "completionDate": "On site",
-  "conversionTypes": [
-    "co-living-large-hmo",
-    "hmo",
-    "commercial-to-residential"
-  ],
   "galleryImages": [
     {
       "src": "/images/projects/highbury-sk003-1.webp",
@@ -78,5 +56,31 @@
       }
     ]
   },
-  "order": 20
+  "listing": {
+    "order": 20,
+    "status": "On site",
+    "conversionTypes": [
+      "co-living-large-hmo",
+      "hmo",
+      "commercial-to-residential"
+    ]
+  },
+  "facts": {
+    "stats": [
+      {
+        "label": "Bedrooms",
+        "value": "10, all en suite"
+      },
+      {
+        "label": "Existing",
+        "value": "Commercial and storage"
+      },
+      {
+        "label": "Thistle role",
+        "value": "Feasibility, planning, Stage 4, interiors"
+      }
+    ],
+    "planningRoute": "Full planning, change of use",
+    "completionDate": "On site"
+  }
 }

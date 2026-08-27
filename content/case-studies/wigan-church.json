@@ -3,31 +3,12 @@
   "title": "Methodist Church To Offices",
   "location": "Leigh, Greater Manchester",
   "tag": "Commercial Conversion",
-  "status": "Complete",
   "desc": "A Gothic Methodist church on Wigan Road, converted into offices without losing the stained glass or the vaulted roof.",
   "image": {
     "src": "/images/projects/wigan-church-1.jpg",
     "kind": "drawing"
   },
-  "stats": [
-    {
-      "label": "Offices",
-      "value": "10"
-    },
-    {
-      "label": "Conference rooms",
-      "value": "2"
-    },
-    {
-      "label": "Office sizes",
-      "value": "12.7 to 19.9 sqm"
-    }
-  ],
   "buildingType": "Former Methodist church",
-  "planningRoute": "Change of use to offices",
-  "challenge": "The building is a red-brick Gothic Methodist church with stone tracery, stained glass and an open vaulted timber roof, and it had ended up in use as storage. Everything worth keeping about it was also the thing that made an office conversion difficult: you cannot cut a church nave into cellular offices without either wrecking the interior or ending up with rooms nobody wants to work in.",
-  "approach": "The scheme works within the existing envelope. Ten offices from 12.7 to 19.9 sqm and two conference rooms of 22.1 and 22.9 sqm sit alongside a 31.3 sqm open office, a 21.6 sqm waiting area at the entrance, a kitchen, showers and changing rooms, with a 176.5 sqm storage space retained at the rear. The stained glass stays: existing stone frames and stained glass are repaired and made good, with secondary triple glazing introduced inside the existing reveals rather than replacing the windows. Original windows to the frontage are retained and made good like for like. Card access control runs to all exterior and connecting doors.",
-  "outcome": "The conversion is documented through to Rev G. The result keeps a landmark building in use and in one piece, which is usually the argument that carries a scheme like this: the alternative for a redundant church is rarely a better outcome for the street.",
   "galleryImages": [
     {
       "src": "/images/projects/wigan-church-2.jpg",
@@ -88,5 +69,30 @@
       }
     ]
   },
-  "order": 120
+  "listing": {
+    "order": 120,
+    "status": "Complete"
+  },
+  "facts": {
+    "stats": [
+      {
+        "label": "Offices",
+        "value": "10"
+      },
+      {
+        "label": "Conference rooms",
+        "value": "2"
+      },
+      {
+        "label": "Office sizes",
+        "value": "12.7 to 19.9 sqm"
+      }
+    ],
+    "planningRoute": "Change of use to offices"
+  },
+  "writeup": {
+    "challenge": "The building is a red-brick Gothic Methodist church with stone tracery, stained glass and an open vaulted timber roof, and it had ended up in use as storage. Everything worth keeping about it was also the thing that made an office conversion difficult: you cannot cut a church nave into cellular offices without either wrecking the interior or ending up with rooms nobody wants to work in.",
+    "approach": "The scheme works within the existing envelope. Ten offices from 12.7 to 19.9 sqm and two conference rooms of 22.1 and 22.9 sqm sit alongside a 31.3 sqm open office, a 21.6 sqm waiting area at the entrance, a kitchen, showers and changing rooms, with a 176.5 sqm storage space retained at the rear. The stained glass stays: existing stone frames and stained glass are repaired and made good, with secondary triple glazing introduced inside the existing reveals rather than replacing the windows. Original windows to the frontage are retained and made good like for like. Card access control runs to all exterior and connecting doors.",
+    "outcome": "The conversion is documented through to Rev G. The result keeps a landmark building in use and in one piece, which is usually the argument that carries a scheme like this: the alternative for a redundant church is rarely a better outcome for the street."
+  }
 }

@@ -2,35 +2,13 @@
   "kind": "project",
   "title": "Southsea Co-Living",
   "location": "Festing Road, Southsea, Portsmouth",
-  "provenance": "By HMO Designers, part of Thistle Group",
   "tag": "HMO",
-  "status": "Complete",
   "desc": "An eight-bedroom luxury co-living conversion inside a bay-fronted Victorian terrace in Southsea.",
   "image": {
     "src": "/images/projects/hmo-southsea-co-living/southsea-co-living-3.jpg",
     "kind": "drawing"
   },
-  "stats": [
-    {
-      "label": "Bedrooms",
-      "value": "8"
-    },
-    {
-      "label": "Format",
-      "value": "Luxury co-living"
-    },
-    {
-      "label": "Building",
-      "value": "Victorian terrace"
-    }
-  ],
   "buildingType": "Victorian terraced house",
-  "conversionTypes": [
-    "co-living-large-hmo",
-    "hmo"
-  ],
-  "approach": "The building is a bay-fronted Victorian terrace on Festing Road, dormers already in the roof, shops either side. Inside, the communal floor runs open plan: kitchen, dining and living in one length on a herringbone floor, with the kitchen tucked along the far wall rather than closed off. That single decision is what makes co-living work here. Eight people sharing a corridor is a house share; eight people sharing a room this size is somewhere you would choose to live.",
-  "outcome": "Complete, and the most recent of the practice's Portsmouth HMO projects.",
   "galleryImages": [
     {
       "src": "/images/projects/hmo-southsea-co-living/southsea-co-living-1.jpg",
@@ -89,5 +67,33 @@
       "kind": "drawing"
     }
   ],
-  "order": 210
+  "listing": {
+    "order": 210,
+    "provenance": "By HMO Designers, part of Thistle Group",
+    "status": "Complete",
+    "conversionTypes": [
+      "co-living-large-hmo",
+      "hmo"
+    ]
+  },
+  "facts": {
+    "stats": [
+      {
+        "label": "Bedrooms",
+        "value": "8"
+      },
+      {
+        "label": "Format",
+        "value": "Luxury co-living"
+      },
+      {
+        "label": "Building",
+        "value": "Victorian terrace"
+      }
+    ]
+  },
+  "writeup": {
+    "approach": "The building is a bay-fronted Victorian terrace on Festing Road, dormers already in the roof, shops either side. Inside, the communal floor runs open plan: kitchen, dining and living in one length on a herringbone floor, with the kitchen tucked along the far wall rather than closed off. That single decision is what makes co-living work here. Eight people sharing a corridor is a house share; eight people sharing a room this size is somewhere you would choose to live.",
+    "outcome": "Complete, and the most recent of the practice's Portsmouth HMO projects."
+  }
 }

@@ -3,31 +3,12 @@
   "title": "A 22-Bed HMO, Rebuilt",
   "location": "Croydon, South London",
   "tag": "HMO",
-  "status": "On site",
   "desc": "An existing 22-bedroom local authority HMO reconfigured into fewer but far larger en-suite rooms, with Thistle running the technical package and the build.",
   "image": {
     "src": "/images/projects/campbell-road/existing-2.jpg",
     "kind": "drawing"
   },
-  "stats": [
-    {
-      "label": "Existing",
-      "value": "22-bed local authority HMO"
-    },
-    {
-      "label": "Proposed",
-      "value": "Fewer, larger en-suite rooms"
-    },
-    {
-      "label": "Thistle role",
-      "value": "Stage 4 and delivery"
-    }
-  ],
   "buildingType": "Existing large HMO",
-  "completionDate": "On site",
-  "conversionTypes": [
-    "hmo"
-  ],
   "projectStory": {
     "summary": [
       "The comprehensive redevelopment of an existing 22-bedroom local authority HMO in Croydon for a large developer client, with the building being reconfigured to provide fewer but substantially larger bedrooms, each incorporating private en-suite facilities and kitchenettes.",
@@ -53,5 +34,28 @@
       }
     ]
   },
-  "order": 230
+  "listing": {
+    "order": 230,
+    "status": "On site",
+    "conversionTypes": [
+      "hmo"
+    ]
+  },
+  "facts": {
+    "stats": [
+      {
+        "label": "Existing",
+        "value": "22-bed local authority HMO"
+      },
+      {
+        "label": "Proposed",
+        "value": "Fewer, larger en-suite rooms"
+      },
+      {
+        "label": "Thistle role",
+        "value": "Stage 4 and delivery"
+      }
+    ],
+    "completionDate": "On site"
+  }
 }

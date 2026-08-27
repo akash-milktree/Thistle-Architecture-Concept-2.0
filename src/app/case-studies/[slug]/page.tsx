@@ -58,9 +58,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     // how all 35 are seeded — the listing falls back to the case study's own
     // title and summary, exactly as it did before they existed, and then to
     // the record in code so an empty CMS never publishes an untitled page.
-    title: str(cms?.metaTitle) || str(cms?.title) || fallback?.title || 'Case Study',
+    title: str(cms?.seo?.metaTitle) || str(cms?.title) || fallback?.title || 'Case Study',
     description:
-      str(cms?.metaDescription) || str(cms?.desc) || fallback?.desc || 'Thistle Architecture case study.',
+      str(cms?.seo?.metaDescription) || str(cms?.desc) || fallback?.desc || 'Thistle Architecture case study.',
     // Routing, not content. The canonical has to match the URL this file
     // serves, so it stays in code.
     alternates: { canonical: `/case-studies/${slug}` },

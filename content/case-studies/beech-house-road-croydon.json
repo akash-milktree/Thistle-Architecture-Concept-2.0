@@ -3,32 +3,12 @@
   "title": "Six-Bed HMO To Thirteen",
   "location": "Croydon, South London",
   "tag": "HMO",
-  "recommendation": "Go",
   "desc": "A four-storey period house already running as a six-bed HMO, tested for more than double the room count using internal works only.",
   "image": {
     "src": "/images/projects/beech-house-sketch-1.webp",
     "kind": "drawing"
   },
-  "stats": [
-    {
-      "label": "Bedrooms, all en suite",
-      "value": "13"
-    },
-    {
-      "label": "Room sizes",
-      "value": "12.6 to 27 sqm"
-    },
-    {
-      "label": "Indicative value at 8.5% yield",
-      "value": "£1.24m"
-    }
-  ],
   "buildingType": "Existing HMO (C4)",
-  "planningRoute": "Full planning (Sui Generis)",
-  "completionDate": "June 2026",
-  "challenge": "The house was a lawful six-bedroom HMO in a Croydon conservation area, and the owner wanted to know how far it could go. The obstacle was not policy but politics: ward councillors had opposed HMO schemes nearby, a seven-bed application on Woodstock Road had been refused at committee, and Croydon has no allowed HMO appeal on record since 2021. Any scheme had to be designed to pass at first determination.",
-  "approach": "The analysis confirmed the strongest possible location case: East Croydon station 540 metres away, PTAL 6a to 6b, and a Central controlled parking zone that supports a car-free scheme. It also found the lead precedent, a 13-bed sui generis HMO approved at 51 Addiscombe Road in 2022 against 353 objections, in the same high-PTAL context. The sketch scheme then matched that precedent on every measurable point: 13 en-suite rooms from 12.6 to 27 sqm against a 12.5 sqm standard, around 40 sqm of internal communal space, three kitchen sets, and no external alterations at all, which largely removed the conservation area from the assessment.",
-  "outcome": "A Go. Because the property is already a lawful HMO, no family dwelling is lost, the logic Croydon officers used to approve 6 Ledbury Road. Indicative figures: £900 per room per month gives £140,400 gross a year and roughly £105,300 net, supporting a value in the order of £1.24m against a conversion cost of about £429,000. The recommendation was to proceed straight to planning drawings and a complete first-time submission.",
   "galleryImages": [
     {
       "src": "/images/projects/beech-house-sketch-1.webp",
@@ -79,5 +59,31 @@
       "Construction"
     ]
   },
-  "order": 70
+  "listing": {
+    "order": 70,
+    "recommendation": "Go"
+  },
+  "facts": {
+    "stats": [
+      {
+        "label": "Bedrooms, all en suite",
+        "value": "13"
+      },
+      {
+        "label": "Room sizes",
+        "value": "12.6 to 27 sqm"
+      },
+      {
+        "label": "Indicative value at 8.5% yield",
+        "value": "£1.24m"
+      }
+    ],
+    "planningRoute": "Full planning (Sui Generis)",
+    "completionDate": "June 2026"
+  },
+  "writeup": {
+    "challenge": "The house was a lawful six-bedroom HMO in a Croydon conservation area, and the owner wanted to know how far it could go. The obstacle was not policy but politics: ward councillors had opposed HMO schemes nearby, a seven-bed application on Woodstock Road had been refused at committee, and Croydon has no allowed HMO appeal on record since 2021. Any scheme had to be designed to pass at first determination.",
+    "approach": "The analysis confirmed the strongest possible location case: East Croydon station 540 metres away, PTAL 6a to 6b, and a Central controlled parking zone that supports a car-free scheme. It also found the lead precedent, a 13-bed sui generis HMO approved at 51 Addiscombe Road in 2022 against 353 objections, in the same high-PTAL context. The sketch scheme then matched that precedent on every measurable point: 13 en-suite rooms from 12.6 to 27 sqm against a 12.5 sqm standard, around 40 sqm of internal communal space, three kitchen sets, and no external alterations at all, which largely removed the conservation area from the assessment.",
+    "outcome": "A Go. Because the property is already a lawful HMO, no family dwelling is lost, the logic Croydon officers used to approve 6 Ledbury Road. Indicative figures: £900 per room per month gives £140,400 gross a year and roughly £105,300 net, supporting a value in the order of £1.24m against a conversion cost of about £429,000. The recommendation was to proceed straight to planning drawings and a complete first-time submission."
+  }
 }

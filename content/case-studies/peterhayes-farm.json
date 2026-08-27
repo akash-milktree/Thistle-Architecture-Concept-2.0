@@ -3,29 +3,12 @@
   "title": "Class Q Barn To Dwelling",
   "location": "Somerset",
   "tag": "Class Q",
-  "status": "Complete",
   "desc": "An agricultural barn behind a working farmhouse, converted to a house under Class Q and delivered through to completion.",
   "image": {
     "src": "/images/projects/peterhayes/cgi-barn.jpg",
     "kind": "drawing"
   },
-  "stats": [
-    {
-      "label": "Route",
-      "value": "Class Q prior approval"
-    },
-    {
-      "label": "Approved",
-      "value": "2024"
-    },
-    {
-      "label": "Thistle role",
-      "value": "Approval to construction"
-    }
-  ],
   "buildingType": "Agricultural barn",
-  "planningRoute": "Class Q prior approval",
-  "completionDate": "Complete",
   "projectStory": {
     "summary": [
       "The conversion of an existing agricultural barn at Peter Hayes Farm in Somerset into a new residential dwelling. The barn sits to the rear of an existing farmhouse, within a mixed rural setting that also includes surrounding industrial and agricultural buildings.",
@@ -63,5 +46,26 @@
       }
     ]
   },
-  "order": 80
+  "listing": {
+    "order": 80,
+    "status": "Complete"
+  },
+  "facts": {
+    "stats": [
+      {
+        "label": "Route",
+        "value": "Class Q prior approval"
+      },
+      {
+        "label": "Approved",
+        "value": "2024"
+      },
+      {
+        "label": "Thistle role",
+        "value": "Approval to construction"
+      }
+    ],
+    "planningRoute": "Class Q prior approval",
+    "completionDate": "Complete"
+  }
 }

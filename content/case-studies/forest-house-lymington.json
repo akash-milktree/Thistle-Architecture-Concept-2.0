@@ -3,28 +3,12 @@
   "title": "New Home In The New Forest",
   "location": "Lymington, Hampshire",
   "tag": "New Build",
-  "status": "Complete",
   "desc": "A new family home on a private plot inside the New Forest, tiled in terracotta across both roof and walls to sit inside a protected landscape.",
   "image": {
     "src": "/images/projects/forest-house/exterior-dusk.jpg",
     "kind": "drawing"
   },
-  "stats": [
-    {
-      "label": "Setting",
-      "value": "New Forest"
-    },
-    {
-      "label": "Material",
-      "value": "Terracotta clay tile"
-    },
-    {
-      "label": "Thistle role",
-      "value": "Feasibility to construction"
-    }
-  ],
   "buildingType": "New-build house in a protected landscape",
-  "completionDate": "Complete",
   "projectStory": {
     "summary": [
       "A new-build family home on a privately owned plot in Lymington, within the sensitive landscape setting of the New Forest, designed to respond carefully to its rural surroundings.",
@@ -56,5 +40,25 @@
       }
     ]
   },
-  "order": 70
+  "listing": {
+    "order": 70,
+    "status": "Complete"
+  },
+  "facts": {
+    "stats": [
+      {
+        "label": "Setting",
+        "value": "New Forest"
+      },
+      {
+        "label": "Material",
+        "value": "Terracotta clay tile"
+      },
+      {
+        "label": "Thistle role",
+        "value": "Feasibility to construction"
+      }
+    ],
+    "completionDate": "Complete"
+  }
 }

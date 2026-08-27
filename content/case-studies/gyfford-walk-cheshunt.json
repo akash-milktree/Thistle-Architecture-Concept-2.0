@@ -3,34 +3,12 @@
   "title": "Two-Bed Semi To Six-Bed HMO",
   "location": "Cheshunt, Hertfordshire",
   "tag": "HMO",
-  "recommendation": "Options Tested",
   "desc": "A two-bed semi tested for a six-bed HMO that needs no planning permission at all, with a five-bed fallback drawn for the loft risk.",
   "image": {
     "src": "/images/projects/gyfford-optiona-1.png",
     "kind": "drawing"
   },
-  "stats": [
-    {
-      "label": "Options tested",
-      "value": "2"
-    },
-    {
-      "label": "Bedrooms, all en suite",
-      "value": "5 or 6"
-    },
-    {
-      "label": "Planning permission",
-      "value": "Not required"
-    }
-  ],
   "buildingType": "Existing dwelling (C3)",
-  "planningRoute": "Permitted development (C4)",
-  "completionDate": "July 2026",
-  "unitsBefore": "2-bed semi",
-  "unitsAfter": "5 or 6-bed HMO",
-  "challenge": "The client already ran an HMO nearby and wanted the same product here. The prize was staying inside Use Class C4, because a six-person HMO is then permitted development and needs no planning permission, while seven rooms would push it to sui generis and pull in a full application and a parking survey. Everything depended on whether the loft could take two bedrooms, which had not been measured.",
-  "approach": "The scheme was designed to use the existing footprint, reusing the substantial rear extension already built under permitted development and relocating services to the ground floor utility room to free the loft. Because only floor area with a ceiling height above 1.5 metres counts toward room sizes, and the loft was unmeasured, two options were drawn rather than one. Option A takes six bedrooms if the headroom is sufficient, with loft rooms of 12.3 and 9.7 sqm. Option B takes five, with a single 22 sqm loft bedroom. The client priority was generous bedrooms over a large communal room, so the kitchen and dining space is held at a functional 17 sqm.",
-  "outcome": "Both options confirmed as permitted development, with Broxbourne holding no Article 4 direction and recent certificates granted locally at 42 Bury Green Road and 92 Great Cambridge Road. A directly comparable seven-bed all en-suite conversion with a rear dormer has been approved at 11 Grenville Close, placing the six-bed scheme comfortably within precedent. The single planning risk is the roof: a combined hip-to-gable and full-width rear dormer may exceed the 50 cubic metre permitted development allowance, which would make the roof works a householder application rather than the change of use.",
   "galleryImages": [
     {
       "src": "/images/projects/gyfford-optiona-1.png",
@@ -85,5 +63,33 @@
       "C4 lawful development certificate"
     ]
   },
-  "order": 100
+  "listing": {
+    "order": 100,
+    "recommendation": "Options Tested"
+  },
+  "facts": {
+    "stats": [
+      {
+        "label": "Options tested",
+        "value": "2"
+      },
+      {
+        "label": "Bedrooms, all en suite",
+        "value": "5 or 6"
+      },
+      {
+        "label": "Planning permission",
+        "value": "Not required"
+      }
+    ],
+    "planningRoute": "Permitted development (C4)",
+    "completionDate": "July 2026",
+    "unitsBefore": "2-bed semi",
+    "unitsAfter": "5 or 6-bed HMO"
+  },
+  "writeup": {
+    "challenge": "The client already ran an HMO nearby and wanted the same product here. The prize was staying inside Use Class C4, because a six-person HMO is then permitted development and needs no planning permission, while seven rooms would push it to sui generis and pull in a full application and a parking survey. Everything depended on whether the loft could take two bedrooms, which had not been measured.",
+    "approach": "The scheme was designed to use the existing footprint, reusing the substantial rear extension already built under permitted development and relocating services to the ground floor utility room to free the loft. Because only floor area with a ceiling height above 1.5 metres counts toward room sizes, and the loft was unmeasured, two options were drawn rather than one. Option A takes six bedrooms if the headroom is sufficient, with loft rooms of 12.3 and 9.7 sqm. Option B takes five, with a single 22 sqm loft bedroom. The client priority was generous bedrooms over a large communal room, so the kitchen and dining space is held at a functional 17 sqm.",
+    "outcome": "Both options confirmed as permitted development, with Broxbourne holding no Article 4 direction and recent certificates granted locally at 42 Bury Green Road and 92 Great Cambridge Road. A directly comparable seven-bed all en-suite conversion with a rear dormer has been approved at 11 Grenville Close, placing the six-bed scheme comfortably within precedent. The single planning risk is the roof: a combined hip-to-gable and full-width rear dormer may exceed the 50 cubic metre permitted development allowance, which would make the roof works a householder application rather than the change of use."
+  }
 }

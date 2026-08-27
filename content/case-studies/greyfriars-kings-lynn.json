@@ -3,31 +3,12 @@
   "title": "Office To Residential Or HMO",
   "location": "King's Lynn, Norfolk",
   "tag": "Mixed Use",
-  "recommendation": "Options Tested",
   "desc": "One building, two viable futures. We drew both the conventional residential option and the nine-bed co-living option so the client could compare returns directly.",
   "image": {
     "src": "/images/projects/greyfriars-option4-1.webp",
     "kind": "drawing"
   },
-  "stats": [
-    {
-      "label": "Routes compared",
-      "value": "2"
-    },
-    {
-      "label": "HMO option",
-      "value": "9 en-suite"
-    },
-    {
-      "label": "Both options",
-      "value": "With extension"
-    }
-  ],
   "buildingType": "Office and mixed use",
-  "planningRoute": "Full planning",
-  "challenge": "The Greyfriars building could plausibly become conventional flats or a large co-living HMO, and each route carries different planning risk, build cost, and income. Committing to the wrong use class early would have meant abortive design fees and a weaker planning story. The client needed both options tested to the same standard before choosing.",
-  "approach": "We sketched the building both ways. Option 2 tests a residential conversion with an extension. Option 4 tests a nine-bedroom en-suite HMO with distributed shared spaces, also with the extension. Both layouts are colour-coded by room function, with bedroom sizes and shared amenity areas stated on the drawings, so the two schemes can be compared like for like.",
-  "outcome": "The client received two fully drawn options for the same envelope, each with its own unit and room schedule. That turned an abstract use-class decision into a straightforward comparison of income, build scope, and planning position.",
   "galleryImages": [
     {
       "src": "/images/projects/greyfriars-option2-1.webp",
@@ -38,5 +19,30 @@
       "kind": "drawing"
     }
   ],
-  "order": 30
+  "listing": {
+    "order": 30,
+    "recommendation": "Options Tested"
+  },
+  "facts": {
+    "stats": [
+      {
+        "label": "Routes compared",
+        "value": "2"
+      },
+      {
+        "label": "HMO option",
+        "value": "9 en-suite"
+      },
+      {
+        "label": "Both options",
+        "value": "With extension"
+      }
+    ],
+    "planningRoute": "Full planning"
+  },
+  "writeup": {
+    "challenge": "The Greyfriars building could plausibly become conventional flats or a large co-living HMO, and each route carries different planning risk, build cost, and income. Committing to the wrong use class early would have meant abortive design fees and a weaker planning story. The client needed both options tested to the same standard before choosing.",
+    "approach": "We sketched the building both ways. Option 2 tests a residential conversion with an extension. Option 4 tests a nine-bedroom en-suite HMO with distributed shared spaces, also with the extension. Both layouts are colour-coded by room function, with bedroom sizes and shared amenity areas stated on the drawings, so the two schemes can be compared like for like.",
+    "outcome": "The client received two fully drawn options for the same envelope, each with its own unit and room schedule. That turned an abstract use-class decision into a straightforward comparison of income, build scope, and planning position."
+  }
 }

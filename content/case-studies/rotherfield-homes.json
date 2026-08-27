@@ -3,29 +3,12 @@
   "title": "One House To Four Homes",
   "location": "Hampshire",
   "tag": "Residential Development",
-  "status": "Complete",
   "desc": "A single large plot assessed for capacity, then masterplanned and consented as four new homes through a phased planning strategy.",
   "image": {
     "src": "/images/projects/rotherfield/cgi.jpg",
     "kind": "drawing"
   },
-  "stats": [
-    {
-      "label": "Homes",
-      "value": "Four"
-    },
-    {
-      "label": "Strategy",
-      "value": "Phased planning"
-    },
-    {
-      "label": "Outcome",
-      "value": "Full permission"
-    }
-  ],
   "buildingType": "Residential plot with existing dwelling",
-  "planningRoute": "Phased, then full planning",
-  "completionDate": "Complete",
   "projectStory": {
     "summary": [
       "The redevelopment of a substantial residential plot with an existing dwelling, where Thistle Architecture was initially commissioned to assess the wider development potential of the site and establish how additional homes could be successfully accommodated.",
@@ -52,5 +35,26 @@
       }
     ]
   },
-  "order": 90
+  "listing": {
+    "order": 90,
+    "status": "Complete"
+  },
+  "facts": {
+    "stats": [
+      {
+        "label": "Homes",
+        "value": "Four"
+      },
+      {
+        "label": "Strategy",
+        "value": "Phased planning"
+      },
+      {
+        "label": "Outcome",
+        "value": "Full permission"
+      }
+    ],
+    "planningRoute": "Phased, then full planning",
+    "completionDate": "Complete"
+  }
 }

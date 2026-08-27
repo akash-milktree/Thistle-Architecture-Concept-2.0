@@ -3,29 +3,12 @@
   "title": "An Accessible Family Home",
   "location": "South Downs",
   "tag": "Residential",
-  "status": "Complete",
   "desc": "A family home reconfigured and extended around a daughter's mobility needs, in a landscape where even the external lighting was a planning matter.",
   "image": {
     "src": "/images/projects/school-house/cgi-exterior.jpg",
     "kind": "drawing"
   },
-  "stats": [
-    {
-      "label": "Brief",
-      "value": "Level access throughout"
-    },
-    {
-      "label": "Setting",
-      "value": "South Downs"
-    },
-    {
-      "label": "Constraint",
-      "value": "Protected dark skies"
-    }
-  ],
   "buildingType": "Existing family home",
-  "planningRoute": "Full planning",
-  "completionDate": "Complete",
   "projectStory": {
     "summary": [
       "The sensitive reconfiguration and extension of an existing family home within the South Downs, designed to create a more accessible and functional ground floor for the owners and their daughter, whose ongoing mobility requirements were central to the brief.",
@@ -68,5 +51,26 @@
       }
     ]
   },
-  "order": 100
+  "listing": {
+    "order": 100,
+    "status": "Complete"
+  },
+  "facts": {
+    "stats": [
+      {
+        "label": "Brief",
+        "value": "Level access throughout"
+      },
+      {
+        "label": "Setting",
+        "value": "South Downs"
+      },
+      {
+        "label": "Constraint",
+        "value": "Protected dark skies"
+      }
+    ],
+    "planningRoute": "Full planning",
+    "completionDate": "Complete"
+  }
 }

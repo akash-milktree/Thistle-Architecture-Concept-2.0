@@ -3,32 +3,12 @@
   "title": "When The HMO Is The Wrong Answer",
   "location": "Croydon, South London",
   "tag": "Supported Living",
-  "recommendation": "No-Go",
   "desc": "A feasibility that told the client not to do what they asked for, then found a route that needs no planning permission at all.",
   "image": {
     "src": "/images/projects/hathaway-sketch-1.webp",
     "kind": "drawing"
   },
-  "stats": [
-    {
-      "label": "HMO refusal risk",
-      "value": "~95%"
-    },
-    {
-      "label": "Bedrooms via C3(b)",
-      "value": "5"
-    },
-    {
-      "label": "Planning permission",
-      "value": "Not required"
-    }
-  ],
   "buildingType": "Existing dwelling (C3)",
-  "planningRoute": "C3(b) supported living, confirmed by LDC",
-  "completionDate": "July 2026",
-  "challenge": "The client wanted an HMO in a highly sustainable Croydon location: PTAL 6a, a short walk from West Croydon station, generously sized rooms, and full permitted development rights intact. On the face of it the property looked ideal.",
-  "approach": "One fact decided it. The gross internal floor area is below 130 sqm, and Croydon protects family homes below that threshold from HMO conversion under Policies SP2 and DM1.2 of its Local Plan. The council measures the original floor area and disregards any extension or loft space, so neither a rear extension nor a loft conversion overcomes the policy, and reducing the room count does not help because the loss of the family house is the objection. The local planning authority indicated it would not even recommend a pre-application enquiry. Rather than stop there, the study tested an alternative: C3(b) supported living, a dwellinghouse for up to six adults living as a single household where care is provided.",
-  "outcome": "A No-Go on the HMO, with a recommended route instead. Because C3(b) stays within Use Class C3, a genuine change from a family dwelling is not development and needs no planning permission, and neither the family housing policy nor the Article 4 direction applies. The sketch layout shows five bedrooms from 11 to 18 sqm and 16 sqm of communal amenity within the existing building, without touching the loft or extending. This is not an HMO by another name: it requires a genuine care provider, contracts evidenced to the council, and confirmation by a Lawful Development Certificate.",
   "galleryImages": [
     {
       "src": "/images/projects/hathaway-sketch-1.webp",
@@ -78,5 +58,31 @@
       "C3(b) lawful development certificate"
     ]
   },
-  "order": 110
+  "listing": {
+    "order": 110,
+    "recommendation": "No-Go"
+  },
+  "facts": {
+    "stats": [
+      {
+        "label": "HMO refusal risk",
+        "value": "~95%"
+      },
+      {
+        "label": "Bedrooms via C3(b)",
+        "value": "5"
+      },
+      {
+        "label": "Planning permission",
+        "value": "Not required"
+      }
+    ],
+    "planningRoute": "C3(b) supported living, confirmed by LDC",
+    "completionDate": "July 2026"
+  },
+  "writeup": {
+    "challenge": "The client wanted an HMO in a highly sustainable Croydon location: PTAL 6a, a short walk from West Croydon station, generously sized rooms, and full permitted development rights intact. On the face of it the property looked ideal.",
+    "approach": "One fact decided it. The gross internal floor area is below 130 sqm, and Croydon protects family homes below that threshold from HMO conversion under Policies SP2 and DM1.2 of its Local Plan. The council measures the original floor area and disregards any extension or loft space, so neither a rear extension nor a loft conversion overcomes the policy, and reducing the room count does not help because the loss of the family house is the objection. The local planning authority indicated it would not even recommend a pre-application enquiry. Rather than stop there, the study tested an alternative: C3(b) supported living, a dwellinghouse for up to six adults living as a single household where care is provided.",
+    "outcome": "A No-Go on the HMO, with a recommended route instead. Because C3(b) stays within Use Class C3, a genuine change from a family dwelling is not development and needs no planning permission, and neither the family housing policy nor the Article 4 direction applies. The sketch layout shows five bedrooms from 11 to 18 sqm and 16 sqm of communal amenity within the existing building, without touching the loft or extending. This is not an HMO by another name: it requires a genuine care provider, contracts evidenced to the council, and confirmation by a Lawful Development Certificate."
+  }
 }

@@ -3,32 +3,12 @@
   "title": "Bungalow To Contemporary Family Home",
   "location": "Kings Worthy, Winchester",
   "tag": "High-End Residential",
-  "status": "On site",
   "desc": "A bungalow on a corner plot, reworked internally and extended into a gable-ended house with vaulted ceilings over the open-plan heart.",
   "image": {
     "src": "/images/projects/boyne-rise/cgi-1.jpg",
     "kind": "drawing"
   },
-  "stats": [
-    {
-      "label": "Existing",
-      "value": "Bungalow"
-    },
-    {
-      "label": "Roof",
-      "value": "New gable-ended form"
-    },
-    {
-      "label": "Thistle role",
-      "value": "Feasibility to construction"
-    }
-  ],
   "buildingType": "Existing bungalow",
-  "planningRoute": "Full planning",
-  "completionDate": "On site",
-  "conversionTypes": [
-    "high-end-residential"
-  ],
   "projectStory": {
     "summary": [
       "The comprehensive redevelopment of an existing bungalow on a substantial corner plot in Kings Worthy, Winchester, designed to create a significantly larger and more contemporary family home.",
@@ -54,5 +34,29 @@
       }
     ]
   },
-  "order": 220
+  "listing": {
+    "order": 220,
+    "status": "On site",
+    "conversionTypes": [
+      "high-end-residential"
+    ]
+  },
+  "facts": {
+    "stats": [
+      {
+        "label": "Existing",
+        "value": "Bungalow"
+      },
+      {
+        "label": "Roof",
+        "value": "New gable-ended form"
+      },
+      {
+        "label": "Thistle role",
+        "value": "Feasibility to construction"
+      }
+    ],
+    "planningRoute": "Full planning",
+    "completionDate": "On site"
+  }
 }

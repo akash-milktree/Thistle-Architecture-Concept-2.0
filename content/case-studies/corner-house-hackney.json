@@ -3,28 +3,12 @@
   "title": "Vacant Corner Plot To New Home",
   "location": "Hackney, London",
   "tag": "New Build",
-  "status": "Complete",
   "desc": "A new home on a vacant corner plot, bookending an existing Hackney terrace behind a curved wall of green glazed brick.",
   "image": {
     "src": "/images/projects/corner-house/cgi-street.jpg",
     "kind": "drawing"
   },
-  "stats": [
-    {
-      "label": "Plot",
-      "value": "Previously vacant"
-    },
-    {
-      "label": "Facade",
-      "value": "Green glazed brick"
-    },
-    {
-      "label": "Thistle role",
-      "value": "Feasibility to construction"
-    }
-  ],
   "buildingType": "New-build house on an infill plot",
-  "completionDate": "Complete",
   "projectStory": {
     "summary": [
       "A new-build residential project on a previously vacant corner plot in Hackney, London, designed to complete and bookend an existing terrace while creating a distinctive new family home.",
@@ -67,5 +51,25 @@
       }
     ]
   },
-  "order": 60
+  "listing": {
+    "order": 60,
+    "status": "Complete"
+  },
+  "facts": {
+    "stats": [
+      {
+        "label": "Plot",
+        "value": "Previously vacant"
+      },
+      {
+        "label": "Facade",
+        "value": "Green glazed brick"
+      },
+      {
+        "label": "Thistle role",
+        "value": "Feasibility to construction"
+      }
+    ],
+    "completionDate": "Complete"
+  }
 }

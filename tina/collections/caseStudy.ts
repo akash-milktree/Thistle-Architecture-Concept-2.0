@@ -91,14 +91,14 @@ export const caseStudyCollection: Collection = {
   },
 
   fields: [
-    {
-      type: 'number',
-      name: 'order',
-      label: 'Position in the list',
-      description:
-        'Lower numbers appear first on the Feasibility Studies and Completed Projects pages. The two lists are numbered separately. Leave a gap between numbers (10, 20, 30) so a new study can be slotted in without renumbering everything.',
+{
+      type: 'string',
+      name: 'title',
+      label: 'Title',
+      required: true,
+      description: 'What the job was, not the address — e.g. “Six-Bed HMO To Thirteen”. On a new study the web address is built from this.',
     },
-    {
+{
       type: 'string',
       name: 'kind',
       label: 'Type of case study',
@@ -107,80 +107,42 @@ export const caseStudyCollection: Collection = {
         { value: 'feasibility', label: 'Feasibility study' },
         { value: 'project', label: 'Completed project' },
       ],
-      description:
-        'Which of the two lists this belongs to, and which "back" link and layout the page uses. Changing it moves the case study between /case-studies/feasibility-studies and /case-studies/completed-projects, so only change it if it was filed in the wrong place to begin with.',
+      description: 'Which of the two lists it belongs to. It also decides which layout the page uses.',
     },
-
-    {
-      type: 'string',
-      name: 'title',
-      label: 'Title',
-      required: true,
-      description:
-        'The big heading at the top of the page, and the name on every card that links here. House style is what the job was rather than the address — "Six-Bed HMO To Thirteen", not "Beech House Road". Capitalise Each Word. On a NEW study the web address is built from this title, so get it right before saving; on an existing study the address is already fixed and changing the title leaves it alone.',
-    },
-    {
+{
       type: 'string',
       name: 'location',
       label: 'Location',
       required: true,
-      description:
-        'The small grey line under the title, e.g. "Croydon, South London". Town and county, never the full address: several of these are live client sites and the reports they came from are confidential. Where nobody has confirmed the town, say only what is known — one entry publishes as "England" for exactly that reason.',
+      description: 'Town and county, e.g. “Croydon, South London”. Never the full address.',
     },
-    {
-      type: 'string',
-      name: 'provenance',
-      label: 'Who did the work',
-      description:
-        'Only for jobs delivered by another practice in the Thistle Group, e.g. "By HMO Designers, part of Thistle Group". It prints under the location on the page and after the location on the card. Leave it blank for Thistle Architecture\'s own work — publishing group work is fine, implying we did it ourselves is not.',
-    },
-    {
+{
       type: 'string',
       name: 'tag',
       label: 'Category badge',
       required: true,
-      description:
-        'The small pill over the image, e.g. "HMO", "Office to Flats", "New Build". Two or three words at most; longer ones wrap awkwardly on a card.',
+      description: 'The small pill over the image, e.g. “HMO”. Two or three words at most.',
     },
-    {
+{
       type: 'string',
-      name: 'recommendation',
-      label: 'Recommendation badge',
-      options: [
-        { value: 'Go', label: 'Go' },
-        { value: 'No-Go', label: 'No-Go' },
-        { value: 'Options Tested', label: 'Options Tested' },
-      ],
-      description:
-        'The second pill beside the category, on feasibility studies. "No-Go" prints in red — deliberately, because a study that told the client not to buy is the most persuasive thing on the site. Leave blank where the study did not end in a single verdict.',
+      name: 'buildingType',
+      label: 'Building type',
+      required: true,
+      description: 'What the building is now, e.g. “Existing dwelling (C3)”.',
     },
-    {
-      type: 'string',
-      name: 'status',
-      label: 'Build status',
-      options: [
-        { value: 'Complete', label: 'Complete' },
-        { value: 'On site', label: 'On site' },
-      ],
-      description:
-        'Completed projects only: the pill with the tick or the hard hat. Blank means Complete. Please keep this honest — "Complete" against a building still in scaffolding is the sort of thing a client notices.',
-    },
-    {
+{
       type: 'string',
       name: 'desc',
       label: 'Summary',
       required: true,
       ui: { component: 'textarea' },
-      description:
-        'The large paragraph under the title, and the paragraph at the foot of every card that links here. One or two sentences: what the building was and what the study or the job did with it.',
+      description: 'One or two sentences: what the building was, and what the job did with it.',
     },
-
-    {
+{
       type: 'object',
       name: 'image',
       label: 'Main image',
-      description:
-        'The picture beside the title, and the thumbnail on every card. Ed\'s August 2026 final brief: for a completed project this must be a real photograph of the building, never a preview of a drawing.',
+      description: 'The picture beside the title and on every card. On a completed project this must be a real photograph.',
       fields: [
         { type: 'image', name: 'src', label: 'Image' },
         {
@@ -196,107 +158,143 @@ export const caseStudyCollection: Collection = {
         },
       ],
     },
-
     {
       type: 'object',
-      name: 'stats',
-      label: 'Headline facts',
-      list: true,
-      ui: { itemProps: (item) => ({ label: item?.label }) },
-      description:
-        'The three figures on the card, and the first three cells of the band under the page header. Three is what the card shows; a fourth is only ever seen on the page itself. Every one of these is a claim about a real building, so it needs to come from the report rather than from memory.',
+      name: 'listing',
+      label: 'Where it appears',
+      description: 'How this study is placed and labelled in the two lists.',
       fields: [
-        { type: 'string', name: 'label', label: 'What it is', description: 'The small grey line, e.g. "Bedrooms, all en suite".' },
-        { type: 'string', name: 'value', label: 'The figure', description: 'The larger line underneath, e.g. "13".' },
+  {
+        type: 'number',
+        name: 'order',
+        label: 'Position in the list',
+        description: 'Lower numbers come first. Leave gaps (10, 20, 30) so a new one can be slotted in.',
+      },
+  {
+        type: 'string',
+        name: 'provenance',
+        label: 'Who did the work',
+        description: 'Only if another Thistle Group practice did the work, e.g. “By HMO Designers”. Blank for our own.',
+      },
+  {
+        type: 'string',
+        name: 'recommendation',
+        label: 'Recommendation badge',
+        options: [
+          { value: 'Go', label: 'Go' },
+          { value: 'No-Go', label: 'No-Go' },
+          { value: 'Options Tested', label: 'Options Tested' },
+        ],
+        description: 'Feasibility studies only. Blank if it did not end in one verdict.',
+      },
+  {
+        type: 'string',
+        name: 'status',
+        label: 'Build status',
+        options: [
+          { value: 'Complete', label: 'Complete' },
+          { value: 'On site', label: 'On site' },
+        ],
+        description: 'Completed projects only. Blank means Complete.',
+      },
+  {
+        type: 'string',
+        name: 'conversionTypes',
+        label: 'Conversion types',
+        list: true,
+        options: [
+          { value: 'commercial-to-residential', label: 'Commercial to Residential' },
+          { value: 'hmo', label: 'HMO' },
+          { value: 'co-living-large-hmo', label: 'Co-Living / Large HMO' },
+          { value: 'mixed-use-commercial', label: 'Mixed Use Commercial' },
+          { value: 'high-end-residential', label: 'High-End Residential' },
+        ],
+        description: 'Which filters this appears under on the Completed Projects page.',
+      },
       ],
     },
-
     {
-      type: 'string',
-      name: 'buildingType',
-      label: 'Building type',
-      required: true,
-      description:
-        'A cell in the fact band under the page header, e.g. "Existing dwelling (C3)". The use class in brackets where it is known and matters.',
-    },
-    {
-      type: 'string',
-      name: 'planningRoute',
-      label: 'Planning route',
-      description:
-        'Another cell in the fact band, e.g. "Full planning (Sui Generis)". Leave blank where no route was settled — several of the older projects have no document behind them and should not claim one.',
-    },
-    {
-      type: 'string',
-      name: 'completionDate',
-      label: 'Date',
-      description:
-        'The last cell in the fact band, labelled "Completed" on a project and "Feasibility date" on a study. A month and year ("June 2026"), a year on its own where that is all the photographs prove, or "Complete" / "On site" where the record has no date at all.',
-    },
-
-    {
-      type: 'string',
-      name: 'unitsBefore',
-      label: 'Units before',
-      description:
-        'The left half of the before-and-after figure on the feasibility studies listing card, e.g. "3-bed house". Both halves have to be filled for it to appear at all.',
-    },
-    {
-      type: 'string',
-      name: 'unitsAfter',
-      label: 'Units after',
-      description: 'The right half of the same figure, e.g. "7-bed HMO".',
-    },
-
-    {
-      type: 'string',
-      name: 'conversionTypes',
-      label: 'Conversion types',
-      list: true,
-      options: [
-        { value: 'commercial-to-residential', label: 'Commercial to Residential' },
-        { value: 'hmo', label: 'HMO' },
-        { value: 'co-living-large-hmo', label: 'Co-Living / Large HMO' },
-        { value: 'mixed-use-commercial', label: 'Mixed Use Commercial' },
-        { value: 'high-end-residential', label: 'High-End Residential' },
+      type: 'object',
+      name: 'facts',
+      label: 'Key facts',
+      description: 'The band of facts under the page header. All optional.',
+      fields: [
+  {
+        type: 'object',
+        name: 'stats',
+        label: 'Headline facts',
+        list: true,
+        ui: { itemProps: (item) => ({ label: item?.label }) },
+        description: 'The three figures on the card. Each has to be a real number you could evidence.',
+        fields: [
+          { type: 'string', name: 'label', label: 'What it is', description: 'The small grey line, e.g. "Bedrooms, all en suite".' },
+          { type: 'string', name: 'value', label: 'The figure', description: 'The larger line underneath, e.g. "13".' },
+        ],
+      },
+  {
+        type: 'string',
+        name: 'planningRoute',
+        label: 'Planning route',
+        description: 'e.g. “Full planning (Sui Generis)”. Blank if no route was settled.',
+      },
+  {
+        type: 'string',
+        name: 'completionDate',
+        label: 'Date',
+        description: 'A month and year, e.g. “June 2026”.',
+      },
+  {
+        type: 'string',
+        name: 'unitsBefore',
+        label: 'Units before',
+        description: 'Left half of the before-and-after figure, e.g. “3-bed house”.',
+      },
+  {
+        type: 'string',
+        name: 'unitsAfter',
+        label: 'Units after',
+        description: 'Right half of the same figure, e.g. “7-bed HMO”.',
+      },
       ],
-      description:
-        'Which filters on the completed projects page this appears under, and which "We can help with this" links show at the foot of the page. Placement, not wording: it does not change a word anyone reads. Ed asked for projects to appear under more than one where they genuinely fit. Leave it empty rather than filing something wrong — an empty one still appears under "All".',
-    },
-
-    // The older layout, used by every study and project that has not moved on
-    // to one of Ed's templates below. Three numbered sections down the page.
-    {
-      type: 'string',
-      name: 'challenge',
-      label: 'The Challenge',
-      ui: { component: 'textarea' },
-      description:
-        'Section 01 of the older layout, used where this case study has no "Feasibility in brief" or "Project story" filled in below. What the client was up against.',
     },
     {
-      type: 'string',
-      name: 'approach',
-      label: 'Our Approach',
-      ui: { component: 'textarea' },
-      description: 'Section 02 of the older layout. What we actually did.',
+      type: 'object',
+      name: 'writeup',
+      label: 'Write-up (older layout)',
+      description: 'Only used where the two templates below are left empty.',
+      fields: [
+  // The older layout, used by every study and project that has not moved on
+      // to one of Ed's templates below. Three numbered sections down the page.
+      {
+        type: 'string',
+        name: 'challenge',
+        label: 'The Challenge',
+        ui: { component: 'textarea' },
+        description: 'Older layout only. What the client was up against.',
+      },
+  {
+        type: 'string',
+        name: 'approach',
+        label: 'Our Approach',
+        ui: { component: 'textarea' },
+        description: 'Older layout only. What we actually did.',
+      },
+  {
+        type: 'string',
+        name: 'outcome',
+        label: 'The Outcome',
+        ui: { component: 'textarea' },
+        description: 'Older layout only. What the client ended up with.',
+      },
+      ],
     },
-    {
-      type: 'string',
-      name: 'outcome',
-      label: 'The Outcome',
-      ui: { component: 'textarea' },
-      description: 'Section 03 of the older layout. What the client ended up with.',
-    },
-
-    {
+{
       type: 'object',
       name: 'galleryImages',
       label: 'Drawings and photographs',
       list: true,
       ui: { itemProps: (item) => ({ label: item?.src }) },
-      description:
-        'On a feasibility study these are the sketch options in the viewer, in the order they are offered as "Option 1 of 2". On a completed project they are the gallery near the foot of the page. More than three photographs on a project switches the gallery to two columns.',
+      description: 'Sketch options on a study; the gallery at the foot of the page on a project.',
       fields: [
         { type: 'image', name: 'src', label: 'Image' },
         {
@@ -312,8 +310,7 @@ export const caseStudyCollection: Collection = {
         },
       ],
     },
-
-    // ---- Ed's feasibility template (docs/2026-08-12-drive-tasks.md item 2).
+// ---- Ed's feasibility template (docs/2026-08-12-drive-tasks.md item 2).
     // Filling this in switches the page off the older three-section narrative
     // above and on to the template. Seven of the twelve studies have moved so
     // far; the others keep the old layout until they are written up.
@@ -322,7 +319,7 @@ export const caseStudyCollection: Collection = {
       name: 'feasibility',
       label: 'Feasibility study write-up',
       description:
-        'Ed\'s feasibility template. Filling this in replaces the three numbered sections above with the full template layout: the key information band, "Feasibility in brief", the sketch, the deliverables and the decision. Seven studies use it so far. Leave it empty on a study that has not been written up this way yet — an empty template reads far worse than the older layout.',
+        'The full feasibility template. Filling this in replaces the older three-section write-up above. Leave it empty on a study not written up this way — an empty template reads worse than the older layout.',
       fields: [
         {
           type: 'object',
@@ -413,8 +410,7 @@ export const caseStudyCollection: Collection = {
         },
       ],
     },
-
-    // ---- Ed's project template (Project Explanations.docx). Same principle as
+// ---- Ed's project template (Project Explanations.docx). Same principle as
     // the feasibility template above: filling it in replaces the older
     // narrative. Ed's note on it — "visitors may not scroll through the entire
     // project page" — is why the before-and-after sits so near the top.
@@ -423,7 +419,7 @@ export const caseStudyCollection: Collection = {
       name: 'projectStory',
       label: 'Project story',
       description:
-        'Ed\'s completed-project template. Filling this in replaces the three numbered sections above with his write-up, the existing-and-proposed pair, and a run of stages down the page. Eleven projects use it so far.',
+        'The completed-project template: the write-up, the existing-and-proposed pair, and the stages down the page. Replaces the older three-section write-up above.',
       fields: [
         {
           type: 'string',
@@ -503,23 +499,28 @@ export const caseStudyCollection: Collection = {
         },
       ],
     },
-
-    // Search-result copy. It never appears on the page, so it is edited here
-    // and carries no click-to-edit marker.
     {
-      type: 'string',
-      name: 'metaTitle',
-      label: 'Search result title',
-      description:
-        'The tab title and the blue headline in Google. "| Thistle Architecture" is added automatically. Leave it blank and the case study\'s own title is used, which is usually right — fill it in only where the title is too short to make sense out of context.',
-    },
-    {
-      type: 'string',
-      name: 'metaDescription',
-      label: 'Search result description',
-      ui: { component: 'textarea' },
-      description:
-        'The grey summary under the headline in Google. Not shown on the page. Leave it blank and the summary above is used. Google cuts it off after roughly 155 characters.',
+      type: 'object',
+      name: 'seo',
+      label: 'Search listing',
+      description: 'How the page reads in Google. Both can be left blank.',
+      fields: [
+  // Search-result copy. It never appears on the page, so it is edited here
+      // and carries no click-to-edit marker.
+      {
+        type: 'string',
+        name: 'metaTitle',
+        label: 'Search result title',
+        description: 'Blank uses the title above, which is usually right.',
+      },
+  {
+        type: 'string',
+        name: 'metaDescription',
+        label: 'Search result description',
+        ui: { component: 'textarea' },
+        description: 'Blank uses the summary above. Google cuts it off around 155 characters.',
+      },
+      ],
     },
   ],
 };

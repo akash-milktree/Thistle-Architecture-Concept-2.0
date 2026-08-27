@@ -2,35 +2,13 @@
   "kind": "project",
   "title": "Burlington Road",
   "location": "Southampton, Hampshire",
-  "provenance": "By HMO Designers, part of Thistle Group",
   "tag": "HMO",
-  "status": "Complete",
   "desc": "A seven-bedroom HMO in Southampton delivered to an essential specification, with en suite rooms worked into the roof under new rooflights.",
   "image": {
     "src": "/images/projects/hmo-burlington-road/burlington-road-1.jpg",
     "kind": "drawing"
   },
-  "stats": [
-    {
-      "label": "Bedrooms",
-      "value": "7"
-    },
-    {
-      "label": "Completed",
-      "value": "2023"
-    },
-    {
-      "label": "Specification",
-      "value": "Essential"
-    }
-  ],
   "buildingType": "Existing dwelling",
-  "completionDate": "2023",
-  "conversionTypes": [
-    "hmo"
-  ],
-  "approach": "A feasibility study of the existing property came first, then the surveys, then planning and building regulations approval. The loft rooms take their light from new rooflights set into the slope, and each has its own shower room off the bedroom. That is what keeps a seven-bed count workable in a house of this size without any room feeling like the short straw.",
-  "outcome": "Completed in 2023.",
   "galleryImages": [
     {
       "src": "/images/projects/hmo-burlington-road/burlington-road-2.jpg",
@@ -65,5 +43,33 @@
       "kind": "drawing"
     }
   ],
-  "order": 190
+  "listing": {
+    "order": 190,
+    "provenance": "By HMO Designers, part of Thistle Group",
+    "status": "Complete",
+    "conversionTypes": [
+      "hmo"
+    ]
+  },
+  "facts": {
+    "stats": [
+      {
+        "label": "Bedrooms",
+        "value": "7"
+      },
+      {
+        "label": "Completed",
+        "value": "2023"
+      },
+      {
+        "label": "Specification",
+        "value": "Essential"
+      }
+    ],
+    "completionDate": "2023"
+  },
+  "writeup": {
+    "approach": "A feasibility study of the existing property came first, then the surveys, then planning and building regulations approval. The loft rooms take their light from new rooflights set into the slope, and each has its own shower room off the bedroom. That is what keeps a seven-bed count workable in a house of this size without any room feeling like the short straw.",
+    "outcome": "Completed in 2023."
+  }
 }
