@@ -25,12 +25,14 @@ our side and cannot go further without an account only he can open.
 
 ### What is built
 
-The whole measurement layer is written, tested and deployed. It is switched off.
+The whole measurement layer is written, tested and deployed, and since Ed sent
+the Measurement ID it is live and reporting on `G-PVDKSFH5GQ`.
 
-It stays off until one environment variable holds the GA4 Measurement ID. With
-no ID the site loads no Google script, sets no cookie and makes no request to
-Google. We checked that in a browser rather than assuming it: on the live site
-today there are zero requests to Google, no `gtag`, and no consent banner.
+It was built to ship switched off, and that is still how it behaves anywhere the
+ID is not set. With no ID the site loads no Google script, sets no cookie and
+makes no request to Google. That is not a claim about the code, it was checked in
+a browser on the live site before the ID went in: zero requests to Google, no
+`gtag`, no banner. It is why preview deploys stay silent today.
 
 Every event in the brief is wired:
 
@@ -53,27 +55,17 @@ outstanding list. A request for a call is not a confirmed booking, and reporting
 one as the other would flatter the numbers. The event is defined and ready. When
 the link lands it is a two-line change.
 
-### What we need from Ed
+### What we needed from Ed, and what is left
 
-He asked to own the property, which is right, so it has to be created inside his
-Google account. Two ways, and the first is less work for him:
+He created the property himself and sent the Measurement ID, which settled the
+ownership question in the right way: it sits inside his Google account, so it
+belongs to Thistle rather than to us or any later contractor.
 
-**Either** add `info@milktreeagency.com` as an Administrator on his Google
-Analytics **account** at analytics.google.com, under Admin, Account access
-management. We then create the property inside his account, so it belongs to
-Thistle from the first day and no contractor can take it away.
-
-**Or** he creates the property himself, for `thistlearchitecture.co.uk`, and
-sends us the Measurement ID. It looks like `G-` followed by ten characters, and
-it is in Admin, Data streams, on the web stream. He should then add
-`info@milktreeagency.com` as Administrator so we can finish the setup.
-
-Either way we then set the ID in Vercel, redeploy, and confirm the funnel is
-reporting. About half a day, and most of that is watching real events arrive.
-
-Two jobs inside GA4 come after that, and both need the property to exist first:
-registering the event details as custom dimensions so they show up in reports,
-and marking the payment events as key events so they count as conversions.
+The ID is set and the site is reporting. Two jobs are left inside GA4 and both
+need Administrator access, which we do not have. They are listed with the exact
+steps under "Where these two now stand" below. Neither of them stops data being
+collected: everything is being recorded from today and can be reported on
+whenever the settings are made.
 
 ### One thing he did not ask for, which we built anyway
 
@@ -97,35 +89,16 @@ to something that is not running.
 
 ## 2. Search Console
 
-Ed checked and confirmed there is no property for `thistlearchitecture.co.uk`. He
-is right, and it means there is no search data on the new site at all since the
-launch.
+Ed was right that no property existed, which meant no search data on the new site
+at all since the launch. He has since created and verified a **Domain property**
+for `thistlearchitecture.co.uk`, which is the better of the two kinds: it covers
+every subdomain and both http and https at once.
 
-We cannot create it. It has to be opened from inside a Google account, and it
-should be his so that ownership sits with Thistle.
+He did the verification himself, so the DNS record we expected to add at GoDaddy
+was not needed.
 
-### The faster of the two routes
-
-A **Domain property** covers every subdomain and both http and https at once, and
-it is the better property to hold. It can only be verified with a DNS record.
-
-1. Ed adds the property at search.google.com/search-console, choosing Domain and
-   entering `thistlearchitecture.co.uk`.
-2. Google shows a TXT record. He sends us that one line.
-3. We add it at GoDaddy, which is where the DNS actually lives, and tell him.
-4. He presses Verify, then adds `info@milktreeagency.com` as a user.
-5. We submit the sitemap, which is already live and correct at
-   `https://www.thistlearchitecture.co.uk/sitemap.xml`, and covers 73 pages.
-
-Ed said verification would need to come from our side because we hold the DNS.
-Half right: we can add the record, but only the account holder can start the
-property and read the value we need to add. So it is one message each way.
-
-**If that stalls,** there is a second route that needs no DNS at all. A URL prefix
-property can be verified with a tag in the page, and we have already shipped the
-support for it: send us the verification code and it is live in one deploy, with
-no registrar login involved. It covers less than a Domain property, so it is the
-fallback rather than the plan.
+What is left is submitting the sitemap, which is one click inside the property
+and is set out under "Where these two now stand" below.
 
 ### hmodesigners.co.uk
 
