@@ -46,6 +46,12 @@ export interface BlogPost {
     name: string;
     role: string;
     initials: string;
+    /** Square head and shoulders. Falls back to the initials when absent. */
+    photo?: string;
+    /** Two or three sentences on the card at the foot of the article. */
+    bio?: string;
+    /** Full https address. Gives Google a second source for who this is. */
+    linkedin?: string;
   };
 }
 

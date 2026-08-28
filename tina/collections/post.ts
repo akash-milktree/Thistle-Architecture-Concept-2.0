@@ -172,7 +172,29 @@ export const postCollection: Collection = {
           label: 'Initials',
           required: true,
           description:
-            'The two letters in the green circle beside the byline. Not worked out from the name, so change it when the name changes.',
+            'The two letters shown beside the byline when there is no photograph. Not worked out from the name, so change it when the name changes.',
+        },
+        {
+          type: 'image',
+          name: 'photo',
+          label: 'Photograph',
+          description:
+            'Head and shoulders, square. Shown beside the byline and on the card at the foot of the article, in place of the initials. Leave it empty and the initials are used instead, which is how every article looked before this field existed.',
+        },
+        {
+          type: 'string',
+          name: 'bio',
+          label: 'Short bio',
+          ui: { component: 'textarea' },
+          description:
+            'Two or three sentences on the card at the foot of the article, saying why this person is worth reading on this subject. Google weighs author expertise, so write it about their experience rather than about the practice. Leave it empty and the card shows the name and job title only.',
+        },
+        {
+          type: 'string',
+          name: 'linkedin',
+          label: 'LinkedIn profile',
+          description:
+            'Optional. A link on the author card, which gives Google a second, independent source for who this person is. Paste the full address, starting https://.',
         },
       ],
     },

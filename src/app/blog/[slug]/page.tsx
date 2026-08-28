@@ -77,6 +77,13 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
   // Built from the same merged values the page renders, so the structured data
   // and the visible article cannot say different things.
+  //
+  // The three author fields are optional and every article predates them, so
+  // they are resolved once here rather than inline, and each is dropped from
+  // the object below when empty.
+  const authorPhoto = normalizeImage(doc?.author?.photo, post.author.photo ?? '');
+  const authorBio = doc?.author?.bio || post.author.bio || '';
+  const authorLinkedIn = doc?.author?.linkedin || post.author.linkedin || '';
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -89,6 +96,19 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       '@type': 'Person',
       name: doc?.author?.name || post.author.name,
       jobTitle: doc?.author?.role || post.author.role,
+      // Ed's point about being "credited to Google as the author" is really a
+      // question of whether Google can tell the author is a real person with
+      // relevant experience. A name and a job title are thin evidence for
+      // that. A photograph, a sentence of background and a link to a profile
+      // it can corroborate elsewhere are the three things it looks for, so
+      // each is passed through when it exists and left off entirely when it
+      // does not: an empty string here is worse than an absent key.
+      // Relative, like the article image above it: both are resolved against
+      // the page's own URL, and stating the host twice is a second place for it
+      // to be wrong.
+      ...(authorPhoto ? { image: authorPhoto } : {}),
+      ...(authorBio ? { description: authorBio } : {}),
+      ...(authorLinkedIn ? { sameAs: [authorLinkedIn] } : {}),
     },
     publisher: {
       '@type': 'Organization',

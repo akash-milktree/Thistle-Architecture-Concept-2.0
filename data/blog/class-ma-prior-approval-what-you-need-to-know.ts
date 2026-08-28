@@ -52,5 +52,5 @@ export const post: BlogPost = {
   date: "January 17, 2025",
   readTime: "5 min read",
   category: "Permitted Development",
-  author: { name: "Edward Kercher", role: "Founder", initials: "EK" },
+  author: { name: "Edward Kercher", role: "Founder", initials: "EK", photo: "/images/team/ed.jpg" },
 };

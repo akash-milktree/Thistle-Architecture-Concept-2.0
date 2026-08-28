@@ -19,6 +19,39 @@ import { str, arr, pruneEmpty, normalizeImage } from '../lib/tina';
 const slugify = (s: string) =>
   s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
+/**
+ * The author's face, or their initials when there is no photograph.
+ *
+ * Ed's note of 27 August 2026: an author box showing a name with no photo or
+ * bio "is worse than not having them". This is the half that can be fixed in
+ * code; the photographs themselves are his to send. Until one arrives the
+ * initials keep the layout intact rather than leaving a hole, which is exactly
+ * what every article does today.
+ *
+ * `sizes` is written in pixels because both call sites are fixed-size circles,
+ * so the browser never needs to guess and never fetches the 3840px variant of
+ * a 48px avatar.
+ */
+const AuthorAvatar: React.FC<{
+  size: number;
+  photo?: string;
+  initials: string;
+  name: string;
+  tina?: string;
+}> = ({ size, photo, initials, name, tina }) => (
+  <div
+    className="relative flex-shrink-0 rounded-full overflow-hidden bg-thistle-green/10 flex items-center justify-center font-bold text-thistle-green"
+    style={{ width: size, height: size, fontSize: size <= 40 ? 10 : 13 }}
+    data-tina-field={tina}
+  >
+    {photo ? (
+      <Image src={photo} alt={name} fill sizes={`${size}px`} className="object-cover" />
+    ) : (
+      initials
+    )}
+  </div>
+);
+
 const linkClass = "text-thistle-green underline underline-offset-2 hover:text-thistle-black transition-colors";
 
 /**
@@ -319,6 +352,12 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ post, page }) => {
     name: str(cms?.author?.name),
     role: str(cms?.author?.role),
     initials: str(cms?.author?.initials),
+    // Optional, and only recently addable. Every article predates them, so an
+    // author with neither renders exactly as it did before: initials in a
+    // circle, name, job title.
+    photo: normalizeImage(cms?.author?.photo),
+    bio: str(cms?.author?.bio),
+    linkedin: str(cms?.author?.linkedin),
   }) };
 
   // All or nothing, like every other list on the site: the standing copy stands
@@ -377,7 +416,13 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ post, page }) => {
 
           <Reveal delay={0.15}>
             <div className="flex items-center gap-fl-3 mb-fl-6">
-              <div className="w-9 h-9 rounded-full bg-thistle-green/10 flex items-center justify-center text-[10px] font-bold text-thistle-green" data-tina-field={f(cms?.author, 'initials')}>{author.initials}</div>
+              <AuthorAvatar
+                size={36}
+                photo={author.photo}
+                initials={author.initials}
+                name={author.name}
+                tina={f(cms?.author, author.photo ? 'photo' : 'initials')}
+              />
               <div>
                 <span className="block text-sm font-medium text-thistle-black" data-tina-field={f(cms?.author, 'name')}>{author.name}</span>
                 {/* Three separate fields on one line, so each takes its own
@@ -480,13 +525,41 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ post, page }) => {
           {/* Author Card */}
           <div className="mt-fl-8 pt-fl-6 border-t border-thistle-black/[0.06]">
             <Reveal>
-              <div className="flex items-center gap-fl-4">
-                <div className="w-12 h-12 rounded-full bg-thistle-green/10 flex items-center justify-center text-sm font-bold text-thistle-green" data-tina-field={f(cms?.author, 'initials')}>{author.initials}</div>
-                <div>
+              {/* items-start, not items-center: with a bio the text column is
+                  three lines tall and a centred avatar floats beside it. */}
+              <div className="flex items-start gap-fl-4">
+                <AuthorAvatar
+                  size={48}
+                  photo={author.photo}
+                  initials={author.initials}
+                  name={author.name}
+                  tina={f(cms?.author, author.photo ? 'photo' : 'initials')}
+                />
+                <div className="min-w-0">
                   <span className="block text-sm font-medium text-thistle-black" data-tina-field={f(cms?.author, 'name')}>{author.name}</span>
                   {/* ", Thistle Architecture" is fixed, so the marker sits on
                       the job title alone rather than on the line. */}
                   <span className="text-xs text-thistle-black/40"><span data-tina-field={f(cms?.author, 'role')}>{author.role}</span>, Thistle Architecture</span>
+                  {author.bio && (
+                    <p
+                      className="text-sm text-thistle-black/60 leading-relaxed mt-fl-3 max-w-prose"
+                      data-tina-field={f(cms?.author, 'bio')}
+                    >
+                      {author.bio}
+                    </p>
+                  )}
+                  {author.linkedin && (
+                    <a
+                      href={author.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer me"
+                      className="inline-flex items-center gap-1 text-xs font-medium text-thistle-green hover:underline underline-offset-2 mt-fl-3"
+                      data-tina-field={f(cms?.author, 'linkedin')}
+                    >
+                      LinkedIn profile
+                      <ArrowUpRight size={12} />
+                    </a>
+                  )}
                 </div>
               </div>
             </Reveal>
