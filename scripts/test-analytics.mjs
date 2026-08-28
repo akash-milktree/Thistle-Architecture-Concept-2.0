@@ -122,7 +122,19 @@ await cancelled.waitForTimeout(400);
 e = await events(cancelled);
 ok('the Stripe cancel URL reports payment_abandoned', e.some((x) => x.name === 'payment_abandoned' && x.tier === 'architectural'), JSON.stringify(e));
 
-// --- 5. dormant with no measurement id --------------------------------------
+// --- 5. consent can be withdrawn --------------------------------------------
+const again = await newPage();
+await again.goto(`${BASE}/`, { waitUntil: 'networkidle' });
+await again.getByRole('button', { name: 'Allow analytics' }).click();
+await again.getByRole('dialog', { name: 'Cookies' }).waitFor({ state: 'detached', timeout: 3000 }).catch(() => {});
+await again.getByRole('button', { name: 'Cookie settings' }).first().click();
+await again.waitForTimeout(500);
+ok('the footer link brings the prompt back', await again.getByRole('dialog', { name: 'Cookies' }).isVisible());
+const withdrawn = await again.evaluate(() =>
+  (window.dataLayer || []).filter((a) => a[0] === 'consent' && a[1] === 'update').map((a) => a[2])
+);
+ok('opening it withdraws consent straight away', withdrawn.at(-1)?.analytics_storage === 'denied', JSON.stringify(withdrawn.at(-1) || {}));
+
 await browser.close();
 console.log(fails.length ? `\n${fails.length} failing check(s).` : '\nAll checks pass.');
 process.exit(fails.length ? 1 : 0);

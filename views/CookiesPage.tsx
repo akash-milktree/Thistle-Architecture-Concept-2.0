@@ -38,15 +38,15 @@ const SECTIONS_FALLBACK: LegalSection[] = [
   },
   {
     heading: "Analytics Cookies",
-    body: "We use analytics cookies to understand how visitors interact with our website. This helps us improve our site's functionality and content. Analytics data is collected anonymously and cannot be used to identify you personally.",
+    body: "We use Google Analytics to understand how visitors find and use this site, so we can make it better. It sets two cookies, named _ga and _ga_PVDKSFH5GQ, which tell returning visits apart from new ones. They are only set if you choose \"Allow analytics\" when we ask. Say no and none are set, and the site works exactly the same. We never use this data to identify you, and we do not sell or share it.",
   },
   {
     heading: "Marketing Cookies",
-    body: "We do not currently use marketing or advertising cookies. If this changes in the future, we will update this policy and request your consent before setting any marketing cookies.",
+    body: "We do not use marketing or advertising cookies, and advertising is switched off in our analytics. If that ever changes we will update this policy and ask your permission first.",
   },
   {
     heading: "Managing Cookies",
-    body: "You can control and manage cookies through your browser settings. Most browsers allow you to refuse cookies or delete existing ones. Please note that disabling cookies may affect the functionality of our website.",
+    body: "You can change your mind at any time using the \"Cookie settings\" link at the bottom of any page. That takes back your permission straight away and asks you again. You can also control cookies in your browser settings, where most browsers let you refuse them or delete ones already saved.",
   },
   {
     heading: "Updates to This Policy",
@@ -59,7 +59,7 @@ const SECTIONS_FALLBACK: LegalSection[] = [
 // owns.
 const HERO_FALLBACK = {
   title: "Cookie Policy.",
-  lastUpdated: "February 2026",
+  lastUpdated: "August 2026",
 };
 
 interface CookiesPageProps {

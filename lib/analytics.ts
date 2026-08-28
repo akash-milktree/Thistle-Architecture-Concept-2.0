@@ -121,6 +121,16 @@ export function trackOnce(
 /** Where the visitor's choice is remembered. Read by the banner and the loader. */
 export const CONSENT_KEY = 'thistle-cookie-consent';
 
+/**
+ * Fired when a visitor asks to change a choice they have already made.
+ *
+ * Consent has to be as easy to withdraw as it was to give, and the banner only
+ * ever shows itself to someone who has not answered. Without this, accepting
+ * once was final, which is not a real consent mechanism. The footer link
+ * dispatches it and the banner listens for it.
+ */
+export const CONSENT_REOPEN_EVENT = 'thistle-consent-reopen';
+
 export type ConsentChoice = 'granted' | 'denied';
 
 /**
@@ -148,6 +158,24 @@ export function writeConsent(choice: ConsentChoice): void {
     // important half.
   }
   applyConsent(choice);
+}
+
+/**
+ * Forget the stored answer, withdraw consent, and ask again.
+ *
+ * Withdrawing first rather than waiting for the new answer matters: someone who
+ * opens this and then walks away without choosing has still said no, and should
+ * be treated as having said no for the rest of the visit.
+ */
+export function reopenConsentPrompt(): void {
+  if (typeof window === 'undefined') return;
+  try {
+    window.localStorage.removeItem(CONSENT_KEY);
+  } catch {
+    // Nothing was stored to begin with if storage is blocked.
+  }
+  applyConsent('denied');
+  window.dispatchEvent(new Event(CONSENT_REOPEN_EVENT));
 }
 
 /**

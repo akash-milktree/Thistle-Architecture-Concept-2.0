@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 import { ArrowUpRight } from 'lucide-react';
 import { TrustpilotBadge } from '../components/ui/TrustpilotBadge';
 import { pruneEmpty, telHref, normalizeImage } from '../lib/tina';
+import { CookieSettingsLink } from '../components/analytics/CookieSettingsLink';
 
 const productLinks = [
   { label: "Feasibility Package", to: "/feasibility-package" },
@@ -272,6 +273,9 @@ export const Footer: React.FC<FooterProps> = ({ cta, details, tina }) => {
                 {link.label}
               </Link>
             ))}
+            {/* Sits with the legal links because that is where people look for
+                it. Renders nothing at all while analytics is switched off. */}
+            <CookieSettingsLink className="inline-flex items-center min-h-[32px] text-xs text-white/60 hover:text-white transition-colors" />
             <span className="text-xs text-white/40">·</span>
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[32px] text-xs text-white/70 hover:text-white transition-colors">LinkedIn</a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[32px] text-xs text-white/70 hover:text-white transition-colors">Instagram</a>

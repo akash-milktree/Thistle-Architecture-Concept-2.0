@@ -7,10 +7,15 @@ he asked us to specify.
 Short version: two of the four are done and live. The other two are finished on
 our side and cannot go further without an account only he can open.
 
+> **Update, later on 28 August.** Ed sent the Measurement ID and verified the
+> Search Console property. Analytics is now **live and reporting**, and the
+> property exists. What is left of both items is written up in "Where these two
+> now stand", near the end.
+
 | His item | State |
 |---|---|
-| 33, analytics | Built and deployed, switched off. Needs one code from him to go live. |
-| Search Console | Nothing we can do until the property exists. Two routes below. |
+| 33, analytics | LIVE. Reporting on the real property since 28 August. |
+| Search Console | Property verified by Ed. Sitemap still to submit, one click. |
 | 50, rebrand article | Published on HMO Designers with the canonical. Done. |
 | 29, author bios | Fields built and live, Ed's photograph in place. Bios are his to write. |
 
@@ -228,21 +233,77 @@ beyond the list above is required, and who needs to make the change.
 
 ---
 
+## Where these two now stand, after Ed's reply
+
+### Analytics is live
+
+`G-PVDKSFH5GQ` is set on the production environment only. Preview and
+development deploys stay switched off on purpose, so our own test traffic never
+lands in the numbers Ed reads.
+
+Checked on the live site, in a real browser, after the deploy:
+
+- The Google tag loads and names the right property.
+- Consent starts denied, before anything is sent.
+- No `_ga` cookie exists until a visitor presses Allow.
+- After accepting, `_ga` and `_ga_PVDKSFH5GQ` appear and data reaches Google.
+- `calculator_started` fired correctly from the live HMO calculator.
+
+**Two jobs left, both inside GA4 and needing Admin.** Neither blocks data being
+collected. Everything is being recorded now and can be reported on later.
+
+1. **Register four custom dimensions**, under Admin, Custom definitions. Without
+   these the events arrive but their detail cannot be broken out in reports.
+   Scope is Event for all four.
+
+   | Dimension name | Event parameter | What it splits |
+   |---|---|---|
+   | Source | `source` | Which tool or form the event came from |
+   | Tier | `tier` | Automated at £49.99 against Architectural from £298 |
+   | Outcome | `outcome` | Whether the pricing calculator priced it or routed it to Jodi |
+   | Verdict | `verdict` | What the Class MA checker told them |
+
+2. **Mark the key events**, under Admin, Events. `payment_paid` first, then
+   `payment_started`, `call_requested` and `calculator_completed`. That is what
+   makes them count as conversions rather than ordinary events.
+
+We can do both if Ed adds `info@milktreeagency.com` as an Administrator.
+
+### Search Console
+
+The Domain property for `thistlearchitecture.co.uk` is verified, which was the
+part only Ed could do. Thank you.
+
+**One thing left, and it takes a click.** Open the property, choose Sitemaps in
+the left menu, enter `sitemap.xml` and press Submit.
+
+We checked the sitemap before saying that, so the submission should come back
+clean. All 73 pages return 200, none is set to noindex, none redirects, and each
+one names itself as the original. The only mismatch is the homepage, listed with
+a trailing slash and naming itself without one, which Google treats as the same
+address. robots.txt already points at the sitemap.
+
+The meta tag route we shipped as a fallback is no longer needed. The code stays,
+switched off, in case a second property is ever added.
+
+---
+
 ## What happens next
 
 **Waiting on Ed, and nothing moves without them:**
-1. Either Administrator access to his Google Analytics account, or the Measurement
-   ID once he creates the property.
-2. The Search Console Domain property opened, and the TXT record value sent over.
+1. ~~The Measurement ID~~ **done**. Administrator access on GA4 would still let us
+   finish the custom dimensions and key events.
+2. ~~The Search Console property~~ **done**. The sitemap still needs submitting,
+   which is one click inside the property.
 3. Photograph, full name and job title for Jodi. Full name for Kaan. A bio for
    each of the three, or a yes to us drafting them from the About page.
 4. Still outstanding from before, and still the thing holding two features:
    Jodi's Calendly link.
 
 **Ours, as soon as those land:**
-1. Set the Measurement ID, redeploy, watch the funnel report, then set up the
-   custom dimensions and mark the key events.
-2. Add the DNS record at GoDaddy, and submit the sitemap once verified.
+1. ~~Set the Measurement ID and redeploy~~ **done, and verified live.** The custom
+   dimensions and key events need GA4 Admin access.
+2. ~~Add the DNS record at GoDaddy~~ **not needed**, Ed verified it himself.
 3. Add `edward@thistlearchitecture.co.uk` as an owner on the hmodesigners.co.uk
    property, and on its GA4 if we hold it.
 4. Fill in the author boxes and wire the booking event.

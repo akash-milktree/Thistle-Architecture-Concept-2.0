@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
-import { analyticsEnabled, readConsent, writeConsent } from '../../lib/analytics';
+import { CONSENT_REOPEN_EVENT, analyticsEnabled, readConsent, writeConsent } from '../../lib/analytics';
 
 /**
  * The analytics consent prompt.
@@ -27,6 +27,12 @@ export const CookieBanner: React.FC = () => {
   useEffect(() => {
     if (!analyticsEnabled()) return;
     if (readConsent() === null) setShow(true);
+
+    // The footer's "Cookie settings" link fires this. Without it, accepting once
+    // was final, and consent has to be as easy to withdraw as it was to give.
+    const reopen = () => setShow(true);
+    window.addEventListener(CONSENT_REOPEN_EVENT, reopen);
+    return () => window.removeEventListener(CONSENT_REOPEN_EVENT, reopen);
   }, []);
 
   const answer = (choice: 'granted' | 'denied') => {
