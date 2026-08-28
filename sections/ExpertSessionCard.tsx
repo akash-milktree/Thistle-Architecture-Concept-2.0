@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from '../components/animations/Reveal';
 import { pruneEmpty } from '../lib/tina';
+import { EVENTS, track } from '../lib/analytics';
 
 const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
@@ -68,6 +69,15 @@ export const ExpertSessionCard: React.FC<ExpertSessionCardProps> = ({ copy, tina
       });
       if (!res.ok) throw new Error('failed');
       setStatus('done');
+      // "Jodi calls" in Ed's funnel. Fired on the success branch only, so a
+      // failed submission is not counted as a request that reached her.
+      //
+      // This is the stand-in form, not a booking: until Jodi's Calendly link
+      // exists there is nothing to book against, so `booking_completed` has no
+      // source yet and stays unfired. Wiring it is a two-line change once the
+      // link lands, and until then the difference between a request and a
+      // confirmed booking is real and worth keeping in the data.
+      track(EVENTS.callRequested, { source: 'expert-session' });
     } catch {
       setStatus('error');
     }

@@ -1,14 +1,15 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import { EVENTS, track, type AnalyticsSource } from '../../lib/analytics';
 
 const UNLOCK_KEY = 'thistle-tool-unlocked';
 const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
 interface ToolGateProps {
-  /** Lead source tag sent to /api/leads. */
-  source: string;
+  /** Lead source tag sent to /api/leads, and the funnel event's `source`. */
+  source: AnalyticsSource;
   /** Extra payload merged into the lead (e.g. the user's inputs). */
   extra?: Record<string, unknown>;
   children: React.ReactNode;
@@ -27,6 +28,18 @@ export const ToolGate: React.FC<ToolGateProps> = ({ source, extra, children }) =
     setUnlocked(window.localStorage.getItem(UNLOCK_KEY) === '1');
     setHydrated(true);
   }, []);
+
+  // "Calculator completed" in Ed's funnel is the moment the visitor has the
+  // whole result in front of them, so it hangs off the unlock rather than off
+  // the form submit. That way a returning visitor, who is already unlocked and
+  // never sees the form, still counts: measuring only first-time submits would
+  // report the completion rate as falling every week the tools got repeat use.
+  const completed = useRef(false);
+  useEffect(() => {
+    if (!unlocked || completed.current) return;
+    completed.current = true;
+    track(EVENTS.calculatorCompleted, { source });
+  }, [unlocked, source]);
 
   const submit = async () => {
     if (!emailOk(email)) return;

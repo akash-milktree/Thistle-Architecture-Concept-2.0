@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, RotateCcw, CheckCircle2, AlertTriangle, XCircle, type LucideIcon } from 'lucide-react';
 import { Reveal } from '../../components/animations/Reveal';
 import { Button } from '../../components/ui/Button';
 import { useRouter } from 'next/navigation';
 import { ToolEmailOffer } from '../../components/ui/ToolEmailOffer';
 import { pruneEmpty } from '../../lib/tina';
+import { EVENTS, track, trackOnce } from '../../lib/analytics';
 import type { OutcomeCopy } from './calcUi';
 
 interface Question {
@@ -163,11 +164,34 @@ export const EligibilityChecker: React.FC<EligibilityCheckerProps> = ({
   const totalSteps = QUESTIONS.length;
   const progress = isDone ? totalSteps : currentStep;
 
+  // The checker asks nothing until the visitor answers, so the first answer is
+  // the start of the funnel and the verdict is the end. Both are guarded by a
+  // ref rather than derived from state, because every later answer re-renders
+  // this component and would otherwise re-fire the start.
+  const started = useRef(false);
+  const completed = useRef(false);
+
   const select = (key: string, value: string) => {
+    trackOnce(started, EVENTS.calculatorStarted, { source: 'class-ma-checker' });
     setAnswers((prev) => ({ ...prev, [key]: value }));
   };
 
-  const restart = () => setAnswers({});
+  useEffect(() => {
+    if (!isDone || completed.current) return;
+    completed.current = true;
+    // The verdict rides along: "how many people the screener told to stop" is
+    // the question this tool exists to answer, and it is lost if every
+    // completion looks the same.
+    track(EVENTS.calculatorCompleted, { source: 'class-ma-checker', verdict: computeVerdict(answers) });
+  }, [isDone, answers]);
+
+  const restart = () => {
+    // A second run through is a second visit to the funnel, not a continuation
+    // of the first, so both guards lift.
+    started.current = false;
+    completed.current = false;
+    setAnswers({});
+  };
 
   return (
     <section className="bg-thistle-white py-fl-section px-fl-margin">

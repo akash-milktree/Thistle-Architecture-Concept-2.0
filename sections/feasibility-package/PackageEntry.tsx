@@ -6,6 +6,7 @@ import { Reveal } from '../../components/animations/Reveal';
 import { Button } from '../../components/ui/Button';
 import { FeasibilityCalculator } from '../pricing/FeasibilityCalculator';
 import { pruneEmpty } from '../../lib/tina';
+import { EVENTS, track } from '../../lib/analytics';
 
 // Ed's August 2026 final brief, section 03: "Bring the product choice and
 // short pricing calculator near the top. Use the same calculator component and
@@ -70,6 +71,16 @@ const AutomatedCheckout: React.FC = () => {
   const submit = async () => {
     if (!ready) return;
     setStatus('working');
+
+    // Before the request, because the success branch leaves the page for
+    // Stripe and anything queued after that may never be sent. The fee is flat
+    // for this tier, so the value is a constant rather than a calculation.
+    track(EVENTS.paymentStarted, {
+      source: 'automated-checkout',
+      tier: 'automated',
+      value: 49.99,
+      currency: 'GBP',
+    });
 
     // Fire and forget: a lead that never reaches Stripe (no key set, or the
     // request fails) must not be lost, same principle as the pricing

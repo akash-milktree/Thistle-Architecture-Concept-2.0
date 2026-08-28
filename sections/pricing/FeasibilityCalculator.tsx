@@ -5,6 +5,7 @@ import { ArrowUpRight, ArrowLeft, RotateCcw, Check, MessageSquare } from 'lucide
 import Link from 'next/link';
 import { Reveal } from '../../components/animations/Reveal';
 import { Button } from '../../components/ui/Button';
+import { EVENTS, track, trackOnce } from '../../lib/analytics';
 import {
   getFeasibilityRoute,
   type ProjectInput,
@@ -180,6 +181,15 @@ export const FeasibilityCalculator: React.FC = () => {
 
   const handleCheckout = async () => {
     setCheckout('working');
+    // Sent before the request, not after. The successful branch ends in a
+    // window.location assignment to Stripe, and an event queued after that has
+    // no reliable chance to leave the page.
+    track(EVENTS.paymentStarted, {
+      source: 'feasibility-calculator',
+      tier: 'architectural',
+      value: result?.route === 'instant_payment' ? result.price : undefined,
+      currency: 'GBP',
+    });
     try {
       const res = await fetch('/api/checkout', {
         method: 'POST',
@@ -200,7 +210,13 @@ export const FeasibilityCalculator: React.FC = () => {
       setCheckout('error');
     }
   };
-  const set = <K extends keyof Answers>(k: K, v: Answers[K]) => setA((s) => ({ ...s, [k]: v }));
+  // The questionnaire opens empty, so the first answer of any kind is the start
+  // of the funnel. Guarded, or all twelve fields would report a start each.
+  const started = useRef(false);
+  const set = <K extends keyof Answers>(k: K, v: Answers[K]) => {
+    trackOnce(started, EVENTS.calculatorStarted, { source: 'feasibility-calculator' });
+    setA((s) => ({ ...s, [k]: v }));
+  };
 
   const contactReady = !!a.name.trim() && /.+@.+\..+/.test(a.email) && a.phone.trim().length >= 7;
   const ready =
@@ -238,6 +254,16 @@ export const FeasibilityCalculator: React.FC = () => {
         Outcome: route.route === 'instant_payment' ? `Priced £${route.price}` : `Expert Session: ${route.reason}`,
       }),
     }).catch(() => {});
+    // Completion is the reveal, which is also the moment the lead exists. The
+    // route rides along because "priced instantly" and "routed to an expert
+    // session" are two different outcomes and averaging them hides which one
+    // the calculator is actually producing.
+    track(EVENTS.calculatorCompleted, {
+      source: 'feasibility-calculator',
+      outcome: route.route,
+      value: route.route === 'instant_payment' ? route.price : undefined,
+      currency: 'GBP',
+    });
     setSubmitted(true);
   };
 

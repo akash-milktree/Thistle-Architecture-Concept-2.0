@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState, useMemo } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { Reveal } from '../../components/animations/Reveal';
 import { Button } from '../../components/ui/Button';
 import { ToolGate } from '../../components/ui/ToolGate';
+import { EVENTS, trackOnce } from '../../lib/analytics';
 import { pruneEmpty } from '../../lib/tina';
 import { NumberInput, OutputRow, formatGBP, type OutcomeCopy } from './calcUi';
 
@@ -125,7 +126,14 @@ export const HMOCalculator: React.FC<HMOCalculatorProps> = ({
     ...pruneEmpty({ label: cmsBand?.label, body: cmsBand?.body }),
   };
 
+  // Ed's funnel starts when someone actually engages, not when the page loads:
+  // every field is pre-filled with a working example, so a page view is not a
+  // calculation. The first field they change is. Guarded so the event fires
+  // once per visit rather than on all six fields.
+  const started = useRef(false);
+
   const update = (key: keyof HmoInputs, value: number) => {
+    trackOnce(started, EVENTS.calculatorStarted, { source: 'hmo-calculator' });
     setInputs((prev) => ({ ...prev, [key]: value }));
   };
 
