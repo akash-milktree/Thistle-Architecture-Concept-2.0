@@ -4,7 +4,7 @@
   "location": "England",
   "tag": "HMO",
   "buildingType": "C3 House - C4 HMO",
-  "desc": "An en suite HMO finished to a high specification, with a desk and a tea station in every room and oak joinery running throughout.",
+  "desc": "An all en suite 6 bedroom HMO, finished to a high specification, located in Eastleigh.",
   "image": {
     "src": "/images/uploads/images/projects/crescent-81/crescent-1.jpg",
     "kind": "drawing"
@@ -27,8 +27,8 @@
         "value": "Desk and tea station"
       },
       {
-        "label": "Joinery",
-        "value": "Oak and cane"
+        "label": "Number of rooms",
+        "value": "6"
       }
     ],
     "completionDate": "2025"
