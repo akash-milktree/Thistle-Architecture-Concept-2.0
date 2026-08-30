@@ -10,7 +10,7 @@
     "eyebrow": "Who We Are",
     "heading": "An Architecture Practice,",
     "headingAccent": "Built Around Feasibility.",
-    "image": "/images/site/team-at-work.jpg",
+    "image": "/images/uploads/images/site/team-at-work.jpg",
     "imageAlt": "The Thistle Architecture team working together in the studio, reviewing plans on laptops and tablets",
     "body1": "Thistle Architecture tests whether a building can become something more valuable, then designs and delivers the answer. Every scheme starts with the numbers, the planning policy, and the existing structure, so you know whether a deal stacks up before you commit to it.",
     "body2": "Thistle Architecture is part of the Thistle Group, alongside HMO Designers and HMO Checker. Some of the team also develop and invest in the same kinds of buildings our clients buy, which sharpens the advice, but it supports the architecture, it doesn't replace it."
@@ -59,44 +59,50 @@
       {
         "name": "Edward Kercher",
         "role": "Founder & Director",
-        "image": "/images/team/ed.jpg",
+        "image": "/images/uploads/images/team/ed.jpg",
         "contribution": "Sets the commercial and technical standard every feasibility is judged against, from £50,000 refurbishments to £20m construction management. Founded the Thistle Group, so the developer's perspective is built into how the practice works, not bolted on afterwards.",
         "credential": "BA (Hons) Architectural Technology, CIAT Affiliate"
       },
       {
         "name": "Kaan",
         "role": "Design & Planning Lead",
-        "image": "/images/team/kaan.jpg",
+        "image": "/images/uploads/images/team/kaan.jpg",
         "contribution": "Runs every feasibility from sketch scheme to sign-off, and is the architect most clients work with through planning. Five-plus years across residential and HMO projects, from deal sourcing through to submission.",
         "credential": "BArch in Architecture"
       },
       {
         "name": "Jan",
         "role": "Interior Designer",
-        "image": "/images/team/jan.jpg",
+        "image": "/images/uploads/images/team/jan.jpg",
         "contribution": "Makes sure every scheme is finished to a demanding standard once the architecture is settled, drawing on 25 years across interior design, graphic design, and brand management.",
         "credential": "HND Design, Associate CIPD"
       },
       {
         "name": "Adouj Abu Saadeh",
         "role": "Architectural Designer",
-        "image": "/images/team/adouj.jpg",
+        "image": "/images/uploads/images/team/adouj.jpg",
         "contribution": "Brings international practice experience in Turkey, Azerbaijan, and the UAE to the design team, since moving to the UK.",
         "credential": "BA Architecture, Bilkent University (High Honours, 2019); LEED Green Associate"
       },
       {
         "name": "Seyma",
         "role": "Architectural Designer",
-        "image": "/images/team/seyma.jpg",
+        "image": "/images/uploads/images/team/seyma.jpg",
         "contribution": "Takes projects from the first survey through design and into the planning and technical stages. Six-plus years across residential and HMO work, commercial surveying, design and planning in the UK.",
         "credential": "BSc Architecture, MA Interior Design"
       },
       {
         "name": "Beverley Gibbs",
         "role": "Practice Manager",
-        "image": "/images/team/beverley.jpg",
+        "image": "/images/uploads/images/team/beverley.jpg",
         "contribution": "Looks after the finance and admin that keeps every project on track behind the scenes, with over 20 years of practice and studio management experience.",
         "credential": "BA (Hons)"
+      },
+      {
+        "role": "Business Developer ",
+        "image": "/images/uploads/ChatGPT-Image-Aug-30,-2026,-09_56_26-AM.png",
+        "contribution": "Leads the first conversation behind every feasibility, gathering the project details and understanding the client’s commercial goals before the design team begins. \n\nCommercial-to-residential and HMO investment specialist",
+        "credential": " 10 years in estate agency, NAEA qualified"
       }
     ]
   },
