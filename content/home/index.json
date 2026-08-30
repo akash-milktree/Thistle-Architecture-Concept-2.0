@@ -6,15 +6,17 @@
     "primaryCtaLabel": "Get Your Fixed Fee",
     "secondaryCtaLabel": "See How Feasibility Works",
     "reassurance": "No obligation. Response within one working day.",
+    "videoId": "1217009975",
+    "posterImage": "/images/uploads/images/site/hero-showreel-v5-poster.jpg",
     "posterAlt": "Thistle conversion and retrofit projects across the UK",
     "metrics": [
       {
-        "value": "98.5%",
-        "label": "Planning success rate",
-        "detail": "Across all submitted schemes"
+        "value": "500+",
+        "label": "Projects Delivered",
+        "detail": "Nationwide"
       },
       {
-        "value": "5 days",
+        "value": "5 day",
         "label": "Guaranteed turn around",
         "detail": "Submission to recommendation"
       },
@@ -23,9 +25,7 @@
         "label": "Faster than traditional routes",
         "detail": "5 days vs 2 to 6 weeks"
       }
-    ],
-    "posterImage": "/images/site/hero-showreel-v5-poster.jpg",
-    "videoId": "1217009975"
+    ]
   },
   "logos": {
     "label": "Trusted by developers across the UK",
@@ -77,6 +77,17 @@
     ]
   },
   "projects": {
+    "featured": [
+      {
+        "study": "content/case-studies/beauchamp-house.json"
+      },
+      {
+        "study": "content/case-studies/bath-street-cheddar.json"
+      },
+      {
+        "study": "content/case-studies/beech-house-road-croydon.json"
+      }
+    ],
     "eyebrow": "Example Projects",
     "heading": "Buildings We Have Tested\nAnd Built.",
     "buttonLabel": "View All Our Work",
@@ -92,17 +103,6 @@
       {
         "slug": "beech-house-road-croydon",
         "line": "Feasibility → Go Recommendation"
-      }
-    ],
-    "featured": [
-      {
-        "study": "content/case-studies/beauchamp-house.json"
-      },
-      {
-        "study": "content/case-studies/bath-street-cheddar.json"
-      },
-      {
-        "study": "content/case-studies/beech-house-road-croydon.json"
       }
     ]
   },
