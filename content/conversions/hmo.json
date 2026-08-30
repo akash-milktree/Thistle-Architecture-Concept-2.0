@@ -2,7 +2,7 @@
   "metaTitle": "HMO Architects & Feasibility Specialists | Thistle Architecture",
   "metaDescription": "HMO conversion feasibility. Density, Article 4, licensing, and layout pressure-tested in five days. Fixed fee, clear Go or No-Go.",
   "hero": {
-    "label": "HMO",
+    "label": "",
     "heading": "HMO Architects & Feasibility Specialists",
     "description": "HMO feasibilities, without the guesswork. Houses of multiple occupation work on tight margins, so we pressure-test density, licensing, and layout before you put in an offer."
   },
@@ -38,14 +38,14 @@
     }
   ],
   "extraSection": {
-    "eyebrow": "Sister Product",
-    "title": "Check The Address First.",
+    "eyebrow": "HMO Checker Tool",
+    "title": "Check The Data First.",
     "body": [
       {
-        "text": "HMO Checker is part of the Thistle Group, and it answers the first question about any HMO: does this address work at all? It pulls planning and licensing data for a property and reports the Article 4 position, the licensing schemes that apply, and what has been approved nearby."
+        "text": "HMO Checker is part of the Thistle Group, and it answers the first question about any HMO: What does the data show? It pulls planning, licensing, and Comparable data for any property."
       },
       {
-        "text": "A single report is a £15.99 one-off, and there are free tools alongside it including an Article 4 checker and a conversion calculator. It is the cheapest way to rule an address out before you spend money on it."
+        "text": "A single report is a £15.99 one-off, and there are free tools alongside it including an Article 4 checker and a GDV calculator. It is the cheapest way to rule an address out before you spend further time and money on it."
       },
       {
         "text": "Where HMO Checker tells you whether the address is worth pursuing, a feasibility tells you what the building will actually give you: how many rooms, at what sizes, and whether the deal stacks up."
