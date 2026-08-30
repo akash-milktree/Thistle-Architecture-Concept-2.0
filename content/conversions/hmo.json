@@ -10,8 +10,8 @@
     "copy": "HMO conversions deliver strong yield in the right area, but Article 4 directions, density caps, and licensing thresholds can quietly kill a deal before it starts. The numbers only stack up when the regulatory picture is genuinely clear.",
     "stats": [
       {
-        "label": "Typical room count",
-        "value": "5 to 9"
+        "label": "Completed HMO's ",
+        "value": "168"
       },
       {
         "label": "Planning route",
@@ -51,7 +51,7 @@
         "text": "Where HMO Checker tells you whether the address is worth pursuing, a feasibility tells you what the building will actually give you: how many rooms, at what sizes, and whether the deal stacks up."
       }
     ],
-    "image": "/images/site/hero-winchester.jpg",
+    "image": "/images/uploads/images/site/hero-winchester.jpg",
     "imageAlt": "Aerial view over Winchester rooftops and streets",
     "ctaLabel": "Check an address on HMO Checker"
   },
@@ -73,6 +73,7 @@
       "forThisType": "Net-to-gross and per-room yield projections benchmarked against local market data."
     }
   ],
+  "relatedCaseStudy": "content/case-studies/st-johns-aylesbury.json",
   "faqs": [
     {
       "question": "Is this address inside an Article 4 direction?",
@@ -90,6 +91,5 @@
       "question": "What's the difference between a standard HMO and a large or co-living scheme?",
       "answer": "Once you're above the typical five-to-nine room range, or into shared amenity space, management and fire strategy change materially, and planning usually shifts to a Sui Generis application rather than Class C4. Larger schemes are a distinct specialism of ours."
     }
-  ],
-  "relatedCaseStudy": "content/case-studies/st-johns-aylesbury.json"
+  ]
 }
