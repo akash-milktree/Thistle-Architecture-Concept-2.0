@@ -19,8 +19,8 @@
   "facts": {
     "stats": [
       {
-        "label": "Bedrooms, all en suite",
-        "value": "8"
+        "label": "HMO Rooms",
+        "value": "11"
       },
       {
         "label": "Room sizes",
