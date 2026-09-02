@@ -89,7 +89,13 @@ const DETAILS_FALLBACK: FooterDetails = {
   productHeading: 'Product',
   expertiseHeading: 'Expertise',
   companyHeading: 'Company',
-  copyright: '© 2026 Thistle Architecture Ltd. Registered in England and Wales.',
+  // Thistle Architecture is a trading name, not a company. The registered
+  // entity behind the site is Incollective Limited, company number 13904125,
+  // confirmed by Ed on 2026-09-01. "Thistle Architecture Ltd" does not exist
+  // and naming it here, in the terms and in the privacy policy was a real
+  // problem rather than a cosmetic one: those are the pages a customer would
+  // rely on to know who they are contracting with.
+  copyright: '© 2026 Thistle Architecture, a trading name of Incollective Limited. Registered in England and Wales, company number 13904125.',
 };
 
 export const Footer: React.FC<FooterProps> = ({ cta, details, tina }) => {

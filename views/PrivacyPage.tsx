@@ -54,7 +54,7 @@ const SECTIONS_FALLBACK: LegalSection[] = [
   },
   {
     heading: "Contact Us",
-    body: "If you have questions about this Privacy Policy or our data practices, contact us at privacy@thistlearchitecture.co.uk or write to Thistle Architecture Ltd, registered in England and Wales.",
+    body: "If you have questions about this Privacy Policy or our data practices, contact us at privacy@thistlearchitecture.co.uk or write to Incollective Limited, trading as Thistle Architecture, Gatcombe House, Copnor Road, Hilsea, Portsmouth, PO3 5EJ.",
   },
 ];
 
