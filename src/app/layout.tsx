@@ -3,6 +3,7 @@ import { GeistSans } from 'geist/font/sans';
 import './globals.css';
 import { PageShell } from '@/layouts/PageShell';
 import { Analytics } from '@/components/analytics/Analytics';
+import { Clarity } from '@/components/analytics/Clarity';
 import { CookieBanner } from '@/components/analytics/CookieBanner';
 import client from '@/tina/__generated__/client';
 
@@ -46,6 +47,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en" className={GeistSans.className}>
       <body>
           <Analytics />
+          <Clarity />
           <PageShell
             settings={{ query: settings.query, variables: settings.variables, data: settings.data }}
           >

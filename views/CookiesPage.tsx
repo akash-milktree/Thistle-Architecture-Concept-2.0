@@ -38,7 +38,7 @@ const SECTIONS_FALLBACK: LegalSection[] = [
   },
   {
     heading: "Analytics Cookies",
-    body: "We use Google Analytics to understand how visitors find and use this site, so we can make it better. It sets two cookies, named _ga and _ga_PVDKSFH5GQ, which tell returning visits apart from new ones. They are only set if you choose \"Allow analytics\" when we ask. Say no and none are set, and the site works exactly the same. We never use this data to identify you, and we do not sell or share it.",
+    body: "We use two tools to understand how this site is used, and both are only switched on if you agree. Google Analytics counts visits and shows us how people find us. It sets two cookies, named _ga and _ga_PVDKSFH5GQ, which tell returning visits apart from new ones. Microsoft Clarity records how pages are used, so we can see where something is confusing or broken. It sets two cookies, named _clck and _clsk. Clarity is set to hide anything you type, so form answers, email addresses and phone numbers are never recorded. Say no and none of these are set, and the site works exactly the same. We never use any of it to identify you, and we do not sell or share it.",
   },
   {
     heading: "Marketing Cookies",
@@ -59,7 +59,7 @@ const SECTIONS_FALLBACK: LegalSection[] = [
 // owns.
 const HERO_FALLBACK = {
   title: "Cookie Policy.",
-  lastUpdated: "August 2026",
+  lastUpdated: "September 2026",
 };
 
 interface CookiesPageProps {

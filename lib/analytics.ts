@@ -25,6 +25,22 @@ export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? ''
 export const analyticsEnabled = () => GA_MEASUREMENT_ID !== '';
 
 /**
+ * Microsoft Clarity, which is heatmaps and session replay rather than counting.
+ *
+ * Set separately from GA4 so either can run without the other, and absent
+ * everywhere it has not been switched on, same as the measurement ID above.
+ *
+ * Clarity is held to a stricter rule than GA4 here: GA4 loads immediately and
+ * runs cookieless under a denied consent default, whereas nothing of Clarity is
+ * fetched at all until a visitor has actively accepted. Recording what someone
+ * does on a page is a bigger ask than counting that they were on it, and it
+ * should not begin on a maybe.
+ */
+export const CLARITY_PROJECT_ID = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID ?? '';
+
+export const clarityEnabled = () => CLARITY_PROJECT_ID !== '';
+
+/**
  * The funnel, named once here.
  *
  * GA4 event names are snake_case, up to 40 characters, and must not start with
@@ -131,6 +147,16 @@ export const CONSENT_KEY = 'thistle-cookie-consent';
  */
 export const CONSENT_REOPEN_EVENT = 'thistle-consent-reopen';
 
+/**
+ * Fired whenever the answer changes, with the new choice in `detail`.
+ *
+ * GA4 needs nothing like this because Consent Mode is a running conversation
+ * with an already-loaded script. Clarity is different: it is not loaded at all
+ * until consent exists, so something has to tell it to start. This is that
+ * signal, and it is deliberately generic rather than Clarity-shaped.
+ */
+export const CONSENT_CHANGED_EVENT = 'thistle-consent-changed';
+
 export type ConsentChoice = 'granted' | 'denied';
 
 /**
@@ -158,6 +184,13 @@ export function writeConsent(choice: ConsentChoice): void {
     // important half.
   }
   applyConsent(choice);
+  announceConsent(choice);
+}
+
+/** Tell anything that loads only on consent that the answer has moved. */
+function announceConsent(choice: ConsentChoice): void {
+  if (typeof window === 'undefined') return;
+  window.dispatchEvent(new CustomEvent(CONSENT_CHANGED_EVENT, { detail: choice }));
 }
 
 /**
@@ -175,6 +208,7 @@ export function reopenConsentPrompt(): void {
     // Nothing was stored to begin with if storage is blocked.
   }
   applyConsent('denied');
+  announceConsent('denied');
   window.dispatchEvent(new Event(CONSENT_REOPEN_EVENT));
 }
 

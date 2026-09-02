@@ -29,10 +29,12 @@ const ok = (label, cond, extra='') => { console.log(`${cond ? 'PASS' : 'FAIL'}  
 const newPage = async () => {
   const ctx = await browser.newContext();
   const hits = [];
-  await ctx.route('**://*.googletagmanager.com/**', (route) => {
-    hits.push(route.request().url());
-    route.fulfill({ status: 200, contentType: 'application/javascript', body: '' });
-  });
+  for (const pattern of ['**://*.googletagmanager.com/**', '**://*.clarity.ms/**']) {
+    await ctx.route(pattern, (route) => {
+      hits.push(route.request().url());
+      route.fulfill({ status: 200, contentType: 'application/javascript', body: '' });
+    });
+  }
   const page = await ctx.newPage();
   page.hits = hits;
   page.ctx = ctx;
@@ -122,7 +124,27 @@ await cancelled.waitForTimeout(400);
 e = await events(cancelled);
 ok('the Stripe cancel URL reports payment_abandoned', e.some((x) => x.name === 'payment_abandoned' && x.tier === 'architectural'), JSON.stringify(e));
 
-// --- 5. consent can be withdrawn --------------------------------------------
+// --- 5. Clarity does not load until consent is given -------------------------
+// Stricter than GA4 on purpose: GA4 loads immediately and stays cookieless,
+// Clarity is not fetched at all. Session replay should not start on a maybe.
+const cl = await newPage();
+await cl.goto(`${BASE}/`, { waitUntil: 'networkidle' });
+await cl.waitForTimeout(800);
+ok('no Clarity request before consent', !cl.hits.some((u) => u.includes('clarity.ms')), JSON.stringify(cl.hits));
+ok('Clarity is absent from the document too', (await cl.locator('script#clarity').count()) === 0);
+
+await cl.getByRole('button', { name: 'Allow analytics' }).click();
+await cl.waitForTimeout(1500);
+ok('Clarity loads once consent is given', cl.hits.some((u) => u.includes('clarity.ms/tag/')), JSON.stringify(cl.hits));
+
+// Declining must leave it absent, not merely quiet.
+const no = await newPage();
+await no.goto(`${BASE}/`, { waitUntil: 'networkidle' });
+await no.getByRole('button', { name: 'No thanks' }).click();
+await no.waitForTimeout(1500);
+ok('declining keeps Clarity off', !no.hits.some((u) => u.includes('clarity.ms')), JSON.stringify(no.hits));
+
+// --- 6. consent can be withdrawn --------------------------------------------
 const again = await newPage();
 await again.goto(`${BASE}/`, { waitUntil: 'networkidle' });
 await again.getByRole('button', { name: 'Allow analytics' }).click();

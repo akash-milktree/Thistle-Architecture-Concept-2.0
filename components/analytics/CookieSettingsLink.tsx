@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { analyticsEnabled, reopenConsentPrompt } from '../../lib/analytics';
+import { analyticsEnabled, clarityEnabled, reopenConsentPrompt } from '../../lib/analytics';
 
 /**
  * "Cookie settings" in the footer. Withdraws consent and asks again.
@@ -14,7 +14,7 @@ import { analyticsEnabled, reopenConsentPrompt } from '../../lib/analytics';
  * consent to change and the link would lead to a prompt that never appears.
  */
 export const CookieSettingsLink: React.FC<{ className?: string }> = ({ className }) => {
-  if (!analyticsEnabled()) return null;
+  if (!analyticsEnabled() && !clarityEnabled()) return null;
 
   return (
     <button type="button" onClick={reopenConsentPrompt} className={className}>

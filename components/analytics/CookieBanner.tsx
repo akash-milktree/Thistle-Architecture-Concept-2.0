@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
-import { CONSENT_REOPEN_EVENT, analyticsEnabled, readConsent, writeConsent } from '../../lib/analytics';
+import { CONSENT_REOPEN_EVENT, analyticsEnabled, clarityEnabled, readConsent, writeConsent } from '../../lib/analytics';
 
 /**
  * The analytics consent prompt.
@@ -24,8 +24,12 @@ export const CookieBanner: React.FC = () => {
   // who has already answered.
   const [show, setShow] = useState(false);
 
+  // Either tool being switched on is reason to ask. Asking only when GA4 is
+  // configured would have let Clarity run behind an unasked question.
+  const measuring = analyticsEnabled() || clarityEnabled();
+
   useEffect(() => {
-    if (!analyticsEnabled()) return;
+    if (!measuring) return;
     if (readConsent() === null) setShow(true);
 
     // The footer's "Cookie settings" link fires this. Without it, accepting once
@@ -33,14 +37,14 @@ export const CookieBanner: React.FC = () => {
     const reopen = () => setShow(true);
     window.addEventListener(CONSENT_REOPEN_EVENT, reopen);
     return () => window.removeEventListener(CONSENT_REOPEN_EVENT, reopen);
-  }, []);
+  }, [measuring]);
 
   const answer = (choice: 'granted' | 'denied') => {
     writeConsent(choice);
     setShow(false);
   };
 
-  if (!analyticsEnabled()) return null;
+  if (!measuring) return null;
 
   return (
     <AnimatePresence>
@@ -57,9 +61,10 @@ export const CookieBanner: React.FC = () => {
         >
           <div className="mx-auto max-w-[1360px] rounded-2xl border border-thistle-black/10 bg-white/95 backdrop-blur-xl shadow-xl shadow-thistle-black/[0.08] p-5 sm:p-6 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <p className="text-sm leading-relaxed text-thistle-black/70 max-w-2xl">
-              We would like to use analytics cookies to see how people find and use this
-              site. They help us make it better and are never used to identify you or to
-              advertise to you. You can say no and the site works exactly the same.{' '}
+              We would like to use analytics cookies to see how people find this site, and
+              to record how pages are used so we can fix what does not work. Nothing you
+              type is recorded, and none of it is used to identify you or to advertise to
+              you. You can say no and the site works exactly the same.{' '}
               <Link href="/cookies" className="text-thistle-green font-medium underline underline-offset-2">
                 Our cookie policy
               </Link>
