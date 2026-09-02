@@ -24,12 +24,26 @@ import {
  * yet, has no request to clarity.ms in their network tab at all, rather than a
  * request that promises to behave.
  *
- * WHAT IT RECORDS, AND THE ONE SETTING THAT MATTERS. Clarity replays sessions,
- * so it sees the feasibility questionnaire and the checkout forms. Its masking
- * must stay on the strict setting in the Clarity dashboard, under Settings then
- * Masking, so that typed text is never captured. That is a dashboard control
- * rather than a code one, which is exactly why it is written down here: nothing
- * in this repository will stop it being turned off.
+ * TWO DASHBOARD SETTINGS DECIDE WHETHER THIS IS SAFE TO RUN AT ALL, and neither
+ * of them lives in this repository.
+ *
+ *  1. Sharing data with Microsoft Advertising must be OFF. Left at its default
+ *     it is on, and switching Clarity on then also sets Microsoft advertising
+ *     cookies (MUID, MR, SRM_B, ANONCHK) and fires a cookie sync to
+ *     c.bing.com. That was measured on the live site on 2 September 2026, an
+ *     hour after this component first shipped, and Clarity was switched back
+ *     off the same day. It matters because the cookie policy on this site says
+ *     no advertising cookies are used, and the GA4 consent config pins all
+ *     three advertising types to denied. The default configuration makes both
+ *     of those statements untrue.
+ *  2. Masking must stay Strict, so that text typed into the feasibility
+ *     questionnaire and the checkout is never captured in a replay.
+ *
+ * NEXT_PUBLIC_CLARITY_PROJECT_ID is deliberately unset in production until
+ * both are confirmed. Re-enable by setting it, redeploying, and running
+ * `npm run test:clarity`, which fails on exactly the advertising cookies that
+ * caused this. The offline suite cannot see any of it: it intercepts
+ * clarity.ms and so never reaches the real tag.
  */
 export const Clarity: React.FC = () => {
   // Starts false and can only become true after mount, because the answer lives
