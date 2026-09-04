@@ -1,6 +1,6 @@
 import type { Collection } from 'tinacms';
 
-// The three legal pages: /terms, /privacy and /cookies.
+// The legal pages: /terms, /privacy, /cookies and /feasibility-disclaimer.
 //
 // One collection rather than three singletons, because all three are the same
 // document — a title, a date, and a run of headed sections — and the only thing
@@ -31,7 +31,8 @@ export const legalCollection: Collection = {
     allowedActions: { create: false, delete: false },
     filename: {
       // Renaming a document here would 404 the page it belongs to, and the
-      // three legal URLs are linked from the footer of every page on the site.
+      // legal URLs are linked from the footer of every page on the site, and the
+      // disclaimer is linked from the tick-box a client has to accept to pay.
       readonly: true,
     },
   },
@@ -75,9 +76,49 @@ export const legalCollection: Collection = {
           required: true,
           ui: { component: 'textarea' },
           description:
-            'One paragraph. Several of these state a specific commitment — the 7-year retention period, the limitation of liability, the England and Wales jurisdiction, the privacy@ address people are told to write to. Check any of those still hold before changing them.',
+            'One paragraph, or several separated by a blank line. Several of these state a specific commitment — the 7-year retention period, the limitation of liability, the England and Wales jurisdiction, the privacy@ address people are told to write to. Check any of those still hold before changing them.',
+        },
+        {
+          type: 'string',
+          name: 'bullets',
+          label: 'Bulleted list',
+          list: true,
+          description:
+            'Optional, and shown under the paragraph above. Used by the feasibility disclaimer, where the list of what a report is not has to read as a list rather than as prose.',
         },
       ],
+    },
+
+    // The feasibility disclaimer needs three fields the other three documents
+    // do not. They are optional here rather than in a collection of their own,
+    // because splitting one document out would mean a second schema, a second
+    // view and a second set of markers for a page that is otherwise identical.
+    {
+      type: 'string',
+      name: 'intro',
+      label: 'Opening paragraph',
+      ui: { component: 'textarea' },
+      description:
+        'Feasibility disclaimer only. The paragraph between the title and the first numbered section, before any heading.',
+    },
+    // The version number and date are deliberately NOT here. They live in
+    // lib/disclaimer.ts, because the same pair has to appear on this page and
+    // inside the tick-box label at checkout, and two editable copies of a
+    // version number is two copies that can disagree. A client needs to be able
+    // to point at what they accepted, so that number has to be one thing.
+    {
+      type: 'string',
+      name: 'liabilityCap',
+      label: 'Liability cap',
+      description:
+        'Feasibility disclaimer only. The money figure in section 8, written as it should read, e.g. "£25,000". IT IS BLANK UNTIL ED SETS IT, and the page says so in place of the number rather than inventing one. Nobody here can decide this figure.',
+    },
+    {
+      type: 'string',
+      name: 'piLimit',
+      label: 'Professional indemnity limit',
+      description:
+        'Feasibility disclaimer only. The limit of indemnity in section 8, e.g. "£1,000,000". Same as above: blank until confirmed, and it must match the actual policy.',
     },
 
     // Search-result copy. It never appears on the page itself, so it is edited

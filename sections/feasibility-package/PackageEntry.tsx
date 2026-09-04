@@ -7,6 +7,8 @@ import { Button } from '../../components/ui/Button';
 import { FeasibilityCalculator } from '../pricing/FeasibilityCalculator';
 import { pruneEmpty } from '../../lib/tina';
 import { EVENTS, track } from '../../lib/analytics';
+import { DisclaimerAcceptance } from '../../components/checkout/DisclaimerAcceptance';
+import { DISCLAIMER_VERSION } from '../../lib/disclaimer';
 
 // Ed's August 2026 final brief, section 03: "Bring the product choice and
 // short pricing calculator near the top. Use the same calculator component and
@@ -65,11 +67,22 @@ const AutomatedCheckout: React.FC = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [status, setStatus] = useState<'idle' | 'working' | 'error'>('idle');
+  // Unticked on every mount, nothing persists it. R2.3.
+  const [accepted, setAccepted] = useState(false);
+  const [disclaimerError, setDisclaimerError] = useState(false);
 
+  // The tick is deliberately NOT folded into `ready`. Leaving the button live
+  // and refusing on click means the client is told what is missing, where a
+  // silently disabled button leaves them guessing which field is wrong.
   const ready = !!name.trim() && emailOk(email) && phone.trim().length >= 7;
 
   const submit = async () => {
     if (!ready) return;
+    if (!accepted) {
+      setDisclaimerError(true);
+      return;
+    }
+    setDisclaimerError(false);
     setStatus('working');
 
     // Before the request, because the success branch leaves the page for
@@ -95,13 +108,28 @@ const AutomatedCheckout: React.FC = () => {
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tier: 'automated', email, name, phone }),
+        body: JSON.stringify({
+          tier: 'automated',
+          email,
+          name,
+          phone,
+          disclaimerAccepted: true,
+          disclaimerVersion: DISCLAIMER_VERSION,
+        }),
       });
       const data = await res.json();
       if (data.route === 'payment' && data.url) {
         window.location.href = data.url;
         return;
       }
+      // The server refused the tick. Unreachable via the button, but if the
+      // two halves ever disagree the client sees the agreed wording.
+      if (res.status === 422) {
+        setDisclaimerError(true);
+        setStatus('idle');
+        return;
+      }
+
       // Card payment not switched on yet. The lead is already captured above,
       // so send them somewhere a human will pick it up rather than a dead end.
       window.location.href = '/contact';
@@ -140,13 +168,21 @@ const AutomatedCheckout: React.FC = () => {
           />
         </div>
       </div>
+      {/* R2.1: same screen as the pay button, and above it. */}
+      <DisclaimerAcceptance
+        checked={accepted}
+        onChange={(v) => { setAccepted(v); if (v) setDisclaimerError(false); }}
+        showError={disclaimerError}
+        id="disclaimer-automated"
+      />
+
       <Button
         variant="outline"
         size="md"
         icon={<ArrowUpRight size={16} />}
         onClick={submit}
         disabled={!ready || status === 'working'}
-        className="w-full justify-center"
+        className="w-full justify-center mt-fl-4"
       >
         {status === 'working' ? 'One moment…' : `Pay ${AUTOMATED_PRICE} Now`}
       </Button>

@@ -1,0 +1,64 @@
+{
+  "title": "Feasibility Report — Basis and Limitations.",
+  "lastUpdated": "September 2026",
+  "metaTitle": "Feasibility Report: Basis and Limitations",
+  "metaDescription": "What a Thistle Architecture feasibility report is, what it is not, and the limits of our responsibility for it. Please read before you instruct us.",
+  "liabilityCap": "",
+  "piLimit": "",
+  "intro": "Please read this before you instruct us. It explains what a Thistle Architecture feasibility report is, what it is not, and the limits of our responsibility for it. By ticking the box at checkout you confirm you have read and accepted it.",
+  "sections": [
+    {
+      "heading": "1. What the report is for",
+      "body": "A feasibility report is an early-stage appraisal. Its purpose is to inform your own assessment of whether a property merits further investigation and expenditure, and to set out the planning strategy and the design issues that would need to be resolved if you proceed.\n\nIt is information to feed into a decision you will make yourself. It is not a recommendation to acquire a property, it is not advice on the price to be paid or on the merits of the investment, and it is not advice on whether or how to fund it. Those decisions are yours, taken on your own judgement and on the advice of your own solicitor, surveyor, valuer, accountant and lender."
+    },
+    {
+      "heading": "2. How we prepare it",
+      "body": "We prepare it with the reasonable skill, care and diligence to be expected of a competent architect carrying out early-stage feasibility work. It is a desktop study, compiled from publicly available information, from information you supply, and from commercial data platforms. We rely on that information without independently verifying it. The sources we used, and the date each was accessed, are listed in your report.\n\nWe use software tools, including data platforms and AI-assisted research tools, to gather and organise source material. Every finding that carries weight in the report is checked against primary sources and reviewed by the registered architect responsible for the work. We remain fully responsible for the content of the report."
+    },
+    {
+      "heading": "3. What the report is not",
+      "body": "It is not, and is not a substitute for, any of the following. We do not carry these out unless you separately instruct us to.",
+      "bullets": [
+        "A survey. No RICS Home Survey at any level, no building survey and no condition report. We do not open up, test or inspect the structure, roof, floors, foundations, drainage or services, and we express no opinion on structural adequacy, movement, damp or decay.",
+        "A measured survey. Every dimension, floor area and room count in the report is approximate and needs confirming by measured survey before it is relied on.",
+        "A valuation. We are architects, not RICS Registered Valuers. Any figure for rent, value, yield, cost or return is an illustrative modelling output based on stated assumptions — not a valuation prepared under the RICS Red Book, and not to be presented or relied on as one, or submitted to a lender.",
+        "Legal advice. No investigation of title, no review of a legal or auction pack, and no advice on restrictive covenants, easements, rights of light, boundaries or party wall matters. A restrictive covenant limiting a property to use as a single private dwellinghouse can defeat an HMO scheme entirely, whatever the planning position — only your solicitor can tell you whether one exists.",
+        "Searches. No local authority, drainage and water, environmental or mining search is carried out or reviewed.",
+        "Hazard surveys. No asbestos, contaminated land, radon or invasive species survey.",
+        "Financial, tax or investment advice. We are not authorised or regulated by the Financial Conduct Authority. We give no advice on finance, mortgages, tax, ownership structure or insurance. Property investment carries risk: returns are variable, are not guaranteed and can be negative."
+      ]
+    },
+    {
+      "heading": "",
+      "body": "Where the report flags something as needing further investigation, that is a signpost and not an exhaustive list. The absence of a matter from the report is not a statement that the matter does not exist."
+    },
+    {
+      "heading": "4. Planning and licensing — no guarantee",
+      "body": "We cannot and do not guarantee that planning permission, prior approval or any other consent will be granted, or granted within any timescale, or granted free of onerous conditions.\n\nPlanning applications are determined by the local planning authority on the merits at the time of the decision. The range of considerations is wide, the weight given to each is a matter for the decision-maker, and officer recommendations are sometimes overturned by planning committees. Any view we express on the likely outcome is our professional opinion as at the date of the report — not a prediction and not a warranty.\n\nPolicy moves, sometimes at short notice. National and local planning policy, housing land supply positions and permitted development rights all change, and an Article 4 direction removing HMO permitted development rights can be made at any time and may defeat a scheme after our report is written.\n\nHMO licensing is a separate regime from planning, with a different decision-maker and different tests. A planning permission gives you no entitlement to a licence, and we give no warranty that one will be granted, on what conditions, or when."
+    },
+    {
+      "heading": "5. Buying at auction",
+      "body": "If you are buying at auction, assume you will be contractually bound on the fall of the hammer, or at the close of an online timed auction, with no cooling-off period and no right to withdraw — whatever our report says.\n\nThe legal pack is the seller's disclosure, not a warranty. Special conditions of sale routinely pass the seller's costs to the buyer and put the buyer on notice of defects. Buyer's premiums, administration fees and reservation fees are payable on top of the hammer price and are not included in our appraisal unless expressly itemised.\n\nYou must obtain the legal pack and have your solicitor review it before you bid. Our report is not a substitute for that review."
+    },
+    {
+      "heading": "6. The report speaks as at its date",
+      "body": "A report speaks only as at its date. We are under no obligation to update it for any change in law, policy, market conditions, the condition of a property or the data we relied on, and we will not do so unless you instruct us separately. Planning policy and HMO regulation move quickly: please do not rely on a report more than three months after its date without asking us to review it."
+    },
+    {
+      "heading": "7. Who the report is for",
+      "body": "Each report is prepared for the named client alone, for the named property, and for the purpose stated in it. We accept no duty of care and no responsibility to any other person into whose hands it may come, including any lender, funder, valuer, broker, insurer, joint venture partner, co-investor, purchaser or tenant. Any such person relies on it entirely at their own risk.\n\nThe report may not be disclosed, quoted from or relied on by anyone else without our written consent. If we consent to disclosure, that consent is for information only and creates no duty to the recipient. Reliance by a third party can be created only by a separate written reliance letter signed by us, for which we may charge a fee."
+    },
+    {
+      "heading": "8. The limit of our financial responsibility",
+      "body": "Our total liability to you arising out of or in connection with a feasibility report, whether in contract, in tort including negligence, for breach of statutory duty or otherwise, is limited in aggregate to the greater of {{liabilityCap}} and ten times the fees you paid us for that report. We do not accept liability for loss of profit, loss of rent, loss of revenue, loss of opportunity, loss of anticipated savings, or any indirect or consequential loss.\n\nThis is a deliberate allocation of risk. A feasibility report is a high-level appraisal prepared for a modest fee relative to the sums you will commit if you proceed, and the decision to proceed — together with the detailed diligence supporting it — is yours. A higher limit of liability is available on request for an additional fee, quoted before we start. Please ask if you would like one.\n\nWe hold professional indemnity insurance with a limit of indemnity of {{piLimit}} for each and every claim.\n\nWhere more than one party is responsible for a loss, our liability is limited to the proportion of that loss which it is just and equitable for us to pay having regard to the extent of our own responsibility. In plain terms: if another party is partly to blame and cannot pay, you may not be able to recover their share from us."
+    },
+    {
+      "heading": "9. What we do not limit",
+      "body": "Nothing here excludes or limits our liability for death or personal injury caused by our negligence; for fraud, fraudulent misrepresentation, deliberate concealment or dishonesty; for any liability under the Defective Premises Act 1972; where you are a consumer, for our obligation under section 49 of the Consumer Rights Act 2015 to perform our services with reasonable care and skill, or your right to recover the price you paid; or for any other liability that cannot lawfully be excluded or limited.\n\nEach limitation above is a separate provision. If any part is held unenforceable, the rest continues in full force. Nothing here prevents you raising a concern about the conduct or competence of an architect with the Architects Registration Board."
+    },
+    {
+      "heading": "10. Regulation, complaints and governing law",
+      "body": "Thistle Architecture's work is carried out under the control and management of an architect registered with and regulated by the Architects Registration Board. We operate a written complaints-handling procedure, available on request: we acknowledge a complaint within 10 working days and respond substantively within 30 working days. If your complaint concerns the conduct or competence of an architect, you may raise it with the Architects Registration Board at arb.org.uk.\n\nThis document and our appointment are governed by the law of England and Wales, and the courts of England and Wales have exclusive jurisdiction."
+    }
+  ]
+}

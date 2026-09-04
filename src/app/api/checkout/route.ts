@@ -1,5 +1,10 @@
 import { NextResponse } from 'next/server';
 import { getFeasibilityRoute, type ProjectInput } from '@/data/pricingData';
+import {
+  DISCLAIMER_ERROR,
+  disclaimerAccepted,
+  type DisclaimerAcceptance,
+} from '@/lib/disclaimer';
 
 export const runtime = 'nodejs';
 
@@ -31,7 +36,7 @@ const STRIPE_API = 'https://api.stripe.com/v1/checkout/sessions';
 const SITE = 'https://www.thistlearchitecture.co.uk';
 const AUTOMATED_FEE_PENCE = 4999;
 
-interface CheckoutBody {
+interface CheckoutBody extends DisclaimerAcceptance {
   tier?: 'architectural' | 'automated';
   project?: ProjectInput;
   email?: string;
@@ -63,6 +68,26 @@ export async function POST(request: Request) {
     body = (await request.json()) as CheckoutBody;
   } catch {
     return NextResponse.json({ ok: false, error: 'invalid json' }, { status: 400 });
+  }
+
+  // THE DISCLAIMER GATE, BEFORE ANYTHING ELSE HAPPENS.
+  //
+  // Ed's brief R2.5: the block is enforced server-side as well as in the
+  // browser, because "client-side validation on its own is not enough", and his
+  // acceptance criteria test it by sending the request directly and bypassing
+  // the page. So this sits above the Stripe key check and above both product
+  // branches: there is no route through this handler that reaches a payment
+  // without a tick, including the fallback that captures a lead when Stripe is
+  // switched off.
+  //
+  // 422 rather than 400: the request is well formed, it is the state it
+  // describes that is not acceptable. The message is section 5.3 verbatim, so a
+  // caller that surfaces it shows the client the agreed wording.
+  if (!disclaimerAccepted(body)) {
+    return NextResponse.json(
+      { ok: false, error: DISCLAIMER_ERROR, field: 'disclaimerAccepted' },
+      { status: 422 },
+    );
   }
 
   const key = process.env.STRIPE_SECRET_KEY;

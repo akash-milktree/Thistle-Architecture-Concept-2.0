@@ -17,7 +17,8 @@
     "test:images": "node --experimental-strip-types scripts/test-image-normalise.mjs",
     "test:video": "node --experimental-strip-types scripts/test-vimeo-embed.mjs",
     "test:analytics": "node scripts/test-analytics.mjs",
-    "test:clarity": "node scripts/test-clarity-live.mjs"
+    "test:clarity": "node scripts/test-clarity-live.mjs",
+    "test:disclaimer": "node scripts/test-disclaimer.mjs"
   },
   "dependencies": {
     "@tinacms/cli": "^2.6.1",

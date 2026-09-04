@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { Reveal } from '../../components/animations/Reveal';
 import { Button } from '../../components/ui/Button';
 import { EVENTS, track, trackOnce } from '../../lib/analytics';
+import { DisclaimerAcceptance } from '../../components/checkout/DisclaimerAcceptance';
+import { DISCLAIMER_ERROR, DISCLAIMER_VERSION } from '../../lib/disclaimer';
 import {
   getFeasibilityRoute,
   type ProjectInput,
@@ -179,7 +181,20 @@ export const FeasibilityCalculator: React.FC = () => {
   }, [submitted]);
   const [checkout, setCheckout] = useState<'idle' | 'working' | 'error'>('idle');
 
+  // Unticked on every mount, with nothing persisting it. R2.3 of the brief, and
+  // the acceptance criteria check it survives a browser back.
+  const [accepted, setAccepted] = useState(false);
+  const [disclaimerError, setDisclaimerError] = useState(false);
+
   const handleCheckout = async () => {
+    // The browser half of the block. The server refuses too, which is the half
+    // that counts, but stopping here means the client sees section 5.3 rather
+    // than a failed request.
+    if (!accepted) {
+      setDisclaimerError(true);
+      return;
+    }
+    setDisclaimerError(false);
     setCheckout('working');
     // Sent before the request, not after. The successful branch ends in a
     // window.location assignment to Stripe, and an event queued after that has
@@ -194,13 +209,30 @@ export const FeasibilityCalculator: React.FC = () => {
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ project: toProject(a), email: a.email, name: a.name }),
+        body: JSON.stringify({
+          project: toProject(a),
+          email: a.email,
+          name: a.name,
+          // Sent so the request records which wording was on screen, rather
+          // than which wording happens to be deployed when it arrives.
+          disclaimerAccepted: true,
+          disclaimerVersion: DISCLAIMER_VERSION,
+        }),
       });
       const data = await res.json();
       if (data.route === 'payment' && data.url) {
         window.location.href = data.url;
         return;
       }
+      // The server refused the tick. Should be unreachable, since the button
+      // is blocked above, but if the two ever disagree the client must see the
+      // agreed wording rather than be sent to the contact page.
+      if (res.status === 422) {
+        setDisclaimerError(true);
+        setCheckout('idle');
+        return;
+      }
+
       // Either payment is not switched on yet, or the server disagreed and
       // routed this to an Expert Session. Both go to the contact page rather
       // than leaving the person on a dead button; their lead is already
@@ -301,7 +333,15 @@ export const FeasibilityCalculator: React.FC = () => {
                 <span className="font-semibold text-thistle-black">£{money(result.price / 2)}</span>. You then
                 complete your project brief, and the balance is due before your feasibility is delivered.
               </p>
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-fl-4">
+              {/* R2.1: on the same screen as the pay button and ABOVE it. */}
+              <DisclaimerAcceptance
+                checked={accepted}
+                onChange={(v) => { setAccepted(v); if (v) setDisclaimerError(false); }}
+                showError={disclaimerError}
+                id="disclaimer-architectural"
+              />
+
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-fl-4 mt-fl-5">
                 {/* Posts the answers, not the price. The server recalculates
                     and charges its own number, because the one on screen is a
                     value the customer controls. Until Stripe keys are set the
