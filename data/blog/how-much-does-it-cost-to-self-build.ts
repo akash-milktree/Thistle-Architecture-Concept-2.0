@@ -1,8 +1,8 @@
 import type { BlogPost } from '../blogData';
 
 export const post: BlogPost = {
-  slug: "how-much-does-it-cost-to-self-build-in-2023",
-  title: "How Much Does it Cost to Self Build in 2024?",
+  slug: "how-much-does-it-cost-to-self-build",
+  title: "How Much Does it Cost to Self Build?",
   excerpt: "A self build can be a big undertaking, so it’s important to understand how much self build homes cost and your financial considerations.",
   content: [
     "Updated August 2024",
@@ -72,7 +72,7 @@ export const post: BlogPost = {
     "Here at Thistle Architecture, we specialise in self building and architecture, and are able to help and advise on various elements of self building.",
     "We would recommend spending time doing your own research to get a better understanding of self build costs. However, if you are looking for some tailored advice, please don’t hesitate to get in touch and we’ll be happy to help.",
   ],
-  image: "/images/blog/how-much-does-it-cost-to-self-build-in-2023.jpg",
+  image: "/images/blog/how-much-does-it-cost-to-self-build.jpg",
   date: "June 7, 2024",
   readTime: "7 min read",
   category: "Self Build",

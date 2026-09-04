@@ -1,7 +1,7 @@
 {
   "kind": "project",
   "title": "Southsea Co-Living",
-  "location": "Festing Road, Southsea, Portsmouth",
+  "location": "Southsea, Portsmouth",
   "tag": "Co-Living",
   "desc": "An eight-bedroom luxury co-living conversion inside a bay-fronted Victorian terrace in Southsea.",
   "image": {
@@ -93,7 +93,7 @@
     ]
   },
   "writeup": {
-    "approach": "The building is a bay-fronted Victorian terrace on Festing Road, dormers already in the roof, shops either side. Inside, the communal floor runs open plan: kitchen, dining and living in one length on a herringbone floor, with the kitchen tucked along the far wall rather than closed off. That single decision is what makes co-living work here. Eight people sharing a corridor is a house share; eight people sharing a room this size is somewhere you would choose to live.",
+    "approach": "The building is a bay-fronted Victorian terrace on A residential street with dormers already in the roof and shops either side. Inside, the communal floor runs open plan: kitchen, dining and living in one length on a herringbone floor, with the kitchen tucked along the far wall rather than closed off. That single decision is what makes co-living work here. Eight people sharing a corridor is a house share; eight people sharing a room this size is somewhere you would choose to live.",
     "outcome": "Complete, and the most recent of the practice's Portsmouth HMO projects."
   }
 }

@@ -34,7 +34,7 @@ export const post: BlogPost = {
     "- [My Builder (per m2)](https://www.mybuilder.com/pricing-guides/architect-costs/new-build-house-costs): Estimates £1,400 - £3,000",
     "- [Urbanist Architecture (per m2)](https://urbanistarchitecture.co.uk/cost-to-build-a-house-uk/): £1,750 - £3,000",
     "- [Household Quotes (per m2)](https://householdquotes.co.uk/cost-to-build-a-house/): £1,800 - £3,000",
-    "Take a read of our article [How Much Does Self Building Cost in 2023](/blog/how-much-does-it-cost-to-self-build-in-2023) for more details.",
+    "Take a read of our article [How Much Does Self Building Cost in 2023](/blog/how-much-does-it-cost-to-self-build) for more details.",
     "Interior design, supplies, and installation can also add around £15,000-£22,000 to the overall cost, with the choice of building materials significantly affecting the final expense. For example, timber frames tend to be more expensive.",
     "## Cost Considerations for Buying a House in the UK",
     "The cost of purchasing a house in the UK really depends on the location, but as of August 2023, the average house price stood at £291,000, [according to the ONS](https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/housepriceindex/august2023).",

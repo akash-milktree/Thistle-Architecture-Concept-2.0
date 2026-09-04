@@ -5,6 +5,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from '../components/animations/Reveal';
 import { pruneEmpty } from '../lib/tina';
 import { EVENTS, track } from '../lib/analytics';
+import { PrivacyNote } from '../components/ui/PrivacyNote';
 
 const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
@@ -172,6 +173,8 @@ export const ExpertSessionCard: React.FC<ExpertSessionCardProps> = ({ copy, tina
                   <ArrowUpRight size={16} />
                 </button>
                 <p className="text-xs text-thistle-black/45" data-tina-field={tina?.reassurance}>{c.reassurance}</p>
+                {/* Item 77. */}
+                <PrivacyNote purpose="We use these details to arrange the call and to follow up about your project." />
               </div>
               {status === 'error' && (
                 <p aria-live="polite" className="text-xs text-red-700">

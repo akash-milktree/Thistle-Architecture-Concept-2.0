@@ -23,7 +23,7 @@ export const seedViews: Record<string, number> = {
   "buying-vs-building-a-home-in-the-uk": 76,
   "class-ma-prior-approval-what-you-need-to-know": 18,
   "class-q-barn-conversions": 4,
-  "how-much-does-it-cost-to-self-build-in-2023": 21,
+  "how-much-does-it-cost-to-self-build": 21,
   "how-to-find-the-right-self-build-architect": 36,
   "how-to-fund-a-self-build-home": 12,
   "self-build-icfs-construction": 48,

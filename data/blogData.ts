@@ -65,7 +65,7 @@ import { post as masonryProsCons } from './blog/10-pros-and-cons-of-masonry-for-
 import { post as icfsConstruction } from './blog/self-build-icfs-construction';
 import { post as timberFrame } from './blog/self-build-timber-frame-house';
 import { post as sipsConstruction } from './blog/self-build-sips-construction';
-import { post as selfBuildCost } from './blog/how-much-does-it-cost-to-self-build-in-2023';
+import { post as selfBuildCost } from './blog/how-much-does-it-cost-to-self-build';
 import { post as fundSelfBuild } from './blog/how-to-fund-a-self-build-home';
 import { post as topTenConsiderations } from './blog/top-10-considerations-when-it-comes-to-self-building';
 import { post as findSelfBuildArchitect } from './blog/how-to-find-the-right-self-build-architect';

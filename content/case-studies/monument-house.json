@@ -3,7 +3,7 @@
   "title": "Monument House",
   "location": "Winchester, Hampshire",
   "tag": "Office to Flats",
-  "desc": "A building on Winchester's Upper High Street converted into four apartments, with the modern uPVC swapped back for traditional sash windows.",
+  "desc": "A period building in central Winchester converted into four apartments, with the modern uPVC swapped back for traditional sash windows.",
   "image": {
     "src": "/images/projects/monument-house-render-2.webp",
     "kind": "drawing"
@@ -53,7 +53,7 @@
     "unitsAfter": "4 apartments"
   },
   "writeup": {
-    "challenge": "5 Upper High Street sits in the middle of Winchester, a city where what the building looks like from the street is not a detail. It had picked up modern uPVC windows along the way, which is the sort of thing that reads as wrong on a High Street elevation long before anyone can say why.",
+    "challenge": "The building sits in the middle of Winchester, a city where what the building looks like from the street is not a detail. It had picked up modern uPVC windows along the way, which is the sort of thing that reads as wrong on a High Street elevation long before anyone can say why.",
     "approach": "Four apartments: two at ground floor of 90 and 90.4 sqm, and two above at 46.6 and 69.9 sqm, each with its own kitchen and lounge, bathroom and hall. All the modern uPVC windows are replaced with traditional design sash windows, sized to the existing openings, with the contractor pricing both timber and uPVC alternatives so the client could make that call on cost rather than have it made for them. A new front courtyard was proposed to the street.",
     "outcome": "Documented to tender. The fire strategy does the heavy lifting on a conversion like this: a 60-minute protected stairwell serving all four flats, every steel encased to 60 minutes, and a 60-minute rating to the hallway and landings. The drone footage on our homepage is this building's own street."
   }

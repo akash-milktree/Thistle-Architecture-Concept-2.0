@@ -36,6 +36,14 @@ const nextConfig: NextConfig = {
         destination: '/blog',
         statusCode: 301,
       },
+      // Item 93. The article was published at a URL saying 2023, under a title
+      // saying 2024, in June 2024. The year is out of the slug entirely now, so
+      // it cannot fall out of step again, and the old URL 301s here.
+      {
+        source: '/blog/how-much-does-it-cost-to-self-build-in-2023',
+        destination: '/blog/how-much-does-it-cost-to-self-build',
+        statusCode: 301,
+      },
       // The rest of the Wix top-level nav. Added 2026-08-05, after the domain
       // moved off Wix and these four started returning 404 on the real domain:
       // any inbound link, bookmark or search result pointing at them was dead.
@@ -125,7 +133,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/how-much-does-it-cost-to-self-build-in-2023',
-        destination: '/blog/how-much-does-it-cost-to-self-build-in-2023',
+        destination: '/blog/how-much-does-it-cost-to-self-build',
         statusCode: 301,
       },
       {

@@ -73,7 +73,7 @@ export const post: BlogPost = {
     "| Weather Resistance | Mid | Lowest | Highest |",
     "| Resale Value | Mid | Lowest | Highest |",
     "## Cost Comparison: Brick vs Stone vs Cinder Blocks in 2023",
-    "Here is a breakdown of the average raw material [self build costs](/blog/how-much-does-it-cost-to-self-build-in-2023) for each option, excluding the cost of the labour involved.",
+    "Here is a breakdown of the average raw material [self build costs](/blog/how-much-does-it-cost-to-self-build) for each option, excluding the cost of the labour involved.",
     "### Bricks",
     "From £300 to £1,000 per 1,000 bricks or more, depending on the specifications and quality.",
     "### Stone",

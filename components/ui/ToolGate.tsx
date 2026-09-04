@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { EVENTS, track, type AnalyticsSource } from '../../lib/analytics';
+import { PrivacyNote } from './PrivacyNote';
 
 const UNLOCK_KEY = 'thistle-tool-unlocked';
 const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -92,6 +93,12 @@ export const ToolGate: React.FC<ToolGateProps> = ({ source, extra, children }) =
           {status === 'error' && (
             <p className="text-xs text-red-700 mt-fl-2">Something went wrong. Please try again.</p>
           )}
+          {/* Item 77: said where the address goes, beside the field it is typed
+              into, rather than only on a page nobody opens mid-form. */}
+          <PrivacyNote
+            className="mt-fl-3"
+            purpose="We use your email to send this breakdown and to follow up about your project."
+          />
         </div>
       </div>
     </div>

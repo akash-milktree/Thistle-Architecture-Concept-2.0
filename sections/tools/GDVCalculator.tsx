@@ -6,6 +6,7 @@ import { Reveal } from '../../components/animations/Reveal';
 import { Button } from '../../components/ui/Button';
 import { useRouter } from 'next/navigation';
 import { ToolGate } from '../../components/ui/ToolGate';
+import { OutputCaveat } from '../../components/tools/OutputCaveat';
 import { EVENTS, trackOnce } from '../../lib/analytics';
 import { pruneEmpty } from '../../lib/tina';
 import { NumberInput, OutputRow, formatGBP, type OutcomeCopy } from './calcUi';
@@ -145,6 +146,7 @@ export const GDVCalculator: React.FC<GDVCalculatorProps> = ({
                     </div>
                   </ToolGate>
                 </div>
+                <OutputCaveat />
               </div>
 
               <div className={`rounded-2xl border ${bandCopy.bg} p-fl-6`}>

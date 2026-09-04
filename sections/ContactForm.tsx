@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from '../components/animations/Reveal';
+import { PrivacyNote } from '../components/ui/PrivacyNote';
 
 const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
@@ -104,6 +105,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({ phone: contactPhone = 
           </button>
           <p className="text-xs text-thistle-black/45">We reply within one working day.</p>
         </div>
+
+        {/* Item 77. */}
+        <PrivacyNote purpose="We use these details to answer your enquiry and to talk through your project." />
 
         {status === 'error' && (
           <p aria-live="polite" className="text-fluid-sm text-red-700">

@@ -44,7 +44,7 @@ export const post: BlogPost = {
     "![](/images/blog/inline/how-to-fund-a-self-build-home-3-6919f8d6.jpg)",
     "## Which Self Build Finance Option is Right for Me?",
     "Understanding your self build funding options is an important step in working out which finance option is right for you.",
-    "We encourage you to conduct thorough research and gain a thorough understanding of what is required from a self build project in order to accurately calculate your potential [self build costs](/blog/how-much-does-it-cost-to-self-build-in-2023), or speak to a financial advisor.",
+    "We encourage you to conduct thorough research and gain a thorough understanding of what is required from a self build project in order to accurately calculate your potential [self build costs](/blog/how-much-does-it-cost-to-self-build), or speak to a financial advisor.",
     "## Contact Us at Thistle Architecture",
     "At Thistle Architecture, we are familiar with working on self build projects for clients throughout the UK, and therefore have a great understanding of the full process, from funding through to what the requirements are for these kinds of projects.",
     "As mentioned earlier in the article, we work closely with mortgage providers Windsor Hill, who are qualified in providing expert mortgage advice.If you have any questions or would like to chat to us, pop us an email or head over to our online contact form.",
