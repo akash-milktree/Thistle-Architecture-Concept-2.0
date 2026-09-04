@@ -135,8 +135,16 @@ for (const v of ['true', 1, 'on']) {
   ok(`a truthy ${JSON.stringify(v)} is not accepted as a tick`, r.status === 422, `got ${r.status}`);
 }
 
-r = await post({ ...base, disclaimerAccepted: true, disclaimerVersion: '1.0' });
-ok('a genuine tick gets past the gate', r.status !== 422, `got ${r.status}`);
+// The happy path is checked locally only. Against production it would reach
+// Stripe with live keys and leave a real, never-paid Checkout Session behind,
+// which is litter in someone's dashboard. Everything above is a refusal, so
+// none of it touches Stripe.
+if (BASE.includes('localhost')) {
+  r = await post({ ...base, disclaimerAccepted: true, disclaimerVersion: '1.0' });
+  ok('a genuine tick gets past the gate', r.status !== 422, `got ${r.status}`);
+} else {
+  console.log('SKIP  a genuine tick gets past the gate  (would create a live Stripe session)');
+}
 
 await browser.close();
 console.log(fails.length ? `\n${fails.length} failing check(s).` : '\nAll checks pass.');
