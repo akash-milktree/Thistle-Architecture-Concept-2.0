@@ -1084,7 +1084,7 @@ export const caseStudies: CaseStudy[] = [
     provenance: "By HMO Designers, part of Thistle Group",
     stats: [
       { label: "Bedrooms", value: "7" },
-      { label: "Scope", value: "Design to construction" },
+      { label: "Thistle role", value: "Design to construction" },
       { label: "Market", value: "Professional lets" },
     ],
     desc: "A seven-bedroom luxury HMO for professionals in the centre of Eastleigh, taken from first design through to finished build.",
@@ -1149,7 +1149,7 @@ export const caseStudies: CaseStudy[] = [
     stats: [
       { label: "Bedrooms", value: "7" },
       { label: "Completed", value: "2023" },
-      { label: "Scope", value: "Feasibility to approvals" },
+      { label: "Thistle role", value: "Feasibility to approvals" },
     ],
     desc: "A seven-bedroom HMO in Portsmouth, taken from a feasibility study of the existing property through to planning and building regulations approval.",
     approach: "The instruction started with a feasibility study of the building as it stood, then the relevant surveys, then planning and building regulations approval. The communal room sits at the rear under a glazed lantern with French doors to the yard, finished in sage green with pale timber, so the shared space is the brightest room in the house rather than the one nobody uses.",

@@ -9,7 +9,7 @@
     "items": [
       {
         "key": "hmo-check",
-        "name": "HMO Property Check",
+        "name": "HMO Checker Property Report",
         "strapline": "Automated HMO screening.",
         "body": "Planning and Article 4 checks, local HMO information, property and location data, key planning considerations and initial development indicators.",
         "cta": "Check an HMO"
@@ -49,13 +49,27 @@
     "heading": "What Affects Your Fee.",
     "lede": "Every fee is fixed before you pay. These are the things that move it, and the calculator asks about each one, so the number you see is the number you pay.",
     "items": [
-      { "label": "Property size" },
-      { "label": "Existing and proposed use" },
-      { "label": "Units or bedrooms" },
-      { "label": "Extent of alterations" },
-      { "label": "Planning complexity" },
-      { "label": "Heritage and listed status" },
-      { "label": "Alternative options tested" }
+      {
+        "label": "Property size"
+      },
+      {
+        "label": "Existing and proposed use"
+      },
+      {
+        "label": "Units or bedrooms"
+      },
+      {
+        "label": "Extent of alterations"
+      },
+      {
+        "label": "Planning complexity"
+      },
+      {
+        "label": "Heritage and listed status"
+      },
+      {
+        "label": "Alternative options tested"
+      }
     ],
     "footnote": "Where a project has several of these at once, we stop pricing automatically and talk to you first, through a free Expert Session."
   },
@@ -71,16 +85,36 @@
     "eyebrow": "Automated Site Feasibility, £49.99",
     "heading": "What You Get For £49.99.",
     "items": [
-      { "text": "Property and site overview, location and surrounding context" },
-      { "text": "Existing use, potential development routes and relevant planning policy" },
-      { "text": "Planning history, nearby precedents, constraints and planning-risk assessment" },
-      { "text": "Local space and amenity standards, and indicative development capacity" },
-      { "text": "Indicative bedroom or unit potential" },
-      { "text": "Local rental and sales comparables, indicative income and GDV" },
-      { "text": "High-level viability indicators" },
-      { "text": "Building Regulations and technical constraint flags" },
-      { "text": "Heritage, highways and parking considerations" },
-      { "text": "Recommended development strategy, roadmap and next steps" }
+      {
+        "text": "Property and site overview, location and surrounding context"
+      },
+      {
+        "text": "Existing use, potential development routes and relevant planning policy"
+      },
+      {
+        "text": "Planning history, nearby precedents, constraints and planning-risk assessment"
+      },
+      {
+        "text": "Local space and amenity standards, and indicative development capacity"
+      },
+      {
+        "text": "Indicative bedroom or unit potential"
+      },
+      {
+        "text": "Local rental and sales comparables, indicative income and GDV"
+      },
+      {
+        "text": "High-level viability indicators"
+      },
+      {
+        "text": "Building Regulations and technical constraint flags"
+      },
+      {
+        "text": "Heritage, highways and parking considerations"
+      },
+      {
+        "text": "Recommended development strategy, roadmap and next steps"
+      }
     ],
     "boundary": "The £49.99 appraisal is fully automated and data-led. It does not include architectural drawings or an design review."
   },

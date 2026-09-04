@@ -343,15 +343,24 @@ export const PricingPage: React.FC<PricingPageProps> = ({ settings, reviews, pag
                 )}
                 <div className="mt-fl-5">
                   {product.external ? (
-                    <a
-                      href={product.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-sm font-medium text-thistle-black hover:text-thistle-green transition-colors"
-                      data-tina-field={product.tina?.cta}
-                    >
-                      {product.cta} <ArrowUpRight size={15} />
-                    </a>
+                    <>
+                      {/* Item 78. This tier is on a separate site and brand, and
+                          the button used to leave without saying so. Said before
+                          the click rather than after it. */}
+                      <a
+                        href={product.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-thistle-black hover:text-thistle-green transition-colors"
+                        data-tina-field={product.tina?.cta}
+                      >
+                        {product.cta} <ArrowUpRight size={15} />
+                      </a>
+                      <p className="mt-fl-2 text-[11px] leading-relaxed text-thistle-black/45">
+                        Opens hmochecker.co.uk in a new tab. A separate tool from a
+                        sister brand, not a Thistle feasibility.
+                      </p>
+                    </>
                   ) : (
                     <Link
                       href={product.href}

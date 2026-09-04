@@ -19,15 +19,11 @@
   "facts": {
     "stats": [
       {
-        "label": "Location",
-        "value": "Eastleigh "
-      },
-      {
-        "label": "Tenant Type",
+        "label": "Tenant type",
         "value": "Professionals "
       },
       {
-        "label": "Number of rooms",
+        "label": "Bedrooms",
         "value": "6"
       }
     ],

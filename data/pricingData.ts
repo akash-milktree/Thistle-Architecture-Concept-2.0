@@ -155,7 +155,7 @@ export function getFeasibilityRoute(project: ProjectInput): FeasibilityRoute {
 export const PRODUCTS = [
   {
     id: 'hmo-check',
-    name: 'HMO Property Check',
+    name: 'HMO Checker Property Report',
     price: '£15.99',
     strapline: 'Automated HMO screening.',
     body: 'Planning and Article 4 checks, local HMO information, property and location data, key planning considerations and initial development indicators.',

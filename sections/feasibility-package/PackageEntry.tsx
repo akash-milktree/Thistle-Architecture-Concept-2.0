@@ -46,8 +46,8 @@ const FALLBACK = {
   architecturalBody: 'Everything in the automated appraisal, plus the sketch scheme and full report described below. Answer eight questions and your fixed fee is on screen.',
   architecturalCtaLabel: 'Get Your Instant Fixed Fee',
   partnerPrefix: 'Only need a quick HMO screen?',
-  partnerLinkLabel: 'HMO Property Check, £15.99',
-  partnerSuffix: '— a partner tool from HMO Checker, not an architectural feasibility.',
+  partnerLinkLabel: 'HMO Checker Property Report, £15.99',
+  partnerSuffix: '— a separate tool on hmochecker.co.uk, not a Thistle feasibility. The link opens in a new tab.',
 };
 
 const AUTOMATED_INCLUDES = [
