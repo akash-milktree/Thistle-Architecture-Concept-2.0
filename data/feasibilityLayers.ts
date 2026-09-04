@@ -24,7 +24,7 @@ export interface FeasibilityLayer {
 // Ed's video feedback 2026-07-08: the old "Local Policy Analysis" and "Targeted
 // Policy Analysis" layers said the same thing and are merged; the old "Spatial
 // layout optimisation" layer splits into the data work (space standards, Building
-// Regs, licensing) and the architect-led sketch scheme that follows it.
+// Regs, licensing) and the design-led sketch scheme that follows it.
 //
 // Bodies stay as Ed rewrote them in round 1, when the layer titles changed too.
 // Bodies shortened for Ed's August 2026 final brief: "keep 'What Is Analysed',
@@ -39,5 +39,5 @@ export const feasibilityLayers: FeasibilityLayer[] = [
   { eyebrow: "Layer 03", title: "Comparable schemes", body: "Nearby conversions, unit counts, and achieved sale values." },
   { eyebrow: "Layer 04", title: "GDV and viability", body: "Build cost, margin, and ROI, before you commit." },
   { eyebrow: "Layer 05", title: "Spatial analysis", body: "Space standards, Building Regs, and licensing for your area." },
-  { eyebrow: "Layer 06", title: "Architectural sketch scheme & video call", body: "The part automation cannot do: an architect draws the layout options over your plans." },
+  { eyebrow: "Layer 06", title: "Architectural sketch scheme & video call", body: "The part automation cannot do: a designer draws the layout options over your plans." },
 ];

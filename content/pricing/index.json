@@ -2,7 +2,7 @@
   "hero": {
     "label": "Pricing",
     "heading": "Know The Fee Before You Commit.",
-    "description": "Four ways to test a building, from a £15.99 automated check to an architect-led feasibility. Answer a few questions and the price is on screen, not in an email."
+    "description": "Four ways to test a building, from a £15.99 automated check to an design-led feasibility. Answer a few questions and the price is on screen, not in an email."
   },
   "products": {
     "recommendedLabel": "Recommended",
@@ -26,7 +26,7 @@
         "key": "architectural-feasibility",
         "name": "Architectural Feasibility",
         "strapline": "Data, architectural judgement and design.",
-        "body": "Architect review, sketch scheme, proposed layout, unit and bedroom testing, a one-hour architect meeting, a project review and recommended next steps.",
+        "body": "Design review, sketch scheme, proposed layout, unit and bedroom testing, a one-hour design consultation, a project review and recommended next steps.",
         "cta": "Get Your Instant Fixed Fee",
         "turnaround": "5 working days"
       },
@@ -63,9 +63,9 @@
     "heading": "£49.99 Or From £298?",
     "lede": "Both start from the same data. The difference is what happens to it.",
     "automatedLabel": "Automated Site Feasibility",
-    "automatedBody": "Data-led and fully automated. Planning, standards, indicative capacity, commercial context, risks and next steps, in around 30 minutes. No drawings, no architect.",
+    "automatedBody": "Data-led and fully automated. Planning, standards, indicative capacity, commercial context, risks and next steps, in around 30 minutes. No drawings, no design review.",
     "architecturalLabel": "Architectural Feasibility",
-    "architecturalBody": "Everything in the automated appraisal, plus an architect: planning interpretation, sketch and layout testing, and a professional recommendation you can act on."
+    "architecturalBody": "Everything in the automated appraisal, plus our design team: planning interpretation, sketch and layout testing, and a professional recommendation you can act on."
   },
   "automated": {
     "eyebrow": "Automated Site Feasibility, £49.99",
@@ -82,7 +82,7 @@
       { "text": "Heritage, highways and parking considerations" },
       { "text": "Recommended development strategy, roadmap and next steps" }
     ],
-    "boundary": "The £49.99 appraisal is fully automated and data-led. It does not include architectural drawings or an architect review."
+    "boundary": "The £49.99 appraisal is fully automated and data-led. It does not include architectural drawings or an design review."
   },
   "reviews": {
     "eyebrow": "Client Reviews",
@@ -90,6 +90,6 @@
   },
   "seo": {
     "metaTitle": "Pricing",
-    "metaDescription": "Fixed-fee feasibility pricing: a £15.99 HMO check, a £49.99 automated site appraisal, and architect-led feasibility from £298. Get your price on screen in about a minute."
+    "metaDescription": "Fixed-fee feasibility pricing: a £15.99 HMO check, a £49.99 automated site appraisal, and design-led feasibility from £298. Get your price on screen in about a minute."
   }
 }

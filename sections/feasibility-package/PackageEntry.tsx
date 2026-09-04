@@ -14,7 +14,7 @@ import { DISCLAIMER_VERSION } from '../../lib/disclaimer';
 // short pricing calculator near the top. Use the same calculator component and
 // pricing logic as the Pricing page." and "Replace 'from £298' as the headline
 // starting price with: 'Feasibility from £49.99' and immediately below
-// 'Architect-led feasibility from £298'."
+// 'Design-led feasibility from £298'."
 //
 // £49.99 is a flat fee with no questionnaire behind it (there is nothing to
 // price), so it gets its own small checkout form rather than the calculator.
@@ -36,13 +36,13 @@ const ARCHITECTURAL_PRICE = 'From £298';
 const FALLBACK = {
   eyebrow: 'Choose Your Route',
   heading: 'Feasibility From £49.99.',
-  priceSub: 'Architect-led feasibility from £298.',
-  lede: 'Both start from the same data. Pick the automated appraisal to screen a site fast, or go straight to the architect-led feasibility if you already know you want the full picture.',
+  priceSub: 'Design-led feasibility from £298.',
+  lede: 'Both start from the same data. Pick the automated appraisal to screen a site fast, or go straight to the design-led feasibility if you already know you want the full picture.',
   automatedName: 'Automated Site Feasibility',
-  automatedStrapline: 'Data-led. No architect. About 30 minutes.',
+  automatedStrapline: 'Data-led. No design review. About 30 minutes.',
   architecturalBadge: 'Recommended',
   architecturalName: 'Architectural Feasibility',
-  architecturalStrapline: 'Data, plus an architect: planning interpretation, sketch and layout testing, and a professional recommendation.',
+  architecturalStrapline: 'Data, plus our design team: planning interpretation, sketch and layout testing, and a professional recommendation.',
   architecturalBody: 'Everything in the automated appraisal, plus the sketch scheme and full report described below. Answer seven questions and your fixed fee is on screen.',
   architecturalCtaLabel: 'Get Your Instant Fixed Fee',
   partnerPrefix: 'Only need a quick HMO screen?',

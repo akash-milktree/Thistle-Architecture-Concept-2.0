@@ -282,7 +282,7 @@ const HEADER_FALLBACK = {
   eyebrow: 'The Analysis',
   heading: "What's Included",
   headingAccent: 'In Data Analysis.',
-  lede: 'Hundreds of data points, cross-referenced automatically, so our architects spend their time on layouts and recommendations.',
+  lede: 'Hundreds of data points, cross-referenced automatically, so our design team spends its time on layouts and recommendations.',
   ctaLabel: 'Get Your Instant Fixed Fee',
 };
 

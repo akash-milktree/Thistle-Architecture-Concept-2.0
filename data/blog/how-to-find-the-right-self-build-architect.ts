@@ -2,7 +2,7 @@ import type { BlogPost } from '../blogData';
 
 export const post: BlogPost = {
   slug: "how-to-find-the-right-self-build-architect",
-  title: "How To Find The Right Self Build Architect",
+  title: "How To Choose The Right Designer For Your Self Build",
   excerpt: "One of the most critical parts of your self build project is finding the right professional help you need to make your dream home a reality.",
   content: [
     "One of the most critical parts of your self build project is finding the right professional help you need to make your dream home a reality. A self build isn’t a small undertaking, so for most people, choosing the right architect or architectural designer for your project is going to be critical!",

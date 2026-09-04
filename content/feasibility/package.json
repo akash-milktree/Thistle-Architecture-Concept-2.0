@@ -26,11 +26,11 @@
   "entry": {
     "eyebrow": "Choose Your Route",
     "heading": "Feasibility From £49.99.",
-    "priceSub": "Architect-led feasibility from £298.",
+    "priceSub": "Design-led feasibility from £298.",
     "lede": "Both options start from the data. Pick the automated version for a fast overview, or go straight to the architectural feasibility if you want the full picture.",
     "automated": {
       "name": "Automated Site Feasibility",
-      "strapline": "Data-led. No architect. About 30 minutes.",
+      "strapline": "Data-led. No design review. About 30 minutes.",
       "includes": [
         {
           "label": "Planning and standards check"
@@ -49,7 +49,7 @@
     "architectural": {
       "badge": "Recommended",
       "name": "Architectural Feasibility",
-      "strapline": "Data, plus an architect: planning interpretation, sketch and layout testing, and a professional recommendation.",
+      "strapline": "Data, plus our design team: planning interpretation, sketch and layout testing, and a professional recommendation.",
       "body": "Everything in the automated appraisal, plus the sketch scheme and full report described below. Answer seven questions and your fixed fee is on screen.",
       "ctaLabel": "Get Your Instant Fixed Fee"
     },
@@ -81,10 +81,10 @@
         "detail": "Jodi captures anything specific to your plans for the building, so the analysis is pointed at the scheme you actually want. The Automated Site Feasibility skips this call and moves straight to analysis."
       },
       {
-        "durationLabel": "Automated within hours, architect review over days 2 to 4",
-        "title": "Analysis, Then Architect Review",
-        "lead": "Our data engine checks planning history, site constraints, density data and comparable schemes, before an architect sketches the optimal layout.",
-        "detail": "Hundreds of data points are cross-referenced across trusted sources first. This is the desk study, done in hours, not weeks. On the Architectural Feasibility, an architect then pressure-tests the data against the physical building and works through the spatial problems automation cannot solve. The Automated Site Feasibility stops after the data stage."
+        "durationLabel": "Automated within hours, design review over days 2 to 4",
+        "title": "Analysis, Then Design Review",
+        "lead": "Our data engine checks planning history, site constraints, density data and comparable schemes, before a designer sketches the optimal layout.",
+        "detail": "Hundreds of data points are cross-referenced across trusted sources first. This is the desk study, done in hours, not weeks. On the Architectural Feasibility, a designer then pressure-tests the data against the physical building and works through the spatial problems automation cannot solve. The Automated Site Feasibility stops after the data stage."
       },
       {
         "durationLabel": "Day 5",
@@ -102,7 +102,7 @@
     "items": [
       {
         "key": "Sketch Schemes",
-        "why": "The part our architects spend their time on, because automation cannot do it. Real layouts you can show a buyer, a lender, or a JV partner.",
+        "why": "The part our design team spends its time on, because automation cannot do it. Real layouts you can show a buyer, a lender, or a JV partner.",
         "image": "/images/uploads/sketching-floor-plan-on-tablet-with-stylus.webp",
         "imageAlt": "Feasibility sketch showing six en-suite bedrooms across two floors with the garage brought into the house"
       },
@@ -145,7 +145,7 @@
     "eyebrow": "The Analysis",
     "heading": "What's Included",
     "headingAccent": "In Data Analysis.",
-    "lede": "Hundreds of data points, cross-referenced automatically, so our architects spend their time on layouts and recommendations.",
+    "lede": "Hundreds of data points, cross-referenced automatically, so our design team spends its time on layouts and recommendations.",
     "layers": [
       {
         "eyebrow": "Layer 01",
@@ -264,7 +264,7 @@
       },
       {
         "question": "Are revisions included?",
-        "answer": "One round of layout revisions is included if the architect-led stage surfaces options worth comparing. Beyond that we agree a fixed fee for further iteration."
+        "answer": "One round of layout revisions is included if the design-led stage surfaces options worth comparing. Beyond that we agree a fixed fee for further iteration."
       },
       {
         "question": "What if my building is more complex than the package assumes?",

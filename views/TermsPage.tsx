@@ -50,7 +50,7 @@ const SECTIONS_FALLBACK: LegalSection[] = [
   },
   {
     heading: "Professional Indemnity",
-    body: "Incollective Limited, trading as Thistle Architecture, maintains professional indemnity insurance. Details of our insurance coverage are available on request.",
+    body: "We maintain professional indemnity insurance. Details are available on request.",
   },
   {
     heading: "Governing Law",
@@ -63,7 +63,7 @@ const SECTIONS_FALLBACK: LegalSection[] = [
 // owns.
 const HERO_FALLBACK = {
   title: "Terms Of Service.",
-  lastUpdated: "February 2026",
+  lastUpdated: "September 2026",
 };
 
 interface TermsPageProps {

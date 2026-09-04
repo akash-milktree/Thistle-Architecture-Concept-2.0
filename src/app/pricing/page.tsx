@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: seo?.metaTitle || 'Pricing',
     description:
       seo?.metaDescription ||
-      'Fixed-fee feasibility pricing: a £15.99 HMO check, a £49.99 automated site appraisal, and architect-led feasibility from £298. Get your price on screen in about a minute.',
+      'Fixed-fee feasibility pricing: a £15.99 HMO check, a £49.99 automated site appraisal, and design-led feasibility from £298. Get your price on screen in about a minute.',
     alternates: { canonical: '/pricing' },
   };
 }

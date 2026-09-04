@@ -40,7 +40,7 @@ export const ContactDetails: React.FC = () => {
 
       {/* Reassurance before the ask, mirrors the HMO Designers details step. */}
       <div className="rounded-xl border border-thistle-black/10 bg-white/60 px-4 py-3.5">
-        <p className="text-sm text-thistle-black">Prepared by our architects</p>
+        <p className="text-sm text-thistle-black">Prepared by our design team</p>
         <p className="mt-1 text-xs leading-relaxed text-thistle-black/50">
           Your feasibility is prepared by the team behind hundreds of UK conversions. No obligation. Response within one working day.
         </p>

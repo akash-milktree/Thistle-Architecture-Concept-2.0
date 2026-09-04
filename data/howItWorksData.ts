@@ -48,10 +48,10 @@ export const howItWorksSteps: HowItWorksStep[] = [
   },
   {
     num: "04",
-    durationLabel: "Automated within hours, architect review over days 2 to 4",
-    title: "Analysis, Then Architect Review",
-    lead: "Our data engine checks planning history, site constraints, density data and comparable schemes, before an architect sketches the optimal layout.",
-    detail: "Hundreds of data points are cross-referenced across trusted sources first. This is the desk study, done in hours, not weeks. On the Architectural Feasibility, an architect then pressure-tests the data against the physical building and works through the spatial problems automation cannot solve. The Automated Site Feasibility stops after the data stage.",
+    durationLabel: "Automated within hours, design review over days 2 to 4",
+    title: "Analysis, Then Design Review",
+    lead: "Our data engine checks planning history, site constraints, density data and comparable schemes, before a designer sketches the optimal layout.",
+    detail: "Hundreds of data points are cross-referenced across trusted sources first. This is the desk study, done in hours, not weeks. On the Architectural Feasibility, a designer then pressure-tests the data against the physical building and works through the spatial problems automation cannot solve. The Automated Site Feasibility stops after the data stage.",
     graphic: "step2",
   },
   {
@@ -80,7 +80,7 @@ export const layerBlurbs: string[] = [
   "Nearby conversions, unit counts, and achieved sale values.",
   "Build cost, margin, and ROI before you commit capital.",
   "Local and national space standards, Building Regs, and licensing.",
-  "Architect-led layouts, reviewed with you on a video call.",
+  "Design-led layouts, reviewed with you on a video call.",
 ];
 
 // Ed's video feedback 2026-07-08: sketch schemes lead, "Efficiency Metrics" is

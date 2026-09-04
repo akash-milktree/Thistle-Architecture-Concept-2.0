@@ -39,7 +39,7 @@ export type BlogPostItem = BlogPost & {
 const COPY_FALLBACK = {
   label: 'Blog',
   heading: 'Insights For Developers.',
-  description: 'Practical articles on planning, feasibility, and the commercial conversion market, written by architects, for developers.',
+  description: 'Practical articles on planning, feasibility, and the commercial conversion market, written by designers and planning specialists, for developers.',
   allLabel: 'All',
 };
 

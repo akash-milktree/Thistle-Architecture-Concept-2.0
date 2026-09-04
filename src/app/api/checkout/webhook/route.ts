@@ -91,7 +91,7 @@ export async function POST(request: Request) {
       ? `PAID Automated Site Feasibility: ${meta.name || 'name not captured'} (£${amount ?? '?'})`
       : `PAID feasibility ${isDeposit ? 'deposit' : ''}: ${meta.address || meta.name || 'not captured'} (£${amount ?? '?'})`,
     Status: isAutomated
-      ? 'Paid in full, awaiting detailed brief. No architect review at this tier.'
+      ? 'Paid in full, awaiting detailed brief. No design review at this tier.'
       : isDeposit
         ? 'Deposit paid, awaiting detailed brief. Balance due before delivery.'
         : 'Paid, awaiting project setup',

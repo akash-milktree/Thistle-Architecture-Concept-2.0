@@ -69,7 +69,7 @@ const TEAM_FALLBACK: TeamMember[] = [
     name: "Kaan",
     role: "Design & Planning Lead",
     image: "/images/team/kaan.jpg",
-    contribution: "Runs every feasibility from sketch scheme to sign-off, and is the architect most clients work with through planning. Five-plus years across residential and HMO projects, from deal sourcing through to submission.",
+    contribution: "Runs every feasibility from sketch scheme to sign-off, and is the designer most clients work with through planning. Five-plus years across residential and HMO projects, from deal sourcing through to submission.",
     credential: "BArch in Architecture",
   },
   {
@@ -139,7 +139,7 @@ const THEMES_FALLBACK: Theme[] = [
   { title: "Existing Buildings & Retrofit", body: "Most of what we do is testing and reusing what's already there, not building on a clean slate." },
   { title: "Data-Informed Decisions", body: "Planning history, policy, comparables and viability, checked before judgement is applied, not instead of it." },
   { title: "Developer-Led, Commercially Aware Design", body: "We design with the numbers in view throughout, not as a check at the end." },
-  { title: "One Team Through Delivery", body: "The person who runs your feasibility is the architect you keep working with through planning and delivery." },
+  { title: "One Team Through Delivery", body: "The person who runs your feasibility is the designer you keep working with through planning and delivery." },
 ];
 
 const HERO_FALLBACK = {
@@ -178,7 +178,7 @@ const REVIEWS_COPY_FALLBACK = {
 const CLOSING_FALLBACK = {
   eyebrow: 'How We Work',
   heading: 'Data First, Then Drawings.',
-  body: 'Most architects design first and worry about viability later. We do it the other way round. We analyse the data first, which makes the answer more accurate and cuts the time it takes to get it. The team that runs your feasibility stays with you through sketch scheme, planning, and delivery, so nothing is lost in handover.',
+  body: 'Most practices design first and worry about viability later. We do it the other way round. We analyse the data first, which makes the answer more accurate and cuts the time it takes to get it. The team that runs your feasibility stays with you through sketch scheme, planning, and delivery, so nothing is lost in handover.',
 };
 
 interface AboutPageProps {

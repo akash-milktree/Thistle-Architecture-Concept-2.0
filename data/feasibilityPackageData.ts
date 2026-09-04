@@ -45,7 +45,7 @@ export const pricingFrom = "£49.99";
 // Indexed to match the deliverables array in data/howItWorksData.ts.
 export const deliverableDetail: DeliverableDetail[] = [
   {
-    why: "The part our architects spend their time on, because automation cannot do it. Real layouts you can show a buyer, a lender, or a JV partner.",
+    why: "The part our design team spends its time on, because automation cannot do it. Real layouts you can show a buyer, a lender, or a JV partner.",
     graphic: "sketch-scheme",
   },
   {
@@ -107,7 +107,7 @@ export const packageFaqs: PackageFaq[] = [
   },
   {
     question: "Are revisions included?",
-    answer: "One round of layout revisions is included if the architect-led stage surfaces options worth comparing. Beyond that we agree a fixed fee for further iteration.",
+    answer: "One round of layout revisions is included if the design-led stage surfaces options worth comparing. Beyond that we agree a fixed fee for further iteration.",
   },
   {
     question: "What if my building is more complex than the package assumes?",

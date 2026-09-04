@@ -180,7 +180,7 @@ export const PRODUCTS = [
     name: 'Architectural Feasibility',
     price: 'From £298',
     strapline: 'Data, architectural judgement and design.',
-    body: 'Architect review, sketch scheme, proposed layout, unit and bedroom testing, a one-hour architect meeting, a project review and recommended next steps.',
+    body: 'Design review, sketch scheme, proposed layout, unit and bedroom testing, a one-hour design consultation, a project review and recommended next steps.',
     cta: 'Get Your Instant Fixed Fee',
     href: '/pricing#calculator',
     external: false,
@@ -215,4 +215,4 @@ export const AUTOMATED_CONTENTS = [
 
 /** The boundary line the brief asks to be stated plainly. */
 export const AUTOMATED_BOUNDARY =
-  'The £49.99 appraisal is fully automated and data-led. It does not include architectural drawings or an architect review.';
+  'The £49.99 appraisal is fully automated and data-led. It does not include architectural drawings or an design review.';

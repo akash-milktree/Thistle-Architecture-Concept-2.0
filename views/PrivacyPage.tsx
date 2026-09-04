@@ -63,7 +63,7 @@ const SECTIONS_FALLBACK: LegalSection[] = [
 // owns.
 const HERO_FALLBACK = {
   title: "Privacy Policy.",
-  lastUpdated: "February 2026",
+  lastUpdated: "September 2026",
 };
 
 interface PrivacyPageProps {

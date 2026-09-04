@@ -143,7 +143,7 @@ export async function POST(req: NextRequest) {
       tier === 'automated'
         ? `Automated brief submitted: ${s(a.address1)}${a.postcode ? `, ${s(a.postcode)}` : ''}`
         : `Project brief submitted, for Jodi: ${s(a.address1)}${a.postcode ? `, ${s(a.postcode)}` : ''}`,
-    Tier: tier === 'automated' ? 'Automated Site Feasibility (£49.99, no architect)' : 'Architectural Feasibility',
+    Tier: tier === 'automated' ? 'Automated Site Feasibility (£49.99, no design review)' : 'Architectural Feasibility',
     'Next step':
       tier === 'automated'
         ? 'Automated analysis to run from this brief; report goes to the client by email.'

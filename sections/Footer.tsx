@@ -95,7 +95,7 @@ const DETAILS_FALLBACK: FooterDetails = {
   // and naming it here, in the terms and in the privacy policy was a real
   // problem rather than a cosmetic one: those are the pages a customer would
   // rely on to know who they are contracting with.
-  copyright: '© 2026 Thistle Architecture, a trading name of Incollective Limited. Registered in England and Wales, company number 13904125.',
+  copyright: '© 2026 Incollective Limited, company number 13904125, trading as Thistle Architecture. Registered office: Gatcombe House, Copnor Road, Hilsea, Portsmouth, PO3 5EJ.',
 };
 
 export const Footer: React.FC<FooterProps> = ({ cta, details, tina }) => {

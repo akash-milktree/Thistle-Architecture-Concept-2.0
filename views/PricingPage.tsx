@@ -58,11 +58,11 @@ import { str, num, arr, pruneEmpty } from '../lib/tina';
 const HERO_FALLBACK = {
   label: 'Pricing',
   heading: 'Know The Fee Before You Commit.',
-  description: 'Four ways to test a building, from a £15.99 automated check to an architect-led feasibility. Answer a few questions and the price is on screen, not in an email.',
+  description: 'Four ways to test a building, from a £15.99 automated check to an design-led feasibility. Answer a few questions and the price is on screen, not in an email.',
 };
 
 const PRODUCTS_COPY_FALLBACK = {
-  // The final brief: the architect-led product is the visually preferred
+  // The final brief: the design-led product is the visually preferred
   // option, labelled explicitly.
   recommendedLabel: 'Recommended',
   // The final brief's key line, stated once for the whole ladder.
@@ -85,9 +85,9 @@ const COMPARISON_FALLBACK = {
   heading: '£49.99 Or From £298?',
   lede: 'Both start from the same data. The difference is what happens to it.',
   automatedLabel: 'Automated Site Feasibility',
-  automatedBody: 'Data-led and fully automated. Planning, standards, indicative capacity, commercial context, risks and next steps, in around 30 minutes. No drawings, no architect.',
+  automatedBody: 'Data-led and fully automated. Planning, standards, indicative capacity, commercial context, risks and next steps, in around 30 minutes. No drawings, no design review.',
   architecturalLabel: 'Architectural Feasibility',
-  architecturalBody: 'Everything in the automated appraisal, plus an architect: planning interpretation, sketch and layout testing, and a professional recommendation you can act on.',
+  architecturalBody: 'Everything in the automated appraisal, plus our design team: planning interpretation, sketch and layout testing, and a professional recommendation you can act on.',
 };
 
 const AUTOMATED_COPY_FALLBACK = {
@@ -309,7 +309,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ settings, reviews, pag
                     : 'border-thistle-black/[0.06] bg-white'
                 }`}
               >
-                {/* The final brief: the architect-led product is the visually
+                {/* The final brief: the design-led product is the visually
                     preferred option, labelled explicitly. */}
                 {product.id === 'architectural-feasibility' && (
                   <span

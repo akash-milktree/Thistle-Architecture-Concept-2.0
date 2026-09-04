@@ -144,7 +144,7 @@ export const FeasibilityModal: React.FC = () => {
                 <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-thistle-black/60">
                   {tier === 'automated'
                     ? 'Your brief is with us. Your automated analysis is generated from it directly, and the report lands in your inbox once it is ready.'
-                    : 'Your enquiry and floor plans are with our architects. We will come back to you within one working day to confirm scope and start your feasibility.'}
+                    : 'Your enquiry and floor plans are with our design team. We will come back to you within one working day to confirm scope and start your feasibility.'}
                 </p>
                 <button
                   onClick={closeModal}

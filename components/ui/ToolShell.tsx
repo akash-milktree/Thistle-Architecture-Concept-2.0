@@ -49,7 +49,7 @@ interface ToolShellProps {
 const CLOSING_FALLBACK: ToolClosing = {
   heading: 'The Tool Is A Hint.',
   headingAccent: 'The Feasibility Is The Answer.',
-  body: 'Get a real, architect-led feasibility on the building in five days. Fixed fee, clear Go or No-Go.',
+  body: 'Get a real, design-led feasibility on the building in five days. Fixed fee, clear Go or No-Go.',
 };
 
 // Shared page shell for any tool. Wraps the PageHero, the tool body, a small

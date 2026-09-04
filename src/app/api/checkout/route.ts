@@ -110,7 +110,7 @@ export async function POST(request: Request) {
       'line_items[0][price_data][unit_amount]': String(AUTOMATED_FEE_PENCE),
       'line_items[0][price_data][product_data][name]': 'Automated Site Feasibility',
       'line_items[0][price_data][product_data][description]':
-        'Fully automated, data-led site appraisal, VAT inclusive. Delivered by email, no architect review.',
+        'Fully automated, data-led site appraisal, VAT inclusive. Delivered by email, no design review.',
       success_url: `${SITE}/feasibility-confirmed?session_id={CHECKOUT_SESSION_ID}&tier=automated`,
       cancel_url: `${SITE}/feasibility-package?cancelled=1`,
       'metadata[payment_type]': 'automated_full',

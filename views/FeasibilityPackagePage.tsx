@@ -43,7 +43,7 @@ const TRUST_MARKERS_FALLBACK = [
 ];
 
 // Ed's August 2026 final brief: "Replace 'from £298' as the headline starting
-// price with: 'Feasibility from £49.99' and immediately below 'Architect-led
+// price with: 'Feasibility from £49.99' and immediately below 'Design-led
 // feasibility from £298'."
 //
 // Both price lines are editable, because they are sentences — but the figures
@@ -57,7 +57,7 @@ const HERO_FALLBACK = {
   // the <br /> that was written by hand, so the markup is unchanged.
   heading: 'Your Building, Answered\nIn Five Days.',
   priceHeadline: 'Feasibility from £49.99.',
-  priceSub: 'Architect-led feasibility from £298.',
+  priceSub: 'Design-led feasibility from £298.',
   lede: 'Five deliverables and a clear Go or No-Go on whether your building is worth taking forward.',
   ctaLabel: 'Get Your Instant Fixed Fee',
   ctaNote: 'No obligation. Response within one working day.',
@@ -258,7 +258,7 @@ export const FeasibilityPackagePage: React.FC<FeasibilityPackagePageProps> = ({ 
           </Reveal>
           {/* Ed's August 2026 final brief: "Replace 'from £298' as the headline
               starting price with: 'Feasibility from £49.99' and immediately
-              below 'Architect-led feasibility from £298'." */}
+              below 'Design-led feasibility from £298'." */}
           <Reveal delay={0.2}>
             <p className="text-fluid-h5 font-medium tracking-tight text-white mb-fl-2" data-tina-field={f(p?.hero, 'priceHeadline')}>
               {hero.priceHeadline}

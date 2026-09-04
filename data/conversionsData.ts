@@ -117,7 +117,7 @@ export const conversions: Conversion[] = [
     label: "Commercial to Residential",
     // Ed's August 2026 final brief: search-intent-led H1, with the previous
     // punchy line kept as the supporting copy underneath it.
-    heroHeading: "Commercial to Residential Conversion Architects",
+    heroHeading: "Commercial to Residential Conversion Specialists",
     heroDescription: "Turn a commercial building into viable homes. A feasibility built for developers buying offices, retail upper parts, and small commercial blocks to convert into housing.",
     opportunityCopy: "Commercial-to-residential conversions are the fastest route from a tired commercial asset to a stabilised residential scheme. Less risk than ground-up, faster than full redevelopment, and supported by national permitted-development rights.",
     opportunityStats: [
@@ -148,7 +148,7 @@ export const conversions: Conversion[] = [
       { deliverableId: 'full-feasibility', forThisType: "Net-to-gross and commercial position set out in full, since commercial-to-resi often loses more area than developers expect." },
     ],
     relatedCaseStudySlug: "axis-house",
-    metaTitle: "Commercial to Residential Conversion Architects | Thistle Architecture",
+    metaTitle: "Commercial to Residential Conversion Specialists | Thistle Architecture",
     metaDescription: "Data-driven feasibility for converting commercial buildings into residential schemes, including office conversions under Class MA. Five-day turnaround, fixed fee.",
     faqs: [
       {
@@ -173,7 +173,7 @@ export const conversions: Conversion[] = [
     slug: "hmo",
     reviewTopic: "hmo",
     label: "HMO",
-    heroHeading: "HMO Architects & Feasibility Specialists",
+    heroHeading: "HMO Design & Feasibility Specialists",
     heroDescription: "HMO feasibility, without the guesswork. Houses of multiple occupation work on tight margins, so we pressure-test density, licensing, and layout before you put in an offer.",
     opportunityCopy: "HMO conversions deliver strong yield in the right area, but Article 4 directions, density caps, and licensing thresholds can quietly kill a deal before it starts. The numbers only stack up when the regulatory picture is genuinely clear.",
     opportunityStats: [
@@ -208,7 +208,7 @@ export const conversions: Conversion[] = [
       { deliverableId: 'full-feasibility', forThisType: "Net-to-gross and per-room yield projections benchmarked against local market data." },
     ],
     relatedCaseStudySlug: "st-johns-aylesbury",
-    metaTitle: "HMO Architects & Feasibility Specialists | Thistle Architecture",
+    metaTitle: "HMO Design & Feasibility Specialists | Thistle Architecture",
     metaDescription: "HMO conversion feasibility. Density, Article 4, licensing, and layout pressure-tested in five days. Fixed fee, clear Go or No-Go.",
     faqs: [
       {
@@ -237,7 +237,7 @@ export const conversions: Conversion[] = [
     slug: "mixed-use-commercial",
     reviewTopic: "commercial",
     label: "Mixed-Use Commercial",
-    heroHeading: "Mixed-Use Development Architects",
+    heroHeading: "Mixed-Use Development Specialists",
     heroDescription: "Keep the shop, build homes above it. High-street buildings where the ground floor has to stay commercial and the value sits in the floors above.",
     opportunityCopy: "Plenty of high-street buildings are worth more as a mixed-use scheme than as either pure commercial or pure residential. Retaining an active ground-floor unit is often what makes the residential above acceptable in policy terms, and it keeps an income stream while the rest is converted.",
     opportunityStats: [
@@ -257,7 +257,7 @@ export const conversions: Conversion[] = [
       { deliverableId: 'full-feasibility', forThisType: "The commercial case for the mixed scheme against the pure-residential fallback, so you can see which is actually worth more." },
     ],
     relatedCaseStudySlug: "bath-street-cheddar",
-    metaTitle: "Mixed-Use Development Architects | Thistle Architecture",
+    metaTitle: "Mixed-Use Development Specialists | Thistle Architecture",
     metaDescription: "Feasibility for mixed-use conversions: retained commercial at ground floor with residential above. Ground-floor policy, access separation, and viability tested in five days.",
     faqs: [
       {
@@ -282,7 +282,7 @@ export const conversions: Conversion[] = [
     slug: "high-end-residential",
     reviewTopic: "planning",
     label: "High-End Residential",
-    heroHeading: "High-End Residential Architects",
+    heroHeading: "High-End Residential Design Specialists",
     heroDescription: "Extend, remodel, or convert to something better. Feasibility for high-end residential projects, where the question is what the house could become rather than how many units fit in it.",
     opportunityCopy: "High-end residential works differently to a yield play. The value is in the quality of the finished house and how well the design uses what is already there, but the constraints are the same ones that catch developers: planning policy, heritage, and what the existing fabric will actually allow.",
     opportunityStats: [
@@ -302,7 +302,7 @@ export const conversions: Conversion[] = [
       { deliverableId: 'full-feasibility', forThisType: "A clear view of whether the project is worth doing, and which option is worth doing." },
     ],
     relatedCaseStudySlug: "bereweeke-avenue",
-    metaTitle: "High-End Residential Architects | Thistle Architecture",
+    metaTitle: "High-End Residential Design Specialists | Thistle Architecture",
     metaDescription: "Feasibility for high-end residential projects: extensions, remodels, and conversions. Heritage, permitted development, and existing fabric tested before you commit to design.",
     faqs: [
       {
@@ -332,7 +332,7 @@ export const conversions: Conversion[] = [
     slug: "co-living-large-hmo",
     reviewTopic: "hmo",
     label: "Co-Living & Large HMO",
-    heroHeading: "Co-Living & Large HMO Architects",
+    heroHeading: "Co-Living & Large HMO Specialists",
     heroDescription: "Beyond the standard HMO. Feasibility for co-living and large shared-living schemes, where amenity, management and fire strategy carry as much weight as the room count.",
     opportunityCopy: "Co-living and large HMOs work on a different model to a five- or six-bed conversion: more generous shared amenity, on-site management, and a building designed around communal living rather than a house with extra locks on the doors. Done well, the yield and the planning case are both stronger for it.",
     opportunityStats: [
@@ -353,7 +353,7 @@ export const conversions: Conversion[] = [
       { deliverableId: 'full-feasibility', forThisType: "Yield and viability modelled against the shared-amenity space the scheme actually needs to provide." },
     ],
     relatedCaseStudySlug: "highbury-buildings-cosham",
-    metaTitle: "Co-Living & Large HMO Architects | Thistle Architecture",
+    metaTitle: "Co-Living & Large HMO Specialists | Thistle Architecture",
     metaDescription: "Feasibility for co-living and large HMO schemes: Sui Generis planning, shared amenity, fire and acoustic strategy, and management plans, tested in five days.",
     faqs: [
       {

@@ -24,7 +24,7 @@ export interface PackagePerson {
 }
 
 // Ed's August 2026 final brief, section 03: "Make Edward and Kaan part of the
-// reason to buy the architect-led service", and add Jodi as the first point of
+// reason to buy the design-led service", and add Jodi as the first point of
 // contact for Expert Sessions. Bios follow his wording closely.
 //
 // Jodi has no photo yet (About page's own note: no photo in the client's Team

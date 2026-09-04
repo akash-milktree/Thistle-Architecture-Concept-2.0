@@ -25,7 +25,7 @@ export const FEASIBILITY_STEPS: { key: FeasibilityStep; label: string; title: st
     key: 'size',
     label: 'Size and plans',
     title: 'Size and floor plans',
-    lede: 'The floor plan is what our architects work from.',
+    lede: 'The floor plan is what our design team works from.',
   },
   {
     key: 'details',

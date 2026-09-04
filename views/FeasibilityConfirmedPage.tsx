@@ -59,7 +59,7 @@ const NEXT_STEPS_FALLBACK: Record<FeasibilityTier, NextStep[]> = {
     },
     {
       title: 'Your feasibility in five working days',
-      body: 'Sketch scheme, proposed layout, unit and bedroom testing, and a one-hour call with the architect. The five days start once your brief and payment are complete.',
+      body: 'Sketch scheme, proposed layout, unit and bedroom testing, and a one-hour call with the designer. The five days start once your brief and payment are complete.',
     },
   ],
   automated: [
@@ -73,7 +73,7 @@ const NEXT_STEPS_FALLBACK: Record<FeasibilityTier, NextStep[]> = {
     },
     {
       title: 'Your report, by email',
-      body: 'Fully automated, no architect review at this tier: planning, standards, indicative capacity, risks and recommended next steps.',
+      body: 'Fully automated, no design review at this tier: planning, standards, indicative capacity, risks and recommended next steps.',
     },
     {
       title: 'A free Expert Session, if it makes sense',
