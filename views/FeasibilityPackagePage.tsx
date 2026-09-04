@@ -38,7 +38,7 @@ const TRUST_MARKER_ICONS = [CheckCircle2, Clock, ShieldCheck];
 
 const TRUST_MARKERS_FALLBACK = [
   "98.5% planning success rate",
-  "5-day guaranteed turnaround",
+  "five-day turnaround, committed",
   "Fixed fee, scoped up front",
 ];
 

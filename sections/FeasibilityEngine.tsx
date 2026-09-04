@@ -166,9 +166,17 @@ const GraphicComparables: React.FC = () => (
 // ─── Layer 05: GDV & viability ──────────
 const GraphicGDV: React.FC = () => (
   <div className="w-full h-full flex flex-col justify-center bg-white rounded-2xl border border-thistle-black/[0.06] shadow-sm shadow-thistle-black/[0.03] p-fl-6">
+    {/* Item 61. The published figures did not add up: £1.4M purchase plus £1.1M
+        build is £2.5M against a £3.2M GDV, so the £0.7M margin is 21.9% on GDV
+        or 28% on cost. It said 24%, which is neither. Stated on GDV and named,
+        because "margin" alone leaves a developer guessing which basis it is,
+        and the two are seven points apart on these numbers.
+
+        Ed confirmed this is not a real project, so it is now labelled as an
+        illustration rather than left to read as a case study. */}
     <div className="mb-fl-4 flex items-center justify-between">
       <span className="text-[10px] uppercase tracking-wider text-thistle-black/40 font-semibold">Financial summary</span>
-      <span className="text-[10px] text-thistle-green font-medium">Viable · 24% margin</span>
+      <span className="text-[10px] text-thistle-green font-medium">Viable · 22% on GDV</span>
     </div>
     <div className="space-y-fl-3">
       {[
@@ -188,9 +196,13 @@ const GraphicGDV: React.FC = () => (
       ))}
     </div>
     <div className="mt-fl-5 pt-fl-3 border-t border-thistle-black/[0.06] flex items-center justify-between">
-      <span className="text-[10px] uppercase tracking-wider text-thistle-black/40 font-semibold">Projected margin</span>
-      <span className="text-fluid-h5 font-semibold text-thistle-green tracking-tight">+24%</span>
+      <span className="text-[10px] uppercase tracking-wider text-thistle-black/40 font-semibold">Projected margin on GDV</span>
+      <span className="text-fluid-h5 font-semibold text-thistle-green tracking-tight">+22%</span>
     </div>
+    <p className="mt-fl-3 text-[10px] leading-relaxed text-thistle-black/45">
+      Illustrative example, not a real scheme. Your own figures are modelled from the
+      building, the comparables and the build cost.
+    </p>
   </div>
 );
 

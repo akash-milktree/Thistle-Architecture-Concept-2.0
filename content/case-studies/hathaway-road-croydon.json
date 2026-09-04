@@ -65,10 +65,6 @@
   "facts": {
     "stats": [
       {
-        "label": "HMO refusal risk",
-        "value": "~95%"
-      },
-      {
         "label": "Bedrooms via C3(b)",
         "value": "5"
       },

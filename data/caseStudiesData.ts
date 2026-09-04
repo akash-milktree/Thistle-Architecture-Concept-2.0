@@ -350,7 +350,6 @@ export const caseStudies: CaseStudy[] = [
     stats: [
       { label: "Bedrooms, all en suite", value: "13" },
       { label: "Room sizes", value: "12.6 to 27 sqm" },
-      { label: "Indicative value at 8.5% yield", value: "£1.24m" },
     ],
     desc: "A four-storey period house already running as a six-bed HMO, tested for more than double the room count using internal works only.",
     challenge: "The house was a lawful six-bedroom HMO in a Croydon conservation area, and the owner wanted to know how far it could go. The obstacle was not policy but politics: ward councillors had opposed HMO schemes nearby, a seven-bed application on Woodstock Road had been refused at committee, and Croydon has no allowed HMO appeal on record since 2021. Any scheme had to be designed to pass at first determination.",
@@ -401,7 +400,6 @@ export const caseStudies: CaseStudy[] = [
     stats: [
       { label: "Bedrooms, all en suite", value: "7" },
       { label: "Communal space provided", value: "32 sqm" },
-      { label: "Indicative value at 8.5% yield", value: "£500,000" },
     ],
     desc: "A mid-terrace house tested for a seven-bed HMO, delivered in two stages so the riskiest room is argued from the strongest position.",
     challenge: "The client was looking at a three-bedroom terrace guided around £350,000 and wanted seven en-suite rooms out of it. The planning designations were clean, no Article 4, conservation area, flood zone or green belt, so a six-bed C4 HMO was permitted development. The seventh bedroom was the problem: it tips the scheme into sui generis and runs into Luton's protection of family housing.",
@@ -562,7 +560,6 @@ export const caseStudies: CaseStudy[] = [
     image: "/images/projects/hathaway-sketch-1.webp",
     tag: "Supported Living",
     stats: [
-      { label: "HMO refusal risk", value: "~95%" },
       { label: "Bedrooms via C3(b)", value: "5" },
       { label: "Planning permission", value: "Not required" },
     ],
@@ -578,7 +575,7 @@ export const caseStudies: CaseStudy[] = [
     planningRoute: "C3(b) supported living, confirmed by LDC",
     completionDate: "July 2026",
     recommendation: "No-Go",
-    riskAvoided: "An HMO application with a ~95% expected refusal",
+    riskAvoided: "An HMO application that was very likely to be refused",
   },
   {
     slug: "bath-street-cheddar",
@@ -1204,7 +1201,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "project-prince",
     conversionTypes: ['hmo'],
     kind: "project",
-    title: "Project Prince",
+    title: "Seven-Bed High-End HMO, Southend-on-Sea",
     location: "Southend-on-Sea, Essex",
     image: "/images/projects/hmo-project-prince/project-prince-1.jpg",
     tag: "HMO",
@@ -1242,7 +1239,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Southsea Co-Living",
     location: "Festing Road, Southsea, Portsmouth",
     image: "/images/projects/hmo-southsea-co-living/southsea-co-living-3.jpg",
-    tag: "HMO",
+    tag: "Co-Living",
     provenance: "By HMO Designers, part of Thistle Group",
     stats: [
       { label: "Bedrooms", value: "8" },

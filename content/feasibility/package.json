@@ -16,7 +16,7 @@
         "label": "98.5% planning success rate"
       },
       {
-        "label": "5-day guaranteed turnaround"
+        "label": "five-day turnaround, committed"
       },
       {
         "label": "Fixed fee, scoped up front"
@@ -50,7 +50,7 @@
       "badge": "Recommended",
       "name": "Architectural Feasibility",
       "strapline": "Data, plus our design team: planning interpretation, sketch and layout testing, and a professional recommendation.",
-      "body": "Everything in the automated appraisal, plus the sketch scheme and full report described below. Answer seven questions and your fixed fee is on screen.",
+      "body": "Everything in the automated appraisal, plus the sketch scheme and full report described below. Answer eight questions and your fixed fee is on screen.",
       "ctaLabel": "Get Your Instant Fixed Fee"
     },
     "partnerPrefix": "Only need a quick HMO screen?",
@@ -81,7 +81,7 @@
         "detail": "Jodi captures anything specific to your plans for the building, so the analysis is pointed at the scheme you actually want. The Automated Site Feasibility skips this call and moves straight to analysis."
       },
       {
-        "durationLabel": "Automated within hours, design review over days 2 to 4",
+        "durationLabel": "Automated in around 30 minutes, design review over days 2 to 4",
         "title": "Analysis, Then Design Review",
         "lead": "Our data engine checks planning history, site constraints, density data and comparable schemes, before a designer sketches the optimal layout.",
         "detail": "Hundreds of data points are cross-referenced across trusted sources first. This is the desk study, done in hours, not weeks. On the Architectural Feasibility, a designer then pressure-tests the data against the physical building and works through the spatial problems automation cannot solve. The Automated Site Feasibility stops after the data stage."

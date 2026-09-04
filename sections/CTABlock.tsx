@@ -19,7 +19,7 @@ export const CTABlock: React.FC = () => {
         </Reveal>
         <Reveal delay={0.1}>
           <p className="text-fluid-sm text-white/80 leading-relaxed mb-fl-7 max-w-md mx-auto">
-            Submit your property details and receive initial insight within 24 hours.
+            Submit your property details and receive initial insight within one working day.
           </p>
         </Reveal>
         <Reveal delay={0.2}>

@@ -43,7 +43,7 @@ export const post: BlogPost = {
     "- Whether each habitable room will have enough natural light",
     "- Impact on business in the area",
     "- Fire risk assessment if the building is higher than 18 metres",
-    "The application fee is £120 per dwelling and usually takes up to 60 days.",
+    "The application fee is £260 for each dwellinghouse and usually takes up to 60 days.",
     "## Conclusion: Class MA Prior Approval",
     "Whether you are a seasoned property developer or are just starting research for your first project, Class MA offers a fantastic opportunity to capitalise on changing market demands.",
     "Do you have a commercial unit that falls within Class E of the GPDO and want to explore whether it can be converted into residential units? Why not reach out to our team..",

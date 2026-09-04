@@ -19,7 +19,7 @@ const genericFaqs: FaqItem[] = [
   },
   {
     question: "How fast do I get results?",
-    answer: "Initial insight within 24 hours of submission. Full feasibility report, including layouts, risk register, and Go/No-Go recommendation, delivered within 5 working days. That's 83% faster than the traditional 2 to 6 week process.",
+    answer: "Initial insight within one working day of submission. Full feasibility report, including layouts, risk register, and Go/No-Go recommendation, delivered within 5 working days. That's 83% faster than the traditional 2 to 6 week process.",
   },
   {
     question: "How accurate is the data analysis?",
@@ -73,7 +73,7 @@ export const FAQ: React.FC<FAQProps> = ({ tinted = false, faqs }) => {
             </Reveal>
             <Reveal delay={0.15}>
               <p className="text-fluid-base text-thistle-black/80 leading-relaxed mb-fl-6 max-w-sm">
-                Got more questions? Send us your enquiry and we'll get back to you within 24 hours.
+                Got more questions? Send us your enquiry and we'll get back to you within one working day.
               </p>
             </Reveal>
             <Reveal delay={0.2}>

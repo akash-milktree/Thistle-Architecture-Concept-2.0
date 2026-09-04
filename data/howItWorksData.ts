@@ -48,7 +48,7 @@ export const howItWorksSteps: HowItWorksStep[] = [
   },
   {
     num: "04",
-    durationLabel: "Automated within hours, design review over days 2 to 4",
+    durationLabel: "Automated in around 30 minutes, design review over days 2 to 4",
     title: "Analysis, Then Design Review",
     lead: "Our data engine checks planning history, site constraints, density data and comparable schemes, before a designer sketches the optimal layout.",
     detail: "Hundreds of data points are cross-referenced across trusted sources first. This is the desk study, done in hours, not weeks. On the Architectural Feasibility, a designer then pressure-tests the data against the physical building and works through the spatial problems automation cannot solve. The Automated Site Feasibility stops after the data stage.",

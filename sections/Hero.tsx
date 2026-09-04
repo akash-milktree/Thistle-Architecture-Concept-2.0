@@ -56,7 +56,7 @@ const HERO_FALLBACK: HeroCopy = {
 
 const METRICS_FALLBACK: HeroMetric[] = [
   { value: "98.5%", label: "Planning success rate", detail: "Across all submitted schemes" },
-  { value: "5 days", label: "Guaranteed turn around", detail: "Submission to recommendation" },
+  { value: "5 days", label: "Turnaround, committed", detail: "Submission to recommendation" },
   { value: "86%", label: "Faster than traditional routes", detail: "5 days vs 2 to 6 weeks" },
 ];
 

@@ -17,6 +17,7 @@ const productLinks = [
   { label: "Case Studies", to: "/case-studies/feasibility-studies" },
   { label: "Class MA Checker", to: "/tools/class-ma-checker" },
   { label: "GDV Calculator", to: "/tools/gdv-calculator" },
+  { label: "HMO Calculator", to: "/tools/hmo-calculator" },
 ];
 
 const conversionsLinks = [
@@ -77,7 +78,7 @@ const CTA_FALLBACK: FooterCta = {
   buttonLabel: 'Get Your Fixed Fee',
   reassurance: 'No obligation. Response within one working day.',
   backgroundImage: '/images/projects/bereweeke/complete-rear.jpg',
-  backgroundAlt: 'The completed rear extension at Bereweeke Avenue, in brick with steel windows',
+  backgroundAlt: 'A completed residential conversion in brick with steel-framed glazing',
 };
 
 const DETAILS_FALLBACK: FooterDetails = {
@@ -283,8 +284,7 @@ export const Footer: React.FC<FooterProps> = ({ cta, details, tina }) => {
                 it. Renders nothing at all while analytics is switched off. */}
             <CookieSettingsLink className="inline-flex items-center min-h-[32px] text-xs text-white/60 hover:text-white transition-colors" />
             <span className="text-xs text-white/40">·</span>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[32px] text-xs text-white/70 hover:text-white transition-colors">LinkedIn</a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[32px] text-xs text-white/70 hover:text-white transition-colors">Instagram</a>
+            <a href="https://www.instagram.com/thistlearchi/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[32px] text-xs text-white/70 hover:text-white transition-colors">Instagram</a>
           </div>
         </div>
       </div>

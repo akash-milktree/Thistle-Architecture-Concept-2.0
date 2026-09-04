@@ -72,7 +72,7 @@ const PRODUCTS_COPY_FALLBACK = {
 const CALCULATOR_FALLBACK = {
   eyebrow: 'Architectural Feasibility',
   heading: 'Get Your Fixed Fee.',
-  lede: 'Seven questions, about a minute. Straightforward projects get a price on screen. Anything larger or more involved routes to a free Expert Session, because a scope we have not seen is not one we will put a number on.',
+  lede: 'Eight questions, about a minute. Straightforward projects get a price on screen. Anything larger or more involved routes to a free Expert Session, because a scope we have not seen is not one we will put a number on.',
 };
 
 const FEE_FACTORS_COPY_FALLBACK = {
