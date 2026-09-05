@@ -285,6 +285,7 @@ export const Footer: React.FC<FooterProps> = ({ cta, details, tina }) => {
             <CookieSettingsLink className="inline-flex items-center min-h-[32px] text-xs text-white/60 hover:text-white transition-colors" />
             <span className="text-xs text-white/40">·</span>
             <a href="https://www.instagram.com/thistlearchi/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[32px] text-xs text-white/70 hover:text-white transition-colors">Instagram</a>
+            <a href="https://www.linkedin.com/company/thistlearchi/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[32px] text-xs text-white/70 hover:text-white transition-colors">LinkedIn</a>
           </div>
         </div>
       </div>
