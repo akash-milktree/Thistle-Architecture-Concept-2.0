@@ -549,7 +549,12 @@ export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ page }
               the template; both were dropped on the first pass.
               The roadmap is a numbered timeline rather than the pills it was:
               pills wrapped mid-sequence and read as equal-weight tags, which
-              loses the one thing a roadmap has to show, the order. */}
+              loses the one thing a roadmap has to show, the order.
+
+              Gated on content since item 66: the five older studies were moved
+              onto this template with their decision and roadmap left empty for
+              Ed to supply, and a heading over nothing is worse than no section. */}
+          {(feasibility.decision || feasibility.roadmap.length > 0) && (
           <section className="bg-white py-fl-section px-fl-margin">
             <div className="max-w-[1000px] mx-auto">
               <Reveal>
@@ -578,6 +583,7 @@ export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ page }
               </Reveal>
             </div>
           </section>
+          )}
         </>
       )}
 

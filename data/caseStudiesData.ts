@@ -1293,7 +1293,6 @@ export const caseStudies: CaseStudy[] = [
     desc: "A new home on a vacant corner plot, bookending an existing Hackney terrace behind a curved wall of green glazed brick.",
     galleryImages: [],
     buildingType: "New-build house on an infill plot",
-    completionDate: "Complete",
     projectStory: {
       summary: [
         "A new-build residential project on a previously vacant corner plot in Hackney, London, designed to complete and bookend an existing terrace while creating a distinctive new family home.",
@@ -1329,7 +1328,6 @@ export const caseStudies: CaseStudy[] = [
     desc: "A new family home on a private plot inside the New Forest, tiled in terracotta across both roof and walls to sit inside a protected landscape.",
     galleryImages: [],
     buildingType: "New-build house in a protected landscape",
-    completionDate: "Complete",
     projectStory: {
       summary: [
         "A new-build family home on a privately owned plot in Lymington, within the sensitive landscape setting of the New Forest, designed to respond carefully to its rural surroundings.",
@@ -1364,7 +1362,6 @@ export const caseStudies: CaseStudy[] = [
     galleryImages: [],
     buildingType: "Agricultural barn",
     planningRoute: "Class Q prior approval",
-    completionDate: "Complete",
     projectStory: {
       summary: [
         "The conversion of an existing agricultural barn at Peter Hayes Farm in Somerset into a new residential dwelling. The barn sits to the rear of an existing farmhouse, within a mixed rural setting that also includes surrounding industrial and agricultural buildings.",
@@ -1400,7 +1397,6 @@ export const caseStudies: CaseStudy[] = [
     galleryImages: [],
     buildingType: "Residential plot with existing dwelling",
     planningRoute: "Phased, then full planning",
-    completionDate: "Complete",
     projectStory: {
       summary: [
         "The redevelopment of a substantial residential plot with an existing dwelling, where Thistle Architecture was initially commissioned to assess the wider development potential of the site and establish how additional homes could be successfully accommodated.",
@@ -1434,7 +1430,6 @@ export const caseStudies: CaseStudy[] = [
     galleryImages: [],
     buildingType: "Existing family home",
     planningRoute: "Full planning",
-    completionDate: "Complete",
     projectStory: {
       summary: [
         "The sensitive reconfiguration and extension of an existing family home within the South Downs, designed to create a more accessible and functional ground floor for the owners and their daughter, whose ongoing mobility requirements were central to the brief.",
@@ -1474,7 +1469,6 @@ export const caseStudies: CaseStudy[] = [
     galleryImages: [],
     buildingType: "Existing bungalow",
     planningRoute: "Full planning",
-    completionDate: "On site",
     projectStory: {
       summary: [
         "The comprehensive redevelopment of an existing bungalow on a substantial corner plot in Kings Worthy, Winchester, designed to create a significantly larger and more contemporary family home.",
@@ -1507,7 +1501,6 @@ export const caseStudies: CaseStudy[] = [
     desc: "An existing 22-bedroom local authority HMO reconfigured into fewer but far larger en-suite rooms, with Thistle running the technical package and the build.",
     galleryImages: [],
     buildingType: "Existing large HMO",
-    completionDate: "On site",
     projectStory: {
       summary: [
         "The comprehensive redevelopment of an existing 22-bedroom local authority HMO in Croydon for a large developer client, with the building being reconfigured to provide fewer but substantially larger bedrooms, each incorporating private en-suite facilities and kitchenettes.",
@@ -1548,7 +1541,6 @@ export const caseStudies: CaseStudy[] = [
     galleryImages: ["/images/projects/highbury-sk003-1.webp"],
     buildingType: "1930s commercial building",
     planningRoute: "Full planning, change of use",
-    completionDate: "On site",
     projectStory: {
       summary: [
         "The conversion of an existing commercial building in Cosham, Portsmouth, into a 10-bedroom professional co-living HMO. The property forms the end of a 1930s terrace and retains attractive original brickwork and stone detailing, providing a strong architectural base for the redevelopment.",

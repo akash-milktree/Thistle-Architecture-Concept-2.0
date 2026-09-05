@@ -241,7 +241,7 @@ export const caseStudyCollection: Collection = {
         type: 'string',
         name: 'completionDate',
         label: 'Date',
-        description: 'A month and year, e.g. “June 2026”.',
+        description: 'A month and year only, e.g. "June 2026". Never a stage word: "On site" and "Complete" belong in Build status, and putting them here made pages read "Completed: On site" (item 88).',
       },
   {
         type: 'string',
