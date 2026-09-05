@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -10,9 +10,9 @@ import { DocumentCards } from '../components/case-study/DocumentCards';
 import { SketchViewer } from '../components/case-study/SketchViewer';
 import { BeforeAfter } from '../components/case-study/BeforeAfter';
 import { isDrawing } from '../components/case-study/imageFit';
-import { ArrowUpRight, ArrowLeft, CheckCircle2, HardHat } from 'lucide-react';
+import { ArrowUpRight, ArrowLeft, CheckCircle2, HardHat, Maximize2, X } from 'lucide-react';
 import { caseStudies, type CaseStudy } from '../data/caseStudiesData';
-import { conversions } from '../data/conversionsData';
+import { conversions, conversionPath } from '../data/conversionsData';
 import { f, type TinaQuery, EMPTY_QUERY } from '../lib/tina-fields';
 import { str, arr, normalizeImage } from '../lib/tina';
 
@@ -36,21 +36,70 @@ const Frame: React.FC<{
   tina,
   aspect = 'aspect-[4/3]',
   sizes = '(max-width: 1024px) 92vw, 640px',
-}) => (
-  <div className={`relative ${aspect} rounded-2xl border border-thistle-black/[0.06] overflow-hidden ${isDrawing(src, kind) ? 'bg-white' : 'bg-thistle-white/60'}`}>
-    <Image
-      src={src}
-      alt={alt}
-      fill
-      sizes={sizes}
-      // On the image, not the frame around it: Tina resolves a click by walking
-      // up with closest(), so a marker on the wrapper would swallow anything
-      // else that ever sits inside it.
-      data-tina-field={tina}
-      className={isDrawing(src, kind) ? 'object-contain p-3' : 'object-cover'}
-    />
-  </div>
-);
+}) => {
+  const drawing = isDrawing(src, kind);
+  // Item 108: "Click to enlarge" was only on the template sketch, so a study
+  // with four drawings in its gallery had none of them readable. Every drawing
+  // now opens full size; photographs do not, because a photo fills its frame
+  // and gains nothing.
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false); };
+    window.addEventListener('keydown', onKey);
+    const { overflow } = document.body.style;
+    document.body.style.overflow = 'hidden';
+    return () => { window.removeEventListener('keydown', onKey); document.body.style.overflow = overflow; };
+  }, [open]);
+
+  const frame = (
+    <div className={`relative ${aspect} rounded-2xl border border-thistle-black/[0.06] overflow-hidden ${drawing ? 'bg-white' : 'bg-thistle-white/60'}`}>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes={sizes}
+        // On the image, not the frame around it: Tina resolves a click by walking
+        // up with closest(), so a marker on the wrapper would swallow anything
+        // else that ever sits inside it.
+        data-tina-field={tina}
+        className={drawing ? 'object-contain p-3' : 'object-cover'}
+      />
+      {drawing && (
+        <span className="pointer-events-none absolute top-fl-3 right-fl-3 inline-flex items-center gap-1.5 rounded-full bg-thistle-black/70 text-white text-[11px] px-3 py-1.5">
+          <Maximize2 size={12} /> Click to enlarge
+        </span>
+      )}
+    </div>
+  );
+
+  if (!drawing) return frame;
+
+  return (
+    <>
+      <button type="button" onClick={() => setOpen(true)} aria-label={`Open ${alt} full screen`} className="block w-full text-left cursor-zoom-in">
+        {frame}
+      </button>
+      {open && (
+        <div
+          className="fixed inset-0 z-[100] bg-thistle-black/95 flex items-center justify-center p-fl-4"
+          onClick={() => setOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={alt}
+        >
+          <button type="button" onClick={() => setOpen(false)} aria-label="Close" className="absolute top-fl-4 right-fl-4 text-white/70 hover:text-white transition-colors">
+            <X size={26} />
+          </button>
+          {/* Scrollable, so a large drawing can be read rather than shrunk to fit. */}
+          <div className="max-h-full max-w-full overflow-auto" onClick={(e) => e.stopPropagation()}>
+            <Image src={src} alt={alt} width={2400} height={1700} className="w-auto max-w-none h-auto bg-white" />
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
 
 /**
  * The field id for one entry of a list of plain strings — the roadmap steps and
@@ -683,7 +732,7 @@ export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ page }
             {relatedExpertise.map((c) => (
               <Link
                 key={c.slug}
-                href={`/conversions/${c.slug}`}
+                href={conversionPath(c.slug)}
                 className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border border-thistle-black/[0.08] text-sm font-medium text-thistle-black hover:border-thistle-green/40 hover:text-thistle-green transition-colors"
               >
                 {c.label} Feasibility

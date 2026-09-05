@@ -14,6 +14,16 @@ const nextConfig: NextConfig = {
   // same row reappearing on the next report.
   async redirects() {
     return [
+      // Item 110, September 2026: high-end residential is extensions, remodels
+      // and new homes, not a conversion, so it moved out of /conversions/. The
+      // page itself is still rendered by /conversions/[type] via the rewrite
+      // below; only the public address changed. See conversionPath() in
+      // data/conversionsData.ts, which every internal link goes through.
+      {
+        source: '/conversions/high-end-residential',
+        destination: '/expertise/high-end-residential',
+        statusCode: 301,
+      },
       // Removed 2026-07-17: both were stock placeholders with no material
       // behind them. They were live, so send anyone holding the URL to the
       // projects hub rather than a 404.
@@ -361,7 +371,13 @@ const nextConfig: NextConfig = {
   // redirect sources above is /admin or a prefix of it, so there is no
   // interaction between the two.
   async rewrites() {
-    return [{ source: '/admin', destination: '/admin/index.html' }];
+    return [
+      { source: '/admin', destination: '/admin/index.html' },
+      // The public address of the high-end residential page. Redirects run
+      // first and only on the incoming URL, so this internal destination is not
+      // bounced back by the redirect above.
+      { source: '/expertise/high-end-residential', destination: '/conversions/high-end-residential' },
+    ];
   },
 
   images: {

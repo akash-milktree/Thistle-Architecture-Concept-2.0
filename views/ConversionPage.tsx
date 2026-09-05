@@ -16,7 +16,7 @@ import { HowThistleSolves, type HighlightItem } from '../sections/conversions/Ho
 import { RelatedCaseStudy } from '../sections/conversions/RelatedCaseStudy';
 import { ReviewQuote, type ReviewItem } from '../sections/Testimonials';
 import { reviewByAuthor } from '../data/reviewsData';
-import { conversions, type Conversion, type ConversionFaq } from '../data/conversionsData';
+import { conversions, type Conversion, type ConversionFaq, conversionPath } from '../data/conversionsData';
 import { f, type TinaQuery, EMPTY_QUERY } from '../lib/tina-fields';
 import { str, arr, pruneEmpty, normalizeImage } from '../lib/tina';
 
@@ -395,7 +395,7 @@ export const ConversionPage: React.FC<ConversionPageProps> = ({
             {otherExpertise.map((x) => (
               <Link
                 key={x.slug}
-                href={`/conversions/${x.slug}`}
+                href={conversionPath(x.slug)}
                 className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border border-thistle-black/[0.08] bg-white text-sm font-medium text-thistle-black hover:border-thistle-green/40 hover:text-thistle-green transition-colors"
               >
                 {x.label}

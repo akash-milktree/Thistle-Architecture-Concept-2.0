@@ -401,6 +401,20 @@ export const conversions: Conversion[] = [
   },
 ];
 
+/**
+ * The URL of a sector page.
+ *
+ * Four of the five are conversions and live under /conversions/. High-end
+ * residential is extensions, remodels and new homes, and sat there only
+ * because the route did (item 110 of Ed's September 2026 list: the folder
+ * weakened the signal for the four genuine conversion pages). It is served at
+ * /expertise/high-end-residential, with the old URL redirecting, and the same
+ * route file renders it through a rewrite in next.config.ts. Every link to a
+ * sector page goes through here so none can point at the old address.
+ */
+export const conversionPath = (slug: string): string =>
+  slug === 'high-end-residential' ? '/expertise/high-end-residential' : `/conversions/${slug}`;
+
 export const getConversion = (slug: string): Conversion | undefined =>
   conversions.find((c) => c.slug === slug);
 

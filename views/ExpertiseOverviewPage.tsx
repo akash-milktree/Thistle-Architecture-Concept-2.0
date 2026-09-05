@@ -6,7 +6,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { useTina } from 'tinacms/dist/react';
 import { PageHero } from '../components/ui/PageHero';
 import { Reveal } from '../components/animations/Reveal';
-import { conversions } from '../data/conversionsData';
+import { conversions, conversionPath } from '../data/conversionsData';
 import { f, type TinaQuery, EMPTY_QUERY } from '../lib/tina-fields';
 import { str, arr, pruneEmpty } from '../lib/tina';
 
@@ -98,7 +98,7 @@ export const ExpertiseOverviewPage: React.FC<ExpertiseOverviewPageProps> = ({ pa
         <div className="max-w-[1360px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-fl-5">
           {cards.map((c, i) => (
             <Reveal key={c.slug} delay={Math.min(i * 0.06, 0.3)} fullHeight>
-              <Link href={`/conversions/${c.slug}`} className="block h-full group">
+              <Link href={conversionPath(c.slug)} className="block h-full group">
                 {/* Each marker sits on the element rendering that one field,
                     never on the card: the card is a wrapper, and a marker there
                     would capture every click inside it. Clicking a marked line

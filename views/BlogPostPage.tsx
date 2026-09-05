@@ -273,6 +273,8 @@ const MidArticleCTA: React.FC<{ onClick: () => void }> = ({ onClick }) => (
 );
 
 interface BlogPostPageProps {
+  /** Whether /blog/category/<slug> exists for this article's category. */
+  categoryHasPage?: boolean;
   /**
    * The article being read, resolved on the server.
    *
@@ -298,7 +300,7 @@ interface BlogPostPageProps {
   page?: TinaQuery;
 }
 
-export const BlogPostPage: React.FC<BlogPostPageProps> = ({ post, page }) => {
+export const BlogPostPage: React.FC<BlogPostPageProps> = ({ post, page, categoryHasPage = true }) => {
   // useTina returns the server data verbatim on the public site and swaps in
   // the live form values inside the editor. Passing a null-ish query is not
   // allowed, and hooks cannot be called conditionally, so it runs against a
@@ -396,12 +398,20 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ post, page }) => {
                   category is the value this URL is built from, so it is a lookup
                   key rather than copy, and a marker on a link cancels the
                   navigation as well. It is edited in the Tina form. */}
-              <Link
-                href={`/blog/category/${categorySlug(copy.category)}`}
-                className="px-3 py-1 rounded-full bg-thistle-green/10 text-[10px] uppercase tracking-widest text-thistle-green font-semibold hover:bg-thistle-green/20 transition-colors"
-              >
-                {copy.category}
-              </Link>
+              {categoryHasPage ? (
+                <Link
+                  href={`/blog/category/${categorySlug(copy.category)}`}
+                  className="px-3 py-1 rounded-full bg-thistle-green/10 text-[10px] uppercase tracking-widest text-thistle-green font-semibold hover:bg-thistle-green/20 transition-colors"
+                >
+                  {copy.category}
+                </Link>
+              ) : (
+                /* A category with one article has no listing page (item 111),
+                   so the label stays a label rather than a link to a 404. */
+                <span className="px-3 py-1 rounded-full bg-thistle-green/10 text-[10px] uppercase tracking-widest text-thistle-green font-semibold">
+                  {copy.category}
+                </span>
+              )}
               <span className="text-xs text-thistle-black/30" data-tina-field={f(cms, 'readTime')}>{copy.readTime}</span>
               {/* The count comes from /api/views, not from the document. */}
               <span className="text-xs text-thistle-black/30">{views.toLocaleString('en-GB')} views</span>

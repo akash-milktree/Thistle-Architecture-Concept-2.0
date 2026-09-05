@@ -52,6 +52,6 @@ export const post: BlogPost = {
   image: "/images/blog/how-to-fund-a-self-build-home.jpg",
   date: "May 25, 2024",
   readTime: "5 min read",
-  category: "Investment",
+  category: "Self Build",
   author: { name: "Edward Kercher", role: "Founder", initials: "EK", photo: "/images/team/ed.jpg" },
 };

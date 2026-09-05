@@ -41,7 +41,10 @@ export const conversionCollection: Collection = {
 
   ui: {
     // Filename to URL, one to one: hmo.json -> /conversions/hmo.
-    router: ({ document }) => `/conversions/${document._sys.filename}`,
+    router: ({ document }) =>
+      document._sys.filename === 'high-end-residential'
+        ? '/expertise/high-end-residential'
+        : `/conversions/${document._sys.filename}`,
     allowedActions: { create: false, delete: false },
     filename: {
       // These five paths are linked from the navigation, from the case studies,

@@ -2,15 +2,15 @@ import type { MetadataRoute } from 'next';
 import { categorySlug } from '@/data/blogData';
 import { getPosts, getPostCategories } from '@/lib/posts';
 import { getCaseStudies } from '@/lib/caseStudies';
-import { conversions } from '@/data/conversionsData';
+import { conversions, conversionPath } from '@/data/conversionsData';
 
 const BASE = 'https://www.thistlearchitecture.co.uk';
 
 // Written when the password gate came off. /case-studies is left out on purpose:
-// it only redirects to the feasibility listing, and pointing crawlers at a
-// redirect wastes the crawl. /team-review is an internal review page.
+// it used to redirect to the feasibility listing; since item 95 it is the Our
+// Work hub, a real page, so it is listed. /team-review is an internal review page.
 const staticPaths = [
-  '/', '/pricing', '/feasibility-package', '/case-studies/feasibility-studies',
+  '/', '/pricing', '/feasibility-package', '/case-studies', '/case-studies/feasibility-studies',
   '/case-studies/completed-projects', '/about', '/blog', '/contact', '/conversions',
   '/tools/class-ma-checker', '/tools/gdv-calculator', '/tools/hmo-calculator',
   '/privacy', '/terms', '/cookies',
@@ -32,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: p === '/' ? 1 : 0.8,
     })),
     ...conversions.map((c) => ({
-      url: `${BASE}/conversions/${c.slug}`,
+      url: `${BASE}${conversionPath(c.slug)}`,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     })),

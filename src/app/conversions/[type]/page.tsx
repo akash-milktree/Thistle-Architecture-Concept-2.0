@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getConversion } from '@/data/conversionsData';
+import { getConversion, conversionPath } from '@/data/conversionsData';
 import { ConversionPage } from '@/views/ConversionPage';
 import client from '@/tina/__generated__/client';
 import { slugFromRef } from '@/lib/caseStudies';
@@ -56,7 +56,9 @@ export async function generateMetadata({ params }: { params: Promise<{ type: str
       c?.metaDescription ||
       fallback?.metaDescription ||
       'Data-driven feasibility for residential conversions across the UK.',
-    alternates: { canonical: `/conversions/${type}` },
+    // conversionPath, not the folder this file sits in: high-end residential
+    // is served at /expertise/ through a rewrite and must say so.
+    alternates: { canonical: conversionPath(type) },
   };
 }
 

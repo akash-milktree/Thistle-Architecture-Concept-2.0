@@ -93,9 +93,11 @@ export const blogPosts: BlogPost[] = allPosts.sort(
   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
 );
 
-export const blogCategories: BlogCategory[] = Array.from(
+// Same floor as lib/posts.ts: a category needs two articles before it gets a
+// page or a filter chip (item 111).
+export const blogCategories: BlogCategory[] = (Array.from(
   new Set(blogPosts.map((p) => p.category))
-) as BlogCategory[];
+) as BlogCategory[]).filter((c) => blogPosts.filter((p) => p.category === c).length >= 2);
 
 // Categories have their own URLs at /blog/category/<slug>. The filter on /blog
 // used to be React state, so every category shared one URL and none of them

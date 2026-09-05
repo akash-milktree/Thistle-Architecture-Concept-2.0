@@ -79,15 +79,24 @@ export const getPosts = cache(async (): Promise<BlogPost[]> => {
 });
 
 /**
- * The categories that actually have an article, most-recently-posted first.
+ * The categories with at least two articles, most-recently-posted first.
  *
- * Only these get a /blog/category/<slug> route. A category with nothing in it
- * would be an indexable page with an empty list on it, which is the thin
- * content the category URLs were introduced to avoid.
+ * Only these get a /blog/category/<slug> route. A category with nothing, or
+ * one thing, in it would be an indexable page with an empty or one-line list
+ * on it, which is the thin content the category URLs were introduced to avoid.
  */
-export const getPostCategories = cache(async (): Promise<BlogCategory[]> =>
-  Array.from(new Set((await getPosts()).map((p) => p.category)))
-);
+export const getPostCategories = cache(async (): Promise<BlogCategory[]> => {
+  // Two articles is the floor (item 111 of Ed's September 2026 list). A
+  // category page with one post on it reads as an unfinished section; the post
+  // still carries its category as a label, it just does not link to a list of
+  // one.
+  const posts = await getPosts();
+  const counts = new Map<BlogCategory, number>();
+  for (const p of posts) counts.set(p.category, (counts.get(p.category) ?? 0) + 1);
+  return Array.from(counts.entries())
+    .filter(([, n]) => n >= 2)
+    .map(([c]) => c);
+});
 
 /** The articles in one category, in the same order the listing shows them. */
 export const getPostsInCategory = cache(async (c: BlogCategory): Promise<BlogPost[]> =>

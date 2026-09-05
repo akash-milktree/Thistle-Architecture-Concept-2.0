@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { BlogPostPage } from '@/views/BlogPostPage';
 import { normalizeImage } from '@/lib/tina';
 import client from '@/tina/__generated__/client';
-import { getPosts } from '@/lib/posts';
+import { getPosts, getPostCategories } from '@/lib/posts';
 
 // The routes come from the CMS, so an article an editor publishes gets a page.
 // The records in data/blogData.ts are still the per-field fallback for the
@@ -124,6 +124,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       />
       <BlogPostPage
         post={post}
+        categoryHasPage={(await getPostCategories()).includes(post.category)}
         page={{ query: article.query, variables: article.variables, data: article.data }}
       />
     </>

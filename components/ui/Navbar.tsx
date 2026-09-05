@@ -34,10 +34,10 @@ const navLinks: NavItem[] = [
   {
     key: "our-work",
     label: "Our Work",
-    path: "/case-studies/feasibility-studies",
+    // The hub, which is what the label says (item 95). The two listings are the
+    // children.
+    path: "/case-studies",
     children: [
-      // Explicit ?view=feasibility, not a bare /case-studies. Without the param
-      // this link is a no-op when you are already on the projects tab.
       { key: "our-work.feasibility", label: "Feasibility Studies", path: "/case-studies/feasibility-studies" },
       { key: "our-work.completed", label: "Completed Projects", path: "/case-studies/completed-projects" },
     ],
@@ -57,7 +57,8 @@ const navLinks: NavItem[] = [
       { key: "expertise.hmo", label: "HMO", path: "/conversions/hmo" },
       { key: "expertise.coliving", label: "Co-Living & Large HMO", path: "/conversions/co-living-large-hmo" },
       { key: "expertise.mixed", label: "Mixed-Use Commercial", path: "/conversions/mixed-use-commercial" },
-      { key: "expertise.highend", label: "High-End Residential", path: "/conversions/high-end-residential" },
+      // Not a conversion, so not under /conversions/. See conversionPath().
+      { key: "expertise.highend", label: "High-End Residential", path: "/expertise/high-end-residential" },
     ],
   },
   {

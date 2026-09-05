@@ -20,11 +20,15 @@
     "stats": [
       {
         "label": "Tenant type",
-        "value": "Professionals "
+        "value": "Professionals"
       },
       {
         "label": "Bedrooms",
         "value": "6"
+      },
+      {
+        "label": "Finish",
+        "value": "High specification"
       }
     ],
     "completionDate": "2025"
