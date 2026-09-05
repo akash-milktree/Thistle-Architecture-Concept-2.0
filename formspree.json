@@ -6,10 +6,6 @@
         {
           "type": "email",
           "to": "hello@incollective.works"
-        },
-        {
-          "type": "email",
-          "to": "jodi@thistlearchitecture.co.uk"
         }
       ]
     },
@@ -19,10 +15,6 @@
         {
           "type": "email",
           "to": "hello@incollective.works"
-        },
-        {
-          "type": "email",
-          "to": "jodi@thistlearchitecture.co.uk"
         }
       ]
     },
@@ -32,10 +24,6 @@
         {
           "type": "email",
           "to": "hello@incollective.works"
-        },
-        {
-          "type": "email",
-          "to": "jodi@thistlearchitecture.co.uk"
         },
         {
           "type": "autoresponse",
