@@ -12,14 +12,15 @@ interface RelatedCaseStudyProps {
   tinted?: boolean;
   slug?: string;
   /**
-   * The two lines above the card are the same on all five sector pages, so
-   * they come from the Expertise Overview document rather than from each
-   * sector's record. Which project is featured stays in code: it selects a
-   * record rather than saying anything.
+   * The eyebrow names this page's sector; the heading is shared by all five
+   * sector pages and comes from the Expertise Overview document. Which project
+   * is featured stays in code: it selects a record rather than saying anything.
    */
   eyebrow?: string;
   heading?: string;
-  tina?: Partial<Record<'eyebrow' | 'heading', string>>;
+  /** Why this project is the right proof for this page, where that needs saying. */
+  note?: string;
+  tina?: Partial<Record<'eyebrow' | 'heading' | 'note', string>>;
 }
 
 const EYEBROW_FALLBACK = 'A Real Project';
@@ -32,6 +33,7 @@ export const RelatedCaseStudy: React.FC<RelatedCaseStudyProps> = ({
   tinted = true,
   eyebrow = EYEBROW_FALLBACK,
   heading = HEADING_FALLBACK,
+  note,
   tina,
 }) => {
   if (!slug) return null;
@@ -52,6 +54,13 @@ export const RelatedCaseStudy: React.FC<RelatedCaseStudyProps> = ({
               {heading}
             </h2>
           </Reveal>
+          {note && (
+            <Reveal delay={0.15}>
+              <p className="text-fluid-base text-thistle-black/70 leading-relaxed mt-fl-4" data-tina-field={tina?.note}>
+                {note}
+              </p>
+            </Reveal>
+          )}
         </div>
 
         <Reveal delay={0.2}>

@@ -2,9 +2,9 @@
 // since the first build (Marcus Cole / Sterling Property Group and the rest).
 // None of those people or companies existed.
 //
-// Source: Thistle Architecture's Trustpilot profile, read 18 August 2026.
-// Five reviews, all five star, all from 2026, all about Thistle rather than a
-// parent company.
+// Source: Thistle Architecture's Trustpilot profile, read 18 August 2026 and
+// again 5 September 2026. Seven reviews, all five star, all from 2026, all
+// about Thistle rather than a parent company.
 //
 // Google was checked too and deliberately not used. Its five reviews are three
 // years old, three of them name inCollective and "Tim" who is not on the
@@ -78,6 +78,26 @@ export const reviews: Review[] = [
     topics: ['hmo'],
   },
   {
+    author: 'Adam Cooper',
+    title: 'Ed and his team are always friendly',
+    quote:
+      'Ed and his team are always friendly, professional and positive. They are exactly the team you want when working on complex projects.',
+    date: '20 August 2026',
+    datePublished: '2026-08-20',
+    rating: 5,
+    topics: ['planning'],
+  },
+  {
+    author: "Lewis O'Hara",
+    title: 'Highly recommend!',
+    quote:
+      'Used Ed and his team to put my property through planning etc.. couldn’t fault them, came up with some great ideas and drawings.. would highly recommend!',
+    date: '20 August 2026',
+    datePublished: '2026-08-20',
+    rating: 5,
+    topics: ['planning'],
+  },
+  {
     author: 'Joel Walker',
     quote:
       'Thistlearchitecture recently did the full planning application on a Hotel we own to which they gain planning permission to turn it into a 9 bedroom HMO. Great service throughout, always easy to get on the phone and very details with their work.',
@@ -91,3 +111,16 @@ export const reviews: Review[] = [
 /** The most relevant review for a given page, falling back to the first. */
 export const reviewFor = (topic: Review['topics'][number]): Review =>
   reviews.find((r) => r.topics[0] === topic) ?? reviews.find((r) => r.topics.includes(topic)) ?? reviews[0];
+
+/**
+ * One named review, for a page that has to show a particular one.
+ *
+ * Item 73 of Ed's September 2026 list: the topic lookup above put Gemma on
+ * both HMO pages and Liam Thomas on both commercial pages, and Liam's review
+ * describes an office-to-residential job, which is not mixed use. Pinning by
+ * author is how each of the five conversion pages now gets its own review,
+ * chosen to match the service. Returns undefined rather than falling back, so
+ * a mistyped name shows no review instead of the wrong one.
+ */
+export const reviewByAuthor = (author: string): Review | undefined =>
+  reviews.find((r) => r.author === author);

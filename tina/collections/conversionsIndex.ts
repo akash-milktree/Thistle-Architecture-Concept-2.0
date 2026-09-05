@@ -115,12 +115,6 @@ export const conversionsIndexCollection: Collection = {
           description:
             'Finished by the sector name in green on the line below, the same way as the risks heading: "Built For" then "HMO." No punctuation at the end.',
         },
-        {
-          type: 'string',
-          name: 'caseStudyEyebrow',
-          label: 'Case study eyebrow',
-          description: 'The small green line above the featured project. Which project each page features is set in code.',
-        },
         { type: 'string', name: 'caseStudyHeading', label: 'Case study heading' },
         {
           type: 'string',

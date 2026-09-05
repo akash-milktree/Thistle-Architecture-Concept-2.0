@@ -85,11 +85,11 @@ export interface ConversionFaq {
 export interface Conversion {
   slug: string;
   /**
-   * Which client review to show on this page. Set per conversion so a reader
-   * sees a review about the thing they are reading about, rather than the same
-   * quote on all four pages.
+   * Which client review to show on this page, by reviewer name exactly as it
+   * appears in data/reviewsData.ts. One review per page, matched to the
+   * service, and no two pages share one (item 73 of Ed's September 2026 list).
    */
-  reviewTopic?: 'feasibility' | 'hmo' | 'commercial' | 'planning';
+  reviewAuthor?: string;
   label: string;
   heroHeading: string;
   heroDescription: string;
@@ -99,6 +99,13 @@ export interface Conversion {
   extraSection?: ConversionExtraSection;
   deliverableHighlights: DeliverableHighlight[];
   relatedCaseStudySlug?: string;
+  /**
+   * One sentence or two under the case study heading saying why this project
+   * is the right proof for this page. Only where the fit needs explaining: the
+   * mixed-use page features a scheme whose homes happen to be an HMO, and
+   * without this a reader sees "HMO" and stops (item 74).
+   */
+  relatedCaseStudyNote?: string;
   metaTitle: string;
   metaDescription: string;
   /**
@@ -113,7 +120,7 @@ export interface Conversion {
 export const conversions: Conversion[] = [
   {
     slug: "commercial-to-residential",
-    reviewTopic: "commercial",
+    reviewAuthor: "Liam Thomas",
     label: "Commercial to Residential",
     // Ed's August 2026 final brief: search-intent-led H1, with the previous
     // punchy line kept as the supporting copy underneath it.
@@ -171,7 +178,7 @@ export const conversions: Conversion[] = [
   },
   {
     slug: "hmo",
-    reviewTopic: "hmo",
+    reviewAuthor: "Gemma",
     label: "HMO",
     heroHeading: "HMO Design & Feasibility Specialists",
     heroDescription: "HMO feasibility, without the guesswork. Houses of multiple occupation work on tight margins, so we pressure-test density, licensing, and layout before you put in an offer.",
@@ -235,7 +242,7 @@ export const conversions: Conversion[] = [
   // structure, so treat the copy below as a first pass.
   {
     slug: "mixed-use-commercial",
-    reviewTopic: "commercial",
+    reviewAuthor: "Adam Cooper",
     label: "Mixed-Use Commercial",
     heroHeading: "Mixed-Use Development Specialists",
     heroDescription: "Keep the shop, build homes above it. High-street buildings where the ground floor has to stay commercial and the value sits in the floors above.",
@@ -257,6 +264,7 @@ export const conversions: Conversion[] = [
       { deliverableId: 'full-feasibility', forThisType: "The commercial case for the mixed scheme against the pure-residential fallback, so you can see which is actually worth more." },
     ],
     relatedCaseStudySlug: "bath-street-cheddar",
+    relatedCaseStudyNote: "The shop stays trading at the Bath Street frontage and the eleven en-suite rooms sit above and behind it. That the homes are an HMO rather than flats does not change the planning question, which is keeping an active ground floor while the rest of the building changes use.",
     metaTitle: "Mixed-Use Development Specialists | Thistle Architecture",
     metaDescription: "Feasibility for mixed-use conversions: retained commercial at ground floor with residential above. Ground-floor policy, access separation, and viability tested in five days.",
     faqs: [
@@ -280,7 +288,7 @@ export const conversions: Conversion[] = [
   },
   {
     slug: "high-end-residential",
-    reviewTopic: "planning",
+    reviewAuthor: "Lewis O'Hara",
     label: "High-End Residential",
     heroHeading: "High-End Residential Design Specialists",
     heroDescription: "Extend, remodel, or convert to something better. Feasibility for high-end residential projects, where the question is what the house could become rather than how many units fit in it.",
@@ -301,6 +309,23 @@ export const conversions: Conversion[] = [
       { deliverableId: 'risk-register', forThisType: "The risks that move a high-end budget, from structure to heritage objection, named early." },
       { deliverableId: 'full-feasibility', forThisType: "A clear view of whether the project is worth doing, and which option is worth doing." },
     ],
+    // Item 75 of Ed's September 2026 list: this page was the only one of the
+    // five without a middle band, which is most of why it read as unfinished.
+    // Everything here is drawn from the deliverables and the featured project;
+    // no figure is claimed that the site does not already state.
+    extraSection: {
+      id: "high-end-design-led",
+      eyebrow: "Design-Led Feasibility",
+      title: "What The House Could Become.",
+      body: [
+        "A house is not judged on how many units fit in it. It is judged on whether the finished home is worth what it cost to get there, and that turns on the design as much as on the planning route. So a feasibility for a house is design-led from the start: options are drawn over your existing plans, so you can see what the house becomes before you commit to one route.",
+        "The checks are the same ones that catch developers, applied to a home. What a conservation area or a listed neighbour will allow externally. How much permitted development allowance is left once earlier extensions and loft conversions are counted. What the existing structure, head heights and floor levels will actually let a remodel do.",
+        "Where two routes are both credible, one additional design option can be added to the fixed fee, so you are comparing two genuine schemes rather than committing to the first idea. Bereweeke Avenue, featured below, is a 1930s house in Winchester extended and remade on exactly that basis.",
+      ],
+      image: "/images/projects/bereweeke/complete-rear.jpg",
+      imageAlt: "Bereweeke Avenue, Winchester: the completed rear extension",
+      cta: { label: "See the Bereweeke Avenue project", href: "/case-studies/bereweeke-avenue" },
+    },
     relatedCaseStudySlug: "bereweeke-avenue",
     metaTitle: "High-End Residential Design Specialists | Thistle Architecture",
     metaDescription: "Feasibility for high-end residential projects: extensions, remodels, and conversions. Heritage, permitted development, and existing fabric tested before you commit to design.",
@@ -330,7 +355,7 @@ export const conversions: Conversion[] = [
   // scale (eleven en-suite co-living rooms, on site).
   {
     slug: "co-living-large-hmo",
-    reviewTopic: "hmo",
+    reviewAuthor: "Joel Walker",
     label: "Co-Living & Large HMO",
     heroHeading: "Co-Living & Large HMO Specialists",
     heroDescription: "Beyond the standard HMO. Feasibility for co-living and large shared-living schemes, where amenity, management and fire strategy carry as much weight as the room count.",

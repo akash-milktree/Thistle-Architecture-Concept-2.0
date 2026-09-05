@@ -37,6 +37,24 @@
       "detail": "Older houses rarely match their drawings. Head heights, structure, and floor levels decide what a remodel can actually deliver, and only a survey settles it."
     }
   ],
+  "extraSection": {
+    "eyebrow": "Design-Led Feasibility",
+    "title": "What The House Could Become.",
+    "body": [
+      {
+        "text": "A house is not judged on how many units fit in it. It is judged on whether the finished home is worth what it cost to get there, and that turns on the design as much as on the planning route. So a feasibility for a house is design-led from the start: options are drawn over your existing plans, so you can see what the house becomes before you commit to one route."
+      },
+      {
+        "text": "The checks are the same ones that catch developers, applied to a home. What a conservation area or a listed neighbour will allow externally. How much permitted development allowance is left once earlier extensions and loft conversions are counted. What the existing structure, head heights and floor levels will actually let a remodel do."
+      },
+      {
+        "text": "Where two routes are both credible, one additional design option can be added to the fixed fee, so you are comparing two genuine schemes rather than committing to the first idea. Bereweeke Avenue, featured below, is a 1930s house in Winchester extended and remade on exactly that basis."
+      }
+    ],
+    "image": "/images/projects/bereweeke/complete-rear.jpg",
+    "imageAlt": "Bereweeke Avenue, Winchester: the completed rear extension",
+    "ctaLabel": "See the Bereweeke Avenue project"
+  },
   "deliverableHighlights": [
     {
       "deliverableId": "sketch-schemes",

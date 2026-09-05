@@ -15,7 +15,7 @@ import { Challenges, type ChallengeItem } from '../sections/conversions/Challeng
 import { HowThistleSolves, type HighlightItem } from '../sections/conversions/HowThistleSolves';
 import { RelatedCaseStudy } from '../sections/conversions/RelatedCaseStudy';
 import { ReviewQuote, type ReviewItem } from '../sections/Testimonials';
-import { reviewFor } from '../data/reviewsData';
+import { reviewByAuthor } from '../data/reviewsData';
 import { conversions, type Conversion, type ConversionFaq } from '../data/conversionsData';
 import { f, type TinaQuery, EMPTY_QUERY } from '../lib/tina-fields';
 import { str, arr, pruneEmpty, normalizeImage } from '../lib/tina';
@@ -175,12 +175,12 @@ export const ConversionPage: React.FC<ConversionPageProps> = ({
       }
     : undefined;
 
-  // Which review appears here is chosen in code: reviewTopic selects a record
+  // Which review appears here is chosen in code: reviewAuthor names a record
   // rather than saying anything. The words are then taken from that review's
   // own CMS document, matched on the author, so the quote on the page is the
-  // live one and can be clicked to edit — and so there is still exactly one
+  // live one and can be clicked to edit, and so there is still exactly one
   // place a review is worded.
-  const codeReview = conversion.reviewTopic ? reviewFor(conversion.reviewTopic) : undefined;
+  const codeReview = conversion.reviewAuthor ? reviewByAuthor(conversion.reviewAuthor) : undefined;
   const cmsReview = codeReview && reviews
     ? arr<any>((liveReviews as any)?.reviewConnection?.edges)
         .map((e: any) => e?.node)
@@ -332,9 +332,14 @@ export const ConversionPage: React.FC<ConversionPageProps> = ({
       <RelatedCaseStudy
         slug={relatedCaseStudySlug ?? conversion.relatedCaseStudySlug}
         tinted={!hasExtra}
-        eyebrow={str(shared?.caseStudyEyebrow) || undefined}
+        /* Built from this page's own label, not shared copy. The shared
+           eyebrow had been set to "HMO Feasibility Case Study" and was showing
+           on all five pages, including mixed use and high-end residential
+           (item 74 of Ed's September 2026 list). */
+        eyebrow={`${hero.label} Case Study`}
         heading={str(shared?.caseStudyHeading) || undefined}
-        tina={{ eyebrow: f(shared, 'caseStudyEyebrow'), heading: f(shared, 'caseStudyHeading') }}
+        note={str(c?.relatedCaseStudyNote) || conversion.relatedCaseStudyNote}
+        tina={{ eyebrow: f(c?.hero, 'label'), heading: f(shared, 'caseStudyHeading'), note: f(c, 'relatedCaseStudyNote') }}
       />
 
       {/* One review, chosen for this conversion type, sitting between the

@@ -1,6 +1,6 @@
 import type { Collection } from 'tinacms';
 
-// The five real Trustpilot reviews shown across the site.
+// The real Trustpilot reviews shown across the site, seven as of September 2026.
 //
 // These are third-party statements attributed to named people, not marketing
 // copy we own. data/reviewsData.ts recorded the rule this collection has to
@@ -20,7 +20,7 @@ export const reviewsCollection: Collection = {
     // band, so the editor previews the About page, which renders all five.
     router: () => '/about',
     filename: {
-      // The filename is the identity used by reviewFor() lookups, so it is not
+      // The filename is the identity reviewByAuthor() matches on, so it is not
       // something to regenerate from a changing field.
       readonly: true,
       slugify: (values) =>

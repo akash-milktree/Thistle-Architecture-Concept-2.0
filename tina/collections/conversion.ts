@@ -22,7 +22,7 @@ import { joinKeyField } from '../fields';
 // Deliberately NOT here, and staying in code:
 //
 //  - The slug, for the reason above.
-//  - Which client review appears on each page (`reviewTopic`) and which case
+//  - Which client review appears on each page (`reviewAuthor`) and which case
 //    study is featured (`relatedCaseStudySlug`). Both select a record rather
 //    than saying anything, and both are edited where that record lives.
 //  - The anchor id on the extra band ("#office-to-resi-class-ma") and where its
@@ -247,6 +247,14 @@ export const conversionCollection: Collection = {
       collections: ['caseStudy'],
       description:
         'The single study featured near the bottom of this page. Picked from the case studies rather than typed, so it cannot point at one that does not exist. Leave it empty and the section is left out of the page entirely rather than rendering blank.',
+    },
+    {
+      type: 'string',
+      name: 'relatedCaseStudyNote',
+      label: 'Why this project',
+      ui: { component: 'textarea' },
+      description:
+        'Optional. One or two sentences under the case study heading saying why this project is the right proof for this page. Used on the mixed-use page, where the featured scheme keeps a shop below an HMO and a reader might otherwise take it for a plain HMO job. Leave empty on pages where the fit is obvious.',
     },
     {
       type: 'object',
