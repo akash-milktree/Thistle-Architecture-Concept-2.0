@@ -24,6 +24,41 @@ import { str, num, arr, normalizeImage } from '@/lib/tina';
  * call. Cached per request so a page rendering both the listing and the sitemap
  * does not fetch twice.
  */
+/**
+ * The three figures on a card.
+ *
+ * A feasibility study that has moved to Ed's template carries a key
+ * information table on its page. The card used to keep a separate set of
+ * three figures, and the two drifted: "5 or 6" beds on the card against 6 on
+ * the page, "Householder only" against a two-stage route (item 81 of his
+ * September 2026 list). So for those studies the card is now cut from the
+ * page's own table, and the separate set is ignored. The route, the date and
+ * the risk are left out because they are not the numbers a reader scans a
+ * card for, and a project, or a study not yet on the template, still uses the
+ * figures typed for it.
+ */
+const CARD_SKIP = new Set(['planning route', 'date', 'key risk']);
+const cardStats = (n: any): { label: string; value: string }[] => {
+  const keyInfo = arr<any>(n.feasibility?.keyInfo)
+    .map((k) => ({ label: str(k?.label), value: str(k?.value) }))
+    .filter((k) => k.label && k.value && !CARD_SKIP.has(k.label.toLowerCase()));
+  if (str(n.kind) !== 'project' && keyInfo.length) return keyInfo.slice(0, 3);
+  return arr<any>(n.facts?.stats).map((s) => ({ label: str(s?.label), value: str(s?.value) }));
+};
+
+/**
+ * "March 2026" as a sortable number, or null when the field is empty or not a
+ * month and year. The feasibility listing runs newest first (item 82), and a
+ * study with no date cannot be placed, so it goes after every dated one.
+ */
+const MONTHS = ['january','february','march','april','may','june','july','august','september','october','november','december'];
+const monthYear = (s?: string): number | null => {
+  const m = /^\s*([A-Za-z]+)\s+(\d{4})\s*$/.exec(s ?? '');
+  if (!m) return null;
+  const i = MONTHS.indexOf(m[1].toLowerCase());
+  return i < 0 ? null : Number(m[2]) * 12 + i;
+};
+
 export const getCaseStudies = cache(async (): Promise<CaseStudy[]> => {
   const nodes: any[] = [];
   let after: string | undefined;
@@ -70,7 +105,7 @@ export const getCaseStudies = cache(async (): Promise<CaseStudy[]> => {
         // The grouped paths below are the Create-form regrouping: these fifteen
         // fields moved into listing/facts/writeup/seo so the form opens on the
         // seven things every study needs rather than twenty-five flat ones.
-        stats: arr<any>(n.facts?.stats).map((s) => ({ label: str(s?.label), value: str(s?.value) })),
+        stats: cardStats(n),
         // normalizeImage unwraps the { src, kind } object itself, so this
         // takes either shape.
         galleryImages: arr<any>(n.galleryImages).map((g) => normalizeImage(g)),
@@ -95,9 +130,25 @@ export const getCompletedProjects = cache(async () =>
   (await getCaseStudies()).filter((c) => c.kind === 'project')
 );
 
-/** Feasibility studies, in the order the listing shows them. */
+/**
+ * Feasibility studies, newest first.
+ *
+ * Item 82: the listing ran on the hand-set `order`, which had a March 2026
+ * study first and the four July 2026 studies at eight to eleven. Date decides
+ * now; `order` only breaks ties and arranges the studies that have no date,
+ * which sit at the end until Ed supplies one.
+ */
 export const getFeasibilityStudies = cache(async () =>
-  (await getCaseStudies()).filter((c) => c.kind === 'feasibility')
+  (await getCaseStudies())
+    .filter((c) => c.kind === 'feasibility')
+    .sort((a, b) => {
+      const da = monthYear(a.completionDate);
+      const db = monthYear(b.completionDate);
+      if (da !== null && db !== null && da !== db) return db - da;
+      if (da !== null && db === null) return -1;
+      if (da === null && db !== null) return 1;
+      return (a as any).order - (b as any).order;
+    })
 );
 
 /**

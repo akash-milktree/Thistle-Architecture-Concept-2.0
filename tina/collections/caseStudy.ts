@@ -168,7 +168,7 @@ export const caseStudyCollection: Collection = {
         type: 'number',
         name: 'order',
         label: 'Position in the list',
-        description: 'Lower numbers come first. Leave gaps (10, 20, 30) so a new one can be slotted in.',
+        description: 'Lower numbers come first. Completed projects list in this order. Feasibility studies list newest first by their date, and this only decides the order between studies with the same date or no date at all. Leave gaps (10, 20, 30) so a new one can be slotted in.',
       },
   {
         type: 'string',
@@ -225,7 +225,7 @@ export const caseStudyCollection: Collection = {
         label: 'Headline facts',
         list: true,
         ui: { itemProps: (item) => ({ label: item?.label }) },
-        description: 'The three figures on the card. Each has to be a real number you could evidence.',
+        description: 'The three figures on the card, for a completed project or a study not yet on the template. A study with a Key information table below takes its card figures from that table instead (the first three rows that are not the route, the date or the risk), so the card cannot disagree with the page.',
         fields: [
           { type: 'string', name: 'label', label: 'What it is', description: 'The small grey line, e.g. "Bedrooms, all en suite".' },
           { type: 'string', name: 'value', label: 'The figure', description: 'The larger line underneath, e.g. "13".' },

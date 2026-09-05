@@ -47,6 +47,23 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
+/**
+ * "Nine-Bed HMO Conversion, Aylesbury" rather than "Nine-Bed HMO Conversion".
+ *
+ * Item 83 of Ed's September 2026 list: every case study title read "conversion
+ * type | Thistle Architecture", so nothing could rank for a place. The place
+ * is the first part of the location field, the town where there is one and
+ * otherwise the area or national park, per item 84. A location that is only
+ * a country adds nothing and is left off. An SEO title typed in the CMS wins
+ * outright, so an editor can still write the whole thing by hand.
+ */
+const withPlace = (title: string, location?: string): string => {
+  const place = (location ?? '').split(',')[0].trim();
+  if (!place || place === 'England' || place === 'UK') return title;
+  if (title.toLowerCase().includes(place.toLowerCase())) return title;
+  return `${title}, ${place}`;
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const doc = await load(slug);
@@ -58,7 +75,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     // how all 35 are seeded — the listing falls back to the case study's own
     // title and summary, exactly as it did before they existed, and then to
     // the record in code so an empty CMS never publishes an untitled page.
-    title: str(cms?.seo?.metaTitle) || str(cms?.title) || fallback?.title || 'Case Study',
+    title: str(cms?.seo?.metaTitle) || withPlace(str(cms?.title) || fallback?.title || 'Case Study', str(cms?.location) || fallback?.location),
     description:
       str(cms?.seo?.metaDescription) || str(cms?.desc) || fallback?.desc || 'Thistle Architecture case study.',
     // Routing, not content. The canonical has to match the URL this file

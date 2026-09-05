@@ -669,27 +669,39 @@ export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ page }
         </section>
       )}
 
-      {relatedExpertise.length > 0 && (
-        <section className="bg-white py-fl-7 px-fl-margin border-t border-thistle-black/[0.06]">
-          <div className="max-w-[1360px] mx-auto">
-            <p className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-4">
-              We Can Help With This
-            </p>
-            <div className="flex flex-wrap gap-fl-3">
-              {relatedExpertise.map((c) => (
-                <Link
-                  key={c.slug}
-                  href={`/conversions/${c.slug}`}
-                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border border-thistle-black/[0.08] text-sm font-medium text-thistle-black hover:border-thistle-green/40 hover:text-thistle-green transition-colors"
-                >
-                  {c.label} Feasibility
-                  <ArrowUpRight size={14} />
-                </Link>
-              ))}
-            </div>
+      {/* Item 87: this block used to be skipped on a page with no conversion
+          type, so six project pages dropped straight from body copy to the
+          closing banner. It now always renders; a page whose building fits none
+          of the five sectors (the church that became offices) gets the package
+          itself. */}
+      <section className="bg-white py-fl-7 px-fl-margin border-t border-thistle-black/[0.06]">
+        <div className="max-w-[1360px] mx-auto">
+          <p className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-4">
+            We Can Help With This
+          </p>
+          <div className="flex flex-wrap gap-fl-3">
+            {relatedExpertise.map((c) => (
+              <Link
+                key={c.slug}
+                href={`/conversions/${c.slug}`}
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border border-thistle-black/[0.08] text-sm font-medium text-thistle-black hover:border-thistle-green/40 hover:text-thistle-green transition-colors"
+              >
+                {c.label} Feasibility
+                <ArrowUpRight size={14} />
+              </Link>
+            ))}
+            {relatedExpertise.length === 0 && (
+              <Link
+                href="/feasibility-package"
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border border-thistle-black/[0.08] text-sm font-medium text-thistle-black hover:border-thistle-green/40 hover:text-thistle-green transition-colors"
+              >
+                Feasibility For Your Building
+                <ArrowUpRight size={14} />
+              </Link>
+            )}
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
       {/* Next, within the same category */}
       <section className="bg-thistle-white py-fl-8 px-fl-margin border-t border-thistle-black/[0.06]">

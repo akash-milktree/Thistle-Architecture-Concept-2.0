@@ -53,7 +53,10 @@
   },
   "listing": {
     "order": 60,
-    "status": "Complete"
+    "status": "Complete",
+    "conversionTypes": [
+      "high-end-residential"
+    ]
   },
   "facts": {
     "stats": [
