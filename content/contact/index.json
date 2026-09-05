@@ -4,24 +4,11 @@
   "hero": {
     "label": "Contact",
     "heading": "Get in touch.",
-    "description": "One address for general enquiries, one number, and a free call with Jodi if you would rather talk it through first."
-  },
-  "routeReady": {
-    "eyebrow": "Ready To Assess A Property",
-    "body": "Answer a few questions and your fixed fee is on screen. Fastest way to a Go or No-Go.",
-    "buttonLabel": "Get Your Fixed Fee"
-  },
-  "feasibilityNudge": {
-    "heading": "Already have a building in mind?",
-    "body": "The feasibility form asks the few questions we need to tell you whether it stacks up, and you get a clear Go or No-Go in five days.",
-    "linkLabel": "Book your feasibility"
+    "description": "Book a call with Jodi, or send us a message. One address, one number, and both say what they are for."
   },
   "expertSession": {
     "personName": "Jodi",
     "personRole": "Business Development & Expert Sessions",
-    "pitch": "Not sure which route fits your project? A free 15-minute call with Jodi to talk through the opportunity and point you at the right feasibility.",
-    "buttonLabel": "Request a Call Back",
-    "reassurance": "No obligation. Usually within one working day.",
-    "successHeading": "Thanks. Jodi will be in touch to find a time, usually within one working day."
+    "pitch": "Not sure which route fits your project? Book a free call with Jodi to talk through the opportunity and be pointed at the right feasibility. Pick a time below and it goes straight into her diary."
   }
 }

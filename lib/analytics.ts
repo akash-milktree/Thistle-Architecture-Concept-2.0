@@ -61,7 +61,7 @@ export const EVENTS = {
   paymentAbandoned: 'payment_abandoned',
   /** A call with Jodi was requested, whether by form or by booking link. */
   callRequested: 'call_requested',
-  /** A booking was completed on the booking tool. */
+  /** A slot was confirmed in Jodi's Calendly embed on /contact. */
   bookingCompleted: 'booking_completed',
 } as const;
 

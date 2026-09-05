@@ -1,29 +1,28 @@
 "use client";
 
 import React from 'react';
-import Link from 'next/link';
-import { Mail, Phone, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 import { useTina } from 'tinacms/dist/react';
 import { PageHero } from '../components/ui/PageHero';
 import { ContactForm } from '../sections/ContactForm';
 import { ExpertSessionCard } from '../sections/ExpertSessionCard';
 import { Reveal } from '../components/animations/Reveal';
-import { Button } from '../components/ui/Button';
-import { useRouter } from 'next/navigation';
 import { f, type TinaQuery, EMPTY_QUERY } from '../lib/tina-fields';
 import { str, pruneEmpty, telHref} from '../lib/tina';
 
-// Ed's August 2026 final brief, section 08: three routes by how ready the
-// visitor is, in his order. Response-time wording stays "within one working
-// day" throughout, which is what the team actually operates to; nothing here
-// promises an instant call.
+// Ed's August 2026 final brief, section 08, gave this page three routes by how
+// ready the visitor is. His September list, item 76, counted what that had
+// become, five competing ways in, and asked for one address, one booking route
+// and one number, each saying what it is for. So the page is now two things:
+// Jodi's live calendar, and the enquiry form with the practice address and
+// number beside it. The fee calculator is no longer offered here; the closing
+// band on every page already carries that button.
 //
-// That wording is deliberately NOT in the CMS. Both instances of it sit inside
-// the two forms (sections/ContactForm.tsx and sections/ExpertSessionCard.tsx),
-// which stay entirely in code: this page is the site's lead capture, and a form
-// is functional UI rather than copy. The closing band carries a third version
-// of the same promise, from Site Settings. So if the promise ever changes it
-// changes in three places, none of them the Contact Page form.
+// "Within one working day" is deliberately NOT in the CMS. It sits inside the
+// enquiry form (sections/ContactForm.tsx), which stays entirely in code: this
+// page is the site's lead capture, and a form is functional UI rather than
+// copy. The closing band carries a second version of the same promise, from
+// Site Settings.
 //
 // The copy below is now a fallback rather than the page's only copy: the same
 // strings also live in content/contact/index.json, seeded byte-for-byte from
@@ -34,36 +33,16 @@ import { str, pruneEmpty, telHref} from '../lib/tina';
 const HERO_FALLBACK = {
   label: 'Contact',
   heading: 'Get in touch.',
-  description: 'One address for general enquiries, one number, and a free call with Jodi if you would rather talk it through first.',
+  description: 'Book a call with Jodi, or send us a message. One address, one number, and both say what they are for.',
 };
 
-// Route 1: ready to assess a property. The button goes to the fee calculator.
-// The destination is code; only the label is content.
-const ROUTE_READY_FALLBACK = {
-  eyebrow: 'Ready To Assess A Property',
-  body: 'Answer a few questions and your fixed fee is on screen. Fastest way to a Go or No-Go.',
-  buttonLabel: 'Get Your Fixed Fee',
-};
-
-// Route 2 is Jodi's ExpertSessionCard: its copy IS editable, but the fallbacks
-// live inside that component rather than here, because the strings are
-// interleaved with a booking form. Only the prose moves into the CMS; every
-// field placeholder, button busy state and error message in that form stays in
-// code.
+// Jodi's card is sections/ExpertSessionCard.tsx: its three lines of prose are
+// editable and its fallbacks live there, next to the calendar they introduce.
 //
-// There used to be a third card, "General or other enquiry", whose button
-// scrolled to the form below it. Item 76 of Ed's September 2026 list counted
-// the page's routes and found five competing ones; the card was a route to a
-// route, so it went. The form is still there and the address beside it says
-// what it is for.
-
-// Anyone with a live scheme gets more out of the feasibility form than a
-// general message, so it is offered here rather than buried.
-const NUDGE_FALLBACK = {
-  heading: 'Already have a building in mind?',
-  body: 'The feasibility form asks the few questions we need to tell you whether it stacks up, and you get a clear Go or No-Go in five days.',
-  linkLabel: 'Book your feasibility',
-};
+// Gone with item 76: the "ready to assess a property" card (a route to the fee
+// calculator, which the closing band on every page already offers), the
+// "general or other enquiry" card (a route to the form directly beneath it),
+// the "already have a building in mind" nudge, and jodi@ as a second address.
 
 // The email address and phone number on this page are the same pair the footer
 // renders, and they read from the same two Site Settings fields rather than
@@ -93,8 +72,6 @@ interface ContactPageProps {
 }
 
 export const ContactPage: React.FC<ContactPageProps> = ({ page, settings }) => {
-  const router = useRouter();
-
   // useTina returns the server data verbatim on the public site and swaps in
   // the live form values inside the editor. Passing a null-ish query is not
   // allowed, and hooks cannot be called conditionally, so the hooks run against
@@ -112,18 +89,6 @@ export const ContactPage: React.FC<ContactPageProps> = ({ page, settings }) => {
     label: str(c?.hero?.label),
     heading: str(c?.hero?.heading),
     description: str(c?.hero?.description),
-  }) };
-
-  const routeReady = { ...ROUTE_READY_FALLBACK, ...pruneEmpty({
-    eyebrow: str(c?.routeReady?.eyebrow),
-    body: str(c?.routeReady?.body),
-    buttonLabel: str(c?.routeReady?.buttonLabel),
-  }) };
-
-  const nudge = { ...NUDGE_FALLBACK, ...pruneEmpty({
-    heading: str(c?.feasibilityNudge?.heading),
-    body: str(c?.feasibilityNudge?.body),
-    linkLabel: str(c?.feasibilityNudge?.linkLabel),
   }) };
 
   const details = { ...DETAILS_FALLBACK, ...pruneEmpty({
@@ -146,53 +111,23 @@ export const ContactPage: React.FC<ContactPageProps> = ({ page, settings }) => {
       />
 
       <section className="bg-thistle-white py-fl-8 px-fl-margin">
-        <div className="max-w-[1360px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-fl-5 items-stretch mb-fl-8">
-          {/* Route 1: ready to assess a property */}
-          <Reveal fullHeight>
-            <div className="h-full flex flex-col rounded-2xl border border-thistle-black/[0.08] bg-white p-fl-6">
-              <p className="text-xs uppercase tracking-[0.2em] text-thistle-green font-semibold mb-fl-3" data-tina-field={f(c?.routeReady, 'eyebrow')}>{routeReady.eyebrow}</p>
-              <p className="text-fluid-sm text-thistle-black/70 leading-relaxed flex-1 mb-fl-5" data-tina-field={f(c?.routeReady, 'body')}>
-                {routeReady.body}
-              </p>
-              <Button
-                variant="primary"
-                icon={<ArrowUpRight size={16} />}
-                onClick={() => router.push('/pricing#calculator')}
-                className="w-fit"
-                data-tina-field={f(c?.routeReady, 'buttonLabel')}
-              >
-                {routeReady.buttonLabel}
-              </Button>
-            </div>
-          </Reveal>
-
-          {/* Route 2: not sure what they need, Jodi.
-              No props and no markers, on purpose. The card is two paragraphs
-              wrapped around a call-back form, and the form is off limits — its
-              placeholders, button states and success message are what capture
-              the lead. Making half a card editable would be worse than leaving
-              it whole, so the whole of it stays in code with the form. */}
+        {/* Route 1: book a call. Jodi's live calendar. */}
+        <div id="book" className="max-w-[1360px] mx-auto mb-fl-8 scroll-mt-24">
           <ExpertSessionCard
             copy={{
               personName: str(c?.expertSession?.personName),
               personRole: str(c?.expertSession?.personRole),
               pitch: str(c?.expertSession?.pitch),
-              buttonLabel: str(c?.expertSession?.buttonLabel),
-              reassurance: str(c?.expertSession?.reassurance),
-              successHeading: str(c?.expertSession?.successHeading),
             }}
-            urgent={{ email: details.email, phone: details.phone }}
             tina={{
               personName: f(c?.expertSession, 'personName'),
               personRole: f(c?.expertSession, 'personRole'),
               pitch: f(c?.expertSession, 'pitch'),
-              buttonLabel: f(c?.expertSession, 'buttonLabel'),
-              reassurance: f(c?.expertSession, 'reassurance'),
-              successHeading: f(c?.expertSession, 'successHeading'),
             }}
           />
         </div>
 
+        {/* Route 2: write to us. One address, one number, one form. */}
         <div id="enquiry" className="max-w-[1360px] mx-auto grid lg:grid-cols-[1fr_1.2fr] gap-fl-7 items-start scroll-mt-24">
           <div className="flex flex-col gap-fl-6">
             <Reveal>
@@ -204,8 +139,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ page, settings }) => {
 
                     Each carries a line saying what it is for. Item 76: the page
                     offered two addresses and a number with no explanation of
-                    which to use. Now there is one address, one number, and the
-                    call-back card above for anyone who wants to talk first. */}
+                    which to use. Now there is one address, one number, and
+                    Jodi's calendar above for anyone who wants to talk first. */}
                 <div>
                   <a
                     href={`mailto:${details.email}`}
@@ -235,24 +170,6 @@ export const ContactPage: React.FC<ContactPageProps> = ({ page, settings }) => {
               </div>
             </Reveal>
 
-            {/* Anyone with a live scheme gets more out of the feasibility form than
-                a general message, so it is offered here rather than buried. */}
-            <Reveal delay={0.1}>
-              <div className="bg-white rounded-2xl border border-thistle-black/[0.08] p-fl-5">
-                <p className="text-fluid-base text-thistle-black mb-fl-2" data-tina-field={f(c?.feasibilityNudge, 'heading')}>{nudge.heading}</p>
-                <p className="text-fluid-sm text-thistle-black/60 mb-fl-4" data-tina-field={f(c?.feasibilityNudge, 'body')}>
-                  {nudge.body}
-                </p>
-                <Link
-                  href="/feasibility-package"
-                  className="inline-flex items-center gap-1.5 text-fluid-sm font-medium text-thistle-black hover:text-thistle-green transition-colors"
-                  data-tina-field={f(c?.feasibilityNudge, 'linkLabel')}
-                >
-                  {nudge.linkLabel}
-                  <ArrowUpRight size={15} />
-                </Link>
-              </div>
-            </Reveal>
           </div>
 
           {/* No props and no markers, deliberately. Everything inside — the
