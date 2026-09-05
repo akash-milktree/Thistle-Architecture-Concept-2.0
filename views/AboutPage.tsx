@@ -120,7 +120,7 @@ interface Stat {
 // a figure that could be evidenced if a client asked.
 const STATS_FALLBACK: Stat[] = [
   { value: "98.5%", label: "Planning success rate" },
-  { value: "5 days", label: "Guaranteed turnaround" },
+  { value: "5 days", label: "Turnaround, committed" },
   { value: "Hundreds", label: "Of conversions designed nationwide" },
 ];
 
