@@ -265,7 +265,7 @@ export const EligibilityChecker: React.FC<EligibilityCheckerProps> = ({
                   {copy.body}
                 </p>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-fl-4">
-                  <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/pricing')} data-tina-field={tina?.ctaLabel}>
+                  <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/pricing#calculator')} data-tina-field={tina?.ctaLabel}>
                     {ctaLabel}
                   </Button>
                   <button

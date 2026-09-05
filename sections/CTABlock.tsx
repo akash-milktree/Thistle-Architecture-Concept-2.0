@@ -27,7 +27,7 @@ export const CTABlock: React.FC = () => {
             size="lg"
             variant="primary"
             icon={<ArrowUpRight size={18} />}
-            onClick={() => router.push('/pricing')}
+            onClick={() => router.push('/pricing#calculator')}
             className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80"
           >
             Get Your Fixed Fee

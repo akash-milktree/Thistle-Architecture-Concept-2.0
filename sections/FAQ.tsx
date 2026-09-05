@@ -77,7 +77,7 @@ export const FAQ: React.FC<FAQProps> = ({ tinted = false, faqs }) => {
               </p>
             </Reveal>
             <Reveal delay={0.2}>
-              <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/pricing')}>
+              <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/pricing#calculator')}>
                 Get Your Fixed Fee
               </Button>
             </Reveal>

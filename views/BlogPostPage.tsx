@@ -366,7 +366,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ post, page }) => {
   const cmsContent = arr<string>(cms?.content).filter((s) => typeof s === 'string');
   const content = cmsContent.length ? cmsContent : post.content;
 
-  const goPackage = () => router.push('/pricing');
+  const goPackage = () => router.push('/pricing#calculator');
   const blocks = toBlocks(content);
   const headings = blocks.filter((b): b is Extract<Block, { kind: 'h2' }> => b.kind === 'h2');
   const showToc = headings.length >= 3;

@@ -157,7 +157,7 @@ export const GDVCalculator: React.FC<GDVCalculatorProps> = ({
                 <p className="text-fluid-sm text-thistle-black/80 leading-relaxed mb-fl-5" data-tina-field={cmsBand?.tina?.body}>
                   {bandCopy.body}
                 </p>
-                <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/pricing')} data-tina-field={tina?.ctaLabel}>
+                <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/pricing#calculator')} data-tina-field={tina?.ctaLabel}>
                   {ctaLabel}
                 </Button>
               </div>

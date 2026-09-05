@@ -236,7 +236,7 @@ export const ConversionPage: React.FC<ConversionPageProps> = ({
         }}
       >
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-fl-4">
-          <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/pricing')} data-tina-field={f(shared, 'ctaLabel')}>
+          <Button variant="primary" icon={<ArrowUpRight size={16} />} onClick={() => router.push('/pricing#calculator')} data-tina-field={f(shared, 'ctaLabel')}>
             {closing.ctaLabel}
           </Button>
           {/* Wayfinding to another page rather than a claim about the work, so
@@ -364,7 +364,7 @@ export const ConversionPage: React.FC<ConversionPageProps> = ({
             </p>
           </Reveal>
           <Reveal delay={0.2}>
-            <Button variant="primary" size="lg" icon={<ArrowUpRight size={18} />} onClick={() => router.push('/pricing')} data-tina-field={f(shared, 'ctaLabel')}>
+            <Button variant="primary" size="lg" icon={<ArrowUpRight size={18} />} onClick={() => router.push('/pricing#calculator')} data-tina-field={f(shared, 'ctaLabel')}>
               {closing.ctaLabel}
             </Button>
           </Reveal>

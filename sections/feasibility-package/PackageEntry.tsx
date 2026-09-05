@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { ArrowUpRight, Check } from 'lucide-react';
 import { Reveal } from '../../components/animations/Reveal';
 import { Button } from '../../components/ui/Button';
-import { FeasibilityCalculator } from '../pricing/FeasibilityCalculator';
+import Link from 'next/link';
 import { pruneEmpty } from '../../lib/tina';
 import { EVENTS, track } from '../../lib/analytics';
 import { DisclaimerAcceptance } from '../../components/checkout/DisclaimerAcceptance';
@@ -17,9 +17,11 @@ import { DISCLAIMER_VERSION } from '../../lib/disclaimer';
 // 'Design-led feasibility from £298'."
 //
 // £49.99 is a flat fee with no questionnaire behind it (there is nothing to
-// price), so it gets its own small checkout form rather than the calculator.
-// £298+ varies by scope, so it keeps the shared FeasibilityCalculator, the
-// same component and pricing logic used on /pricing.
+// price), so it gets its own small checkout form here. £298+ varies by scope
+// and is priced by the calculator, which since item 71 of Ed's September 2026
+// list lives in one place only, /pricing#calculator. The same seven questions
+// on two pages was two calculators to keep in step and two answers to "where
+// does Get Your Fixed Fee go", so the card here links across instead.
 
 // THE TWO CARD PRICES STAY IN CODE. They are the price OF a product, and an
 // editable one could publish a fee the site does not honour — the card saying
@@ -43,7 +45,7 @@ const FALLBACK = {
   architecturalBadge: 'Recommended',
   architecturalName: 'Architectural Feasibility',
   architecturalStrapline: 'Data, plus our design team: planning interpretation, sketch and layout testing, and a professional recommendation.',
-  architecturalBody: 'Everything in the automated appraisal, plus the sketch scheme and full report described below. Answer eight questions and your fixed fee is on screen.',
+  architecturalBody: 'Everything in the automated appraisal, plus the sketch scheme and full report described below. Answer eight questions on the pricing page and your fixed fee is on screen.',
   architecturalCtaLabel: 'Get Your Instant Fixed Fee',
   partnerPrefix: 'Only need a quick HMO screen?',
   partnerLinkLabel: 'HMO Checker Property Report, £15.99',
@@ -343,18 +345,14 @@ export const PackageEntry: React.FC<PackageEntryProps> = ({
                 {copy.architecturalBody}
               </p>
               <div className="mt-fl-5">
-                <a href="#calculator" className="inline-block">
+                <Link href="/pricing#calculator" className="inline-block">
                   <Button variant="primary" size="md" icon={<ArrowUpRight size={16} />} data-tina-field={tina?.architecturalCtaLabel}>
                     {copy.architecturalCtaLabel}
                   </Button>
-                </a>
+                </Link>
               </div>
             </div>
           </Reveal>
-        </div>
-
-        <div id="calculator" className="scroll-mt-28">
-          <FeasibilityCalculator />
         </div>
 
         {/* Ed's brief: do not use £15.99 as the main feasibility headline, and

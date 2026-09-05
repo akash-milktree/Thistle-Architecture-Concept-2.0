@@ -50,7 +50,7 @@ import { joinKeyField } from '../fields';
 //   button states, validation and error messages are the mechanic, not copy,
 //   and a reworded button state is a broken button.
 //
-// - Anchors and routes (#instant-quote, #calculator, /about, hmochecker.co.uk,
+// - Anchors and routes (#instant-quote, /pricing#calculator, /about, hmochecker.co.uk,
 //   the case-study link), the pinned Maywood Group review, the order of the
 //   sections, and the positions that pair a list item with a drawing or a
 //   photograph in code.
@@ -189,7 +189,7 @@ export const feasibilityPackageCollection: Collection = {
               name: 'ctaLabel',
               label: 'Button label',
               description:
-                'The main call to action. It scrolls to the pricing calculator further down this page; where it goes is set in code, so only the wording is editable here.',
+                'The main call to action. It scrolls to the product choice further down this page; where it goes is set in code, so only the wording is editable here.',
             },
             {
               type: 'string',
@@ -232,7 +232,7 @@ export const feasibilityPackageCollection: Collection = {
           name: 'entry',
           label: '"Choose Your Route" section',
           description:
-            'The two product cards and the pricing calculator, near the top of the page per Ed\'s August 2026 final brief: "the website should never feel like contact us for a quote". Everything inside the calculator, and the name/email/phone form on the £49.99 card, is the mechanic rather than copy and is set in code.',
+            'The two product cards near the top of the page per Ed\'s August 2026 final brief: "the website should never feel like contact us for a quote". The name/email/phone form on the £49.99 card is the mechanic rather than copy and is set in code. The fee calculator itself lives on the pricing page only, since September 2026.',
           fields: [
             { type: 'string', name: 'eyebrow', label: 'Eyebrow' },
             {
@@ -297,7 +297,7 @@ export const feasibilityPackageCollection: Collection = {
                   type: 'string',
                   name: 'ctaLabel',
                   label: 'Button label',
-                  description: 'Scrolls down to the calculator on this page. Where it goes is set in code.',
+                  description: 'Opens the fee calculator on the pricing page. Where it goes is set in code.',
                 },
               ],
             },

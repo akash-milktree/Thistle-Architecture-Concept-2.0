@@ -77,12 +77,13 @@ for (const [label, url, boxId, payButton] of [
 
     // Opening the full text must not lose anything already typed. R2.2.
     //
-    // Scoped to the block that owns this tick box, because /feasibility-package
-    // renders the shared calculator further down the page and so has a second
-    // set of identically placeholdered contact fields.
+    // Scoped to the block that owns this tick box. /feasibility-package used to
+    // render the shared calculator further down the page too, with a second
+    // set of identically placeholdered contact fields; that went with item 71
+    // (one calculator, on /pricing), but the scoping is kept so the check stays
+    // honest if the page ever grows another form.
     if (boxId === '#disclaimer-automated') {
-      // The nearest ancestor that also holds the contact fields, so this cannot
-      // pick up the shared calculator further down the page.
+      // The nearest ancestor that also holds the contact fields.
       const block = p.locator(boxId).locator('xpath=ancestor::div[.//input[@placeholder="Full name"]][1]');
       await block.getByPlaceholder('Full name').fill('Kept On Screen');
       await link.click({ modifiers: ['Meta'] }).catch(() => {});
@@ -93,9 +94,7 @@ for (const [label, url, boxId, payButton] of [
       await block.getByPlaceholder('Phone').fill('07000000000');
     }
 
-    // Scoped only where the page has two of them: /feasibility-package renders
-    // the shared calculator lower down, so "Pay ... Now" is ambiguous there,
-    // while "Secure My Feasibility" appears once on /pricing.
+    // Same scoping for the pay button, for the same reason.
     const payScope = boxId === '#disclaimer-automated'
       ? p.locator(boxId).locator('xpath=ancestor::div[.//input[@placeholder="Full name"]][1]')
       : p;

@@ -20,13 +20,14 @@ interface InlineCTAProps {
 /**
  * Inline CTA used between sections to keep conversion scent.
  * Tier 1 (default): the standard high-intent CTA from Ed's August 2026 brief,
- * "Get Your Fixed Fee", into the pricing calculator.
+ * "Get Your Fixed Fee", straight into the calculator on /pricing. Item 71 of
+ * Ed's September 2026 list: one calculator, one destination for that button.
  * Tier 2: href="" opens the detailed brief form, which is now post-payment
  * only, so pass it deliberately or not at all.
  */
 export const InlineCTA: React.FC<InlineCTAProps> = ({
   label = "Get Your Fixed Fee",
-  href = "/pricing",
+  href = "/pricing#calculator",
   align = "center",
   className = "",
   tinaLabel,
@@ -35,8 +36,8 @@ export const InlineCTA: React.FC<InlineCTAProps> = ({
   const { openModal } = useFeasibility();
   const alignCls = align === "center" ? "justify-center" : align === "right" ? "justify-end" : "justify-start";
 
-  // A same-page anchor (used on the feasibility package page, which now hosts
-  // its own calculator) goes through the browser's own hash navigation rather
+  // A same-page anchor (the feasibility package page points at its own product
+  // choice, #instant-quote) goes through the browser's own hash navigation rather
   // than router.push, which is built for real path changes and is not
   // guaranteed to scroll a bare "#id" reliably.
   const go = () => {

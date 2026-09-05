@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { Button } from '../components/ui/Button';
 import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from '../components/animations/Reveal';
@@ -53,6 +54,12 @@ const HERO_FALLBACK: HeroCopy = {
   posterImage: '/images/site/hero-showreel-v5-poster.jpg',
   videoId: '1217009975',
 };
+
+// The two entry prices. Not CMS fields, for the reason given at the point of
+// use below; they match AUTOMATED_PRICE and ARCHITECTURAL_PRICE in
+// sections/feasibility-package/PackageEntry.tsx and the ladder in
+// data/pricingData.ts, and scripts/pricing-check.mjs asserts the ladder.
+const HOME_PRICE_LINE = 'Feasibility from £49.99. Design-led feasibility from £298.';
 
 const METRICS_FALLBACK: HeroMetric[] = [
   { value: "98.5%", label: "Planning success rate", detail: "Across all submitted schemes" },
@@ -176,7 +183,7 @@ export const Hero: React.FC<HeroProps> = ({ copy, metrics, tina }) => {
                   size="lg"
                   variant="primary"
                   icon={<ArrowUpRight size={18} />}
-                  onClick={() => router.push('/pricing')}
+                  onClick={() => router.push('/pricing#calculator')}
                   className="!bg-thistle-green !text-thistle-black !border-thistle-green hover:!bg-thistle-green/85 hover:!border-thistle-green/85"
                   data-tina-field={tina?.primaryCtaLabel}
                 >
@@ -192,6 +199,18 @@ export const Hero: React.FC<HeroProps> = ({ copy, metrics, tina }) => {
               </div>
               <p className="text-sm text-white/90 mt-fl-4" data-tina-field={tina?.reassurance}>
                 {c.reassurance}
+              </p>
+              {/* Item 70 of Ed's September 2026 list: the homepage carried no
+                  price and no route to /pricing except the nav. The two entry
+                  prices stay in code, like every other price on the site, so
+                  an edit here cannot publish a figure Stripe does not charge.
+                  The line is one sentence and one link, on purpose. */}
+              <p className="text-sm text-white/90 mt-fl-2">
+                {HOME_PRICE_LINE}{' '}
+                <Link href="/pricing" className="underline underline-offset-2 decoration-white/50 hover:decoration-white transition-colors">
+                  See all prices
+                </Link>
+                .
               </p>
               <TrustpilotBadge tone="light" className="mt-fl-5" />
             </Reveal>

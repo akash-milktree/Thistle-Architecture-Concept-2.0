@@ -163,7 +163,7 @@ export const Footer: React.FC<FooterProps> = ({ cta, details, tina }) => {
               variant="glass"
               size="lg"
               icon={<ArrowUpRight size={18} />}
-              onClick={() => router.push('/pricing')}
+              onClick={() => router.push('/pricing#calculator')}
               className="!bg-thistle-green !text-black !border-thistle-green hover:!bg-thistle-green/80 hover:!border-thistle-green/80"
               data-tina-field={tina?.cta?.buttonLabel}
             >

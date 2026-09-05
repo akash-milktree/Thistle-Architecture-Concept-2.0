@@ -120,7 +120,7 @@ export const ToolShell: React.FC<ToolShellProps> = ({
               variant="primary"
               size="lg"
               icon={<ArrowUpRight size={18} />}
-              onClick={() => router.push('/pricing')}
+              onClick={() => router.push('/pricing#calculator')}
               data-tina-field={tina?.ctaLabel}
             >
               {ctaLabel}

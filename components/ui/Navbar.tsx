@@ -249,7 +249,7 @@ export const Navbar: React.FC<NavbarProps> = ({ labels, ctaLabel, tina }) => {
                 variant="primary"
                 icon={<ArrowUpRight size={16} />}
                 className="!bg-white !text-thistle-black !border-white hover:!bg-thistle-pink hover:!text-thistle-black hover:!border-thistle-pink"
-                onClick={() => router.push('/pricing')}
+                onClick={() => router.push('/pricing#calculator')}
               >
                 <span data-tina-field={tina?.ctaLabel}>{ctaLabel || 'Get Your Fixed Fee'}</span>
               </Button>
@@ -321,7 +321,7 @@ export const Navbar: React.FC<NavbarProps> = ({ labels, ctaLabel, tina }) => {
                 className="w-full justify-center"
                 onClick={() => {
                   setIsMobileMenuOpen(false);
-                  router.push('/pricing');
+                  router.push('/pricing#calculator');
                 }}
               >
                 <span data-tina-field={tina?.ctaLabel}>{ctaLabel || 'Get Your Fixed Fee'}</span>
