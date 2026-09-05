@@ -21,13 +21,18 @@ interface ExpertSessionCopy {
   buttonLabel: string;
   reassurance: string;
   successHeading: string;
-  successUrgent: string;
-  emailPrompt: string;
-  email: string;
 }
 
 interface ExpertSessionCardProps {
   copy?: Partial<ExpertSessionCopy>;
+  /**
+   * The practice address and number for the "if it is urgent" line after a
+   * request is sent. Item 76 of Ed's September 2026 list: this card used to
+   * offer jodi@ as a second address next to hello@, with nothing saying which
+   * to use. One address now, the same one as the footer, passed in from the
+   * page so it cannot drift.
+   */
+  urgent?: { email: string; phone: string };
   tina?: Partial<Record<keyof ExpertSessionCopy, string>>;
 }
 
@@ -40,12 +45,11 @@ const COPY_FALLBACK: ExpertSessionCopy = {
   buttonLabel: 'Request a Call Back',
   reassurance: 'No obligation. Usually within one working day.',
   successHeading: 'Thanks. Jodi will be in touch to find a time, usually within one working day.',
-  successUrgent: 'If it is urgent, reach her directly at',
-  emailPrompt: 'Prefer email?',
-  email: 'jodi@thistlearchitecture.co.uk',
 };
 
-export const ExpertSessionCard: React.FC<ExpertSessionCardProps> = ({ copy, tina }) => {
+const URGENT_FALLBACK = { email: 'hello@thistlearchitecture.co.uk', phone: '0808 175 5405' };
+
+export const ExpertSessionCard: React.FC<ExpertSessionCardProps> = ({ copy, urgent = URGENT_FALLBACK, tina }) => {
   const c: ExpertSessionCopy = { ...COPY_FALLBACK, ...pruneEmpty(copy) };
   // The avatar is the first letter of the name, so it follows a rename rather
   // than becoming a stale initial.
@@ -113,9 +117,13 @@ export const ExpertSessionCard: React.FC<ExpertSessionCardProps> = ({ copy, tina
               {c.successHeading}
             </p>
             <p className="text-fluid-sm text-thistle-black/60 leading-relaxed">
-              <span data-tina-field={tina?.successUrgent}>{c.successUrgent}</span>{' '}
-              <a href={`mailto:${c.email}`} className="text-thistle-black underline underline-offset-2 hover:text-thistle-green transition-colors" data-tina-field={tina?.email}>
-                {c.email}
+              If it is urgent, call{' '}
+              <a href={`tel:${urgent.phone.replace(/\s+/g, '')}`} className="text-thistle-black underline underline-offset-2 hover:text-thistle-green transition-colors">
+                {urgent.phone}
+              </a>{' '}
+              or email{' '}
+              <a href={`mailto:${urgent.email}`} className="text-thistle-black underline underline-offset-2 hover:text-thistle-green transition-colors">
+                {urgent.email}
               </a>.
             </p>
           </>
@@ -183,17 +191,6 @@ export const ExpertSessionCard: React.FC<ExpertSessionCardProps> = ({ copy, tina
               )}
             </form>
           </>
-        )}
-        {status !== 'done' && (
-          /* A named address that reaches a person, which matters while nobody
-             has confirmed hello@ is monitored. Her Calendly still does not
-             exist, so the form above remains the booking route. */
-          <p className="text-xs text-thistle-black/45 mt-fl-4">
-            <span data-tina-field={tina?.emailPrompt}>{c.emailPrompt}</span>{' '}
-            <a href={`mailto:${c.email}`} className="underline underline-offset-2 hover:text-thistle-black transition-colors" data-tina-field={tina?.email}>
-              {c.email}
-            </a>
-          </p>
         )}
       </div>
     </Reveal>

@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { pruneEmpty } from '../../lib/tina';
 import { EVENTS, track } from '../../lib/analytics';
 import { DisclaimerAcceptance } from '../../components/checkout/DisclaimerAcceptance';
+import { PrivacyNote } from '../../components/ui/PrivacyNote';
 import { DISCLAIMER_VERSION } from '../../lib/disclaimer';
 
 // Ed's August 2026 final brief, section 03: "Bring the product choice and
@@ -49,7 +50,7 @@ const FALLBACK = {
   architecturalCtaLabel: 'Get Your Instant Fixed Fee',
   partnerPrefix: 'Only need a quick HMO screen?',
   partnerLinkLabel: 'HMO Checker Property Report, £15.99',
-  partnerSuffix: '— a separate tool on hmochecker.co.uk, not a Thistle feasibility. The link opens in a new tab.',
+  partnerSuffix: 'Opens hmochecker.co.uk in a new tab. A separate tool from a sister brand, not a Thistle feasibility.',
 };
 
 const AUTOMATED_INCLUDES = [
@@ -170,6 +171,11 @@ const AutomatedCheckout: React.FC = () => {
           />
         </div>
       </div>
+      {/* Item 77: what the details are for, beside the fields. */}
+      <PrivacyNote
+        className="mb-fl-3"
+        purpose="We use these details to deliver your report and to follow up about your project."
+      />
       {/* R2.1: same screen as the pay button, and above it. */}
       <DisclaimerAcceptance
         checked={accepted}

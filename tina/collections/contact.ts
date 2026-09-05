@@ -72,12 +72,12 @@ export const contactCollection: Collection = {
           label: 'Supporting paragraph',
           ui: { component: 'textarea' },
           description:
-            'It currently says there are three ways in. If a card is ever added or dropped, this line has to be counted again.',
+            'Names the ways to get in touch: one address, one number, and the call-back card. If a route is ever added or dropped, this line has to be re-read.',
         },
       ],
     },
 
-    // --- Route 1 of 3 ---
+    // --- Route 1 of 2 ---
     {
       type: 'object',
       name: 'routeReady',
@@ -86,20 +86,6 @@ export const contactCollection: Collection = {
         'The first of the three cards under the page header, for the visitor who already knows what they want priced. Its button opens the fee calculator on the pricing page — that destination is set in code, so editing the label changes what the button says, not where it goes. The middle card, Jodi\u2019s free expert session, is not in this form: its wording is part of the booking form it wraps and lives in code with it.',
       fields: [
         { type: 'string', name: 'eyebrow', label: 'Card heading', description: 'The small green capitals at the top of the card.' },
-        { type: 'string', name: 'body', label: 'Card text', ui: { component: 'textarea' } },
-        { type: 'string', name: 'buttonLabel', label: 'Button label' },
-      ],
-    },
-
-    // --- Route 3 of 3 ---
-    {
-      type: 'object',
-      name: 'routeGeneral',
-      label: 'Card 3: general or other enquiry',
-      description:
-        'The third card, for everyone the first two do not fit. Its button scrolls down to the enquiry form further down this same page.',
-      fields: [
-        { type: 'string', name: 'eyebrow', label: 'Card heading', description: 'The small grey capitals at the top of the card.' },
         { type: 'string', name: 'body', label: 'Card text', ui: { component: 'textarea' } },
         { type: 'string', name: 'buttonLabel', label: 'Button label' },
       ],
@@ -135,16 +121,7 @@ export const contactCollection: Collection = {
         { type: 'string', name: 'pitch', label: 'Pitch', ui: { component: 'textarea' } },
         { type: 'string', name: 'buttonLabel', label: 'Button label' },
         { type: 'string', name: 'reassurance', label: 'Reassurance line', description: 'The small print beside the button.' },
-        { type: 'string', name: 'successHeading', label: 'Confirmation message', ui: { component: 'textarea' }, description: 'Shown after someone submits the card.' },
-        { type: 'string', name: 'successUrgent', label: 'Confirmation: urgent line', description: 'The lead-in before the email address. The address itself follows it automatically.' },
-        { type: 'string', name: 'emailPrompt', label: 'Email prompt', description: 'The "Prefer email?" lead-in under the form.' },
-        {
-          type: 'string',
-          name: 'email',
-          label: 'Email address',
-          description:
-            'Shown as text and used as the mailto: link, so the two cannot drift apart. A named address that reaches a person, which matters while nobody has confirmed hello@ is monitored.',
-        },
+        { type: 'string', name: 'successHeading', label: 'Confirmation message', ui: { component: 'textarea' }, description: 'Shown after someone submits the card. The "if it is urgent" line that follows it uses the practice email and phone from Site Settings, so there is one address on the page rather than two.' },
       ],
     },
   ],

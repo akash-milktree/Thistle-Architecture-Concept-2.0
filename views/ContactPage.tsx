@@ -34,7 +34,7 @@ import { str, pruneEmpty, telHref} from '../lib/tina';
 const HERO_FALLBACK = {
   label: 'Contact',
   heading: 'Get in touch.',
-  description: 'Three ways in, depending on how ready you are to move.',
+  description: 'One address for general enquiries, one number, and a free call with Jodi if you would rather talk it through first.',
 };
 
 // Route 1: ready to assess a property. The button goes to the fee calculator.
@@ -45,16 +45,17 @@ const ROUTE_READY_FALLBACK = {
   buttonLabel: 'Get Your Fixed Fee',
 };
 
-// Route 3: general enquiry, further down the page. Route 2 is Jodi's
-// ExpertSessionCard: its copy IS editable, but the fallbacks live inside that
-// component rather than here, because the strings are interleaved with a
-// booking form. Only the prose moves into the CMS — every field placeholder,
-// button busy state and error message in that form stays in code.
-const ROUTE_GENERAL_FALLBACK = {
-  eyebrow: 'General Or Other Enquiry',
-  body: "Anything else, from a press enquiry to a question about a project we've already delivered.",
-  buttonLabel: 'Use The Form Below',
-};
+// Route 2 is Jodi's ExpertSessionCard: its copy IS editable, but the fallbacks
+// live inside that component rather than here, because the strings are
+// interleaved with a booking form. Only the prose moves into the CMS; every
+// field placeholder, button busy state and error message in that form stays in
+// code.
+//
+// There used to be a third card, "General or other enquiry", whose button
+// scrolled to the form below it. Item 76 of Ed's September 2026 list counted
+// the page's routes and found five competing ones; the card was a route to a
+// route, so it went. The form is still there and the address beside it says
+// what it is for.
 
 // Anyone with a live scheme gets more out of the feasibility form than a
 // general message, so it is offered here rather than buried.
@@ -73,6 +74,7 @@ const NUDGE_FALLBACK = {
 const DETAILS_FALLBACK = {
   email: 'hello@thistlearchitecture.co.uk',
   phone: '0808 175 5405',
+  hours: 'Mon to Fri, 9am to 6pm GMT',
 };
 
 interface ContactPageProps {
@@ -118,12 +120,6 @@ export const ContactPage: React.FC<ContactPageProps> = ({ page, settings }) => {
     buttonLabel: str(c?.routeReady?.buttonLabel),
   }) };
 
-  const routeGeneral = { ...ROUTE_GENERAL_FALLBACK, ...pruneEmpty({
-    eyebrow: str(c?.routeGeneral?.eyebrow),
-    body: str(c?.routeGeneral?.body),
-    buttonLabel: str(c?.routeGeneral?.buttonLabel),
-  }) };
-
   const nudge = { ...NUDGE_FALLBACK, ...pruneEmpty({
     heading: str(c?.feasibilityNudge?.heading),
     body: str(c?.feasibilityNudge?.body),
@@ -133,6 +129,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ page, settings }) => {
   const details = { ...DETAILS_FALLBACK, ...pruneEmpty({
     email: str(s?.footer?.email),
     phone: str(s?.footer?.phone),
+    hours: str(s?.footer?.hours),
   }) };
 
   return (
@@ -149,7 +146,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ page, settings }) => {
       />
 
       <section className="bg-thistle-white py-fl-8 px-fl-margin">
-        <div className="max-w-[1360px] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-fl-5 items-stretch mb-fl-8">
+        <div className="max-w-[1360px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-fl-5 items-stretch mb-fl-8">
           {/* Route 1: ready to assess a property */}
           <Reveal fullHeight>
             <div className="h-full flex flex-col rounded-2xl border border-thistle-black/[0.08] bg-white p-fl-6">
@@ -183,10 +180,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ page, settings }) => {
               buttonLabel: str(c?.expertSession?.buttonLabel),
               reassurance: str(c?.expertSession?.reassurance),
               successHeading: str(c?.expertSession?.successHeading),
-              successUrgent: str(c?.expertSession?.successUrgent),
-              emailPrompt: str(c?.expertSession?.emailPrompt),
-              email: str(c?.expertSession?.email),
             }}
+            urgent={{ email: details.email, phone: details.phone }}
             tina={{
               personName: f(c?.expertSession, 'personName'),
               personRole: f(c?.expertSession, 'personRole'),
@@ -194,56 +189,49 @@ export const ContactPage: React.FC<ContactPageProps> = ({ page, settings }) => {
               buttonLabel: f(c?.expertSession, 'buttonLabel'),
               reassurance: f(c?.expertSession, 'reassurance'),
               successHeading: f(c?.expertSession, 'successHeading'),
-              successUrgent: f(c?.expertSession, 'successUrgent'),
-              emailPrompt: f(c?.expertSession, 'emailPrompt'),
-              email: f(c?.expertSession, 'email'),
             }}
           />
-
-          {/* Route 3: general enquiry, further down the page */}
-          <Reveal delay={0.1} fullHeight>
-            <div className="h-full flex flex-col rounded-2xl border border-thistle-black/[0.08] bg-white p-fl-6">
-              <p className="text-xs uppercase tracking-[0.2em] text-thistle-black/40 font-semibold mb-fl-3" data-tina-field={f(c?.routeGeneral, 'eyebrow')}>{routeGeneral.eyebrow}</p>
-              <p className="text-fluid-sm text-thistle-black/70 leading-relaxed flex-1 mb-fl-5" data-tina-field={f(c?.routeGeneral, 'body')}>
-                {routeGeneral.body}
-              </p>
-              <a href="#enquiry" className="w-fit">
-                {/* The marker goes on the button, which renders the label, and
-                    not on the anchor around it: Tina resolves a click by
-                    walking up with closest(), so a marker on the anchor would
-                    also swallow the jump down to the form. */}
-                <Button variant="outline" icon={<ArrowUpRight size={16} />} data-tina-field={f(c?.routeGeneral, 'buttonLabel')}>
-                  {routeGeneral.buttonLabel}
-                </Button>
-              </a>
-            </div>
-          </Reveal>
         </div>
 
         <div id="enquiry" className="max-w-[1360px] mx-auto grid lg:grid-cols-[1fr_1.2fr] gap-fl-7 items-start scroll-mt-24">
           <div className="flex flex-col gap-fl-6">
             <Reveal>
-              <div className="flex flex-col gap-fl-4">
+              <div className="flex flex-col gap-fl-5">
                 {/* Both of these edit the Site Settings fields the footer uses,
                     so clicking one here opens the same field as clicking it in
                     the footer. The href is derived from the same value as the
-                    text, so the two cannot be edited out of step. */}
-                <a
-                  href={`mailto:${details.email}`}
-                  className="flex items-center gap-fl-3 text-fluid-base text-thistle-black hover:text-thistle-green transition-colors w-fit"
-                  data-tina-field={f(s?.footer, 'email')}
-                >
-                  <Mail size={18} className="text-thistle-black/40 shrink-0" />
-                  {details.email}
-                </a>
-                <a
-                  href={telHref(details.phone)}
-                  className="flex items-center gap-fl-3 text-fluid-base text-thistle-black hover:text-thistle-green transition-colors w-fit"
-                  data-tina-field={f(s?.footer, 'phone')}
-                >
-                  <Phone size={18} className="text-thistle-black/40 shrink-0" />
-                  {details.phone}
-                </a>
+                    text, so the two cannot be edited out of step.
+
+                    Each carries a line saying what it is for. Item 76: the page
+                    offered two addresses and a number with no explanation of
+                    which to use. Now there is one address, one number, and the
+                    call-back card above for anyone who wants to talk first. */}
+                <div>
+                  <a
+                    href={`mailto:${details.email}`}
+                    className="flex items-center gap-fl-3 text-fluid-base text-thistle-black hover:text-thistle-green transition-colors w-fit"
+                    data-tina-field={f(s?.footer, 'email')}
+                  >
+                    <Mail size={18} className="text-thistle-black/40 shrink-0" />
+                    {details.email}
+                  </a>
+                  <p className="text-xs text-thistle-black/50 mt-1 pl-[calc(18px+var(--fl-3,0.75rem))]">
+                    For any enquiry, including press and projects we have already delivered. We reply within one working day.
+                  </p>
+                </div>
+                <div>
+                  <a
+                    href={telHref(details.phone)}
+                    className="flex items-center gap-fl-3 text-fluid-base text-thistle-black hover:text-thistle-green transition-colors w-fit"
+                    data-tina-field={f(s?.footer, 'phone')}
+                  >
+                    <Phone size={18} className="text-thistle-black/40 shrink-0" />
+                    {details.phone}
+                  </a>
+                  <p className="text-xs text-thistle-black/50 mt-1 pl-[calc(18px+var(--fl-3,0.75rem))]" data-tina-field={f(s?.footer, 'hours')}>
+                    For anything urgent. {details.hours}.
+                  </p>
+                </div>
               </div>
             </Reveal>
 

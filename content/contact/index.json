@@ -4,17 +4,12 @@
   "hero": {
     "label": "Contact",
     "heading": "Get in touch.",
-    "description": "Three ways in, depending on how ready you are to move."
+    "description": "One address for general enquiries, one number, and a free call with Jodi if you would rather talk it through first."
   },
   "routeReady": {
     "eyebrow": "Ready To Assess A Property",
     "body": "Answer a few questions and your fixed fee is on screen. Fastest way to a Go or No-Go.",
     "buttonLabel": "Get Your Fixed Fee"
-  },
-  "routeGeneral": {
-    "eyebrow": "General Or Other Enquiry",
-    "body": "Anything else, from a press enquiry to a question about a project we've already delivered.",
-    "buttonLabel": "Use The Form Below"
   },
   "feasibilityNudge": {
     "heading": "Already have a building in mind?",
@@ -27,9 +22,6 @@
     "pitch": "Not sure which route fits your project? A free 15-minute call with Jodi to talk through the opportunity and point you at the right feasibility.",
     "buttonLabel": "Request a Call Back",
     "reassurance": "No obligation. Usually within one working day.",
-    "successHeading": "Thanks. Jodi will be in touch to find a time, usually within one working day.",
-    "successUrgent": "If it is urgent, reach her directly at",
-    "emailPrompt": "Prefer email?",
-    "email": "jodi@thistlearchitecture.co.uk"
+    "successHeading": "Thanks. Jodi will be in touch to find a time, usually within one working day."
   }
 }

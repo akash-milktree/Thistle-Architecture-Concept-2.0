@@ -7,6 +7,7 @@ import { Reveal } from '../../components/animations/Reveal';
 import { Button } from '../../components/ui/Button';
 import { EVENTS, track, trackOnce } from '../../lib/analytics';
 import { DisclaimerAcceptance } from '../../components/checkout/DisclaimerAcceptance';
+import { PrivacyNote } from '../../components/ui/PrivacyNote';
 import { DISCLAIMER_ERROR, DISCLAIMER_VERSION } from '../../lib/disclaimer';
 import {
   getFeasibilityRoute,
@@ -547,6 +548,12 @@ export const FeasibilityCalculator: React.FC = () => {
                 className="border border-thistle-black/10 rounded-full px-4 py-2.5 text-sm bg-thistle-white/50 focus:border-thistle-green focus:ring-1 focus:ring-thistle-green/20 outline-none transition-colors placeholder:text-thistle-black/25"
               />
             </div>
+            {/* Item 77: what the details are for, beside the fields, not only
+                on the privacy page. */}
+            <PrivacyNote
+              className="mt-fl-3"
+              purpose="We use these details to send you the fee and to follow up about your project."
+            />
           </Field>
 
           <div className="flex flex-col sm:flex-row sm:items-center gap-fl-4">
